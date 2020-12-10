@@ -5,7 +5,7 @@
     <link>https://coolgiserz.github.io/post/</link>
       <atom:link href="https://coolgiserz.github.io/post/index.xml" rel="self" type="application/rss+xml" />
     <description>近期博客</description>
-    <generator>Wowchemy (https://wowchemy.com)</generator><language>en-us</language><copyright>© Research Group</copyright><lastBuildDate>Thu, 10 Dec 2020 20:43:31 +0800</lastBuildDate>
+    <generator>Wowchemy (https://wowchemy.com)</generator><language>en-us</language><copyright>© CoolCats</copyright><lastBuildDate>Thu, 10 Dec 2020 20:43:31 +0800</lastBuildDate>
     <image>
       <url>https://coolgiserz.github.io/images/icon_hua2ec155b4296a9c9791d015323e16eb5_11927_512x512_fill_lanczos_center_2.png</url>
       <title>近期博客</title>
@@ -18,6 +18,1041 @@
       <pubDate>Thu, 10 Dec 2020 20:43:31 +0800</pubDate>
       <guid>https://coolgiserz.github.io/post/attention-mechanism/</guid>
       <description></description>
+    </item>
+    
+    <item>
+      <title>各类有用书签资源汇总</title>
+      <link>https://coolgiserz.github.io/post/useful-resources/</link>
+      <pubDate>Sat, 20 Apr 2019 23:25:45 +0800</pubDate>
+      <guid>https://coolgiserz.github.io/post/useful-resources/</guid>
+      <description>&lt;h2 id=&#34;编程软件开发&#34;&gt;编程||软件开发&lt;/h2&gt;
+&lt;h3 id=&#34;论坛&#34;&gt;论坛&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://stackoverflow.com&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;stackoverflow&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;练习平台&#34;&gt;练习平台&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://codingcompetitions.withgoogle.com/codejam&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Code Jam&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://code.tutsplus.com/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;tutsplus&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://www.sitepoint.com/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;sitepoint&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Leetcode&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;工具&#34;&gt;工具&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;tortoisegit：https://tortoisegit.org/&lt;/li&gt;
+&lt;li&gt;数据字典工具：https://dbmstools.com/data-dictionary-tools&lt;/li&gt;
+&lt;li&gt;DBeaver Mock data generator：https://github.com/dbeaver/dbeaver/wiki/Mock-Data-Generation-in-DBeaver&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&#34;问卷调研&#34;&gt;问卷调研&lt;/h4&gt;
+&lt;ul&gt;
+&lt;li&gt;问卷星：https://www.wjx.cn/newwjx/manage/myquestionnaires.aspx&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&#34;需求分析&#34;&gt;需求分析&lt;/h4&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;Mindmaps：https://www.mindmapping.com/&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;mindmaps：https://www.mindmaps.app/
+Github开源，基于HTML5，Js，Css。项目地址：https://github.com/drichard/mindmaps&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Mindmap：
+chrome扩展&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Coggle:
+实时协作&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;FreeMind：https://sourceforge.net/projects/freemind/files/latest/download
+免费思维导图软件，由Java编写&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;XMinds:https://www.xminds.com/&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&#34;架构设计&#34;&gt;架构设计&lt;/h4&gt;
+&lt;ul&gt;
+&lt;li&gt;Visio：https://products.office.com/zh-cn/visio/flowchart-software&lt;/li&gt;
+&lt;li&gt;plantuml：http://plantuml.com/zh/class-diagram&lt;/li&gt;
+&lt;li&gt;Edraw：https://www.edrawsoft.cn/&lt;/li&gt;
+&lt;li&gt;Rational Rose：&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&#34;协作工具&#34;&gt;协作工具&lt;/h4&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;Github：https://github.com/
+共同开发，分布式版本控制&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;SVN：https://tortoisesvn.net/&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;OneNote：http://www.onenote.com/download/&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Teamviewer：https://www.teamviewer.com/cn/
+多人会议&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&#34;集成开发环境编辑器&#34;&gt;集成开发环境||编辑器&lt;/h4&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;Atom：https://atom.io/
+Github推出的跨平台文本编辑器&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Netbeans：https://netbeans.org/
+开源Java IDE。可扩展于PHP、C++等语言开发&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Pycharm：https://www.jetbrains.com/pycharm/
+JetBrains推出的Python开发环境&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;IntelliJ IDEA：https://www.jetbrains.com/idea/
+JetBrains推出的Java开发环境&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Eclipse：https://download.eclipse.org/
+基于Java的可扩展开发平台，通过插件组件构建开发环境&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Code::Blocks：https://www.codeblocks.org/
+开源全功能C++开发环境，使用wxWidgets图形界面库，由C++语言开发完成&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Aptana Studio 3：https://www.aptana.com/
+开源Ajax开发环境&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;CLion：https://www.jetbrains.com/clion
+Jetbrains推出的C++开发环境&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;CodeLite:https://codelite.org
+开源，C/C++编程语言的跨平台IDE&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Komodo:https://www.activestate.com/products/komodo-ide/&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Xcode:https://developer.apple.com/xcode/&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Visual Studio：&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Sublime：http://www.sublimetext.com/&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&#34;模拟&#34;&gt;模拟&lt;/h4&gt;
+&lt;ul&gt;
+&lt;li&gt;夜神模拟器：https://www.yeshen.com/&lt;/li&gt;
+&lt;li&gt;Easy-Mock：https://easy-mock.com/&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&#34;库&#34;&gt;库&lt;/h4&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;ms4w：https://ms4w.com/
+MapServer for Windows&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;angular：https://angularjs.org/&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;JQuery：http://jquery.com/&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;React：https://reactjs.org/
+js构建用户界面&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;jQuery插件：http://plugins.jquery.com/&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;wxwidgets：https://www.wxwidgets.org/
+轻量级C++ GUI库&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;学习资源&#34;&gt;学习资源&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;Javascript：https://github.com/jobbole/awesome-python-books&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;云平台&#34;&gt;云平台&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;LeanCloud：https://leancloud.cn/&lt;/li&gt;
+&lt;li&gt;Google Earth Engine：https://earthengine.google.com/&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;设计&#34;&gt;设计&lt;/h2&gt;
+&lt;h3 id=&#34;原型设计&#34;&gt;原型设计&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;ProcessOn：https://www.processon.com/diagrams
+团队协作、流图绘制&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Mockingbird：https://gomockingbird.com/home
+在线原型设计平台&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Gliffy：https://www.gliffy.com/&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Drawanywhere：http://www.drawanywhere.com/&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Sketch：http://www.sketchcn.com/
+Mac用草图软件&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;图标生成下载&#34;&gt;图标生成&amp;amp;&amp;amp;下载&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;Easyicon：https://www.easyicon.net/&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;iconbench：http://iconbench.com/&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Fontello：http://fontello.com/&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;icondeposit：https://www.icondeposit.com/&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;iconarchive：http://www.iconarchive.com/&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Flaticon：https://www.flaticon.com/&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;logo设计&#34;&gt;Logo设计&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;logospire：http://logospire.com/&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;壁纸&#34;&gt;壁纸&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;wallpaperscraft：https://wallpaperscraft.com/&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;可视化&#34;&gt;可视化&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;processing：https://processing.org/&lt;/li&gt;
+&lt;li&gt;Dionysus：https://www.mrzv.org/software/dionysus/&lt;/li&gt;
+&lt;li&gt;apophysis：http://www.apophysis.org/downloads.html&lt;/li&gt;
+&lt;li&gt;guihi：http://gudhi.gforge.inria.fr/python/latest/&lt;/li&gt;
+&lt;li&gt;d3.js：https://d3js.org&lt;/li&gt;
+&lt;li&gt;pyechart：https://pyecharts.org/#/zh-cn/global_options?id=legendopts：图例配置项&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;信息安全&#34;&gt;信息安全&lt;/h2&gt;
+&lt;h3 id=&#34;cc&#34;&gt;C&amp;amp;C&lt;/h3&gt;
+&lt;h3 id=&#34;网络流量&#34;&gt;网络流量&lt;/h3&gt;
+&lt;p&gt;whonix：https://www.whonix.org/&lt;/p&gt;
+&lt;h2 id=&#34;其他电脑工具&#34;&gt;其他电脑工具&lt;/h2&gt;
+&lt;h3 id=&#34;下载工具&#34;&gt;下载工具&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;IDM：http://www.internetdownloadmanager.com/&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;数学&#34;&gt;数学&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;MIT Gibert-Strang：http://www-math.mit.edu/~gs/&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;gis二次开发&#34;&gt;GIS二次开发&lt;/h2&gt;
+&lt;h3 id=&#34;python&#34;&gt;Python&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;pywin32：https://github.com/mhammond/pywin32&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;github&#34;&gt;Github&lt;/h2&gt;
+&lt;h3 id=&#34;tools-summary&#34;&gt;Tools Summary&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;伯乐在线整理：https://github.com/jobbole/&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;论文&#34;&gt;论文&lt;/h2&gt;
+&lt;h3 id=&#34;论文查重&#34;&gt;论文查重&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;http://www.cnkicheck.info/&#34;&gt;http://www.cnkicheck.info/&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;学习资源-1&#34;&gt;学习资源&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;Git分支：https://learngitbranching.js.org/&lt;/li&gt;
+&lt;li&gt;图解Git：https://marklodato.github.io/visual-git-guide/index-zh-cn.html&lt;/li&gt;
+&lt;li&gt;GoogleBlog：https://ai.googleblog.com/&lt;/li&gt;
+&lt;li&gt;Wavelab_850：http://statweb.stanford.edu/~wavelab/Wavelab_850/download.html&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>MCM/ICM 2019 Problem E</title>
+      <link>https://coolgiserz.github.io/post/icm-2019/</link>
+      <pubDate>Tue, 29 Jan 2019 23:02:35 +0800</pubDate>
+      <guid>https://coolgiserz.github.io/post/icm-2019/</guid>
+      <description>&lt;p&gt;论文查阅系统：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;http://lib.csu.edu.cn/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;CSU&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://libdb.csu.edu.cn/resdetail?rid=&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Web Of Science&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://libdb.csu.edu.cn/resdetail?rid=ELSEVIER&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;ScienceDirect&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://libdb.csu.edu.cn/resdetail?rid=WF&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;万方数据资源系统&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://libdb.csu.edu.cn/resdetail?rid=VIP&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;维普中文期刊&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://libdb.csu.edu.cn/go?id=IEEE&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;IEEE&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;keywords&#34;&gt;Keywords&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;环境（退化/保护）成本&lt;/li&gt;
+&lt;li&gt;环境会计&lt;/li&gt;
+&lt;li&gt;环境成本计算&lt;/li&gt;
+&lt;li&gt;（虚拟/实际）治理成本&lt;/li&gt;
+&lt;li&gt;生态系统管理/服务&lt;/li&gt;
+&lt;li&gt;生态系统服务功能&lt;/li&gt;
+&lt;li&gt;生态系统服务价值&lt;/li&gt;
+&lt;li&gt;土地开发项目&lt;/li&gt;
+&lt;li&gt;生态系统价值计算&lt;/li&gt;
+&lt;li&gt;价值评估&lt;/li&gt;
+&lt;li&gt;绿色经济核算&lt;/li&gt;
+&lt;li&gt;绿色发展（实践/框架）&lt;/li&gt;
+&lt;li&gt;生物物理量化&lt;/li&gt;
+&lt;li&gt;生物圈&lt;/li&gt;
+&lt;li&gt;生物多样性
+&lt;img src=&#34;https://i.imgur.com/WNbT5MD.png&#34; alt=&#34;&#34;&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;主题&#34;&gt;主题&lt;/h3&gt;
+&lt;p&gt;环境退化的代价？&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;生态功能的持续性利益建模
+&lt;ul&gt;
+&lt;li&gt;效益
+&lt;ul&gt;
+&lt;li&gt;供应
+&lt;ul&gt;
+&lt;li&gt;食物供应&lt;/li&gt;
+&lt;li&gt;植物授粉&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;调节
+&lt;ul&gt;
+&lt;li&gt;植物碳固定——能值法？&lt;/li&gt;
+&lt;li&gt;水（自净、防洪等）——以人类基础设施替代（如净水设施、防洪设施等）&lt;/li&gt;
+&lt;li&gt;生物多样性——难点&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;文化
+&lt;ul&gt;
+&lt;li&gt;精神&lt;/li&gt;
+&lt;li&gt;宗教&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;考虑
+&lt;ul&gt;
+&lt;li&gt;定义生态系统服务&lt;/li&gt;
+&lt;li&gt;等效替代
+水环境退化成本——人工水污染治理花费（查数据）+生物多样性损失建模（？）
+森林退化——空气污染治理成本&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;tasks&#34;&gt;Tasks&lt;/h3&gt;
+&lt;ol&gt;
+&lt;li&gt;建立一个生态服务估值模型&lt;/li&gt;
+&lt;li&gt;用模型评价不同规模的土地利用项目的成本规模效益分析&lt;/li&gt;
+&lt;li&gt;基于以上分析模型设计评估模型的有效性&lt;/li&gt;
+&lt;li&gt;模型对于土地利用项目规划者和管理者有何启示？&lt;/li&gt;
+&lt;li&gt;模型随着时间变化需要作出怎样的修改？&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h3 id=&#34;existing-mathods&#34;&gt;Existing Mathods&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;NPP(net primary production)&lt;/li&gt;
+&lt;li&gt;元分析
+&lt;img src=&#34;https://i.imgur.com/9pYXKfu.png&#34; alt=&#34;&#34;&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;references&#34;&gt;References&lt;/h3&gt;
+&lt;h4 id=&#34;an-ecological-perspective-on-the-valuation-of-ecosystem-services&#34;&gt;&lt;strong&gt;An ecological perspective on the valuation of ecosystem services&lt;/strong&gt;&lt;/h4&gt;
+&lt;h4 id=&#34;the-value-of-the-worlds-ecosystem-services-and-natural-capital&#34;&gt;&lt;strong&gt;The value of the world’s ecosystem services and natural capital&lt;/strong&gt;&lt;/h4&gt;
+&lt;p&gt;&lt;a href=&#34;https://www.biodiversity.ru/programs/ecoservices/library/common/doc/Costanza_1997.pdf&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;[paper]&lt;/a&gt;
+&lt;img src=&#34;https://i.imgur.com/bZwiUwR.png&#34; alt=&#34;&#34;&gt;
+&lt;img src=&#34;https://i.imgur.com/Z6R45xK.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;h4 id=&#34;valuing-ecosystem-services-a-shadow-price-for-net-primary-productionhttpsitesbueduclivegfiles201312arr01pdf&#34;&gt;&lt;strong&gt;Valuing ecosystem services: A shadow price for net primary production&lt;/strong&gt;：http://sites.bu.edu/cliveg/files/2013/12/arr01.pdf&lt;/h4&gt;
+&lt;p&gt;从两个问题出发：生态系统服务对于传统指标如GDP度量的经济是否有贡献？这种贡献能否被用作隐式的价格来进行计算？
+net primary production&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;相关因素
+&lt;ul&gt;
+&lt;li&gt;碳固定&lt;/li&gt;
+&lt;li&gt;蒸腾作用&lt;/li&gt;
+&lt;li&gt;土地腐蚀（负相关）&lt;/li&gt;
+&lt;li&gt;生物量&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;直接&lt;/li&gt;
+&lt;li&gt;间接&lt;/li&gt;
+&lt;li&gt;文化（旅行费用法，享乐价格）
+&lt;img src=&#34;https://i.imgur.com/YXshEKQ.png&#34; alt=&#34;&#34;&gt;
+&lt;img src=&#34;https://i.imgur.com/0cmDlC9.png&#34; alt=&#34;&#34;&gt;&lt;/li&gt;
+&lt;li&gt;计算方法
+&lt;img src=&#34;https://i.imgur.com/7pqhkt9.png&#34; alt=&#34;&#34;&gt;
+&lt;img src=&#34;https://i.imgur.com/1hVq4MG.png&#34; alt=&#34;&#34;&gt;
+&lt;img src=&#34;https://i.imgur.com/S7DcEEO.png&#34; alt=&#34;&#34;&gt;
+&lt;img src=&#34;https://i.imgur.com/KlUqKkW.png&#34; alt=&#34;&#34;&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&#34;the-history-of-ecosystem-services-in-economic-theory-and-practice-from-early-notions-to-markets-and-payment-schemes&#34;&gt;&lt;strong&gt;The history of ecosystem services in economic theory and practice: From early notions to markets and payment schemes&lt;/strong&gt;&lt;/h4&gt;
+&lt;h4 id=&#34;valuing-a-diversity-of-ecosystem-services-the-way-forward-to-protects-trategic-groundwater-resources-for-the-future&#34;&gt;&lt;strong&gt;Valuing a diversity of ecosystem services: The way forward to protects trategic groundwater resources for the future?&lt;/strong&gt;&lt;/h4&gt;
+&lt;p&gt;&lt;a href=&#34;http://libdb.csu.edu.cn/rwt/ELSEVIER/https/P75YPLUUMNVXK5UDMWTGT6UFMN4C6Z5QNF/science/article/pii/S1574009918300020&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;[link]&lt;/a&gt;&lt;/p&gt;
+&lt;h3 id=&#34;data-sources&#34;&gt;Data Sources&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://www.weather.gov/dmx/&#34;&gt;https://www.weather.gov/dmx/&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://governmentshutdown.noaa.gov/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;美国国家海洋和大气管理局&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://www.rug.nl/ggdc/productivity/pwt/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Penn_World_Table&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://www.sciencebase.gov/catalog/folder/4f734998e4b046ee287b9d2f&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;ScienceBase&lt;/a&gt;
+&lt;a href=&#34;https://www.sciencebase.gov/catalog/item/4fb555ebe4b04cb937751db9&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;[link]&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://archive.usgs.gov/archive/sites/landcover.usgs.gov/uslandcover.html&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;US Landcover&lt;/a&gt;
+&lt;a href=&#34;https://gapanalysis.usgs.gov/gaplandcover/data/download/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;[link]&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://bison.usgs.gov/#api&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Bison Web&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://www.sciencebase.gov/catalog/item/565897c8e4b071e7ea540309&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;美国鱼类栖息地退化图&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;美国生态系统恢复的经济影响&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://www.sciencebase.gov/catalog/item/5151f07ee4b0f0b3d011a817&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;水资源普查&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://www.eea.europa.eu/data-and-maps&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;欧洲&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://www.emergy-nead.com/country/data&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Emerge-nead&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://www.ipcc.ch/report/ar5/wg1/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;IPCC&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://www.ipcc-data.org/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;IPCC数据分发中心&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://cep.ees.ufl.edu/nead/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;NEAD&lt;/a&gt;
+&lt;a href=&#34;https://en.climate-data.org/info/sources/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;[link]&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://ecdc.europa.eu/en/publications-data?f%5B0%5D=output_types%3A1382&amp;amp;f%5B1%5D=geo%3A485&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;欧洲疾病预防控制中心&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://www.eea.europa.eu/themes/climate#tab-datamaps&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;欧洲环境代理&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://www.eia.gov/state/seds/seds-data-complete.php?sid=US&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;美国国家能源数据系统&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://www.eia.gov/electricity/data/browser/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;电力数据浏览器&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://www.nrel.gov/gis/data-solar.html&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;NREL美国各州太阳能数据&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://www.bls.gov/cps/tables.htm&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;美国劳动力数据&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://www.bls.gov/opub/geographic-profile/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;美国劳工统计局&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://fred.stlouisfed.org/categories/18&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Economic Research&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://www.theglobaleconomy.com/USA/investment/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Gloåbal Economic&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;EmergyDatabase：
+&lt;a href=&#34;https://docs.google.com/spreadsheets/d/1DOopVg2MVumzAsV1_i5U14P2WrkJC8EniXeo6rGtMSU/edit#gid=1338167176&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;[link1]&lt;/a&gt;
+&lt;a href=&#34;https://docs.google.com/spreadsheets/d/17FIFQ_FPv1b0moU8vV0Hh5WI1M9OX_q-gvCLp6atLcw/edit#gid=33074211&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;[link2]&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://www.statedatalab.org/glossary/detail/capital-outlays&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;美国人口普查局&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://pvnpms.phmsa.dot.gov/PublicViewer/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;国家管道测绘系统&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://www.census.gov/eos/www/naics/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;NAICS&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://www.census.gov/topics/employment/labor-force/data/tables.2014.html&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;美国各州劳动力统计表&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://www.epa.gov/energy/emissions-generation-resource-integrated-database-egrid-questions-and-answers&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;排放和发电资源综合数据库&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://tnris.org/data-download/#!/statewide&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;德克萨斯州全州图像和GIS数据&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://library.ucalgary.ca/c.php?g=255401&amp;amp;p=1705345&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;卡尔加里大学图书馆（GIS资源）&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://ca.dep.state.fl.us/mapdirect/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;佛罗里达环境保护部&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://us-city.census.okfn.org/dataset/zoning&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;美国城市开放数据普查&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://opendata.cityofnewyork.us/data/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;OpenData_CityOfNetwork&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://guides.lib.purdue.edu/c.php?g=353290&amp;amp;p=2378621&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;PURDUE图书馆&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://maps.tnc.org/gis_data.html&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;The Nature Con&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://species.mol.org/species/map/Perdix_dauurica&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Map of Life&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://zh.climate-data.org/%E4%BA%9A%E6%B4%B2/%E5%8D%B0%E5%BA%A6%E5%B0%BC%E8%A5%BF%E4%BA%9A/south-sulawesi/usa-559266/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;气候数据图&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://www.epa.gov/transportation-air-pollution-and-climate-change&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;EPA&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;baike&#34;&gt;Baike&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a href=&#34;https://wiki.mbalib.com/wiki/%E6%97%85%E8%A1%8C%E8%B4%B9%E7%94%A8%E6%B3%95&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;旅行费用法&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;生物量：
+&lt;a href=&#34;https://zh.wikipedia.org/wiki/%E7%94%9F%E7%89%A9%E9%87%8F&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;[link1]&lt;/a&gt;
+&lt;a href=&#34;https://baike.baidu.com/item/%E7%94%9F%E7%89%A9%E9%87%8F&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;[link2]&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a href=&#34;https://en.wikipedia.org/wiki/Primary_production&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;初级生产&lt;/a&gt;
+&lt;img src=&#34;https://i.imgur.com/Ld8j8P7.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Cobb-Douglas生产函数及其优缺点:
+&lt;a href=&#34;https://en.wikipedia.org/wiki/Cobb%E2%80%93Douglas_production_function&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;[link1]&lt;/a&gt;
+&lt;a href=&#34;http://shodhganga.inflibnet.ac.in/bitstream/10603/159915/6/06_chapter%203.pdf&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;[link2]&lt;/a&gt;
+&lt;a href=&#34;https://dash.harvard.edu/bitstream/handle/1/3196325/antras_usaggregate.pdf&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;[link3]&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a href=&#34;https://en.wikipedia.org/wiki/Penn_World_Table&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;PWT&lt;/a&gt;
+&lt;img src=&#34;https://i.imgur.com/mtpukP7.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;元分析：https://zh.wikipedia.org/wiki/%E5%85%83%E5%88%86%E6%9E%90&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;影子价格
+&lt;a href=&#34;https://zh.wikipedia.org/wiki/%E5%BD%B1%E5%AD%90%E4%BB%B7%E6%A0%BC&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;[link1]&lt;/a&gt;
+&lt;a href=&#34;https://www.zhihu.com/question/23510001&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;[link2]&lt;/a&gt;
+&lt;a href=&#34;https://wiki.mbalib.com/wiki/%E5%BD%B1%E5%AD%90%E5%AE%9A%E4%BB%B7%E6%B3%95&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;[link3]&lt;/a&gt;
+&lt;img src=&#34;https://i.imgur.com/LJbh1tw.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a href=&#34;https://wiki.mbalib.com/wiki/%E7%94%9F%E6%80%81%E6%9C%8D%E5%8A%A1%E4%BB%B7%E5%80%BC&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;生态服务价值&lt;/a&gt;
+&lt;img src=&#34;https://i.imgur.com/3oOTxJK.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;环境成本分类
+&lt;img src=&#34;https://i.imgur.com/XBNXt5F.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a href=&#34;https://cices.eu/cices-structure/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;生态系统服务分类&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a href=&#34;https://www.emergy-nead.com/country/explanation&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;能值法指数解释&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a href=&#34;https://en.wikipedia.org/wiki/Land-use_planning&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;土地利用规划&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;中国森林生态系统&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a href=&#34;https://hdc.com.mv/hulhumale/planning-design/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;土地使用规划&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;ArcGIS交集制表&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a href=&#34;https://rredc.nrel.gov/wind/pubs/atlas/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;美国风能资源&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a href=&#34;https://www.google.com/search?q=%E5%8A%B3%E5%8A%A8%E5%8A%9B%E5%8F%82%E4%B8%8E%E7%8E%87&amp;amp;oq=%E5%8A%B3%E5%8A%A8%E5%8A%9B%E5%8F%82%E4%B8%8E%E7%8E%87&amp;amp;aqs=chrome..69i57j0l2.3721j0j7&amp;amp;sourceid=chrome&amp;amp;ie=UTF-8&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;劳动力参与率&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;固定资产投资&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a href=&#34;https://www.cnblogs.com/emanlee/archive/2012/09/13/2683912.html&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;matlab字符串处理函数&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a href=&#34;https://ww2.mathworks.cn/matlabcentral/fileexchange/?requestedDomain=zh&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Matlab File Exchange&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a href=&#34;https://www.bea.gov/index.php/resources/learning-center/bea-in-the-classroom&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;BEA in the classroom&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a href=&#34;https://www.zhihu.com/question/21918459&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;面板数据分析&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;非货币生态系统核算体系
+&lt;img src=&#34;https://i.imgur.com/GLbO59q.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;国际统一阶段代码
+&lt;a href=&#34;https://www.iso.org/stage-codes.html#50.20&#34;&gt;https://www.iso.org/stage-codes.html#50.20&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;国际标准组织污染、污染控制
+&lt;a href=&#34;https://www.iso.org/ics/13.020.40/x/&#34;&gt;https://www.iso.org/ics/13.020.40/x/&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;温室气体协议
+&lt;a href=&#34;https://ghgprotocol.org/&#34;&gt;https://ghgprotocol.org/&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a href=&#34;http://www.szmqs.gov.cn/xxgk/qt/ztlm/szbz/szsdfbz_szbz/201412/W020141202347688881182.pdf&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;组织的温室气体排放量化和报告规范及指南&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;能值和变革
+&lt;a href=&#34;http://www.emergysociety.com/emergy-and-transformity/&#34;&gt;http://www.emergysociety.com/emergy-and-transformity/&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;python excel
+&lt;a href=&#34;https://zhuanlan.zhihu.com/p/23998083&#34;&gt;https://zhuanlan.zhihu.com/p/23998083&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;加州内化达Public Viewer
+&lt;a href=&#34;https://pvnpms.phmsa.dot.gov/PublicViewer/&#34;&gt;https://pvnpms.phmsa.dot.gov/PublicViewer/&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;国家空气毒物评估
+&lt;a href=&#34;https://www.epa.gov/national-air-toxics-assessment&#34;&gt;https://www.epa.gov/national-air-toxics-assessment&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;2014 National Air Toxics Assessment
+&lt;a href=&#34;https://gispub.epa.gov/NATA/&#34;&gt;https://gispub.epa.gov/NATA/&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;成本效益分析
+&lt;a href=&#34;https://www.britannica.com/topic/cost-benefit-analysis&#34;&gt;https://www.britannica.com/topic/cost-benefit-analysis&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;statisca统计门户网站
+&lt;a href=&#34;https://www.statista.com/topics/2582/subway/&#34;&gt;https://www.statista.com/topics/2582/subway/&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a href=&#34;https://web.stanford.edu/group/FRI/indonesia/documents/gittinger/Output/chap2.html&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;斯坦福确定项目成本与效益&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;plannerWeb：http://plannersweb.com/2013/12/pro-forma-101-what-will-it-cost/&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a href=&#34;https://zh.wikipedia.org/wiki/%E4%B8%AA%E4%BD%93%E4%B8%BA%E6%9C%AC%E6%A8%A1%E5%9E%8B&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Agent-based Model&lt;/a&gt;
+&lt;img src=&#34;https://i.imgur.com/zteOoEN.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;clarkLab
+&lt;a href=&#34;https://clarklabs.org/&#34;&gt;https://clarklabs.org/&lt;/a&gt;
+&lt;a href=&#34;https://en.wikipedia.org/wiki/TerrSet&#34;&gt;https://en.wikipedia.org/wiki/TerrSet&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a href=&#34;https://www.bloomberg.com/graphics/2018-us-land-use/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;美国土地利用&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;IDRISI
+&lt;a href=&#34;https://download.csdn.net/download/liujiantao_1981/9557000&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;part1&lt;/a&gt;
+&lt;a href=&#34;https://download.csdn.net/download/liujiantao_1981/9556996&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;part2&lt;/a&gt;
+&lt;a href=&#34;https://download.csdn.net/download/liujiantao_1981/9556998&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;part3&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a href=&#34;https://www.zhihu.com/question/21982358&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;时间序列平稳性&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a href=&#34;https://www.epa.gov/clean-air-act-overview/clean-air-act-text&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;清洁空气法文本&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a href=&#34;https://www.transportpolicy.net/standard/us-air-quality-standards/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;us air quality standard&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;considerations&#34;&gt;Considerations&lt;/h3&gt;
+&lt;ol&gt;
+&lt;li&gt;一个真实的土地利用项目考虑上生态因素后的真实经济成本是？&lt;/li&gt;
+&lt;/ol&gt;
+&lt;ul&gt;
+&lt;li&gt;大型
+&lt;ul&gt;
+&lt;li&gt;全国铁路网建设&lt;/li&gt;
+&lt;li&gt;全国管网&lt;/li&gt;
+&lt;li&gt;水坝&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;小型
+&lt;ul&gt;
+&lt;li&gt;元胞自动机多智能体模拟？
+植被面积变化、水文条件可能发生变化、空气可能会有污染（旧式火车）等等。缓冲区分析？&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>哈夫曼编码及其实现</title>
+      <link>https://coolgiserz.github.io/post/hftree-datastructure/</link>
+      <pubDate>Wed, 19 Dec 2018 22:55:46 +0800</pubDate>
+      <guid>https://coolgiserz.github.io/post/hftree-datastructure/</guid>
+      <description>&lt;h2 id=&#34;哈夫曼树&#34;&gt;哈夫曼树&lt;/h2&gt;
+&lt;h3 id=&#34;哈夫曼树特点&#34;&gt;哈夫曼树特点&lt;/h3&gt;
+&lt;p&gt;哈夫曼树又称最优二叉树，是一种带权路径长度最短的二叉树。常可用作无损压缩。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;每个结点只有0或2各子节点&lt;/li&gt;
+&lt;li&gt;同一组权值得到的哈夫曼树可能不唯一&lt;/li&gt;
+&lt;li&gt;权值越大的结点越靠近哈夫曼树的根节点，权值越小的结点越原理哈夫曼树的根节点&lt;/li&gt;
+&lt;li&gt;一棵有n各叶子结点的哈夫曼树共有2n-1个结点&lt;/li&gt;
+&lt;li&gt;带权值的结点都是叶子结点，不带权值的结点都有子结点&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;哈夫曼树构建&#34;&gt;哈夫曼树构建&lt;/h3&gt;
+&lt;p&gt;此处把哈夫曼树构建过程分为2个步骤：数据组织、构建树&lt;/p&gt;
+&lt;h2 id=&#34;数据组织&#34;&gt;数据组织&lt;/h2&gt;
+&lt;p&gt;数据组织包括对原始数据的预处理，如原始数据是一段字符串，考虑使用什么数据结构对字符串中的字符及其发生频率进行组织，发生频率越高的字符认为其权重越大，于是对其“特殊照顾”。如使用链表或数组组织每个字符，每个节点的数据结构可如下：&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;package com.coolcats.tree;
+/**
+ * 哈夫曼树二叉树节点
+ * @author CoolCats
+ */
+public class Node {
+
+	public Node left,right;//左子节点
+	public int weight;     //右子节点
+	public String data;    // 数  据
+	
+	public Node() {
+		
+	}
+
+	public Node(String data,int weight) {
+		this.data = data;
+		this.weight = weight;
+	}
+
+	public String toString() {
+		return this.data+&amp;quot;:&amp;quot;+this.weight;
+	}
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;而后对节点列表按照其权重大小进行排序，不失一般性，此处升序排序:&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;/**
+	 * 列表排序
+	 * 
+	 * @param list
+	 */
+	private void sortList(ArrayList&amp;lt;Node&amp;gt; list) {
+		Node minNode = null;
+		Node jNode = null;
+		for (int i = 0; i &amp;lt; list.size() - 1; i++) {
+			int min = i;
+			for (int j = i + 1; j &amp;lt; list.size(); j++) {
+				minNode = list.get(min);
+				jNode = list.get(j);
+				if (minNode.weight &amp;gt; jNode.weight) {
+					min = j;
+				}
+			}
+			if (min != i) {
+				Node tmpNode = list.get(i);
+				list.set(i, list.get(min));
+				list.set(min, tmpNode);
+			}
+		}
+
+	}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;构建树&#34;&gt;构建树&lt;/h2&gt;
+&lt;p&gt;得到了排序后的列表后，就可以构建树了，由于哈夫曼树的特点，小权值的节点尽可能远离根节点、大权值的节点尽可能靠近根节点，并且无法预估根节点到底在什么高度上，所以只能采用自底向上的方式构建哈夫曼树。具体步骤为&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;输入排序后的列表，&lt;/li&gt;
+&lt;li&gt;判断列表个数是否大于1，如果是，从中取出最小的两个元素，构造父节点，如果否，跳到4&lt;/li&gt;
+&lt;li&gt;将父节点添加到列表中，对列表重新排序，回到2&lt;/li&gt;
+&lt;li&gt;将列表中最后一个元素作为哈夫曼树根节点
+如此便可得到哈夫曼树&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h3 id=&#34;哈夫曼压缩&#34;&gt;哈夫曼压缩&lt;/h3&gt;
+&lt;p&gt;所谓哈夫曼压缩，就是利用哈夫曼树的性质实现对文件的无损压缩。
+通常来说，数据在计算机中的存储按字节来计算，一个ascii码字符占一个字节，一个汉字字符占2个字节，这种每个字符都通过相同来表达的编码形式称为定长编码。而哈夫曼压缩就是通过变长编码的方式实现对文件的压缩，其思想是根据字符出现的概率来确定编码的长度，出现概率大的字符采用较短的编码来存储，出现概率小的字符采用较长的编码来存储。&lt;/p&gt;
+&lt;h2 id=&#34;哈夫曼压缩实现&#34;&gt;哈夫曼压缩实现&lt;/h2&gt;
+&lt;p&gt;对于哈夫曼压缩可靠性而言最关键的保证是：任何一个字符的编码前缀都不能是另一个字符的编码。如果将一个节点到其左节点的路径标记为0，到其右节点的路径标记为1，那么，从根节点到每一个叶子节点所得到的哈夫曼编码是唯一的，且任一哈夫曼编码不是其他编码的前缀，满足条件。因此，实现压缩功能只要计算出每个字符的哈夫曼编码即可。在遍历哈夫曼树的同时计算哈夫曼编码的代码如下：&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;	/**
+	 * 后序遍历的同时标记每个节点的哈夫曼编码
+	 * 
+	 * @param root
+	 * @param code
+	 */
+	private void postOrder(Node root, String code) {
+		if (root.left != null)
+			// 左路径标记为0
+			postOrder(root.left, code + &amp;quot;0&amp;quot;);
+		if (root.right != null) {
+			// 右路径标记为1
+			postOrder(root.right, code + &amp;quot;1&amp;quot;);
+		}
+		// 输出哈夫曼树叶子节点编码
+		if (root.left == null &amp;amp;&amp;amp; root.right == null) {
+			System.out.println(root.data + &amp;quot;&amp;lt;&amp;gt;&amp;quot; + code);
+			// 将各个字符的哈夫曼编码存储
+			map.put(root.data, code);
+			map1.put(code, root.data);
+		}
+	}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;于是，在存储一个字符串时，只需要遍历这个字符串，取出每个字符对应的哈夫曼编码，每8位作为一个字节存储到文件中即可实现压缩，但要注意，哈夫曼编码的组合并不一定是8的整数倍，这可以通过“补0”来解决，所以存储压缩文件的时候还要把补0的个数记下，以便解压缩。一个demo版的代码如下：&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;/**
+ * 根据给定的路径以及哈夫曼编码将哈夫曼码存进相应的文件中 要存入压缩文件的信息，补了多少个0
+* （demo版，效率较低）
+* @param path 压缩文件的路径
+* @param code 哈夫曼编码
+ */
+private void hfcode2file(String path, String code) {
+	int len = code.length();
+	System.out.println(&amp;quot;哈夫曼编码长度：&amp;quot; + len);
+	int comple = 8 - len % 8;
+	if (comple &amp;lt; 8) {
+		for (int i = 0; i &amp;lt; comple; i++) {
+			code = code + &amp;quot;0&amp;quot;;
+		}
+	} 
+	OutputStream out = null;
+	DataOutputStream dout = null;
+	File file = new File(path);
+	try {
+		out = new FileOutputStream(file);
+		dout = new DataOutputStream(out);
+		int count = (len + comple) / 8;
+		byte[] b = code.getBytes();
+		dout.writeInt(comple);
+		dout.write(b);
+	} catch (FileNotFoundException e) {
+		e.printStackTrace();
+	} catch (IOException e) {
+		e.printStackTrace();
+	} finally {
+		try {
+			out.close();
+			dout.close();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		System.out.println(&amp;quot;压缩文件完成&amp;quot;);
+	}
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;解压缩就是根据读取文件的位，每读到一个哈夫曼编码（使用哈希表，判断是否存在对应的key）就返回其对应的字符，一直到文件末尾。&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;	/**
+	 * 解压缩
+	 * @param path
+	 * @return
+	 */
+	private String file2hfcode(String path) {
+		String code = null;
+		InputStream in = null;
+		DataInputStream din = null;
+		int comple;
+		File file = new File(path);
+		try {
+			in = new FileInputStream(file);
+			din = new DataInputStream(in);
+			comple = din.readInt();
+			byte[] bb = new byte[1024];
+			int res = din.read(bb);
+			code = hfcode2String(bb,res,comple);
+		} catch (FileNotFoundException e) {
+			e.printStackTrace();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		return code;
+	}
+
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h3 id=&#34;问题思考&#34;&gt;问题思考&lt;/h3&gt;
+&lt;ol&gt;
+&lt;li&gt;哈夫曼树的压缩效率如何？&lt;/li&gt;
+&lt;li&gt;哈夫曼树压缩在什么场景下不适用？&lt;/li&gt;
+&lt;li&gt;考虑包含中文等非英文国家字符的文件压缩应该如何实现？
+字典压缩（LZ77，LZ88，LZW等）&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2 id=&#34;参考文献&#34;&gt;参考文献&lt;/h2&gt;
+&lt;p&gt;&lt;a href=&#34;https://zh.wikipedia.org/wiki/%E9%9C%8D%E5%A4%AB%E6%9B%BC%E7%BC%96%E7%A0%81&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;哈夫曼编码维基百科&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;https://zh.wikipedia.org/wiki/LZW&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;LZW编码维基百科&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;https://segmentfault.com/a/1190000011425787&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;LZW压缩算法&lt;/a&gt;&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Java关键字相关知识点总结</title>
+      <link>https://coolgiserz.github.io/post/java-keywords-summary/</link>
+      <pubDate>Fri, 23 Nov 2018 23:31:05 +0800</pubDate>
+      <guid>https://coolgiserz.github.io/post/java-keywords-summary/</guid>
+      <description>&lt;h2 id=&#34;0x00-概念&#34;&gt;0x00 概念&lt;/h2&gt;
+&lt;p&gt;首先区分两个概念：关键字和保留字。关键字指事先定义的，用来表示一种数据类型或者程序结构的对于编译器有特殊意义的“字符串”。而保留字则是预留的关键字，即现在还没有用到，但以后可能会作为关键字被使用。
+所以，认识关键字与保留字的一个基本的作用，起码就在于为变量命名时不至于与关键字冲突、或者与“未来的关键字”冲突（如果使用了关键字、保留字作为变量命名，比较智能的IDE是会报错的，但如果用记事本或者在线刷题那就不一定有这么好的福利了）。当然，要真正使程序高效、健壮，那就要深刻认识各个关键字的内在含义。&lt;/p&gt;
+&lt;h2 id=&#34;0x01-关键字总览&#34;&gt;0x01 关键字总览&lt;/h2&gt;
+&lt;p&gt;目前而言，Java的关键字有50个，还有一些保留字。其中保留字包括：goto、const，这是C++中的关键字。而关键字可大致分为9类。清单如下：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;包相关（2个）：import、package&lt;/li&gt;
+&lt;li&gt;访问控制相关（3个）：public、protected、private&lt;/li&gt;
+&lt;li&gt;类、接口、抽象类、对象相关（6个）：class、interface、abstract、implements、extends、new&lt;/li&gt;
+&lt;li&gt;数据类型相关（9个）：void、short、int、long、float、double、byte、char、boolean、null&lt;/li&gt;
+&lt;li&gt;异常处理相关（5个）：try、catch、finally、throw、throws&lt;/li&gt;
+&lt;li&gt;程序控制结构相关（13个）：if、else、switch、case、break、default、for、continue、while、do、return、instanceof&lt;/li&gt;
+&lt;li&gt;修饰类、方法、属性、变量相关（7个）：static、final、native、synchronized、transient、volatile、strictfp&lt;/li&gt;
+&lt;li&gt;变量引用相关（2个）：super、this&lt;/li&gt;
+&lt;li&gt;其他（2个）：assert、enum&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;0x02-包相关&#34;&gt;0x02 包相关&lt;/h2&gt;
+&lt;p&gt;类似于C++中的命名空间，java提供了包机制用于区分不同组织、个人所编写的类，有效防止命名冲突，方便共享java程序。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;package关键字
+声明编译单元属于某个类库。如果使用package语句，它必须是文件中除了注释以外的第一行语句。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;import关键字
+导入包。&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;0x03-访问控制相关&#34;&gt;0x03 访问控制相关&lt;/h2&gt;
+&lt;p&gt;对于java而言，访问控制权限可分为：public、protected、默认的、private，上述四种访问权限的大小排序是从大到小的，其中默认访问控制权限没有关键字。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;public
+接口访问权限&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;protected
+继承访问权限&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;private
+私有的&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;0x04类接口抽象类对象相关&#34;&gt;0x04类、接口、抽象类、对象相关&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;class
+定义类的关键字&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;interface
+定义接口的关键字。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;abstract class
+定义抽象类的关键字&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;extends
+继承类或接口的关键字。类继承类，接口继承接口&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;implements
+实现接口的关键字。一个类实现了某个接口就必须要实现该接口下的所有方法。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;new
+实例化对象。java完全采用了动态分配配内存的方式，即使用new关键字来动态创建对象实例，当对象不再被使用时，由垃圾回收器（GC）自动销毁对象，释放其占用的内存空间。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;null
+表示空对象。&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;0x04-数据类型相关&#34;&gt;0x04 数据类型相关&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;void
+空返回类型，用于修饰函数。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;byte
+字节类型，占8 bit。因java中byte类型默认是带符号的，所以其范围为-2^7~2^7-1，即-128~127。
+直接对两个byte类型的变量进行相加，其会自动转型为int，要对其进行强制转型。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;short
+短整型，占16 bit。范围-2^15~2^15-1。即Short.MIN_VALUE~Short.MAX_VALUE。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;int
+整型，占32 bit。范围-2^31~2^31-1。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;long
+长整型，占64 bit。范围-2^63~2^63-1。尽管long的范围已经比较大了，但要求如斐波那契数列数值时，还是很容易失效，比如要求斐波那契数列第一百个数，就超出了long类型所能表示的范围，此时考虑使用大整数，java中提供了BigInteger类型。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;float
+浮点型，占32 bit。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;double
+双精度型，占64 bit。java中double和float都是以科学计数法的方式进行表示。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;char
+字符型，16 bit。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;boolean
+布尔类型，取值true or false。&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;0x05-异常处理相关&#34;&gt;0x05 异常处理相关&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;try
+捕获异常。 包含可能发生异常的语句块。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;catch
+处理异常。包含对异常的处理，一般用于提示开发者代码中不对劲的地方。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;finally
+指定不管是否发生异常都要执行的语句块。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;throw
+抛出异常对象。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;throws
+声明一个方法可能会抛出某种异常。（抛给调用该方法的地方）&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;0x06-程序控制结构相关&#34;&gt;0x06 程序控制结构相关&lt;/h2&gt;
+&lt;p&gt;if、else、switch、case、break、default、for、continue、while、do、return、instanceof&lt;/p&gt;
+&lt;h2 id=&#34;0x07-修饰类方法属性变量相关&#34;&gt;0x07 修饰类、方法、属性、变量相关&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;final
+final表示最终的，其用于修饰的对象都不可更改。final可修饰的内容包括：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;类
+用final修饰的类不可被继承。&lt;/li&gt;
+&lt;li&gt;普通方法
+用final修饰ide普通方法不可被重写。（构造方法本身就不可被重写）&lt;/li&gt;
+&lt;li&gt;属性、变量、常量、形参
+不可被改变。当final修饰基本类型时，参数值在方法体中不可被改变；修饰引用类型时，参数变量所引用的对象也不可改变。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;static
+一般来说，在创建类时，就是在描述那个类ide对象的外观和行为，在使用new创建对象之前，实际上并没有获得任何对象，只有当执行new之后，对象的数据存储空间才被分配，才可以被外界所调用。但如果希望特定的域不与类的任何对象关联在一起，即不创建对象也能够调用该方法，就可以考虑使用static关键字来修饰特定的域。
+当使用static关键字声明某个属性或方法时，就意味着这个域或者方法不会与包含它的那个类的任何对象实例关联在一起。用static修饰的域或者变量存储在静态存储区域，在类被创建时优先被加载到内存中。
+static可以修饰的内容包括&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;属性&lt;/li&gt;
+&lt;li&gt;常量&lt;/li&gt;
+&lt;li&gt;内部类&lt;/li&gt;
+&lt;li&gt;普通方法
+要注意，static不能修饰构造方法。&lt;/li&gt;
+&lt;li&gt;代码块
+用static修饰的代码块优先与构造方法执行&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;native
+用于扩展java程序的功能，告知JVM该方法在外部定义，一般配合。java在运行速度上比C++要慢，对访问操作系统底层的支持也不够好，因此可使用native声明某些方法是由其他语言实现的（如C++）。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;volatile
+数据同步。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;synchronized
+针对代码块的同步锁&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;transient
+瞬时的。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;strictfp
+可用于类、接口或方法。使用strictfp关键字声明一个方法时，该方法中所有的float和double表达式都严格遵守FP-strict的限制，符合IEEE-754规范。&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;0x09-变量引用相关&#34;&gt;0x09 变量引用相关&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;super
+用于表示基类对象。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;this
+用于表示当前对象。&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;0x10-其他关键字&#34;&gt;0x10 其他关键字&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;assert
+断言，在代码中捕捉一些假设，看我们的假设是否成立，如果假设不成立，即断言中的布尔表达式为false，则会停止运行程序，抛出AssertionError错误（前提是要先支持断言），断言也可看作是更高级的异常捕获，主要在于它引入了程序猿的先验。Eclipse、MyEclipse中默认关闭断言，可在偏好设置中修改VM参数进行开启。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;enum
+枚举。&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;0x11-问题&#34;&gt;0x11 问题&lt;/h2&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;内部类&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;GC需要解决的问题：&lt;/p&gt;
+&lt;p&gt;（1） 哪些对象需要被回收？&lt;/p&gt;
+&lt;p&gt;（2） 何时回收这些对象？&lt;/p&gt;
+&lt;p&gt;（3） 如何回收这些对象？&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+</description>
     </item>
     
   </channel>
