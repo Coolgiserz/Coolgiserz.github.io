@@ -5,13 +5,429 @@
     <link>https://coolgiserz.github.io/slides/</link>
       <atom:link href="https://coolgiserz.github.io/slides/index.xml" rel="self" type="application/rss+xml" />
     <description>Slides</description>
-    <generator>Wowchemy (https://wowchemy.com)</generator><language>en-us</language><copyright>© CoolCats</copyright>
+    <generator>Wowchemy (https://wowchemy.com)</generator><language>en-us</language><copyright>© CoolCats</copyright><lastBuildDate>Tue, 05 Feb 2019 00:00:00 +0000</lastBuildDate>
     <item>
-      <title></title>
+      <title>Slides</title>
+      <link>https://coolgiserz.github.io/slides/free-and-open-source-gis-in-south-america/</link>
+      <pubDate>Tue, 05 Feb 2019 00:00:00 +0000</pubDate>
+      <guid>https://coolgiserz.github.io/slides/free-and-open-source-gis-in-south-america/</guid>
+      <description>&lt;h2 id=&#34;free-and-open-source-gis-in-south-america-political-inroads-and-local-advocacy&#34;&gt;Free and open source GIS in South America: political inroads and local advocacy&lt;/h2&gt;
+&lt;p&gt;ZhuGuowei, 2020-12-08&lt;/p&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;0x00-outline&#34;&gt;0x00 Outline&lt;/h2&gt;
+&lt;hr&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;Public openness toward FOSS in South America&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;FOSS GIS in South America&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Case studies of FOSS GIS community activity&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;0x01-introduction&#34;&gt;0x01 Introduction&lt;/h2&gt;
+&lt;hr&gt;
+&lt;h3 id=&#34;what-does-foss-and-foss-gis-mean&#34;&gt;What does FOSS and FOSS GIS mean?&lt;/h3&gt;
+&lt;p&gt;&lt;span class=&#34;fragment &#34; &gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;Freedom to &lt;span style=&#34;color: red;&#34;&gt;&lt;strong&gt;run&lt;/strong&gt;&lt;/span&gt; the program as you wish&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;freedom to &lt;span style=&#34;color: red;&#34;&gt;&lt;strong&gt;study and change&lt;/strong&gt;&lt;/span&gt; the program&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;freedom to &lt;span style=&#34;color: red;&#34;&gt;&lt;strong&gt;redistribute&lt;/strong&gt;&lt;/span&gt; copies&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;freedom to &lt;span style=&#34;color: red;&#34;&gt;&lt;strong&gt;distribute copies of your modified versions&lt;/strong&gt;&lt;/span&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/span&gt;
+&lt;span class=&#34;fragment &#34; &gt;
+&lt;p&gt;In contrast: proprietary software restricts access to the source code and
+often requires license fees.&lt;/p&gt;
+&lt;/span&gt;
+&lt;hr&gt;
+&lt;!-- ### FOSS GIS and proprietary GIS --&gt;
+&lt;h5 id=&#34;proprietary-gis-software&#34;&gt;proprietary GIS software&lt;/h5&gt;
+&lt;ul&gt;
+&lt;li&gt;ArcGIS&lt;/li&gt;
+&lt;li&gt;MapInfo&lt;/li&gt;
+&lt;li&gt;Manifold GIS&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr&gt;
+&lt;h5 id=&#34;foss-gis-software&#34;&gt;FOSS GIS software&lt;/h5&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Desktop-based mapping and data processing&lt;/strong&gt;:
+&lt;em&gt;QGIS、GRASS、gvSIG、SAGA&lt;/em&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Web service publishing&lt;/strong&gt;:&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;MapServer、GeoServer&lt;/em&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Website programming&lt;/strong&gt;:&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;Leaflet、OpenLayers&lt;/em&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Backend data storage&lt;/strong&gt;:&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;PostreSQL、PostGIS&lt;/em&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr&gt;
+&lt;h3 id=&#34;why-should-we-pay-attention-to-foss-gis-in-south-amerca&#34;&gt;Why should we pay attention to FOSS GIS in South Amerca?&lt;/h3&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;there is a &lt;span style=&#34;color: red;&#34;&gt;&lt;strong&gt;substantial FOSS GIS adoption&lt;/strong&gt;&lt;/span&gt; occurring in some South American governments,&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;this uptake maybe occurring for &lt;span style=&#34;color: red;&#34;&gt;&lt;strong&gt;a different mix of reasons&lt;/strong&gt;&lt;/span&gt;  than observed or expected with FOSS adoptions in the Global North.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;0x02-public-openness-toward-foss-in-south-america&#34;&gt;0x02 Public openness toward FOSS in South America&lt;/h2&gt;
+&lt;hr&gt;
+&lt;p&gt;&lt;font size=&#34;6&#34;&gt;South America has seen &lt;span style=&#34;color: red;&#34;&gt;a unique variety of laws and decrees&lt;/span&gt;
+at the city, state, and federal levels &lt;span style=&#34;color: red;&#34;&gt;promoting FOSS use on government computers&lt;/span&gt;&lt;/font&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;images/img1.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;span&gt;&lt;font size=&#34;5&#34;&gt;Figure 1. Notable country-level policies in South America related to goverment use of FOSS&lt;/font&gt;&lt;/span&gt;&lt;/p&gt;
+&lt;!-- &lt;center style=&#34;font-size:10&#34;&gt;南美洲国家政府对于FOSS的政策法令&lt;/center&gt; --&gt;
+&lt;hr&gt;
+&lt;p&gt;Beyond encouraging FOSS, some governments even &lt;span style=&#34;color: red;&#34;&gt;mandate its use for state business&lt;/span&gt;. For examples,&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;Venezuela’s ‘Infogobierno’ law requires public institutions migrate to FOSS&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Bolivia has enacted a series of decrees leading toward public sector migration to FOSS&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;font size=&#34;6&#34;&gt;the tendency to &lt;span style=&#34;color: blue;&#34;&gt;adopt strict mandates of FOSS&lt;/span&gt; was more common in Latin America and Africa than in other parts of the world.
+Policies in other regions tended to take more of a hands-off advisory role.
+&lt;/font&gt;&lt;/p&gt;
+&lt;hr&gt;
+&lt;h3 id=&#34;why-have-these-south-american-governments-been-so-aggressive-about-adopting-foss&#34;&gt;Why have these South American governments been so aggressive about adopting FOSS?&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;Technical factors&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Economic factors&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Social factors&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Political factors&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr&gt;
+&lt;h5 id=&#34;technical-factors&#34;&gt;Technical factors&lt;/h5&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;font size=&#34;6&#34;&gt;Recent government &lt;span style=&#34;color: red;&#34;&gt;crackdowns on illegal software copying&lt;/span&gt; are leading public institutions to &lt;span style=&#34;color: red;&#34;&gt;look for lower-cost software alternatives&lt;/span&gt;&lt;/font&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;font size=&#34;6&#34;&gt;Some have recognized FOSS solutions as a way to not only economize, but also &lt;span style=&#34;color: red;&#34;&gt;foster local skills, develop context-specific applications&lt;/span&gt;, and &lt;span style=&#34;color: red;&#34;&gt;institute social changes&lt;/span&gt;&lt;/font&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;font size=&#34;6&#34;&gt;These licenses also allow modification and redistribution of the code, providing a way to fix, enhance, or internationalize the software &lt;span style=&#34;color: red;&#34;&gt;without waiting for a vendor to release a (potentially costly) upgrade&lt;/span&gt;. &lt;/font&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr&gt;
+&lt;h5 id=&#34;economic-factors&#34;&gt;Economic factors&lt;/h5&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;An attractive element of FOSS for the public sector is that the software &lt;span style=&#34;color: red;&#34;&gt;can be distributed without licensing fees&lt;/span&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;span style=&#34;color: red;&#34;&gt;The amount of money required to keep proprietary software&lt;/span&gt; running in government offices  &lt;span style=&#34;color: red;&#34;&gt;is substantial&lt;/span&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr&gt;
+&lt;h5 id=&#34;social-factors&#34;&gt;Social factors&lt;/h5&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;The reasons for government promotion of FOSS in South America go beyond economics, and involve attitudes about &lt;span style=&#34;color: red;&#34;&gt;society, sovereignty, and the role of the state.&lt;/span&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Chan (2004) noted that this line of reasoning represented a key difference from FOSS promotion in North America, where supporters tended to &lt;span style=&#34;color: red;&#34;&gt;emphasize FOSS’s protection of consumer freedoms.&lt;/span&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr&gt;
+&lt;h5 id=&#34;political-factors&#34;&gt;Political factors&lt;/h5&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;the idea of FOSS is &lt;span style=&#34;color: red;&#34;&gt;an avenue to independence from the perceived imperialism of US-based proprietary software companies&lt;/span&gt; has appeared across social stratum.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Free software represents the values: &lt;span style=&#34;color: red;&#34;&gt;equality, freedom, sovereignty, right to choose, democracy, and development&lt;/span&gt;.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;0x03-foss-gis-in-south-america&#34;&gt;0x03 FOSS GIS in South America&lt;/h2&gt;
+&lt;hr&gt;
+&lt;p&gt;&lt;font size=&#34;4&#34;&gt; four countries, which &lt;span style=&#34;color: red;&#34;&gt;have supported FOSS through legislation or decree&lt;/span&gt; at the national level,  &lt;span style=&#34;color: red;&#34;&gt;using FOSS GIS for their principal map viewers&lt;/span&gt; (Bolivia, Ecuador, Uruguay, and Venezuela).&lt;/font&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;images/img2.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;font size=&#34;2&#34;&gt;Brazil is the only country with national support for FOSS that is not using FOSS in its principal map viewer&lt;/font&gt;&lt;/p&gt;
+&lt;hr&gt;
+&lt;p&gt;&lt;font size=&#34;4&#34;&gt; Most of the provincial sites in the below table are using well-known and basic FOSS GIS software. &lt;/font&gt;
+&lt;img src=&#34;images/img3.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;font size=&#34;1&#34;&gt;stability and long-term maintenance of some of the sites appear to be challenges.&lt;/font&gt;&lt;/p&gt;
+&lt;hr&gt;
+&lt;h5 id=&#34;local-technical-support-groups-for-foss-gis&#34;&gt;Local technical support groups for FOSS GIS&lt;/h5&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;exchange troubleshooting tips,&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;share ideas and success stories,&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;post employment information,&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;arrange conferences and meetups of people with similar skills and interests.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr&gt;
+&lt;h5 id=&#34;local-software-development&#34;&gt;Local software development&lt;/h5&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;An important indication of FOSS GIS presence in any region is the local production and improvement of software&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;FOSS development is evidence of this process occurring. FOSS GIS development efforts in South America include the aforementioned&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;translation of user interfaces,&lt;/li&gt;
+&lt;li&gt;the testing and use of products,&lt;/li&gt;
+&lt;li&gt;the creation of new software to meet community needs.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr&gt;
+&lt;p&gt;Ibero-America has incubated several FOSS GIS programs that are widely used in South America.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;One of these is gvSIG, a desktop GIS program developed in Valencia, Spain.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Another GIS, called SPRING, was developed by the Brazilian National Institute for Space Research (INPE).&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Other open source GIS tools developed by Brazilian government and educational institutions include i3Geo, E-foto, and TerraLib&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;0x04-case-studies-of-foss-gis-community-activity&#34;&gt;0x04 Case studies of FOSS GIS community activity&lt;/h2&gt;
+&lt;hr&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;FOSS GIS Brasil magazine&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Geoinquietos Argentina&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;FOSS.4GIS.GOV conferences in Brazil&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr&gt;
+&lt;h3 id=&#34;foss-gis-brasil-magazine&#34;&gt;FOSS GIS Brasil magazine&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;the most ambitious effort ever to &lt;span style=&#34;color: red;&#34;&gt;publish information about FOSS GIS in periodical format&lt;/span&gt; was a Portuguese language magazine.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;The magazine included articles about:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;FOSS GIS software options&lt;/li&gt;
+&lt;li&gt;comparing functionalities of FOSS GIS with proprietary software&lt;/li&gt;
+&lt;li&gt;case studies of successful software implementations in various branches of the Brazilian government&lt;/li&gt;
+&lt;li&gt;interviews with figureheads in the Brazilian FOSS GIS community&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr&gt;
+&lt;h3 id=&#34;geoinquietos-argentina&#34;&gt;Geoinquietos Argentina&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;Geoinquietos is a network of local groups throughout Ibero- America interested in geospatial sciences and FOSS.
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;The Geoinquietos Argentina chapter has been &lt;span style=&#34;color: red;&#34;&gt;one of the most active of these groups&lt;/span&gt;,&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;span style=&#34;color: red;&#34;&gt;repeatedly organizing conferences&lt;/span&gt; that attract hundreds of people from the Southern Cone area of South America and beyond.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr&gt;
+&lt;h3 id=&#34;foss4gisgov-conferences-in-brazil&#34;&gt;FOSS.4GIS.GOV conferences in Brazil&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;The success of Geoinquietos Argentina at gathering the FOSS GIS community was noticed in other areas of South America.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Actually, &lt;span style=&#34;color: red;&#34;&gt;several notable gatherings of open source GIS software enthusiasts have occurred in Brazil’s capital&lt;/span&gt;, but they have largely focused on government applications.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;the FOSS.4GIS.GOV conference &lt;span style=&#34;color: red;&#34;&gt;brought together hundreds of professionals&lt;/span&gt;.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;0x04-conclusions&#34;&gt;0x04 Conclusions&lt;/h2&gt;
+&lt;hr&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;span style=&#34;color: red;&#34;&gt;FOSS GIS has a strong and growing presence in South America&lt;/span&gt;, evidenced by
+&lt;ul&gt;
+&lt;li&gt;government use of FOSS in interactive map websites,&lt;/li&gt;
+&lt;li&gt;the variety of FOSS technical support groups for GIS and mapping, and the development of software to meet local geoprocessing needs.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;span style=&#34;color: red;&#34;&gt;Some of this success is likely due to the generally friendly attitude toward FOSS throughout the region&lt;/span&gt;, where some governments have mandated that FOSS be used, or at least considered, as an alternative to proprietary software.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr&gt;
+&lt;ul&gt;
+&lt;li&gt;Such affinity toward FOSS includes economic considerations, but also a strong belief &lt;span style=&#34;color: red;&#34;&gt;that national interest is served by keeping software code transparent and investment money local&lt;/span&gt;.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr&gt;
+&lt;h1 id=&#34;thanks&#34;&gt;Thanks!&lt;/h1&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Slides</title>
       <link>https://coolgiserz.github.io/slides/geo-embedding-for-commuting-flow-prediction/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <pubDate>Tue, 05 Feb 2019 00:00:00 +0000</pubDate>
       <guid>https://coolgiserz.github.io/slides/geo-embedding-for-commuting-flow-prediction/</guid>
-      <description></description>
+      <description>&lt;h2 id=&#34;free-and-open-source-gis-in-south-america-political-inroads-and-local-advocacy&#34;&gt;Free and open source GIS in South America: political inroads and local advocacy&lt;/h2&gt;
+&lt;p&gt;ZhuGuowei, 2020-12-08&lt;/p&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;introduction&#34;&gt;Introduction&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;Efficiently write slides in Markdown&lt;/li&gt;
+&lt;li&gt;3-in-1: Create, Present, and Publish your slides&lt;/li&gt;
+&lt;li&gt;Supports speaker notes&lt;/li&gt;
+&lt;li&gt;Mobile friendly slides&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;controls&#34;&gt;Controls&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;Next: &lt;code&gt;Right Arrow&lt;/code&gt; or &lt;code&gt;Space&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;Previous: &lt;code&gt;Left Arrow&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;Start: &lt;code&gt;Home&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;Finish: &lt;code&gt;End&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;Overview: &lt;code&gt;Esc&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;Speaker notes: &lt;code&gt;S&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;Fullscreen: &lt;code&gt;F&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;Zoom: &lt;code&gt;Alt + Click&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://github.com/hakimel/reveal.js#pdf-export&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;PDF Export&lt;/a&gt;: &lt;code&gt;E&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;code-highlighting&#34;&gt;Code Highlighting&lt;/h2&gt;
+&lt;p&gt;Inline code: &lt;code&gt;variable&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;Code block:&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;porridge = &amp;quot;blueberry&amp;quot;
+if porridge == &amp;quot;blueberry&amp;quot;:
+    print(&amp;quot;Eating...&amp;quot;)
+&lt;/code&gt;&lt;/pre&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;math&#34;&gt;Math&lt;/h2&gt;
+&lt;p&gt;In-line math: $x + y = z$&lt;/p&gt;
+&lt;p&gt;Block math:&lt;/p&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;fragments&#34;&gt;Fragments&lt;/h2&gt;
+&lt;p&gt;Make content appear incrementally&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;{{% fragment %}} One {{% /fragment %}}
+{{% fragment %}} **Two** {{% /fragment %}}
+{{% fragment %}} Three {{% /fragment %}}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Press &lt;code&gt;Space&lt;/code&gt; to play!&lt;/p&gt;
+&lt;p&gt;&lt;span class=&#34;fragment &#34; &gt;
+One
+&lt;/span&gt;
+&lt;span class=&#34;fragment &#34; &gt;
+&lt;strong&gt;Two&lt;/strong&gt;
+&lt;/span&gt;
+&lt;span class=&#34;fragment &#34; &gt;
+Three
+&lt;/span&gt;&lt;/p&gt;
+&lt;hr&gt;
+&lt;p&gt;A fragment can accept two optional parameters:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;class&lt;/code&gt;: use a custom style (requires definition in custom CSS)&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;weight&lt;/code&gt;: sets the order in which a fragment appears&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;speaker-notes&#34;&gt;Speaker Notes&lt;/h2&gt;
+&lt;p&gt;Add speaker notes to your presentation&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-markdown&#34;&gt;{{% speaker_note %}}
+- Only the speaker can read these notes
+- Press `S` key to view
+{{% /speaker_note %}}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Press the &lt;code&gt;S&lt;/code&gt; key to view the speaker notes!&lt;/p&gt;
+&lt;aside class=&#34;notes&#34;&gt;
+  &lt;ul&gt;
+&lt;li&gt;Only the speaker can read these notes&lt;/li&gt;
+&lt;li&gt;Press &lt;code&gt;S&lt;/code&gt; key to view&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;/aside&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;themes&#34;&gt;Themes&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;black: Black background, white text, blue links (default)&lt;/li&gt;
+&lt;li&gt;white: White background, black text, blue links&lt;/li&gt;
+&lt;li&gt;league: Gray background, white text, blue links&lt;/li&gt;
+&lt;li&gt;beige: Beige background, dark text, brown links&lt;/li&gt;
+&lt;li&gt;sky: Blue background, thin dark text, blue links&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr&gt;
+&lt;ul&gt;
+&lt;li&gt;night: Black background, thick white text, orange links&lt;/li&gt;
+&lt;li&gt;serif: Cappuccino background, gray text, brown links&lt;/li&gt;
+&lt;li&gt;simple: White background, black text, blue links&lt;/li&gt;
+&lt;li&gt;solarized: Cream-colored background, dark green text, blue links&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr&gt;
+
+&lt;section data-noprocess data-shortcode-slide
+  
+      
+      data-background-image=&#34;/media/boards.jpg&#34;
+  &gt;
+
+&lt;h2 id=&#34;custom-slide&#34;&gt;Custom Slide&lt;/h2&gt;
+&lt;p&gt;Customize the slide style and background&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-markdown&#34;&gt;{{&amp;lt; slide background-image=&amp;quot;/media/boards.jpg&amp;quot; &amp;gt;}}
+{{&amp;lt; slide background-color=&amp;quot;#0000FF&amp;quot; &amp;gt;}}
+{{&amp;lt; slide class=&amp;quot;my-style&amp;quot; &amp;gt;}}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;custom-css-example&#34;&gt;Custom CSS Example&lt;/h2&gt;
+&lt;p&gt;Let&amp;rsquo;s make headers navy colored.&lt;/p&gt;
+&lt;p&gt;Create &lt;code&gt;assets/css/reveal_custom.css&lt;/code&gt; with:&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-css&#34;&gt;.reveal section h1,
+.reveal section h2,
+.reveal section h3 {
+  color: navy;
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;hr&gt;
+&lt;h1 id=&#34;questions&#34;&gt;Questions?&lt;/h1&gt;
+&lt;p&gt;&lt;a href=&#34;https://spectrum.chat/academic&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Ask&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;https://sourcethemes.com/academic/docs/managing-content/#create-slides&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Documentation&lt;/a&gt;&lt;/p&gt;
+</description>
     </item>
     
   </channel>
