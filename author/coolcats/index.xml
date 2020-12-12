@@ -95,11 +95,13 @@
 &lt;p&gt;大多数南美国家都有一个制图机构，与公众分享在线地理数据和网络服务。这些机构经常主办交互式网络地图，用户可以在其中探索现有的地理图层或获得有关该国的一般信息。下表显示了研究时10个国家的主要地图可视化网站的地址，建立每个网站所使用的技术，以及这种技术是否可以被认为是FOSS。在本表中，&amp;ldquo;主要浏览者 &amp;ldquo;被认为是来自负责该国地理、制图或空间数据基础设施活动的机构。该技术是通过观察网站的源代码文件和网络流量来确定的，这些信息对于任何网站来说都是可以获得的，无论它是否是用自由和开源软件建立的。&lt;/p&gt;
 &lt;p&gt;&lt;img src=&#34;images/img4.png&#34; alt=&#34;1.png&#34;&gt;&lt;/p&gt;
 &lt;center&gt;南美洲国家政府在生产用于地理数据探索的网络地图时所采用的技术&lt;/center&gt;
-&lt;p&gt;值得注意的是，在主要地图查看器中使用自由和开源软件GIS的四个国家(玻利维亚、厄瓜多尔、乌拉圭和委内瑞拉)也是通过国家一级的立法或法令支持自由和开源软件的国家。巴西是唯一一个在国家层面支持自由和开源软件，但在其主要地图查看器中没有使用自由和开源软件的国家，直到现在巴西对自由和开源软件的支持也没有其他一些国家的政策那样具有约束力。尽管这些国家在全面实施一般的FOSS迁移政策方面一直面临挑战（Machado，2017），但似乎这些政策正在影响GIS和地图服务。例如，Molina Rodriguez和Lesage(2013年)描述了玻利维亚如何设计其空间数据基础设施以支持基于自由和开源软件的网络浏览器。
-情况比上图所能说明的要复杂得多，因为一些较低级别的部委，甚至同一部委的不同部门，可能会开展测绘活动，并使用不同的软件组合维护在线地图查看器。例如，尽管阿根廷国家地理研究所(IGN)在其主要的面向公众的地图查看器中没有使用自由和开放源码软件，但如本文后面所述，其雇员日常使用自由和开放源码软件GIS，该研究所在2017年主办了一次使用自由和开放源码软件GIS的重要会议。&lt;/p&gt;
+&lt;/br&gt;
+值得注意的是，在主要地图查看器中使用自由和开源软件GIS的四个国家(玻利维亚、厄瓜多尔、乌拉圭和委内瑞拉)也是通过国家一级的立法或法令支持自由和开源软件的国家。巴西是唯一一个在国家层面支持自由和开源软件，但在其主要地图查看器中没有使用自由和开源软件的国家，直到现在巴西对自由和开源软件的支持也没有其他一些国家的政策那样具有约束力。尽管这些国家在全面实施一般的FOSS迁移政策方面一直面临挑战（Machado，2017），但似乎这些政策正在影响GIS和地图服务。例如，Molina Rodriguez和Lesage(2013年)描述了玻利维亚如何设计其空间数据基础设施以支持基于自由和开源软件的网络浏览器。
+情况比上图所能说明的要复杂得多，因为一些较低级别的部委，甚至同一部委的不同部门，可能会开展测绘活动，并使用不同的软件组合维护在线地图查看器。例如，尽管阿根廷国家地理研究所(IGN)在其主要的面向公众的地图查看器中没有使用自由和开放源码软件，但如本文后面所述，其雇员日常使用自由和开放源码软件GIS，该研究所在2017年主办了一次使用自由和开放源码软件GIS的重要会议。
 &lt;p&gt;省级和市级政府的软件趋势可能与国家一级使用的软件有明显不同。例如，用同样的方法可以看出，阿根廷几乎所有的省级政府都在其地图查看器中使用自由和开放源码软件。表3显示，在阿根廷的23个省和联邦区中，有16个省提供了用FOSS GIS建立的地图查看器，而有一个省则是用专有的地理信息系统软件建立了地图查看器。这些数字与美国各州政府的专有GIS软件所占的强大市场地位形成鲜明对比。
 &lt;img src=&#34;images/img5.png&#34; alt=&#34;5.png&#34;&gt;&lt;/p&gt;
 &lt;center&gt;阿根廷内各省级政府生产用于地理数据探索的网络地图时采用的技术&lt;/center&gt;
+&lt;/br&gt;
 &lt;p&gt;上表中大部分省级站点都在使用OpenLayers、MapServer、GeoServer等知名的基础FOSS GIS软件。一些网站的稳定性和长期维护似乎是一个挑战：即使网站的其他部分似乎可以运作，但在本研究中访问时，有时流式地图层无法运作。需要进行更多的研究，以了解这些挑战是由于资金不足、难以找到或留住熟练工人、政府和顾问之间的动态、软件本身的缺陷，还是其他原因。&lt;/p&gt;
 &lt;h3 id=&#34;自由和开放源码软件地理信息系统的当地技术支持小组&#34;&gt;自由和开放源码软件地理信息系统的当地技术支持小组&lt;/h3&gt;
 &lt;p&gt;FOSS GIS活动的另一个证据是当地技术支持网的存在，软件用户可以在这里交流故障解决技巧，分享想法和成功故事，发布就业信息，并安排具有类似技能和兴趣的人参加会议和聚会。正如在自由和开放源码软件中观察到的那样，这些 &amp;ldquo;社区 &amp;ldquo;提供了技术帮助、友谊和认可的途径，并且以共同的哲学动机聚集在一起（Zanotti 2012）。它们培养当地的专业知识，并通过促进软件的文档、培训和翻译，扩展了用户对软件的选择范围(Câmara和Fonseca，2007年)。
@@ -250,17 +252,24 @@ Geoinquietos阿根廷分会在2013年、2016年、2017年和2019年组织了 &am
     </item>
     
     <item>
-      <title>北京之旅 2020</title>
+      <title>疫情之下的北京之旅 2020</title>
       <link>https://coolgiserz.github.io/event/beijing-trip-2020/</link>
       <pubDate>Wed, 11 Mar 2020 00:20:45 +0800</pubDate>
       <guid>https://coolgiserz.github.io/event/beijing-trip-2020/</guid>
       <description>&lt;p&gt;疫情期间&lt;/p&gt;
 &lt;video id=&#34;video1&#34; controls=&#34;&#34; preload=&#34;none&#34; poster=&#34;http://om2bks7xs.bkt.clouddn.com/2017-08-26-Markdown-Advance-Video.jpg&#34;&gt;
-&lt;source id=&#34;mp4&#34; src=&#34;beijing-trip-mid.mp4&#34; type=&#34;video/mp4&#34;&gt;
+&lt;source id=&#34;mp4&#34; src=&#34;vedio/beijing-trip-mid.mp4&#34; type=&#34;video/mp4&#34;&gt;
+&lt;/video&gt;
+&lt;p&gt;Sensetime产品&lt;/p&gt;
+&lt;video id=&#34;ar-product&#34; controls=&#34;&#34; preload=&#34;none&#34; poster=&#34;http://om2bks7xs.bkt.clouddn.com/2017-08-26-Markdown-Advance-Video.jpg&#34;&gt;
+&lt;source id=&#34;mp4&#34; src=&#34;vedio/sensetime-welcome.mp4&#34; type=&#34;video/mp4&#34;&gt;
+&lt;/video&gt;
+&lt;video id=&#34;ar-product&#34; controls=&#34;&#34; preload=&#34;none&#34; poster=&#34;http://om2bks7xs.bkt.clouddn.com/2017-08-26-Markdown-Advance-Video.jpg&#34;&gt;
+&lt;source id=&#34;mp4&#34; src=&#34;vedio/sensetime-product-ar.mp4&#34; type=&#34;video/mp4&#34;&gt;
 &lt;/video&gt;
 &lt;p&gt;离京&lt;/p&gt;
 &lt;video id=&#34;video2&#34; controls=&#34;&#34; preload=&#34;none&#34; poster=&#34;http://om2bks7xs.bkt.clouddn.com/2017-08-26-Markdown-Advance-Video.jpg&#34;&gt;
-&lt;source id=&#34;mp4&#34; src=&#34;beijing-trip-end.mp4&#34; type=&#34;video/mp4&#34;&gt;
+&lt;source id=&#34;mp4&#34; src=&#34;vedio/beijing-trip-end.mp4&#34; type=&#34;video/mp4&#34;&gt;
 &lt;/video&gt;</description>
     </item>
     
