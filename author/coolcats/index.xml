@@ -5,12 +5,158 @@
     <link>https://coolgiserz.github.io/author/coolcats/</link>
       <atom:link href="https://coolgiserz.github.io/author/coolcats/index.xml" rel="self" type="application/rss+xml" />
     <description>CoolCats</description>
-    <generator>Wowchemy (https://wowchemy.com)</generator><language>en-us</language><copyright>© CoolCats</copyright><lastBuildDate>Thu, 10 Dec 2020 21:58:17 +0800</lastBuildDate>
+    <generator>Wowchemy (https://wowchemy.com)</generator><language>en-us</language><copyright>© CoolCats</copyright><lastBuildDate>Mon, 14 Dec 2020 17:27:44 +0800</lastBuildDate>
     <image>
       <url>https://coolgiserz.github.io/images/icon_hue03491371183284312b8b116a73ae5ab_79511_512x512_fill_lanczos_center_2.png</url>
       <title>CoolCats</title>
       <link>https://coolgiserz.github.io/author/coolcats/</link>
     </image>
+    
+    <item>
+      <title>高光谱影像分类的挑战与方法</title>
+      <link>https://coolgiserz.github.io/post/hyperspectral-image-analysis-summary/</link>
+      <pubDate>Mon, 14 Dec 2020 17:27:44 +0800</pubDate>
+      <guid>https://coolgiserz.github.io/post/hyperspectral-image-analysis-summary/</guid>
+      <description>&lt;h1 id=&#34;高光谱影像分类&#34;&gt;高光谱影像分类&lt;/h1&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;什么是高光谱影像？&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;高光谱信息有什么应用价值？&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;高光谱影像分析有何难点？&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;高光谱影像分析主要有哪些方法？当前的主流是什么？&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;对于高光谱信息利用有何展望？&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;引言&#34;&gt;引言&lt;/h2&gt;
+&lt;p&gt;高光谱传感器通过大量不同波段的电磁频谱来探测物体，得到高光谱影像。由于高光谱传感器的信息收集范围可以覆盖整个电磁波谱的信息，远远超过人眼可辨别的可见光波段，使得高光谱影像中蕴含了更丰富的可供解读的信息（如虾蛄利用高光谱信息分辨珊瑚、猎物、猎食者），并使得高光谱影像成为一个热门的研究主题。高光谱影像中所包含的信息组分有空间信息和光谱信息，由于可区分细节的程度不同，又有空间分辨率和光谱分辨率的概念。空间分辨率可以定义为影像中的最小可分辨细节(Gonzales and Woods 2002)，光谱分辨率可以定义为传感器测量的光谱波段数量和电磁光谱范围(Richason 1978)。多光谱影向的光谱分辨率较低，因此难以解析场景中所存在的更精细的光谱特征，而高光谱传感器可以在电磁光谱的中红外、近红外和可见光波段中获取大量连续且极为狭窄的光谱信息，这些独特的光谱特征(Goetz, Vane et al. 1985)对于精细的地物、材料识别而言具有重大价值。由于高光谱传感器访问同一个区域时具有一定的周期性，所以影像又具有时间分辨率的概念：传感器平台从完全相同的位置出发到重新访问该位置并获取数据所需要的时间(Théau 2008)。空间、光谱、时间特征的复杂性都是高光谱影像分析中所面临的挑战的来源。&lt;/p&gt;
+&lt;p&gt;高光谱影像分类试图根据影像中的像素向量为每个像素向量分配类别标签，但由于高光谱影像中存在冗余特征、可用训练样本有限、样本类别不平衡及数据维度灾难等原因，高光谱影像分类面临很大的挑战(Ghamisi, Plaza et al. 2017)，这也使得传统数字图像处理领域为灰度图、彩色图或多光谱图像所设计的图像分类方法并不能直接应用于高光谱影像分类。机器学习和深度学习的崛起为高光谱影像分类带来了新的思路。本文剩余部分将介绍当前用于高光谱影像分类的方法、应用，并对其进行分类总结。&lt;/p&gt;
+&lt;h2 id=&#34;相关工作&#34;&gt;相关工作&lt;/h2&gt;
+&lt;h3 id=&#34;机器学习视角&#34;&gt;机器学习视角&lt;/h3&gt;
+&lt;p&gt;在高光谱影像分类的早期，大多数研究者主要探索影像的光谱特征对于特定场景下分类的效用，从而提出了很多像素级别的分类方法，如神经网络、支持向量机(Mercier and Lennon 2003)、逻辑回归、随机森林等；此外，一些方法着重于设计有效的特征提取或将为基数，如主成分分析(Licciardi, Marpu et al. 2011)、独立成分分析(Villa, Benediktsson et al. 2011)和线性判别分析(Bandos, Bruzzone et al. 2009)。然而，由于缺少对空间上下文信息的考虑，像素级别的分类器的表现始终不能让人满意。一些研究者的工作表明空间特征对于改善高光谱影像的特征表示和增加分类精度而言作用显著(He, Li et al. 2017)，于是很多研究者着手研究基于空间光谱特征的分类框架，将空间上下文信息融合到像素级的分类器中,如通过多种形态学操作(Ghamisi, Maggiori et al. 2018)、多核学习(Fang, Li et al. 2015)、多特征学习(Li, Huang et al. 2014)等技术来利用空间信息。&lt;/p&gt;
+&lt;h3 id=&#34;深度学习视角&#34;&gt;深度学习视角&lt;/h3&gt;
+&lt;p&gt;尽管传统机器学习方法大大增强了高光谱影像分类，但高性能的分类器往往要求设计良好的分类特征，这高度依赖于专家知识、经验，且一次设计的特征往往是针对特定任务的，即基于手工特征所训练出的分类模型难以迁移到其他场景。而高光谱数据固有的复杂特性又使得人工设计分类特征工作量巨大，设计并训练一个工作良好的分类器需要消耗很大成本。如何在大幅减少人工设计分类特征的工作量的情况下训练出表现优异的分类器具有重要的价值。&lt;/p&gt;
+&lt;p&gt;随着深度学习的崛起，深度学习已被公认为非线性关系学习的强大工具，推动了计算机视觉(Krizhevsky, Sutskever et al. 2017)、自然语言处理(Collobert and Weston 2008)等领域的发展，其优良的表现源于其具有强大的特征抽取能力以及对复杂函数具有强大的逼近能力(Goodfellow, Bengio et al. 2016)，且在应用时减少了对专家知识的依赖性。遥感领域也已经提出了许多用于高光谱影像特征提取和分类的深度学习模型(Chen, Lin et al. 2014)，如基于自动编码器(Tao, Pan et al. 2015)、深度信念网络(Chen, Zhao et al. 2015)、卷积神经网络(Romero, Gatta et al. 2015)、循环神经网络(Mou, Ghamisi et al. 2017)和生成对抗网络(Zhan, Hu et al. 2017)的方法。&lt;/p&gt;
+&lt;p&gt;可以根据网络提取特征的差异，将用于高光谱影像分类的深度网络分为光谱特征网络、空间特征网络、空间光谱特征网络，不同网络将提取相应的特征以辅助后续的分类。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;光谱特征网络&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;光谱信息是高光谱影像中最重要的特征，对于分类任务而言具有至关重要的作用。然而高光谱传感器通常会提供上百个波段的信息，其中还包括一些冗余信息，因此原始的光谱向量不仅会导致极高的计算复杂度，还不一定能提高分类精度。尽管类似主成分分析、独立成分分析、线性判别分析的方法可提取有效的光谱特征，但这些线性模型中的线性过程难以捕获高光谱影像中复杂的光谱特征，于是研究者采用深度学习的框架来提取光谱特征，也称为光谱特征网络。
+最早的光谱特征网络将高光谱像素向量直接输入到全连接网络，如基于堆叠自编码器(Chen, Lin et al. 2014)、深度信念网络(Chen, Zhao et al. 2015)的工作。随后，一些研究者提出利用深度学习和主动学习的框架来改进高光谱影像分类方法(Liu, Zhang et al. 2016)，其中使用深度信念网络提取光谱特征，并应用主动学习算法来选择高质量的标注样本作为训练样本。除此之外，还有利用字典学习来从高光谱影像中提取多层次的字典特征的工作(Tariyal, Aggarwal et al. 2016)，取得了较高的分类精度。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;空间特征网络&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;文章之前部分已经说明了将利用空间特征可以进一步提高影像分类精度。有研究者考虑利用深度网络来提取高光谱影像的空间特征，这样的深度网络被称为空间特征网络。一些研究者先通过主成分分析降低高光谱影像特征的维度，再通过2维的卷积神经网络将每个像素的邻域信息融合(Fang, Liu et al. 2019)，如此将空间信息利用起来。还有一些研究者利用稀疏表示技术将深度空间特征编码成低维的稀疏特征，也提高了特征表示的能力和分类任务的精度(Liang and Li 2016)。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;空间光谱特征网络&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;除了去设计深度网络来提取单一类型的光谱特征或空间特征以外，还可以设计网络来提取联合的光谱-空间特征。联合特征可以通过如下三种方式获得：1）通过深度网络将低层次的光谱空间特征映射到高层次的光谱空间特征；2）直接从原始数据的主成分中提取深度特征；3）融合两种类型的高层次特征（空间特征和光谱特征），如(Xu, Li et al. 2017) 双分支的卷积神经网络架构实现联合光谱-空间特征的提取。&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;images/img1.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;h2 id=&#34;高光谱影像分类的应用&#34;&gt;高光谱影像分类的应用&lt;/h2&gt;
+&lt;p&gt;高光谱影像在商业、农业与军事等领域具有广泛应用。本文介绍其在食品质量与安全评估、医疗诊断、精细农业和法证检查的应用。&lt;/p&gt;
+&lt;h3 id=&#34;食品质量与安全评估&#34;&gt;食品质量与安全评估&lt;/h3&gt;
+&lt;p&gt;由于对高效率和低成本食品日益增长的需求，食品工业正面临众多挑战，例如在确保食品质量和安全性同时避免责任问题。可以通过检查食品的各种物理，化学和生物特性来评估食品的质量和安全性。但通过肉眼查看、化学、生物试探等传统检查手段对食品具有破坏性且耗费时间，因此有人通过计算机视觉的方式来评估食品的外部属性(Huang, Liu et al. 2013)。但由于广泛光谱信息的缺失，传统基于机器视觉的食品质量评估方法面临局限性。&lt;/p&gt;
+&lt;p&gt;高光谱影像包含丰富的光谱信息和空间信息，使得基于高光谱影像的方法适合评估食品质量和安全性(Qiao, Ngadi et al. 2007)，目前已有关于利用高光谱影像分析的方法用于识别食品中的缺陷和污染物的工作(Leiva-Valenzuela, Lu et al. 2013)。&lt;/p&gt;
+&lt;h3 id=&#34;医疗诊断&#34;&gt;医疗诊断&lt;/h3&gt;
+&lt;p&gt;传统上利用计算机断层扫描和磁共振成像进行临床分析，而现代光谱成像技术以更高的速度和精度为医疗专家提供了更强的辅助工具，证明了其在辅助医疗中的重要性。组织的光学特征可以提供有价值的诊断信息，高光谱影像由于能够提供生物组织的更广泛的光谱信息而具有更大的应用潜力。&lt;/p&gt;
+&lt;p&gt;Kumar等人提出一种基于主成分分析和傅里叶变换的红外光谱成像系统来进行乳腺癌辅助诊断(Kumar, Desmedt et al. 2013)；一些研究者则通过对舌头的反射光谱分析进行肿瘤检测(Liu, Wang et al. 2012)；还有人通过荧光反射成像扫描组织的胆汁结构以鉴定胆囊疾病(Mitra, Melvin et al. 2012)。&lt;/p&gt;
+&lt;h3 id=&#34;精细农业&#34;&gt;精细农业&lt;/h3&gt;
+&lt;p&gt;传统的农作物疾病检测、水分/养分缺失察看、昆虫侵袭监测时通过目视法进行的，这些方法会受到一些限制，如一些作物的视觉症状往往会出现在疾病的后期，因此即便发现症状也很难恢复植物健康。
+机载与地面式的高光谱影像分析方法的进步使得我们可以用更经济高效的手段分析土壤和植被特征成为可能。一些研究者通过便携式高光谱成像系统估计叶片的水分胁迫(Rascher, Nichol et al. 2007)，检测玉米农场的干旱胁迫(Rossini, Fava et al. 2013)。还有一些研究者通过分析高光谱影像分析光谱特征与污染物含量的关系，如有人发现芥菜中的汞含量与光谱特征高度相关(Dunagan, Gilmore et al. 2007)。&lt;/p&gt;
+&lt;h3 id=&#34;法证检查&#34;&gt;法证检查&lt;/h3&gt;
+&lt;p&gt;以往法证专家往往通过化学溶液来研究重要历史文献的外在和内在成分(Aginsky 1993)，而不同温度所使用的墨水是由具有不同化学和物理性质的物质组成，这些物质在不同的环境下以独特的方式与不同的底物进行反应，为化学手段的文档分析带来挑战。基于化学溶液的分析方法还具有耗时、对温度变化敏感、对被分析物具有破坏性等局限。&lt;/p&gt;
+&lt;p&gt;为了克服以上限制，高光谱影像可以作为一种有效的非破坏性分析工具(Kim, Deng et al. 2011)。在法医文档分析场景下，高光谱文件成像原理是文件中存在的每种墨水都有自己独特的光谱特征，可使用多种数学工具对这些光谱特征分类，从而区分不同的文档，提高分类的精度。有研究者提出基于高光谱分解的技术区分文档中不同笔的墨水(Abbas, Khurshid et al. 2017)，区分不同墨水的混合比(Khan, Yousaf et al. 2018)，区分伪造文档等。&lt;/p&gt;
+&lt;h2 id=&#34;参考&#34;&gt;参考&lt;/h2&gt;
+&lt;p&gt;&lt;a href=&#34;https://towardsdatascience.com/what-are-hyper-spectral-images-a5de5d9fa91&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;What are Hyperspectral Images?&lt;/a&gt;&lt;/p&gt;
+&lt;h2 id=&#34;文章汇总&#34;&gt;文章汇总&lt;/h2&gt;
+&lt;h3 id=&#34;图像分类&#34;&gt;图像分类&lt;/h3&gt;
+&lt;h4 id=&#34;review&#34;&gt;Review&lt;/h4&gt;
+&lt;ul&gt;
+&lt;li&gt;[IJRS 2007] A survey of image classification methods and techniques for improving classification performance. &lt;a href=&#34;https://www.tandfonline.com/doi/abs/10.1080/01431160600746456&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;[paper]&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;高光谱影像&#34;&gt;高光谱影像&lt;/h3&gt;
+&lt;h4 id=&#34;review-1&#34;&gt;Review&lt;/h4&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;[MGRS 2017]Advanced Spectral Classifiers for Hyperspectral Images: A review &lt;a href=&#34;https://ieeexplore.ieee.org/abstract/document/7882742&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;[paper]&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;[TGRS 2017] Recent Advances on Spectral–Spatial Hyperspectral Image Classification: An Overview and New Guidelines &lt;a href=&#34;https://ieeexplore.ieee.org/abstract/document/8101519&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;[paper]&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;[TGRS 2019] Deep Learning for Hyperspectral Image Classification: An Overview &lt;a href=&#34;https://ieeexplore.ieee.org/abstract/document/8697135/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;[paper]&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;[Imaging 2019] Deep Learning Meets Hyperspectral Image Analysis: A Multidisciplinary Review &lt;a href=&#34;https://www.mdpi.com/2313-433X/5/5/52&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;[paper]&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&#34;methods&#34;&gt;Methods&lt;/h4&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;[TGRS 1994] Hyperspectral image classification and dimensionality reduction: an orthogonal subspace projection approach &lt;a href=&#34;https://ieeexplore.ieee.org/abstract/document/298007&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;[paper]&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;[IGARSS 2003] Support vector machines for hyperspectral image classification with spectral-based kernels &lt;a href=&#34;https://ieeexplore.ieee.org/abstract/document/1293752&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;[paper]&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;[TGRS 2005] Kernel-based methods for hyperspectral image classification &lt;a href=&#34;https://ieeexplore.ieee.org/abstract/document/1433032&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;[paper]&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;[LGRS 2006] Composite kernels for hyperspectral image classification &lt;a href=&#34;https://ieeexplore.ieee.org/abstract/document/1576697&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;[paper]&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;[TGRS 2007] Semi-Supervised Graph-Based Hyperspectral Image Classification &lt;a href=&#34;https://ieeexplore.ieee.org/abstract/document/4305352&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;[paper]&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;[TGRS 2009] Classification of hyperspectral images with regularized linear discriminant analysis&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;[TGRS 2012] Generalized Composite Kernel Framework for Hyperspectral Image Classification &lt;a href=&#34;https://ieeexplore.ieee.org/abstract/document/6450085/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;[paper]&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;[TGRS 2012] Semisupervised Self-Learning for Hyperspectral Image Classification &lt;a href=&#34;https://ieeexplore.ieee.org/abstract/document/6423895&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;[paper]&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;[TGRS 2013] Hyperspectral Image Classification via Kernel Sparse Representation&lt;a href=&#34;https://ieeexplore.ieee.org/abstract/document/6236130&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;[paper]&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;[TGRS 2014] Multiple Feature Learning for Hyperspectral Image Classification &lt;a href=&#34;https://ieeexplore.ieee.org/abstract/document/6882821&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;[paper]&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;[JSTARS 2014] Deep learning-based classification of hyperspectral data &lt;a href=&#34;https://ieeexplore.ieee.org/abstract/document/6844831&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;[paper]&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;[JSTARS 2015] Spectral-spatial classification of hyperspectral data based on deep belief network &lt;a href=&#34;https://ieeexplore.ieee.org/abstract/document/7018910&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;[paper]&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;[TGRS 2016] Deep Recurrent Neural Networks for Hyperspectral Image Classification &lt;a href=&#34;https://ieeexplore.ieee.org/abstract/document/7914752&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;[paper]&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;[JSTARS 2016] Active Deep Learning for Classification of Hyperspectral Images &lt;a href=&#34;https://ieeexplore.ieee.org/abstract/document/7568999&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;[paper]&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;[LGRS 2017] Semisupervised hyperspectral image classification based on generative adversarial network &lt;a href=&#34;https://ieeexplore.ieee.org/abstract/document/8241773&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;[paper]&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;[TGRS 2017] Learning and transferring deep joint spectral–spatial features for hyperspectral classification &lt;a href=&#34;https://ieeexplore.ieee.org/abstract/document/7927776/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;[paper]&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;[Access 2018] Modern Trends in Hyperspectral Image Analysis: A Review &lt;a href=&#34;https://ieeexplore.ieee.org/stamp/stamp.jsp?tp=&amp;amp;arnumber=8314827&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;[paper]&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&#34;assessment&#34;&gt;Assessment&lt;/h4&gt;
+&lt;ul&gt;
+&lt;li&gt;[IJRS 1999] Quality assessment of image classification algorithms for land-cover mapping: a review and a proposal for a cost-based approach &lt;a href=&#34;https://www.tandfonline.com/doi/abs/10.1080/014311699212560&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;[paper]&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
     
     <item>
       <title>「论文阅读」-南美洲的自由和开放源码地理信息系统：政治进展和地方宣传</title>
@@ -20,7 +166,7 @@
       <description>&lt;h1 id=&#34;free-and-open-source-gis-in-south-america-political-inroads-and-local-advocacy&#34;&gt;Free and open source GIS in South America: political inroads and local advocacy&lt;/h1&gt;
 &lt;p&gt;文章讨论了开源GIS，分析了南美洲自由开源GIS的发展及由来，重点讨论了政治上及地方性的支持对于南美洲开源GIS发展的积极推动作用。整篇文章相对而言技术性偏弱，侧重调查及讨论分析，但将南美洲各地开源GIS的发展历程呈现出来给读者，也有助于GIS社区对GIS技术发展趋势进行更深入的思考。&lt;/p&gt;
 &lt;p&gt;本文做了什么工作？
-回顾了南美洲对于自由开源地理信息系统（FOSS）的吸收与宣传，特别是FOSS与南美洲各区域对其的友好政治氛围的关系：&lt;/p&gt;
+回顾了南美洲对于自由开源地理信息系统（FOSS GIS）的吸收与宣传，特别是&lt;a href=&#34;https://zh.wikipedia.org/wiki/%e8%87%aa%e7%94%b1%e5%8f%8a%e5%bc%80%e6%94%be%e6%ba%90%e4%bb%a3%e7%a0%81%e8%bd%af%e4%bb%b6&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;FOSS&lt;/a&gt;与南美洲各区域对其的友好政治氛围的关系：&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;国家层面对FOSS GIS的接纳程度&lt;/li&gt;
 &lt;li&gt;围绕开源GIS技术支持和软件开发而进行的地方性的努力&lt;/li&gt;
@@ -28,7 +174,7 @@
 &lt;/ul&gt;
 &lt;h2 id=&#34;0x00-背景介绍&#34;&gt;0x00 背景介绍&lt;/h2&gt;
 &lt;h3 id=&#34;什么是自由与开源软件&#34;&gt;什么是自由与开源软件？&lt;/h3&gt;
-&lt;p&gt;FOSS一词指的是其许可证符合自由软件基金会列出的四项基本自由的软件：&lt;/p&gt;
+&lt;p&gt;FOSS一词指的是其许可证符合&lt;a href=&#34;https://zh.wikipedia.org/wiki/%e8%87%aa%e7%94%b1%e8%bd%af%e4%bb%b6%e5%9f%ba%e9%87%91%e4%bc%9a&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;自由软件基金会&lt;/a&gt;列出的四项基本自由的软件：&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;按照自己的意愿运行程序的自由；&lt;/li&gt;
 &lt;li&gt;研究和修改程序的自由；&lt;/li&gt;
@@ -75,7 +221,7 @@
 &lt;h4 id=&#34;社会因素&#34;&gt;社会因素&lt;/h4&gt;
 &lt;p&gt;南美洲政府促进自由和开放源码软件的原因不仅仅是经济问题，还涉及到对社会、主权和国家作用的态度。&lt;/p&gt;
 &lt;p&gt;微软秘鲁公司与立法者Edgar Villanueva就一项拟议的法案(后来被大大削弱)进行的公开辩论就说明了这一点，该法案将要求秘鲁政府的计算机使用自由和开源软件。微软警告说，这项规定将导致过高的迁移成本、平台不匹配和生产力降低。Villanueva和自由软件的倡导者反驳说，自由和开源软件是国家保证公民能够获得公共信息的唯一途径，包括存储和保护个人记录的代码（Chan 2004）。&lt;/p&gt;
-&lt;p&gt;Chan(2004)指出，这种推理方式与北美的FOSS推广有一个关键的区别，北美的支持者往往&lt;strong&gt;强调FOSS对消费者自由的保护&lt;/strong&gt;。设在南美洲的自由和开源软件倡导者帮助Villanueva起草了答复，他们的论点是&lt;strong&gt;保护集体社会权利&lt;/strong&gt;。一位参与辩论的阿根廷自由和开源软件倡导者说：&amp;ldquo;成本是重要的，但它只是次要的。当我们开始思考存储公民个人数据的政府系统中可能存在的不安全因素，以及处理这些数据的方式时，作为一个公民，我关心系统是如何保护这些数据的&amp;rdquo;（引自Chan 2007）。&lt;/p&gt;
+&lt;p&gt;Chan(2004)指出，这种推理方式与北美的FOSS推广有一个关键的区别，北美的支持者往往&lt;strong&gt;强调FOSS对消费者自由的保护&lt;/strong&gt;。设在南美洲的自由和开源软件倡导者帮助Villanueva起草了答复，他们的论点是&lt;strong&gt;保护集体社会权利&lt;/strong&gt;。一位参与辩论的阿根廷自由和开源软件倡导者说：&amp;ldquo;成本是重要的，但它只是次要的。当我们开始思考存储公民个人数据的政府系统中可能存在的不安全因素，以及处理这些数据的方式时，作为一个公民，我关心系统是如何保护这些数据的&amp;rdquo;（Chan 2007）。&lt;/p&gt;
 &lt;h4 id=&#34;政治因素&#34;&gt;政治因素&lt;/h4&gt;
 &lt;p&gt;在南美洲，从自由软件倡导者的言论一直到国家元首的演讲可以看出，社会各阶层都出现了&lt;strong&gt;将自由和开源软件作为摆脱以美国为基础的专有软件公司垄断地位的独立途径&lt;/strong&gt;的想法。Zanotti(2014)引用一位阿根廷黑客的话说。&amp;ldquo;如果我们谈论自由和开源软件，我们最终会谈论政治。我们不会谈论编程&amp;rdquo;。&lt;/p&gt;
 &lt;ul&gt;
@@ -108,11 +254,11 @@
 OSGeo是一个致力于推广开放地理空间技术的全球性非营利组织，已经培育了一些这样的社区（Brovelli等人，2012）。OSGeo提供了地方分会，填补了韩国、意大利和日本等地对特定语言支持的需求（OSGeo 2017）。这些分会提供的资源包括翻译文档、区域用户见面会、邮件列表和社交媒体源。在伊比利亚-美洲，OSGeo的西班牙语分会得到了一个名为Geoinquietos的小组的更多本地化分会的补充，在阿根廷、玻利维亚（圣克鲁斯）和巴西（巴西利亚）出现了分会。 本文稍后将对阿根廷Geoinquietos的案例进行更详细的研究。 一个类似的全球支持团体网络，称为Maptime，更多的是针对初学者，也看到了在哥伦比亚波哥大和巴西坎皮纳斯创建的分会，但这些似乎已经减弱，而Geoinquietos和其他有组织的努力已经增加了人气。&lt;/p&gt;
 &lt;p&gt;其他一些区域性会议也形成了一些势头，包括FOSS.4GIS.GOV系列会议，重点是巴西的政府应用(下文也提到)。在圣保罗和利马举行了讨论众包地理数据库OpenStreetMap和相关工具的区域 &amp;ldquo;地图状况 &amp;ldquo;会议，2014年在布宜诺斯艾利斯举行了世界性的 &amp;ldquo;地图状况 &amp;ldquo;会议。 阿根廷地质调查组织的成员在主办这次会议方面发挥了重要作用。&lt;/p&gt;
 &lt;p&gt;有些用户小组是围绕着某一产品或项目组织的。在巴西、秘鲁和哥伦比亚注册了流行的桌面地理信息系统程序QGIS的技术支持小组。 他们举行会议，提供研讨会，在社交媒体上广播新闻，并提供技术资源的链接，包括专门从事自由和开放源码软件GIS的顾问。 QGIS Brasil通过将界面翻译成葡萄牙语为软件开发做出了贡献，从而使更多的用户能够使用该软件（Nanni，2016年）。&lt;/p&gt;
-&lt;p&gt;其他团体则围绕特定的事业或身份组织起来。这些团体包括在哥伦比亚至少四所大学开展活动的各种YouthMappers分会，这是一个以学生为基础的团体全球网络的一部分，这些团体利用开放的地理空间技术开展服务和进行人道主义相关的绘图工作。另一个例子是GeoChicas，它动员妇女增加OpenStreetMap所包含的特征的广度，并强调文化景观中刻画的性别不平等，例如以女性命名的街道比例相对较小（Revista de la Universidad 2018）。该小组始于伊比利亚美洲，并已扩展到美国、非洲和欧洲许多地区。其基于自由和开放源码软件的性别空间重新映射是对批判性和女权主义地理信息系统实践的一个值得注意的贡献(Pavlovskaya和St. Martin，2007年)。&lt;/p&gt;
+&lt;p&gt;其他团体则围绕特定的事业或身份组织起来。这些团体包括在哥伦比亚至少四所大学开展活动的各种YouthMappers分会，这是一个以学生为基础的团体全球网络的一部分，这些团体利用开放的地理空间技术开展服务和进行人道主义相关的绘图工作。另一个例子是GeoChicas，它动员妇女增加OpenStreetMap所包含的特征的广度，并强调文化景观中刻画的性别不平等，例如以女性命名的街道比例相对较小（Revista de la Universidad 2018）。该小组始于伊比利亚美洲，并已扩展到美国、非洲和欧洲许多地区。其基于自由和开放源码软件的性别空间重新映射是对批判性和女权主义地理信息系统实践的一个值得注意的贡献(Pavlovskaya和St. Martin，2007)。&lt;/p&gt;
 &lt;h3 id=&#34;当地软件开发&#34;&gt;当地软件开发&lt;/h3&gt;
 &lt;p&gt;FOSS GIS在任何地区的存在的一个重要标志是当地软件的生产和改进。事实上，政府支持自由和开源软件的一个常见的论断是，资金应该投资于当地的技术专长和编程，而不是把钱给外国公司(Maldonado 2010年，Evangelista 2014年，Milano 2016年)。FOSS开发就是这一过程发生的证据。南美洲的FOSS GIS开发工作包括上述用户界面的翻译、产品的测试和使用，以及创建新的软件以满足社区需求。
 伊比利亚&amp;mdash;-美洲已经孵化了几个在南美洲广泛使用的自由和开放源码地理信息系统程序。其中之一是gvSIG，这是一个在西班牙巴伦西亚开发的桌面地理信息系统程序。它对南美洲的机构很有吸引力，因为它的界面最初是用西班牙语开发的，而且产品的许多文件和支持都是用西班牙语和葡萄牙语提供的。这使得新用户可以在没有语言障碍的情况下了解GIS。在gvSIG的15个全球用户组中，有8个设在南美国家14 ，有几个还举行了推广该软件的区域会议。&lt;/p&gt;
-&lt;p&gt;另一个称为SPRING的地理信息系统是由巴西国家空间研究所开发的（Câmara等人，1996年）。 SPRING的重点是从遥感数据中处理和提取信息，尽管它也支持矢量数据。 该软件一直是免费的，经过代码清理后，最终以开放源码许可的方式发布。 在超过100万行代码的情况下，它仍然在巴西的大学和政府应用中普遍使用（Medeiros，2011）。&lt;/p&gt;
+&lt;p&gt;另一个称为SPRING的地理信息系统是由巴西国家空间研究所开发的（Câmara等，1996）。 SPRING的重点是从遥感数据中处理和提取信息，尽管它也支持矢量数据。 该软件一直是免费的，经过代码清理后，最终以开放源码许可的方式发布。 在超过100万行代码的情况下，它仍然在巴西的大学和政府应用中普遍使用（Medeiros，2011）。&lt;/p&gt;
 &lt;p&gt;巴西政府和教育机构开发的其他开放源码地理信息系统工具包括i3Geo、E-foto和TerraLib。i3Geo是一个网络制图和地理处理框架，最初由巴西环境部开发，目前由卫生部维护。E-Foto是里约热内卢州立大学开发的摄影测量工作站软件。其目标是为学生提供一种成本低廉的方式来学习数字摄影测量工作流程（Mota等人，2012年）。最后，TerraLib是一个支持时空建模、数据挖掘和分析的软件库，特别是用于社会和环境应用。它由INPE在里约热内卢天主教大学(PUC-RIO)和开发GIS应用的非营利组织FUNCATE的支持下开发。据Câmara和Fonseca(2007年)说，TerraLib的目的是为巴西用户提供商业地理信息系统软件的替代产品，以避免被供应商锁定。 一个补充产品是TerraView，这是一个通用的地理信息系统，可以与TerraLib数据库配合使用（Câmara等人，2008年）。&lt;/p&gt;
 &lt;h2 id=&#34;0x03-案例分析&#34;&gt;0x03 案例分析&lt;/h2&gt;
 &lt;h3 id=&#34;fossgis-brasil杂志&#34;&gt;FOSSGIS Brasil杂志&lt;/h3&gt;
@@ -120,7 +266,7 @@ OSGeo是一个致力于推广开放地理空间技术的全球性非营利组织
 &lt;li&gt;雄心勃勃的努力：自由与开源GIS相关信息的传播媒介&lt;/li&gt;
 &lt;/ul&gt;
 &lt;p&gt;2011年，巴西系统分析师Fernando Quadro创办了一本葡萄牙语杂志，这也许是以期刊形式发布FOSS GIS信息的最雄心勃勃的努力。Quadro注意到巴西在FOSS GIS方面有很多有趣的工作，但是关于它的报道却分散在不同的出版物中，其中一些是以专有软件为中心。Quadro向他欣赏的人发出邀请，问他们是否愿意帮助创建一个完全关于FOSS GIS的出版物（Mendonça，2012）。结果是一本名为《FOSSGIS Brasil》的数字杂志，在2011-2012年出版了六期，内容丰富多彩，信息量很大，目标是每季度发行一次。期刊的长度大约在50至80页之间。&lt;/p&gt;
-&lt;p&gt;最初的编辑核心成员利用他们的专业网络寻找可以撰写内容的自由和开放源码地理信息系统专家。该杂志包括关于自由和开放源码地理信息系统软件选择的文章，一个比较自由和开放源码地理信息系统与专利软件功能的专栏，巴西政府各部门成功实施软件的案例研究，以及对巴西自由和开放源码地理信息系统界人物的采访。例如，有一期杂志刊登了与时任巴西国家空间研究所所长的Gilberto Câmara关于SPRING GIS发展的对话(Medeiros，2011年)。 该杂志的地图画廊部分允许在巴西工业和政府工作的GIS分析师和制图师展示他们的工作。画廊的贡献者包括地理学家、教师和州、市两级的政府规划官员。
+&lt;p&gt;最初的编辑核心成员利用他们的专业网络寻找可以撰写内容的自由和开放源码地理信息系统专家。该杂志包括关于自由和开放源码地理信息系统软件选择的文章，一个比较自由和开放源码地理信息系统与专利软件功能的专栏，巴西政府各部门成功实施软件的案例研究，以及对巴西自由和开放源码地理信息系统界人物的采访。例如，有一期杂志刊登了与时任巴西国家空间研究所所长的Gilberto Câmara关于SPRING GIS发展的对话(Medeiros，2011)。 该杂志的地图画廊部分允许在巴西工业和政府工作的GIS分析师和制图师展示他们的工作。画廊的贡献者包括地理学家、教师和州、市两级的政府规划官员。
 &lt;img src=&#34;images/%E5%9B%BE1.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
 &lt;center&gt;2011-2012年出版的FOSSGIS Brasil杂志&lt;/center&gt;
 &lt;ul&gt;
@@ -142,7 +288,7 @@ Geoinquietos阿根廷分会在2013年、2016年、2017年和2019年组织了 &am
 &lt;p&gt;Geoinquietos通过会议、非正式社交聚会(&amp;ldquo;geobeers&amp;rdquo;)、研讨会、FOSS4G会议、邮件列表、在线移动消息组和Twitter账户来完成其任务。该小组得到了阿根廷地理学院IGN的支持，从会议地点就可以看出，同时也得到了一些员工的FOSS宣传，包括当时的空间信息主任Horacio Castellaro。在这次会议的一个即兴小组讨论中，Castellaro提到他希望研究所完全摆脱与商业软件的联系。他强调，在商业软件上花费的每一比索都是国家损失的比索，而阿根廷没有办法把这些比索找回来。他认为，花在自由和开源软件上的比索将帮助更广泛的利益相关者群体。
 会议主任Malena Libman也在小组讨论中分享了Geoinquietos如何为她提供完成地理空间技术学位所需的社会和技术支持。她说，Geoinquietos的发展是很重要的，因为世界不只是由欧洲和美国组成。自由和开放源码软件在阿根廷的扩展使得以前无法获得的新数据得以公布。虽然Geoinquietos的组织者们为了举办这次会议付出了漫长的时间，而且入场费不到17美元，但Libman只要求参与者用他们对社区的参与来 &amp;ldquo;支付 &amp;ldquo;他们。
 会议组织者宣布，超过115人参加了此次活动，代表了政府、私营企业和大学的各种形式。也许是由于周边国家类似会议的稀缺性，造成了与会人员的多样性，其中包括来自智利、巴西、巴拉圭和委内瑞拉的与会者。在议程上发言的其他国家包括西班牙、墨西哥、秘鲁、意大利和美国。
-阿根廷地质调查组织是如何如此成功地定期组织大型、技术性、低成本和有吸引力的会议，将成员聚集在一个地域辽阔和多样化的国家？正如前面提到的小组会议所证明的那样，该小组得益于一个高度敬业和始终如一的核心人员，而不是一个人做大部分工作。它还通过与那些兴趣相近，但社会和技术关注途径略有不同的团体结盟，找到了力量。例如，2019年，Geoinquietos Argentina联合OpenStreetMap Argentina和GeoChicas，根据阿根廷法律正式注册为非政府组织。这个组织自称GeoLibres，也就是 &amp;ldquo;地理自由者&amp;rdquo;。该组织的成立是为了向这些团体所服务的技术社区发出长期承诺的信号(M. Miranda，个人通信，2018年12月3日)。&lt;/p&gt;
+阿根廷地质调查组织是如何如此成功地定期组织大型、技术性、低成本和有吸引力的会议，将成员聚集在一个地域辽阔和多样化的国家？正如前面提到的小组会议所证明的那样，该小组得益于一个高度敬业和始终如一的核心人员，而不是一个人做大部分工作。它还通过与那些兴趣相近，但社会和技术关注途径略有不同的团体结盟，找到了力量。例如，2019年，Geoinquietos Argentina联合OpenStreetMap Argentina和GeoChicas，根据阿根廷法律正式注册为非政府组织。这个组织自称GeoLibres，也就是 &amp;ldquo;地理自由者&amp;rdquo;。该组织的成立是为了向这些团体所服务的技术社区发出长期承诺的信号(M. Miranda 2018)。&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;Geoinquietos的成员
 该小组的许多成员是年轻的专业人员，他们通过当地的活动和该小组的交流渠道相互认识。这些联系由于该小组使用Telegram消息系统作为主要的交流手段而得到加强。Telegram可以被认为是一种发生在手机应用中的公共聊天室。Telegram的使用使Geoinquietos Argentina有别于其他许多使用传统邮件列表技术的FOSS GIS特殊兴趣小组，这让人回想起使用电子邮件多于短信的一代。即使是Twitter这样的社交媒体也可能过于正式和有条不紊，而不适合Geoinquietos Argentina Telegram聊天的特点，即欢快、轻松、偶尔也会有技术性的玩笑。&lt;/li&gt;
@@ -292,22 +438,22 @@ Geoinquietos阿根廷分会在2013年、2016年、2017年和2019年组织了 &am
 &lt;/ul&gt;
 &lt;h3 id=&#34;工具&#34;&gt;工具&lt;/h3&gt;
 &lt;ul&gt;
-&lt;li&gt;tortoisegit：https://tortoisegit.org/&lt;/li&gt;
-&lt;li&gt;数据字典工具：https://dbmstools.com/data-dictionary-tools&lt;/li&gt;
-&lt;li&gt;DBeaver Mock data generator：https://github.com/dbeaver/dbeaver/wiki/Mock-Data-Generation-in-DBeaver&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://tortoisegit.org/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;tortoisegit&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://dbmstools.com/data-dictionary-tools&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;数据字典工具&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://github.com/dbeaver/dbeaver/wiki/Mock-Data-Generation-in-DBeaver&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;DBeaver Mock data generator&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 &lt;h4 id=&#34;问卷调研&#34;&gt;问卷调研&lt;/h4&gt;
 &lt;ul&gt;
-&lt;li&gt;问卷星：https://www.wjx.cn/newwjx/manage/myquestionnaires.aspx&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://www.wjx.cn/newwjx/manage/myquestionnaires.aspx&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;问卷星&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 &lt;h4 id=&#34;需求分析&#34;&gt;需求分析&lt;/h4&gt;
 &lt;ul&gt;
 &lt;li&gt;
-&lt;p&gt;Mindmaps：https://www.mindmapping.com/&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;https://www.mindmapping.com/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Mindmaps&lt;/a&gt;&lt;/p&gt;
 &lt;/li&gt;
 &lt;li&gt;
-&lt;p&gt;mindmaps：https://www.mindmaps.app/
-Github开源，基于HTML5，Js，Css。项目地址：https://github.com/drichard/mindmaps&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;https://www.mindmaps.app/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;mindmaps&lt;/a&gt;
+Github开源，基于HTML5，Js，Css。&lt;a href=&#34;https://github.com/drichard/mindmaps&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;项目地址&lt;/a&gt;&lt;/p&gt;
 &lt;/li&gt;
 &lt;li&gt;
 &lt;p&gt;Mindmap：
@@ -318,220 +464,254 @@ chrome扩展&lt;/p&gt;
 实时协作&lt;/p&gt;
 &lt;/li&gt;
 &lt;li&gt;
-&lt;p&gt;FreeMind：https://sourceforge.net/projects/freemind/files/latest/download
+&lt;p&gt;&lt;a href=&#34;https://sourceforge.net/projects/freemind/files/latest/download&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;FreeMind&lt;/a&gt;
 免费思维导图软件，由Java编写&lt;/p&gt;
 &lt;/li&gt;
 &lt;li&gt;
-&lt;p&gt;XMinds:https://www.xminds.com/&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;https://www.xminds.com/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;XMinds&lt;/a&gt;&lt;/p&gt;
 &lt;/li&gt;
 &lt;/ul&gt;
 &lt;h4 id=&#34;架构设计&#34;&gt;架构设计&lt;/h4&gt;
 &lt;ul&gt;
-&lt;li&gt;Visio：https://products.office.com/zh-cn/visio/flowchart-software&lt;/li&gt;
-&lt;li&gt;plantuml：http://plantuml.com/zh/class-diagram&lt;/li&gt;
-&lt;li&gt;Edraw：https://www.edrawsoft.cn/&lt;/li&gt;
-&lt;li&gt;Rational Rose：&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a href=&#34;https://products.office.com/zh-cn/visio/flowchart-software&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Visio&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a href=&#34;http://plantuml.com/zh/class-diagram&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;plantuml&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a href=&#34;https://www.edrawsoft.cn/]&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Edraw&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Rational Rose：&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a href=&#34;https://app.diagrams.net&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;draw.io&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a href=&#34;http://staruml.io&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;staruml&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a href=&#34;https://www.omnigroup.com/omnigraffle/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Omnigraffle&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;OmniGraffle是由The Omni Group制作的一款绘图软件，其只能于运行在Mac OS X和iPad平台之上。它曾获得2002年的苹果设计奖。&lt;/p&gt;
+&lt;/li&gt;
 &lt;/ul&gt;
 &lt;h4 id=&#34;协作工具&#34;&gt;协作工具&lt;/h4&gt;
 &lt;ul&gt;
 &lt;li&gt;
-&lt;p&gt;Github：https://github.com/
+&lt;p&gt;&lt;a href=&#34;https://github.com/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Github&lt;/a&gt;
 共同开发，分布式版本控制&lt;/p&gt;
 &lt;/li&gt;
 &lt;li&gt;
-&lt;p&gt;SVN：https://tortoisesvn.net/&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;https://tortoisesvn.net/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;SVN&lt;/a&gt;&lt;/p&gt;
 &lt;/li&gt;
 &lt;li&gt;
-&lt;p&gt;OneNote：http://www.onenote.com/download/&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;http://www.onenote.com/download/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;OneNote&lt;/a&gt;&lt;/p&gt;
 &lt;/li&gt;
 &lt;li&gt;
-&lt;p&gt;Teamviewer：https://www.teamviewer.com/cn/
-多人会议&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;https://www.teamviewer.com/cn/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Teamviewer&lt;/a&gt;
+多人会议、远程控制&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;向日葵&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;小鱼互联&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;腾讯会议&lt;/p&gt;
 &lt;/li&gt;
 &lt;/ul&gt;
 &lt;h4 id=&#34;集成开发环境编辑器&#34;&gt;集成开发环境||编辑器&lt;/h4&gt;
 &lt;ul&gt;
 &lt;li&gt;
-&lt;p&gt;Atom：https://atom.io/
+&lt;p&gt;&lt;a href=&#34;https://atom.io/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Atom&lt;/a&gt;
 Github推出的跨平台文本编辑器&lt;/p&gt;
 &lt;/li&gt;
 &lt;li&gt;
-&lt;p&gt;Netbeans：https://netbeans.org/
+&lt;p&gt;&lt;a href=&#34;https://netbeans.org/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Netbeans&lt;/a&gt;
 开源Java IDE。可扩展于PHP、C++等语言开发&lt;/p&gt;
 &lt;/li&gt;
 &lt;li&gt;
-&lt;p&gt;Pycharm：https://www.jetbrains.com/pycharm/
+&lt;p&gt;&lt;a href=&#34;https://www.jetbrains.com/pycharm/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Pycharm&lt;/a&gt;
 JetBrains推出的Python开发环境&lt;/p&gt;
 &lt;/li&gt;
 &lt;li&gt;
-&lt;p&gt;IntelliJ IDEA：https://www.jetbrains.com/idea/
+&lt;p&gt;&lt;a href=&#34;https://www.jetbrains.com/idea/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;IntelliJ IDEA&lt;/a&gt;
 JetBrains推出的Java开发环境&lt;/p&gt;
 &lt;/li&gt;
 &lt;li&gt;
-&lt;p&gt;Eclipse：https://download.eclipse.org/
+&lt;p&gt;&lt;a href=&#34;https://download.eclipse.org/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Eclipse&lt;/a&gt;
 基于Java的可扩展开发平台，通过插件组件构建开发环境&lt;/p&gt;
 &lt;/li&gt;
 &lt;li&gt;
-&lt;p&gt;Code::Blocks：https://www.codeblocks.org/
+&lt;p&gt;&lt;a href=&#34;https://www.codeblocks.org/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Code::Blocks&lt;/a&gt;
 开源全功能C++开发环境，使用wxWidgets图形界面库，由C++语言开发完成&lt;/p&gt;
 &lt;/li&gt;
 &lt;li&gt;
-&lt;p&gt;Aptana Studio 3：https://www.aptana.com/
+&lt;p&gt;&lt;a href=&#34;https://www.aptana.com/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Aptana Studio 3&lt;/a&gt;
 开源Ajax开发环境&lt;/p&gt;
 &lt;/li&gt;
 &lt;li&gt;
-&lt;p&gt;CLion：https://www.jetbrains.com/clion
+&lt;p&gt;&lt;a href=&#34;https://www.jetbrains.com/clion&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;CLion&lt;/a&gt;
 Jetbrains推出的C++开发环境&lt;/p&gt;
 &lt;/li&gt;
 &lt;li&gt;
-&lt;p&gt;CodeLite:https://codelite.org
+&lt;p&gt;&lt;a href=&#34;https://codelite.org&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;CodeLite&lt;/a&gt;
 开源，C/C++编程语言的跨平台IDE&lt;/p&gt;
 &lt;/li&gt;
 &lt;li&gt;
-&lt;p&gt;Komodo:https://www.activestate.com/products/komodo-ide/&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;https://www.activestate.com/products/komodo-ide/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Komodo&lt;/a&gt;&lt;/p&gt;
 &lt;/li&gt;
 &lt;li&gt;
-&lt;p&gt;Xcode:https://developer.apple.com/xcode/&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;https://developer.apple.com/xcode/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Xcode&lt;/a&gt;&lt;/p&gt;
 &lt;/li&gt;
 &lt;li&gt;
-&lt;p&gt;Visual Studio：&lt;/p&gt;
+&lt;p&gt;Visual Studio&lt;/p&gt;
 &lt;/li&gt;
 &lt;li&gt;
-&lt;p&gt;Sublime：http://www.sublimetext.com/&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;http://www.sublimetext.com/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Sublime&lt;/a&gt;&lt;/p&gt;
 &lt;/li&gt;
 &lt;/ul&gt;
 &lt;h4 id=&#34;模拟&#34;&gt;模拟&lt;/h4&gt;
 &lt;ul&gt;
-&lt;li&gt;夜神模拟器：https://www.yeshen.com/&lt;/li&gt;
-&lt;li&gt;Easy-Mock：https://easy-mock.com/&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://www.yeshen.com/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;夜神模拟器&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://easy-mock.com/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Easy-Mock&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 &lt;h4 id=&#34;库&#34;&gt;库&lt;/h4&gt;
 &lt;ul&gt;
 &lt;li&gt;
-&lt;p&gt;ms4w：https://ms4w.com/
+&lt;p&gt;&lt;a href=&#34;https://ms4w.com/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;ms4w&lt;/a&gt;
 MapServer for Windows&lt;/p&gt;
 &lt;/li&gt;
 &lt;li&gt;
-&lt;p&gt;angular：https://angularjs.org/&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;https://angularjs.org/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;angular&lt;/a&gt;&lt;/p&gt;
 &lt;/li&gt;
 &lt;li&gt;
-&lt;p&gt;JQuery：http://jquery.com/&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;http://jquery.com/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;JQuery&lt;/a&gt;&lt;/p&gt;
 &lt;/li&gt;
 &lt;li&gt;
-&lt;p&gt;React：https://reactjs.org/
+&lt;p&gt;&lt;a href=&#34;https://reactjs.org/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;React&lt;/a&gt;
 js构建用户界面&lt;/p&gt;
 &lt;/li&gt;
 &lt;li&gt;
-&lt;p&gt;jQuery插件：http://plugins.jquery.com/&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;http://plugins.jquery.com/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;jQuery插件&lt;/a&gt;&lt;/p&gt;
 &lt;/li&gt;
 &lt;li&gt;
-&lt;p&gt;wxwidgets：https://www.wxwidgets.org/
+&lt;p&gt;&lt;a href=&#34;https://www.wxwidgets.org/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;wxwidgets&lt;/a&gt;
 轻量级C++ GUI库&lt;/p&gt;
 &lt;/li&gt;
 &lt;/ul&gt;
 &lt;h3 id=&#34;学习资源&#34;&gt;学习资源&lt;/h3&gt;
 &lt;ul&gt;
-&lt;li&gt;Javascript：https://github.com/jobbole/awesome-python-books&lt;/li&gt;
+&lt;li&gt;Javascript：&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://github.com/jobbole/awesome-python-books&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;python&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 &lt;h2 id=&#34;云平台&#34;&gt;云平台&lt;/h2&gt;
 &lt;ul&gt;
-&lt;li&gt;LeanCloud：https://leancloud.cn/&lt;/li&gt;
-&lt;li&gt;Google Earth Engine：https://earthengine.google.com/&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://leancloud.cn/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;LeanCloud&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://earthengine.google.com/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Google Earth Engine&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 &lt;h2 id=&#34;设计&#34;&gt;设计&lt;/h2&gt;
 &lt;h3 id=&#34;原型设计&#34;&gt;原型设计&lt;/h3&gt;
 &lt;ul&gt;
 &lt;li&gt;
-&lt;p&gt;ProcessOn：https://www.processon.com/diagrams
+&lt;p&gt;&lt;a href=&#34;https://www.processon.com/diagrams&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;ProcessOn&lt;/a&gt;
 团队协作、流图绘制&lt;/p&gt;
 &lt;/li&gt;
 &lt;li&gt;
-&lt;p&gt;Mockingbird：https://gomockingbird.com/home
+&lt;p&gt;&lt;a href=&#34;https://gomockingbird.com/home&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Mockingbird&lt;/a&gt;
 在线原型设计平台&lt;/p&gt;
 &lt;/li&gt;
 &lt;li&gt;
-&lt;p&gt;Gliffy：https://www.gliffy.com/&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;https://www.gliffy.com/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Gliffy&lt;/a&gt;&lt;/p&gt;
 &lt;/li&gt;
 &lt;li&gt;
-&lt;p&gt;Drawanywhere：http://www.drawanywhere.com/&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;http://www.drawanywhere.com/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Drawanywhere&lt;/a&gt;&lt;/p&gt;
 &lt;/li&gt;
 &lt;li&gt;
-&lt;p&gt;Sketch：http://www.sketchcn.com/
+&lt;p&gt;&lt;a href=&#34;http://www.sketchcn.com/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Sketch&lt;/a&gt;
 Mac用草图软件&lt;/p&gt;
 &lt;/li&gt;
 &lt;/ul&gt;
 &lt;h3 id=&#34;图标生成下载&#34;&gt;图标生成&amp;amp;&amp;amp;下载&lt;/h3&gt;
 &lt;ul&gt;
 &lt;li&gt;
-&lt;p&gt;Easyicon：https://www.easyicon.net/&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;https://www.easyicon.net/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Easyicon&lt;/a&gt;&lt;/p&gt;
 &lt;/li&gt;
 &lt;li&gt;
-&lt;p&gt;iconbench：http://iconbench.com/&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;http://iconbench.com/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;iconbench&lt;/a&gt;&lt;/p&gt;
 &lt;/li&gt;
 &lt;li&gt;
-&lt;p&gt;Fontello：http://fontello.com/&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;http://fontello.com/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Fontello&lt;/a&gt;&lt;/p&gt;
 &lt;/li&gt;
 &lt;li&gt;
-&lt;p&gt;icondeposit：https://www.icondeposit.com/&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;https://www.icondeposit.com/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;icondeposit&lt;/a&gt;&lt;/p&gt;
 &lt;/li&gt;
 &lt;li&gt;
-&lt;p&gt;iconarchive：http://www.iconarchive.com/&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;http://www.iconarchive.com/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;iconarchive&lt;/a&gt;&lt;/p&gt;
 &lt;/li&gt;
 &lt;li&gt;
-&lt;p&gt;Flaticon：https://www.flaticon.com/&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;https://www.flaticon.com/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Flaticon&lt;/a&gt;&lt;/p&gt;
 &lt;/li&gt;
 &lt;/ul&gt;
 &lt;h3 id=&#34;logo设计&#34;&gt;Logo设计&lt;/h3&gt;
 &lt;ul&gt;
-&lt;li&gt;logospire：http://logospire.com/&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://logospire.com/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;logospire&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://hunan.zbj.com&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;猪八戒网&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 &lt;h3 id=&#34;壁纸&#34;&gt;壁纸&lt;/h3&gt;
 &lt;ul&gt;
-&lt;li&gt;wallpaperscraft：https://wallpaperscraft.com/&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://wallpaperscraft.com/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;wallpaperscraft&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 &lt;h3 id=&#34;可视化&#34;&gt;可视化&lt;/h3&gt;
 &lt;ul&gt;
-&lt;li&gt;processing：https://processing.org/&lt;/li&gt;
-&lt;li&gt;Dionysus：https://www.mrzv.org/software/dionysus/&lt;/li&gt;
-&lt;li&gt;apophysis：http://www.apophysis.org/downloads.html&lt;/li&gt;
-&lt;li&gt;guihi：http://gudhi.gforge.inria.fr/python/latest/&lt;/li&gt;
-&lt;li&gt;d3.js：https://d3js.org&lt;/li&gt;
-&lt;li&gt;pyechart：https://pyecharts.org/#/zh-cn/global_options?id=legendopts：图例配置项&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://processing.org/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;processing&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://www.mrzv.org/software/dionysus/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Dionysus&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://www.apophysis.org/downloads.html&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;apophysis&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://gudhi.gforge.inria.fr/python/latest/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;guihi&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://d3js.org&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;d3.js&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://pyecharts.org/#/zh-cn/global_options?id=legendopts%ef%bc%9a%e5%9b%be%e4%be%8b%e9%85%8d%e7%bd%ae%e9%a1%b9&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;pyechart&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://graphviz.org/download/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Graphviz-Graph Visualization Software&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 &lt;h2 id=&#34;信息安全&#34;&gt;信息安全&lt;/h2&gt;
 &lt;h3 id=&#34;cc&#34;&gt;C&amp;amp;C&lt;/h3&gt;
 &lt;h3 id=&#34;网络流量&#34;&gt;网络流量&lt;/h3&gt;
-&lt;p&gt;whonix：https://www.whonix.org/&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;https://www.whonix.org/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;whonix&lt;/a&gt;&lt;/p&gt;
 &lt;h2 id=&#34;其他电脑工具&#34;&gt;其他电脑工具&lt;/h2&gt;
 &lt;h3 id=&#34;下载工具&#34;&gt;下载工具&lt;/h3&gt;
 &lt;ul&gt;
-&lt;li&gt;IDM：http://www.internetdownloadmanager.com/&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://www.internetdownloadmanager.com/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;IDM&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 &lt;h2 id=&#34;数学&#34;&gt;数学&lt;/h2&gt;
 &lt;ul&gt;
-&lt;li&gt;MIT Gibert-Strang：http://www-math.mit.edu/~gs/&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://www-math.mit.edu/~gs/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;MIT Gibert-Strang&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 &lt;h2 id=&#34;gis二次开发&#34;&gt;GIS二次开发&lt;/h2&gt;
 &lt;h3 id=&#34;python&#34;&gt;Python&lt;/h3&gt;
 &lt;ul&gt;
-&lt;li&gt;pywin32：https://github.com/mhammond/pywin32&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://github.com/mhammond/pywin32&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;pywin32&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 &lt;h2 id=&#34;github&#34;&gt;Github&lt;/h2&gt;
 &lt;h3 id=&#34;tools-summary&#34;&gt;Tools Summary&lt;/h3&gt;
 &lt;ul&gt;
-&lt;li&gt;伯乐在线整理：https://github.com/jobbole/&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://github.com/jobbole/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;伯乐在线整理&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 &lt;h2 id=&#34;论文&#34;&gt;论文&lt;/h2&gt;
+&lt;h3 id=&#34;论文资源&#34;&gt;论文资源&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://www.aminer.cn&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Aminer&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
 &lt;h3 id=&#34;论文查重&#34;&gt;论文查重&lt;/h3&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;a href=&#34;http://www.cnkicheck.info/&#34;&gt;http://www.cnkicheck.info/&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 &lt;h2 id=&#34;学习资源-1&#34;&gt;学习资源&lt;/h2&gt;
 &lt;ul&gt;
-&lt;li&gt;Git分支：https://learngitbranching.js.org/&lt;/li&gt;
-&lt;li&gt;图解Git：https://marklodato.github.io/visual-git-guide/index-zh-cn.html&lt;/li&gt;
-&lt;li&gt;GoogleBlog：https://ai.googleblog.com/&lt;/li&gt;
-&lt;li&gt;Wavelab_850：http://statweb.stanford.edu/~wavelab/Wavelab_850/download.html&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://learngitbranching.js.org/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Git分支&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://marklodato.github.io/visual-git-guide/index-zh-cn.html&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;图解Git&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://ai.googleblog.com/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;GoogleBlog&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://statweb.stanford.edu/~wavelab/Wavelab_850/download.html]&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Wavelab_850&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 </description>
     </item>
