@@ -1,0 +1,1177 @@
+<!DOCTYPE html><html lang="en-us" >
+
+<head>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  
+  
+  
+  <meta name="generator" content="Wowchemy 5.0.0-beta.1 for Hugo">
+  
+
+  
+
+  
+  
+
+  
+  
+  
+  
+  
+    
+    
+    
+  
+  
+
+  <meta name="author" content="CoolCats">
+
+  
+  
+  
+    
+  
+  <meta name="description" content="预测时空网络中的流量（如车辆、人群和自行车的流量），包括一个节点的进出流量和不同节点之间的转换，在交通系统中起着重要作用。然而，这是一个非常具有挑战性的问题，受多种复杂因素的影响，如不同地点之间的空间相关性，不同时间间隔之间的时间相关性，以及外部因素（如事件和天气）。此外，节点上的流量（称为节点流）和节点之间的过渡（边缘流）相互影响。为了解决这些问题，我们提出了一个多任务深度学习框架，同时预测整个时空网络的节点流和边缘流。基于全卷积网络，我们的方法设计了两个复杂的模型，分别用于预测节点流和边缘流。这两个模型通过耦合它们的中间层的潜伏表征来连接，并一起训练。外部因素也通过门控融合机制整合到框架中。在边缘流预测模型中，我们采用了一个嵌入组件来处理节点之间的稀疏过渡。我们基于北京和纽约市的出租车数据对我们的方法进行了评估。实验结果表明，我们的方法具有超越ConvLSTM、CNN和Markov Random Field等11种基准的优势。">
+
+  
+  <link rel="alternate" hreflang="en-us" href="https://coolgiserz.github.io/publication/flow-prediction-in-spatio-temporal-network-based-on-multitask-deep-learning/">
+
+  
+
+
+
+
+
+
+
+  
+
+
+
+
+  
+  
+
+  
+  
+  
+  <meta name="theme-color" content="#2962ff">
+  
+
+  
+  
+  
+  <script src="/js/mathjax-config.js"></script>
+  
+
+  
+  
+  
+  
+    
+    
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/academicons/1.9.0/css/academicons.min.css" integrity="sha512-W4yqoT1+8NLkinBLBZko+dFB2ZbHsYLDdr50VElllRcNt2Q4/GSs6u71UHKxB7S6JEMCp5Ve4xjh3eGQl/HRvg==" crossorigin="anonymous">
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css" integrity="sha256-FMvZuGapsJLjouA6k7Eo2lusoAX9i0ShlWFG6qt7SLc=" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.css" integrity="sha256-Vzbj7sDDS/woiFS3uNKo8eIuni59rjyNGtXfstRzStA=" crossorigin="anonymous">
+
+    
+    
+    
+      
+    
+    
+
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.7.1/leaflet.min.css" integrity="sha512-1xoFisiGdy9nvho8EgXuXvnpR5GAMSjFwp40gSRE3NwdUdIMIKuPa7bqoUhLD0O/5tPNhteAsE5XyyMi5reQVA==" crossorigin="anonymous">
+    
+
+    
+
+    
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/lazysizes/5.2.2/lazysizes.min.js" integrity="sha512-TmDwFLhg3UA4ZG0Eb4MIyT1O1Mb+Oww5kFG0uHqXsdbyZz9DcvYQhKpGgNkamAI6h2lGGZq2X8ftOJvF/XjTUg==" crossorigin="anonymous" async></script>
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js" integrity="" crossorigin="anonymous" async></script>
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+
+  
+
+  
+  
+  
+
+  
+  
+  
+  
+  <link rel="stylesheet" href="/css/wowchemy.min.9a952f8855716151bd6be611983e1078.css">
+
+  
+
+
+
+
+  
+
+  
+
+
+  
+  
+
+  
+
+  <link rel="manifest" href="/index.webmanifest">
+  <link rel="icon" type="image/png" href="/images/icon_hue03491371183284312b8b116a73ae5ab_79511_32x32_fill_lanczos_center_2.png">
+  <link rel="apple-touch-icon" type="image/png" href="/images/icon_hue03491371183284312b8b116a73ae5ab_79511_192x192_fill_lanczos_center_2.png">
+
+  <link rel="canonical" href="https://coolgiserz.github.io/publication/flow-prediction-in-spatio-temporal-network-based-on-multitask-deep-learning/">
+
+  
+  
+  
+  
+  
+  
+  
+    
+    
+  
+  
+  <meta property="twitter:card" content="summary">
+  
+  <meta property="og:site_name" content="CoolCats">
+  <meta property="og:url" content="https://coolgiserz.github.io/publication/flow-prediction-in-spatio-temporal-network-based-on-multitask-deep-learning/">
+  <meta property="og:title" content="「论文阅读」-基于多任务深度学习的时空流预测方法 | CoolCats">
+  <meta property="og:description" content="预测时空网络中的流量（如车辆、人群和自行车的流量），包括一个节点的进出流量和不同节点之间的转换，在交通系统中起着重要作用。然而，这是一个非常具有挑战性的问题，受多种复杂因素的影响，如不同地点之间的空间相关性，不同时间间隔之间的时间相关性，以及外部因素（如事件和天气）。此外，节点上的流量（称为节点流）和节点之间的过渡（边缘流）相互影响。为了解决这些问题，我们提出了一个多任务深度学习框架，同时预测整个时空网络的节点流和边缘流。基于全卷积网络，我们的方法设计了两个复杂的模型，分别用于预测节点流和边缘流。这两个模型通过耦合它们的中间层的潜伏表征来连接，并一起训练。外部因素也通过门控融合机制整合到框架中。在边缘流预测模型中，我们采用了一个嵌入组件来处理节点之间的稀疏过渡。我们基于北京和纽约市的出租车数据对我们的方法进行了评估。实验结果表明，我们的方法具有超越ConvLSTM、CNN和Markov Random Field等11种基准的优势。"><meta property="og:image" content="https://coolgiserz.github.io/images/icon_hue03491371183284312b8b116a73ae5ab_79511_512x512_fill_lanczos_center_2.png">
+  <meta property="twitter:image" content="https://coolgiserz.github.io/images/icon_hue03491371183284312b8b116a73ae5ab_79511_512x512_fill_lanczos_center_2.png"><meta property="og:locale" content="en-us">
+  
+    
+      <meta property="article:published_time" content="2020-12-08T16:13:24&#43;08:00">
+    
+    <meta property="article:modified_time" content="2020-12-08T16:13:24&#43;08:00">
+  
+
+  
+
+
+    
+
+
+
+
+
+
+
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://coolgiserz.github.io/publication/flow-prediction-in-spatio-temporal-network-based-on-multitask-deep-learning/"
+  },
+  "headline": "「论文阅读」-基于多任务深度学习的时空流预测方法",
+  
+  "datePublished": "2020-12-08T16:13:24+08:00",
+  "dateModified": "2020-12-08T16:13:24+08:00",
+  
+  "author": {
+    "@type": "Person",
+    "name": "CoolCats"
+  },
+  
+  "publisher": {
+    "@type": "Organization",
+    "name": "CoolCats",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://coolgiserz.github.io/images/icon_hue03491371183284312b8b116a73ae5ab_79511_192x192_fill_lanczos_center_2.png"
+    }
+  },
+  "description": "预测时空网络中的流量（如车辆、人群和自行车的流量），包括一个节点的进出流量和不同节点之间的转换，在交通系统中起着重要作用。然而，这是一个非常具有挑战性的问题，受多种复杂因素的影响，如不同地点之间的空间相关性，不同时间间隔之间的时间相关性，以及外部因素（如事件和天气）。此外，节点上的流量（称为节点流）和节点之间的过渡（边缘流）相互影响。为了解决这些问题，我们提出了一个多任务深度学习框架，同时预测整个时空网络的节点流和边缘流。基于全卷积网络，我们的方法设计了两个复杂的模型，分别用于预测节点流和边缘流。这两个模型通过耦合它们的中间层的潜伏表征来连接，并一起训练。外部因素也通过门控融合机制整合到框架中。在边缘流预测模型中，我们采用了一个嵌入组件来处理节点之间的稀疏过渡。我们基于北京和纽约市的出租车数据对我们的方法进行了评估。实验结果表明，我们的方法具有超越ConvLSTM、CNN和Markov Random Field等11种基准的优势。"
+}
+</script>
+
+  
+
+  
+
+
+  
+
+
+  
+
+
+
+
+
+  <title>「论文阅读」-基于多任务深度学习的时空流预测方法 | CoolCats</title>
+
+</head>
+
+
+<body id="top" data-spy="scroll" data-offset="70" data-target="#TableOfContents" class="page-wrapper  ">
+
+  
+  
+  
+  
+  
+  <script src="/js/wowchemy-init.js"></script>
+
+  <aside class="search-results" id="search">
+  <div class="container">
+    <section class="search-header">
+
+      <div class="row no-gutters justify-content-between mb-3">
+        <div class="col-6">
+          <h1>Search</h1>
+        </div>
+        <div class="col-6 col-search-close">
+          <a class="js-search" href="#"><i class="fas fa-times-circle text-muted" aria-hidden="true"></i></a>
+        </div>
+      </div>
+
+      <div id="search-box">
+        
+        <input name="q" id="search-query" placeholder="Search..." autocapitalize="off"
+        autocomplete="off" autocorrect="off" spellcheck="false" type="search" class="form-control">
+        
+      </div>
+
+    </section>
+    <section class="section-search-results">
+
+      <div id="search-hits">
+        
+      </div>
+
+    </section>
+  </div>
+</aside>
+
+
+  <div class="page-header">
+    
+
+
+
+
+
+
+
+
+
+
+
+
+<nav class="navbar navbar-expand-lg navbar-light compensate-for-scrollbar" id="navbar-main">
+  <div class="container">
+
+    
+    <div class="d-none d-lg-inline-flex">
+      <a class="navbar-brand" href="/">CoolCats</a>
+    </div>
+    
+
+    
+    <button type="button" class="navbar-toggler" data-toggle="collapse"
+            data-target="#navbar-content" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
+    <span><i class="fas fa-bars"></i></span>
+    </button>
+    
+
+    
+    <div class="navbar-brand-mobile-wrapper d-inline-flex d-lg-none">
+      <a class="navbar-brand" href="/">CoolCats</a>
+    </div>
+    
+
+    
+    
+    <div class="navbar-collapse main-menu-item collapse justify-content-end" id="navbar-content">
+
+      
+      <ul class="navbar-nav d-md-inline-flex">
+        
+
+        
+
+        
+        
+        
+
+        
+
+        
+        
+        
+        
+
+        
+          
+            
+            
+          
+          
+        
+
+        <li class="nav-item">
+          <a class="nav-link " href="/post"><span>博客</span></a>
+        </li>
+
+        
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        
+
+        
+        
+        
+        
+
+        
+          
+            
+            
+          
+          
+        
+
+        <li class="nav-item">
+          <a class="nav-link " href="/event"><span>趣事</span></a>
+        </li>
+
+        
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        
+
+        
+        
+        
+        
+
+        
+          
+            
+            
+          
+          
+        
+
+        <li class="nav-item">
+          <a class="nav-link " href="/project"><span>项目</span></a>
+        </li>
+
+        
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        
+
+        
+        
+        
+        
+
+        
+          
+            
+            
+          
+          
+        
+
+        <li class="nav-item">
+          <a class="nav-link " href="/publication"><span>论文</span></a>
+        </li>
+
+        
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        
+
+        
+        
+        
+        
+
+        
+          
+            
+            
+          
+          
+        
+
+        <li class="nav-item">
+          <a class="nav-link " href="/contact"><span>联系</span></a>
+        </li>
+
+        
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        
+
+        
+        
+        
+        
+
+        
+          
+            
+            
+          
+          
+        
+
+        <li class="nav-item">
+          <a class="nav-link " href="/files/cv.pdf"><span>简历</span></a>
+        </li>
+
+        
+        
+
+      
+
+        
+      </ul>
+    </div>
+
+    <ul class="nav-icons navbar-nav flex-row ml-auto d-flex pl-md-2">
+      
+      
+      <li class="nav-item">
+        <a class="nav-link js-search" href="#" aria-label="Search"><i class="fas fa-search" aria-hidden="true"></i></a>
+      </li>
+      
+
+      
+      
+
+      
+
+    </ul>
+
+  </div>
+</nav>
+
+
+  </div>
+
+  <div class="page-body">
+    
+
+
+
+
+
+
+
+
+<div class="pub">
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+  
+  
+<div class="article-container pt-3">
+  <h1>「论文阅读」-基于多任务深度学习的时空流预测方法</h1>
+
+  
+
+  
+    
+
+
+<div class="article-metadata">
+
+  
+  
+  
+  
+  <div>
+    
+
+  <span >
+      <a href="/author/coolcats/">CoolCats</a></span>
+  </div>
+  
+  
+
+  
+  <span class="article-date">
+    
+    
+      
+    
+    December 2020
+  </span>
+  
+
+  
+
+  
+
+  
+  
+  
+  
+  
+  <span class="middot-divider"></span>
+  <a href="/publication/flow-prediction-in-spatio-temporal-network-based-on-multitask-deep-learning/#disqus_thread"></a>
+  
+
+  
+  
+  <span class="middot-divider"></span>
+  <span class="article-categories">
+    <i class="fas fa-folder mr-1"></i><a href="/category/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB/">论文阅读</a></span>
+  
+
+</div>
+
+    
+
+
+
+
+
+
+
+
+  
+
+
+
+
+  
+
+
+
+<div class="btn-links mb-3">
+  
+  
+
+
+
+
+
+
+
+
+  
+
+
+
+<a class="btn btn-outline-primary my-1 mr-1" href="/publication/flow-prediction-in-spatio-temporal-network-based-on-multitask-deep-learning/flow-prediction-in-spatio-temporal-network-based-on-multitask-deep-learning.pdf" target="_blank" rel="noopener">
+  PDF
+</a>
+
+
+
+<button type="button" class="btn btn-outline-primary my-1 mr-1 js-cite-modal"
+        data-filename="/publication/flow-prediction-in-spatio-temporal-network-based-on-multitask-deep-learning/cite.bib">
+  Cite
+</button>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</div>
+
+
+  
+</div>
+
+
+
+  <div class="article-container">
+
+    
+
+    
+    
+    <div class="row">
+      <div class="col-md-1"></div>
+      <div class="col-md-10">
+        <div class="row">
+          <div class="col-12 col-md-3 pub-row-heading">Type</div>
+          <div class="col-12 col-md-9">
+            <a href="/publication/#2">
+              Journal article
+            </a>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-1"></div>
+    </div>
+    <div class="d-md-none space-below"></div>
+    
+
+    
+
+    <div class="space-below"></div>
+
+    <div class="article-style"><h1 id="flow-prediction-in-spatio-temporal-network-based-on-multitask-deep-learning">Flow Prediction in Spatio Temporal Network Based on Multitask Deep Learning</h1>
+<p>影响交通流的要素有哪些？</p>
+<ul>
+<li>空间依赖</li>
+<li>时间依赖</li>
+<li>外部因素</li>
+</ul>
+<p>因此要进行交通流预测，需要处理以下关键问题</p>
+<ul>
+<li>如何建模空间依赖？</li>
+<li>如何建模时间依赖？</li>
+<li>如何将有助于交通流预测的外部因素/知识融合到模型中？</li>
+</ul>
+<h2 id="参考资料">参考资料</h2>
+<ul>
+<li><a href="https://github.com/mbs0221/Multitask-Learning" target="_blank" rel="noopener">Multitask-Learning</a></li>
+</ul>
+</div>
+
+    
+
+
+
+
+
+
+<div class="share-box" aria-hidden="true">
+  <ul class="share">
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="https://twitter.com/intent/tweet?url=https://coolgiserz.github.io/publication/flow-prediction-in-spatio-temporal-network-based-on-multitask-deep-learning/&amp;text=%e3%80%8c%e8%ae%ba%e6%96%87%e9%98%85%e8%af%bb%e3%80%8d-%e5%9f%ba%e4%ba%8e%e5%a4%9a%e4%bb%bb%e5%8a%a1%e6%b7%b1%e5%ba%a6%e5%ad%a6%e4%b9%a0%e7%9a%84%e6%97%b6%e7%a9%ba%e6%b5%81%e9%a2%84%e6%b5%8b%e6%96%b9%e6%b3%95" target="_blank" rel="noopener" class="share-btn-twitter">
+          <i class="fab fa-twitter"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="https://www.facebook.com/sharer.php?u=https://coolgiserz.github.io/publication/flow-prediction-in-spatio-temporal-network-based-on-multitask-deep-learning/&amp;t=%e3%80%8c%e8%ae%ba%e6%96%87%e9%98%85%e8%af%bb%e3%80%8d-%e5%9f%ba%e4%ba%8e%e5%a4%9a%e4%bb%bb%e5%8a%a1%e6%b7%b1%e5%ba%a6%e5%ad%a6%e4%b9%a0%e7%9a%84%e6%97%b6%e7%a9%ba%e6%b5%81%e9%a2%84%e6%b5%8b%e6%96%b9%e6%b3%95" target="_blank" rel="noopener" class="share-btn-facebook">
+          <i class="fab fa-facebook"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="mailto:?subject=%e3%80%8c%e8%ae%ba%e6%96%87%e9%98%85%e8%af%bb%e3%80%8d-%e5%9f%ba%e4%ba%8e%e5%a4%9a%e4%bb%bb%e5%8a%a1%e6%b7%b1%e5%ba%a6%e5%ad%a6%e4%b9%a0%e7%9a%84%e6%97%b6%e7%a9%ba%e6%b5%81%e9%a2%84%e6%b5%8b%e6%96%b9%e6%b3%95&amp;body=https://coolgiserz.github.io/publication/flow-prediction-in-spatio-temporal-network-based-on-multitask-deep-learning/" target="_blank" rel="noopener" class="share-btn-email">
+          <i class="fas fa-envelope"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="https://www.linkedin.com/shareArticle?url=https://coolgiserz.github.io/publication/flow-prediction-in-spatio-temporal-network-based-on-multitask-deep-learning/&amp;title=%e3%80%8c%e8%ae%ba%e6%96%87%e9%98%85%e8%af%bb%e3%80%8d-%e5%9f%ba%e4%ba%8e%e5%a4%9a%e4%bb%bb%e5%8a%a1%e6%b7%b1%e5%ba%a6%e5%ad%a6%e4%b9%a0%e7%9a%84%e6%97%b6%e7%a9%ba%e6%b5%81%e9%a2%84%e6%b5%8b%e6%96%b9%e6%b3%95" target="_blank" rel="noopener" class="share-btn-linkedin">
+          <i class="fab fa-linkedin-in"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="whatsapp://send?text=%e3%80%8c%e8%ae%ba%e6%96%87%e9%98%85%e8%af%bb%e3%80%8d-%e5%9f%ba%e4%ba%8e%e5%a4%9a%e4%bb%bb%e5%8a%a1%e6%b7%b1%e5%ba%a6%e5%ad%a6%e4%b9%a0%e7%9a%84%e6%97%b6%e7%a9%ba%e6%b5%81%e9%a2%84%e6%b5%8b%e6%96%b9%e6%b3%95%20https://coolgiserz.github.io/publication/flow-prediction-in-spatio-temporal-network-based-on-multitask-deep-learning/" target="_blank" rel="noopener" class="share-btn-whatsapp">
+          <i class="fab fa-whatsapp"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="https://service.weibo.com/share/share.php?url=https://coolgiserz.github.io/publication/flow-prediction-in-spatio-temporal-network-based-on-multitask-deep-learning/&amp;title=%e3%80%8c%e8%ae%ba%e6%96%87%e9%98%85%e8%af%bb%e3%80%8d-%e5%9f%ba%e4%ba%8e%e5%a4%9a%e4%bb%bb%e5%8a%a1%e6%b7%b1%e5%ba%a6%e5%ad%a6%e4%b9%a0%e7%9a%84%e6%97%b6%e7%a9%ba%e6%b5%81%e9%a2%84%e6%b5%8b%e6%96%b9%e6%b3%95" target="_blank" rel="noopener" class="share-btn-weibo">
+          <i class="fab fa-weibo"></i>
+        </a>
+      </li>
+    
+  </ul>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+
+
+
+
+  
+
+
+
+
+
+
+
+<section id="comments">
+  
+    
+<div id="disqus_thread"></div>
+<script>
+  var disqus_config = function () {
+    
+    
+    
+  };
+  (function() {
+    if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+      document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+      return;
+    }
+    var d = document, s = d.createElement('script'); s.async = true;
+    s.src = 'https://' + "coolgiserz" + '.disqus.com/embed.js';
+    s.setAttribute('data-timestamp', +new Date());
+    (d.head || d.body).appendChild(s);
+  })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+
+
+  
+</section>
+
+
+
+
+
+
+
+
+  
+  
+  <div class="article-widget content-widget-hr">
+    <h3>Related</h3>
+    <ul>
+      
+      <li><a href="/publication/free-and-open-source-gis-in-south-america/">「论文阅读」-南美洲的自由和开放源码地理信息系统：政治进展和地方宣传</a></li>
+      
+      <li><a href="/publication/learning-geo-embeding-for-commute-flow-prediction/">「论文阅读」-学习用于通勤流嵌入的地理上下文嵌入</a></li>
+      
+    </ul>
+  </div>
+  
+
+
+
+
+
+  </div>
+</div>
+  </div>
+
+  <div class="page-footer">
+    
+    
+    <div class="container">
+      <footer class="site-footer">
+  
+
+  <p class="powered-by">
+    © CoolCats
+  </p>
+
+  
+  
+
+
+
+
+
+
+  <p class="powered-by">
+    
+    
+    
+    Published with
+    <a href="https://wowchemy.com/?utm_campaign=poweredby" target="_blank" rel="noopener">Wowchemy</a>  —
+    the free, <a href="https://github.com/wowchemy/wowchemy-hugo-modules" target="_blank" rel="noopener">
+    open source</a> website builder that empowers creators.
+    
+  </p>
+</footer>
+
+    </div>
+    
+  </div>
+
+  
+<div id="modal" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Cite</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <pre><code class="tex hljs"></code></pre>
+      </div>
+      <div class="modal-footer">
+        <a class="btn btn-outline-primary my-1 js-copy-cite" href="#" target="_blank">
+          <i class="fas fa-copy"></i> Copy
+        </a>
+        <a class="btn btn-outline-primary my-1 js-download-cite" href="#" target="_blank">
+          <i class="fas fa-download"></i> Download
+        </a>
+        <div id="modal-error"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+      
+
+    
+    
+    
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
+
+      
+      
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.imagesloaded/4.1.4/imagesloaded.pkgd.min.js" integrity="sha256-lqvxZrPLtfffUl2G/e7szqSvPBILGbwmsGE1MKlOi0Q=" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.isotope/3.0.6/isotope.pkgd.min.js" integrity="sha256-CBrpuqrMhXwcLLUd5tvQ4euBHCdh7wGlDfNz8vbu/iI=" crossorigin="anonymous"></script>
+      
+
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.js" integrity="sha256-yt2kYMy0w8AbtF89WXb2P1rfjcP/HTHLT7097U8Y5b8=" crossorigin="anonymous"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/instant.page/5.1.0/instantpage.min.js" integrity="sha512-1+qUtKoh9XZW7j+6LhRMAyOrgSQKenQ4mluTR+cvxXjP1Z54RxZuzstR/H9kgPXQsVB8IW7DMDFUJpzLjvhGSQ==" crossorigin="anonymous"></script>
+
+      
+
+      
+
+    
+
+    
+    
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.7.1/leaflet.min.js" integrity="sha512-SeiQaaDh73yrb56sTW/RgVdi/mMqNeM2oBwubFHagc5BkixSpP1fvqF47mKzPGWYSSy4RwbBunrJBQ4Co8fRWA==" crossorigin="anonymous"></script>
+    
+
+    
+    
+    <script>const code_highlighting = false;</script>
+    
+
+    
+    
+    
+    
+    
+    
+    <script>
+      const search_config = {"indexURI":"/index.json","minLength":1,"threshold":0.3};
+      const i18n = {"no_results":"No results found","placeholder":"Search...","results":"results found"};
+      const content_type = {
+        'post': "Posts",
+        'project': "Projects",
+        'publication' : "Publications",
+        'talk' : "Talks",
+        'slides' : "Slides"
+        };
+    </script>
+    
+
+    
+    
+
+    
+    
+    <script id="search-hit-fuse-template" type="text/x-template">
+      <div class="search-hit" id="summary-{{key}}">
+      <div class="search-hit-content">
+        <div class="search-hit-name">
+          <a href="{{relpermalink}}">{{title}}</a>
+          <div class="article-metadata search-hit-type">{{type}}</div>
+          <p class="search-hit-description">{{snippet}}</p>
+        </div>
+      </div>
+      </div>
+    </script>
+    
+
+    
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/3.2.1/fuse.min.js" integrity="sha256-VzgmKYmhsGNNN4Ph1kMW+BjoYJM2jV5i4IlFoeZA9XI=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/jquery.mark.min.js" integrity="sha256-4HLtjeVgH0eIB3aZ9mLYF6E8oU5chNdjU6p6rrXpl9U=" crossorigin="anonymous"></script>
+    
+
+    
+    
+
+    
+    
+    
+
+    
+    
+
+    
+    
+    <script id="dsq-count-scr" src="https://coolgiserz.disqus.com/count.js" async></script>
+    
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+      
+    
+    
+    
+    
+    <script src="/js/wowchemy.min.4f5a2f6096f092093c2c93a04232f15a.js"></script>
+
+    
+
+
+
+
+
+
+</body>
+</html>

@@ -81,7 +81,7 @@
 &lt;ul&gt;
 &lt;li&gt;将FOSS作为摆脱美国公司垄断的途径&lt;/li&gt;
 &lt;/ul&gt;
-&lt;p&gt;南美洲对自由和开源软件最有力的支持政策是在2000年代初所谓的 &amp;ldquo;粉红潮 &amp;ldquo;时期，当时有一大批有号召力的左倾领导人上台，承诺挑战该地区的新自由主义霸权。作为该议程的一部分，他们热衷于推广自由软件，以替代美国制造的专有软件。2007年4月，当时的厄瓜多尔总统Rafael Correa甚至在电视上宣称，公开采用自由和开放源码软件是&amp;rsquo;拉丁美洲迈向一体化的重要步伐，或者说是走向解放的重要一步&amp;rsquo;。&lt;/p&gt;
+&lt;p&gt;南美洲对自由和开源软件最有力的支持政策是在2000年代初所谓的 &amp;ldquo;粉红潮 &amp;ldquo;时期，当时有一大批有号召力的左倾领导人上台，承诺挑战该地区的新自由主义霸权。作为该议程的一部分，他们热衷于推广自由软件，以替代美国制造的专有软件。2007年4月，当时的厄瓜多尔总统Rafael Correa甚至在电视上宣称，公开采用自由和开放源码软件是&amp;rsquo;拉丁美洲迈向一体化的重要步伐，或者说是走向解放的重要一步&#39;。&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;将自由和开源软件与社会主义理论联系起来&lt;/li&gt;
 &lt;/ul&gt;
@@ -234,7 +234,7 @@ Geoinquietos阿根廷分会在2013年、2016年、2017年和2019年组织了 &am
 &lt;li&gt;有必要引入多任务学习框架吗？&lt;/li&gt;
 &lt;/ul&gt;
 &lt;h3 id=&#34;实验环境&#34;&gt;实验环境&lt;/h3&gt;
-&lt;p&gt;用到了通勤流、土地利用的数据集和距离计算的包。&lt;/p&gt;
+&lt;p&gt;用到了&lt;a href=&#34;https://lehd.ces.census.gov/data/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;通勤流&lt;/a&gt;、&lt;a href=&#34;https://www1.nyc.gov/site/planning/data-maps/open-data/dwn-pluto-mappluto.page&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;土地利用&lt;/a&gt;的数据集和距离计算的包。&lt;/p&gt;
 &lt;h3 id=&#34;实验结果&#34;&gt;实验结果&lt;/h3&gt;
 &lt;p&gt;观察实验结果可发现：&lt;/p&gt;
 &lt;ul&gt;
@@ -248,6 +248,31 @@ Geoinquietos阿根廷分会在2013年、2016年、2017年和2019年组织了 &am
 &lt;center&gt;残差分析&lt;/center&gt;
 &lt;h2 id=&#34;0x04-结论&#34;&gt;0x04 结论&lt;/h2&gt;
 &lt;p&gt;总结全文，文章提出利用地理上下文信息预测通勤流，并提出一个嵌入学习框架来学习地理单元的上下文信息，结果表明引入这种信息是有助于通勤流预测的。&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>「论文阅读」-基于多任务深度学习的时空流预测方法</title>
+      <link>https://coolgiserz.github.io/publication/flow-prediction-in-spatio-temporal-network-based-on-multitask-deep-learning/</link>
+      <pubDate>Tue, 08 Dec 2020 16:13:24 +0800</pubDate>
+      <guid>https://coolgiserz.github.io/publication/flow-prediction-in-spatio-temporal-network-based-on-multitask-deep-learning/</guid>
+      <description>&lt;h1 id=&#34;flow-prediction-in-spatio-temporal-network-based-on-multitask-deep-learning&#34;&gt;Flow Prediction in Spatio Temporal Network Based on Multitask Deep Learning&lt;/h1&gt;
+&lt;p&gt;影响交通流的要素有哪些？&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;空间依赖&lt;/li&gt;
+&lt;li&gt;时间依赖&lt;/li&gt;
+&lt;li&gt;外部因素&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;因此要进行交通流预测，需要处理以下关键问题&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;如何建模空间依赖？&lt;/li&gt;
+&lt;li&gt;如何建模时间依赖？&lt;/li&gt;
+&lt;li&gt;如何将有助于交通流预测的外部因素/知识融合到模型中？&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;参考资料&#34;&gt;参考资料&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://github.com/mbs0221/Multitask-Learning&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Multitask-Learning&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
 </description>
     </item>
     
