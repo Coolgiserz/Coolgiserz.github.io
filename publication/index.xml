@@ -17,7 +17,8 @@
       <link>https://coolgiserz.github.io/publication/tgcn-a-temporal-graph-convolutional-network-for-traffic-prediction/</link>
       <pubDate>Thu, 24 Dec 2020 11:20:31 +0800</pubDate>
       <guid>https://coolgiserz.github.io/publication/tgcn-a-temporal-graph-convolutional-network-for-traffic-prediction/</guid>
-      <description>&lt;h2 id=&#34;文章分析&#34;&gt;文章分析&lt;/h2&gt;
+      <description>&lt;h1 id=&#34;t-gcn-a-temporal-graph-convolutional-network-for-traffic-prediction&#34;&gt;T-GCN: A Temporal Graph Convolutional Network for Traffic Prediction&lt;/h1&gt;
+&lt;h2 id=&#34;文章分析&#34;&gt;文章分析&lt;/h2&gt;
 &lt;h3 id=&#34;本文工作&#34;&gt;本文工作&lt;/h3&gt;
 &lt;p&gt;以上方法考虑了交通状况的动态变化，但忽略了空间上的依赖性，即对于预测模型而言交通状况的变化不受路网的约束，因此无法准确预测交通数据的状态。为了更好地描述空间特征，一些研究[14]、[15]、[16]引入卷积神经网络进行空间建模，然而卷积神经网络通常用于图像、规则网格等欧式数据[17]。这种模型在拓扑结构复杂的城市路网环境下无法工作，所以本质上无法描述空间依赖性。&lt;/p&gt;
 &lt;p&gt;为了解决上述问题，我们提出了一种新的交通预测方法，称为时间图卷积网络（T-GCN），用于基于城市路网的交通预测任务。我们的贡献有三个方面：&lt;/p&gt;
@@ -68,7 +69,7 @@
 &lt;p&gt;同样的方法，Los-loop的结果如7(c)和7(d)所示，可以看出，当隐藏单元数为64时，预测精度最高，预测误差最小。&lt;/p&gt;
 &lt;p&gt;&lt;img src=&#34;images/fig7.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
 &lt;h5 id=&#34;数据划分&#34;&gt;数据划分&lt;/h5&gt;
-&lt;p&gt;对于输入层，在训练过程中取训练数据集（占整体数据的80%）作为输入，其余数据作为测试过程的输入。T-GCM模型采用Adam优化器进行训练。&lt;/p&gt;
+&lt;p&gt;对于输入层，在训练过程中取训练数据集（占整体数据的80%）作为输入，其余数据作为测试过程的输入。T-GCN模型采用Adam优化器进行训练。&lt;/p&gt;
 &lt;h4 id=&#34;实验结果&#34;&gt;实验结果&lt;/h4&gt;
 &lt;p&gt;与baseline模型对比。&lt;/p&gt;
 &lt;ul&gt;
