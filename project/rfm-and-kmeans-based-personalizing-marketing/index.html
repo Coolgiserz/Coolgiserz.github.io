@@ -234,6 +234,44 @@
 
 
 
+
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-HWGB23T7ER"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+
+  function gtag() {
+      dataLayer.push(arguments);
+  }
+
+  function trackOutboundLink(url, target) {
+    gtag('event', 'click', {
+         'event_category': 'outbound',
+         'event_label': url,
+         'transport_type': 'beacon',
+         'event_callback': function () {
+           if (target !== '_blank') {
+             document.location = url;
+           }
+         }
+    });
+    console.debug("Outbound link clicked: " + url);
+  }
+
+  function onClickCallback(event) {
+    if ((event.target.tagName !== 'A') || (event.target.host === window.location.host)) {
+      return;
+    }
+    trackOutboundLink(event.target, event.target.getAttribute('target'));  
+  }
+
+  gtag('js', new Date());
+  gtag('config', 'G-HWGB23T7ER', {});
+
+  
+  document.addEventListener('click', onClickCallback, false);
+</script>
+
+
   
 
   
@@ -791,6 +829,12 @@
 <p>将每个维度的等级进行综合可以对用户有一个综合评价，综合的方式有很多，最简单的可以是三个维度的加和。</p>
 <h4 id="法二基于聚类的用户分群">法二：基于聚类的用户分群</h4>
 <p>前面基于阈值的分群方法虽然简单容易操作，但是也过于一刀切，且对经验依赖较大。这里考虑对用户按照等级特征进行聚类实现用户分群。但该方法的缺点是对于每一个类簇需要人为地去解释，且如何确定类簇的个数也是一个问题。</p>
+<h2 id="资源小结">资源小结</h2>
+<p>用户分群还可以基于很多特征进行，如活跃度、内容贡献、注册时间等.</p>
+<ul>
+<li><a href="https://mta.qq.com/docs/ctr_user_group.html" target="_blank" rel="noopener">腾讯移动分析-用户分群</a></li>
+<li><a href="http://www.woshipm.com/operate/598103.html" target="_blank" rel="noopener">读懂用户运营体系：用户分层和分群</a></li>
+</ul>
 
     </div>
 

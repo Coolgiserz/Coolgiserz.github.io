@@ -34,7 +34,7 @@
   
     
   
-  <meta name="description" content="">
+  <meta name="description" content="Pay Attention！">
 
   
   <link rel="alternate" hreflang="en-us" href="https://coolgiserz.github.io/post/attention-mechanism/">
@@ -234,6 +234,44 @@
 
 
 
+
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-HWGB23T7ER"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+
+  function gtag() {
+      dataLayer.push(arguments);
+  }
+
+  function trackOutboundLink(url, target) {
+    gtag('event', 'click', {
+         'event_category': 'outbound',
+         'event_label': url,
+         'transport_type': 'beacon',
+         'event_callback': function () {
+           if (target !== '_blank') {
+             document.location = url;
+           }
+         }
+    });
+    console.debug("Outbound link clicked: " + url);
+  }
+
+  function onClickCallback(event) {
+    if ((event.target.tagName !== 'A') || (event.target.host === window.location.host)) {
+      return;
+    }
+    trackOutboundLink(event.target, event.target.getAttribute('target'));  
+  }
+
+  gtag('js', new Date());
+  gtag('config', 'G-HWGB23T7ER', {});
+
+  
+  document.addEventListener('click', onClickCallback, false);
+</script>
+
+
   
 
   
@@ -265,8 +303,8 @@
   
   <meta property="og:site_name" content="CoolCats">
   <meta property="og:url" content="https://coolgiserz.github.io/post/attention-mechanism/">
-  <meta property="og:title" content="Attention Mechanism | CoolCats">
-  <meta property="og:description" content=""><meta property="og:image" content="https://coolgiserz.github.io/images/icon_hue03491371183284312b8b116a73ae5ab_79511_512x512_fill_lanczos_center_2.png">
+  <meta property="og:title" content="浅谈注意力机制 | CoolCats">
+  <meta property="og:description" content="Pay Attention！"><meta property="og:image" content="https://coolgiserz.github.io/images/icon_hue03491371183284312b8b116a73ae5ab_79511_512x512_fill_lanczos_center_2.png">
   <meta property="twitter:image" content="https://coolgiserz.github.io/images/icon_hue03491371183284312b8b116a73ae5ab_79511_512x512_fill_lanczos_center_2.png"><meta property="og:locale" content="en-us">
   
     
@@ -298,7 +336,7 @@
     "@type": "WebPage",
     "@id": "https://coolgiserz.github.io/post/attention-mechanism/"
   },
-  "headline": "Attention Mechanism",
+  "headline": "浅谈注意力机制",
   
   "datePublished": "2020-12-10T20:43:31+08:00",
   "dateModified": "2020-12-10T20:43:31+08:00",
@@ -316,7 +354,7 @@
       "url": "https://coolgiserz.github.io/images/icon_hue03491371183284312b8b116a73ae5ab_79511_192x192_fill_lanczos_center_2.png"
     }
   },
-  "description": ""
+  "description": "Pay Attention！"
 }
 </script>
 
@@ -334,7 +372,7 @@
 
 
 
-  <title>Attention Mechanism | CoolCats</title>
+  <title>浅谈注意力机制 | CoolCats</title>
 
 </head>
 
@@ -651,7 +689,7 @@
   
   
 <div class="article-container pt-3">
-  <h1>Attention Mechanism</h1>
+  <h1>浅谈注意力机制</h1>
 
   
 
@@ -679,7 +717,7 @@
   
   <span class="middot-divider"></span>
   <span class="article-reading-time">
-    0 min read
+    1 min read
   </span>
   
 
@@ -720,13 +758,26 @@
   <div class="article-container">
 
     <div class="article-style">
-      
+      <p>自注意力机制
+从序列预测问题开始，到自注意力机制
+RNN到LSTM
+注意力机制
+注意力机制的变种
+自注意力机制
+自注意力机制的缺点</p>
+
     </div>
 
     
 
 
 
+
+<div class="article-tags">
+  
+  <a class="badge badge-light" href="/tag/%E6%B3%A8%E6%84%8F%E5%8A%9B%E6%9C%BA%E5%88%B6/">注意力机制</a>
+  
+</div>
 
 
 
@@ -741,7 +792,7 @@
       
       
       <li>
-        <a href="https://twitter.com/intent/tweet?url=https://coolgiserz.github.io/post/attention-mechanism/&amp;text=Attention%20Mechanism" target="_blank" rel="noopener" class="share-btn-twitter">
+        <a href="https://twitter.com/intent/tweet?url=https://coolgiserz.github.io/post/attention-mechanism/&amp;text=%e6%b5%85%e8%b0%88%e6%b3%a8%e6%84%8f%e5%8a%9b%e6%9c%ba%e5%88%b6" target="_blank" rel="noopener" class="share-btn-twitter">
           <i class="fab fa-twitter"></i>
         </a>
       </li>
@@ -754,7 +805,7 @@
       
       
       <li>
-        <a href="https://www.facebook.com/sharer.php?u=https://coolgiserz.github.io/post/attention-mechanism/&amp;t=Attention%20Mechanism" target="_blank" rel="noopener" class="share-btn-facebook">
+        <a href="https://www.facebook.com/sharer.php?u=https://coolgiserz.github.io/post/attention-mechanism/&amp;t=%e6%b5%85%e8%b0%88%e6%b3%a8%e6%84%8f%e5%8a%9b%e6%9c%ba%e5%88%b6" target="_blank" rel="noopener" class="share-btn-facebook">
           <i class="fab fa-facebook"></i>
         </a>
       </li>
@@ -767,7 +818,7 @@
       
       
       <li>
-        <a href="mailto:?subject=Attention%20Mechanism&amp;body=https://coolgiserz.github.io/post/attention-mechanism/" target="_blank" rel="noopener" class="share-btn-email">
+        <a href="mailto:?subject=%e6%b5%85%e8%b0%88%e6%b3%a8%e6%84%8f%e5%8a%9b%e6%9c%ba%e5%88%b6&amp;body=https://coolgiserz.github.io/post/attention-mechanism/" target="_blank" rel="noopener" class="share-btn-email">
           <i class="fas fa-envelope"></i>
         </a>
       </li>
@@ -780,7 +831,7 @@
       
       
       <li>
-        <a href="https://www.linkedin.com/shareArticle?url=https://coolgiserz.github.io/post/attention-mechanism/&amp;title=Attention%20Mechanism" target="_blank" rel="noopener" class="share-btn-linkedin">
+        <a href="https://www.linkedin.com/shareArticle?url=https://coolgiserz.github.io/post/attention-mechanism/&amp;title=%e6%b5%85%e8%b0%88%e6%b3%a8%e6%84%8f%e5%8a%9b%e6%9c%ba%e5%88%b6" target="_blank" rel="noopener" class="share-btn-linkedin">
           <i class="fab fa-linkedin-in"></i>
         </a>
       </li>
@@ -793,7 +844,7 @@
       
       
       <li>
-        <a href="whatsapp://send?text=Attention%20Mechanism%20https://coolgiserz.github.io/post/attention-mechanism/" target="_blank" rel="noopener" class="share-btn-whatsapp">
+        <a href="whatsapp://send?text=%e6%b5%85%e8%b0%88%e6%b3%a8%e6%84%8f%e5%8a%9b%e6%9c%ba%e5%88%b6%20https://coolgiserz.github.io/post/attention-mechanism/" target="_blank" rel="noopener" class="share-btn-whatsapp">
           <i class="fab fa-whatsapp"></i>
         </a>
       </li>
@@ -806,7 +857,7 @@
       
       
       <li>
-        <a href="https://service.weibo.com/share/share.php?url=https://coolgiserz.github.io/post/attention-mechanism/&amp;title=Attention%20Mechanism" target="_blank" rel="noopener" class="share-btn-weibo">
+        <a href="https://service.weibo.com/share/share.php?url=https://coolgiserz.github.io/post/attention-mechanism/&amp;title=%e6%b5%85%e8%b0%88%e6%b3%a8%e6%84%8f%e5%8a%9b%e6%9c%ba%e5%88%b6" target="_blank" rel="noopener" class="share-btn-weibo">
           <i class="fab fa-weibo"></i>
         </a>
       </li>

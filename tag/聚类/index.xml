@@ -42,6 +42,12 @@
 &lt;p&gt;将每个维度的等级进行综合可以对用户有一个综合评价，综合的方式有很多，最简单的可以是三个维度的加和。&lt;/p&gt;
 &lt;h4 id=&#34;法二基于聚类的用户分群&#34;&gt;法二：基于聚类的用户分群&lt;/h4&gt;
 &lt;p&gt;前面基于阈值的分群方法虽然简单容易操作，但是也过于一刀切，且对经验依赖较大。这里考虑对用户按照等级特征进行聚类实现用户分群。但该方法的缺点是对于每一个类簇需要人为地去解释，且如何确定类簇的个数也是一个问题。&lt;/p&gt;
+&lt;h2 id=&#34;资源小结&#34;&gt;资源小结&lt;/h2&gt;
+&lt;p&gt;用户分群还可以基于很多特征进行，如活跃度、内容贡献、注册时间等.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://mta.qq.com/docs/ctr_user_group.html&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;腾讯移动分析-用户分群&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://www.woshipm.com/operate/598103.html&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;读懂用户运营体系：用户分层和分群&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
 </description>
     </item>
     
