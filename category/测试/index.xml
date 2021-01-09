@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>测试 | CoolCats</title>
+    <link>https://coolgiserz.github.io/category/%E6%B5%8B%E8%AF%95/</link>
+      <atom:link href="https://coolgiserz.github.io/category/%E6%B5%8B%E8%AF%95/index.xml" rel="self" type="application/rss+xml" />
+    <description>测试</description>
+    <generator>Wowchemy (https://wowchemy.com)</generator><language>en-us</language><copyright>© CoolCats</copyright><lastBuildDate>Fri, 20 Dec 2019 13:36:16 +0800</lastBuildDate>
+    <image>
+      <url>https://coolgiserz.github.io/images/icon_hue03491371183284312b8b116a73ae5ab_79511_512x512_fill_lanczos_center_2.png</url>
+      <title>测试</title>
+      <link>https://coolgiserz.github.io/category/%E6%B5%8B%E8%AF%95/</link>
+    </image>
+    
+    <item>
+      <title>认识自动化测试</title>
+      <link>https://coolgiserz.github.io/post/automated-testing-startup/</link>
+      <pubDate>Fri, 20 Dec 2019 13:36:16 +0800</pubDate>
+      <guid>https://coolgiserz.github.io/post/automated-testing-startup/</guid>
+      <description>&lt;p&gt;持续集成&lt;/p&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>
