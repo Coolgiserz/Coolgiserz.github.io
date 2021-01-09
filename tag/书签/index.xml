@@ -324,5 +324,354 @@ Mac用草图软件&lt;/p&gt;
 </description>
     </item>
     
+    <item>
+      <title>MCM/ICM 2019 Problem E</title>
+      <link>https://coolgiserz.github.io/post/icm-2019/</link>
+      <pubDate>Tue, 29 Jan 2019 23:02:35 +0800</pubDate>
+      <guid>https://coolgiserz.github.io/post/icm-2019/</guid>
+      <description>&lt;p&gt;论文查阅系统：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;http://lib.csu.edu.cn/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;CSU&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://libdb.csu.edu.cn/resdetail?rid=&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Web Of Science&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://libdb.csu.edu.cn/resdetail?rid=ELSEVIER&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;ScienceDirect&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://libdb.csu.edu.cn/resdetail?rid=WF&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;万方数据资源系统&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://libdb.csu.edu.cn/resdetail?rid=VIP&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;维普中文期刊&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://libdb.csu.edu.cn/go?id=IEEE&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;IEEE&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;keywords&#34;&gt;Keywords&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;环境（退化/保护）成本&lt;/li&gt;
+&lt;li&gt;环境会计&lt;/li&gt;
+&lt;li&gt;环境成本计算&lt;/li&gt;
+&lt;li&gt;（虚拟/实际）治理成本&lt;/li&gt;
+&lt;li&gt;生态系统管理/服务&lt;/li&gt;
+&lt;li&gt;生态系统服务功能&lt;/li&gt;
+&lt;li&gt;生态系统服务价值&lt;/li&gt;
+&lt;li&gt;土地开发项目&lt;/li&gt;
+&lt;li&gt;生态系统价值计算&lt;/li&gt;
+&lt;li&gt;价值评估&lt;/li&gt;
+&lt;li&gt;绿色经济核算&lt;/li&gt;
+&lt;li&gt;绿色发展（实践/框架）&lt;/li&gt;
+&lt;li&gt;生物物理量化&lt;/li&gt;
+&lt;li&gt;生物圈&lt;/li&gt;
+&lt;li&gt;生物多样性
+&lt;img src=&#34;https://i.imgur.com/WNbT5MD.png&#34; alt=&#34;&#34;&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;主题&#34;&gt;主题&lt;/h3&gt;
+&lt;p&gt;环境退化的代价？&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;生态功能的持续性利益建模
+&lt;ul&gt;
+&lt;li&gt;效益
+&lt;ul&gt;
+&lt;li&gt;供应
+&lt;ul&gt;
+&lt;li&gt;食物供应&lt;/li&gt;
+&lt;li&gt;植物授粉&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;调节
+&lt;ul&gt;
+&lt;li&gt;植物碳固定——能值法？&lt;/li&gt;
+&lt;li&gt;水（自净、防洪等）——以人类基础设施替代（如净水设施、防洪设施等）&lt;/li&gt;
+&lt;li&gt;生物多样性——难点&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;文化
+&lt;ul&gt;
+&lt;li&gt;精神&lt;/li&gt;
+&lt;li&gt;宗教&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;考虑
+&lt;ul&gt;
+&lt;li&gt;定义生态系统服务&lt;/li&gt;
+&lt;li&gt;等效替代
+水环境退化成本——人工水污染治理花费（查数据）+生物多样性损失建模（？）
+森林退化——空气污染治理成本&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;tasks&#34;&gt;Tasks&lt;/h3&gt;
+&lt;ol&gt;
+&lt;li&gt;建立一个生态服务估值模型&lt;/li&gt;
+&lt;li&gt;用模型评价不同规模的土地利用项目的成本规模效益分析&lt;/li&gt;
+&lt;li&gt;基于以上分析模型设计评估模型的有效性&lt;/li&gt;
+&lt;li&gt;模型对于土地利用项目规划者和管理者有何启示？&lt;/li&gt;
+&lt;li&gt;模型随着时间变化需要作出怎样的修改？&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h3 id=&#34;existing-mathods&#34;&gt;Existing Mathods&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;NPP(net primary production)&lt;/li&gt;
+&lt;li&gt;元分析
+&lt;img src=&#34;https://i.imgur.com/9pYXKfu.png&#34; alt=&#34;&#34;&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;references&#34;&gt;References&lt;/h3&gt;
+&lt;h4 id=&#34;an-ecological-perspective-on-the-valuation-of-ecosystem-services&#34;&gt;&lt;strong&gt;An ecological perspective on the valuation of ecosystem services&lt;/strong&gt;&lt;/h4&gt;
+&lt;h4 id=&#34;the-value-of-the-worlds-ecosystem-services-and-natural-capital&#34;&gt;&lt;strong&gt;The value of the world’s ecosystem services and natural capital&lt;/strong&gt;&lt;/h4&gt;
+&lt;p&gt;&lt;a href=&#34;https://www.biodiversity.ru/programs/ecoservices/library/common/doc/Costanza_1997.pdf&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;[paper]&lt;/a&gt;
+&lt;img src=&#34;https://i.imgur.com/bZwiUwR.png&#34; alt=&#34;&#34;&gt;
+&lt;img src=&#34;https://i.imgur.com/Z6R45xK.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;h4 id=&#34;valuing-ecosystem-services-a-shadow-price-for-net-primary-productionhttpsitesbueduclivegfiles201312arr01pdf&#34;&gt;&lt;strong&gt;Valuing ecosystem services: A shadow price for net primary production&lt;/strong&gt;：http://sites.bu.edu/cliveg/files/2013/12/arr01.pdf&lt;/h4&gt;
+&lt;p&gt;从两个问题出发：生态系统服务对于传统指标如GDP度量的经济是否有贡献？这种贡献能否被用作隐式的价格来进行计算？
+net primary production&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;相关因素
+&lt;ul&gt;
+&lt;li&gt;碳固定&lt;/li&gt;
+&lt;li&gt;蒸腾作用&lt;/li&gt;
+&lt;li&gt;土地腐蚀（负相关）&lt;/li&gt;
+&lt;li&gt;生物量&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;直接&lt;/li&gt;
+&lt;li&gt;间接&lt;/li&gt;
+&lt;li&gt;文化（旅行费用法，享乐价格）
+&lt;img src=&#34;https://i.imgur.com/YXshEKQ.png&#34; alt=&#34;&#34;&gt;
+&lt;img src=&#34;https://i.imgur.com/0cmDlC9.png&#34; alt=&#34;&#34;&gt;&lt;/li&gt;
+&lt;li&gt;计算方法
+&lt;img src=&#34;https://i.imgur.com/7pqhkt9.png&#34; alt=&#34;&#34;&gt;
+&lt;img src=&#34;https://i.imgur.com/1hVq4MG.png&#34; alt=&#34;&#34;&gt;
+&lt;img src=&#34;https://i.imgur.com/S7DcEEO.png&#34; alt=&#34;&#34;&gt;
+&lt;img src=&#34;https://i.imgur.com/KlUqKkW.png&#34; alt=&#34;&#34;&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&#34;the-history-of-ecosystem-services-in-economic-theory-and-practice-from-early-notions-to-markets-and-payment-schemes&#34;&gt;&lt;strong&gt;The history of ecosystem services in economic theory and practice: From early notions to markets and payment schemes&lt;/strong&gt;&lt;/h4&gt;
+&lt;h4 id=&#34;valuing-a-diversity-of-ecosystem-services-the-way-forward-to-protects-trategic-groundwater-resources-for-the-future&#34;&gt;&lt;strong&gt;Valuing a diversity of ecosystem services: The way forward to protects trategic groundwater resources for the future?&lt;/strong&gt;&lt;/h4&gt;
+&lt;p&gt;&lt;a href=&#34;http://libdb.csu.edu.cn/rwt/ELSEVIER/https/P75YPLUUMNVXK5UDMWTGT6UFMN4C6Z5QNF/science/article/pii/S1574009918300020&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;[link]&lt;/a&gt;&lt;/p&gt;
+&lt;h3 id=&#34;data-sources&#34;&gt;Data Sources&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://www.weather.gov/dmx/&#34;&gt;https://www.weather.gov/dmx/&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://governmentshutdown.noaa.gov/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;美国国家海洋和大气管理局&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://www.rug.nl/ggdc/productivity/pwt/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Penn_World_Table&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://www.sciencebase.gov/catalog/folder/4f734998e4b046ee287b9d2f&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;ScienceBase&lt;/a&gt;
+&lt;a href=&#34;https://www.sciencebase.gov/catalog/item/4fb555ebe4b04cb937751db9&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;[link]&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://archive.usgs.gov/archive/sites/landcover.usgs.gov/uslandcover.html&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;US Landcover&lt;/a&gt;
+&lt;a href=&#34;https://gapanalysis.usgs.gov/gaplandcover/data/download/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;[link]&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://bison.usgs.gov/#api&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Bison Web&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://www.sciencebase.gov/catalog/item/565897c8e4b071e7ea540309&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;美国鱼类栖息地退化图&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;美国生态系统恢复的经济影响&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://www.sciencebase.gov/catalog/item/5151f07ee4b0f0b3d011a817&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;水资源普查&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://www.eea.europa.eu/data-and-maps&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;欧洲&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://www.emergy-nead.com/country/data&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Emerge-nead&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://www.ipcc.ch/report/ar5/wg1/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;IPCC&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://www.ipcc-data.org/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;IPCC数据分发中心&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://cep.ees.ufl.edu/nead/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;NEAD&lt;/a&gt;
+&lt;a href=&#34;https://en.climate-data.org/info/sources/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;[link]&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://ecdc.europa.eu/en/publications-data?f%5B0%5D=output_types%3A1382&amp;amp;f%5B1%5D=geo%3A485&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;欧洲疾病预防控制中心&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://www.eea.europa.eu/themes/climate#tab-datamaps&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;欧洲环境代理&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://www.eia.gov/state/seds/seds-data-complete.php?sid=US&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;美国国家能源数据系统&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://www.eia.gov/electricity/data/browser/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;电力数据浏览器&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://www.nrel.gov/gis/data-solar.html&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;NREL美国各州太阳能数据&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://www.bls.gov/cps/tables.htm&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;美国劳动力数据&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://www.bls.gov/opub/geographic-profile/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;美国劳工统计局&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://fred.stlouisfed.org/categories/18&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Economic Research&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://www.theglobaleconomy.com/USA/investment/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Gloåbal Economic&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;EmergyDatabase：
+&lt;a href=&#34;https://docs.google.com/spreadsheets/d/1DOopVg2MVumzAsV1_i5U14P2WrkJC8EniXeo6rGtMSU/edit#gid=1338167176&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;[link1]&lt;/a&gt;
+&lt;a href=&#34;https://docs.google.com/spreadsheets/d/17FIFQ_FPv1b0moU8vV0Hh5WI1M9OX_q-gvCLp6atLcw/edit#gid=33074211&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;[link2]&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://www.statedatalab.org/glossary/detail/capital-outlays&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;美国人口普查局&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://pvnpms.phmsa.dot.gov/PublicViewer/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;国家管道测绘系统&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://www.census.gov/eos/www/naics/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;NAICS&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://www.census.gov/topics/employment/labor-force/data/tables.2014.html&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;美国各州劳动力统计表&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://www.epa.gov/energy/emissions-generation-resource-integrated-database-egrid-questions-and-answers&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;排放和发电资源综合数据库&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://tnris.org/data-download/#!/statewide&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;德克萨斯州全州图像和GIS数据&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://library.ucalgary.ca/c.php?g=255401&amp;amp;p=1705345&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;卡尔加里大学图书馆（GIS资源）&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://ca.dep.state.fl.us/mapdirect/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;佛罗里达环境保护部&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://us-city.census.okfn.org/dataset/zoning&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;美国城市开放数据普查&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://opendata.cityofnewyork.us/data/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;OpenData_CityOfNetwork&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://guides.lib.purdue.edu/c.php?g=353290&amp;amp;p=2378621&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;PURDUE图书馆&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://maps.tnc.org/gis_data.html&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;The Nature Con&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://species.mol.org/species/map/Perdix_dauurica&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Map of Life&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://zh.climate-data.org/%E4%BA%9A%E6%B4%B2/%E5%8D%B0%E5%BA%A6%E5%B0%BC%E8%A5%BF%E4%BA%9A/south-sulawesi/usa-559266/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;气候数据图&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://www.epa.gov/transportation-air-pollution-and-climate-change&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;EPA&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;baike&#34;&gt;Baike&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a href=&#34;https://wiki.mbalib.com/wiki/%E6%97%85%E8%A1%8C%E8%B4%B9%E7%94%A8%E6%B3%95&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;旅行费用法&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;生物量：
+&lt;a href=&#34;https://zh.wikipedia.org/wiki/%E7%94%9F%E7%89%A9%E9%87%8F&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;[link1]&lt;/a&gt;
+&lt;a href=&#34;https://baike.baidu.com/item/%E7%94%9F%E7%89%A9%E9%87%8F&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;[link2]&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a href=&#34;https://en.wikipedia.org/wiki/Primary_production&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;初级生产&lt;/a&gt;
+&lt;img src=&#34;https://i.imgur.com/Ld8j8P7.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Cobb-Douglas生产函数及其优缺点:
+&lt;a href=&#34;https://en.wikipedia.org/wiki/Cobb%E2%80%93Douglas_production_function&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;[link1]&lt;/a&gt;
+&lt;a href=&#34;http://shodhganga.inflibnet.ac.in/bitstream/10603/159915/6/06_chapter%203.pdf&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;[link2]&lt;/a&gt;
+&lt;a href=&#34;https://dash.harvard.edu/bitstream/handle/1/3196325/antras_usaggregate.pdf&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;[link3]&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a href=&#34;https://en.wikipedia.org/wiki/Penn_World_Table&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;PWT&lt;/a&gt;
+&lt;img src=&#34;https://i.imgur.com/mtpukP7.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;元分析：https://zh.wikipedia.org/wiki/%E5%85%83%E5%88%86%E6%9E%90&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;影子价格
+&lt;a href=&#34;https://zh.wikipedia.org/wiki/%E5%BD%B1%E5%AD%90%E4%BB%B7%E6%A0%BC&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;[link1]&lt;/a&gt;
+&lt;a href=&#34;https://www.zhihu.com/question/23510001&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;[link2]&lt;/a&gt;
+&lt;a href=&#34;https://wiki.mbalib.com/wiki/%E5%BD%B1%E5%AD%90%E5%AE%9A%E4%BB%B7%E6%B3%95&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;[link3]&lt;/a&gt;
+&lt;img src=&#34;https://i.imgur.com/LJbh1tw.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a href=&#34;https://wiki.mbalib.com/wiki/%E7%94%9F%E6%80%81%E6%9C%8D%E5%8A%A1%E4%BB%B7%E5%80%BC&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;生态服务价值&lt;/a&gt;
+&lt;img src=&#34;https://i.imgur.com/3oOTxJK.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;环境成本分类
+&lt;img src=&#34;https://i.imgur.com/XBNXt5F.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a href=&#34;https://cices.eu/cices-structure/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;生态系统服务分类&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a href=&#34;https://www.emergy-nead.com/country/explanation&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;能值法指数解释&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a href=&#34;https://en.wikipedia.org/wiki/Land-use_planning&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;土地利用规划&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;中国森林生态系统&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a href=&#34;https://hdc.com.mv/hulhumale/planning-design/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;土地使用规划&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;ArcGIS交集制表&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a href=&#34;https://rredc.nrel.gov/wind/pubs/atlas/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;美国风能资源&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a href=&#34;https://www.google.com/search?q=%E5%8A%B3%E5%8A%A8%E5%8A%9B%E5%8F%82%E4%B8%8E%E7%8E%87&amp;amp;oq=%E5%8A%B3%E5%8A%A8%E5%8A%9B%E5%8F%82%E4%B8%8E%E7%8E%87&amp;amp;aqs=chrome..69i57j0l2.3721j0j7&amp;amp;sourceid=chrome&amp;amp;ie=UTF-8&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;劳动力参与率&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;固定资产投资&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a href=&#34;https://www.cnblogs.com/emanlee/archive/2012/09/13/2683912.html&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;matlab字符串处理函数&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a href=&#34;https://ww2.mathworks.cn/matlabcentral/fileexchange/?requestedDomain=zh&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Matlab File Exchange&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a href=&#34;https://www.bea.gov/index.php/resources/learning-center/bea-in-the-classroom&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;BEA in the classroom&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a href=&#34;https://www.zhihu.com/question/21918459&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;面板数据分析&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;非货币生态系统核算体系
+&lt;img src=&#34;https://i.imgur.com/GLbO59q.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;国际统一阶段代码
+&lt;a href=&#34;https://www.iso.org/stage-codes.html#50.20&#34;&gt;https://www.iso.org/stage-codes.html#50.20&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;国际标准组织污染、污染控制
+&lt;a href=&#34;https://www.iso.org/ics/13.020.40/x/&#34;&gt;https://www.iso.org/ics/13.020.40/x/&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;温室气体协议
+&lt;a href=&#34;https://ghgprotocol.org/&#34;&gt;https://ghgprotocol.org/&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a href=&#34;http://www.szmqs.gov.cn/xxgk/qt/ztlm/szbz/szsdfbz_szbz/201412/W020141202347688881182.pdf&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;组织的温室气体排放量化和报告规范及指南&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;能值和变革
+&lt;a href=&#34;http://www.emergysociety.com/emergy-and-transformity/&#34;&gt;http://www.emergysociety.com/emergy-and-transformity/&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;python excel
+&lt;a href=&#34;https://zhuanlan.zhihu.com/p/23998083&#34;&gt;https://zhuanlan.zhihu.com/p/23998083&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;加州内化达Public Viewer
+&lt;a href=&#34;https://pvnpms.phmsa.dot.gov/PublicViewer/&#34;&gt;https://pvnpms.phmsa.dot.gov/PublicViewer/&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;国家空气毒物评估
+&lt;a href=&#34;https://www.epa.gov/national-air-toxics-assessment&#34;&gt;https://www.epa.gov/national-air-toxics-assessment&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;2014 National Air Toxics Assessment
+&lt;a href=&#34;https://gispub.epa.gov/NATA/&#34;&gt;https://gispub.epa.gov/NATA/&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;成本效益分析
+&lt;a href=&#34;https://www.britannica.com/topic/cost-benefit-analysis&#34;&gt;https://www.britannica.com/topic/cost-benefit-analysis&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;statisca统计门户网站
+&lt;a href=&#34;https://www.statista.com/topics/2582/subway/&#34;&gt;https://www.statista.com/topics/2582/subway/&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a href=&#34;https://web.stanford.edu/group/FRI/indonesia/documents/gittinger/Output/chap2.html&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;斯坦福确定项目成本与效益&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;plannerWeb：http://plannersweb.com/2013/12/pro-forma-101-what-will-it-cost/&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a href=&#34;https://zh.wikipedia.org/wiki/%E4%B8%AA%E4%BD%93%E4%B8%BA%E6%9C%AC%E6%A8%A1%E5%9E%8B&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Agent-based Model&lt;/a&gt;
+&lt;img src=&#34;https://i.imgur.com/zteOoEN.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;clarkLab
+&lt;a href=&#34;https://clarklabs.org/&#34;&gt;https://clarklabs.org/&lt;/a&gt;
+&lt;a href=&#34;https://en.wikipedia.org/wiki/TerrSet&#34;&gt;https://en.wikipedia.org/wiki/TerrSet&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a href=&#34;https://www.bloomberg.com/graphics/2018-us-land-use/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;美国土地利用&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;IDRISI
+&lt;a href=&#34;https://download.csdn.net/download/liujiantao_1981/9557000&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;part1&lt;/a&gt;
+&lt;a href=&#34;https://download.csdn.net/download/liujiantao_1981/9556996&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;part2&lt;/a&gt;
+&lt;a href=&#34;https://download.csdn.net/download/liujiantao_1981/9556998&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;part3&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a href=&#34;https://www.zhihu.com/question/21982358&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;时间序列平稳性&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a href=&#34;https://www.epa.gov/clean-air-act-overview/clean-air-act-text&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;清洁空气法文本&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a href=&#34;https://www.transportpolicy.net/standard/us-air-quality-standards/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;us air quality standard&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;considerations&#34;&gt;Considerations&lt;/h3&gt;
+&lt;ol&gt;
+&lt;li&gt;一个真实的土地利用项目考虑上生态因素后的真实经济成本是？&lt;/li&gt;
+&lt;/ol&gt;
+&lt;ul&gt;
+&lt;li&gt;大型
+&lt;ul&gt;
+&lt;li&gt;全国铁路网建设&lt;/li&gt;
+&lt;li&gt;全国管网&lt;/li&gt;
+&lt;li&gt;水坝&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;小型
+&lt;ul&gt;
+&lt;li&gt;元胞自动机多智能体模拟？
+植被面积变化、水文条件可能发生变化、空气可能会有污染（旧式火车）等等。缓冲区分析？&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
+    
   </channel>
 </rss>

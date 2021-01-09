@@ -303,7 +303,7 @@
   
   <meta property="og:site_name" content="CoolCats">
   <meta property="og:url" content="https://coolgiserz.github.io/post/automated-testing-startup/">
-  <meta property="og:title" content="认识自动化测试 | CoolCats">
+  <meta property="og:title" content="初步认识自动化测试 | CoolCats">
   <meta property="og:description" content="代码写完了等测试不如直接测试！"><meta property="og:image" content="https://coolgiserz.github.io/images/icon_hue03491371183284312b8b116a73ae5ab_79511_512x512_fill_lanczos_center_2.png">
   <meta property="twitter:image" content="https://coolgiserz.github.io/images/icon_hue03491371183284312b8b116a73ae5ab_79511_512x512_fill_lanczos_center_2.png"><meta property="og:locale" content="en-us">
   
@@ -336,7 +336,7 @@
     "@type": "WebPage",
     "@id": "https://coolgiserz.github.io/post/automated-testing-startup/"
   },
-  "headline": "认识自动化测试",
+  "headline": "初步认识自动化测试",
   
   "datePublished": "2019-12-20T13:36:16+08:00",
   "dateModified": "2020-01-08T13:36:16+08:00",
@@ -372,7 +372,7 @@
 
 
 
-  <title>认识自动化测试 | CoolCats</title>
+  <title>初步认识自动化测试 | CoolCats</title>
 
 </head>
 
@@ -634,7 +634,7 @@
         
 
         <li class="nav-item">
-          <a class="nav-link " href="/media/files/cv.pdf"><span>简历</span></a>
+          <a class="nav-link " href="/media/files/cv"><span>简历</span></a>
         </li>
 
         
@@ -689,7 +689,7 @@
   
   
 <div class="article-container pt-3">
-  <h1>认识自动化测试</h1>
+  <h1>初步认识自动化测试</h1>
 
   
 
@@ -774,7 +774,108 @@
   <div class="article-container">
 
     <div class="article-style">
-      <p>持续集成</p>
+      <h2 id="前言">前言</h2>
+<p>前段时间的参与了自动化测试平台的开发，本文就进行一些梳理，简单总结以下要点：</p>
+<ul>
+<li>为什么要自动化测试？</li>
+<li>如何实现自动化测试？</li>
+<li>如何基于Jenkins实现持续集成？</li>
+</ul>
+<h3 id="为什么要自动化测试">为什么要自动化测试？</h3>
+<p>在一个产品的开发流程中往往会涉及到产品经理、开发团队、测试团队等团队的协作，一般情况下是开发拿到产品需求之后进行开发工作，开发完毕之后给测试团队根据一系列的测试方案指标对软件/程序进行一系列的测试（功能测试、性能测试、安全测试、部署测试等等），如果测试团队确认没有问题那么就可以进行版本的发布，如果有bug则要让开发团队修补，直到没有bug再正式部署。
+这个过程中开发与测试的沟通对接次数可能是非常多的，项目排期很紧的时候，测试可能经常需要等开发“修完”bug，这个过程或许还要经常（不情愿地）陪着开发团队加班；而开发团队在“修完”bug之后也要“提心吊胆”地等待测试团队的结果。</p>
+<p>这时候人们就想：</p>
+<blockquote>
+<p>能不能事先写一个系统，里面包含了设计好的测试用例，等开发完上传代码之后系统会自动拉取代码进行构建，然后即时生成测试报告返回给开发团队？</p>
+</blockquote>
+<p>这就是自动化测试所考虑的问题，总结一下，自动化测试所要解决的痛点是：</p>
+<ul>
+<li>针对测试人员：将测试人员从大多数简单而重复性高的测试工作解放出来，更多关注业务逻辑</li>
+<li>针对开发人员：写完了代码之后可以直接获取测试报告，没通过就直接改，通过了就做下一个需求</li>
+</ul>
+<h3 id="如何实现自动化测试">如何实现自动化测试？</h3>
+<p>要实现自动化测试，首先要知道一个项目从需求期到上线要经过什么流程：需求分析、设计、开发、测试、上线。而对于团队型的开发而言，往往会涉及到代码的集成（如将多个分支的代码集成到主分支中）、交付（开发将新版本软件交付给测试团队或者用户）、部署（确保代码质量后将软件上线，投入使用）。所谓的自动化，就可以从“集成”、“交付”、“部署”处着手，考虑如何提高这几个环节的效率。</p>
+<p>于是就有人提出了持续集成、持续交付、持续部署之类的概念。</p>
+<p>或许你已经在哪里见过CI/CD、DevOps的术语，所谓CI/CD，分别指持续集成（Continuous integration）、持续交付（Continuous Delivery）和持续部署（Continuous Deployment）。其含义如下：</p>
+<blockquote>
+<p>持续集成：频繁地将代码集成到主干分支。</p>
+</blockquote>
+<blockquote>
+<p>持续交付：频繁地将软件的新版本，交付给质量团队或者用户，以供评审。如果评审通过，代码就进入生产阶段</p>
+</blockquote>
+<blockquote>
+<p>持续部署：代码通过评审以后，自动部署到生产环境</p>
+</blockquote>
+<blockquote>
+<p>DevOps: 通过自动化“软件交付”和“架构变更”的流程，来使得构建、测试、发布软件能够更加地快捷、频繁和可靠。</p>
+</blockquote>
+<p>关键之处，就是在项目开发过程中，实现高度持续的自动化与监控，尽可能减少由于人员交接所带来的效率损失。
+<img src="images/fig1.png" alt=""></p>
+<h3 id="疑问">疑问</h3>
+<p>当然，在面对自动化测试的时候，你可能还会考虑如下问题：</p>
+<ul>
+<li>所有项目都适合自动化测试吗？什么样的项目/功能/接口可以进行自动化测试？</li>
+<li>自动化测试所耗费的时间与金钱成本值得承受吗？会给我们带来多大的效率提升？</li>
+</ul>
+<p>这里先忽略这些问题，假设项目可以进行自动化测试，并简单分析其中的持续集成模块。</p>
+<h2 id="持续集成">持续集成</h2>
+<p>要做到持续集成，需要实现如下功能：</p>
+<ol>
+<li>
+<p>监测开发分支是否有更改</p>
+</li>
+<li>
+<p>若分支有变化，则自动拉取变化的代码，进行如下操作：</p>
+<p>(1) 尝试进行构建</p>
+<p>(2) 若构建成功则运行测试用例，包括单元测试和业务逻辑测试</p>
+<p>(3) 通知开发者构建结果和测试结果（可以是邮件发送测试报告），并进行日志记录</p>
+</li>
+<li>
+<p>开发分支通过测试则尝试进行集成</p>
+</li>
+</ol>
+<p>CI的工作流可以如下图所示：
+<img src="images/ci.png" alt=""></p>
+<p>比较著名的持续集成工具有<a href="https://www.jenkins.io" target="_blank" rel="noopener">jenkins</a>、<a href="https://github.com/travis-ci/travis-ci" target="_blank" rel="noopener">Travis CI</a>、<a href="https://buddy.works/" target="_blank" rel="noopener">Buddy</a>等。</p>
+<p>以Jenkins为例, Jenkins是由Java编写的开源持续集成工具，且已经提供多种语言的接口（C/C++、Python、PHP、Android等），具有如下特点:</p>
+<ol>
+<li>
+<p>易安装。通过Jenkins.war包进行直接运行，无需安装，无需数据库。</p>
+</li>
+<li>
+<p>易扩展。可以在线更新插件，也可以自己开发插件，现有的插件库已经比较丰富能够满足大多数需求。</p>
+</li>
+<li>
+<p>支持分布式构建。主从方式使jenkins能够让多台计算机同时工作。</p>
+</li>
+<li>
+<p>构建前、构建后可定义自己要进行的操作。比如添加代码扫描或者安全扫描，构建完成通过邮件/RSS等通讯工具实时告知构建结果，可以更方便把控产品质量。</p>
+</li>
+</ol>
+<p>以python接口为例，通过jenkins实现任务构建管理的基本逻辑如下：
+<img src="images/jenkins_build.png" alt=""></p>
+<h2 id="小结">小结</h2>
+<p>本文对于自动化测试这么大的题目而言，所述甚微，也不涉及技术细节，更多关于持续交付、部署的内容日后补充。</p>
+<p>回到一开始所提的两个疑问。</p>
+<p>首先，什么样的项目适合进行自动化测试？</p>
+<p>要测试的对象包括单个接口、性能、安全、业务逻辑、易用性等等，我们知道<strong>执行频率高且机械化的重复操作</strong>肯定是适合自动化测试的，这里包括对那些用户交互性要求较弱的接口进行单元测试、性能测试、大量数据输入测试、配置测试等。对于那些用户交互要求高的功能，比如涉及复杂业务规则，涉及感官（视觉、听觉）测试，涉及物理交互（刷卡、打印等）的功能自动化测试就很难实施或者说实施成本过高而没有必要了。</p>
+<p>再者，有必要建设自动化测试平台吗？是否真的能够带来效率提升？什么情况下才能有效率提升？</p>
+<p>这实际上是一个投资与回报的权衡问题。建设自动化平台是需要很大成本的：组建一个测试开发团队、设计测试架构、多个团队配合开发自动化平台、将现有业务代码接入自动化平台、……。如果没有足够多的业务线，足够多的需求（可以带来产出），建设自动化测试平台或许就只是杀鸡用牛刀，但如果说有足够的业务场景支撑，那么多组建一个测开团队整一个自动化平台可以造福多个开发团队，在长期发展中获得回报。</p>
+<h2 id="参考资料">参考资料</h2>
+<ul>
+<li>
+<p><a href="https://www.redhat.com/zh/topics/devops/what-is-ci-cd" target="_blank" rel="noopener">CI/CD是什么？如何理解持续集成、持续交付和持续部署</a></p>
+</li>
+<li>
+<p><a href="https://developers.redhat.com/blog/2017/09/06/continuous-integration-a-typical-process/" target="_blank" rel="noopener">Continuous Integration: A “Typical” Process</a></p>
+</li>
+<li>
+<p><a href="https://www.jenkins.io/zh/doc/tutorials/" target="_blank" rel="noopener">Jenkins官方文档</a></p>
+</li>
+<li>
+<p><a href="https://www.zhihu.com/question/23444990" target="_blank" rel="noopener">如何理解持续集成、持续交付、持续部署？</a></p>
+</li>
+</ul>
 
     </div>
 
@@ -786,6 +887,12 @@
 <div class="article-tags">
   
   <a class="badge badge-light" href="/tag/%E8%87%AA%E5%8A%A8%E5%8C%96%E6%B5%8B%E8%AF%95/">自动化测试</a>
+  
+  <a class="badge badge-light" href="/tag/%E6%8C%81%E7%BB%AD%E9%9B%86%E6%88%90/">持续集成</a>
+  
+  <a class="badge badge-light" href="/tag/jenkins/">Jenkins</a>
+  
+  <a class="badge badge-light" href="/tag/%E6%B5%8B%E8%AF%95/">测试</a>
   
 </div>
 
@@ -802,7 +909,7 @@
       
       
       <li>
-        <a href="https://twitter.com/intent/tweet?url=https://coolgiserz.github.io/post/automated-testing-startup/&amp;text=%e8%ae%a4%e8%af%86%e8%87%aa%e5%8a%a8%e5%8c%96%e6%b5%8b%e8%af%95" target="_blank" rel="noopener" class="share-btn-twitter">
+        <a href="https://twitter.com/intent/tweet?url=https://coolgiserz.github.io/post/automated-testing-startup/&amp;text=%e5%88%9d%e6%ad%a5%e8%ae%a4%e8%af%86%e8%87%aa%e5%8a%a8%e5%8c%96%e6%b5%8b%e8%af%95" target="_blank" rel="noopener" class="share-btn-twitter">
           <i class="fab fa-twitter"></i>
         </a>
       </li>
@@ -815,7 +922,7 @@
       
       
       <li>
-        <a href="https://www.facebook.com/sharer.php?u=https://coolgiserz.github.io/post/automated-testing-startup/&amp;t=%e8%ae%a4%e8%af%86%e8%87%aa%e5%8a%a8%e5%8c%96%e6%b5%8b%e8%af%95" target="_blank" rel="noopener" class="share-btn-facebook">
+        <a href="https://www.facebook.com/sharer.php?u=https://coolgiserz.github.io/post/automated-testing-startup/&amp;t=%e5%88%9d%e6%ad%a5%e8%ae%a4%e8%af%86%e8%87%aa%e5%8a%a8%e5%8c%96%e6%b5%8b%e8%af%95" target="_blank" rel="noopener" class="share-btn-facebook">
           <i class="fab fa-facebook"></i>
         </a>
       </li>
@@ -828,7 +935,7 @@
       
       
       <li>
-        <a href="mailto:?subject=%e8%ae%a4%e8%af%86%e8%87%aa%e5%8a%a8%e5%8c%96%e6%b5%8b%e8%af%95&amp;body=https://coolgiserz.github.io/post/automated-testing-startup/" target="_blank" rel="noopener" class="share-btn-email">
+        <a href="mailto:?subject=%e5%88%9d%e6%ad%a5%e8%ae%a4%e8%af%86%e8%87%aa%e5%8a%a8%e5%8c%96%e6%b5%8b%e8%af%95&amp;body=https://coolgiserz.github.io/post/automated-testing-startup/" target="_blank" rel="noopener" class="share-btn-email">
           <i class="fas fa-envelope"></i>
         </a>
       </li>
@@ -841,7 +948,7 @@
       
       
       <li>
-        <a href="https://www.linkedin.com/shareArticle?url=https://coolgiserz.github.io/post/automated-testing-startup/&amp;title=%e8%ae%a4%e8%af%86%e8%87%aa%e5%8a%a8%e5%8c%96%e6%b5%8b%e8%af%95" target="_blank" rel="noopener" class="share-btn-linkedin">
+        <a href="https://www.linkedin.com/shareArticle?url=https://coolgiserz.github.io/post/automated-testing-startup/&amp;title=%e5%88%9d%e6%ad%a5%e8%ae%a4%e8%af%86%e8%87%aa%e5%8a%a8%e5%8c%96%e6%b5%8b%e8%af%95" target="_blank" rel="noopener" class="share-btn-linkedin">
           <i class="fab fa-linkedin-in"></i>
         </a>
       </li>
@@ -854,7 +961,7 @@
       
       
       <li>
-        <a href="whatsapp://send?text=%e8%ae%a4%e8%af%86%e8%87%aa%e5%8a%a8%e5%8c%96%e6%b5%8b%e8%af%95%20https://coolgiserz.github.io/post/automated-testing-startup/" target="_blank" rel="noopener" class="share-btn-whatsapp">
+        <a href="whatsapp://send?text=%e5%88%9d%e6%ad%a5%e8%ae%a4%e8%af%86%e8%87%aa%e5%8a%a8%e5%8c%96%e6%b5%8b%e8%af%95%20https://coolgiserz.github.io/post/automated-testing-startup/" target="_blank" rel="noopener" class="share-btn-whatsapp">
           <i class="fab fa-whatsapp"></i>
         </a>
       </li>
@@ -867,7 +974,7 @@
       
       
       <li>
-        <a href="https://service.weibo.com/share/share.php?url=https://coolgiserz.github.io/post/automated-testing-startup/&amp;title=%e8%ae%a4%e8%af%86%e8%87%aa%e5%8a%a8%e5%8c%96%e6%b5%8b%e8%af%95" target="_blank" rel="noopener" class="share-btn-weibo">
+        <a href="https://service.weibo.com/share/share.php?url=https://coolgiserz.github.io/post/automated-testing-startup/&amp;title=%e5%88%9d%e6%ad%a5%e8%ae%a4%e8%af%86%e8%87%aa%e5%8a%a8%e5%8c%96%e6%b5%8b%e8%af%95" target="_blank" rel="noopener" class="share-btn-weibo">
           <i class="fab fa-weibo"></i>
         </a>
       </li>
@@ -936,6 +1043,15 @@
 
 
   
+  
+  <div class="article-widget content-widget-hr">
+    <h3>Related</h3>
+    <ul>
+      
+      <li><a href="/post/data-driven-testing-for-starter/">认识数据驱动的测试</a></li>
+      
+    </ul>
+  </div>
   
 
 

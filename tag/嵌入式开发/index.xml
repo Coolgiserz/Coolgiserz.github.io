@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>嵌入式开发 | CoolCats</title>
+    <link>https://coolgiserz.github.io/tag/%E5%B5%8C%E5%85%A5%E5%BC%8F%E5%BC%80%E5%8F%91/</link>
+      <atom:link href="https://coolgiserz.github.io/tag/%E5%B5%8C%E5%85%A5%E5%BC%8F%E5%BC%80%E5%8F%91/index.xml" rel="self" type="application/rss+xml" />
+    <description>嵌入式开发</description>
+    <generator>Wowchemy (https://wowchemy.com)</generator><language>en-us</language><copyright>© CoolCats</copyright><lastBuildDate>Wed, 19 Feb 2020 20:27:56 +0800</lastBuildDate>
+    <image>
+      <url>https://coolgiserz.github.io/images/icon_hue03491371183284312b8b116a73ae5ab_79511_512x512_fill_lanczos_center_2.png</url>
+      <title>嵌入式开发</title>
+      <link>https://coolgiserz.github.io/tag/%E5%B5%8C%E5%85%A5%E5%BC%8F%E5%BC%80%E5%8F%91/</link>
+    </image>
+    
+    <item>
+      <title>串口通信小结</title>
+      <link>https://coolgiserz.github.io/post/embedded-system-serial-communication/</link>
+      <pubDate>Wed, 19 Feb 2020 20:27:56 +0800</pubDate>
+      <guid>https://coolgiserz.github.io/post/embedded-system-serial-communication/</guid>
+      <description>&lt;h2 id=&#34;前言&#34;&gt;前言&lt;/h2&gt;
+&lt;p&gt;接触的一个智能门锁项目涉及到嵌入式设备的调试，本文简单总结串口通信相关知识，回答如下问题：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;什么是上位机、下位机？&lt;/li&gt;
+&lt;li&gt;上位机与下位机之间如何通信？&lt;/li&gt;
+&lt;li&gt;如何进行串口通信？&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>
