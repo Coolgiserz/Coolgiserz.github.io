@@ -63,6 +63,9 @@
 
   
   
+  
+  <script src="/js/mathjax-config.js"></script>
+  
 
   
   
@@ -194,16 +197,9 @@
 
       
       
-        
-      
 
       
-    
-      
-
-      
-      
-
+        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js" integrity="" crossorigin="anonymous" async></script>
       
     
       
@@ -213,6 +209,13 @@
 
       
     
+      
+
+      
+      
+
+      
+    
 
   
 
@@ -224,11 +227,49 @@
   
   
   
-  <link rel="stylesheet" href="/css/wowchemy.min.9a952f8855716151bd6be611983e1078.css">
+  <link rel="stylesheet" href="/css/wowchemy.min.95edefe724f6a6c53c0464fae8ba2346.css">
 
   
 
 
+
+
+
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-HWGB23T7ER"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+
+  function gtag() {
+      dataLayer.push(arguments);
+  }
+
+  function trackOutboundLink(url, target) {
+    gtag('event', 'click', {
+         'event_category': 'outbound',
+         'event_label': url,
+         'transport_type': 'beacon',
+         'event_callback': function () {
+           if (target !== '_blank') {
+             document.location = url;
+           }
+         }
+    });
+    console.debug("Outbound link clicked: " + url);
+  }
+
+  function onClickCallback(event) {
+    if ((event.target.tagName !== 'A') || (event.target.host === window.location.host)) {
+      return;
+    }
+    trackOutboundLink(event.target, event.target.getAttribute('target'));  
+  }
+
+  gtag('js', new Date());
+  gtag('config', 'G-HWGB23T7ER', {});
+
+  
+  document.addEventListener('click', onClickCallback, false);
+</script>
 
 
   
@@ -262,14 +303,14 @@
   
   <meta property="og:site_name" content="CoolCats">
   <meta property="og:url" content="https://coolgiserz.github.io/project/pos-tagger-implemented-on-hmm-model/">
-  <meta property="og:title" content="基于隐马尔可夫模型实现词性分析器 | CoolCats">
+  <meta property="og:title" content="基于隐马尔可夫模型实现简易词性分析器 | CoolCats">
   <meta property="og:description" content="HMM模型和POS tagger"><meta property="og:image" content="https://coolgiserz.github.io/images/icon_hue03491371183284312b8b116a73ae5ab_79511_512x512_fill_lanczos_center_2.png">
   <meta property="twitter:image" content="https://coolgiserz.github.io/images/icon_hue03491371183284312b8b116a73ae5ab_79511_512x512_fill_lanczos_center_2.png"><meta property="og:locale" content="en-us">
   
     
-      <meta property="article:published_time" content="2020-12-21T20:23:11&#43;08:00">
+      <meta property="article:published_time" content="2020-03-21T20:23:11&#43;08:00">
     
-    <meta property="article:modified_time" content="2020-12-21T20:23:11&#43;08:00">
+    <meta property="article:modified_time" content="2020-03-21T20:23:11&#43;08:00">
   
 
   
@@ -293,10 +334,10 @@
     "@type": "WebPage",
     "@id": "https://coolgiserz.github.io/project/pos-tagger-implemented-on-hmm-model/"
   },
-  "headline": "基于隐马尔可夫模型实现词性分析器",
+  "headline": "基于隐马尔可夫模型实现简易词性分析器",
   
-  "datePublished": "2020-12-21T20:23:11+08:00",
-  "dateModified": "2020-12-21T20:23:11+08:00",
+  "datePublished": "2020-03-21T20:23:11+08:00",
+  "dateModified": "2020-03-21T20:23:11+08:00",
   
   "author": {
     "@type": "Person",
@@ -329,7 +370,7 @@
 
 
 
-  <title>基于隐马尔可夫模型实现词性分析器 | CoolCats</title>
+  <title>基于隐马尔可夫模型实现简易词性分析器 | CoolCats</title>
 
 </head>
 
@@ -358,7 +399,8 @@
 
       <div id="search-box">
         
-        
+        <input name="q" id="search-query" placeholder="Search..." autocapitalize="off"
+        autocomplete="off" autocorrect="off" spellcheck="false" type="search" class="form-control">
         
       </div>
 
@@ -590,7 +632,7 @@
         
 
         <li class="nav-item">
-          <a class="nav-link " href="/files/cv.pdf"><span>简历</span></a>
+          <a class="nav-link " href="/media/files/cv"><span>简历</span></a>
         </li>
 
         
@@ -604,6 +646,10 @@
 
     <ul class="nav-icons navbar-nav flex-row ml-auto d-flex pl-md-2">
       
+      
+      <li class="nav-item">
+        <a class="nav-link js-search" href="#" aria-label="Search"><i class="fas fa-search" aria-hidden="true"></i></a>
+      </li>
       
 
       
@@ -641,7 +687,7 @@
   
   
 <div class="article-container pt-3">
-  <h1>基于隐马尔可夫模型实现词性分析器</h1>
+  <h1>基于隐马尔可夫模型实现简易词性分析器</h1>
 
   
 
@@ -660,7 +706,7 @@
     
       
     
-    Dec 21, 2020
+    Mar 21, 2020
   </span>
   
 
@@ -673,8 +719,15 @@
   
   
   
+  <span class="middot-divider"></span>
+  <a href="/project/pos-tagger-implemented-on-hmm-model/#disqus_thread"></a>
+  
 
   
+  
+  <span class="middot-divider"></span>
+  <span class="article-categories">
+    <i class="fas fa-folder mr-1"></i><a href="/category/%E8%87%AA%E7%84%B6%E8%AF%AD%E8%A8%80%E5%A4%84%E7%90%86/">自然语言处理</a></span>
   
 
 </div>
@@ -692,6 +745,47 @@
 
 
 
+
+<div class="btn-links mb-3">
+  
+  
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+  
+  
+    
+  
+<a class="btn btn-outline-primary my-1 mr-1" href="https://github.com/Coolgiserz/NLP_starter/tree/master/CodePratices/MachineLearning/pos_tagging_hmm_project" target="_blank" rel="noopener">
+  Code
+</a>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</div>
 
 
   
@@ -702,11 +796,115 @@
   <div class="article-container">
 
     <div class="article-style">
-      <p>词性分析器是做什么的？
-HMM模型的原理
-为什么能用HMM模型进行词性分析？
-如何用HMM模型实现词性分析？
-基于HMM模型的词性分析器有何缺点？</p>
+      <h2 id="前言">前言</h2>
+<p>本项目基于隐马尔可夫模型实现一个简易的词性标注器。首先简单介绍下面几个问题：</p>
+<ul>
+<li>词性标注器是做什么的？</li>
+<li>如何实现词性标注？</li>
+<li>HMM模型的思想</li>
+</ul>
+<h3 id="词性标注">词性标注</h3>
+<h4 id="什么是词性">什么是词性？</h4>
+<p>词性是词汇的基本语法属性，也称为词类。词性标注（Part-Of-Speech tagging）就是在给定句子中判定每个词的语法属性，确定其词性并加以标注。语文课上或者英语课上老师让同学们分析句子成分，其中就会用到词性的信息，比如说主语只能是名词、代词等等，谓语只能是动词、助动词、系动词等等……了解词汇、句子的语法特征在某些场合下有助于我们理解句意（更多介绍请移步语法书），所以词性标注是一个值得研究的问题。</p>
+<h4 id="如何实现词性标注">如何实现词性标注？</h4>
+<p>那么如何实现词性标注？首先要知道词性标注面临着什么问题：</p>
+<ol>
+<li>
+<p>词具有兼类现象</p>
+<p>同一个词可能有多种词性，尤其是对于汉语来说，词语在词性方面的歧义数量极大。</p>
+</li>
+<li>
+<p>词性划分具有主观性</p>
+<p>语言学界对于词性的划分没有统一被广泛认可的划分标准。</p>
+</li>
+</ol>
+<p>实现词性标注的方法可以分为以下几类：基于统计、基于规则、规则与统计融合的方法。
+基于统计的方法若按照是否有标注数据来分又可以分为有监督和无监督的方法.</p>
+<h3 id="基于隐马尔可夫模型进行词性标注">基于隐马尔可夫模型进行词性标注</h3>
+<h4 id="隐马尔可夫模型简要介绍">隐马尔可夫模型简要介绍</h4>
+<p>隐马尔可夫模型（HMM）建模的是不可观测隐状态变量、可观测的变量及其转化关系的概率分布。HMM属于概率图模型的一类，属于生成模型。根据训练数据是否包括观测序列对应的状态序列可以分为有监督学习和无监督学习的方法。</p>
+<p>HMM认为在我们所能够观测到的变量背后实际上有一个隐含的状态变量，是这个隐含的变量决定了我们所能够观测到的现象，比如说我们看到了一串数字“6 5 1 3 4 2 1 2 5”，这串数字可能是由一个或多个骰子共投掷了9次所得到。所以要是能够把这个隐含变量的概率分布建模出来，那得到的模型就更能反应真实系统的工作机制。</p>
+<p>隐马尔可夫模型有两个基本假设：</p>
+<ol>
+<li>齐次马尔可夫性假设</li>
+</ol>
+<p>即认为隐马尔可夫链在t时刻的状态只依赖于t-1时刻的状态，这背后的意思是认为t-1时刻的状态已经包含了足够预测t时刻状态的历史状态信息。如只通过今天的天气预测明天的天气而不去理会昨天、前天甚至更早以前的天气。</p>
+<ol start="2">
+<li>观测独立性假设</li>
+</ol>
+<p>任意时刻的观测只依赖于该时刻马尔可夫链的状态。</p>
+<p>隐马尔可夫模型主要有三大问题：</p>
+<ol>
+<li>
+<p>概率计算：
+给定状态转移概率、发射概率和初始概率，计算出现某观测序列的概率值</p>
+</li>
+<li>
+<p>学习问题：
+已知观测序列和状态集合，估计HMM的参数：状态转移矩阵、发射矩阵和初始概率</p>
+</li>
+<li>
+<p>预测问题（解码问题）：
+给定观测序列和HMM的参数，求出最有可能的隐状态序列。</p>
+</li>
+</ol>
+<h4 id="为什么能用hmm模型进行词性分析">为什么能用HMM模型进行词性分析？</h4>
+<p>词性分析的过程中，我们所能够观测到的就是词汇的序列，要分析词性是不能直接观测到的，可以把句子各单词的词性与HMM中的隐状态对应起来，观测到的单词与显状态对应起来，然后就能够通过HMM的框架建模单词与词性的关系了。</p>
+<h4 id="如何用hmm模型实现词性分析">如何用HMM模型实现词性分析？</h4>
+<h5 id="明确变量和参数">明确变量和参数</h5>
+<p>要清楚HMM有什么样的变量和参数。</p>
+<ul>
+<li>隐状态：词性</li>
+<li>显状态：词汇</li>
+<li>初始概率：句首词性的概率分布</li>
+<li>状态转移矩阵A：从一个词性到下一个词性的概率分布</li>
+<li>发射概率矩阵B：给定词性下词汇的概率分布</li>
+</ul>
+<h5 id="明确如何学习参数">明确如何学习参数</h5>
+<p>此处以有监督的方式训练，可以直接通过统计算出:</p>
+<ul>
+<li>
+<p>转移概率: $A[i][j]=\frac{N_{ij}}{N_i}$,</p>
+</li>
+<li>
+<p>发射概率: $B[i][v]=\frac{N_{iv}}{N_i}$,</p>
+</li>
+<li>
+<p>初始概率: $Pi[i]=\frac{N_{oi}}{N_o}$</p>
+</li>
+</ul>
+<h5 id="明确如何进行推断">明确如何进行推断</h5>
+<p>给定句子，求出最可能的词性标注序列。使用维特比算法。</p>
+<h4 id="基于hmm模型的词性分析器有何缺点">基于HMM模型的词性分析器有何缺点？</h4>
+<p>HMM的假设很简洁，也能够在一些简单场景下工作得很好，但成也简洁，败也简洁。所做的两个假设对于真实情况下的复杂语言现象而言还是过分简单了：t位置的词性不止受t-1位置的词性的影响，可能还受更前面的，甚至后面的词性的影响；词汇的词性本身可能存在歧义；……</p>
+<h2 id="项目结构">项目结构</h2>
+<p><img src="images/framework.png" alt=""></p>
+<h3 id="测试结果">测试结果</h3>
+<p><img src="images/test.png" alt=""></p>
+<h3 id="更多扩展">更多扩展</h3>
+<ul>
+<li>
+<p>对于未登录词和分词，该如何处理？</p>
+</li>
+<li>
+<p>如何实现无监督的词性标注？</p>
+<p>如利用EM算法的Baum-Welch算法</p>
+</li>
+</ul>
+<h2 id="相关资料">相关资料</h2>
+<h3 id="教材">教材</h3>
+<ul>
+<li>统计学习方法第10章：隐马尔可夫模型</li>
+<li>统计自然语言处理第7章：自动分词、命名实体识别和词性标注</li>
+</ul>
+<h3 id="开源库">开源库</h3>
+<ul>
+<li><a href="https://hmmlearn.readthedocs.io/en/latest/" target="_blank" rel="noopener">hmmlearn</a></li>
+</ul>
+<h3 id="博客">博客：</h3>
+<ul>
+<li><a href="https://zhuanlan.zhihu.com/p/113136120" target="_blank" rel="noopener">Forward-可能是最易懂且全面的隐马尔可夫介绍（一）</a></li>
+</ul>
 
     </div>
 
@@ -714,6 +912,18 @@ HMM模型的原理
 
 
 
+
+<div class="article-tags">
+  
+  <a class="badge badge-light" href="/tag/%E7%AE%97%E6%B3%95/">算法</a>
+  
+  <a class="badge badge-light" href="/tag/%E8%87%AA%E7%84%B6%E8%AF%AD%E8%A8%80%E5%A4%84%E7%90%86/">自然语言处理</a>
+  
+  <a class="badge badge-light" href="/tag/%E8%AF%8D%E6%80%A7%E6%A0%87%E6%B3%A8/">词性标注</a>
+  
+  <a class="badge badge-light" href="/tag/%E9%9A%90%E9%A9%AC%E5%B0%94%E5%8F%AF%E5%A4%AB%E6%A8%A1%E5%9E%8B/">隐马尔可夫模型</a>
+  
+</div>
 
 
 
@@ -728,7 +938,7 @@ HMM模型的原理
       
       
       <li>
-        <a href="https://twitter.com/intent/tweet?url=https://coolgiserz.github.io/project/pos-tagger-implemented-on-hmm-model/&amp;text=%e5%9f%ba%e4%ba%8e%e9%9a%90%e9%a9%ac%e5%b0%94%e5%8f%af%e5%a4%ab%e6%a8%a1%e5%9e%8b%e5%ae%9e%e7%8e%b0%e8%af%8d%e6%80%a7%e5%88%86%e6%9e%90%e5%99%a8" target="_blank" rel="noopener" class="share-btn-twitter">
+        <a href="https://twitter.com/intent/tweet?url=https://coolgiserz.github.io/project/pos-tagger-implemented-on-hmm-model/&amp;text=%e5%9f%ba%e4%ba%8e%e9%9a%90%e9%a9%ac%e5%b0%94%e5%8f%af%e5%a4%ab%e6%a8%a1%e5%9e%8b%e5%ae%9e%e7%8e%b0%e7%ae%80%e6%98%93%e8%af%8d%e6%80%a7%e5%88%86%e6%9e%90%e5%99%a8" target="_blank" rel="noopener" class="share-btn-twitter">
           <i class="fab fa-twitter"></i>
         </a>
       </li>
@@ -741,7 +951,7 @@ HMM模型的原理
       
       
       <li>
-        <a href="https://www.facebook.com/sharer.php?u=https://coolgiserz.github.io/project/pos-tagger-implemented-on-hmm-model/&amp;t=%e5%9f%ba%e4%ba%8e%e9%9a%90%e9%a9%ac%e5%b0%94%e5%8f%af%e5%a4%ab%e6%a8%a1%e5%9e%8b%e5%ae%9e%e7%8e%b0%e8%af%8d%e6%80%a7%e5%88%86%e6%9e%90%e5%99%a8" target="_blank" rel="noopener" class="share-btn-facebook">
+        <a href="https://www.facebook.com/sharer.php?u=https://coolgiserz.github.io/project/pos-tagger-implemented-on-hmm-model/&amp;t=%e5%9f%ba%e4%ba%8e%e9%9a%90%e9%a9%ac%e5%b0%94%e5%8f%af%e5%a4%ab%e6%a8%a1%e5%9e%8b%e5%ae%9e%e7%8e%b0%e7%ae%80%e6%98%93%e8%af%8d%e6%80%a7%e5%88%86%e6%9e%90%e5%99%a8" target="_blank" rel="noopener" class="share-btn-facebook">
           <i class="fab fa-facebook"></i>
         </a>
       </li>
@@ -754,7 +964,7 @@ HMM模型的原理
       
       
       <li>
-        <a href="mailto:?subject=%e5%9f%ba%e4%ba%8e%e9%9a%90%e9%a9%ac%e5%b0%94%e5%8f%af%e5%a4%ab%e6%a8%a1%e5%9e%8b%e5%ae%9e%e7%8e%b0%e8%af%8d%e6%80%a7%e5%88%86%e6%9e%90%e5%99%a8&amp;body=https://coolgiserz.github.io/project/pos-tagger-implemented-on-hmm-model/" target="_blank" rel="noopener" class="share-btn-email">
+        <a href="mailto:?subject=%e5%9f%ba%e4%ba%8e%e9%9a%90%e9%a9%ac%e5%b0%94%e5%8f%af%e5%a4%ab%e6%a8%a1%e5%9e%8b%e5%ae%9e%e7%8e%b0%e7%ae%80%e6%98%93%e8%af%8d%e6%80%a7%e5%88%86%e6%9e%90%e5%99%a8&amp;body=https://coolgiserz.github.io/project/pos-tagger-implemented-on-hmm-model/" target="_blank" rel="noopener" class="share-btn-email">
           <i class="fas fa-envelope"></i>
         </a>
       </li>
@@ -767,7 +977,7 @@ HMM模型的原理
       
       
       <li>
-        <a href="https://www.linkedin.com/shareArticle?url=https://coolgiserz.github.io/project/pos-tagger-implemented-on-hmm-model/&amp;title=%e5%9f%ba%e4%ba%8e%e9%9a%90%e9%a9%ac%e5%b0%94%e5%8f%af%e5%a4%ab%e6%a8%a1%e5%9e%8b%e5%ae%9e%e7%8e%b0%e8%af%8d%e6%80%a7%e5%88%86%e6%9e%90%e5%99%a8" target="_blank" rel="noopener" class="share-btn-linkedin">
+        <a href="https://www.linkedin.com/shareArticle?url=https://coolgiserz.github.io/project/pos-tagger-implemented-on-hmm-model/&amp;title=%e5%9f%ba%e4%ba%8e%e9%9a%90%e9%a9%ac%e5%b0%94%e5%8f%af%e5%a4%ab%e6%a8%a1%e5%9e%8b%e5%ae%9e%e7%8e%b0%e7%ae%80%e6%98%93%e8%af%8d%e6%80%a7%e5%88%86%e6%9e%90%e5%99%a8" target="_blank" rel="noopener" class="share-btn-linkedin">
           <i class="fab fa-linkedin-in"></i>
         </a>
       </li>
@@ -780,7 +990,7 @@ HMM模型的原理
       
       
       <li>
-        <a href="whatsapp://send?text=%e5%9f%ba%e4%ba%8e%e9%9a%90%e9%a9%ac%e5%b0%94%e5%8f%af%e5%a4%ab%e6%a8%a1%e5%9e%8b%e5%ae%9e%e7%8e%b0%e8%af%8d%e6%80%a7%e5%88%86%e6%9e%90%e5%99%a8%20https://coolgiserz.github.io/project/pos-tagger-implemented-on-hmm-model/" target="_blank" rel="noopener" class="share-btn-whatsapp">
+        <a href="whatsapp://send?text=%e5%9f%ba%e4%ba%8e%e9%9a%90%e9%a9%ac%e5%b0%94%e5%8f%af%e5%a4%ab%e6%a8%a1%e5%9e%8b%e5%ae%9e%e7%8e%b0%e7%ae%80%e6%98%93%e8%af%8d%e6%80%a7%e5%88%86%e6%9e%90%e5%99%a8%20https://coolgiserz.github.io/project/pos-tagger-implemented-on-hmm-model/" target="_blank" rel="noopener" class="share-btn-whatsapp">
           <i class="fab fa-whatsapp"></i>
         </a>
       </li>
@@ -793,7 +1003,7 @@ HMM模型的原理
       
       
       <li>
-        <a href="https://service.weibo.com/share/share.php?url=https://coolgiserz.github.io/project/pos-tagger-implemented-on-hmm-model/&amp;title=%e5%9f%ba%e4%ba%8e%e9%9a%90%e9%a9%ac%e5%b0%94%e5%8f%af%e5%a4%ab%e6%a8%a1%e5%9e%8b%e5%ae%9e%e7%8e%b0%e8%af%8d%e6%80%a7%e5%88%86%e6%9e%90%e5%99%a8" target="_blank" rel="noopener" class="share-btn-weibo">
+        <a href="https://service.weibo.com/share/share.php?url=https://coolgiserz.github.io/project/pos-tagger-implemented-on-hmm-model/&amp;title=%e5%9f%ba%e4%ba%8e%e9%9a%90%e9%a9%ac%e5%b0%94%e5%8f%af%e5%a4%ab%e6%a8%a1%e5%9e%8b%e5%ae%9e%e7%8e%b0%e7%ae%80%e6%98%93%e8%af%8d%e6%80%a7%e5%88%86%e6%9e%90%e5%99%a8" target="_blank" rel="noopener" class="share-btn-weibo">
           <i class="fab fa-weibo"></i>
         </a>
       </li>
@@ -830,7 +1040,7 @@ HMM模型的原理
     <div class="media-body">
       <h5 class="card-title"><a href="/author/coolcats/">CoolCats</a></h5>
       <h6 class="card-subtitle">理学学士</h6>
-      <p class="card-text">我的研究兴趣是城市计算、自然语言处理、金庸小说</p>
+      <p class="card-text">我的研究兴趣是城市计算、自然语言处理、通俗文学</p>
       <ul class="network-icon" aria-hidden="true">
   
     
@@ -878,6 +1088,34 @@ HMM模型的原理
 
 
 
+<section id="comments">
+  
+    
+<div id="disqus_thread"></div>
+<script>
+  var disqus_config = function () {
+    
+    
+    
+  };
+  (function() {
+    if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+      document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+      return;
+    }
+    var d = document, s = d.createElement('script'); s.async = true;
+    s.src = 'https://' + "coolgiserz" + '.disqus.com/embed.js';
+    s.setAttribute('data-timestamp', +new Date());
+    (d.head || d.body).appendChild(s);
+  })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+
+
+  
+</section>
+
 
 
 
@@ -886,6 +1124,21 @@ HMM模型的原理
 
 
   
+  
+  <div class="article-widget content-widget-hr">
+    <h3>Related</h3>
+    <ul>
+      
+      <li><a href="/project/aspect-based-sentiment-analysis-on-yelp-dataset/">基于类别的Yelp评论情感分析系统</a></li>
+      
+      <li><a href="/project/nlp-learning-for-newbee/">NLP入门必看</a></li>
+      
+      <li><a href="/project/osm-route-planning/">基于OpenStreetMap的路径规划项目</a></li>
+      
+      <li><a href="/post/hftree-datastructure/">哈夫曼编码及其实现</a></li>
+      
+    </ul>
+  </div>
   
 
 
@@ -1006,12 +1259,52 @@ HMM模型的原理
     
 
     
+    
+    
+    
+    
+    
+    <script>
+      const search_config = {"indexURI":"/index.json","minLength":1,"threshold":0.3};
+      const i18n = {"no_results":"No results found","placeholder":"Search...","results":"results found"};
+      const content_type = {
+        'post': "Posts",
+        'project': "Projects",
+        'publication' : "Publications",
+        'talk' : "Talks",
+        'slides' : "Slides"
+        };
+    </script>
+    
+
+    
+    
+
+    
+    
+    <script id="search-hit-fuse-template" type="text/x-template">
+      <div class="search-hit" id="summary-{{key}}">
+      <div class="search-hit-content">
+        <div class="search-hit-name">
+          <a href="{{relpermalink}}">{{title}}</a>
+          <div class="article-metadata search-hit-type">{{type}}</div>
+          <p class="search-hit-description">{{snippet}}</p>
+        </div>
+      </div>
+      </div>
+    </script>
+    
+
+    
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/3.2.1/fuse.min.js" integrity="sha256-VzgmKYmhsGNNN4Ph1kMW+BjoYJM2jV5i4IlFoeZA9XI=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/jquery.mark.min.js" integrity="sha256-4HLtjeVgH0eIB3aZ9mLYF6E8oU5chNdjU6p6rrXpl9U=" crossorigin="anonymous"></script>
+    
 
     
     
 
     
-
     
     
 
@@ -1020,12 +1313,7 @@ HMM模型的原理
 
     
     
-    
-
-    
-    
-
-    
+    <script id="dsq-count-scr" src="https://coolgiserz.disqus.com/count.js" async></script>
     
 
     
@@ -1038,10 +1326,12 @@ HMM模型的原理
     
     
     
+      
     
     
     
-    <script src="/js/wowchemy.min.60c1aa94ac306623f222eda25976bb91.js"></script>
+    
+    <script src="/js/wowchemy.min.4f5a2f6096f092093c2c93a04232f15a.js"></script>
 
     
 

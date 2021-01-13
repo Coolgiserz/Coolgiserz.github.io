@@ -717,7 +717,7 @@
   
   <span class="middot-divider"></span>
   <span class="article-reading-time">
-    0 min read
+    1 min read
   </span>
   
 
@@ -762,7 +762,30 @@
   <div class="article-container">
 
     <div class="article-style">
-      
+      <h2 id="前言">前言</h2>
+<p>之前的文章简单介绍了<a href="../automated-testing-startup/">自动化测试</a>，在自动化测试平台中，有一个重要的组件或概念称为“数据驱动的测试（Data Driven Tests， DDT）”，其目的是将测试脚本与测试数据分离，本质上是测试逻辑的解耦，使得测试流程的代码编写与测试过程中所使用的数据/用例设计可以分别进行。</p>
+<p>数据驱动的测试解决了如下痛点：</p>
+<blockquote>
+<p>对于同一份测试代码，测试数据可能会发生大量变化，如果测试数据与代码耦合可能会为代码维护带来不必要的麻烦或增加不必要的代码编写。</p>
+</blockquote>
+<h3 id="框架">框架</h3>
+<p>以基于Python语言的<a href="https://ddt.readthedocs.io/en/latest/" target="_blank" rel="noopener">DDT</a>框架为例介绍DDT的主要模块功能与模块关系。</p>
+<p>DDT主要有三大部件：</p>
+<ol>
+<li>
+<p>数据源</p>
+<p>csv、excel、json、xml等</p>
+</li>
+<li>
+<p>数据加载脚本</p>
+<p>将数据源读取到内存中（特定的数据结构）</p>
+</li>
+<li>
+<p>测试脚本</p>
+<p>读取数据变量，进行测试，保存测试信息。</p>
+</li>
+</ol>
+
     </div>
 
     

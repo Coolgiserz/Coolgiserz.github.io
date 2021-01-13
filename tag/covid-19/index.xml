@@ -37,9 +37,10 @@
 &lt;p&gt;在过去的几年中，Twitter已经被作为实时向公众传达紧急情况[26]一个重要的工具。事实上，在紧急情况下，Twitter用户提供了详细的信息，警告他人远离危险情况，如疫情爆发和恶劣的天气状况，这有助于他人做出更好/更谨慎的决定。作为一个平台，Twitter可以在各种情况下快速、简洁地交换信息。Twitter允许用户发布被称为推文的帖子，限制为140个字符。对于什么是可接受的推文，没有任何规则或格式。此外，用户创建的帖子成为公开的，并且可以立即访问和提供给他们的社交网络中的其他人。与其他社交网络服务不同的是，Twitter不要求用户在其他用户看到他/她的帖子之前授予朋友接受。要关注Twitter上的对话，用户需要关注其他成员，他们的推特才会出现在他们的新闻源上。此外，Twitter用户在发布Tweet时，会收到来自社交网络其他成员的即时和自动反馈。因此，Twitter一直是研究人员测试兴趣、最新事件、用户态度以及识别群体中最具影响力的成员的目标平台。了解哪些个人因为其权威、地位或关系而有能力改变人们对特定主题的决定是至关重要的[27]。这些人被称为影响者。识别用户的影响力对许多领域都有帮助，例如市场营销[28]、政治科学[29]和谣言传播[8]。识别大流行期间的影响者对于了解公众反应和信息传播非常重要。&lt;/p&gt;
 &lt;p&gt;为了识别Twitter上的影响者，我们通过与他人的相互联系来寻找影响力，所以在评价用户的社会影响力时，自然要考虑后续和行为网络。Twitter社交网络通常用一个有向图G=(N，E)来表示，其中N是一组用户节点，E是一组有向边，表达/描述节点之间的连接方式。后续关系是Twitter社交网络最传统的表示方式。在后续图中，N是Twitter用户的集合，边表达了用户之间的后续关系。如一个边（A，B）∈E表示用户A是用户B的追随者，但由于行为网络是基于两个用户之间的动态交互，如回复、提及、引用、转发一条推文，这种动态交互可以用一组用户节点的有向图来表示，而边则代表用户之间的不同交互（如一个用户对不同用户发布的推文的转发）。后续网络代表账户之间潜在的信息流，而行为网络代表实际的信息流。因此，与后续网络相比，行为网络代表了账户之间更强的关系。这使得行为网络成为研究信息传播中影响者作用的理想选择。对于有影响力用户的检测和排名，基本上有两种著名的算法必须强调。因此，下面几小节将对这两种算法进行描述。&lt;/p&gt;
 &lt;h4 id=&#34;pagerank算法&#34;&gt;PageRank算法&lt;/h4&gt;
-&lt;p&gt;Google搜索引擎早期阶段开发的一个著名算法是PageRank算法，用来确定一个页面的相关性或重要性[5]。该算法通过估计每个页面所含链接的质量和数量，给每个页面分配一个重要性和权威性的相对数字分数。该算法采用简单的迭代算法计算，并基于随机冲浪者模型，即网络的随机冲浪者从一个页面开始随机形成链接到达目标页面的概率。为了分析twitter的社交图谱，考虑了每个用户的PageRank得分。假设有转发或回复用户V的推特等互动的用户列表U，U中每个用户的PageRank得分平均分配给用户V。例如，用户Ui的PageRank得分为X，它总共与5个用户的推特进行了互动。Ui的PageRank得分X将被发送给Ui互动过的每个用户。它可以用数学方式表示如下[5]。
+&lt;p&gt;Google搜索引擎早期阶段开发的一个著名算法是PageRank算法，用来确定一个页面的相关性或重要性[5]。该算法通过估计每个页面所含链接的质量和数量，给每个页面分配一个重要性和权威性的相对数字分数。该算法采用简单的迭代算法计算，并基于随机冲浪者模型，即网络的随机冲浪者从一个页面开始随机形成链接到达目标页面的概率。&lt;/p&gt;
+&lt;p&gt;为了分析twitter的社交图谱，本文考虑了每个用户的PageRank得分。假设有转发或回复用户V的推特等互动行为的用户列表U，U中每个用户的PageRank得分平均分配给用户V。例如，用户$U_i$的PageRank得分为X，它总共与5个用户的推特进行了互动。Ui的PageRank得分X将被发送给Ui互动过的每个用户。它可以用数学方式表示如下[5]。
 &lt;img src=&#34;images/equation1.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
-&lt;p&gt;其中，P R(A)为计算出的某用户节点A的PageRank，N对应于图中的节点总数。P(A)是指向节点A的节点集合，P(Ui)是节点A到节点U1&amp;hellip;Un的外链数量。最后，参数d为阻尼系数，表示跳转到随机用户节点的概率，通常设置为0.85。&lt;/p&gt;
+&lt;p&gt;其中，$PR(A)$为计算出的某用户节点A的PageRank，N对应于图中的节点总数。$P(A)$是指向节点A的节点集合，$P(U_i)$是节点A到节点$U_1,&amp;hellip;,U_n$的外链数量。最后，参数d为阻尼系数，表示跳转到随机用户节点的概率，通常设置为0.85。&lt;/p&gt;
 &lt;h4 id=&#34;hits算法&#34;&gt;HITS算法&lt;/h4&gt;
 &lt;p&gt;HITS算法是由Kleinberg[6]开发的一种网页排名算法。该算法基于权威机构和枢纽的思想，其中权威机构是指有较多传入链接的网页，枢纽是指有许多相关权威机构的传出链接的网页。如果一个页面指向了很多好的权威机构，那么这个页面就被认为是一个好的枢纽，一个好的权威页面被很多好的枢纽指向。与PageRank算法不同的是，HITS算法的起点是由与搜索查询相关的页面和任何链接到相关页面的页面组成的网络子集。至于Twitter行为社交图分析，我们将每个节点N视为用户节点，每个节点包含一组Hub得分Nh和Authority得分Na。给定S是指向N的节点集 ，而T是N指向的节点集 。 枢纽得分和权威得分的迭代计算过程如下。用户N的权威得分auth(N)是指向用户N的节点S的所有枢纽得分的归一化和。
 &lt;img src=&#34;images/equation2.png&#34; alt=&#34;&#34;&gt;
@@ -65,6 +66,58 @@
 &lt;img src=&#34;images/table4_5.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
 &lt;h3 id=&#34;结论&#34;&gt;结论&lt;/h3&gt;
 &lt;p&gt;在社交媒体中识别信息超级传播者可以成为在大流行病期间提高意识的有效战略。使用可靠和值得信赖的超级传播者可以帮助减少关于疾病的错误信息的传播，并向更多的受众推广更好的健康实践。这项研究确定了2020年3月期间推特阿拉伯语内容中的影响者。然而，在这方面还需要进行更多的研究。一个潜在的工作是分析影响者在传播错误信息方面的作用，以及他们是否利用他们的影响力为社会带来更大的利益。另一条研究路线是分析Facebook和Instagram等其他社交平台上的信息超级传播者。在这方面，本研究中使用的方法可以用于其他社交平台，尽管互动方式不同。&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>面向Covid-19国内传播分析的人口流动网络分析</title>
+      <link>https://coolgiserz.github.io/project/network-analysis-for-covid-19/</link>
+      <pubDate>Fri, 13 Mar 2020 21:54:39 +0800</pubDate>
+      <guid>https://coolgiserz.github.io/project/network-analysis-for-covid-19/</guid>
+      <description>&lt;h3 id=&#34;数据集&#34;&gt;数据集&lt;/h3&gt;
+&lt;h4 id=&#34;病例统计数据&#34;&gt;病例统计数据&lt;/h4&gt;
+&lt;ul&gt;
+&lt;li&gt;丁香园统计的各地病例数&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&#34;移动性数据&#34;&gt;移动性数据&lt;/h4&gt;
+&lt;ul&gt;
+&lt;li&gt;百度迁徙&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;方法&#34;&gt;方法&lt;/h3&gt;
+&lt;h4 id=&#34;网络节点影响力排名&#34;&gt;网络节点影响力排名&lt;/h4&gt;
+&lt;ul&gt;
+&lt;li&gt;PageRank&lt;/li&gt;
+&lt;li&gt;HITS&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&#34;社区检测&#34;&gt;社区检测&lt;/h4&gt;
+&lt;ul&gt;
+&lt;li&gt;Newman&lt;/li&gt;
+&lt;li&gt;Ricci flow&lt;/li&gt;
+&lt;li&gt;Infomap&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;案例分析&#34;&gt;案例分析&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;地级市人口流动网络节点影响力分析&lt;/li&gt;
+&lt;li&gt;K感染数到达时间与城市节点影响力的相关性分析&lt;/li&gt;
+&lt;li&gt;网络社区发现&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;相关文献&#34;&gt;相关文献&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a href=&#34;https://www.nature.com/articles/s41586-020-2284-y&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Population flow drives spatio-temporal distribution of COVID-19 in China&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a href=&#34;https://www.nature.com/articles/s41586-020-2923-3?fbclid=IwAR0iyWJwtGTAf19Uj4ikHG1VZPG221gFkt16zbH4-CbxjJOksp5MLS94EdU&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Mobility network models of COVID-19 explain inequities and inform reopening&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a href=&#34;https://www.thelancet.com/journals/lanpub/article/PIIS2468-2667%2820%2930073-6/fulltext&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;The effect of control strategies to reduce social mixing on outcomes of the COVID-19 epidemic in Wuhan, China: a modelling study&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;我们的预测显示，如果在4月初错峰复工，物理疏导措施最为有效；这使得2020年中期和2020年底的感染中位数分别减少了92%（IQR 66-97）和24%（13-90）以上。将这些措施持续到4月是有好处的，可以推迟和降低高峰期的高度、2020年底的中位数疫情规模，并为医疗系统提供更多的时间来扩大和应对。然而，物理距离措施的模型效果因传染性的持续时间和学童在流行病中的作用而不同。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a href=&#34;https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0241171&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Modeling and prediction of the 2019 coronavirus disease spreading in China incorporating human migration data&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;本研究将每日城市间迁移数据与经典的易感-暴露-感染-清除（SEIR）模型进行整合，构建了适合描述中国2019年冠状病毒病（COVID-19）流行传播动态的新模型。从基于移动应用的人类迁徙追踪数据系统 &amp;ldquo;百度迁徙 &amp;ldquo;中采集了中国367个城市的每日城际迁徙数据。利用官方来源的感染病例、康复病例和死亡病例的早期疫情数据（2020年1月24日至2月16日）进行模型拟合。利用约束性非线性优化程序，对最佳数据拟合得到的模型参数集，用于估计随后几个月的疫情传播动态。该工作于2020年2月19日完成。我们的结果显示，中国大部分城市的感染人数将在2020年2月中旬至3月上旬达到高峰，武汉市、湖北省和中国其他地区的最终感染人数分别约为0.8%、不到0.1%和不到0.01%。此外，对于湖北省外和湖北省内的大部分城市（除武汉外），预计感染者总数将分别低于300人和4000人。&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
 </description>
     </item>
     

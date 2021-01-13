@@ -223,10 +223,26 @@
 &lt;/ul&gt;
 &lt;h5 id=&#34;评价指标&#34;&gt;评价指标&lt;/h5&gt;
 &lt;ul&gt;
-&lt;li&gt;MAE&lt;/li&gt;
-&lt;li&gt;RMSE&lt;/li&gt;
-&lt;li&gt;准确度&lt;/li&gt;
-&lt;li&gt;方差&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;绝对平均误差（MAE）
+&lt;img src=&#34;images/mae.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;均方根误差（RMSE）
+&lt;img src=&#34;images/rmse.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;准确度（Accuracy）
+&lt;img src=&#34;images/accuracy.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;判定系数
+&lt;img src=&#34;images/coefficient_of_determination.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;方差
+&lt;img src=&#34;images/variance.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;/li&gt;
 &lt;/ul&gt;
 &lt;h2 id=&#34;学习资料&#34;&gt;学习资料&lt;/h2&gt;
 &lt;p&gt;&lt;a href=&#34;https://towardsdatascience.com/how-to-predict-severe-traffic-jams-with-python-and-recurrent-neural-networks-e53b6d411e8d&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;How to Predict Severe Traffic Jams with Python and Recurrent Neural Networks?&lt;/a&gt;&lt;/p&gt;
@@ -239,7 +255,30 @@
       <link>https://coolgiserz.github.io/post/data-driven-testing-for-starter/</link>
       <pubDate>Mon, 09 Mar 2020 20:20:57 +0800</pubDate>
       <guid>https://coolgiserz.github.io/post/data-driven-testing-for-starter/</guid>
-      <description></description>
+      <description>&lt;h2 id=&#34;前言&#34;&gt;前言&lt;/h2&gt;
+&lt;p&gt;之前的文章简单介绍了&lt;a href=&#34;../automated-testing-startup/&#34;&gt;自动化测试&lt;/a&gt;，在自动化测试平台中，有一个重要的组件或概念称为“数据驱动的测试（Data Driven Tests， DDT）”，其目的是将测试脚本与测试数据分离，本质上是测试逻辑的解耦，使得测试流程的代码编写与测试过程中所使用的数据/用例设计可以分别进行。&lt;/p&gt;
+&lt;p&gt;数据驱动的测试解决了如下痛点：&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;对于同一份测试代码，测试数据可能会发生大量变化，如果测试数据与代码耦合可能会为代码维护带来不必要的麻烦或增加不必要的代码编写。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h3 id=&#34;框架&#34;&gt;框架&lt;/h3&gt;
+&lt;p&gt;以基于Python语言的&lt;a href=&#34;https://ddt.readthedocs.io/en/latest/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;DDT&lt;/a&gt;框架为例介绍DDT的主要模块功能与模块关系。&lt;/p&gt;
+&lt;p&gt;DDT主要有三大部件：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;数据源&lt;/p&gt;
+&lt;p&gt;csv、excel、json、xml等&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;数据加载脚本&lt;/p&gt;
+&lt;p&gt;将数据源读取到内存中（特定的数据结构）&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;测试脚本&lt;/p&gt;
+&lt;p&gt;读取数据变量，进行测试，保存测试信息。&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+</description>
     </item>
     
     <item>

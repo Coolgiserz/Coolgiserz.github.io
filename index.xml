@@ -5,12 +5,20 @@
     <link>https://coolgiserz.github.io/</link>
       <atom:link href="https://coolgiserz.github.io/index.xml" rel="self" type="application/rss+xml" />
     <description>CoolCats</description>
-    <generator>Wowchemy (https://wowchemy.com)</generator><language>en-us</language><copyright>© CoolCats</copyright><lastBuildDate>Fri, 08 Jan 2021 16:38:40 +0800</lastBuildDate>
+    <generator>Wowchemy (https://wowchemy.com)</generator><language>en-us</language><copyright>© CoolCats</copyright><lastBuildDate>Mon, 11 Jan 2021 09:18:49 +0800</lastBuildDate>
     <image>
       <url>https://coolgiserz.github.io/images/icon_hue03491371183284312b8b116a73ae5ab_79511_512x512_fill_lanczos_center_2.png</url>
       <title>CoolCats</title>
       <link>https://coolgiserz.github.io/</link>
     </image>
+    
+    <item>
+      <title>基于类别的Yelp评论情感分析系统</title>
+      <link>https://coolgiserz.github.io/project/aspect-based-sentiment-analysis-on-yelp-dataset/</link>
+      <pubDate>Mon, 11 Jan 2021 09:18:49 +0800</pubDate>
+      <guid>https://coolgiserz.github.io/project/aspect-based-sentiment-analysis-on-yelp-dataset/</guid>
+      <description></description>
+    </item>
     
     <item>
       <title>「论文翻译」-从阿拉伯文推文中识别COVID-19的信息超级传播者</title>
@@ -37,9 +45,10 @@
 &lt;p&gt;在过去的几年中，Twitter已经被作为实时向公众传达紧急情况[26]一个重要的工具。事实上，在紧急情况下，Twitter用户提供了详细的信息，警告他人远离危险情况，如疫情爆发和恶劣的天气状况，这有助于他人做出更好/更谨慎的决定。作为一个平台，Twitter可以在各种情况下快速、简洁地交换信息。Twitter允许用户发布被称为推文的帖子，限制为140个字符。对于什么是可接受的推文，没有任何规则或格式。此外，用户创建的帖子成为公开的，并且可以立即访问和提供给他们的社交网络中的其他人。与其他社交网络服务不同的是，Twitter不要求用户在其他用户看到他/她的帖子之前授予朋友接受。要关注Twitter上的对话，用户需要关注其他成员，他们的推特才会出现在他们的新闻源上。此外，Twitter用户在发布Tweet时，会收到来自社交网络其他成员的即时和自动反馈。因此，Twitter一直是研究人员测试兴趣、最新事件、用户态度以及识别群体中最具影响力的成员的目标平台。了解哪些个人因为其权威、地位或关系而有能力改变人们对特定主题的决定是至关重要的[27]。这些人被称为影响者。识别用户的影响力对许多领域都有帮助，例如市场营销[28]、政治科学[29]和谣言传播[8]。识别大流行期间的影响者对于了解公众反应和信息传播非常重要。&lt;/p&gt;
 &lt;p&gt;为了识别Twitter上的影响者，我们通过与他人的相互联系来寻找影响力，所以在评价用户的社会影响力时，自然要考虑后续和行为网络。Twitter社交网络通常用一个有向图G=(N，E)来表示，其中N是一组用户节点，E是一组有向边，表达/描述节点之间的连接方式。后续关系是Twitter社交网络最传统的表示方式。在后续图中，N是Twitter用户的集合，边表达了用户之间的后续关系。如一个边（A，B）∈E表示用户A是用户B的追随者，但由于行为网络是基于两个用户之间的动态交互，如回复、提及、引用、转发一条推文，这种动态交互可以用一组用户节点的有向图来表示，而边则代表用户之间的不同交互（如一个用户对不同用户发布的推文的转发）。后续网络代表账户之间潜在的信息流，而行为网络代表实际的信息流。因此，与后续网络相比，行为网络代表了账户之间更强的关系。这使得行为网络成为研究信息传播中影响者作用的理想选择。对于有影响力用户的检测和排名，基本上有两种著名的算法必须强调。因此，下面几小节将对这两种算法进行描述。&lt;/p&gt;
 &lt;h4 id=&#34;pagerank算法&#34;&gt;PageRank算法&lt;/h4&gt;
-&lt;p&gt;Google搜索引擎早期阶段开发的一个著名算法是PageRank算法，用来确定一个页面的相关性或重要性[5]。该算法通过估计每个页面所含链接的质量和数量，给每个页面分配一个重要性和权威性的相对数字分数。该算法采用简单的迭代算法计算，并基于随机冲浪者模型，即网络的随机冲浪者从一个页面开始随机形成链接到达目标页面的概率。为了分析twitter的社交图谱，考虑了每个用户的PageRank得分。假设有转发或回复用户V的推特等互动的用户列表U，U中每个用户的PageRank得分平均分配给用户V。例如，用户Ui的PageRank得分为X，它总共与5个用户的推特进行了互动。Ui的PageRank得分X将被发送给Ui互动过的每个用户。它可以用数学方式表示如下[5]。
+&lt;p&gt;Google搜索引擎早期阶段开发的一个著名算法是PageRank算法，用来确定一个页面的相关性或重要性[5]。该算法通过估计每个页面所含链接的质量和数量，给每个页面分配一个重要性和权威性的相对数字分数。该算法采用简单的迭代算法计算，并基于随机冲浪者模型，即网络的随机冲浪者从一个页面开始随机形成链接到达目标页面的概率。&lt;/p&gt;
+&lt;p&gt;为了分析twitter的社交图谱，本文考虑了每个用户的PageRank得分。假设有转发或回复用户V的推特等互动行为的用户列表U，U中每个用户的PageRank得分平均分配给用户V。例如，用户$U_i$的PageRank得分为X，它总共与5个用户的推特进行了互动。Ui的PageRank得分X将被发送给Ui互动过的每个用户。它可以用数学方式表示如下[5]。
 &lt;img src=&#34;images/equation1.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
-&lt;p&gt;其中，P R(A)为计算出的某用户节点A的PageRank，N对应于图中的节点总数。P(A)是指向节点A的节点集合，P(Ui)是节点A到节点U1&amp;hellip;Un的外链数量。最后，参数d为阻尼系数，表示跳转到随机用户节点的概率，通常设置为0.85。&lt;/p&gt;
+&lt;p&gt;其中，$PR(A)$为计算出的某用户节点A的PageRank，N对应于图中的节点总数。$P(A)$是指向节点A的节点集合，$P(U_i)$是节点A到节点$U_1,&amp;hellip;,U_n$的外链数量。最后，参数d为阻尼系数，表示跳转到随机用户节点的概率，通常设置为0.85。&lt;/p&gt;
 &lt;h4 id=&#34;hits算法&#34;&gt;HITS算法&lt;/h4&gt;
 &lt;p&gt;HITS算法是由Kleinberg[6]开发的一种网页排名算法。该算法基于权威机构和枢纽的思想，其中权威机构是指有较多传入链接的网页，枢纽是指有许多相关权威机构的传出链接的网页。如果一个页面指向了很多好的权威机构，那么这个页面就被认为是一个好的枢纽，一个好的权威页面被很多好的枢纽指向。与PageRank算法不同的是，HITS算法的起点是由与搜索查询相关的页面和任何链接到相关页面的页面组成的网络子集。至于Twitter行为社交图分析，我们将每个节点N视为用户节点，每个节点包含一组Hub得分Nh和Authority得分Na。给定S是指向N的节点集 ，而T是N指向的节点集 。 枢纽得分和权威得分的迭代计算过程如下。用户N的权威得分auth(N)是指向用户N的节点S的所有枢纽得分的归一化和。
 &lt;img src=&#34;images/equation2.png&#34; alt=&#34;&#34;&gt;
@@ -480,10 +489,26 @@
 &lt;/ul&gt;
 &lt;h5 id=&#34;评价指标&#34;&gt;评价指标&lt;/h5&gt;
 &lt;ul&gt;
-&lt;li&gt;MAE&lt;/li&gt;
-&lt;li&gt;RMSE&lt;/li&gt;
-&lt;li&gt;准确度&lt;/li&gt;
-&lt;li&gt;方差&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;绝对平均误差（MAE）
+&lt;img src=&#34;images/mae.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;均方根误差（RMSE）
+&lt;img src=&#34;images/rmse.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;准确度（Accuracy）
+&lt;img src=&#34;images/accuracy.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;判定系数
+&lt;img src=&#34;images/coefficient_of_determination.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;方差
+&lt;img src=&#34;images/variance.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;/li&gt;
 &lt;/ul&gt;
 &lt;h2 id=&#34;学习资料&#34;&gt;学习资料&lt;/h2&gt;
 &lt;p&gt;&lt;a href=&#34;https://towardsdatascience.com/how-to-predict-severe-traffic-jams-with-python-and-recurrent-neural-networks-e53b6d411e8d&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;How to Predict Severe Traffic Jams with Python and Recurrent Neural Networks?&lt;/a&gt;&lt;/p&gt;
@@ -1083,45 +1108,6 @@ Geoinquietos阿根廷分会在2013年、2016年、2017年和2019年组织了 &am
     </item>
     
     <item>
-      <title>基于RFM和Kmeans的用户分群</title>
-      <link>https://coolgiserz.github.io/project/rfm-and-kmeans-based-personalizing-marketing/</link>
-      <pubDate>Mon, 08 Jun 2020 10:40:17 +0800</pubDate>
-      <guid>https://coolgiserz.github.io/project/rfm-and-kmeans-based-personalizing-marketing/</guid>
-      <description>&lt;h2 id=&#34;前言&#34;&gt;前言&lt;/h2&gt;
-&lt;p&gt;营销业务中比较重要的环节就是用户分群，其目的是做针对性、个性化的营销，而不是对每个用户都采用同样的营销。那么如何对用户进行分群就是一门值得研究的学问。&lt;/p&gt;
-&lt;p&gt;本项目实现经典的RFM用户分群模型，并用Kmeans对RFM特征进行聚类，作为探索个性化营销的初步尝试。&lt;/p&gt;
-&lt;h3 id=&#34;rfm模型&#34;&gt;RFM模型&lt;/h3&gt;
-&lt;p&gt;RFM模型是经典的用户分群模型，从3个维度对用户进行分层。&lt;/p&gt;
-&lt;blockquote&gt;
-&lt;p&gt;R: Recency, 表示用户最近一次购买的时间&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;blockquote&gt;
-&lt;p&gt;F: Frequency, 表示用户过去一段时间的购买次数&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;blockquote&gt;
-&lt;p&gt;M: Monetary, 表示用户过去一段时间内所花费的总金额&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;h2 id=&#34;项目思路&#34;&gt;项目思路&lt;/h2&gt;
-&lt;h3 id=&#34;步骤一数据预处理&#34;&gt;步骤一：数据预处理&lt;/h3&gt;
-&lt;h3 id=&#34;步骤二特征提取&#34;&gt;步骤二：特征提取&lt;/h3&gt;
-&lt;p&gt;得到用户的R、F、M维度特征。&lt;/p&gt;
-&lt;h3 id=&#34;步骤三用户分群&#34;&gt;步骤三：用户分群&lt;/h3&gt;
-&lt;h4 id=&#34;法一对rfm设置阈值对用户分群&#34;&gt;法一：对RFM设置阈值对用户分群&lt;/h4&gt;
-&lt;p&gt;对R、F、M三个维度的特征各自按照一定的阈值进行分组，分组有一定的原则。具体的阈值设置可以按照均值来分，也可以按照分位数，众数等作为划分的阈值。选择阈值之前可以先通过可视化探索用户各维度特征的分布特征。&lt;/p&gt;
-&lt;p&gt;分完组之后可以将每个组映射到一个类别，标明用户的“等级”或“价值”。通常认为：对于R而言，R越小用户价值越大；对于F而言，F越大用户价值越大；对于M而言，M越大用户价值越大。&lt;/p&gt;
-&lt;p&gt;将每个维度的等级进行综合可以对用户有一个综合评价，综合的方式有很多，最简单的可以是三个维度的加和。&lt;/p&gt;
-&lt;h4 id=&#34;法二基于聚类的用户分群&#34;&gt;法二：基于聚类的用户分群&lt;/h4&gt;
-&lt;p&gt;前面基于阈值的分群方法虽然简单容易操作，但是也过于一刀切，且对经验依赖较大。这里考虑对用户按照等级特征进行聚类实现用户分群。但该方法的缺点是对于每一个类簇需要人为地去解释，且如何确定类簇的个数也是一个问题。&lt;/p&gt;
-&lt;h2 id=&#34;资源小结&#34;&gt;资源小结&lt;/h2&gt;
-&lt;p&gt;用户分群还可以基于很多特征进行，如活跃度、内容贡献、注册时间等.&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;https://mta.qq.com/docs/ctr_user_group.html&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;腾讯移动分析-用户分群&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;http://www.woshipm.com/operate/598103.html&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;读懂用户运营体系：用户分层和分群&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-</description>
-    </item>
-    
-    <item>
       <title>基于OpenStreetMap的路径规划项目</title>
       <link>https://coolgiserz.github.io/project/osm-route-planning/</link>
       <pubDate>Mon, 27 Apr 2020 00:00:00 +0000</pubDate>
@@ -1415,6 +1401,175 @@ g值和h值&lt;/p&gt;
     </item>
     
     <item>
+      <title>基于隐马尔可夫模型实现简易词性分析器</title>
+      <link>https://coolgiserz.github.io/project/pos-tagger-implemented-on-hmm-model/</link>
+      <pubDate>Sat, 21 Mar 2020 20:23:11 +0800</pubDate>
+      <guid>https://coolgiserz.github.io/project/pos-tagger-implemented-on-hmm-model/</guid>
+      <description>&lt;h2 id=&#34;前言&#34;&gt;前言&lt;/h2&gt;
+&lt;p&gt;本项目基于隐马尔可夫模型实现一个简易的词性标注器。首先简单介绍下面几个问题：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;词性标注器是做什么的？&lt;/li&gt;
+&lt;li&gt;如何实现词性标注？&lt;/li&gt;
+&lt;li&gt;HMM模型的思想&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;词性标注&#34;&gt;词性标注&lt;/h3&gt;
+&lt;h4 id=&#34;什么是词性&#34;&gt;什么是词性？&lt;/h4&gt;
+&lt;p&gt;词性是词汇的基本语法属性，也称为词类。词性标注（Part-Of-Speech tagging）就是在给定句子中判定每个词的语法属性，确定其词性并加以标注。语文课上或者英语课上老师让同学们分析句子成分，其中就会用到词性的信息，比如说主语只能是名词、代词等等，谓语只能是动词、助动词、系动词等等……了解词汇、句子的语法特征在某些场合下有助于我们理解句意（更多介绍请移步语法书），所以词性标注是一个值得研究的问题。&lt;/p&gt;
+&lt;h4 id=&#34;如何实现词性标注&#34;&gt;如何实现词性标注？&lt;/h4&gt;
+&lt;p&gt;那么如何实现词性标注？首先要知道词性标注面临着什么问题：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;词具有兼类现象&lt;/p&gt;
+&lt;p&gt;同一个词可能有多种词性，尤其是对于汉语来说，词语在词性方面的歧义数量极大。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;词性划分具有主观性&lt;/p&gt;
+&lt;p&gt;语言学界对于词性的划分没有统一被广泛认可的划分标准。&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;实现词性标注的方法可以分为以下几类：基于统计、基于规则、规则与统计融合的方法。
+基于统计的方法若按照是否有标注数据来分又可以分为有监督和无监督的方法.&lt;/p&gt;
+&lt;h3 id=&#34;基于隐马尔可夫模型进行词性标注&#34;&gt;基于隐马尔可夫模型进行词性标注&lt;/h3&gt;
+&lt;h4 id=&#34;隐马尔可夫模型简要介绍&#34;&gt;隐马尔可夫模型简要介绍&lt;/h4&gt;
+&lt;p&gt;隐马尔可夫模型（HMM）建模的是不可观测隐状态变量、可观测的变量及其转化关系的概率分布。HMM属于概率图模型的一类，属于生成模型。根据训练数据是否包括观测序列对应的状态序列可以分为有监督学习和无监督学习的方法。&lt;/p&gt;
+&lt;p&gt;HMM认为在我们所能够观测到的变量背后实际上有一个隐含的状态变量，是这个隐含的变量决定了我们所能够观测到的现象，比如说我们看到了一串数字“6 5 1 3 4 2 1 2 5”，这串数字可能是由一个或多个骰子共投掷了9次所得到。所以要是能够把这个隐含变量的概率分布建模出来，那得到的模型就更能反应真实系统的工作机制。&lt;/p&gt;
+&lt;p&gt;隐马尔可夫模型有两个基本假设：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;齐次马尔可夫性假设&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;即认为隐马尔可夫链在t时刻的状态只依赖于t-1时刻的状态，这背后的意思是认为t-1时刻的状态已经包含了足够预测t时刻状态的历史状态信息。如只通过今天的天气预测明天的天气而不去理会昨天、前天甚至更早以前的天气。&lt;/p&gt;
+&lt;ol start=&#34;2&#34;&gt;
+&lt;li&gt;观测独立性假设&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;任意时刻的观测只依赖于该时刻马尔可夫链的状态。&lt;/p&gt;
+&lt;p&gt;隐马尔可夫模型主要有三大问题：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;概率计算：
+给定状态转移概率、发射概率和初始概率，计算出现某观测序列的概率值&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;学习问题：
+已知观测序列和状态集合，估计HMM的参数：状态转移矩阵、发射矩阵和初始概率&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;预测问题（解码问题）：
+给定观测序列和HMM的参数，求出最有可能的隐状态序列。&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h4 id=&#34;为什么能用hmm模型进行词性分析&#34;&gt;为什么能用HMM模型进行词性分析？&lt;/h4&gt;
+&lt;p&gt;词性分析的过程中，我们所能够观测到的就是词汇的序列，要分析词性是不能直接观测到的，可以把句子各单词的词性与HMM中的隐状态对应起来，观测到的单词与显状态对应起来，然后就能够通过HMM的框架建模单词与词性的关系了。&lt;/p&gt;
+&lt;h4 id=&#34;如何用hmm模型实现词性分析&#34;&gt;如何用HMM模型实现词性分析？&lt;/h4&gt;
+&lt;h5 id=&#34;明确变量和参数&#34;&gt;明确变量和参数&lt;/h5&gt;
+&lt;p&gt;要清楚HMM有什么样的变量和参数。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;隐状态：词性&lt;/li&gt;
+&lt;li&gt;显状态：词汇&lt;/li&gt;
+&lt;li&gt;初始概率：句首词性的概率分布&lt;/li&gt;
+&lt;li&gt;状态转移矩阵A：从一个词性到下一个词性的概率分布&lt;/li&gt;
+&lt;li&gt;发射概率矩阵B：给定词性下词汇的概率分布&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h5 id=&#34;明确如何学习参数&#34;&gt;明确如何学习参数&lt;/h5&gt;
+&lt;p&gt;此处以有监督的方式训练，可以直接通过统计算出:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;转移概率: $A[i][j]=\frac{N_{ij}}{N_i}$,&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;发射概率: $B[i][v]=\frac{N_{iv}}{N_i}$,&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;初始概率: $Pi[i]=\frac{N_{oi}}{N_o}$&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h5 id=&#34;明确如何进行推断&#34;&gt;明确如何进行推断&lt;/h5&gt;
+&lt;p&gt;给定句子，求出最可能的词性标注序列。使用维特比算法。&lt;/p&gt;
+&lt;h4 id=&#34;基于hmm模型的词性分析器有何缺点&#34;&gt;基于HMM模型的词性分析器有何缺点？&lt;/h4&gt;
+&lt;p&gt;HMM的假设很简洁，也能够在一些简单场景下工作得很好，但成也简洁，败也简洁。所做的两个假设对于真实情况下的复杂语言现象而言还是过分简单了：t位置的词性不止受t-1位置的词性的影响，可能还受更前面的，甚至后面的词性的影响；词汇的词性本身可能存在歧义；……&lt;/p&gt;
+&lt;h2 id=&#34;项目结构&#34;&gt;项目结构&lt;/h2&gt;
+&lt;p&gt;&lt;img src=&#34;images/framework.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;h3 id=&#34;测试结果&#34;&gt;测试结果&lt;/h3&gt;
+&lt;p&gt;&lt;img src=&#34;images/test.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;h3 id=&#34;更多扩展&#34;&gt;更多扩展&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;对于未登录词和分词，该如何处理？&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;如何实现无监督的词性标注？&lt;/p&gt;
+&lt;p&gt;如利用EM算法的Baum-Welch算法&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;相关资料&#34;&gt;相关资料&lt;/h2&gt;
+&lt;h3 id=&#34;教材&#34;&gt;教材&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;统计学习方法第10章：隐马尔可夫模型&lt;/li&gt;
+&lt;li&gt;统计自然语言处理第7章：自动分词、命名实体识别和词性标注&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;开源库&#34;&gt;开源库&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://hmmlearn.readthedocs.io/en/latest/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;hmmlearn&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;博客&#34;&gt;博客：&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://zhuanlan.zhihu.com/p/113136120&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Forward-可能是最易懂且全面的隐马尔可夫介绍（一）&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>面向Covid-19国内传播分析的人口流动网络分析</title>
+      <link>https://coolgiserz.github.io/project/network-analysis-for-covid-19/</link>
+      <pubDate>Fri, 13 Mar 2020 21:54:39 +0800</pubDate>
+      <guid>https://coolgiserz.github.io/project/network-analysis-for-covid-19/</guid>
+      <description>&lt;h3 id=&#34;数据集&#34;&gt;数据集&lt;/h3&gt;
+&lt;h4 id=&#34;病例统计数据&#34;&gt;病例统计数据&lt;/h4&gt;
+&lt;ul&gt;
+&lt;li&gt;丁香园统计的各地病例数&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&#34;移动性数据&#34;&gt;移动性数据&lt;/h4&gt;
+&lt;ul&gt;
+&lt;li&gt;百度迁徙&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;方法&#34;&gt;方法&lt;/h3&gt;
+&lt;h4 id=&#34;网络节点影响力排名&#34;&gt;网络节点影响力排名&lt;/h4&gt;
+&lt;ul&gt;
+&lt;li&gt;PageRank&lt;/li&gt;
+&lt;li&gt;HITS&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&#34;社区检测&#34;&gt;社区检测&lt;/h4&gt;
+&lt;ul&gt;
+&lt;li&gt;Newman&lt;/li&gt;
+&lt;li&gt;Ricci flow&lt;/li&gt;
+&lt;li&gt;Infomap&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;案例分析&#34;&gt;案例分析&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;地级市人口流动网络节点影响力分析&lt;/li&gt;
+&lt;li&gt;K感染数到达时间与城市节点影响力的相关性分析&lt;/li&gt;
+&lt;li&gt;网络社区发现&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;相关文献&#34;&gt;相关文献&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a href=&#34;https://www.nature.com/articles/s41586-020-2284-y&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Population flow drives spatio-temporal distribution of COVID-19 in China&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a href=&#34;https://www.nature.com/articles/s41586-020-2923-3?fbclid=IwAR0iyWJwtGTAf19Uj4ikHG1VZPG221gFkt16zbH4-CbxjJOksp5MLS94EdU&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Mobility network models of COVID-19 explain inequities and inform reopening&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a href=&#34;https://www.thelancet.com/journals/lanpub/article/PIIS2468-2667%2820%2930073-6/fulltext&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;The effect of control strategies to reduce social mixing on outcomes of the COVID-19 epidemic in Wuhan, China: a modelling study&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;我们的预测显示，如果在4月初错峰复工，物理疏导措施最为有效；这使得2020年中期和2020年底的感染中位数分别减少了92%（IQR 66-97）和24%（13-90）以上。将这些措施持续到4月是有好处的，可以推迟和降低高峰期的高度、2020年底的中位数疫情规模，并为医疗系统提供更多的时间来扩大和应对。然而，物理距离措施的模型效果因传染性的持续时间和学童在流行病中的作用而不同。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a href=&#34;https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0241171&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Modeling and prediction of the 2019 coronavirus disease spreading in China incorporating human migration data&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;本研究将每日城市间迁移数据与经典的易感-暴露-感染-清除（SEIR）模型进行整合，构建了适合描述中国2019年冠状病毒病（COVID-19）流行传播动态的新模型。从基于移动应用的人类迁徙追踪数据系统 &amp;ldquo;百度迁徙 &amp;ldquo;中采集了中国367个城市的每日城际迁徙数据。利用官方来源的感染病例、康复病例和死亡病例的早期疫情数据（2020年1月24日至2月16日）进行模型拟合。利用约束性非线性优化程序，对最佳数据拟合得到的模型参数集，用于估计随后几个月的疫情传播动态。该工作于2020年2月19日完成。我们的结果显示，中国大部分城市的感染人数将在2020年2月中旬至3月上旬达到高峰，武汉市、湖北省和中国其他地区的最终感染人数分别约为0.8%、不到0.1%和不到0.01%。此外，对于湖北省外和湖北省内的大部分城市（除武汉外），预计感染者总数将分别低于300人和4000人。&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
+    
+    <item>
       <title>疫情之下的北京之旅 2020</title>
       <link>https://coolgiserz.github.io/event/beijing-trip-2020/</link>
       <pubDate>Wed, 11 Mar 2020 00:20:45 +0800</pubDate>
@@ -1441,7 +1596,30 @@ g值和h值&lt;/p&gt;
       <link>https://coolgiserz.github.io/post/data-driven-testing-for-starter/</link>
       <pubDate>Mon, 09 Mar 2020 20:20:57 +0800</pubDate>
       <guid>https://coolgiserz.github.io/post/data-driven-testing-for-starter/</guid>
-      <description></description>
+      <description>&lt;h2 id=&#34;前言&#34;&gt;前言&lt;/h2&gt;
+&lt;p&gt;之前的文章简单介绍了&lt;a href=&#34;../automated-testing-startup/&#34;&gt;自动化测试&lt;/a&gt;，在自动化测试平台中，有一个重要的组件或概念称为“数据驱动的测试（Data Driven Tests， DDT）”，其目的是将测试脚本与测试数据分离，本质上是测试逻辑的解耦，使得测试流程的代码编写与测试过程中所使用的数据/用例设计可以分别进行。&lt;/p&gt;
+&lt;p&gt;数据驱动的测试解决了如下痛点：&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;对于同一份测试代码，测试数据可能会发生大量变化，如果测试数据与代码耦合可能会为代码维护带来不必要的麻烦或增加不必要的代码编写。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h3 id=&#34;框架&#34;&gt;框架&lt;/h3&gt;
+&lt;p&gt;以基于Python语言的&lt;a href=&#34;https://ddt.readthedocs.io/en/latest/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;DDT&lt;/a&gt;框架为例介绍DDT的主要模块功能与模块关系。&lt;/p&gt;
+&lt;p&gt;DDT主要有三大部件：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;数据源&lt;/p&gt;
+&lt;p&gt;csv、excel、json、xml等&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;数据加载脚本&lt;/p&gt;
+&lt;p&gt;将数据源读取到内存中（特定的数据结构）&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;测试脚本&lt;/p&gt;
+&lt;p&gt;读取数据变量，进行测试，保存测试信息。&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+</description>
     </item>
     
     <item>
@@ -1455,6 +1633,45 @@ g值和h值&lt;/p&gt;
 &lt;li&gt;什么是上位机、下位机？&lt;/li&gt;
 &lt;li&gt;上位机与下位机之间如何通信？&lt;/li&gt;
 &lt;li&gt;如何进行串口通信？&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>基于RFM和Kmeans的用户分群</title>
+      <link>https://coolgiserz.github.io/project/rfm-and-kmeans-based-personalizing-marketing/</link>
+      <pubDate>Wed, 19 Feb 2020 10:40:17 +0800</pubDate>
+      <guid>https://coolgiserz.github.io/project/rfm-and-kmeans-based-personalizing-marketing/</guid>
+      <description>&lt;h2 id=&#34;前言&#34;&gt;前言&lt;/h2&gt;
+&lt;p&gt;营销业务中比较重要的环节就是用户分群，其目的是做针对性、个性化的营销，而不是对每个用户都采用同样的营销。那么如何对用户进行分群就是一门值得研究的学问。&lt;/p&gt;
+&lt;p&gt;本项目实现经典的RFM用户分群模型，并用Kmeans对RFM特征进行聚类，作为探索个性化营销的初步尝试。&lt;/p&gt;
+&lt;h3 id=&#34;rfm模型&#34;&gt;RFM模型&lt;/h3&gt;
+&lt;p&gt;RFM模型是经典的用户分群模型，从3个维度对用户进行分层。&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;R: Recency, 表示用户最近一次购买的时间&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;blockquote&gt;
+&lt;p&gt;F: Frequency, 表示用户过去一段时间的购买次数&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;blockquote&gt;
+&lt;p&gt;M: Monetary, 表示用户过去一段时间内所花费的总金额&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h2 id=&#34;项目思路&#34;&gt;项目思路&lt;/h2&gt;
+&lt;h3 id=&#34;步骤一数据预处理&#34;&gt;步骤一：数据预处理&lt;/h3&gt;
+&lt;h3 id=&#34;步骤二特征提取&#34;&gt;步骤二：特征提取&lt;/h3&gt;
+&lt;p&gt;得到用户的R、F、M维度特征。&lt;/p&gt;
+&lt;h3 id=&#34;步骤三用户分群&#34;&gt;步骤三：用户分群&lt;/h3&gt;
+&lt;h4 id=&#34;法一对rfm设置阈值对用户分群&#34;&gt;法一：对RFM设置阈值对用户分群&lt;/h4&gt;
+&lt;p&gt;对R、F、M三个维度的特征各自按照一定的阈值进行分组，分组有一定的原则。具体的阈值设置可以按照均值来分，也可以按照分位数，众数等作为划分的阈值。选择阈值之前可以先通过可视化探索用户各维度特征的分布特征。&lt;/p&gt;
+&lt;p&gt;分完组之后可以将每个组映射到一个类别，标明用户的“等级”或“价值”。通常认为：对于R而言，R越小用户价值越大；对于F而言，F越大用户价值越大；对于M而言，M越大用户价值越大。&lt;/p&gt;
+&lt;p&gt;将每个维度的等级进行综合可以对用户有一个综合评价，综合的方式有很多，最简单的可以是三个维度的加和。&lt;/p&gt;
+&lt;h4 id=&#34;法二基于聚类的用户分群&#34;&gt;法二：基于聚类的用户分群&lt;/h4&gt;
+&lt;p&gt;前面基于阈值的分群方法虽然简单容易操作，但是也过于一刀切，且对经验依赖较大。这里考虑对用户按照等级特征进行聚类实现用户分群。但该方法的缺点是对于每一个类簇需要人为地去解释，且如何确定类簇的个数也是一个问题。&lt;/p&gt;
+&lt;h2 id=&#34;资源小结&#34;&gt;资源小结&lt;/h2&gt;
+&lt;p&gt;用户分群还可以基于很多特征进行，如活跃度、内容贡献、注册时间等.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://mta.qq.com/docs/ctr_user_group.html&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;腾讯移动分析-用户分群&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://www.woshipm.com/operate/598103.html&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;读懂用户运营体系：用户分层和分群&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 </description>
     </item>
