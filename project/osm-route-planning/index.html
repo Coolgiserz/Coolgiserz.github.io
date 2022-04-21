@@ -1,19 +1,49 @@
 <!DOCTYPE html><html lang="en-us" >
 
+
 <head>
-
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   
   
   
-  <meta name="generator" content="Wowchemy 5.0.0-beta.1 for Hugo">
-  
-
+    <meta name="generator" content="Wowchemy 5.5.0 for Hugo" />
   
 
   
+  
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+  
+  
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  
+
+  
+  
+  
+    
+      
+      <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Roboto+Mono&family=Roboto:wght@400;700&display=swap">
+      <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Roboto+Mono&family=Roboto:wght@400;700&display=swap" media="print" onload="this.media='all'">
+    
   
 
   
@@ -27,56 +57,51 @@
   
   
 
-  <meta name="author" content="CoolCats">
+  <meta name="author" content="CoolCats" />
 
   
   
   
     
   
-  <meta name="description" content="路径规划C&#43;&#43;项目">
+  <meta name="description" content="路径规划C&#43;&#43;项目" />
 
   
-  <link rel="alternate" hreflang="en-us" href="https://coolgiserz.github.io/project/osm-route-planning/">
-
-  
-
-
-
-
-
-
-
-  
-
-
-
-
-  
-  
+  <link rel="alternate" hreflang="en-us" href="/project/osm-route-planning/" />
 
   
   
   
-  <meta name="theme-color" content="#2962ff">
+    <meta name="theme-color" content="#1565c0" />
   
 
   
   
-  
-  <script src="/js/mathjax-config.js"></script>
+    
+    <script src="/js/mathjax-config.js"></script>
   
 
   
+
+  <link rel="stylesheet" href="/css/vendor-bundle.min.c7b8d9abd591ba2253ea42747e3ac3f5.css" media="print" onload="this.media='all'">
+
   
   
   
     
     
-      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/academicons/1.9.0/css/academicons.min.css" integrity="sha512-W4yqoT1+8NLkinBLBZko+dFB2ZbHsYLDdr50VElllRcNt2Q4/GSs6u71UHKxB7S6JEMCp5Ve4xjh3eGQl/HRvg==" crossorigin="anonymous">
+      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/academicons@1.9.1/css/academicons.min.css" integrity="sha512-W0xM4mr6dEP9nREo7Z9z+9X70wytKvMGeDsj7ps2+xg5QPrEBXC8tAW1IFnzjR6eoJ90JmCnFzerQJTLzIEHjA==" crossorigin="anonymous" media="print" onload="this.media='all'">
     
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css" integrity="sha256-FMvZuGapsJLjouA6k7Eo2lusoAX9i0ShlWFG6qt7SLc=" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.css" integrity="sha256-Vzbj7sDDS/woiFS3uNKo8eIuni59rjyNGtXfstRzStA=" crossorigin="anonymous">
+
+    
+    
+    
+    
+      
+      
+    
+    
+    
 
     
     
@@ -84,36 +109,26 @@
       
     
     
-
-    
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.7.1/leaflet.min.css" integrity="sha512-1xoFisiGdy9nvho8EgXuXvnpR5GAMSjFwp40gSRE3NwdUdIMIKuPa7bqoUhLD0O/5tPNhteAsE5XyyMi5reQVA==" crossorigin="anonymous">
-    
-
-    
-
-    
-    
-      
-
       
       
-
+        
+          <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@10.2.1/build/styles/github.min.css" crossorigin="anonymous" title="hl-light" media="print" onload="this.media='all'">
+          <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@10.2.1/build/styles/dracula.min.css" crossorigin="anonymous" title="hl-dark" media="print" onload="this.media='all'" disabled>
+        
       
     
-      
 
-      
-      
+    
+    
+    
+      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.7.1/dist/leaflet.min.css" integrity="" crossorigin="anonymous" media="print" onload="this.media='all'">
+    
 
-      
+    
+
+    
     
       
-
-      
-      
-
-      
-    
       
 
       
@@ -122,12 +137,6 @@
       
     
       
-
-      
-      
-
-      
-    
       
 
       
@@ -136,12 +145,6 @@
       
     
       
-
-      
-      
-
-      
-    
       
 
       
@@ -150,12 +153,6 @@
       
     
       
-
-      
-      
-
-      
-    
       
 
       
@@ -164,21 +161,6 @@
       
     
       
-
-      
-      
-
-      
-    
-      
-
-      
-      
-
-      
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/lazysizes/5.2.2/lazysizes.min.js" integrity="sha512-TmDwFLhg3UA4ZG0Eb4MIyT1O1Mb+Oww5kFG0uHqXsdbyZz9DcvYQhKpGgNkamAI6h2lGGZq2X8ftOJvF/XjTUg==" crossorigin="anonymous" async></script>
-      
-    
       
 
       
@@ -187,12 +169,62 @@
       
     
       
+      
 
       
       
 
       
     
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
       
 
       
@@ -203,12 +235,6 @@
       
     
       
-
-      
-      
-
-      
-    
       
 
       
@@ -216,78 +242,54 @@
 
       
     
+      
+      
 
+      
+      
+
+      
+    
   
 
   
   
   
-
   
   
-  
-  
-  <link rel="stylesheet" href="/css/wowchemy.min.95edefe724f6a6c53c0464fae8ba2346.css">
+  <link rel="stylesheet" href="/css/wowchemy.8722fd0f5cb8e5cb38d3b73367786cc1.css" />
 
   
 
 
 
-
-
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-HWGB23T7ER"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-
-  function gtag() {
-      dataLayer.push(arguments);
-  }
-
-  function trackOutboundLink(url, target) {
-    gtag('event', 'click', {
-         'event_category': 'outbound',
-         'event_label': url,
-         'transport_type': 'beacon',
-         'event_callback': function () {
-           if (target !== '_blank') {
-             document.location = url;
-           }
-         }
-    });
-    console.debug("Outbound link clicked: " + url);
-  }
-
-  function onClickCallback(event) {
-    if ((event.target.tagName !== 'A') || (event.target.host === window.location.host)) {
-      return;
-    }
-    trackOutboundLink(event.target, event.target.getAttribute('target'));  
-  }
-
-  gtag('js', new Date());
-  gtag('config', 'G-HWGB23T7ER', {});
-
   
-  document.addEventListener('click', onClickCallback, false);
-</script>
 
-
-  
 
   
 
 
   
+
+
+
+
+  
+  
   
 
   
 
-  <link rel="manifest" href="/index.webmanifest">
-  <link rel="icon" type="image/png" href="/images/icon_hue03491371183284312b8b116a73ae5ab_79511_32x32_fill_lanczos_center_2.png">
-  <link rel="apple-touch-icon" type="image/png" href="/images/icon_hue03491371183284312b8b116a73ae5ab_79511_192x192_fill_lanczos_center_2.png">
+  
+    <link rel="manifest" href="/manifest.webmanifest" />
+  
 
-  <link rel="canonical" href="https://coolgiserz.github.io/project/osm-route-planning/">
+  <link rel="icon" type="image/png" href="/media/icon_hue03491371183284312b8b116a73ae5ab_79511_32x32_fill_lanczos_center_3.png" />
+  <link rel="apple-touch-icon" type="image/png" href="/media/icon_hue03491371183284312b8b116a73ae5ab_79511_180x180_fill_lanczos_center_3.png" />
 
+  <link rel="canonical" href="/project/osm-route-planning/" />
+
+  
   
   
   
@@ -298,16 +300,28 @@
     
   
   
-  <meta property="twitter:card" content="summary_large_image">
+
   
-  <meta property="og:site_name" content="CoolCats">
-  <meta property="og:url" content="https://coolgiserz.github.io/project/osm-route-planning/">
-  <meta property="og:title" content="基于OpenStreetMap的路径规划项目 | CoolCats">
-  <meta property="og:description" content="路径规划C&#43;&#43;项目"><meta property="og:image" content="https://coolgiserz.github.io/project/osm-route-planning/featured.png">
-  <meta property="twitter:image" content="https://coolgiserz.github.io/project/osm-route-planning/featured.png"><meta property="og:locale" content="en-us">
   
     
-      <meta property="article:published_time" content="2020-04-27T00:00:00&#43;00:00">
+    
+  
+  <meta property="twitter:card" content="summary_large_image" />
+  
+    <meta property="twitter:site" content="@wowchemy" />
+    <meta property="twitter:creator" content="@wowchemy" />
+  
+  <meta property="og:site_name" content="CoolCats" />
+  <meta property="og:url" content="/project/osm-route-planning/" />
+  <meta property="og:title" content="基于OpenStreetMap的路径规划项目 | CoolCats" />
+  <meta property="og:description" content="路径规划C&#43;&#43;项目" /><meta property="og:image" content="/project/osm-route-planning/featured.png" />
+    <meta property="twitter:image" content="/project/osm-route-planning/featured.png" /><meta property="og:locale" content="en-us" />
+  
+    
+      <meta
+        property="article:published_time"
+        content="2020-04-27T00:00:00&#43;00:00"
+      />
     
     <meta property="article:modified_time" content="2020-04-27T00:00:00&#43;00:00">
   
@@ -331,12 +345,12 @@
   "@type": "Article",
   "mainEntityOfPage": {
     "@type": "WebPage",
-    "@id": "https://coolgiserz.github.io/project/osm-route-planning/"
+    "@id": "/project/osm-route-planning/"
   },
   "headline": "基于OpenStreetMap的路径规划项目",
   
   "image": [
-    "https://coolgiserz.github.io/project/osm-route-planning/featured.png"
+    "/project/osm-route-planning/featured.png"
   ],
   
   "datePublished": "2020-04-27T00:00:00Z",
@@ -352,7 +366,7 @@
     "name": "CoolCats",
     "logo": {
       "@type": "ImageObject",
-      "url": "https://coolgiserz.github.io/images/icon_hue03491371183284312b8b116a73ae5ab_79511_192x192_fill_lanczos_center_2.png"
+      "url": "/media/icon_hue03491371183284312b8b116a73ae5ab_79511_192x192_fill_lanczos_center_3.png"
     }
   },
   "description": "路径规划C++项目"
@@ -363,9 +377,7 @@
 
   
 
-
   
-
 
   
 
@@ -374,20 +386,26 @@
 
 
   <title>基于OpenStreetMap的路径规划项目 | CoolCats</title>
-
 </head>
 
 
-<body id="top" data-spy="scroll" data-offset="70" data-target="#TableOfContents" class="page-wrapper  ">
+<body id="top" data-spy="scroll" data-offset="70" data-target="#TableOfContents" class="page-wrapper   " data-wc-page-id="bbf4896a5289eaf2beeac065b47157d5" >
 
   
   
   
   
   
-  <script src="/js/wowchemy-init.js"></script>
+  
+  
+  
+  
+  <script src="/js/wowchemy-init.min.2ed908358299dd7ab553faae685c746c.js"></script>
 
-  <aside class="search-results" id="search">
+  
+
+
+<aside class="search-modal" id="search">
   <div class="container">
     <section class="search-header">
 
@@ -396,16 +414,22 @@
           <h1>Search</h1>
         </div>
         <div class="col-6 col-search-close">
-          <a class="js-search" href="#"><i class="fas fa-times-circle text-muted" aria-hidden="true"></i></a>
+          <a class="js-search" href="#" aria-label="Close"><i class="fas fa-times-circle text-muted" aria-hidden="true"></i></a>
         </div>
       </div>
 
       <div id="search-box">
         
         <input name="q" id="search-query" placeholder="Search..." autocapitalize="off"
-        autocomplete="off" autocorrect="off" spellcheck="false" type="search" class="form-control">
+        autocomplete="off" autocorrect="off" spellcheck="false" type="search" class="form-control"
+        aria-label="Search...">
         
       </div>
+
+      
+      
+
+      
 
     </section>
     <section class="section-search-results">
@@ -417,6 +441,7 @@
     </section>
   </div>
 </aside>
+
 
 
   <div class="page-header">
@@ -433,242 +458,273 @@
 
 
 
-<nav class="navbar navbar-expand-lg navbar-light compensate-for-scrollbar" id="navbar-main">
-  <div class="container">
-
-    
-    <div class="d-none d-lg-inline-flex">
-      <a class="navbar-brand" href="/">CoolCats</a>
-    </div>
-    
-
-    
-    <button type="button" class="navbar-toggler" data-toggle="collapse"
-            data-target="#navbar-content" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
-    <span><i class="fas fa-bars"></i></span>
-    </button>
-    
-
-    
-    <div class="navbar-brand-mobile-wrapper d-inline-flex d-lg-none">
-      <a class="navbar-brand" href="/">CoolCats</a>
-    </div>
-    
-
-    
-    
-    <div class="navbar-collapse main-menu-item collapse justify-content-end" id="navbar-content">
+<header class="header--fixed">
+  <nav class="navbar navbar-expand-lg navbar-light compensate-for-scrollbar" id="navbar-main">
+    <div class="container-xl">
 
       
-      <ul class="navbar-nav d-md-inline-flex">
-        
-
-        
-
-        
-        
-        
-
-        
-
-        
-        
-        
-        
-
-        
-          
-            
-            
-          
-          
-        
-
-        <li class="nav-item">
-          <a class="nav-link " href="/post"><span>博客</span></a>
-        </li>
-
-        
-        
-
-        
-
-        
-        
-        
-          
-        
-
-        
-
-        
-        
-        
-        
-
-        
-          
-            
-            
-          
-          
-        
-
-        <li class="nav-item">
-          <a class="nav-link " href="/event"><span>趣事</span></a>
-        </li>
-
-        
-        
-
-        
-
-        
-        
-        
-          
-        
-
-        
-
-        
-        
-        
-        
-
-        
-          
-            
-            
-          
-          
-        
-
-        <li class="nav-item">
-          <a class="nav-link " href="/project"><span>项目</span></a>
-        </li>
-
-        
-        
-
-        
-
-        
-        
-        
-          
-        
-
-        
-
-        
-        
-        
-        
-
-        
-          
-            
-            
-          
-          
-        
-
-        <li class="nav-item">
-          <a class="nav-link " href="/publication"><span>论文</span></a>
-        </li>
-
-        
-        
-
-        
-
-        
-        
-        
-          
-        
-
-        
-
-        
-        
-        
-        
-
-        
-          
-            
-            
-          
-          
-        
-
-        <li class="nav-item">
-          <a class="nav-link " href="/contact"><span>联系</span></a>
-        </li>
-
-        
-        
-
-        
-
-        
-        
-        
-          
-        
-
-        
-
-        
-        
-        
-        
-
-        
-          
-            
-            
-          
-          
-        
-
-        <li class="nav-item">
-          <a class="nav-link " href="/media/files/cv"><span>简历</span></a>
-        </li>
-
-        
-        
-
+      <div class="d-none d-lg-inline-flex">
+        <a class="navbar-brand" href="/">CoolCats</a>
+      </div>
       
 
+      
+      <button type="button" class="navbar-toggler" data-toggle="collapse"
+              data-target="#navbar-content" aria-controls="navbar-content" aria-expanded="false" aria-label="Toggle navigation">
+      <span><i class="fas fa-bars"></i></span>
+      </button>
+      
+
+      
+      <div class="navbar-brand-mobile-wrapper d-inline-flex d-lg-none">
+        <a class="navbar-brand" href="/">CoolCats</a>
+      </div>
+      
+
+      
+      
+      <div class="navbar-collapse main-menu-item collapse justify-content-start" id="navbar-content">
+
         
+        <ul class="navbar-nav d-md-inline-flex">
+          
+
+          
+
+          
+          
+          
+
+          
+
+          
+          
+          
+          
+
+          
+            
+              
+              
+            
+            
+          
+
+          <li class="nav-item">
+            <a class="nav-link " href="/post"><span>博客</span></a>
+          </li>
+
+          
+          
+
+          
+
+          
+          
+          
+            
+          
+
+          
+
+          
+          
+          
+          
+
+          
+            
+              
+              
+            
+            
+          
+
+          <li class="nav-item">
+            <a class="nav-link " href="/event"><span>趣事</span></a>
+          </li>
+
+          
+          
+
+          
+
+          
+          
+          
+            
+          
+
+          
+
+          
+          
+          
+          
+
+          
+            
+              
+              
+            
+            
+          
+
+          <li class="nav-item">
+            <a class="nav-link  active" href="/project"><span>项目</span></a>
+          </li>
+
+          
+          
+
+          
+
+          
+          
+          
+            
+          
+
+          
+
+          
+          
+          
+          
+
+          
+            
+              
+              
+            
+            
+          
+
+          <li class="nav-item">
+            <a class="nav-link " href="/publication"><span>论文</span></a>
+          </li>
+
+          
+          
+
+          
+
+          
+          
+          
+            
+          
+
+          
+
+          
+          
+          
+          
+
+          
+            
+              
+              
+            
+            
+          
+
+          <li class="nav-item">
+            <a class="nav-link " href="/contact"><span>联系</span></a>
+          </li>
+
+          
+          
+
+          
+
+          
+          
+          
+            
+          
+
+          
+
+          
+          
+          
+          
+
+          
+            
+              
+              
+            
+            
+          
+
+          <li class="nav-item">
+            <a class="nav-link " href="/media/files/cv"><span>简历</span></a>
+          </li>
+
+          
+          
+
+        
+
+          
+        </ul>
+      </div>
+
+      <ul class="nav-icons navbar-nav flex-row ml-auto d-flex pl-md-2">
+
+        
+        
+          
+        
+
+        
+        
+        <li class="nav-item">
+          <a class="nav-link js-search" href="#" aria-label="Search"><i class="fas fa-search" aria-hidden="true"></i></a>
+        </li>
+        
+
+        
+        
+        
+        <li class="nav-item dropdown theme-dropdown">
+          <a href="#" class="nav-link" data-toggle="dropdown" aria-haspopup="true" aria-label="Display preferences">
+            <i class="fas fa-moon" aria-hidden="true"></i>
+          </a>
+          <div class="dropdown-menu">
+            <a href="#" class="dropdown-item js-set-theme-light">
+              <span>Light</span>
+            </a>
+            <a href="#" class="dropdown-item js-set-theme-dark">
+              <span>Dark</span>
+            </a>
+            <a href="#" class="dropdown-item js-set-theme-auto">
+              <span>Automatic</span>
+            </a>
+          </div>
+        </li>
+        
+
+        
+        
+
       </ul>
+
     </div>
-
-    <ul class="nav-icons navbar-nav flex-row ml-auto d-flex pl-md-2">
-      
-      
-      <li class="nav-item">
-        <a class="nav-link js-search" href="#" aria-label="Search"><i class="fas fa-search" aria-hidden="true"></i></a>
-      </li>
-      
-
-      
-      
-
-      
-
-    </ul>
-
-  </div>
-</nav>
+  </nav>
+</header>
 
 
   </div>
 
   <div class="page-body">
+    
+    
+    
+
     <article class="article article-project">
 
   
@@ -684,24 +740,18 @@
 
 
 
-
-
-
-
-
-
-
+  
 
   
   
-
-
+  
 <div class="article-container pt-3">
   <h1>基于OpenStreetMap的路径规划项目</h1>
 
   
 
   
+    
 
 
 <div class="article-metadata">
@@ -727,10 +777,6 @@
   
   
   
-  
-  <span class="middot-divider"></span>
-  <a href="/project/osm-route-planning/#disqus_thread"></a>
-  
 
   
   
@@ -741,16 +787,7 @@
 
 </div>
 
-  
-
-
-
-
-
-
-
-
-
+    
 
 
 
@@ -777,7 +814,7 @@
   
     
   
-<a class="btn btn-outline-primary my-1 mr-1" href="https://github.com/Coolgiserz/Route-Planning-Cpp" target="_blank" rel="noopener">
+<a class="btn btn-outline-primary btn-page-header" href="/https:/github.com/Coolgiserz/Route-Planning-Cpp" target="_blank" rel="noopener">
   Code
 </a>
 
@@ -804,23 +841,14 @@
   
     
   
-  <a class="btn btn-outline-primary my-1 mr-1" href="https://github.com/Coolgiserz/Route-Planning-Cpp" target="_blank" rel="noopener">
-    <i class="fab fa-github mr-1"></i>
-    Follow
-  </a>
+  <a class="btn btn-outline-primary btn-page-header" href="https://github.com/Coolgiserz/Route-Planning-Cpp" target="_blank" rel="noopener">
+    <i class="fab fa-github mr-1"></i>Follow</a>
 
 
 </div>
 
 
-</div>
-
-
-<div class="article-header article-container featured-image-wrapper mt-4 mb-4" style="max-width: 680px; max-height: 466px;">
-  <div style="position: relative">
-    <img src="/project/osm-route-planning/featured.png" alt="" class="featured-image">
-    <span class="article-header-caption">Snipped by CoolCats</span>
-  </div>
+  
 </div>
 
 
@@ -830,7 +858,7 @@
     <div class="article-style">
       <h2 id="0x00-背景介绍">0x00 背景介绍</h2>
 <p>路径规划是运动规划中的一个主要问题，在很多领域中都有应用，高新领域有如机器人运动、无人机飞行、巡航导弹运动等；日常生活有如出行导航、路网规划等。在不同的场景中有不同的目标和约束，规划的方案会有所不同，也可能不止一个。比如说我们使用百度地图/高德地图等软件的导航功能时，软件返回的方案会包括时间最短、距离最短、红绿灯最少等方案，根据骑行、步行、自驾小汽车、公交等出行方式的不同又会有不同的方案（如下图），有时我们可能还要求所规划的路线必须经过某些指定地点。所以说路径规划本身的问题可以是非常复杂的，因为现实就是很复杂。</p>
-<p><img src="images/baidumap.jpg" width = "300" height = "200" alt="百度地图" align=center /></p>
+ <img src="images/baidumap.jpg" width = "300" height = "200" alt="百度地图" align=center />
 <p>本项目以练手和规划算法学习为目标，以日常生活场景中的出行导航路径规划为例，搭建一个基本的路径规划框架，这个框架满足：</p>
 <ol>
 <li>基于真实地图数据（OpenStreetMap数据）</li>
@@ -840,7 +868,27 @@
 <h2 id="0x01-项目方案">0x01 项目方案</h2>
 <h3 id="总体框架">总体框架</h3>
 <p>总体上分为四大模块：数据读取、路网模型构建、路径规划器构建与数据渲染。
-<img src="images/main_flow.png" alt=""></p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<figure  >
+  <div class="d-flex justify-content-center">
+    <div class="w-100" ><img src="./images/main_flow.png" alt="" loading="lazy" data-zoomable /></div>
+  </div></figure>
+</p>
 <h3 id="代码结构">代码结构</h3>
 <h4 id="src目录">src目录</h4>
 <p>包含如下文件：</p>
@@ -898,7 +946,34 @@
 <p>测试用例。</p>
 <h3 id="算法执行流程">算法执行流程</h3>
 <p>A*算法执行流程：
-<img src="images/search_flow.png" alt=""></p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<figure  >
+  <div class="d-flex justify-content-center">
+    <div class="w-100" ><img alt="" srcset="
+               /project/osm-route-planning/images/search_flow_hu50a7477e55fd085dd921f99ef199bf83_398105_5a99dcde2b4b5d0dff891beaf74276d6.webp 400w,
+               /project/osm-route-planning/images/search_flow_hu50a7477e55fd085dd921f99ef199bf83_398105_7d188979bc86ed4e21a80bf527bf1766.webp 760w,
+               /project/osm-route-planning/images/search_flow_hu50a7477e55fd085dd921f99ef199bf83_398105_1200x1200_fit_q75_h2_lanczos_3.webp 1200w"
+               src="/project/osm-route-planning/images/search_flow_hu50a7477e55fd085dd921f99ef199bf83_398105_5a99dcde2b4b5d0dff891beaf74276d6.webp"
+               width="760"
+               height="751"
+               loading="lazy" data-zoomable /></div>
+  </div></figure>
+</p>
 <h3 id="项目测试">项目测试</h3>
 <p>基于GoogleTest实现单元测试。</p>
 <h2 id="0x02-原理详解">0x02 原理详解</h2>
@@ -906,91 +981,90 @@
 <p>OpenStreetMap项目是一个开源、合作的项目，其目的是创建免费的、以用户众源的方式生成的世界地图。这些地图类似于你可能在谷歌地图或手机上的苹果地图应用中使用的地图，但其数据完全是由自愿对当地环境进行调查的用户/志愿者所上传的。</p>
 <h4 id="数据格式">数据格式</h4>
 <p>OpenStreetMap数据可以有几种不同的格式。这个项目使用的数据是以OSM XML文件（.osm文件）的形式出现的，可以在OSM官网下载，这里给出示例如下：</p>
-<pre><code class="language-xml">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
-&lt;osm version=&quot;0.6&quot; generator=&quot;CGImap 0.8.2 (28085 thorn-03.openstreetmap.org)&quot; copyright=&quot;OpenStreetMap and contributors&quot; attribution=&quot;http://www.openstreetmap.org/copyright&quot; license=&quot;http://opendatacommons.org/licenses/odbl/1-0/&quot;&gt;
- &lt;bounds minlat=&quot;22.5168000&quot; minlon=&quot;114.0571000&quot; maxlat=&quot;22.5476000&quot; maxlon=&quot;114.0903000&quot;/&gt;
- &lt;node id=&quot;72569111&quot; visible=&quot;true&quot; version=&quot;3&quot; changeset=&quot;19091642&quot; timestamp=&quot;2013-11-24T14:34:35Z&quot; user=&quot;MarsmanRom&quot; uid=&quot;44514&quot; lat=&quot;22.5266580&quot; lon=&quot;114.1131088&quot;/&gt;
- &lt;node id=&quot;72571146&quot; visible=&quot;true&quot; version=&quot;2&quot; changeset=&quot;740345&quot; timestamp=&quot;2009-01-05T05:32:13Z&quot; user=&quot;bdp&quot; uid=&quot;53479&quot; lat=&quot;22.5362824&quot; lon=&quot;114.0948307&quot;&gt;
-  &lt;tag k=&quot;created_by&quot; v=&quot;Merkaartor 0.12&quot;/&gt;
- &lt;/node&gt;
- &lt;node id=&quot;2042231114&quot; visible=&quot;true&quot; version=&quot;3&quot; changeset=&quot;58976325&quot; timestamp=&quot;2018-05-15T08:55:33Z&quot; user=&quot;tommydragon&quot; uid=&quot;2620510&quot; lat=&quot;22.5474104&quot; lon=&quot;114.0811521&quot;&gt;
-  &lt;tag k=&quot;amenity&quot; v=&quot;cafe&quot;/&gt;
-  &lt;tag k=&quot;name&quot; v=&quot;星巴克&quot;/&gt;
-  &lt;tag k=&quot;name:en&quot; v=&quot;Starbucks&quot;/&gt;
-  &lt;tag k=&quot;name:zh&quot; v=&quot;Starbucks&quot;/&gt;
- &lt;/node&gt;
- &lt;node id=&quot;2044316560&quot; visible=&quot;true&quot; version=&quot;5&quot; changeset=&quot;81436528&quot; timestamp=&quot;2020-02-25T05:59:27Z&quot; user=&quot;XD346&quot; uid=&quot;4892967&quot; lat=&quot;22.5375519&quot; lon=&quot;114.0559922&quot;&gt;
-  &lt;tag k=&quot;highway&quot; v=&quot;traffic_signals&quot;/&gt;
-  &lt;tag k=&quot;traffic_signals&quot; v=&quot;signal&quot;/&gt;
- &lt;/node&gt;
- ……
- &lt;way id=&quot;40988675&quot; visible=&quot;true&quot; version=&quot;8&quot; changeset=&quot;81611422&quot; timestamp=&quot;2020-02-29T02:03:07Z&quot; user=&quot;XD346&quot; uid=&quot;4892967&quot;&gt;
-  &lt;nd ref=&quot;2751405339&quot;/&gt;
-  &lt;nd ref=&quot;2751394450&quot;/&gt;
-  …
-  &lt;nd ref=&quot;7252052352&quot;/&gt;
-  &lt;nd ref=&quot;7252052353&quot;/&gt;
-  &lt;nd ref=&quot;6935534196&quot;/&gt;
-  &lt;tag k=&quot;highway&quot; v=&quot;service&quot;/&gt;
- &lt;/way&gt;
- &lt;way id=&quot;40998252&quot; visible=&quot;true&quot; version=&quot;5&quot; changeset=&quot;64133651&quot; timestamp=&quot;2018-11-03T06:25:24Z&quot; user=&quot;XD346&quot; uid=&quot;4892967&quot;&gt;
-  &lt;nd ref=&quot;499681264&quot;/&gt;
-  &lt;nd ref=&quot;499681270&quot;/&gt;
-  &lt;tag k=&quot;bridge&quot; v=&quot;yes&quot;/&gt;
-  &lt;tag k=&quot;highway&quot; v=&quot;secondary&quot;/&gt;
-  &lt;tag k=&quot;lanes&quot; v=&quot;3&quot;/&gt;
-  &lt;tag k=&quot;layer&quot; v=&quot;1&quot;/&gt;
-  &lt;tag k=&quot;name&quot; v=&quot;金田路&quot;/&gt;
-  &lt;tag k=&quot;name:en&quot; v=&quot;Jintian Road&quot;/&gt;
-  &lt;tag k=&quot;name:zh&quot; v=&quot;金田路&quot;/&gt;
-  &lt;tag k=&quot;oneway&quot; v=&quot;yes&quot;/&gt;
- &lt;/way&gt;
- &lt;relation id=&quot;7713584&quot; visible=&quot;true&quot; version=&quot;6&quot; changeset=&quot;73745047&quot; timestamp=&quot;2019-08-26T10:42:52Z&quot; user=&quot;Claudius Henrichs&quot; uid=&quot;18069&quot;&gt;
-  &lt;member type=&quot;node&quot; ref=&quot;6745828846&quot; role=&quot;&quot;/&gt;
-  &lt;member type=&quot;node&quot; ref=&quot;6673766134&quot; role=&quot;stop&quot;/&gt;
-  &lt;member type=&quot;node&quot; ref=&quot;1689954793&quot; role=&quot;stop&quot;/&gt;
-  &lt;member type=&quot;node&quot; ref=&quot;5356142053&quot; role=&quot;&quot;/&gt;
-  &lt;tag k=&quot;name&quot; v=&quot;白石洲&quot;/&gt;
-  &lt;tag k=&quot;name:en&quot; v=&quot;Baishizhou&quot;/&gt;
-  &lt;tag k=&quot;network&quot; v=&quot;深圳地铁1号线&quot;/&gt;
-  &lt;tag k=&quot;operator&quot; v=&quot;深圳地铁集团第一运营分公司&quot;/&gt;
-  &lt;tag k=&quot;public_transport&quot; v=&quot;stop_area&quot;/&gt;
-  &lt;tag k=&quot;type&quot; v=&quot;public_transport&quot;/&gt;
- &lt;/relation&gt;
- &lt;relation id=&quot;7713586&quot; visible=&quot;true&quot; version=&quot;4&quot; changeset=&quot;73745047&quot; timestamp=&quot;2019-08-26T10:42:52Z&quot; user=&quot;Claudius Henrichs&quot; uid=&quot;18069&quot;&gt;
-  &lt;member type=&quot;node&quot; ref=&quot;6745828845&quot; role=&quot;&quot;/&gt;
-  &lt;member type=&quot;node&quot; ref=&quot;6673766135&quot; role=&quot;stop&quot;/&gt;
-  &lt;member type=&quot;node&quot; ref=&quot;5214588591&quot; role=&quot;stop&quot;/&gt;
-  &lt;member type=&quot;node&quot; ref=&quot;2458958754&quot; role=&quot;&quot;/&gt;
-  &lt;member type=&quot;node&quot; ref=&quot;2458958755&quot; role=&quot;&quot;/&gt;
-  &lt;member type=&quot;node&quot; ref=&quot;2458954969&quot; role=&quot;&quot;/&gt;
-  &lt;member type=&quot;node&quot; ref=&quot;2458958714&quot; role=&quot;&quot;/&gt;
-  &lt;member type=&quot;node&quot; ref=&quot;2698410776&quot; role=&quot;&quot;/&gt;
-  &lt;member type=&quot;node&quot; ref=&quot;6520453282&quot; role=&quot;&quot;/&gt;
-  &lt;tag k=&quot;name&quot; v=&quot;世界之窗&quot;/&gt;
-  &lt;tag k=&quot;name:en&quot; v=&quot;Window of the World&quot;/&gt;
-  &lt;tag k=&quot;public_transport&quot; v=&quot;stop_area&quot;/&gt;
-  &lt;tag k=&quot;type&quot; v=&quot;public_transport&quot;/&gt;
- &lt;/relation&gt;
- &lt;relation id=&quot;7913936&quot; visible=&quot;true&quot; version=&quot;1&quot; changeset=&quot;55558915&quot; timestamp=&quot;2018-01-18T19:33:01Z&quot; user=&quot;Claudius Henrichs&quot; uid=&quot;18069&quot;&gt;
-  &lt;member type=&quot;relation&quot; ref=&quot;7913935&quot; role=&quot;&quot;/&gt;
-  &lt;member type=&quot;relation&quot; ref=&quot;2287554&quot; role=&quot;&quot;/&gt;
-  &lt;tag k=&quot;colour&quot; v=&quot;#00AB39&quot;/&gt;
-  &lt;tag k=&quot;name&quot; v=&quot;1号线 Line 1（罗宝线 Luobao Line）&quot;/&gt;
-  &lt;tag k=&quot;name:en&quot; v=&quot;Line 1 (Luobao Line)&quot;/&gt;
-  &lt;tag k=&quot;name:zh&quot; v=&quot;1号线（罗宝线）&quot;/&gt;
-  &lt;tag k=&quot;network&quot; v=&quot;深圳地铁&quot;/&gt;
-  &lt;tag k=&quot;operator&quot; v=&quot;深圳市地铁集团有限公司&quot;/&gt;
-  &lt;tag k=&quot;ref&quot; v=&quot;1&quot;/&gt;
-  &lt;tag k=&quot;route_master&quot; v=&quot;subway&quot;/&gt;
-  &lt;tag k=&quot;type&quot; v=&quot;route_master&quot;/&gt;
-  &lt;tag k=&quot;wikidata&quot; v=&quot;Q842103&quot;/&gt;
-  &lt;tag k=&quot;wikipedia&quot; v=&quot;zh:深圳地铁1号线&quot;/&gt;
- &lt;/relation&gt;
- ……
-&lt;/osm&gt;
-</code></pre>
-<h4 id="数据类型">数据类型</h4>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-xml" data-lang="xml"><span class="line"><span class="cl"><span class="cp">&lt;?xml version=&#34;1.0&#34; encoding=&#34;UTF-8&#34;?&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="nt">&lt;osm</span> <span class="na">version=</span><span class="s">&#34;0.6&#34;</span> <span class="na">generator=</span><span class="s">&#34;CGImap 0.8.2 (28085 thorn-03.openstreetmap.org)&#34;</span> <span class="na">copyright=</span><span class="s">&#34;OpenStreetMap and contributors&#34;</span> <span class="na">attribution=</span><span class="s">&#34;http://www.openstreetmap.org/copyright&#34;</span> <span class="na">license=</span><span class="s">&#34;http://opendatacommons.org/licenses/odbl/1-0/&#34;</span><span class="nt">&gt;</span>
+</span></span><span class="line"><span class="cl"> <span class="nt">&lt;bounds</span> <span class="na">minlat=</span><span class="s">&#34;22.5168000&#34;</span> <span class="na">minlon=</span><span class="s">&#34;114.0571000&#34;</span> <span class="na">maxlat=</span><span class="s">&#34;22.5476000&#34;</span> <span class="na">maxlon=</span><span class="s">&#34;114.0903000&#34;</span><span class="nt">/&gt;</span>
+</span></span><span class="line"><span class="cl"> <span class="nt">&lt;node</span> <span class="na">id=</span><span class="s">&#34;72569111&#34;</span> <span class="na">visible=</span><span class="s">&#34;true&#34;</span> <span class="na">version=</span><span class="s">&#34;3&#34;</span> <span class="na">changeset=</span><span class="s">&#34;19091642&#34;</span> <span class="na">timestamp=</span><span class="s">&#34;2013-11-24T14:34:35Z&#34;</span> <span class="na">user=</span><span class="s">&#34;MarsmanRom&#34;</span> <span class="na">uid=</span><span class="s">&#34;44514&#34;</span> <span class="na">lat=</span><span class="s">&#34;22.5266580&#34;</span> <span class="na">lon=</span><span class="s">&#34;114.1131088&#34;</span><span class="nt">/&gt;</span>
+</span></span><span class="line"><span class="cl"> <span class="nt">&lt;node</span> <span class="na">id=</span><span class="s">&#34;72571146&#34;</span> <span class="na">visible=</span><span class="s">&#34;true&#34;</span> <span class="na">version=</span><span class="s">&#34;2&#34;</span> <span class="na">changeset=</span><span class="s">&#34;740345&#34;</span> <span class="na">timestamp=</span><span class="s">&#34;2009-01-05T05:32:13Z&#34;</span> <span class="na">user=</span><span class="s">&#34;bdp&#34;</span> <span class="na">uid=</span><span class="s">&#34;53479&#34;</span> <span class="na">lat=</span><span class="s">&#34;22.5362824&#34;</span> <span class="na">lon=</span><span class="s">&#34;114.0948307&#34;</span><span class="nt">&gt;</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">&lt;tag</span> <span class="na">k=</span><span class="s">&#34;created_by&#34;</span> <span class="na">v=</span><span class="s">&#34;Merkaartor 0.12&#34;</span><span class="nt">/&gt;</span>
+</span></span><span class="line"><span class="cl"> <span class="nt">&lt;/node&gt;</span>
+</span></span><span class="line"><span class="cl"> <span class="nt">&lt;node</span> <span class="na">id=</span><span class="s">&#34;2042231114&#34;</span> <span class="na">visible=</span><span class="s">&#34;true&#34;</span> <span class="na">version=</span><span class="s">&#34;3&#34;</span> <span class="na">changeset=</span><span class="s">&#34;58976325&#34;</span> <span class="na">timestamp=</span><span class="s">&#34;2018-05-15T08:55:33Z&#34;</span> <span class="na">user=</span><span class="s">&#34;tommydragon&#34;</span> <span class="na">uid=</span><span class="s">&#34;2620510&#34;</span> <span class="na">lat=</span><span class="s">&#34;22.5474104&#34;</span> <span class="na">lon=</span><span class="s">&#34;114.0811521&#34;</span><span class="nt">&gt;</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">&lt;tag</span> <span class="na">k=</span><span class="s">&#34;amenity&#34;</span> <span class="na">v=</span><span class="s">&#34;cafe&#34;</span><span class="nt">/&gt;</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">&lt;tag</span> <span class="na">k=</span><span class="s">&#34;name&#34;</span> <span class="na">v=</span><span class="s">&#34;星巴克&#34;</span><span class="nt">/&gt;</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">&lt;tag</span> <span class="na">k=</span><span class="s">&#34;name:en&#34;</span> <span class="na">v=</span><span class="s">&#34;Starbucks&#34;</span><span class="nt">/&gt;</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">&lt;tag</span> <span class="na">k=</span><span class="s">&#34;name:zh&#34;</span> <span class="na">v=</span><span class="s">&#34;Starbucks&#34;</span><span class="nt">/&gt;</span>
+</span></span><span class="line"><span class="cl"> <span class="nt">&lt;/node&gt;</span>
+</span></span><span class="line"><span class="cl"> <span class="nt">&lt;node</span> <span class="na">id=</span><span class="s">&#34;2044316560&#34;</span> <span class="na">visible=</span><span class="s">&#34;true&#34;</span> <span class="na">version=</span><span class="s">&#34;5&#34;</span> <span class="na">changeset=</span><span class="s">&#34;81436528&#34;</span> <span class="na">timestamp=</span><span class="s">&#34;2020-02-25T05:59:27Z&#34;</span> <span class="na">user=</span><span class="s">&#34;XD346&#34;</span> <span class="na">uid=</span><span class="s">&#34;4892967&#34;</span> <span class="na">lat=</span><span class="s">&#34;22.5375519&#34;</span> <span class="na">lon=</span><span class="s">&#34;114.0559922&#34;</span><span class="nt">&gt;</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">&lt;tag</span> <span class="na">k=</span><span class="s">&#34;highway&#34;</span> <span class="na">v=</span><span class="s">&#34;traffic_signals&#34;</span><span class="nt">/&gt;</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">&lt;tag</span> <span class="na">k=</span><span class="s">&#34;traffic_signals&#34;</span> <span class="na">v=</span><span class="s">&#34;signal&#34;</span><span class="nt">/&gt;</span>
+</span></span><span class="line"><span class="cl"> <span class="nt">&lt;/node&gt;</span>
+</span></span><span class="line"><span class="cl"> ……
+</span></span><span class="line"><span class="cl"> <span class="nt">&lt;way</span> <span class="na">id=</span><span class="s">&#34;40988675&#34;</span> <span class="na">visible=</span><span class="s">&#34;true&#34;</span> <span class="na">version=</span><span class="s">&#34;8&#34;</span> <span class="na">changeset=</span><span class="s">&#34;81611422&#34;</span> <span class="na">timestamp=</span><span class="s">&#34;2020-02-29T02:03:07Z&#34;</span> <span class="na">user=</span><span class="s">&#34;XD346&#34;</span> <span class="na">uid=</span><span class="s">&#34;4892967&#34;</span><span class="nt">&gt;</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">&lt;nd</span> <span class="na">ref=</span><span class="s">&#34;2751405339&#34;</span><span class="nt">/&gt;</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">&lt;nd</span> <span class="na">ref=</span><span class="s">&#34;2751394450&#34;</span><span class="nt">/&gt;</span>
+</span></span><span class="line"><span class="cl">  …
+</span></span><span class="line"><span class="cl">  <span class="nt">&lt;nd</span> <span class="na">ref=</span><span class="s">&#34;7252052352&#34;</span><span class="nt">/&gt;</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">&lt;nd</span> <span class="na">ref=</span><span class="s">&#34;7252052353&#34;</span><span class="nt">/&gt;</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">&lt;nd</span> <span class="na">ref=</span><span class="s">&#34;6935534196&#34;</span><span class="nt">/&gt;</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">&lt;tag</span> <span class="na">k=</span><span class="s">&#34;highway&#34;</span> <span class="na">v=</span><span class="s">&#34;service&#34;</span><span class="nt">/&gt;</span>
+</span></span><span class="line"><span class="cl"> <span class="nt">&lt;/way&gt;</span>
+</span></span><span class="line"><span class="cl"> <span class="nt">&lt;way</span> <span class="na">id=</span><span class="s">&#34;40998252&#34;</span> <span class="na">visible=</span><span class="s">&#34;true&#34;</span> <span class="na">version=</span><span class="s">&#34;5&#34;</span> <span class="na">changeset=</span><span class="s">&#34;64133651&#34;</span> <span class="na">timestamp=</span><span class="s">&#34;2018-11-03T06:25:24Z&#34;</span> <span class="na">user=</span><span class="s">&#34;XD346&#34;</span> <span class="na">uid=</span><span class="s">&#34;4892967&#34;</span><span class="nt">&gt;</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">&lt;nd</span> <span class="na">ref=</span><span class="s">&#34;499681264&#34;</span><span class="nt">/&gt;</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">&lt;nd</span> <span class="na">ref=</span><span class="s">&#34;499681270&#34;</span><span class="nt">/&gt;</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">&lt;tag</span> <span class="na">k=</span><span class="s">&#34;bridge&#34;</span> <span class="na">v=</span><span class="s">&#34;yes&#34;</span><span class="nt">/&gt;</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">&lt;tag</span> <span class="na">k=</span><span class="s">&#34;highway&#34;</span> <span class="na">v=</span><span class="s">&#34;secondary&#34;</span><span class="nt">/&gt;</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">&lt;tag</span> <span class="na">k=</span><span class="s">&#34;lanes&#34;</span> <span class="na">v=</span><span class="s">&#34;3&#34;</span><span class="nt">/&gt;</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">&lt;tag</span> <span class="na">k=</span><span class="s">&#34;layer&#34;</span> <span class="na">v=</span><span class="s">&#34;1&#34;</span><span class="nt">/&gt;</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">&lt;tag</span> <span class="na">k=</span><span class="s">&#34;name&#34;</span> <span class="na">v=</span><span class="s">&#34;金田路&#34;</span><span class="nt">/&gt;</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">&lt;tag</span> <span class="na">k=</span><span class="s">&#34;name:en&#34;</span> <span class="na">v=</span><span class="s">&#34;Jintian Road&#34;</span><span class="nt">/&gt;</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">&lt;tag</span> <span class="na">k=</span><span class="s">&#34;name:zh&#34;</span> <span class="na">v=</span><span class="s">&#34;金田路&#34;</span><span class="nt">/&gt;</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">&lt;tag</span> <span class="na">k=</span><span class="s">&#34;oneway&#34;</span> <span class="na">v=</span><span class="s">&#34;yes&#34;</span><span class="nt">/&gt;</span>
+</span></span><span class="line"><span class="cl"> <span class="nt">&lt;/way&gt;</span>
+</span></span><span class="line"><span class="cl"> <span class="nt">&lt;relation</span> <span class="na">id=</span><span class="s">&#34;7713584&#34;</span> <span class="na">visible=</span><span class="s">&#34;true&#34;</span> <span class="na">version=</span><span class="s">&#34;6&#34;</span> <span class="na">changeset=</span><span class="s">&#34;73745047&#34;</span> <span class="na">timestamp=</span><span class="s">&#34;2019-08-26T10:42:52Z&#34;</span> <span class="na">user=</span><span class="s">&#34;Claudius Henrichs&#34;</span> <span class="na">uid=</span><span class="s">&#34;18069&#34;</span><span class="nt">&gt;</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">&lt;member</span> <span class="na">type=</span><span class="s">&#34;node&#34;</span> <span class="na">ref=</span><span class="s">&#34;6745828846&#34;</span> <span class="na">role=</span><span class="s">&#34;&#34;</span><span class="nt">/&gt;</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">&lt;member</span> <span class="na">type=</span><span class="s">&#34;node&#34;</span> <span class="na">ref=</span><span class="s">&#34;6673766134&#34;</span> <span class="na">role=</span><span class="s">&#34;stop&#34;</span><span class="nt">/&gt;</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">&lt;member</span> <span class="na">type=</span><span class="s">&#34;node&#34;</span> <span class="na">ref=</span><span class="s">&#34;1689954793&#34;</span> <span class="na">role=</span><span class="s">&#34;stop&#34;</span><span class="nt">/&gt;</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">&lt;member</span> <span class="na">type=</span><span class="s">&#34;node&#34;</span> <span class="na">ref=</span><span class="s">&#34;5356142053&#34;</span> <span class="na">role=</span><span class="s">&#34;&#34;</span><span class="nt">/&gt;</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">&lt;tag</span> <span class="na">k=</span><span class="s">&#34;name&#34;</span> <span class="na">v=</span><span class="s">&#34;白石洲&#34;</span><span class="nt">/&gt;</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">&lt;tag</span> <span class="na">k=</span><span class="s">&#34;name:en&#34;</span> <span class="na">v=</span><span class="s">&#34;Baishizhou&#34;</span><span class="nt">/&gt;</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">&lt;tag</span> <span class="na">k=</span><span class="s">&#34;network&#34;</span> <span class="na">v=</span><span class="s">&#34;深圳地铁1号线&#34;</span><span class="nt">/&gt;</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">&lt;tag</span> <span class="na">k=</span><span class="s">&#34;operator&#34;</span> <span class="na">v=</span><span class="s">&#34;深圳地铁集团第一运营分公司&#34;</span><span class="nt">/&gt;</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">&lt;tag</span> <span class="na">k=</span><span class="s">&#34;public_transport&#34;</span> <span class="na">v=</span><span class="s">&#34;stop_area&#34;</span><span class="nt">/&gt;</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">&lt;tag</span> <span class="na">k=</span><span class="s">&#34;type&#34;</span> <span class="na">v=</span><span class="s">&#34;public_transport&#34;</span><span class="nt">/&gt;</span>
+</span></span><span class="line"><span class="cl"> <span class="nt">&lt;/relation&gt;</span>
+</span></span><span class="line"><span class="cl"> <span class="nt">&lt;relation</span> <span class="na">id=</span><span class="s">&#34;7713586&#34;</span> <span class="na">visible=</span><span class="s">&#34;true&#34;</span> <span class="na">version=</span><span class="s">&#34;4&#34;</span> <span class="na">changeset=</span><span class="s">&#34;73745047&#34;</span> <span class="na">timestamp=</span><span class="s">&#34;2019-08-26T10:42:52Z&#34;</span> <span class="na">user=</span><span class="s">&#34;Claudius Henrichs&#34;</span> <span class="na">uid=</span><span class="s">&#34;18069&#34;</span><span class="nt">&gt;</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">&lt;member</span> <span class="na">type=</span><span class="s">&#34;node&#34;</span> <span class="na">ref=</span><span class="s">&#34;6745828845&#34;</span> <span class="na">role=</span><span class="s">&#34;&#34;</span><span class="nt">/&gt;</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">&lt;member</span> <span class="na">type=</span><span class="s">&#34;node&#34;</span> <span class="na">ref=</span><span class="s">&#34;6673766135&#34;</span> <span class="na">role=</span><span class="s">&#34;stop&#34;</span><span class="nt">/&gt;</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">&lt;member</span> <span class="na">type=</span><span class="s">&#34;node&#34;</span> <span class="na">ref=</span><span class="s">&#34;5214588591&#34;</span> <span class="na">role=</span><span class="s">&#34;stop&#34;</span><span class="nt">/&gt;</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">&lt;member</span> <span class="na">type=</span><span class="s">&#34;node&#34;</span> <span class="na">ref=</span><span class="s">&#34;2458958754&#34;</span> <span class="na">role=</span><span class="s">&#34;&#34;</span><span class="nt">/&gt;</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">&lt;member</span> <span class="na">type=</span><span class="s">&#34;node&#34;</span> <span class="na">ref=</span><span class="s">&#34;2458958755&#34;</span> <span class="na">role=</span><span class="s">&#34;&#34;</span><span class="nt">/&gt;</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">&lt;member</span> <span class="na">type=</span><span class="s">&#34;node&#34;</span> <span class="na">ref=</span><span class="s">&#34;2458954969&#34;</span> <span class="na">role=</span><span class="s">&#34;&#34;</span><span class="nt">/&gt;</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">&lt;member</span> <span class="na">type=</span><span class="s">&#34;node&#34;</span> <span class="na">ref=</span><span class="s">&#34;2458958714&#34;</span> <span class="na">role=</span><span class="s">&#34;&#34;</span><span class="nt">/&gt;</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">&lt;member</span> <span class="na">type=</span><span class="s">&#34;node&#34;</span> <span class="na">ref=</span><span class="s">&#34;2698410776&#34;</span> <span class="na">role=</span><span class="s">&#34;&#34;</span><span class="nt">/&gt;</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">&lt;member</span> <span class="na">type=</span><span class="s">&#34;node&#34;</span> <span class="na">ref=</span><span class="s">&#34;6520453282&#34;</span> <span class="na">role=</span><span class="s">&#34;&#34;</span><span class="nt">/&gt;</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">&lt;tag</span> <span class="na">k=</span><span class="s">&#34;name&#34;</span> <span class="na">v=</span><span class="s">&#34;世界之窗&#34;</span><span class="nt">/&gt;</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">&lt;tag</span> <span class="na">k=</span><span class="s">&#34;name:en&#34;</span> <span class="na">v=</span><span class="s">&#34;Window of the World&#34;</span><span class="nt">/&gt;</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">&lt;tag</span> <span class="na">k=</span><span class="s">&#34;public_transport&#34;</span> <span class="na">v=</span><span class="s">&#34;stop_area&#34;</span><span class="nt">/&gt;</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">&lt;tag</span> <span class="na">k=</span><span class="s">&#34;type&#34;</span> <span class="na">v=</span><span class="s">&#34;public_transport&#34;</span><span class="nt">/&gt;</span>
+</span></span><span class="line"><span class="cl"> <span class="nt">&lt;/relation&gt;</span>
+</span></span><span class="line"><span class="cl"> <span class="nt">&lt;relation</span> <span class="na">id=</span><span class="s">&#34;7913936&#34;</span> <span class="na">visible=</span><span class="s">&#34;true&#34;</span> <span class="na">version=</span><span class="s">&#34;1&#34;</span> <span class="na">changeset=</span><span class="s">&#34;55558915&#34;</span> <span class="na">timestamp=</span><span class="s">&#34;2018-01-18T19:33:01Z&#34;</span> <span class="na">user=</span><span class="s">&#34;Claudius Henrichs&#34;</span> <span class="na">uid=</span><span class="s">&#34;18069&#34;</span><span class="nt">&gt;</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">&lt;member</span> <span class="na">type=</span><span class="s">&#34;relation&#34;</span> <span class="na">ref=</span><span class="s">&#34;7913935&#34;</span> <span class="na">role=</span><span class="s">&#34;&#34;</span><span class="nt">/&gt;</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">&lt;member</span> <span class="na">type=</span><span class="s">&#34;relation&#34;</span> <span class="na">ref=</span><span class="s">&#34;2287554&#34;</span> <span class="na">role=</span><span class="s">&#34;&#34;</span><span class="nt">/&gt;</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">&lt;tag</span> <span class="na">k=</span><span class="s">&#34;colour&#34;</span> <span class="na">v=</span><span class="s">&#34;#00AB39&#34;</span><span class="nt">/&gt;</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">&lt;tag</span> <span class="na">k=</span><span class="s">&#34;name&#34;</span> <span class="na">v=</span><span class="s">&#34;1号线 Line 1（罗宝线 Luobao Line）&#34;</span><span class="nt">/&gt;</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">&lt;tag</span> <span class="na">k=</span><span class="s">&#34;name:en&#34;</span> <span class="na">v=</span><span class="s">&#34;Line 1 (Luobao Line)&#34;</span><span class="nt">/&gt;</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">&lt;tag</span> <span class="na">k=</span><span class="s">&#34;name:zh&#34;</span> <span class="na">v=</span><span class="s">&#34;1号线（罗宝线）&#34;</span><span class="nt">/&gt;</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">&lt;tag</span> <span class="na">k=</span><span class="s">&#34;network&#34;</span> <span class="na">v=</span><span class="s">&#34;深圳地铁&#34;</span><span class="nt">/&gt;</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">&lt;tag</span> <span class="na">k=</span><span class="s">&#34;operator&#34;</span> <span class="na">v=</span><span class="s">&#34;深圳市地铁集团有限公司&#34;</span><span class="nt">/&gt;</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">&lt;tag</span> <span class="na">k=</span><span class="s">&#34;ref&#34;</span> <span class="na">v=</span><span class="s">&#34;1&#34;</span><span class="nt">/&gt;</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">&lt;tag</span> <span class="na">k=</span><span class="s">&#34;route_master&#34;</span> <span class="na">v=</span><span class="s">&#34;subway&#34;</span><span class="nt">/&gt;</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">&lt;tag</span> <span class="na">k=</span><span class="s">&#34;type&#34;</span> <span class="na">v=</span><span class="s">&#34;route_master&#34;</span><span class="nt">/&gt;</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">&lt;tag</span> <span class="na">k=</span><span class="s">&#34;wikidata&#34;</span> <span class="na">v=</span><span class="s">&#34;Q842103&#34;</span><span class="nt">/&gt;</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">&lt;tag</span> <span class="na">k=</span><span class="s">&#34;wikipedia&#34;</span> <span class="na">v=</span><span class="s">&#34;zh:深圳地铁1号线&#34;</span><span class="nt">/&gt;</span>
+</span></span><span class="line"><span class="cl"> <span class="nt">&lt;/relation&gt;</span>
+</span></span><span class="line"><span class="cl"> ……
+</span></span><span class="line"><span class="cl"><span class="nt">&lt;/osm&gt;</span>
+</span></span></code></pre></div><h4 id="数据类型">数据类型</h4>
 <p>主要有三种类型的要素：Node、Way、Relation</p>
 <h5 id="node节点">Node（节点）</h5>
 <p><a href="https://wiki.openstreetmap.org/wiki/Node" target="_blank" rel="noopener">节点</a>是OpenStreetMap数据模型中最基本的元素之一。每个节点表示一个单点，有一个标识符id、纬度lat和经度lon。节点元素中还有其他的XML属性，比如用户ID和节点被添加到数据集的时间戳。一个节点可以有多个标签（tag），用于提供额外的信息。</p>
@@ -1005,7 +1079,27 @@
 <h5 id="示例">示例</h5>
 <p>参考OSM wiki的一个<a href="https://wiki.openstreetmap.org/wiki/Tag:waterway%3Driverbank" target="_blank" rel="noopener">例子</a>: 如何绘制/记录一条河的地图？</p>
 <p>河的两边有不同的河岸。在下面的图片中，节点被用来提供沿河两岸的控制点的坐标。然后使用路径将多个节点连接起来；一些路径构成了河流的封闭部分，在下图中被标记为 &ldquo;Area&rdquo;。另一种方式是用来表示河流中间的岛屿。然后用一个关系将这些方式分组，代表整个河流。
-<img src="images/osm_make_river.png" alt=""></p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<figure  >
+  <div class="d-flex justify-content-center">
+    <div class="w-100" ><img src="./images/osm_make_river.png" alt="" loading="lazy" data-zoomable /></div>
+  </div></figure>
+</p>
 <p>可想而知，如果要构建公交路线规划系统，那么可以使用Node模型表示公交站，以Way模型表示由一些（代表性）控制点形成的道路，由Relation模型表示由一系列道路/路径所形成的路线。</p>
 <h3 id="路径规划算法">路径规划算法</h3>
 <p>数据结构与算法基础课程中经典的最短路径求解算法如<a href="https://zh.wikipedia.org/wiki/%e6%88%b4%e5%85%8b%e6%96%af%e7%89%b9%e6%8b%89%e7%ae%97%e6%b3%95" target="_blank" rel="noopener">Dijkstra算法</a>，虽然能够保证一定能够找到最短路径，但具有复杂度过高的致命缺陷，在大型的路网中几乎无法进行规划工作。所以如何改进路径规划算法的现实应用价值，使之既有较高的运行效率优化又不失准确性，便成为了一个老大难的问题。</p>
@@ -1016,7 +1110,27 @@
 <p>而GBFS算法则采用了相反的思路，每次都以所能达到的离目的地更近的节点作为下一步探索目标，搜索路径的整个过程可以总结为：<strong>凌厉欺近，不留余地</strong>。GBFS算法是不一定保证能够找到最短路径的。</p>
 <p>什么情况下GBFS算法不能找到最短路径？什么时候能找到？</p>
 <p>最理想的情况下，地图/路网是无障碍物，此时凌厉欺近对方无可抵挡，一击可期必中。但是现实情况下地图/路网是复杂的，即便是游戏世界的地图也有很多地形起伏、障碍约束，此时通过GBFS搜索，很可能会在快到达终点时遇上过不去的坎，如下图：
-<img src="images/gbfs.png" alt=""></p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<figure  >
+  <div class="d-flex justify-content-center">
+    <div class="w-100" ><img src="./images/gbfs.png" alt="" loading="lazy" data-zoomable /></div>
+  </div></figure>
+</p>
 <h4 id="a搜索算法权衡">A*搜索算法：权衡</h4>
 <p><a href="https://zh.wikipedia.org/wiki/A*%e6%90%9c%e5%b0%8b%e6%bc%94%e7%ae%97%e6%b3%95" target="_blank" rel="noopener">A*算法</a>是Dijsktra和GBFS的一种折中，其通过启发式的方式提高算法效率，且保证能寻找到一条较优的路径。</p>
 <p>既然Dijsktra太猥琐，GBFS太莽撞，那么干脆将当前节点到目的地与到起点的距离/所需代价都考虑上，设计一条既可以提高效率又不至于做无用功的搜索策略。</p>
@@ -1085,7 +1199,8 @@ g值和h值</p>
 </li>
 </ul>
 <h2 id="0x04-相关资源">0x04 相关资源</h2>
-<h3 id="a算法及其改进">A*算法及其改进</h3>
+<h3 id="a算法及其改进思路">A*算法及其改进思路</h3>
+<h4 id="关于a算法">关于A*算法</h4>
 <ul>
 <li>
 <p><a href="https://zh.wikipedia.org/zh-hans/A*%e6%90%9c%e5%b0%8b%e6%bc%94%e7%ae%97%e6%b3%95" target="_blank" rel="noopener">A*搜索算法 Wiki</a></p>
@@ -1108,6 +1223,10 @@ g值和h值</p>
 <li>
 <p><a href="http://localhost:1313/project/osm-route-planning/pdf/Yet-another-bidirectional-algorithm-for-shortest-paths.pdf" target="_blank" rel="noopener">Yet another bidirectional algorithm for shortest paths</a></p>
 </li>
+</ul>
+<h4 id="a改进思路">A*改进思路</h4>
+<ul>
+<li><a href="https://dl.acm.org/doi/abs/10.1145/3292500.3330824" target="_blank" rel="noopener">Empowering A ∗ Search Algorithms with Neural Networks for Personalized Route Recommendation</a></li>
 </ul>
 <h3 id="地图表示">地图表示</h3>
 <ul>
@@ -1137,7 +1256,7 @@ g值和h值</p>
 
 
 
-<div class="share-box" aria-hidden="true">
+<div class="share-box">
   <ul class="share">
     
       
@@ -1148,7 +1267,7 @@ g值和h值</p>
       
       
       <li>
-        <a href="https://twitter.com/intent/tweet?url=https://coolgiserz.github.io/project/osm-route-planning/&amp;text=%e5%9f%ba%e4%ba%8eOpenStreetMap%e7%9a%84%e8%b7%af%e5%be%84%e8%a7%84%e5%88%92%e9%a1%b9%e7%9b%ae" target="_blank" rel="noopener" class="share-btn-twitter">
+        <a href="https://twitter.com/intent/tweet?url=/project/osm-route-planning/&amp;text=%e5%9f%ba%e4%ba%8eOpenStreetMap%e7%9a%84%e8%b7%af%e5%be%84%e8%a7%84%e5%88%92%e9%a1%b9%e7%9b%ae" target="_blank" rel="noopener" class="share-btn-twitter" aria-label="twitter">
           <i class="fab fa-twitter"></i>
         </a>
       </li>
@@ -1161,7 +1280,7 @@ g值和h值</p>
       
       
       <li>
-        <a href="https://www.facebook.com/sharer.php?u=https://coolgiserz.github.io/project/osm-route-planning/&amp;t=%e5%9f%ba%e4%ba%8eOpenStreetMap%e7%9a%84%e8%b7%af%e5%be%84%e8%a7%84%e5%88%92%e9%a1%b9%e7%9b%ae" target="_blank" rel="noopener" class="share-btn-facebook">
+        <a href="https://www.facebook.com/sharer.php?u=/project/osm-route-planning/&amp;t=%e5%9f%ba%e4%ba%8eOpenStreetMap%e7%9a%84%e8%b7%af%e5%be%84%e8%a7%84%e5%88%92%e9%a1%b9%e7%9b%ae" target="_blank" rel="noopener" class="share-btn-facebook" aria-label="facebook">
           <i class="fab fa-facebook"></i>
         </a>
       </li>
@@ -1174,7 +1293,7 @@ g值和h值</p>
       
       
       <li>
-        <a href="mailto:?subject=%e5%9f%ba%e4%ba%8eOpenStreetMap%e7%9a%84%e8%b7%af%e5%be%84%e8%a7%84%e5%88%92%e9%a1%b9%e7%9b%ae&amp;body=https://coolgiserz.github.io/project/osm-route-planning/" target="_blank" rel="noopener" class="share-btn-email">
+        <a href="mailto:?subject=%e5%9f%ba%e4%ba%8eOpenStreetMap%e7%9a%84%e8%b7%af%e5%be%84%e8%a7%84%e5%88%92%e9%a1%b9%e7%9b%ae&amp;body=/project/osm-route-planning/" target="_blank" rel="noopener" class="share-btn-email" aria-label="envelope">
           <i class="fas fa-envelope"></i>
         </a>
       </li>
@@ -1187,7 +1306,7 @@ g值和h值</p>
       
       
       <li>
-        <a href="https://www.linkedin.com/shareArticle?url=https://coolgiserz.github.io/project/osm-route-planning/&amp;title=%e5%9f%ba%e4%ba%8eOpenStreetMap%e7%9a%84%e8%b7%af%e5%be%84%e8%a7%84%e5%88%92%e9%a1%b9%e7%9b%ae" target="_blank" rel="noopener" class="share-btn-linkedin">
+        <a href="https://www.linkedin.com/shareArticle?url=/project/osm-route-planning/&amp;title=%e5%9f%ba%e4%ba%8eOpenStreetMap%e7%9a%84%e8%b7%af%e5%be%84%e8%a7%84%e5%88%92%e9%a1%b9%e7%9b%ae" target="_blank" rel="noopener" class="share-btn-linkedin" aria-label="linkedin-in">
           <i class="fab fa-linkedin-in"></i>
         </a>
       </li>
@@ -1200,7 +1319,7 @@ g值和h值</p>
       
       
       <li>
-        <a href="whatsapp://send?text=%e5%9f%ba%e4%ba%8eOpenStreetMap%e7%9a%84%e8%b7%af%e5%be%84%e8%a7%84%e5%88%92%e9%a1%b9%e7%9b%ae%20https://coolgiserz.github.io/project/osm-route-planning/" target="_blank" rel="noopener" class="share-btn-whatsapp">
+        <a href="whatsapp://send?text=%e5%9f%ba%e4%ba%8eOpenStreetMap%e7%9a%84%e8%b7%af%e5%be%84%e8%a7%84%e5%88%92%e9%a1%b9%e7%9b%ae%20/project/osm-route-planning/" target="_blank" rel="noopener" class="share-btn-whatsapp" aria-label="whatsapp">
           <i class="fab fa-whatsapp"></i>
         </a>
       </li>
@@ -1213,7 +1332,7 @@ g值和h值</p>
       
       
       <li>
-        <a href="https://service.weibo.com/share/share.php?url=https://coolgiserz.github.io/project/osm-route-planning/&amp;title=%e5%9f%ba%e4%ba%8eOpenStreetMap%e7%9a%84%e8%b7%af%e5%be%84%e8%a7%84%e5%88%92%e9%a1%b9%e7%9b%ae" target="_blank" rel="noopener" class="share-btn-weibo">
+        <a href="https://service.weibo.com/share/share.php?url=/project/osm-route-planning/&amp;title=%e5%9f%ba%e4%ba%8eOpenStreetMap%e7%9a%84%e8%b7%af%e5%be%84%e8%a7%84%e5%88%92%e9%a1%b9%e7%9b%ae" target="_blank" rel="noopener" class="share-btn-weibo" aria-label="weibo">
           <i class="fab fa-weibo"></i>
         </a>
       </li>
@@ -1244,12 +1363,12 @@ g值和h值</p>
   <div class="media author-card content-widget-hr">
     
       
-      <a href="/author/coolcats/"><img class="avatar mr-3 avatar-circle" src="/author/coolcats/avatar_hue03491371183284312b8b116a73ae5ab_79511_270x270_fill_q75_lanczos_center.jpg" alt="CoolCats"></a>
+      <a href="/authors/admin/"><img class="avatar mr-3 avatar-circle" src="/authors/admin/avatar_hue03491371183284312b8b116a73ae5ab_79511_270x270_fill_q75_lanczos_center.jpg" alt="CoolCats"></a>
     
 
     <div class="media-body">
-      <h5 class="card-title"><a href="/author/coolcats/">CoolCats</a></h5>
-      <h6 class="card-subtitle">理学学士</h6>
+      <h5 class="card-title"><a href="/authors/admin/">CoolCats</a></h5>
+      <h6 class="card-subtitle">理学学士, 在读硕士</h6>
       <p class="card-text">我的研究兴趣是城市计算、自然语言处理、通俗文学</p>
       <ul class="network-icon" aria-hidden="true">
   
@@ -1298,54 +1417,18 @@ g值和h值</p>
 
 
 
-<section id="comments">
-  
-    
-<div id="disqus_thread"></div>
-<script>
-  var disqus_config = function () {
-    
-    
-    
-  };
-  (function() {
-    if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
-      document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
-      return;
-    }
-    var d = document, s = d.createElement('script'); s.async = true;
-    s.src = 'https://' + "coolgiserz" + '.disqus.com/embed.js';
-    s.setAttribute('data-timestamp', +new Date());
-    (d.head || d.body).appendChild(s);
-  })();
-</script>
-<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
-<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
-
-
-  
-</section>
-
-
-
-
-
-
-
-
   
   
-  <div class="article-widget content-widget-hr">
-    <h3>Related</h3>
-    <ul>
-      
-      <li><a href="/post/hftree-datastructure/">哈夫曼编码及其实现</a></li>
-      
-      <li><a href="/project/pos-tagger-implemented-on-hmm-model/">基于隐马尔可夫模型实现简易词性分析器</a></li>
-      
-    </ul>
-  </div>
   
+
+  
+
+  
+
+
+
+
+
 
 
 
@@ -1376,17 +1459,58 @@ g值和h值</p>
     
     <div class="container">
       <footer class="site-footer">
+
   
 
-  <p class="powered-by">
-    © CoolCats
+
+
+  
+
+  
+
+  
+
+  
+  
+
+
+
+
+
+
+  
+  
+  
+
+  
+  
+    
+  
+  
+    
+  
+
+  
+
+  
+  <p class="powered-by copyright-license-text">
+    © 2022 CoolCats. This work is licensed under <a href="https://creativecommons.org/licenses/by-nc-nd/4.0" rel="noopener noreferrer" target="_blank">CC BY NC ND 4.0</a>
+  </p>
+  
+
+  <p class="powered-by footer-license-icons">
+    <a href="https://creativecommons.org/licenses/by-nc-nd/4.0" rel="noopener noreferrer" target="_blank" aria-label="Creative Commons">
+      <i class="fab fa-creative-commons fa-2x" aria-hidden="true"></i>
+      <i class="fab fa-creative-commons-by fa-2x" aria-hidden="true"></i>
+      
+        <i class="fab fa-creative-commons-nc fa-2x" aria-hidden="true"></i>
+      
+      
+        <i class="fab fa-creative-commons-nd fa-2x" aria-hidden="true"></i>
+      
+    </a>
   </p>
 
-  
-  
-
-
-
 
 
 
@@ -1394,10 +1518,13 @@ g值和h值</p>
     
     
     
-    Published with
-    <a href="https://wowchemy.com/?utm_campaign=poweredby" target="_blank" rel="noopener">Wowchemy</a>  —
-    the free, <a href="https://github.com/wowchemy/wowchemy-hugo-modules" target="_blank" rel="noopener">
-    open source</a> website builder that empowers creators.
+      
+      
+      
+      
+      
+      
+      Published with <a href="https://wowchemy.com/?utm_campaign=poweredby" target="_blank" rel="noopener">Wowchemy</a> — the free, <a href="https://github.com/wowchemy/wowchemy-hugo-themes" target="_blank" rel="noopener">open source</a> website builder that empowers creators.
     
   </p>
 </footer>
@@ -1406,7 +1533,116 @@ g值和h值</p>
     
   </div>
 
-  
+      
+
+    
+    <script src="/js/vendor-bundle.min.0047d4febf356e7f0b988e541f50b065.js"></script>
+
+    
+    
+    
+      
+
+      
+      
+
+      
+
+      
+        
+        <script src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@10.2.1/build/highlight.min.js" integrity="sha512-Ypjm0o7jOxAd4hpdoppSEN0TQOC19UtPAqD+4s5AlXmUvbmmS/YMxYqAqarQYyxTnB6/rqip9qcxlNB/3U9Wdg==" crossorigin="anonymous"></script>
+        
+        
+        <script src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@10.2.1/build/languages/r.min.js" crossorigin="anonymous"></script>
+        
+        <script src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@10.2.1/build/languages/latex.min.js" crossorigin="anonymous"></script>
+        
+      
+
+    
+
+    
+    
+    
+      <script src="https://cdn.jsdelivr.net/npm/leaflet@1.7.1/dist/leaflet.min.js" integrity="" crossorigin="anonymous"></script>
+    
+
+    
+    
+
+    
+    
+    
+      
+      <script id="search-hit-fuse-template" type="text/x-template">
+        <div class="search-hit" id="summary-{{key}}">
+          <div class="search-hit-content">
+            <div class="search-hit-name">
+              <a href="{{relpermalink}}">{{title}}</a>
+              <div class="article-metadata search-hit-type">{{type}}</div>
+              <p class="search-hit-description">{{snippet}}</p>
+            </div>
+          </div>
+        </div>
+      </script>
+      
+        <script src="https://cdn.jsdelivr.net/gh/krisk/Fuse@v3.2.1/dist/fuse.min.js" integrity="sha512-o38bmzBGX+hD3JHWUFCDA09btWaqrNmoJ3RXLlrysA7PP01Kgs4UlE4MhelE1v5dJR3+cxlR4qQlotsW7jKsnw==" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/gh/julmot/mark.js@8.11.1/dist/jquery.mark.min.js" integrity="sha512-mhbv5DqBMgrWL+32MmsDOt/OAvqr/cHimk6B8y/bx/xS88MVkYGPiVv2ixKVrkywF2qHplNRUvFsAHUdxZ3Krg==" crossorigin="anonymous"></script>
+      
+    
+
+    
+    
+
+    
+    
+    
+    
+      <script id="dsq-count-scr" src="https://coolgiserz.disqus.com/count.js" async></script>
+    
+
+    
+    
+      
+      
+      
+      
+      
+      
+      
+    
+
+    
+
+    
+    
+    
+    <script id="page-data" type="application/json">{"use_headroom":true}</script>
+
+    
+    
+      <script src="/js/wowchemy-headroom.c251366b4128fd5e6b046d4c97a62a51.js" type="module"></script>
+    
+    
+    
+    
+    
+    
+    
+      
+      
+    
+    
+    <script src="/en/js/wowchemy.min.ab2f2890dbe3e2e83579366d3d6e8fd9.js"></script>
+
+    
+    
+      <script src="/js/wowchemy-map.a26e9d2f7238ba5b868384f1c5bc6477.js" type="module"></script>
+    
+    
+    
+    
+      
 <div id="modal" class="modal fade" role="dialog">
   <div class="modal-dialog">
     <div class="modal-content">
@@ -1432,114 +1668,7 @@ g值和h值</p>
   </div>
 </div>
 
-      
-
-    
-    
-    
-      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
-
-      
-      
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.imagesloaded/4.1.4/imagesloaded.pkgd.min.js" integrity="sha256-lqvxZrPLtfffUl2G/e7szqSvPBILGbwmsGE1MKlOi0Q=" crossorigin="anonymous"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.isotope/3.0.6/isotope.pkgd.min.js" integrity="sha256-CBrpuqrMhXwcLLUd5tvQ4euBHCdh7wGlDfNz8vbu/iI=" crossorigin="anonymous"></script>
-      
-
-      <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.js" integrity="sha256-yt2kYMy0w8AbtF89WXb2P1rfjcP/HTHLT7097U8Y5b8=" crossorigin="anonymous"></script>
-      <script src="https://cdnjs.cloudflare.com/ajax/libs/instant.page/5.1.0/instantpage.min.js" integrity="sha512-1+qUtKoh9XZW7j+6LhRMAyOrgSQKenQ4mluTR+cvxXjP1Z54RxZuzstR/H9kgPXQsVB8IW7DMDFUJpzLjvhGSQ==" crossorigin="anonymous"></script>
-
-      
-
-      
-
-    
-
-    
-    
-      <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.7.1/leaflet.min.js" integrity="sha512-SeiQaaDh73yrb56sTW/RgVdi/mMqNeM2oBwubFHagc5BkixSpP1fvqF47mKzPGWYSSy4RwbBunrJBQ4Co8fRWA==" crossorigin="anonymous"></script>
-    
-
-    
-    
-    <script>const code_highlighting = false;</script>
-    
-
-    
-    
-    
-    
-    
-    
-    <script>
-      const search_config = {"indexURI":"/index.json","minLength":1,"threshold":0.3};
-      const i18n = {"no_results":"No results found","placeholder":"Search...","results":"results found"};
-      const content_type = {
-        'post': "Posts",
-        'project': "Projects",
-        'publication' : "Publications",
-        'talk' : "Talks",
-        'slides' : "Slides"
-        };
-    </script>
-    
-
-    
-    
-
-    
-    
-    <script id="search-hit-fuse-template" type="text/x-template">
-      <div class="search-hit" id="summary-{{key}}">
-      <div class="search-hit-content">
-        <div class="search-hit-name">
-          <a href="{{relpermalink}}">{{title}}</a>
-          <div class="article-metadata search-hit-type">{{type}}</div>
-          <p class="search-hit-description">{{snippet}}</p>
-        </div>
-      </div>
-      </div>
-    </script>
-    
-
-    
-    
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/3.2.1/fuse.min.js" integrity="sha256-VzgmKYmhsGNNN4Ph1kMW+BjoYJM2jV5i4IlFoeZA9XI=" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/jquery.mark.min.js" integrity="sha256-4HLtjeVgH0eIB3aZ9mLYF6E8oU5chNdjU6p6rrXpl9U=" crossorigin="anonymous"></script>
-    
-
-    
-    
-
-    
-    
-    
-
-    
-    
-
-    
-    
-    <script id="dsq-count-scr" src="https://coolgiserz.disqus.com/count.js" async></script>
-    
-
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-      
-    
-    
-    
-    
-    <script src="/js/wowchemy.min.4f5a2f6096f092093c2c93a04232f15a.js"></script>
-
-    
+      <script src="/js/wowchemy-publication.68f8d7090562ca65fc6d3cb3f8f2d2cb.js" type="module"></script>
 
 
 

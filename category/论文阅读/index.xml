@@ -2,21 +2,358 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>论文阅读 | CoolCats</title>
-    <link>https://coolgiserz.github.io/category/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB/</link>
-      <atom:link href="https://coolgiserz.github.io/category/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB/index.xml" rel="self" type="application/rss+xml" />
+    <link>/category/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB/</link>
+      <atom:link href="/category/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB/index.xml" rel="self" type="application/rss+xml" />
     <description>论文阅读</description>
-    <generator>Wowchemy (https://wowchemy.com)</generator><language>en-us</language><copyright>© CoolCats</copyright><lastBuildDate>Thu, 10 Dec 2020 21:58:17 +0800</lastBuildDate>
+    <generator>Wowchemy (https://wowchemy.com)</generator><language>en-us</language><lastBuildDate>Thu, 24 Dec 2020 11:20:31 +0800</lastBuildDate>
     <image>
-      <url>https://coolgiserz.github.io/images/icon_hue03491371183284312b8b116a73ae5ab_79511_512x512_fill_lanczos_center_2.png</url>
+      <url>/media/icon_hue03491371183284312b8b116a73ae5ab_79511_512x512_fill_lanczos_center_3.png</url>
       <title>论文阅读</title>
-      <link>https://coolgiserz.github.io/category/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB/</link>
+      <link>/category/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB/</link>
     </image>
     
     <item>
+      <title>「论文阅读」-T-GCN: 一种用于流量预测的时空图卷积网络</title>
+      <link>/publication/tgcn-a-temporal-graph-convolutional-network-for-traffic-prediction/</link>
+      <pubDate>Thu, 24 Dec 2020 11:20:31 +0800</pubDate>
+      <guid>/publication/tgcn-a-temporal-graph-convolutional-network-for-traffic-prediction/</guid>
+      <description>&lt;h1 id=&#34;t-gcn-a-temporal-graph-convolutional-network-for-traffic-prediction&#34;&gt;T-GCN: A Temporal Graph Convolutional Network for Traffic Prediction&lt;/h1&gt;
+&lt;h2 id=&#34;文章分析&#34;&gt;文章分析&lt;/h2&gt;
+&lt;h3 id=&#34;本文工作&#34;&gt;本文工作&lt;/h3&gt;
+&lt;p&gt;以上方法考虑了交通状况的动态变化，但忽略了空间上的依赖性，即对于预测模型而言交通状况的变化不受路网的约束，因此无法准确预测交通数据的状态。为了更好地描述空间特征，一些研究[14]、[15]、[16]引入卷积神经网络进行空间建模，然而卷积神经网络通常用于图像、规则网格等欧式数据[17]。这种模型在拓扑结构复杂的城市路网环境下无法工作，所以本质上无法描述空间依赖性。&lt;/p&gt;
+&lt;p&gt;为了解决上述问题，我们提出了一种新的交通预测方法，称为时间图卷积网络（T-GCN），用于基于城市路网的交通预测任务。我们的贡献有三个方面：&lt;/p&gt;
+&lt;p&gt;(1) 结合图卷积网络和门控递归单元，提出T-GCN模型。图卷积网络用于捕捉路网的拓扑结构，以建立空间依赖性模型。门控递归单元用于捕捉道路上交通数据的动态变化，以模拟时间依赖性。T-GCN模型还可以应用于其他时空预测任务。&lt;/p&gt;
+&lt;p&gt;(2) T-GCN模型的预测结果在不同的预测范围下呈现稳定状态，说明T-GCN模型不仅可以实现短期预测，还可以用于长期的交通预测任务。&lt;/p&gt;
+&lt;p&gt;(3) 我们利用深圳市罗湖区出租车速度数据和Los-loop数据集对我们的方法进行评估。结果表明，我们的方法与所有基线方法相比，预测误差降低了约1.5%-57.8%，这表明T-GCN模型在交通预测方面具有优越性。&lt;/p&gt;
+&lt;h3 id=&#34;前人工作&#34;&gt;前人工作&lt;/h3&gt;
+&lt;p&gt;智能交通系统交通预测是当今的主要研究课题之一。现有的交通预测方法可分为两类：模型驱动法和数据驱动法。首先，模型驱动法主要解释交通量、速度、密度之间的瞬时和稳态关系。这类方法需要在已有知识的基础上进行全面的、去尾的系统建模。代表性的方法包含排队理论模型[18]、小区传输模型[19]、交通速度模型[20]、微观基本图模型[21]等。现实中，交通数据受多种因素影响，很难得到准确的交通模型。现有的模型无法准确描述复杂现实环境中交通数据的变化。此外，这些模型的构建需要大量的计算能力[22]，并且容易受到交通干扰和采样点间距等因素的制约。&lt;/p&gt;
+&lt;p&gt;其次，数据驱动方法根据数据的统计规律性推断变化趋势，最终用于预测和评价交通状态[23]，[24]。这类方法不分析交通系统的物理特性和动态行为，具有较高的灵活性。较早的方法包括历史平均模型[2]，即用历史时期交通量的平均值作为预测值。这种方法不需要任何假设，计算简单快速，但不能很好地适应时间特征，预测精度较低。随着对交通量预测研究的不断深入，出现了大量预测精度较高的方法，主要可分为参数模型和非参数模型[25]、[26]。&lt;/p&gt;
+&lt;p&gt;参数模型以回归函数为前提，通过对原始数据的处理确定参数，然后根据回归函数实现交通预测。时间序列模型、线性回归模型[27]、[28]和卡尔曼滤波模型是常用的方法。时间序列模型是将观测到的时间序列拟合成参数模型来预测未来的数据。早在1976年，Box和Jenkins[5]就提出了自回归积分移动平均模型（Autoregressive Integrate Moving Average Model，ARIMA），这是最广泛使用的时间序列模型。1995年，Hamed等人[6]利用ARIMA模型预测城市干道的交通量。为了提高模型的预测精度，产生了不同的变体，包括Kohonen ARIMA[29]、子集ARIMA[30]、季节性ARIMA[31]等。Lippi等[32]将支持向量回归模型与季节性ARIMA模型进行比较，发现SARIMA模型在交通拥堵方面有更好的效果。线性回归模型根据历史交通数据建立回归函数来预测交通流量。2004年，Sun等[27]利用局部线性模型解决了区间预测问题，在实际交通数据集上取得了较好的效果。卡尔曼滤波模型根据前一时刻和当前时刻的交通状态预测未来的交通状况。1984年，Okutani等人[7]利用卡尔曼滤波理论建立了交通流状态预测模型。随后，一些研究[33]、[34]利用卡尔曼滤波模型实现了交通预测任务。&lt;/p&gt;
+&lt;p&gt;传统的参数模型具有算法简单、计算方便的特点，但这些模型依赖于静止的假设，不能反映交通数据的非线性和不确定性特征，不能克服交通事故等随机事件的干扰。非参数模型可以很好地解决这些问题，只需要足够的历史数据就可以自动学习交通数据的统计规律性。常见的非参数模型包括：k-最近邻模型[10]、支持向量回归模型[8]、[9]、[35]、模糊逻辑模型[36]、贝叶斯网络模型[11]、神经网络模型等。&lt;/p&gt;
+&lt;p&gt;近年来，随着深度学习[37]、[38]、[39]的快速发展，深度神经网络模型由于能够很好地捕捉交通数据的动态特征，取得了目前最好的效果，因此受到了人们的关注。根据是否考虑空间依赖性，可以将模型分为两类。有些方法只考虑时间依赖性，如Park等[40]采用Feed Forward NN实现交通流预测任务。Huang等[12]提出了一种由深度信念网络(DBN)和回归模型组成的网络架构，并验证了该网络可以从多个数据集的交通数据中捕获随机特征，该模型提高了交通预测的预测能力。此外，由于循环神经网络(RNN)及其变体具有长短期记忆(LSTM)，门控循环单元(GRU)可以有效利用自循环机制，因此可以很好地学习时间依赖性，取得较好的预测效果[13]，[41]。&lt;/p&gt;
+&lt;p&gt;这些模型考虑了时间上的特征，但忽略了空间上的依赖性，使交通数据的变化不受城市路网的约束，因而不能准确预测道路上的交通状态。充分利用空间和时间的依赖性是解决交通预测问题的关键。为了更好地描述空间特征，许多研究都在此基础上进行了改进。Lv等[42]提出了一种SAE模型，从交通数据中捕捉时空特征，实现短期交通流量预测。Zhang等[14]提出了一种名为ST-ResNet的深度学习模型，为人群流动的时间紧密性、周期性和趋势性每个属性设计了残差卷积网络，然后将三个网络和外部因素动态聚合，预测城市各区域人群的流入和流出。Wu等[15]结合CNN和LSTM设计了一种短期预测的特征融合架构。采用一维CNN来捕捉空间依赖性，采用两个LSTM来挖掘交通流的短期变化和周期性。Cao等[16]提出了一种名为ITRCN的端到端模型，将交互式网络流量转化为图像，利用CNN捕捉流量的交互函数，利用GRU提取时间特征，证明该模型的预测误差分别比GRU和CNN高14.3%和13.0%.Ke等[43]提出了一种新的深度学习方法，称为融合卷积长短期记忆网络(FCL-Net)，考虑空间依赖性、时间依赖性和外生依赖性进行短期客流需求预测。Yu等[44]利用深度卷积神经网络(DCNN)捕捉空间依赖性，利用LSTM捕捉时间动态性，并通过北京交通网数据实验证明了SRCN模型的优越性。&lt;/p&gt;
+&lt;p&gt;虽然上述方法引入了CNN来模拟空间依赖性，并在交通预测任务中取得了很大的进展，但CNN基本上适用于欧氏空间，如图像、规则网格等，对具有复杂拓扑结构的交通网络有一定的局限性，因而不能从本质上描述空间依赖性。因此，这类方法也存在一定的缺陷。近年来，随着图卷积网络模型[45]的发展，可以用来捕捉图网络的结构特征，为上述问题提供了很好的解决方案。Li等[46]提出了一种DCRNN模型，该模型通过在图上的随机行走来捕捉空间特征，通过编码器-解码器结构来捕捉时间特征。&lt;/p&gt;
+&lt;p&gt;基于这样的背景，本文提出了一种新的神经网络方法，可以从交通数据中捕捉复杂的时间和空间特征，然后可以用于基于城市路网的交通预测任务。&lt;/p&gt;
+&lt;h3 id=&#34;方法&#34;&gt;方法&lt;/h3&gt;
+&lt;p&gt;在本文中，交通预测的目标是根据道路上的历史交通信息，预测一定时期内的交通信息。在我们的方法中，交通信息是一个笼统的概念，可以是交通速度、交通流量和交通密度。在不失一般性的前提下，我们在实验部分以交通速度作为交通信息的例子。&lt;/p&gt;
+&lt;h4 id=&#34;概述&#34;&gt;概述&lt;/h4&gt;
+&lt;p&gt;本节将介绍如何利用T-GCN模型实现基于城市道路的交通预测任务。具体来说，T-GCN模型由图卷积网络和门控递归单元两部分组成。如图3所示，首先，我们以历史n个时间序列数据为输入，利用图卷积网络捕捉城市路网的拓扑结构，得到空间特征。其次，将得到的具有空间特征的时间序列输入到门控递归单元模型中，通过单元之间的信息传递得到动态变化，捕捉时间特征。最后，我们通过全连接层得到结果。
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure  &gt;
+  &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img src=&#34;./images/fig3.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+  &lt;/div&gt;&lt;/figure&gt;
+&lt;/p&gt;
+&lt;h4 id=&#34;模型&#34;&gt;模型&lt;/h4&gt;
+&lt;h5 id=&#34;空间依赖建模&#34;&gt;空间依赖建模&lt;/h5&gt;
+&lt;p&gt;获取复杂的空间依赖性是交通预测中的一个关键问题。传统的卷积神经网络(CNN)可以获得局部空间特征，但它只能在欧氏空间中使用，如图像、规则网格等。城市路网是以图的形式而不是二维网格的形式，这意味着CNN模型不能反映城市路网复杂的拓扑结构，因而不能准确地捕捉空间依赖性。最近，将CNN泛化为图卷积网络（GCN），可以处理任意的图结构数据，受到广泛关注。GCN模型已经成功地用于许多应用，包括文档分类[17]、无监督学习[45]和图像分类[47]。GCN模型在傅里叶域构造一个滤波器，滤波器作用于图的节点及其一阶邻域，捕捉节点之间的空间特征，然后通过堆叠多个卷积层，就可以建立GCN模型。如图4所示，假设节点1为中心道路，GCN模型可以得到中心道路与其周围道路之间的拓扑关系，对道路网络的拓扑结构和道路上的属性进行编码，然后得到空间依赖性。综上所述，我们利用GCN模型[47]从交通数据中学习空间特征。2层的GCN模型可以表示为：&lt;/p&gt;
+&lt;center&gt;$f(X,A)=\sigma(\hat{A} Relu(\hat{A}XW_{0})W_1)$&lt;/center&gt;
+&lt;p&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure  &gt;
+  &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img src=&#34;./images/fig4.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+  &lt;/div&gt;&lt;/figure&gt;
+&lt;/p&gt;
+&lt;h5 id=&#34;时间依赖建模&#34;&gt;时间依赖建模&lt;/h5&gt;
+&lt;p&gt;获取时间依赖性是交通预测的另一个关键问题。目前，用于处理序列数据的神经网络模型中，应用最广泛的是循环神经网络（RNN）。但由于存在梯度消失和梯度爆炸等缺陷，传统的循环神经网络对于长期预测有一定的局限性[48]。LSTM模型[49]和GRU模型[50]是循环神经网络的变种，已被证明可以解决上述问题。LSTM和GRU的基本原理大致相同[51].它们都是利用门控机制来记忆尽可能多的长期信息，对各种任务同样有效。但由于LSTM结构复杂，训练时间较长，而GRU模型结构相对简单，参数较少，训练能力较快。因此，我们选择GRU模型从交通数据中获取时间依赖性。如图5所示，$h_{t-1}$表示时间t-1时的隐藏状态；$x_t$表示时间t时的交通信息；$r_t$为复位门，用于控制对前一时刻状态信息的忽略程度；$u_t$为更新门，用于控制将前一时刻的状态信息带入当前状态的程度；$c_t$为时间t时存储的内存内容；$h_t$为时刻t时的输出状态。GRU以时刻t-1的隐藏状态和当前的交通信息作为输入，获取时刻t的交通状态。在获取当前时刻的交通信息的同时，模型仍然保留了历史交通信息的变化趋势，具有捕捉时间依赖性的能力。
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure  &gt;
+  &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img alt=&#34;&#34; srcset=&#34;
+               /publication/tgcn-a-temporal-graph-convolutional-network-for-traffic-prediction/images/fig5_hu1177988a5b6e6826f6484ab669901eda_205307_18d2d5239811cf60321d47da878e77ed.webp 400w,
+               /publication/tgcn-a-temporal-graph-convolutional-network-for-traffic-prediction/images/fig5_hu1177988a5b6e6826f6484ab669901eda_205307_64b574e7cd7d800fc541ad5392caac24.webp 760w,
+               /publication/tgcn-a-temporal-graph-convolutional-network-for-traffic-prediction/images/fig5_hu1177988a5b6e6826f6484ab669901eda_205307_1200x1200_fit_q75_h2_lanczos_3.webp 1200w&#34;
+               src=&#34;/publication/tgcn-a-temporal-graph-convolutional-network-for-traffic-prediction/images/fig5_hu1177988a5b6e6826f6484ab669901eda_205307_18d2d5239811cf60321d47da878e77ed.webp&#34;
+               width=&#34;760&#34;
+               height=&#34;335&#34;
+               loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+  &lt;/div&gt;&lt;/figure&gt;
+&lt;/p&gt;
+&lt;h5 id=&#34;时空图卷积&#34;&gt;时空图卷积&lt;/h5&gt;
+&lt;p&gt;为了同时捕捉交通数据的空间和时间依赖性，我们提出了一种基于图卷积网络和门控递归单元的时空图卷积网络模型（T-GCN）。如图6所示，左边是时空交通预测的过程，右边是T-GCN单元的具体结构，$h_{t-1}$表示时间t-1时的输出，GC为图卷积过程，$u_t$、$r_t$为时间t的更新门和复位门，$h_t$表示时间t的输出，具体计算过程如下图所示，$f(A,X_t)$表示图卷积过程，定义为式2。W和b代表训练过程中的权重和偏差。
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure  &gt;
+  &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img src=&#34;./images/equation3_6.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+  &lt;/div&gt;&lt;/figure&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure  &gt;
+  &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img src=&#34;./images/fig6.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+  &lt;/div&gt;&lt;/figure&gt;
+&lt;/p&gt;
+&lt;p&gt;综上所述，T-GCN模型可以处理复杂的空间依赖性和时间动态性。 一方面，利用图卷积网络来捕捉城市路网的拓扑结构，以获得空间依赖性。另一方面，利用门控递归单元来捕捉道路上交通信息的动态变化，以获得时间上的依赖性，最终实现交通预测任务。&lt;/p&gt;
+&lt;h5 id=&#34;损失函数&#34;&gt;损失函数&lt;/h5&gt;
+&lt;p&gt;在训练过程中，目标是将误差——道路上的实际交通速度与预测速度之间的差距降到最低。我们用$Y$和$\hat{Y}$表示实际的交通速度和预测的速度，分别为。T-GCN模型的损失函数如式7所示。第一个项用于最小化实际交通速度与预测速度之间的误差。 第二项$L_{reg}$是L2正则项用于减少过拟合。
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure  &gt;
+  &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img src=&#34;./images/equation7.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+  &lt;/div&gt;&lt;/figure&gt;
+&lt;/p&gt;
+&lt;h3 id=&#34;实验&#34;&gt;实验&lt;/h3&gt;
+&lt;h4 id=&#34;数据集描述&#34;&gt;数据集描述&lt;/h4&gt;
+&lt;h5 id=&#34;sz-taxi&#34;&gt;SZ-taxi&lt;/h5&gt;
+&lt;p&gt;这个数据集是2015年1月1日至1月31日深圳的出租车轨迹。我们选取罗湖区156条主要道路作为研究区域。实验数据主要包括两部分。一个是156*156的邻接矩阵，它描述了道路之间的空间关系。每一行代表一条道路，矩阵中的数值代表道路之间的连通性。另一个是特征矩阵，它描述的是每条道路的速度随时间的变化。每一行代表一条道路；每一列是不同时间段道路的交通速度。我们每隔15分钟对每条道路的交通速度进行汇总。&lt;/p&gt;
+&lt;h5 id=&#34;los-loop&#34;&gt;Los-loop&lt;/h5&gt;
+&lt;p&gt;Los-loop。本数据集是在洛杉矶县的高速公路上通过环路检测器实时收集的。我们选取了2012年3月1日至3月7日期间的207个传感器及其交通速度。我们每5分钟汇总一次交通速度。相似性，数据总结出一个邻接矩阵和一个特征矩阵。邻接矩阵是由交通网络中传感器之间的距离计算出来的。由于Los-loop数据集包含一些缺失的数据，本文使用线性插值法来填补缺失值。&lt;/p&gt;
+&lt;h4 id=&#34;参数设置&#34;&gt;参数设置&lt;/h4&gt;
+&lt;h5 id=&#34;超参数设置&#34;&gt;超参数设置&lt;/h5&gt;
+&lt;p&gt;T-GCN模型的超参数主要包括：学习率、批次大小、训练epoch和隐藏层数。在实验中，我们手动调整并设置学习率为0.001，批次大小为64，训练epoch为3000。&lt;/p&gt;
+&lt;p&gt;隐藏单元的数量是T-GCN模型中一个非常重要的参数，因为不同的隐藏单元可能会大大影响预测精度。为了选择最佳值，我们对不同的隐藏单元进行实验，通过比较预测结果来选择最佳值。&lt;/p&gt;
+&lt;p&gt;在实验中，对于SZ-taxi数据集，我们从[8，16，32，64，100，128]中选择隐藏单元数，分析预测精度的变化。如7所示，横轴代表隐藏单元数，纵轴代表不同指标的变化。图7(a)是不同隐藏单元的RMSE和MAE的结果。可以看出，当数量为100时，误差最小。图7(b)显示了不同隐藏单元的Accuracy、R2和Var的变化情况。同样，当数量为100时，结果达到最大。综上所述，当数量设置为100时，预测结果最好。当增加隐藏单元的数量时，预测精度先增大后减小。这主要是因为当隐藏单元大于一定程度时，模型的复杂度和计算难度都会大大增加，因此，预测精度会有所降低。因此，我们在所有实验中都将隐藏单元的数量设置为100。&lt;/p&gt;
+&lt;p&gt;同样的方法，Los-loop的结果如7(c)和7(d)所示，可以看出，当隐藏单元数为64时，预测精度最高，预测误差最小。&lt;/p&gt;
+&lt;p&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure  &gt;
+  &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img src=&#34;./images/fig7.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+  &lt;/div&gt;&lt;/figure&gt;
+&lt;/p&gt;
+&lt;h5 id=&#34;数据划分&#34;&gt;数据划分&lt;/h5&gt;
+&lt;p&gt;对于输入层，在训练过程中取训练数据集（占整体数据的80%）作为输入，其余数据作为测试过程的输入。T-GCN模型采用Adam优化器进行训练。&lt;/p&gt;
+&lt;h4 id=&#34;实验结果&#34;&gt;实验结果&lt;/h4&gt;
+&lt;p&gt;与baseline模型对比。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;History Average model（HA）&lt;/li&gt;
+&lt;li&gt;Autoregressive Integrated Moving Average model (ARIMA)&lt;/li&gt;
+&lt;li&gt;Support Vector Regression model (SVR)&lt;/li&gt;
+&lt;li&gt;Graph Convolutional Network model (GCN)&lt;/li&gt;
+&lt;li&gt;Gated Recurrent Unit model (GRU)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;表1是T-GCN模型和其他基线方法在SZ-taxi和Los-loop数据集上15分钟、30分钟、45分钟和60分钟的情况。∗表示数值太小，可以忽略不计，说明模型的预测效果不好。可以看出，T-GCN模型在所有的评价指标下，在所有的预测范围内都获得了最好的预测性能，证明了T-GCN模型在时空交通预测中的有效性。
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure  &gt;
+  &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img src=&#34;./images/table1.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+  &lt;/div&gt;&lt;/figure&gt;
+&lt;/p&gt;
+&lt;h4 id=&#34;扰动性分析&#34;&gt;扰动性分析&lt;/h4&gt;
+&lt;p&gt;在现实世界的数据采集过程中，不可避免地存在噪声。为了检验T-GCN模型的抗噪声能力，我们通过扰动分析实验来检验模型的鲁棒性。&lt;/p&gt;
+&lt;h4 id=&#34;模型解释性&#34;&gt;模型解释性&lt;/h4&gt;
+&lt;p&gt;为了更好地理解T-GCN模型，我们在SZ-taxi数据集上选择一条道路，对测试集的预测结果进行可视化。图11、图12、图13和图14分别显示了15分钟、30分钟、45分钟和60分钟的预测视野的可视化结果。这些结果显示：&lt;/p&gt;
+&lt;p&gt;(1)T-GCN模型在峰值处预测效果不佳。我们推测主要原因是GCN模型在傅里叶域定义了一个平滑滤波器，通过不断移动滤波器来捕捉空间特征。这个过程会导致整体预测结果发生微小的变化，使得峰值更加平滑。&lt;/p&gt;
+&lt;p&gt;(2)实际交通量的形成与预测结果之间存在一定的误差。误差之一主要是因为当道路上没有出租车时，就不会有零值的信息记录。另一个误差是由于当交通信息值较小时，微小的差异会造成较大的相对误差。&lt;/p&gt;
+&lt;p&gt;(3)无论预测范围如何，T-GCN模型总能取得较好的效果。T-GCN模型可以捕捉时空特征，获得道路上交通信息的变化趋势。此外，T-GCN模型还能检测到高峰期的开始和结束时间，并做出与实际交通速度相似的预测结果。这些特性对于预测交通拥堵等交通现象有很大帮助。&lt;/p&gt;
+&lt;p&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure  &gt;
+  &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img src=&#34;./images/fig11.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+  &lt;/div&gt;&lt;/figure&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure  &gt;
+  &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img src=&#34;./images/fig12.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+  &lt;/div&gt;&lt;/figure&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure  &gt;
+  &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img src=&#34;./images/fig13.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+  &lt;/div&gt;&lt;/figure&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure  &gt;
+  &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img src=&#34;./images/fig14.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+  &lt;/div&gt;&lt;/figure&gt;
+&lt;/p&gt;
+&lt;h3 id=&#34;总结&#34;&gt;总结&lt;/h3&gt;
+&lt;p&gt;本文提出了一种基于神经网络的新型交通预测方法，称为T-GCN，它结合了GCN和GRU。我们采用图网络对城市道路网进行建模，图上的节点代表道路，边代表道路之间的连接关系，道路上的交通信息被描述为图上节点的属性。一方面，利用GCN捕捉图的拓扑结构，得到空间上的依赖性；另一方面，利用GRU模型捕捉节点属性的动态变化，得到时间上的依赖性。最终采用T-GCN模型来解决时空交通预测任务。在两个真实世界的交通数据集上进行评估，并与HA模型、ARIMA模型、SVR模型、GCN模型和GRU模型进行比较，T-GCN模型在不同的预测视野下取得了最好的预测效果。此外，扰动分析也说明了我们方法的稳健性。综上所述，T-GCN模型可以成功-充分捕捉交通数据的时空特征，并且不局限于交通预测，还可以应用于其他时空任务。&lt;/p&gt;
+&lt;h2 id=&#34;问题&#34;&gt;问题&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;以往的交通预测方法对于交通高低峰的捕捉情况如何？&lt;/li&gt;
+&lt;li&gt;gnn所处理的路网（输入数据），如何划分为好？&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
+    
+    <item>
       <title>「论文阅读」-南美洲的自由和开放源码地理信息系统：政治进展和地方宣传</title>
-      <link>https://coolgiserz.github.io/publication/free-and-open-source-gis-in-south-america/</link>
+      <link>/publication/free-and-open-source-gis-in-south-america/</link>
       <pubDate>Thu, 10 Dec 2020 21:58:17 +0800</pubDate>
-      <guid>https://coolgiserz.github.io/publication/free-and-open-source-gis-in-south-america/</guid>
+      <guid>/publication/free-and-open-source-gis-in-south-america/</guid>
       <description>&lt;h1 id=&#34;free-and-open-source-gis-in-south-america-political-inroads-and-local-advocacy&#34;&gt;Free and open source GIS in South America: political inroads and local advocacy&lt;/h1&gt;
 &lt;p&gt;文章讨论了开源GIS，分析了南美洲自由开源GIS的发展及由来，重点讨论了政治上及地方性的支持对于南美洲开源GIS发展的积极推动作用。整篇文章相对而言技术性偏弱，侧重调查及讨论分析，但将南美洲各地开源GIS的发展历程呈现出来给读者，也有助于GIS社区对GIS技术发展趋势进行更深入的思考。&lt;/p&gt;
 &lt;p&gt;本文做了什么工作？
@@ -54,7 +391,34 @@
 &lt;h2 id=&#34;0x01-南美洲政府对于foss的接纳程度&#34;&gt;0x01 南美洲政府对于FOSS的接纳程度&lt;/h2&gt;
 &lt;h3 id=&#34;助攻1-鼓励在政府计算机中使用自由与开源软件&#34;&gt;助攻1: 鼓励在政府计算机中使用自由与开源软件&lt;/h3&gt;
 &lt;p&gt;南美洲的市、州和联邦各级都有各种独特的法律和法令，促进在政府计算机上使用自由和开放源码软件。这包括至少五项国家一级的政策(图1)，这一比例高于其他任何洲。
-&lt;img src=&#34;images/table1.png&#34; alt=&#34;table1.png&#34;&gt;&lt;/p&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure  &gt;
+  &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img alt=&#34;table1.png&#34; srcset=&#34;
+               /publication/free-and-open-source-gis-in-south-america/images/table1_hucd458623e81c6e0275cccfad6fc8e262_109962_51948b02747f552bacff5f38e4334c7b.webp 400w,
+               /publication/free-and-open-source-gis-in-south-america/images/table1_hucd458623e81c6e0275cccfad6fc8e262_109962_b665260c511f84bf9335a7bc055d9153.webp 760w,
+               /publication/free-and-open-source-gis-in-south-america/images/table1_hucd458623e81c6e0275cccfad6fc8e262_109962_1200x1200_fit_q75_h2_lanczos_3.webp 1200w&#34;
+               src=&#34;/publication/free-and-open-source-gis-in-south-america/images/table1_hucd458623e81c6e0275cccfad6fc8e262_109962_51948b02747f552bacff5f38e4334c7b.webp&#34;
+               width=&#34;704&#34;
+               height=&#34;333&#34;
+               loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+  &lt;/div&gt;&lt;/figure&gt;
+&lt;/p&gt;
 &lt;center&gt;图1 南美洲国家政府对于FOSS的政策法令&lt;/center&gt;
 &lt;h3 id=&#34;助攻2-鼓励在政府公务中使用foss&#34;&gt;助攻2: 鼓励在政府公务中使用FOSS&lt;/h3&gt;
 &lt;p&gt;除了鼓励FOSS之外，有些政府甚至规定在国家公务中使用FOSS。例如，委内瑞拉的 &amp;ldquo;Infogobierno &amp;ldquo;法律要求公共机构的技术架构向FOSS迁移，玻利维亚颁布了一系列法令，引导公共部门向FOSS迁移。&lt;/p&gt;
@@ -81,7 +445,7 @@
 &lt;ul&gt;
 &lt;li&gt;将FOSS作为摆脱美国公司垄断的途径&lt;/li&gt;
 &lt;/ul&gt;
-&lt;p&gt;南美洲对自由和开源软件最有力的支持政策是在2000年代初所谓的 &amp;ldquo;粉红潮 &amp;ldquo;时期，当时有一大批有号召力的左倾领导人上台，承诺挑战该地区的新自由主义霸权。作为该议程的一部分，他们热衷于推广自由软件，以替代美国制造的专有软件。2007年4月，当时的厄瓜多尔总统Rafael Correa甚至在电视上宣称，公开采用自由和开放源码软件是&amp;rsquo;拉丁美洲迈向一体化的重要步伐，或者说是走向解放的重要一步&#39;。&lt;/p&gt;
+&lt;p&gt;南美洲对自由和开源软件最有力的支持政策是在2000年代初所谓的 &amp;ldquo;粉红潮 &amp;ldquo;时期，当时有一大批有号召力的左倾领导人上台，承诺挑战该地区的新自由主义霸权。作为该议程的一部分，他们热衷于推广自由软件，以替代美国制造的专有软件。2007年4月，当时的厄瓜多尔总统Rafael Correa甚至在电视上宣称，公开采用自由和开放源码软件是&amp;rsquo;拉丁美洲迈向一体化的重要步伐，或者说是走向解放的重要一步&amp;rsquo;。&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;将自由和开源软件与社会主义理论联系起来&lt;/li&gt;
 &lt;/ul&gt;
@@ -93,13 +457,67 @@
 &lt;h3 id=&#34;通过对公开的网络地图的研究窥见实施模式&#34;&gt;通过对公开的网络地图的研究窥见实施模式&lt;/h3&gt;
 &lt;p&gt;与一般自由和开源软件一样，有证据表明，整个南美洲都有吸收和倡导自由和开放源码软件地理信息系统的强劲潮流，尽管有些是地方性的，需要在个别国家或分区域进行更详细的研究。例如，对公共或私营组织进行调查，询问它们对GIS软件的偏好，将是一种有用的方法。通过观察公开提供的地理信息系统和制图网站所使用的工具，也可以看出许多关于软件使用趋势的情况。为了说明南美洲各种政府地理信息系统团体积极使用自由和开放源码软件，这里在两个地理范围内采用后一种方法。&lt;/p&gt;
 &lt;p&gt;大多数南美国家都有一个制图机构，与公众分享在线地理数据和网络服务。这些机构经常主办交互式网络地图，用户可以在其中探索现有的地理图层或获得有关该国的一般信息。下表显示了研究时10个国家的主要地图可视化网站的地址，建立每个网站所使用的技术，以及这种技术是否可以被认为是FOSS。在本表中，&amp;ldquo;主要浏览者 &amp;ldquo;被认为是来自负责该国地理、制图或空间数据基础设施活动的机构。该技术是通过观察网站的源代码文件和网络流量来确定的，这些信息对于任何网站来说都是可以获得的，无论它是否是用自由和开源软件建立的。&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;images/img4.png&#34; alt=&#34;1.png&#34;&gt;&lt;/p&gt;
+&lt;p&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure  &gt;
+  &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img alt=&#34;1.png&#34; srcset=&#34;
+               /publication/free-and-open-source-gis-in-south-america/images/img4_hu2747bc98b7b340587f944ee79411c2f2_310286_f4a195a44f28c5f79f35bdeda653339c.webp 400w,
+               /publication/free-and-open-source-gis-in-south-america/images/img4_hu2747bc98b7b340587f944ee79411c2f2_310286_415921ab6f62bf08a35146e814560a0b.webp 760w,
+               /publication/free-and-open-source-gis-in-south-america/images/img4_hu2747bc98b7b340587f944ee79411c2f2_310286_1200x1200_fit_q75_h2_lanczos_3.webp 1200w&#34;
+               src=&#34;/publication/free-and-open-source-gis-in-south-america/images/img4_hu2747bc98b7b340587f944ee79411c2f2_310286_f4a195a44f28c5f79f35bdeda653339c.webp&#34;
+               width=&#34;760&#34;
+               height=&#34;597&#34;
+               loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+  &lt;/div&gt;&lt;/figure&gt;
+&lt;/p&gt;
 &lt;center&gt;南美洲国家政府在生产用于地理数据探索的网络地图时所采用的技术&lt;/center&gt;
 &lt;/br&gt;
 值得注意的是，在主要地图查看器中使用自由和开源软件GIS的四个国家(玻利维亚、厄瓜多尔、乌拉圭和委内瑞拉)也是通过国家一级的立法或法令支持自由和开源软件的国家。巴西是唯一一个在国家层面支持自由和开源软件，但在其主要地图查看器中没有使用自由和开源软件的国家，直到现在巴西对自由和开源软件的支持也没有其他一些国家的政策那样具有约束力。尽管这些国家在全面实施一般的FOSS迁移政策方面一直面临挑战（Machado，2017），但似乎这些政策正在影响GIS和地图服务。例如，Molina Rodriguez和Lesage(2013年)描述了玻利维亚如何设计其空间数据基础设施以支持基于自由和开源软件的网络浏览器。
 情况比上图所能说明的要复杂得多，因为一些较低级别的部委，甚至同一部委的不同部门，可能会开展测绘活动，并使用不同的软件组合维护在线地图查看器。例如，尽管阿根廷国家地理研究所(IGN)在其主要的面向公众的地图查看器中没有使用自由和开放源码软件，但如本文后面所述，其雇员日常使用自由和开放源码软件GIS，该研究所在2017年主办了一次使用自由和开放源码软件GIS的重要会议。
 &lt;p&gt;省级和市级政府的软件趋势可能与国家一级使用的软件有明显不同。例如，用同样的方法可以看出，阿根廷几乎所有的省级政府都在其地图查看器中使用自由和开放源码软件。表3显示，在阿根廷的23个省和联邦区中，有16个省提供了用FOSS GIS建立的地图查看器，而有一个省则是用专有的地理信息系统软件建立了地图查看器。这些数字与美国各州政府的专有GIS软件所占的强大市场地位形成鲜明对比。
-&lt;img src=&#34;images/img5.png&#34; alt=&#34;5.png&#34;&gt;&lt;/p&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure  &gt;
+  &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img alt=&#34;5.png&#34; srcset=&#34;
+               /publication/free-and-open-source-gis-in-south-america/images/img5_huc5a9dd02ead198f28cf02d9ff6a81a2f_427185_ede724fc525fe701ad98a1d438f2d88f.webp 400w,
+               /publication/free-and-open-source-gis-in-south-america/images/img5_huc5a9dd02ead198f28cf02d9ff6a81a2f_427185_8d5c76817811cad65c7fe9f0849fc885.webp 760w,
+               /publication/free-and-open-source-gis-in-south-america/images/img5_huc5a9dd02ead198f28cf02d9ff6a81a2f_427185_1200x1200_fit_q75_h2_lanczos_3.webp 1200w&#34;
+               src=&#34;/publication/free-and-open-source-gis-in-south-america/images/img5_huc5a9dd02ead198f28cf02d9ff6a81a2f_427185_ede724fc525fe701ad98a1d438f2d88f.webp&#34;
+               width=&#34;760&#34;
+               height=&#34;598&#34;
+               loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+  &lt;/div&gt;&lt;/figure&gt;
+&lt;/p&gt;
 &lt;center&gt;阿根廷内各省级政府生产用于地理数据探索的网络地图时采用的技术&lt;/center&gt;
 &lt;/br&gt;
 &lt;p&gt;上表中大部分省级站点都在使用OpenLayers、MapServer、GeoServer等知名的基础FOSS GIS软件。一些网站的稳定性和长期维护似乎是一个挑战：即使网站的其他部分似乎可以运作，但在本研究中访问时，有时流式地图层无法运作。需要进行更多的研究，以了解这些挑战是由于资金不足、难以找到或留住熟练工人、政府和顾问之间的动态、软件本身的缺陷，还是其他原因。&lt;/p&gt;
@@ -121,7 +539,34 @@ OSGeo是一个致力于推广开放地理空间技术的全球性非营利组织
 &lt;/ul&gt;
 &lt;p&gt;2011年，巴西系统分析师Fernando Quadro创办了一本葡萄牙语杂志，这也许是以期刊形式发布FOSS GIS信息的最雄心勃勃的努力。Quadro注意到巴西在FOSS GIS方面有很多有趣的工作，但是关于它的报道却分散在不同的出版物中，其中一些是以专有软件为中心。Quadro向他欣赏的人发出邀请，问他们是否愿意帮助创建一个完全关于FOSS GIS的出版物（Mendonça，2012）。结果是一本名为《FOSSGIS Brasil》的数字杂志，在2011-2012年出版了六期，内容丰富多彩，信息量很大，目标是每季度发行一次。期刊的长度大约在50至80页之间。&lt;/p&gt;
 &lt;p&gt;最初的编辑核心成员利用他们的专业网络寻找可以撰写内容的自由和开放源码地理信息系统专家。该杂志包括关于自由和开放源码地理信息系统软件选择的文章，一个比较自由和开放源码地理信息系统与专利软件功能的专栏，巴西政府各部门成功实施软件的案例研究，以及对巴西自由和开放源码地理信息系统界人物的采访。例如，有一期杂志刊登了与时任巴西国家空间研究所所长的Gilberto Câmara关于SPRING GIS发展的对话(Medeiros，2011)。 该杂志的地图画廊部分允许在巴西工业和政府工作的GIS分析师和制图师展示他们的工作。画廊的贡献者包括地理学家、教师和州、市两级的政府规划官员。
-&lt;img src=&#34;images/%E5%9B%BE1.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure  &gt;
+  &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img alt=&#34;&#34; srcset=&#34;
+               /publication/free-and-open-source-gis-in-south-america/images/%E5%9B%BE1_hudc6806be3b31df0488f37d4e04e8fd1e_844952_d8ebdd2efb1a3599a337ecc981abf985.webp 400w,
+               /publication/free-and-open-source-gis-in-south-america/images/%E5%9B%BE1_hudc6806be3b31df0488f37d4e04e8fd1e_844952_ee2ee66f03141bdf12030057aeb4d187.webp 760w,
+               /publication/free-and-open-source-gis-in-south-america/images/%E5%9B%BE1_hudc6806be3b31df0488f37d4e04e8fd1e_844952_1200x1200_fit_q75_h2_lanczos_3.webp 1200w&#34;
+               src=&#34;/publication/free-and-open-source-gis-in-south-america/images/%E5%9B%BE1_hudc6806be3b31df0488f37d4e04e8fd1e_844952_d8ebdd2efb1a3599a337ecc981abf985.webp&#34;
+               width=&#34;643&#34;
+               height=&#34;585&#34;
+               loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+  &lt;/div&gt;&lt;/figure&gt;
+&lt;/p&gt;
 &lt;center&gt;2011-2012年出版的FOSSGIS Brasil杂志&lt;/center&gt;
 &lt;ul&gt;
 &lt;li&gt;难以为继的壮志&lt;/li&gt;
@@ -163,21 +608,21 @@ Geoinquietos阿根廷分会在2013年、2016年、2017年和2019年组织了 &am
 世界各地的FOSS倡导团体可以从这些案例研究中学到什么？FOSSGIS Brasil杂志的退役和上面提到的一些其他技术支持团体（如Maptime）的活动水平有时会消失，这表明长期的势头是一个挑战。对于自由和开放源码软件来说尤其如此，因为很多工作都是由志愿者完成的，他们的兴趣和可能性可能会随着工作和生活阶段的不同而改变。Geoinquietos阿根廷分会的分权性质似乎帮助传递了持久的力量，Telegram消息系统使这个小组保持了灵活性、包容性和联系。最后，支持性合作机构的存在可以为会议提供场所，并提供一批有兴趣的活跃人士。
 面对面的聚会需要付出极大的努力来执行，但却能在技术上和社会上促进招募和加强组织者的核心团队。2018年，全球FOSS4G大会首次来到非洲（达累斯萨拉姆），Geoinquietos阿根廷分会正在准备申办2021年在布宜诺斯艾利斯举办的大会。重新评估 &amp;ldquo;北美、欧洲、世界其他地区 &amp;ldquo;三年一次的FOSS4G会议轮流举办，以包括更灵活的国家组合，可以帮助OSGeo培养更多的全球焦点（尽管这种做法确实确保北美和欧洲并不总是主导申办过程）。同时，OSGeo对区域和地方会议的支持有助于加强新的自由和开放源码软件社区。阿根廷FOSS4G和FOSS.4GIS.GOV都借助政府办公室帮助降低了费用，让更多的人能够参加会议，这与在波士顿举行的2017年全球FOSS4G会议形成了鲜明的对比，该会议在海港酒店和世界贸易中心举行，每人注册费用高达800美元。尽管如此，非政府资金流也是有帮助的：在巴西举行的FOSS.4GIS.GOV 2018会议由于资金来源较少，规模小于2016年的迭代会议，但如果与OSGeo保持紧密的联系，会议的长期延续和扩大前景似乎是积极的。随着软件的可访问性和普及程度的提高，这次会议和上述其他举措应该是那些正在推广和开发自由和开源软件的人未来的兴趣所在。&lt;/p&gt;
 &lt;h2 id=&#34;0x05-笔记&#34;&gt;0x05 笔记&lt;/h2&gt;
-&lt;p&gt;&lt;a href=&#34;http://www.youthmappers.org&#34;&gt;http://www.youthmappers.org&lt;/a&gt;.&lt;/p&gt;
-&lt;p&gt;&lt;a href=&#34;http://www.geochicas.org&#34;&gt;http://www.geochicas.org&lt;/a&gt;.&lt;/p&gt;
-&lt;p&gt;&lt;a href=&#34;https://wiki.openstreetmap.org/wiki/GeoChicas&#34;&gt;https://wiki.openstreetmap.org/wiki/GeoChicas&lt;/a&gt;.&lt;/p&gt;
-&lt;p&gt;&lt;a href=&#34;http://www.gvsig.com/pt/comunidade/grupos-de-comunidades&#34;&gt;http://www.gvsig.com/pt/comunidade/grupos-de-comunidades&lt;/a&gt;.&lt;/p&gt;
-&lt;p&gt;&lt;a href=&#34;https://softwarepublico.gov.br/social/i3geo&#34;&gt;https://softwarepublico.gov.br/social/i3geo&lt;/a&gt;.&lt;/p&gt;
-&lt;p&gt;&lt;a href=&#34;http://www.fernandoquadro.com.br/html/&#34;&gt;http://www.fernandoquadro.com.br/html/&lt;/a&gt;.&lt;/p&gt;
-&lt;p&gt;&lt;a href=&#34;https://wiki.osgeo.org/wiki/Cap%C3%ADtulo_Local_de_la_comunidad_hispanohablante&#34;&gt;https://wiki.osgeo.org/wiki/Cap%C3%ADtulo_Local_de_la_comunidad_hispanohablante&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;http://www.youthmappers.org&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;http://www.youthmappers.org&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;http://www.geochicas.org&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;http://www.geochicas.org&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;https://wiki.openstreetmap.org/wiki/GeoChicas&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;https://wiki.openstreetmap.org/wiki/GeoChicas&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;http://www.gvsig.com/pt/comunidade/grupos-de-comunidades&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;http://www.gvsig.com/pt/comunidade/grupos-de-comunidades&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;https://softwarepublico.gov.br/social/i3geo&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;https://softwarepublico.gov.br/social/i3geo&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;http://www.fernandoquadro.com.br/html/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;http://www.fernandoquadro.com.br/html/&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;https://wiki.osgeo.org/wiki/Cap%C3%ADtulo_Local_de_la_comunidad_hispanohablante&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;https://wiki.osgeo.org/wiki/Cap%C3%ADtulo_Local_de_la_comunidad_hispanohablante&lt;/a&gt;.&lt;/p&gt;
 </description>
     </item>
     
     <item>
       <title>「论文阅读」-学习用于通勤流嵌入的地理上下文嵌入</title>
-      <link>https://coolgiserz.github.io/publication/learning-geo-embeding-for-commute-flow-prediction/</link>
+      <link>/publication/learning-geo-embeding-for-commute-flow-prediction/</link>
       <pubDate>Wed, 09 Dec 2020 20:18:23 +0800</pubDate>
-      <guid>https://coolgiserz.github.io/publication/learning-geo-embeding-for-commute-flow-prediction/</guid>
+      <guid>/publication/learning-geo-embeding-for-commute-flow-prediction/</guid>
       <description>&lt;h1 id=&#34;learning-geo-contextual-embeddings-for-commuting-flow-prediction&#34;&gt;Learning Geo-Contextual Embeddings for Commuting Flow Prediction&lt;/h1&gt;
 &lt;h2 id=&#34;0x00-引言&#34;&gt;0x00 引言&lt;/h2&gt;
 &lt;p&gt;本文章题为“用于&lt;strong&gt;通勤流&lt;/strong&gt;预测的&lt;strong&gt;地理上下文嵌入&lt;/strong&gt;学习”。&lt;/p&gt;
@@ -192,7 +637,34 @@ Geoinquietos阿根廷分会在2013年、2016年、2017年和2019年组织了 &am
 &lt;h4 id=&#34;什么是通勤流&#34;&gt;什么是通勤流？&lt;/h4&gt;
 &lt;p&gt;通勤是一种从家到工作地的往返过程。日复一日的通勤行为形成了一个与社会经济因素密切关联的复杂网络。&lt;/p&gt;
 &lt;p&gt;通勤流也被看作城市规划中的一个基本问题，因为其揭示了城市中劳动力供给与需求之间的空间关系。所以从城市规划的角度来看，有必要研究基础设施和土地利用对通勤流的影响。&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;images/network.png&#34; alt=&#34;通勤网络&#34;&gt;&lt;/p&gt;
+&lt;p&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure  &gt;
+  &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img alt=&#34;通勤网络&#34; srcset=&#34;
+               /publication/learning-geo-embeding-for-commute-flow-prediction/images/network_hubaff1d27d2e8195db4523c4cc8c31b1c_478450_fd801f0ba2012a967787ba0f88df7381.webp 400w,
+               /publication/learning-geo-embeding-for-commute-flow-prediction/images/network_hubaff1d27d2e8195db4523c4cc8c31b1c_478450_4f0c8ee3465889a97c1aa796c36bdc09.webp 760w,
+               /publication/learning-geo-embeding-for-commute-flow-prediction/images/network_hubaff1d27d2e8195db4523c4cc8c31b1c_478450_1200x1200_fit_q75_h2_lanczos_3.webp 1200w&#34;
+               src=&#34;/publication/learning-geo-embeding-for-commute-flow-prediction/images/network_hubaff1d27d2e8195db4523c4cc8c31b1c_478450_fd801f0ba2012a967787ba0f88df7381.webp&#34;
+               width=&#34;567&#34;
+               height=&#34;628&#34;
+               loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+  &lt;/div&gt;&lt;/figure&gt;
+&lt;/p&gt;
 &lt;center&gt;通勤流&lt;/center&gt;
 &lt;h4 id=&#34;通勤流预测与交通流预测有何区别&#34;&gt;通勤流预测与交通流预测有何区别？&lt;/h4&gt;
 &lt;p&gt;说的通勤流预测可能又容易联想到交通流预测，两者有什么区别呢？&lt;/p&gt;
@@ -212,7 +684,34 @@ Geoinquietos阿根廷分会在2013年、2016年、2017年和2019年组织了 &am
 &lt;li&gt;针对通勤网络&lt;/li&gt;
 &lt;li&gt;通过地理上下文嵌入学习地理单元及其上下文信息，通过多任务预测损失函数约束嵌入向量中的信息更适合进行通勤流预测。所谓的地理上下文信息就是指地理单元周围的POI、土地利用等信息，抽象来说就是邻域节点的属性。&lt;/li&gt;
 &lt;/ol&gt;
-&lt;p&gt;&lt;img src=&#34;images/gmel.png&#34; alt=&#34;GMEL&#34;&gt;&lt;center&gt;GMEL&lt;/center&gt;&lt;/p&gt;
+&lt;p&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure  &gt;
+  &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img alt=&#34;GMEL&#34; srcset=&#34;
+               /publication/learning-geo-embeding-for-commute-flow-prediction/images/gmel_hu17ac8b9c4882d12d1f36d3dea926d512_119997_04b4a22e38f8076794b85edd2744c9ca.webp 400w,
+               /publication/learning-geo-embeding-for-commute-flow-prediction/images/gmel_hu17ac8b9c4882d12d1f36d3dea926d512_119997_0db64feb146c310b7470c46be661cbea.webp 760w,
+               /publication/learning-geo-embeding-for-commute-flow-prediction/images/gmel_hu17ac8b9c4882d12d1f36d3dea926d512_119997_1200x1200_fit_q75_h2_lanczos_3.webp 1200w&#34;
+               src=&#34;/publication/learning-geo-embeding-for-commute-flow-prediction/images/gmel_hu17ac8b9c4882d12d1f36d3dea926d512_119997_04b4a22e38f8076794b85edd2744c9ca.webp&#34;
+               width=&#34;760&#34;
+               height=&#34;420&#34;
+               loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+  &lt;/div&gt;&lt;/figure&gt;
+&lt;center&gt;GMEL&lt;/center&gt;&lt;/p&gt;
 &lt;h3 id=&#34;用gat将地理上下文信息编码到嵌入空间中&#34;&gt;用GAT将地理上下文信息编码到嵌入空间中&lt;/h3&gt;
 &lt;p&gt;这里要注意的是文章提出用2个GAT分别建模出发地和目的地的特征，即要把劳动供给侧和需求侧的特征进行解耦。&lt;/p&gt;
 &lt;p&gt;然后通过多任务学习框架约束嵌入向量更适应于流预测表示。&lt;/p&gt;
@@ -224,7 +723,34 @@ Geoinquietos阿根廷分会在2013年、2016年、2017年和2019年组织了 &am
 &lt;li&gt;端到端地训练一个GMEL（预训练过程）&lt;/li&gt;
 &lt;li&gt;基于嵌入向量再训练一个流预测模型&lt;/li&gt;
 &lt;/ol&gt;
-&lt;p&gt;&lt;img src=&#34;images/algo.png&#34; alt=&#34;GMEL&#34;&gt;&lt;/p&gt;
+&lt;p&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure  &gt;
+  &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img alt=&#34;GMEL&#34; srcset=&#34;
+               /publication/learning-geo-embeding-for-commute-flow-prediction/images/algo_huf9fc8b5ae68b3f522fe6f6f61b13b518_203638_b2cf5a09b6099309fd8716fd5e9f92d1.webp 400w,
+               /publication/learning-geo-embeding-for-commute-flow-prediction/images/algo_huf9fc8b5ae68b3f522fe6f6f61b13b518_203638_d45c9adfa1144b51d69f8859d362cc06.webp 760w,
+               /publication/learning-geo-embeding-for-commute-flow-prediction/images/algo_huf9fc8b5ae68b3f522fe6f6f61b13b518_203638_1200x1200_fit_q75_h2_lanczos_3.webp 1200w&#34;
+               src=&#34;/publication/learning-geo-embeding-for-commute-flow-prediction/images/algo_huf9fc8b5ae68b3f522fe6f6f61b13b518_203638_b2cf5a09b6099309fd8716fd5e9f92d1.webp&#34;
+               width=&#34;543&#34;
+               height=&#34;760&#34;
+               loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+  &lt;/div&gt;&lt;/figure&gt;
+&lt;/p&gt;
 &lt;center&gt;训练算法&lt;/center&gt;
 &lt;h2 id=&#34;0x03-实验&#34;&gt;0x03 实验&lt;/h2&gt;
 &lt;p&gt;实验部分需要验证的点包括：&lt;/p&gt;
@@ -241,10 +767,64 @@ Geoinquietos阿根廷分会在2013年、2016年、2017年和2019年组织了 &am
 &lt;li&gt;所有GMEL系列的模型都比基准模型要好，表明地理上下文信息有助于通勤流来说&lt;/li&gt;
 &lt;li&gt;标准的GMEL比另外两个变种表现好，验证了多任务学习框架的有效性和对供需特征解耦的必要性&lt;/li&gt;
 &lt;/ul&gt;
-&lt;p&gt;&lt;img src=&#34;images/test_set.png&#34; alt=&#34;测试集&#34;&gt;&lt;/p&gt;
+&lt;p&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure  &gt;
+  &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img alt=&#34;测试集&#34; srcset=&#34;
+               /publication/learning-geo-embeding-for-commute-flow-prediction/images/test_set_huaf0371918803daba3ec3808a5c70ae00_107551_35643127bc8ce10aad6df4cf98b532f9.webp 400w,
+               /publication/learning-geo-embeding-for-commute-flow-prediction/images/test_set_huaf0371918803daba3ec3808a5c70ae00_107551_d64a09809848f449bb1dcb6e8e07d4d6.webp 760w,
+               /publication/learning-geo-embeding-for-commute-flow-prediction/images/test_set_huaf0371918803daba3ec3808a5c70ae00_107551_1200x1200_fit_q75_h2_lanczos_3.webp 1200w&#34;
+               src=&#34;/publication/learning-geo-embeding-for-commute-flow-prediction/images/test_set_huaf0371918803daba3ec3808a5c70ae00_107551_35643127bc8ce10aad6df4cf98b532f9.webp&#34;
+               width=&#34;567&#34;
+               height=&#34;497&#34;
+               loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+  &lt;/div&gt;&lt;/figure&gt;
+&lt;/p&gt;
 &lt;center&gt;测试表现&lt;/center&gt;
 &lt;p&gt;参数敏感性分析 、残差分析也表明方法的鲁棒性。&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;images/residual.png&#34; alt=&#34;残差&#34;&gt;&lt;/p&gt;
+&lt;p&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure  &gt;
+  &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img alt=&#34;残差&#34; srcset=&#34;
+               /publication/learning-geo-embeding-for-commute-flow-prediction/images/residual_hu840bbd1bf0f27265d0aa4d2a4d3fde58_516351_52e8b2e0973163e659f876620b02f256.webp 400w,
+               /publication/learning-geo-embeding-for-commute-flow-prediction/images/residual_hu840bbd1bf0f27265d0aa4d2a4d3fde58_516351_b27989e2da9404d46ccd2697e78ec5e3.webp 760w,
+               /publication/learning-geo-embeding-for-commute-flow-prediction/images/residual_hu840bbd1bf0f27265d0aa4d2a4d3fde58_516351_1200x1200_fit_q75_h2_lanczos_3.webp 1200w&#34;
+               src=&#34;/publication/learning-geo-embeding-for-commute-flow-prediction/images/residual_hu840bbd1bf0f27265d0aa4d2a4d3fde58_516351_52e8b2e0973163e659f876620b02f256.webp&#34;
+               width=&#34;760&#34;
+               height=&#34;416&#34;
+               loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+  &lt;/div&gt;&lt;/figure&gt;
+&lt;/p&gt;
 &lt;center&gt;残差分析&lt;/center&gt;
 &lt;h2 id=&#34;0x04-结论&#34;&gt;0x04 结论&lt;/h2&gt;
 &lt;p&gt;总结全文，文章提出利用地理上下文信息预测通勤流，并提出一个嵌入学习框架来学习地理单元的上下文信息，结果表明引入这种信息是有助于通勤流预测的。&lt;/p&gt;
@@ -253,9 +833,9 @@ Geoinquietos阿根廷分会在2013年、2016年、2017年和2019年组织了 &am
     
     <item>
       <title>「论文阅读」-基于多任务深度学习的时空流预测方法</title>
-      <link>https://coolgiserz.github.io/publication/flow-prediction-in-spatio-temporal-network-based-on-multitask-deep-learning/</link>
+      <link>/publication/flow-prediction-in-spatio-temporal-network-based-on-multitask-deep-learning/</link>
       <pubDate>Tue, 08 Dec 2020 16:13:24 +0800</pubDate>
-      <guid>https://coolgiserz.github.io/publication/flow-prediction-in-spatio-temporal-network-based-on-multitask-deep-learning/</guid>
+      <guid>/publication/flow-prediction-in-spatio-temporal-network-based-on-multitask-deep-learning/</guid>
       <description>&lt;h1 id=&#34;flow-prediction-in-spatio-temporal-network-based-on-multitask-deep-learning&#34;&gt;Flow Prediction in Spatio Temporal Network Based on Multitask Deep Learning&lt;/h1&gt;
 &lt;p&gt;影响交通流的要素有哪些？&lt;/p&gt;
 &lt;ul&gt;
@@ -267,8 +847,71 @@ Geoinquietos阿根廷分会在2013年、2016年、2017年和2019年组织了 &am
 &lt;ul&gt;
 &lt;li&gt;如何建模空间依赖？&lt;/li&gt;
 &lt;li&gt;如何建模时间依赖？&lt;/li&gt;
-&lt;li&gt;如何将有助于交通流预测的外部因素/知识融合到模型中？&lt;/li&gt;
+&lt;li&gt;如何将有助于交通流预测的外部因素/知识融合到模型中？
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure  &gt;
+  &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img src=&#34;./images/fig2.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+  &lt;/div&gt;&lt;/figure&gt;
+&lt;/li&gt;
 &lt;/ul&gt;
+&lt;p&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure  &gt;
+  &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img src=&#34;./images/fig3.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+  &lt;/div&gt;&lt;/figure&gt;
+&lt;/p&gt;
+&lt;p&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure  &gt;
+  &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img src=&#34;./images/fig4.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+  &lt;/div&gt;&lt;/figure&gt;
+&lt;/p&gt;
 &lt;h2 id=&#34;参考资料&#34;&gt;参考资料&lt;/h2&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;a href=&#34;https://github.com/mbs0221/Multitask-Learning&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Multitask-Learning&lt;/a&gt;&lt;/li&gt;

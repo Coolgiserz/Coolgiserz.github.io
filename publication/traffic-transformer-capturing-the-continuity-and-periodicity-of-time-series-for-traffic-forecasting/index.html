@@ -1,19 +1,49 @@
 <!DOCTYPE html><html lang="en-us" >
 
+
 <head>
-
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   
   
   
-  <meta name="generator" content="Wowchemy 5.0.0-beta.1 for Hugo">
-  
-
+    <meta name="generator" content="Wowchemy 5.5.0 for Hugo" />
   
 
   
+  
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+  
+  
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  
+
+  
+  
+  
+    
+      
+      <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Roboto+Mono&family=Roboto:wght@400;700&display=swap">
+      <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Roboto+Mono&family=Roboto:wght@400;700&display=swap" media="print" onload="this.media='all'">
+    
   
 
   
@@ -27,56 +57,51 @@
   
   
 
-  <meta name="author" content="CoolCats">
+  <meta name="author" content="CoolCats" />
 
   
   
   
     
   
-  <meta name="description" content="由于在不同尺度上联合建模时空依赖性的复杂性，交通预测是一个具有挑战性的问题。最近，已经开发了几种混合深度学习模型来捕捉这种依赖性。这些方法通常利用卷积神经网络或图神经网络（GNNs）来模拟空间依赖性，并利用循环神经网络（RNNs）来学习时间依赖性。然而，RNNs只能捕捉时间序列中的顺序信息，而无法对其周期性进行建模（如周模式）。此外，RNNs难以并行化，使得训练和预测的效率较低。在这项工作中，我们提出了一种名为Traffic Transformer的新型深度学习架构，以捕捉时间序列的连续性和周期性，并对空间依赖性进行建模。我们的工作从谷歌的机器翻译Transformer框架中获得灵感。我们在两个真实世界的交通数据集上进行了广泛的实验，结果表明我们的模型以相当大的优势优于基线模型。">
+  <meta name="description" content="由于在不同尺度上联合建模时空依赖性的复杂性，交通预测是一个具有挑战性的问题。最近，已经开发了几种混合深度学习模型来捕捉这种依赖性。这些方法通常利用卷积神经网络或图神经网络（GNNs）来模拟空间依赖性，并利用循环神经网络（RNNs）来学习时间依赖性。然而，RNNs只能捕捉时间序列中的顺序信息，而无法对其周期性进行建模（如周模式）。此外，RNNs难以并行化，使得训练和预测的效率较低。在这项工作中，我们提出了一种名为Traffic Transformer的新型深度学习架构，以捕捉时间序列的连续性和周期性，并对空间依赖性进行建模。我们的工作从谷歌的机器翻译Transformer框架中获得灵感。我们在两个真实世界的交通数据集上进行了广泛的实验，结果表明我们的模型以相当大的优势优于基线模型。" />
 
   
-  <link rel="alternate" hreflang="en-us" href="https://coolgiserz.github.io/publication/traffic-transformer-capturing-the-continuity-and-periodicity-of-time-series-for-traffic-forecasting/">
-
-  
-
-
-
-
-
-
-
-  
-
-
-
-
-  
-  
+  <link rel="alternate" hreflang="en-us" href="/publication/traffic-transformer-capturing-the-continuity-and-periodicity-of-time-series-for-traffic-forecasting/" />
 
   
   
   
-  <meta name="theme-color" content="#2962ff">
+    <meta name="theme-color" content="#1565c0" />
   
 
   
   
-  
-  <script src="/js/mathjax-config.js"></script>
+    
+    <script src="/js/mathjax-config.js"></script>
   
 
   
+
+  <link rel="stylesheet" href="/css/vendor-bundle.min.c7b8d9abd591ba2253ea42747e3ac3f5.css" media="print" onload="this.media='all'">
+
   
   
   
     
     
-      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/academicons/1.9.0/css/academicons.min.css" integrity="sha512-W4yqoT1+8NLkinBLBZko+dFB2ZbHsYLDdr50VElllRcNt2Q4/GSs6u71UHKxB7S6JEMCp5Ve4xjh3eGQl/HRvg==" crossorigin="anonymous">
+      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/academicons@1.9.1/css/academicons.min.css" integrity="sha512-W0xM4mr6dEP9nREo7Z9z+9X70wytKvMGeDsj7ps2+xg5QPrEBXC8tAW1IFnzjR6eoJ90JmCnFzerQJTLzIEHjA==" crossorigin="anonymous" media="print" onload="this.media='all'">
     
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css" integrity="sha256-FMvZuGapsJLjouA6k7Eo2lusoAX9i0ShlWFG6qt7SLc=" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.css" integrity="sha256-Vzbj7sDDS/woiFS3uNKo8eIuni59rjyNGtXfstRzStA=" crossorigin="anonymous">
+
+    
+    
+    
+    
+      
+      
+    
+    
+    
 
     
     
@@ -84,36 +109,26 @@
       
     
     
-
-    
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.7.1/leaflet.min.css" integrity="sha512-1xoFisiGdy9nvho8EgXuXvnpR5GAMSjFwp40gSRE3NwdUdIMIKuPa7bqoUhLD0O/5tPNhteAsE5XyyMi5reQVA==" crossorigin="anonymous">
-    
-
-    
-
-    
-    
-      
-
       
       
-
+        
+          <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@10.2.1/build/styles/github.min.css" crossorigin="anonymous" title="hl-light" media="print" onload="this.media='all'">
+          <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@10.2.1/build/styles/dracula.min.css" crossorigin="anonymous" title="hl-dark" media="print" onload="this.media='all'" disabled>
+        
       
     
-      
 
-      
-      
+    
+    
+    
+      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.7.1/dist/leaflet.min.css" integrity="" crossorigin="anonymous" media="print" onload="this.media='all'">
+    
 
-      
+    
+
+    
     
       
-
-      
-      
-
-      
-    
       
 
       
@@ -122,12 +137,6 @@
       
     
       
-
-      
-      
-
-      
-    
       
 
       
@@ -136,12 +145,6 @@
       
     
       
-
-      
-      
-
-      
-    
       
 
       
@@ -150,12 +153,6 @@
       
     
       
-
-      
-      
-
-      
-    
       
 
       
@@ -164,21 +161,6 @@
       
     
       
-
-      
-      
-
-      
-    
-      
-
-      
-      
-
-      
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/lazysizes/5.2.2/lazysizes.min.js" integrity="sha512-TmDwFLhg3UA4ZG0Eb4MIyT1O1Mb+Oww5kFG0uHqXsdbyZz9DcvYQhKpGgNkamAI6h2lGGZq2X8ftOJvF/XjTUg==" crossorigin="anonymous" async></script>
-      
-    
       
 
       
@@ -187,12 +169,62 @@
       
     
       
+      
 
       
       
 
       
     
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
       
 
       
@@ -203,12 +235,6 @@
       
     
       
-
-      
-      
-
-      
-    
       
 
       
@@ -216,78 +242,54 @@
 
       
     
+      
+      
 
+      
+      
+
+      
+    
   
 
   
   
   
-
   
   
-  
-  
-  <link rel="stylesheet" href="/css/wowchemy.min.95edefe724f6a6c53c0464fae8ba2346.css">
+  <link rel="stylesheet" href="/css/wowchemy.8722fd0f5cb8e5cb38d3b73367786cc1.css" />
 
   
 
 
 
-
-
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-HWGB23T7ER"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-
-  function gtag() {
-      dataLayer.push(arguments);
-  }
-
-  function trackOutboundLink(url, target) {
-    gtag('event', 'click', {
-         'event_category': 'outbound',
-         'event_label': url,
-         'transport_type': 'beacon',
-         'event_callback': function () {
-           if (target !== '_blank') {
-             document.location = url;
-           }
-         }
-    });
-    console.debug("Outbound link clicked: " + url);
-  }
-
-  function onClickCallback(event) {
-    if ((event.target.tagName !== 'A') || (event.target.host === window.location.host)) {
-      return;
-    }
-    trackOutboundLink(event.target, event.target.getAttribute('target'));  
-  }
-
-  gtag('js', new Date());
-  gtag('config', 'G-HWGB23T7ER', {});
-
   
-  document.addEventListener('click', onClickCallback, false);
-</script>
 
-
-  
 
   
 
 
   
+
+
+
+
+  
+  
   
 
   
 
-  <link rel="manifest" href="/index.webmanifest">
-  <link rel="icon" type="image/png" href="/images/icon_hue03491371183284312b8b116a73ae5ab_79511_32x32_fill_lanczos_center_2.png">
-  <link rel="apple-touch-icon" type="image/png" href="/images/icon_hue03491371183284312b8b116a73ae5ab_79511_192x192_fill_lanczos_center_2.png">
+  
+    <link rel="manifest" href="/manifest.webmanifest" />
+  
 
-  <link rel="canonical" href="https://coolgiserz.github.io/publication/traffic-transformer-capturing-the-continuity-and-periodicity-of-time-series-for-traffic-forecasting/">
+  <link rel="icon" type="image/png" href="/media/icon_hue03491371183284312b8b116a73ae5ab_79511_32x32_fill_lanczos_center_3.png" />
+  <link rel="apple-touch-icon" type="image/png" href="/media/icon_hue03491371183284312b8b116a73ae5ab_79511_180x180_fill_lanczos_center_3.png" />
 
+  <link rel="canonical" href="/publication/traffic-transformer-capturing-the-continuity-and-periodicity-of-time-series-for-traffic-forecasting/" />
+
+  
   
   
   
@@ -299,16 +301,28 @@
     
   
   
-  <meta property="twitter:card" content="summary">
+
   
-  <meta property="og:site_name" content="CoolCats">
-  <meta property="og:url" content="https://coolgiserz.github.io/publication/traffic-transformer-capturing-the-continuity-and-periodicity-of-time-series-for-traffic-forecasting/">
-  <meta property="og:title" content="「论文翻译」-使用Transformer捕捉交通流时间序列的邻近及周期特征 | CoolCats">
-  <meta property="og:description" content="由于在不同尺度上联合建模时空依赖性的复杂性，交通预测是一个具有挑战性的问题。最近，已经开发了几种混合深度学习模型来捕捉这种依赖性。这些方法通常利用卷积神经网络或图神经网络（GNNs）来模拟空间依赖性，并利用循环神经网络（RNNs）来学习时间依赖性。然而，RNNs只能捕捉时间序列中的顺序信息，而无法对其周期性进行建模（如周模式）。此外，RNNs难以并行化，使得训练和预测的效率较低。在这项工作中，我们提出了一种名为Traffic Transformer的新型深度学习架构，以捕捉时间序列的连续性和周期性，并对空间依赖性进行建模。我们的工作从谷歌的机器翻译Transformer框架中获得灵感。我们在两个真实世界的交通数据集上进行了广泛的实验，结果表明我们的模型以相当大的优势优于基线模型。"><meta property="og:image" content="https://coolgiserz.github.io/images/icon_hue03491371183284312b8b116a73ae5ab_79511_512x512_fill_lanczos_center_2.png">
-  <meta property="twitter:image" content="https://coolgiserz.github.io/images/icon_hue03491371183284312b8b116a73ae5ab_79511_512x512_fill_lanczos_center_2.png"><meta property="og:locale" content="en-us">
   
     
-      <meta property="article:published_time" content="2020-12-28T17:08:58&#43;08:00">
+    
+  
+  <meta property="twitter:card" content="summary" />
+  
+    <meta property="twitter:site" content="@wowchemy" />
+    <meta property="twitter:creator" content="@wowchemy" />
+  
+  <meta property="og:site_name" content="CoolCats" />
+  <meta property="og:url" content="/publication/traffic-transformer-capturing-the-continuity-and-periodicity-of-time-series-for-traffic-forecasting/" />
+  <meta property="og:title" content="「论文翻译」-使用Transformer捕捉交通流时间序列的邻近及周期特征 | CoolCats" />
+  <meta property="og:description" content="由于在不同尺度上联合建模时空依赖性的复杂性，交通预测是一个具有挑战性的问题。最近，已经开发了几种混合深度学习模型来捕捉这种依赖性。这些方法通常利用卷积神经网络或图神经网络（GNNs）来模拟空间依赖性，并利用循环神经网络（RNNs）来学习时间依赖性。然而，RNNs只能捕捉时间序列中的顺序信息，而无法对其周期性进行建模（如周模式）。此外，RNNs难以并行化，使得训练和预测的效率较低。在这项工作中，我们提出了一种名为Traffic Transformer的新型深度学习架构，以捕捉时间序列的连续性和周期性，并对空间依赖性进行建模。我们的工作从谷歌的机器翻译Transformer框架中获得灵感。我们在两个真实世界的交通数据集上进行了广泛的实验，结果表明我们的模型以相当大的优势优于基线模型。" /><meta property="og:image" content="/media/icon_hue03491371183284312b8b116a73ae5ab_79511_512x512_fill_lanczos_center_3.png" />
+    <meta property="twitter:image" content="/media/icon_hue03491371183284312b8b116a73ae5ab_79511_512x512_fill_lanczos_center_3.png" /><meta property="og:locale" content="en-us" />
+  
+    
+      <meta
+        property="article:published_time"
+        content="2020-12-28T17:08:58&#43;08:00"
+      />
     
     <meta property="article:modified_time" content="2020-12-28T17:08:58&#43;08:00">
   
@@ -332,7 +346,7 @@
   "@type": "Article",
   "mainEntityOfPage": {
     "@type": "WebPage",
-    "@id": "https://coolgiserz.github.io/publication/traffic-transformer-capturing-the-continuity-and-periodicity-of-time-series-for-traffic-forecasting/"
+    "@id": "/publication/traffic-transformer-capturing-the-continuity-and-periodicity-of-time-series-for-traffic-forecasting/"
   },
   "headline": "「论文翻译」-使用Transformer捕捉交通流时间序列的邻近及周期特征",
   
@@ -349,7 +363,7 @@
     "name": "CoolCats",
     "logo": {
       "@type": "ImageObject",
-      "url": "https://coolgiserz.github.io/images/icon_hue03491371183284312b8b116a73ae5ab_79511_192x192_fill_lanczos_center_2.png"
+      "url": "/media/icon_hue03491371183284312b8b116a73ae5ab_79511_192x192_fill_lanczos_center_3.png"
     }
   },
   "description": "由于在不同尺度上联合建模时空依赖性的复杂性，交通预测是一个具有挑战性的问题。最近，已经开发了几种混合深度学习模型来捕捉这种依赖性。这些方法通常利用卷积神经网络或图神经网络（GNNs）来模拟空间依赖性，并利用循环神经网络（RNNs）来学习时间依赖性。然而，RNNs只能捕捉时间序列中的顺序信息，而无法对其周期性进行建模（如周模式）。此外，RNNs难以并行化，使得训练和预测的效率较低。在这项工作中，我们提出了一种名为Traffic Transformer的新型深度学习架构，以捕捉时间序列的连续性和周期性，并对空间依赖性进行建模。我们的工作从谷歌的机器翻译Transformer框架中获得灵感。我们在两个真实世界的交通数据集上进行了广泛的实验，结果表明我们的模型以相当大的优势优于基线模型。"
@@ -360,9 +374,7 @@
 
   
 
-
   
-
 
   
 
@@ -371,20 +383,26 @@
 
 
   <title>「论文翻译」-使用Transformer捕捉交通流时间序列的邻近及周期特征 | CoolCats</title>
-
 </head>
 
 
-<body id="top" data-spy="scroll" data-offset="70" data-target="#TableOfContents" class="page-wrapper  ">
+<body id="top" data-spy="scroll" data-offset="70" data-target="#TableOfContents" class="page-wrapper   " data-wc-page-id="761bd3f771b3d764ecb4d880d1bd3fda" >
 
   
   
   
   
   
-  <script src="/js/wowchemy-init.js"></script>
+  
+  
+  
+  
+  <script src="/js/wowchemy-init.min.2ed908358299dd7ab553faae685c746c.js"></script>
 
-  <aside class="search-results" id="search">
+  
+
+
+<aside class="search-modal" id="search">
   <div class="container">
     <section class="search-header">
 
@@ -393,16 +411,22 @@
           <h1>Search</h1>
         </div>
         <div class="col-6 col-search-close">
-          <a class="js-search" href="#"><i class="fas fa-times-circle text-muted" aria-hidden="true"></i></a>
+          <a class="js-search" href="#" aria-label="Close"><i class="fas fa-times-circle text-muted" aria-hidden="true"></i></a>
         </div>
       </div>
 
       <div id="search-box">
         
         <input name="q" id="search-query" placeholder="Search..." autocapitalize="off"
-        autocomplete="off" autocorrect="off" spellcheck="false" type="search" class="form-control">
+        autocomplete="off" autocorrect="off" spellcheck="false" type="search" class="form-control"
+        aria-label="Search...">
         
       </div>
+
+      
+      
+
+      
 
     </section>
     <section class="section-search-results">
@@ -414,6 +438,7 @@
     </section>
   </div>
 </aside>
+
 
 
   <div class="page-header">
@@ -430,242 +455,273 @@
 
 
 
-<nav class="navbar navbar-expand-lg navbar-light compensate-for-scrollbar" id="navbar-main">
-  <div class="container">
-
-    
-    <div class="d-none d-lg-inline-flex">
-      <a class="navbar-brand" href="/">CoolCats</a>
-    </div>
-    
-
-    
-    <button type="button" class="navbar-toggler" data-toggle="collapse"
-            data-target="#navbar-content" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
-    <span><i class="fas fa-bars"></i></span>
-    </button>
-    
-
-    
-    <div class="navbar-brand-mobile-wrapper d-inline-flex d-lg-none">
-      <a class="navbar-brand" href="/">CoolCats</a>
-    </div>
-    
-
-    
-    
-    <div class="navbar-collapse main-menu-item collapse justify-content-end" id="navbar-content">
+<header class="header--fixed">
+  <nav class="navbar navbar-expand-lg navbar-light compensate-for-scrollbar" id="navbar-main">
+    <div class="container-xl">
 
       
-      <ul class="navbar-nav d-md-inline-flex">
-        
-
-        
-
-        
-        
-        
-
-        
-
-        
-        
-        
-        
-
-        
-          
-            
-            
-          
-          
-        
-
-        <li class="nav-item">
-          <a class="nav-link " href="/post"><span>博客</span></a>
-        </li>
-
-        
-        
-
-        
-
-        
-        
-        
-          
-        
-
-        
-
-        
-        
-        
-        
-
-        
-          
-            
-            
-          
-          
-        
-
-        <li class="nav-item">
-          <a class="nav-link " href="/event"><span>趣事</span></a>
-        </li>
-
-        
-        
-
-        
-
-        
-        
-        
-          
-        
-
-        
-
-        
-        
-        
-        
-
-        
-          
-            
-            
-          
-          
-        
-
-        <li class="nav-item">
-          <a class="nav-link " href="/project"><span>项目</span></a>
-        </li>
-
-        
-        
-
-        
-
-        
-        
-        
-          
-        
-
-        
-
-        
-        
-        
-        
-
-        
-          
-            
-            
-          
-          
-        
-
-        <li class="nav-item">
-          <a class="nav-link " href="/publication"><span>论文</span></a>
-        </li>
-
-        
-        
-
-        
-
-        
-        
-        
-          
-        
-
-        
-
-        
-        
-        
-        
-
-        
-          
-            
-            
-          
-          
-        
-
-        <li class="nav-item">
-          <a class="nav-link " href="/contact"><span>联系</span></a>
-        </li>
-
-        
-        
-
-        
-
-        
-        
-        
-          
-        
-
-        
-
-        
-        
-        
-        
-
-        
-          
-            
-            
-          
-          
-        
-
-        <li class="nav-item">
-          <a class="nav-link " href="/media/files/cv"><span>简历</span></a>
-        </li>
-
-        
-        
-
+      <div class="d-none d-lg-inline-flex">
+        <a class="navbar-brand" href="/">CoolCats</a>
+      </div>
       
 
+      
+      <button type="button" class="navbar-toggler" data-toggle="collapse"
+              data-target="#navbar-content" aria-controls="navbar-content" aria-expanded="false" aria-label="Toggle navigation">
+      <span><i class="fas fa-bars"></i></span>
+      </button>
+      
+
+      
+      <div class="navbar-brand-mobile-wrapper d-inline-flex d-lg-none">
+        <a class="navbar-brand" href="/">CoolCats</a>
+      </div>
+      
+
+      
+      
+      <div class="navbar-collapse main-menu-item collapse justify-content-start" id="navbar-content">
+
         
+        <ul class="navbar-nav d-md-inline-flex">
+          
+
+          
+
+          
+          
+          
+
+          
+
+          
+          
+          
+          
+
+          
+            
+              
+              
+            
+            
+          
+
+          <li class="nav-item">
+            <a class="nav-link " href="/post"><span>博客</span></a>
+          </li>
+
+          
+          
+
+          
+
+          
+          
+          
+            
+          
+
+          
+
+          
+          
+          
+          
+
+          
+            
+              
+              
+            
+            
+          
+
+          <li class="nav-item">
+            <a class="nav-link " href="/event"><span>趣事</span></a>
+          </li>
+
+          
+          
+
+          
+
+          
+          
+          
+            
+          
+
+          
+
+          
+          
+          
+          
+
+          
+            
+              
+              
+            
+            
+          
+
+          <li class="nav-item">
+            <a class="nav-link " href="/project"><span>项目</span></a>
+          </li>
+
+          
+          
+
+          
+
+          
+          
+          
+            
+          
+
+          
+
+          
+          
+          
+          
+
+          
+            
+              
+              
+            
+            
+          
+
+          <li class="nav-item">
+            <a class="nav-link  active" href="/publication"><span>论文</span></a>
+          </li>
+
+          
+          
+
+          
+
+          
+          
+          
+            
+          
+
+          
+
+          
+          
+          
+          
+
+          
+            
+              
+              
+            
+            
+          
+
+          <li class="nav-item">
+            <a class="nav-link " href="/contact"><span>联系</span></a>
+          </li>
+
+          
+          
+
+          
+
+          
+          
+          
+            
+          
+
+          
+
+          
+          
+          
+          
+
+          
+            
+              
+              
+            
+            
+          
+
+          <li class="nav-item">
+            <a class="nav-link " href="/media/files/cv"><span>简历</span></a>
+          </li>
+
+          
+          
+
+        
+
+          
+        </ul>
+      </div>
+
+      <ul class="nav-icons navbar-nav flex-row ml-auto d-flex pl-md-2">
+
+        
+        
+          
+        
+
+        
+        
+        <li class="nav-item">
+          <a class="nav-link js-search" href="#" aria-label="Search"><i class="fas fa-search" aria-hidden="true"></i></a>
+        </li>
+        
+
+        
+        
+        
+        <li class="nav-item dropdown theme-dropdown">
+          <a href="#" class="nav-link" data-toggle="dropdown" aria-haspopup="true" aria-label="Display preferences">
+            <i class="fas fa-moon" aria-hidden="true"></i>
+          </a>
+          <div class="dropdown-menu">
+            <a href="#" class="dropdown-item js-set-theme-light">
+              <span>Light</span>
+            </a>
+            <a href="#" class="dropdown-item js-set-theme-dark">
+              <span>Dark</span>
+            </a>
+            <a href="#" class="dropdown-item js-set-theme-auto">
+              <span>Automatic</span>
+            </a>
+          </div>
+        </li>
+        
+
+        
+        
+
       </ul>
+
     </div>
-
-    <ul class="nav-icons navbar-nav flex-row ml-auto d-flex pl-md-2">
-      
-      
-      <li class="nav-item">
-        <a class="nav-link js-search" href="#" aria-label="Search"><i class="fas fa-search" aria-hidden="true"></i></a>
-      </li>
-      
-
-      
-      
-
-      
-
-    </ul>
-
-  </div>
-</nav>
+  </nav>
+</header>
 
 
   </div>
 
   <div class="page-body">
+    
+    
+    
+
     
 
 
@@ -715,7 +771,7 @@
     
       
     
-    December 2020
+    December, 2020
   </span>
   
 
@@ -727,10 +783,6 @@
   
   
   
-  
-  <span class="middot-divider"></span>
-  <a href="/publication/traffic-transformer-capturing-the-continuity-and-periodicity-of-time-series-for-traffic-forecasting/#disqus_thread"></a>
-  
 
   
   
@@ -738,17 +790,6 @@
 </div>
 
     
-
-
-
-
-
-
-
-
-  
-
-
 
 
 
@@ -768,7 +809,7 @@
 
 
 
-<a class="btn btn-outline-primary my-1 mr-1" href="/publication/traffic-transformer-capturing-the-continuity-and-periodicity-of-time-series-for-traffic-forecasting/traffic-transformer-capturing-the-continuity-and-periodicity-of-time-series-for-traffic-forecasting.pdf" target="_blank" rel="noopener">
+<a class="btn btn-outline-primary btn-page-header" href="/publication/traffic-transformer-capturing-the-continuity-and-periodicity-of-time-series-for-traffic-forecasting/traffic-transformer-capturing-the-continuity-and-periodicity-of-time-series-for-traffic-forecasting.pdf" target="_blank" rel="noopener">
   PDF
 </a>
 
@@ -786,7 +827,7 @@
 
 
 
-<a class="btn btn-outline-primary my-1 mr-1" href="https://doi.org/10.1111/tgis.12644" target="_blank" rel="noopener">
+<a class="btn btn-outline-primary btn-page-header" href="https://doi.org/10.1111/tgis.12644" target="_blank" rel="noopener">
   DOI
 </a>
 
@@ -865,7 +906,34 @@
 <p>最近，Transformer(Vaswani等人，2017)作为深度学习中的一种新架构被开发出来，它采用注意力机制与位置编码策略进行序列建模。鉴于此，已经有一些尝试将Transformer定制为时间序列预测（Li等人，2019；Li &amp; Moura，2019；Lim，Arik，Loeff，&amp; Pfister，2019）。例如，Li等人（2019）认为，基本的Transformer架构对局部上下文不敏感，并建议添加卷积自注意层来改进它。虽然这项工作已经被证明在捕捉长期时间依赖性方面是有效的，但对于全网流量预测来说是不够的。首先，它忽略了路网的空间依赖性，因此未能模拟时空相关性。其次，它以将非常长的序列(如768)输入模型为代价来捕获周期性模式，这对于全网交通预测来说可能是不可能的。网络中的交通数据量远远大于单个点的数据量，因为在一个道路网络上有数百个传感器频繁地报告交通情况。Li和Moura（2019）也借鉴了Transformer的思想来应对时间序列问题，并提出了一种名为Forecaster的新方法来解决出租车乘车需求预测问题。不过，他们的重点是如何在空间依赖图的指导下，利用稀疏线性层更好地对空间依赖性进行建模。与我们的工作最为相似的是Xu等人（2020），他们也专注于通过充分利用Transformer来解决交通预测任务，联合建模空间和时间依赖性。在他们的论文中，他们提出了位置嵌入作为可学习参数，在训练时自动学习。因此，模型本身负责捕捉时间序列中的时间依赖性，而人类对时间序列中的时间模式的知晓度(例如，时间序列的连续性/周期性)被忽略。相比之下，在本文中，我们研究如何通过明确建模时间序列中反映的时间模式来设计不同的时间编码策略。通过这样做，人类先前关于时间模式的知识被视为归纳偏差，以指导模型捕捉时间依赖性。综上所述，在我们的文章中，我们专注于明确地将空间和时间依赖性一起建模：网络中流量的空间相关性以及时间序列的连续性和周期性。</p>
 <h3 id="方法">方法</h3>
 <h4 id="traffic-transformer架构">Traffic transformer架构</h4>
-<p><img src="images/fig1_2.png" alt=""></p>
+<p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<figure  >
+  <div class="d-flex justify-content-center">
+    <div class="w-100" ><img alt="" srcset="
+               /publication/traffic-transformer-capturing-the-continuity-and-periodicity-of-time-series-for-traffic-forecasting/images/fig1_2_hu655a9f6e780fdcc68b904a9a208df016_256246_c02688f12dab712adf05cb11f956b9a3.webp 400w,
+               /publication/traffic-transformer-capturing-the-continuity-and-periodicity-of-time-series-for-traffic-forecasting/images/fig1_2_hu655a9f6e780fdcc68b904a9a208df016_256246_6a057ac98f80f5102799c979c06fbbf3.webp 760w,
+               /publication/traffic-transformer-capturing-the-continuity-and-periodicity-of-time-series-for-traffic-forecasting/images/fig1_2_hu655a9f6e780fdcc68b904a9a208df016_256246_1200x1200_fit_q75_h2_lanczos_3.webp 1200w"
+               src="/publication/traffic-transformer-capturing-the-continuity-and-periodicity-of-time-series-for-traffic-forecasting/images/fig1_2_hu655a9f6e780fdcc68b904a9a208df016_256246_c02688f12dab712adf05cb11f956b9a3.webp"
+               width="576"
+               height="760"
+               loading="lazy" data-zoomable /></div>
+  </div></figure>
+</p>
 <h3 id="实验">实验</h3>
 <p>在本节中，我们报告了我们为评估所提出的架构的性能而进行的实验。</p>
 <h4 id="数据集描述">数据集描述</h4>
@@ -873,8 +941,62 @@
 <h4 id="实现细节">实现细节</h4>
 <p>为了测试不同编码方法的性能，我们将历史中的序列长度M和预测序列的长度H设为12。对于时间序列分段法，捕捉周周期模式的天数w和日周期模式的天数d为1。在我们的模型中，所有层的隐藏维度为64。使用两个编码器和解码器单元，利用一个图卷积层。我们使用开源代码来实现这整个架构（https://github.com/tensorflow/models/tree/master/official/ transformer）。此外，如4.3节所述，预测序列在预测时是未知的，但在训练时是已知的。因此，这两个过程之间存在差异，这导致了沿着屈服序列的快速错误积累- tion（Bengio，Vinyals，Jaitly，&amp; Shazeer，2015）。为了解决这个问题，我们在模型中也采用了预定采样来弥合这种差异，更多细节请参见Bengio等人（2015）。</p>
 <h4 id="实验结果">实验结果</h4>
-<p><img src="images/table3.png" alt=""></p>
-<p><img src="images/fig3.png" alt=""></p>
+<p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<figure  >
+  <div class="d-flex justify-content-center">
+    <div class="w-100" ><img alt="" srcset="
+               /publication/traffic-transformer-capturing-the-continuity-and-periodicity-of-time-series-for-traffic-forecasting/images/table3_huba3c8cc26c3b195d8c12a5a5f07e283a_361209_f5c8e4b46cbb10c404dd3dd4128ee9fa.webp 400w,
+               /publication/traffic-transformer-capturing-the-continuity-and-periodicity-of-time-series-for-traffic-forecasting/images/table3_huba3c8cc26c3b195d8c12a5a5f07e283a_361209_5da33119675c2e44e2cd6f012ac65036.webp 760w,
+               /publication/traffic-transformer-capturing-the-continuity-and-periodicity-of-time-series-for-traffic-forecasting/images/table3_huba3c8cc26c3b195d8c12a5a5f07e283a_361209_1200x1200_fit_q75_h2_lanczos_3.webp 1200w"
+               src="/publication/traffic-transformer-capturing-the-continuity-and-periodicity-of-time-series-for-traffic-forecasting/images/table3_huba3c8cc26c3b195d8c12a5a5f07e283a_361209_f5c8e4b46cbb10c404dd3dd4128ee9fa.webp"
+               width="760"
+               height="623"
+               loading="lazy" data-zoomable /></div>
+  </div></figure>
+</p>
+<p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<figure  >
+  <div class="d-flex justify-content-center">
+    <div class="w-100" ><img alt="" srcset="
+               /publication/traffic-transformer-capturing-the-continuity-and-periodicity-of-time-series-for-traffic-forecasting/images/fig3_huf796215b0981881d50826aee2155516e_367786_56e04901f0a9033bdb505ad55bd06722.webp 400w,
+               /publication/traffic-transformer-capturing-the-continuity-and-periodicity-of-time-series-for-traffic-forecasting/images/fig3_huf796215b0981881d50826aee2155516e_367786_a5fc9d031d100d56d5ba8b8e85c3f770.webp 760w,
+               /publication/traffic-transformer-capturing-the-continuity-and-periodicity-of-time-series-for-traffic-forecasting/images/fig3_huf796215b0981881d50826aee2155516e_367786_1200x1200_fit_q75_h2_lanczos_3.webp 1200w"
+               src="/publication/traffic-transformer-capturing-the-continuity-and-periodicity-of-time-series-for-traffic-forecasting/images/fig3_huf796215b0981881d50826aee2155516e_367786_56e04901f0a9033bdb505ad55bd06722.webp"
+               width="515"
+               height="760"
+               loading="lazy" data-zoomable /></div>
+  </div></figure>
+</p>
 <h3 id="结论">结论</h3>
 <p>在这项研究中，我们已经引入了新颖的非循环式架构，称为Traffic Transformer。我们已经成功地将其用于交通预测，以捕获时空依赖性。这个架构可以看作是自然语言处理中一个著名的顺序模型Transformer的扩展。为了探索如何在Transformer中捕获时空依赖性，我们提出了七种不同的时间序列的连续性和周期性建模方法。时间序列分段法取得了最好的效果。另外，我们在Transformer中引入了图卷积神经网络，用于建模交通的空间依赖性。通过这样做，可以捕捉到流量的动态时空特征。在两个基准数据集上的广泛实验表明，我们的模型优于基线，展示了我们提出的时空编码方法和我们提出的整体架构的有效性。本文的一个局限性是，我们只考虑了时间上的注意力机制，而不同时间的上游道路可能会有不同的贡献。在未来的工作中，我们将探索如何设计时空注意力机制，以更精细地解决这个问题。</p>
 </div>
@@ -892,7 +1014,7 @@
 
 
 
-<div class="share-box" aria-hidden="true">
+<div class="share-box">
   <ul class="share">
     
       
@@ -903,7 +1025,7 @@
       
       
       <li>
-        <a href="https://twitter.com/intent/tweet?url=https://coolgiserz.github.io/publication/traffic-transformer-capturing-the-continuity-and-periodicity-of-time-series-for-traffic-forecasting/&amp;text=%e3%80%8c%e8%ae%ba%e6%96%87%e7%bf%bb%e8%af%91%e3%80%8d-%e4%bd%bf%e7%94%a8Transformer%e6%8d%95%e6%8d%89%e4%ba%a4%e9%80%9a%e6%b5%81%e6%97%b6%e9%97%b4%e5%ba%8f%e5%88%97%e7%9a%84%e9%82%bb%e8%bf%91%e5%8f%8a%e5%91%a8%e6%9c%9f%e7%89%b9%e5%be%81" target="_blank" rel="noopener" class="share-btn-twitter">
+        <a href="https://twitter.com/intent/tweet?url=/publication/traffic-transformer-capturing-the-continuity-and-periodicity-of-time-series-for-traffic-forecasting/&amp;text=%e3%80%8c%e8%ae%ba%e6%96%87%e7%bf%bb%e8%af%91%e3%80%8d-%e4%bd%bf%e7%94%a8Transformer%e6%8d%95%e6%8d%89%e4%ba%a4%e9%80%9a%e6%b5%81%e6%97%b6%e9%97%b4%e5%ba%8f%e5%88%97%e7%9a%84%e9%82%bb%e8%bf%91%e5%8f%8a%e5%91%a8%e6%9c%9f%e7%89%b9%e5%be%81" target="_blank" rel="noopener" class="share-btn-twitter" aria-label="twitter">
           <i class="fab fa-twitter"></i>
         </a>
       </li>
@@ -916,7 +1038,7 @@
       
       
       <li>
-        <a href="https://www.facebook.com/sharer.php?u=https://coolgiserz.github.io/publication/traffic-transformer-capturing-the-continuity-and-periodicity-of-time-series-for-traffic-forecasting/&amp;t=%e3%80%8c%e8%ae%ba%e6%96%87%e7%bf%bb%e8%af%91%e3%80%8d-%e4%bd%bf%e7%94%a8Transformer%e6%8d%95%e6%8d%89%e4%ba%a4%e9%80%9a%e6%b5%81%e6%97%b6%e9%97%b4%e5%ba%8f%e5%88%97%e7%9a%84%e9%82%bb%e8%bf%91%e5%8f%8a%e5%91%a8%e6%9c%9f%e7%89%b9%e5%be%81" target="_blank" rel="noopener" class="share-btn-facebook">
+        <a href="https://www.facebook.com/sharer.php?u=/publication/traffic-transformer-capturing-the-continuity-and-periodicity-of-time-series-for-traffic-forecasting/&amp;t=%e3%80%8c%e8%ae%ba%e6%96%87%e7%bf%bb%e8%af%91%e3%80%8d-%e4%bd%bf%e7%94%a8Transformer%e6%8d%95%e6%8d%89%e4%ba%a4%e9%80%9a%e6%b5%81%e6%97%b6%e9%97%b4%e5%ba%8f%e5%88%97%e7%9a%84%e9%82%bb%e8%bf%91%e5%8f%8a%e5%91%a8%e6%9c%9f%e7%89%b9%e5%be%81" target="_blank" rel="noopener" class="share-btn-facebook" aria-label="facebook">
           <i class="fab fa-facebook"></i>
         </a>
       </li>
@@ -929,7 +1051,7 @@
       
       
       <li>
-        <a href="mailto:?subject=%e3%80%8c%e8%ae%ba%e6%96%87%e7%bf%bb%e8%af%91%e3%80%8d-%e4%bd%bf%e7%94%a8Transformer%e6%8d%95%e6%8d%89%e4%ba%a4%e9%80%9a%e6%b5%81%e6%97%b6%e9%97%b4%e5%ba%8f%e5%88%97%e7%9a%84%e9%82%bb%e8%bf%91%e5%8f%8a%e5%91%a8%e6%9c%9f%e7%89%b9%e5%be%81&amp;body=https://coolgiserz.github.io/publication/traffic-transformer-capturing-the-continuity-and-periodicity-of-time-series-for-traffic-forecasting/" target="_blank" rel="noopener" class="share-btn-email">
+        <a href="mailto:?subject=%e3%80%8c%e8%ae%ba%e6%96%87%e7%bf%bb%e8%af%91%e3%80%8d-%e4%bd%bf%e7%94%a8Transformer%e6%8d%95%e6%8d%89%e4%ba%a4%e9%80%9a%e6%b5%81%e6%97%b6%e9%97%b4%e5%ba%8f%e5%88%97%e7%9a%84%e9%82%bb%e8%bf%91%e5%8f%8a%e5%91%a8%e6%9c%9f%e7%89%b9%e5%be%81&amp;body=/publication/traffic-transformer-capturing-the-continuity-and-periodicity-of-time-series-for-traffic-forecasting/" target="_blank" rel="noopener" class="share-btn-email" aria-label="envelope">
           <i class="fas fa-envelope"></i>
         </a>
       </li>
@@ -942,7 +1064,7 @@
       
       
       <li>
-        <a href="https://www.linkedin.com/shareArticle?url=https://coolgiserz.github.io/publication/traffic-transformer-capturing-the-continuity-and-periodicity-of-time-series-for-traffic-forecasting/&amp;title=%e3%80%8c%e8%ae%ba%e6%96%87%e7%bf%bb%e8%af%91%e3%80%8d-%e4%bd%bf%e7%94%a8Transformer%e6%8d%95%e6%8d%89%e4%ba%a4%e9%80%9a%e6%b5%81%e6%97%b6%e9%97%b4%e5%ba%8f%e5%88%97%e7%9a%84%e9%82%bb%e8%bf%91%e5%8f%8a%e5%91%a8%e6%9c%9f%e7%89%b9%e5%be%81" target="_blank" rel="noopener" class="share-btn-linkedin">
+        <a href="https://www.linkedin.com/shareArticle?url=/publication/traffic-transformer-capturing-the-continuity-and-periodicity-of-time-series-for-traffic-forecasting/&amp;title=%e3%80%8c%e8%ae%ba%e6%96%87%e7%bf%bb%e8%af%91%e3%80%8d-%e4%bd%bf%e7%94%a8Transformer%e6%8d%95%e6%8d%89%e4%ba%a4%e9%80%9a%e6%b5%81%e6%97%b6%e9%97%b4%e5%ba%8f%e5%88%97%e7%9a%84%e9%82%bb%e8%bf%91%e5%8f%8a%e5%91%a8%e6%9c%9f%e7%89%b9%e5%be%81" target="_blank" rel="noopener" class="share-btn-linkedin" aria-label="linkedin-in">
           <i class="fab fa-linkedin-in"></i>
         </a>
       </li>
@@ -955,7 +1077,7 @@
       
       
       <li>
-        <a href="whatsapp://send?text=%e3%80%8c%e8%ae%ba%e6%96%87%e7%bf%bb%e8%af%91%e3%80%8d-%e4%bd%bf%e7%94%a8Transformer%e6%8d%95%e6%8d%89%e4%ba%a4%e9%80%9a%e6%b5%81%e6%97%b6%e9%97%b4%e5%ba%8f%e5%88%97%e7%9a%84%e9%82%bb%e8%bf%91%e5%8f%8a%e5%91%a8%e6%9c%9f%e7%89%b9%e5%be%81%20https://coolgiserz.github.io/publication/traffic-transformer-capturing-the-continuity-and-periodicity-of-time-series-for-traffic-forecasting/" target="_blank" rel="noopener" class="share-btn-whatsapp">
+        <a href="whatsapp://send?text=%e3%80%8c%e8%ae%ba%e6%96%87%e7%bf%bb%e8%af%91%e3%80%8d-%e4%bd%bf%e7%94%a8Transformer%e6%8d%95%e6%8d%89%e4%ba%a4%e9%80%9a%e6%b5%81%e6%97%b6%e9%97%b4%e5%ba%8f%e5%88%97%e7%9a%84%e9%82%bb%e8%bf%91%e5%8f%8a%e5%91%a8%e6%9c%9f%e7%89%b9%e5%be%81%20/publication/traffic-transformer-capturing-the-continuity-and-periodicity-of-time-series-for-traffic-forecasting/" target="_blank" rel="noopener" class="share-btn-whatsapp" aria-label="whatsapp">
           <i class="fab fa-whatsapp"></i>
         </a>
       </li>
@@ -968,7 +1090,7 @@
       
       
       <li>
-        <a href="https://service.weibo.com/share/share.php?url=https://coolgiserz.github.io/publication/traffic-transformer-capturing-the-continuity-and-periodicity-of-time-series-for-traffic-forecasting/&amp;title=%e3%80%8c%e8%ae%ba%e6%96%87%e7%bf%bb%e8%af%91%e3%80%8d-%e4%bd%bf%e7%94%a8Transformer%e6%8d%95%e6%8d%89%e4%ba%a4%e9%80%9a%e6%b5%81%e6%97%b6%e9%97%b4%e5%ba%8f%e5%88%97%e7%9a%84%e9%82%bb%e8%bf%91%e5%8f%8a%e5%91%a8%e6%9c%9f%e7%89%b9%e5%be%81" target="_blank" rel="noopener" class="share-btn-weibo">
+        <a href="https://service.weibo.com/share/share.php?url=/publication/traffic-transformer-capturing-the-continuity-and-periodicity-of-time-series-for-traffic-forecasting/&amp;title=%e3%80%8c%e8%ae%ba%e6%96%87%e7%bf%bb%e8%af%91%e3%80%8d-%e4%bd%bf%e7%94%a8Transformer%e6%8d%95%e6%8d%89%e4%ba%a4%e9%80%9a%e6%b5%81%e6%97%b6%e9%97%b4%e5%ba%8f%e5%88%97%e7%9a%84%e9%82%bb%e8%bf%91%e5%8f%8a%e5%91%a8%e6%9c%9f%e7%89%b9%e5%be%81" target="_blank" rel="noopener" class="share-btn-weibo" aria-label="weibo">
           <i class="fab fa-weibo"></i>
         </a>
       </li>
@@ -999,12 +1121,12 @@
   <div class="media author-card content-widget-hr">
     
       
-      <a href="/author/coolcats/"><img class="avatar mr-3 avatar-circle" src="/author/coolcats/avatar_hue03491371183284312b8b116a73ae5ab_79511_270x270_fill_q75_lanczos_center.jpg" alt="CoolCats"></a>
+      <a href="/authors/admin/"><img class="avatar mr-3 avatar-circle" src="/authors/admin/avatar_hue03491371183284312b8b116a73ae5ab_79511_270x270_fill_q75_lanczos_center.jpg" alt="CoolCats"></a>
     
 
     <div class="media-body">
-      <h5 class="card-title"><a href="/author/coolcats/">CoolCats</a></h5>
-      <h6 class="card-subtitle">理学学士</h6>
+      <h5 class="card-title"><a href="/authors/admin/">CoolCats</a></h5>
+      <h6 class="card-subtitle">理学学士, 在读硕士</h6>
       <p class="card-text">我的研究兴趣是城市计算、自然语言处理、通俗文学</p>
       <ul class="network-icon" aria-hidden="true">
   
@@ -1053,43 +1175,18 @@
 
 
 
-<section id="comments">
-  
-    
-<div id="disqus_thread"></div>
-<script>
-  var disqus_config = function () {
-    
-    
-    
-  };
-  (function() {
-    if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
-      document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
-      return;
-    }
-    var d = document, s = d.createElement('script'); s.async = true;
-    s.src = 'https://' + "coolgiserz" + '.disqus.com/embed.js';
-    s.setAttribute('data-timestamp', +new Date());
-    (d.head || d.body).appendChild(s);
-  })();
-</script>
-<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
-<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
-
-
-  
-</section>
-
-
-
-
-
-
-
-
   
   
+  
+
+  
+
+  
+
+
+
+
+
 
 
 
@@ -1104,17 +1201,58 @@
     
     <div class="container">
       <footer class="site-footer">
+
   
 
-  <p class="powered-by">
-    © CoolCats
+
+
+  
+
+  
+
+  
+
+  
+  
+
+
+
+
+
+
+  
+  
+  
+
+  
+  
+    
+  
+  
+    
+  
+
+  
+
+  
+  <p class="powered-by copyright-license-text">
+    © 2022 CoolCats. This work is licensed under <a href="https://creativecommons.org/licenses/by-nc-nd/4.0" rel="noopener noreferrer" target="_blank">CC BY NC ND 4.0</a>
+  </p>
+  
+
+  <p class="powered-by footer-license-icons">
+    <a href="https://creativecommons.org/licenses/by-nc-nd/4.0" rel="noopener noreferrer" target="_blank" aria-label="Creative Commons">
+      <i class="fab fa-creative-commons fa-2x" aria-hidden="true"></i>
+      <i class="fab fa-creative-commons-by fa-2x" aria-hidden="true"></i>
+      
+        <i class="fab fa-creative-commons-nc fa-2x" aria-hidden="true"></i>
+      
+      
+        <i class="fab fa-creative-commons-nd fa-2x" aria-hidden="true"></i>
+      
+    </a>
   </p>
 
-  
-  
-
-
-
 
 
 
@@ -1122,10 +1260,13 @@
     
     
     
-    Published with
-    <a href="https://wowchemy.com/?utm_campaign=poweredby" target="_blank" rel="noopener">Wowchemy</a>  —
-    the free, <a href="https://github.com/wowchemy/wowchemy-hugo-modules" target="_blank" rel="noopener">
-    open source</a> website builder that empowers creators.
+      
+      
+      
+      
+      
+      
+      Published with <a href="https://wowchemy.com/?utm_campaign=poweredby" target="_blank" rel="noopener">Wowchemy</a> — the free, <a href="https://github.com/wowchemy/wowchemy-hugo-themes" target="_blank" rel="noopener">open source</a> website builder that empowers creators.
     
   </p>
 </footer>
@@ -1134,7 +1275,116 @@
     
   </div>
 
-  
+      
+
+    
+    <script src="/js/vendor-bundle.min.0047d4febf356e7f0b988e541f50b065.js"></script>
+
+    
+    
+    
+      
+
+      
+      
+
+      
+
+      
+        
+        <script src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@10.2.1/build/highlight.min.js" integrity="sha512-Ypjm0o7jOxAd4hpdoppSEN0TQOC19UtPAqD+4s5AlXmUvbmmS/YMxYqAqarQYyxTnB6/rqip9qcxlNB/3U9Wdg==" crossorigin="anonymous"></script>
+        
+        
+        <script src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@10.2.1/build/languages/r.min.js" crossorigin="anonymous"></script>
+        
+        <script src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@10.2.1/build/languages/latex.min.js" crossorigin="anonymous"></script>
+        
+      
+
+    
+
+    
+    
+    
+      <script src="https://cdn.jsdelivr.net/npm/leaflet@1.7.1/dist/leaflet.min.js" integrity="" crossorigin="anonymous"></script>
+    
+
+    
+    
+
+    
+    
+    
+      
+      <script id="search-hit-fuse-template" type="text/x-template">
+        <div class="search-hit" id="summary-{{key}}">
+          <div class="search-hit-content">
+            <div class="search-hit-name">
+              <a href="{{relpermalink}}">{{title}}</a>
+              <div class="article-metadata search-hit-type">{{type}}</div>
+              <p class="search-hit-description">{{snippet}}</p>
+            </div>
+          </div>
+        </div>
+      </script>
+      
+        <script src="https://cdn.jsdelivr.net/gh/krisk/Fuse@v3.2.1/dist/fuse.min.js" integrity="sha512-o38bmzBGX+hD3JHWUFCDA09btWaqrNmoJ3RXLlrysA7PP01Kgs4UlE4MhelE1v5dJR3+cxlR4qQlotsW7jKsnw==" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/gh/julmot/mark.js@8.11.1/dist/jquery.mark.min.js" integrity="sha512-mhbv5DqBMgrWL+32MmsDOt/OAvqr/cHimk6B8y/bx/xS88MVkYGPiVv2ixKVrkywF2qHplNRUvFsAHUdxZ3Krg==" crossorigin="anonymous"></script>
+      
+    
+
+    
+    
+
+    
+    
+    
+    
+      <script id="dsq-count-scr" src="https://coolgiserz.disqus.com/count.js" async></script>
+    
+
+    
+    
+      
+      
+      
+      
+      
+      
+      
+    
+
+    
+
+    
+    
+    
+    <script id="page-data" type="application/json">{"use_headroom":true}</script>
+
+    
+    
+      <script src="/js/wowchemy-headroom.c251366b4128fd5e6b046d4c97a62a51.js" type="module"></script>
+    
+    
+    
+    
+    
+    
+    
+      
+      
+    
+    
+    <script src="/en/js/wowchemy.min.ab2f2890dbe3e2e83579366d3d6e8fd9.js"></script>
+
+    
+    
+      <script src="/js/wowchemy-map.a26e9d2f7238ba5b868384f1c5bc6477.js" type="module"></script>
+    
+    
+    
+    
+      
 <div id="modal" class="modal fade" role="dialog">
   <div class="modal-dialog">
     <div class="modal-content">
@@ -1160,114 +1410,7 @@
   </div>
 </div>
 
-      
-
-    
-    
-    
-      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
-
-      
-      
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.imagesloaded/4.1.4/imagesloaded.pkgd.min.js" integrity="sha256-lqvxZrPLtfffUl2G/e7szqSvPBILGbwmsGE1MKlOi0Q=" crossorigin="anonymous"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.isotope/3.0.6/isotope.pkgd.min.js" integrity="sha256-CBrpuqrMhXwcLLUd5tvQ4euBHCdh7wGlDfNz8vbu/iI=" crossorigin="anonymous"></script>
-      
-
-      <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.js" integrity="sha256-yt2kYMy0w8AbtF89WXb2P1rfjcP/HTHLT7097U8Y5b8=" crossorigin="anonymous"></script>
-      <script src="https://cdnjs.cloudflare.com/ajax/libs/instant.page/5.1.0/instantpage.min.js" integrity="sha512-1+qUtKoh9XZW7j+6LhRMAyOrgSQKenQ4mluTR+cvxXjP1Z54RxZuzstR/H9kgPXQsVB8IW7DMDFUJpzLjvhGSQ==" crossorigin="anonymous"></script>
-
-      
-
-      
-
-    
-
-    
-    
-      <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.7.1/leaflet.min.js" integrity="sha512-SeiQaaDh73yrb56sTW/RgVdi/mMqNeM2oBwubFHagc5BkixSpP1fvqF47mKzPGWYSSy4RwbBunrJBQ4Co8fRWA==" crossorigin="anonymous"></script>
-    
-
-    
-    
-    <script>const code_highlighting = false;</script>
-    
-
-    
-    
-    
-    
-    
-    
-    <script>
-      const search_config = {"indexURI":"/index.json","minLength":1,"threshold":0.3};
-      const i18n = {"no_results":"No results found","placeholder":"Search...","results":"results found"};
-      const content_type = {
-        'post': "Posts",
-        'project': "Projects",
-        'publication' : "Publications",
-        'talk' : "Talks",
-        'slides' : "Slides"
-        };
-    </script>
-    
-
-    
-    
-
-    
-    
-    <script id="search-hit-fuse-template" type="text/x-template">
-      <div class="search-hit" id="summary-{{key}}">
-      <div class="search-hit-content">
-        <div class="search-hit-name">
-          <a href="{{relpermalink}}">{{title}}</a>
-          <div class="article-metadata search-hit-type">{{type}}</div>
-          <p class="search-hit-description">{{snippet}}</p>
-        </div>
-      </div>
-      </div>
-    </script>
-    
-
-    
-    
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/3.2.1/fuse.min.js" integrity="sha256-VzgmKYmhsGNNN4Ph1kMW+BjoYJM2jV5i4IlFoeZA9XI=" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/jquery.mark.min.js" integrity="sha256-4HLtjeVgH0eIB3aZ9mLYF6E8oU5chNdjU6p6rrXpl9U=" crossorigin="anonymous"></script>
-    
-
-    
-    
-
-    
-    
-    
-
-    
-    
-
-    
-    
-    <script id="dsq-count-scr" src="https://coolgiserz.disqus.com/count.js" async></script>
-    
-
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-      
-    
-    
-    
-    
-    <script src="/js/wowchemy.min.4f5a2f6096f092093c2c93a04232f15a.js"></script>
-
-    
+      <script src="/js/wowchemy-publication.68f8d7090562ca65fc6d3cb3f8f2d2cb.js" type="module"></script>
 
 
 

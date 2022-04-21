@@ -2,21 +2,21 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>阅读 | CoolCats</title>
-    <link>https://coolgiserz.github.io/category/%E9%98%85%E8%AF%BB/</link>
-      <atom:link href="https://coolgiserz.github.io/category/%E9%98%85%E8%AF%BB/index.xml" rel="self" type="application/rss+xml" />
+    <link>/category/%E9%98%85%E8%AF%BB/</link>
+      <atom:link href="/category/%E9%98%85%E8%AF%BB/index.xml" rel="self" type="application/rss+xml" />
     <description>阅读</description>
-    <generator>Wowchemy (https://wowchemy.com)</generator><language>en-us</language><copyright>© CoolCats</copyright><lastBuildDate>Tue, 24 Dec 2019 18:37:19 +0800</lastBuildDate>
+    <generator>Wowchemy (https://wowchemy.com)</generator><language>en-us</language><lastBuildDate>Tue, 24 Dec 2019 18:37:19 +0800</lastBuildDate>
     <image>
-      <url>https://coolgiserz.github.io/images/icon_hue03491371183284312b8b116a73ae5ab_79511_512x512_fill_lanczos_center_2.png</url>
+      <url>/media/icon_hue03491371183284312b8b116a73ae5ab_79511_512x512_fill_lanczos_center_3.png</url>
       <title>阅读</title>
-      <link>https://coolgiserz.github.io/category/%E9%98%85%E8%AF%BB/</link>
+      <link>/category/%E9%98%85%E8%AF%BB/</link>
     </image>
     
     <item>
-      <title>书单</title>
-      <link>https://coolgiserz.github.io/project/reading-list/</link>
+      <title>「心灵成长计划」- 书单</title>
+      <link>/project/reading-list/</link>
       <pubDate>Tue, 24 Dec 2019 18:37:19 +0800</pubDate>
-      <guid>https://coolgiserz.github.io/project/reading-list/</guid>
+      <guid>/project/reading-list/</guid>
       <description>&lt;h3 id=&#34;传记纪实评论&#34;&gt;传记/纪实/评论&lt;/h3&gt;
 &lt;h4 id=&#34;人物&#34;&gt;人物&lt;/h4&gt;
 &lt;ul&gt;
@@ -35,8 +35,10 @@
 &lt;li&gt;大学之路&lt;/li&gt;
 &lt;li&gt;看见&lt;/li&gt;
 &lt;li&gt;城记&lt;/li&gt;
+&lt;li&gt;王国与权利（ongoing）&lt;/li&gt;
 &lt;/ul&gt;
 &lt;h3 id=&#34;历史小说&#34;&gt;历史/小说&lt;/h3&gt;
+&lt;h4 id=&#34;按作者分&#34;&gt;按作者分&lt;/h4&gt;
 &lt;h5 id=&#34;金庸系列&#34;&gt;金庸系列&lt;/h5&gt;
 &lt;ul&gt;
 &lt;li&gt;书剑恩仇录&lt;/li&gt;
@@ -50,7 +52,10 @@
 &lt;li&gt;神雕侠侣&lt;/li&gt;
 &lt;li&gt;倚天屠龙记&lt;/li&gt;
 &lt;li&gt;笑傲江湖&lt;/li&gt;
-&lt;li&gt;侠客行（ongoing）&lt;/li&gt;
+&lt;li&gt;天龙八部&lt;/li&gt;
+&lt;li&gt;侠客行&lt;/li&gt;
+&lt;li&gt;鹿鼎记&lt;/li&gt;
+&lt;li&gt;越女剑&lt;/li&gt;
 &lt;/ul&gt;
 &lt;h5 id=&#34;乔治马丁系列&#34;&gt;乔治马丁系列&lt;/h5&gt;
 &lt;ul&gt;
@@ -59,6 +64,12 @@
 &lt;li&gt;图夫航行记&lt;/li&gt;
 &lt;li&gt;风港&lt;/li&gt;
 &lt;li&gt;冰龙&lt;/li&gt;
+&lt;li&gt;热夜之梦&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&#34;按类型分&#34;&gt;按类型分&lt;/h4&gt;
+&lt;h5 id=&#34;科幻&#34;&gt;科幻&lt;/h5&gt;
+&lt;ul&gt;
+&lt;li&gt;100: 科幻之书（ongoing）&lt;/li&gt;
 &lt;/ul&gt;
 &lt;h5 id=&#34;其他&#34;&gt;其他&lt;/h5&gt;
 &lt;ul&gt;
@@ -70,6 +81,7 @@
 &lt;ul&gt;
 &lt;li&gt;批判性思维方法&lt;/li&gt;
 &lt;li&gt;北大哲思录&lt;/li&gt;
+&lt;li&gt;被讨厌的勇气&lt;/li&gt;
 &lt;/ul&gt;
 &lt;h3 id=&#34;科普&#34;&gt;科普&lt;/h3&gt;
 &lt;ul&gt;
@@ -79,6 +91,7 @@
 &lt;li&gt;复杂&lt;/li&gt;
 &lt;li&gt;智慧城市——大数据、物联网和云计算&lt;/li&gt;
 &lt;li&gt;数学之美&lt;/li&gt;
+&lt;li&gt;浪潮之巅&lt;/li&gt;
 &lt;li&gt;女士品茶&lt;/li&gt;
 &lt;li&gt;云计算通俗讲义&lt;/li&gt;
 &lt;/ul&gt;
@@ -90,16 +103,25 @@
 &lt;ul&gt;
 &lt;li&gt;伟大的博弈&lt;/li&gt;
 &lt;li&gt;论竞争性市场体制（ongoing）&lt;/li&gt;
+&lt;li&gt;金融通识课（ongoing）&lt;/li&gt;
+&lt;li&gt;金融市场基础知识（ongoing）&lt;/li&gt;
 &lt;/ul&gt;
 &lt;h3 id=&#34;技术&#34;&gt;技术&lt;/h3&gt;
 &lt;h4 id=&#34;编程语言&#34;&gt;编程语言&lt;/h4&gt;
 &lt;ul&gt;
 &lt;li&gt;C++ Primer&lt;/li&gt;
 &lt;li&gt;Effective C++&lt;/li&gt;
+&lt;li&gt;Head First Java&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&#34;web&#34;&gt;Web&lt;/h4&gt;
+&lt;ul&gt;
+&lt;li&gt;图解HTTP&lt;/li&gt;
+&lt;li&gt;SQL注入原理与实战&lt;/li&gt;
 &lt;/ul&gt;
 &lt;h4 id=&#34;编程思维&#34;&gt;编程思维&lt;/h4&gt;
 &lt;ul&gt;
 &lt;li&gt;大话设计模式&lt;/li&gt;
+&lt;li&gt;剑指Offer&lt;/li&gt;
 &lt;/ul&gt;
 &lt;h4 id=&#34;数学与算法&#34;&gt;数学与算法&lt;/h4&gt;
 &lt;ul&gt;

@@ -2,21 +2,21 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>自注意力 | CoolCats</title>
-    <link>https://coolgiserz.github.io/tag/%E8%87%AA%E6%B3%A8%E6%84%8F%E5%8A%9B/</link>
-      <atom:link href="https://coolgiserz.github.io/tag/%E8%87%AA%E6%B3%A8%E6%84%8F%E5%8A%9B/index.xml" rel="self" type="application/rss+xml" />
+    <link>/tag/%E8%87%AA%E6%B3%A8%E6%84%8F%E5%8A%9B/</link>
+      <atom:link href="/tag/%E8%87%AA%E6%B3%A8%E6%84%8F%E5%8A%9B/index.xml" rel="self" type="application/rss+xml" />
     <description>自注意力</description>
-    <generator>Wowchemy (https://wowchemy.com)</generator><language>en-us</language><copyright>© CoolCats</copyright><lastBuildDate>Mon, 28 Dec 2020 17:08:58 +0800</lastBuildDate>
+    <generator>Wowchemy (https://wowchemy.com)</generator><language>en-us</language><lastBuildDate>Mon, 28 Dec 2020 17:08:58 +0800</lastBuildDate>
     <image>
-      <url>https://coolgiserz.github.io/images/icon_hue03491371183284312b8b116a73ae5ab_79511_512x512_fill_lanczos_center_2.png</url>
+      <url>/media/icon_hue03491371183284312b8b116a73ae5ab_79511_512x512_fill_lanczos_center_3.png</url>
       <title>自注意力</title>
-      <link>https://coolgiserz.github.io/tag/%E8%87%AA%E6%B3%A8%E6%84%8F%E5%8A%9B/</link>
+      <link>/tag/%E8%87%AA%E6%B3%A8%E6%84%8F%E5%8A%9B/</link>
     </image>
     
     <item>
       <title>「论文翻译」-使用Transformer捕捉交通流时间序列的邻近及周期特征</title>
-      <link>https://coolgiserz.github.io/publication/traffic-transformer-capturing-the-continuity-and-periodicity-of-time-series-for-traffic-forecasting/</link>
+      <link>/publication/traffic-transformer-capturing-the-continuity-and-periodicity-of-time-series-for-traffic-forecasting/</link>
       <pubDate>Mon, 28 Dec 2020 17:08:58 +0800</pubDate>
-      <guid>https://coolgiserz.github.io/publication/traffic-transformer-capturing-the-continuity-and-periodicity-of-time-series-for-traffic-forecasting/</guid>
+      <guid>/publication/traffic-transformer-capturing-the-continuity-and-periodicity-of-time-series-for-traffic-forecasting/</guid>
       <description>&lt;h2 id=&#34;文章分析&#34;&gt;文章分析&lt;/h2&gt;
 &lt;h3 id=&#34;引言&#34;&gt;引言&lt;/h3&gt;
 &lt;p&gt;交通预测是指通过分析历史交通状况和模式，估计未来的交通状况(如车辆密度和速度)，从而预测未来的事件(如拥堵或旅行时间)。高精度的预测可以为决策者提供指导，为市民提供安全和便利，并减少环境影响。&lt;/p&gt;
@@ -40,7 +40,34 @@
 &lt;p&gt;最近，Transformer(Vaswani等人，2017)作为深度学习中的一种新架构被开发出来，它采用注意力机制与位置编码策略进行序列建模。鉴于此，已经有一些尝试将Transformer定制为时间序列预测（Li等人，2019；Li &amp;amp; Moura，2019；Lim，Arik，Loeff，&amp;amp; Pfister，2019）。例如，Li等人（2019）认为，基本的Transformer架构对局部上下文不敏感，并建议添加卷积自注意层来改进它。虽然这项工作已经被证明在捕捉长期时间依赖性方面是有效的，但对于全网流量预测来说是不够的。首先，它忽略了路网的空间依赖性，因此未能模拟时空相关性。其次，它以将非常长的序列(如768)输入模型为代价来捕获周期性模式，这对于全网交通预测来说可能是不可能的。网络中的交通数据量远远大于单个点的数据量，因为在一个道路网络上有数百个传感器频繁地报告交通情况。Li和Moura（2019）也借鉴了Transformer的思想来应对时间序列问题，并提出了一种名为Forecaster的新方法来解决出租车乘车需求预测问题。不过，他们的重点是如何在空间依赖图的指导下，利用稀疏线性层更好地对空间依赖性进行建模。与我们的工作最为相似的是Xu等人（2020），他们也专注于通过充分利用Transformer来解决交通预测任务，联合建模空间和时间依赖性。在他们的论文中，他们提出了位置嵌入作为可学习参数，在训练时自动学习。因此，模型本身负责捕捉时间序列中的时间依赖性，而人类对时间序列中的时间模式的知晓度(例如，时间序列的连续性/周期性)被忽略。相比之下，在本文中，我们研究如何通过明确建模时间序列中反映的时间模式来设计不同的时间编码策略。通过这样做，人类先前关于时间模式的知识被视为归纳偏差，以指导模型捕捉时间依赖性。综上所述，在我们的文章中，我们专注于明确地将空间和时间依赖性一起建模：网络中流量的空间相关性以及时间序列的连续性和周期性。&lt;/p&gt;
 &lt;h3 id=&#34;方法&#34;&gt;方法&lt;/h3&gt;
 &lt;h4 id=&#34;traffic-transformer架构&#34;&gt;Traffic transformer架构&lt;/h4&gt;
-&lt;p&gt;&lt;img src=&#34;images/fig1_2.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;p&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure  &gt;
+  &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img alt=&#34;&#34; srcset=&#34;
+               /publication/traffic-transformer-capturing-the-continuity-and-periodicity-of-time-series-for-traffic-forecasting/images/fig1_2_hu655a9f6e780fdcc68b904a9a208df016_256246_c02688f12dab712adf05cb11f956b9a3.webp 400w,
+               /publication/traffic-transformer-capturing-the-continuity-and-periodicity-of-time-series-for-traffic-forecasting/images/fig1_2_hu655a9f6e780fdcc68b904a9a208df016_256246_6a057ac98f80f5102799c979c06fbbf3.webp 760w,
+               /publication/traffic-transformer-capturing-the-continuity-and-periodicity-of-time-series-for-traffic-forecasting/images/fig1_2_hu655a9f6e780fdcc68b904a9a208df016_256246_1200x1200_fit_q75_h2_lanczos_3.webp 1200w&#34;
+               src=&#34;/publication/traffic-transformer-capturing-the-continuity-and-periodicity-of-time-series-for-traffic-forecasting/images/fig1_2_hu655a9f6e780fdcc68b904a9a208df016_256246_c02688f12dab712adf05cb11f956b9a3.webp&#34;
+               width=&#34;576&#34;
+               height=&#34;760&#34;
+               loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+  &lt;/div&gt;&lt;/figure&gt;
+&lt;/p&gt;
 &lt;h3 id=&#34;实验&#34;&gt;实验&lt;/h3&gt;
 &lt;p&gt;在本节中，我们报告了我们为评估所提出的架构的性能而进行的实验。&lt;/p&gt;
 &lt;h4 id=&#34;数据集描述&#34;&gt;数据集描述&lt;/h4&gt;
@@ -48,8 +75,62 @@
 &lt;h4 id=&#34;实现细节&#34;&gt;实现细节&lt;/h4&gt;
 &lt;p&gt;为了测试不同编码方法的性能，我们将历史中的序列长度M和预测序列的长度H设为12。对于时间序列分段法，捕捉周周期模式的天数w和日周期模式的天数d为1。在我们的模型中，所有层的隐藏维度为64。使用两个编码器和解码器单元，利用一个图卷积层。我们使用开源代码来实现这整个架构（https://github.com/tensorflow/models/tree/master/official/ transformer）。此外，如4.3节所述，预测序列在预测时是未知的，但在训练时是已知的。因此，这两个过程之间存在差异，这导致了沿着屈服序列的快速错误积累- tion（Bengio，Vinyals，Jaitly，&amp;amp; Shazeer，2015）。为了解决这个问题，我们在模型中也采用了预定采样来弥合这种差异，更多细节请参见Bengio等人（2015）。&lt;/p&gt;
 &lt;h4 id=&#34;实验结果&#34;&gt;实验结果&lt;/h4&gt;
-&lt;p&gt;&lt;img src=&#34;images/table3.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;images/fig3.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;p&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure  &gt;
+  &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img alt=&#34;&#34; srcset=&#34;
+               /publication/traffic-transformer-capturing-the-continuity-and-periodicity-of-time-series-for-traffic-forecasting/images/table3_huba3c8cc26c3b195d8c12a5a5f07e283a_361209_f5c8e4b46cbb10c404dd3dd4128ee9fa.webp 400w,
+               /publication/traffic-transformer-capturing-the-continuity-and-periodicity-of-time-series-for-traffic-forecasting/images/table3_huba3c8cc26c3b195d8c12a5a5f07e283a_361209_5da33119675c2e44e2cd6f012ac65036.webp 760w,
+               /publication/traffic-transformer-capturing-the-continuity-and-periodicity-of-time-series-for-traffic-forecasting/images/table3_huba3c8cc26c3b195d8c12a5a5f07e283a_361209_1200x1200_fit_q75_h2_lanczos_3.webp 1200w&#34;
+               src=&#34;/publication/traffic-transformer-capturing-the-continuity-and-periodicity-of-time-series-for-traffic-forecasting/images/table3_huba3c8cc26c3b195d8c12a5a5f07e283a_361209_f5c8e4b46cbb10c404dd3dd4128ee9fa.webp&#34;
+               width=&#34;760&#34;
+               height=&#34;623&#34;
+               loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+  &lt;/div&gt;&lt;/figure&gt;
+&lt;/p&gt;
+&lt;p&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure  &gt;
+  &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img alt=&#34;&#34; srcset=&#34;
+               /publication/traffic-transformer-capturing-the-continuity-and-periodicity-of-time-series-for-traffic-forecasting/images/fig3_huf796215b0981881d50826aee2155516e_367786_56e04901f0a9033bdb505ad55bd06722.webp 400w,
+               /publication/traffic-transformer-capturing-the-continuity-and-periodicity-of-time-series-for-traffic-forecasting/images/fig3_huf796215b0981881d50826aee2155516e_367786_a5fc9d031d100d56d5ba8b8e85c3f770.webp 760w,
+               /publication/traffic-transformer-capturing-the-continuity-and-periodicity-of-time-series-for-traffic-forecasting/images/fig3_huf796215b0981881d50826aee2155516e_367786_1200x1200_fit_q75_h2_lanczos_3.webp 1200w&#34;
+               src=&#34;/publication/traffic-transformer-capturing-the-continuity-and-periodicity-of-time-series-for-traffic-forecasting/images/fig3_huf796215b0981881d50826aee2155516e_367786_56e04901f0a9033bdb505ad55bd06722.webp&#34;
+               width=&#34;515&#34;
+               height=&#34;760&#34;
+               loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+  &lt;/div&gt;&lt;/figure&gt;
+&lt;/p&gt;
 &lt;h3 id=&#34;结论&#34;&gt;结论&lt;/h3&gt;
 &lt;p&gt;在这项研究中，我们已经引入了新颖的非循环式架构，称为Traffic Transformer。我们已经成功地将其用于交通预测，以捕获时空依赖性。这个架构可以看作是自然语言处理中一个著名的顺序模型Transformer的扩展。为了探索如何在Transformer中捕获时空依赖性，我们提出了七种不同的时间序列的连续性和周期性建模方法。时间序列分段法取得了最好的效果。另外，我们在Transformer中引入了图卷积神经网络，用于建模交通的空间依赖性。通过这样做，可以捕捉到流量的动态时空特征。在两个基准数据集上的广泛实验表明，我们的模型优于基线，展示了我们提出的时空编码方法和我们提出的整体架构的有效性。本文的一个局限性是，我们只考虑了时间上的注意力机制，而不同时间的上游道路可能会有不同的贡献。在未来的工作中，我们将探索如何设计时空注意力机制，以更精细地解决这个问题。&lt;/p&gt;
 </description>

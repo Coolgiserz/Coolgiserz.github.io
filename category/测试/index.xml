@@ -2,21 +2,21 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>测试 | CoolCats</title>
-    <link>https://coolgiserz.github.io/category/%E6%B5%8B%E8%AF%95/</link>
-      <atom:link href="https://coolgiserz.github.io/category/%E6%B5%8B%E8%AF%95/index.xml" rel="self" type="application/rss+xml" />
+    <link>/category/%E6%B5%8B%E8%AF%95/</link>
+      <atom:link href="/category/%E6%B5%8B%E8%AF%95/index.xml" rel="self" type="application/rss+xml" />
     <description>测试</description>
-    <generator>Wowchemy (https://wowchemy.com)</generator><language>en-us</language><copyright>© CoolCats</copyright><lastBuildDate>Mon, 09 Mar 2020 20:20:57 +0800</lastBuildDate>
+    <generator>Wowchemy (https://wowchemy.com)</generator><language>en-us</language><lastBuildDate>Mon, 09 Mar 2020 20:20:57 +0800</lastBuildDate>
     <image>
-      <url>https://coolgiserz.github.io/images/icon_hue03491371183284312b8b116a73ae5ab_79511_512x512_fill_lanczos_center_2.png</url>
+      <url>/media/icon_hue03491371183284312b8b116a73ae5ab_79511_512x512_fill_lanczos_center_3.png</url>
       <title>测试</title>
-      <link>https://coolgiserz.github.io/category/%E6%B5%8B%E8%AF%95/</link>
+      <link>/category/%E6%B5%8B%E8%AF%95/</link>
     </image>
     
     <item>
       <title>认识数据驱动的测试</title>
-      <link>https://coolgiserz.github.io/post/data-driven-testing-for-starter/</link>
+      <link>/post/data-driven-testing-for-starter/</link>
       <pubDate>Mon, 09 Mar 2020 20:20:57 +0800</pubDate>
-      <guid>https://coolgiserz.github.io/post/data-driven-testing-for-starter/</guid>
+      <guid>/post/data-driven-testing-for-starter/</guid>
       <description>&lt;h2 id=&#34;前言&#34;&gt;前言&lt;/h2&gt;
 &lt;p&gt;之前的文章简单介绍了&lt;a href=&#34;../automated-testing-startup/&#34;&gt;自动化测试&lt;/a&gt;，在自动化测试平台中，有一个重要的组件或概念称为“数据驱动的测试（Data Driven Tests， DDT）”，其目的是将测试脚本与测试数据分离，本质上是测试逻辑的解耦，使得测试流程的代码编写与测试过程中所使用的数据/用例设计可以分别进行。&lt;/p&gt;
 &lt;p&gt;数据驱动的测试解决了如下痛点：&lt;/p&gt;
@@ -45,9 +45,9 @@
     
     <item>
       <title>初步认识自动化测试</title>
-      <link>https://coolgiserz.github.io/post/automated-testing-startup/</link>
+      <link>/post/automated-testing-startup/</link>
       <pubDate>Fri, 20 Dec 2019 13:36:16 +0800</pubDate>
-      <guid>https://coolgiserz.github.io/post/automated-testing-startup/</guid>
+      <guid>/post/automated-testing-startup/</guid>
       <description>&lt;h2 id=&#34;前言&#34;&gt;前言&lt;/h2&gt;
 &lt;p&gt;前段时间的参与了自动化测试平台的开发，本文就进行一些梳理，简单总结以下要点：&lt;/p&gt;
 &lt;ul&gt;
@@ -84,7 +84,34 @@
 &lt;p&gt;DevOps: 通过自动化“软件交付”和“架构变更”的流程，来使得构建、测试、发布软件能够更加地快捷、频繁和可靠。&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;p&gt;关键之处，就是在项目开发过程中，实现高度持续的自动化与监控，尽可能减少由于人员交接所带来的效率损失。
-&lt;img src=&#34;images/fig1.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure  &gt;
+  &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img alt=&#34;&#34; srcset=&#34;
+               /post/automated-testing-startup/images/fig1_huc8fb813a2a1073acbc8c445fda94c81c_108164_e531c188662c0335c179d4ee88bbc9e0.webp 400w,
+               /post/automated-testing-startup/images/fig1_huc8fb813a2a1073acbc8c445fda94c81c_108164_277eea6068241e111149792aacfc44b1.webp 760w,
+               /post/automated-testing-startup/images/fig1_huc8fb813a2a1073acbc8c445fda94c81c_108164_1200x1200_fit_q75_h2_lanczos_3.webp 1200w&#34;
+               src=&#34;/post/automated-testing-startup/images/fig1_huc8fb813a2a1073acbc8c445fda94c81c_108164_e531c188662c0335c179d4ee88bbc9e0.webp&#34;
+               width=&#34;760&#34;
+               height=&#34;173&#34;
+               loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+  &lt;/div&gt;&lt;/figure&gt;
+&lt;/p&gt;
 &lt;h3 id=&#34;疑问&#34;&gt;疑问&lt;/h3&gt;
 &lt;p&gt;当然，在面对自动化测试的时候，你可能还会考虑如下问题：&lt;/p&gt;
 &lt;ul&gt;
@@ -109,7 +136,34 @@
 &lt;/li&gt;
 &lt;/ol&gt;
 &lt;p&gt;CI的工作流可以如下图所示：
-&lt;img src=&#34;images/ci.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure  &gt;
+  &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img alt=&#34;&#34; srcset=&#34;
+               /post/automated-testing-startup/images/ci_huc0289b525ea73dd66f73d66e09f056e4_211874_5b3df4f070a7dc3249c107a2f1d07cb6.webp 400w,
+               /post/automated-testing-startup/images/ci_huc0289b525ea73dd66f73d66e09f056e4_211874_51f73c72f4a0488bee2267b3c2b62a9f.webp 760w,
+               /post/automated-testing-startup/images/ci_huc0289b525ea73dd66f73d66e09f056e4_211874_1200x1200_fit_q75_h2_lanczos_3.webp 1200w&#34;
+               src=&#34;/post/automated-testing-startup/images/ci_huc0289b525ea73dd66f73d66e09f056e4_211874_5b3df4f070a7dc3249c107a2f1d07cb6.webp&#34;
+               width=&#34;760&#34;
+               height=&#34;470&#34;
+               loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+  &lt;/div&gt;&lt;/figure&gt;
+&lt;/p&gt;
 &lt;p&gt;比较著名的持续集成工具有&lt;a href=&#34;https://www.jenkins.io&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;jenkins&lt;/a&gt;、&lt;a href=&#34;https://github.com/travis-ci/travis-ci&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Travis CI&lt;/a&gt;、&lt;a href=&#34;https://buddy.works/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Buddy&lt;/a&gt;等。&lt;/p&gt;
 &lt;p&gt;以Jenkins为例, Jenkins是由Java编写的开源持续集成工具，且已经提供多种语言的接口（C/C++、Python、PHP、Android等），具有如下特点:&lt;/p&gt;
 &lt;ol&gt;
@@ -127,7 +181,34 @@
 &lt;/li&gt;
 &lt;/ol&gt;
 &lt;p&gt;以python接口为例，通过jenkins实现任务构建管理的基本逻辑如下：
-&lt;img src=&#34;images/jenkins_build.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure  &gt;
+  &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img alt=&#34;&#34; srcset=&#34;
+               /post/automated-testing-startup/images/jenkins_build_hu0bb8539fbb06c6e778abdc71f21a2928_556219_04454082b2657124f1a00c32b55e7e6b.webp 400w,
+               /post/automated-testing-startup/images/jenkins_build_hu0bb8539fbb06c6e778abdc71f21a2928_556219_8ed73e4aeb5b5696daa5636ffd8de744.webp 760w,
+               /post/automated-testing-startup/images/jenkins_build_hu0bb8539fbb06c6e778abdc71f21a2928_556219_1200x1200_fit_q75_h2_lanczos_3.webp 1200w&#34;
+               src=&#34;/post/automated-testing-startup/images/jenkins_build_hu0bb8539fbb06c6e778abdc71f21a2928_556219_04454082b2657124f1a00c32b55e7e6b.webp&#34;
+               width=&#34;760&#34;
+               height=&#34;512&#34;
+               loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+  &lt;/div&gt;&lt;/figure&gt;
+&lt;/p&gt;
 &lt;h2 id=&#34;小结&#34;&gt;小结&lt;/h2&gt;
 &lt;p&gt;本文对于自动化测试这么大的题目而言，所述甚微，也不涉及技术细节，更多关于持续交付、部署的内容日后补充。&lt;/p&gt;
 &lt;p&gt;回到一开始所提的两个疑问。&lt;/p&gt;

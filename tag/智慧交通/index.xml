@@ -2,30 +2,70 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>智慧交通 | CoolCats</title>
-    <link>https://coolgiserz.github.io/tag/%E6%99%BA%E6%85%A7%E4%BA%A4%E9%80%9A/</link>
-      <atom:link href="https://coolgiserz.github.io/tag/%E6%99%BA%E6%85%A7%E4%BA%A4%E9%80%9A/index.xml" rel="self" type="application/rss+xml" />
+    <link>/tag/%E6%99%BA%E6%85%A7%E4%BA%A4%E9%80%9A/</link>
+      <atom:link href="/tag/%E6%99%BA%E6%85%A7%E4%BA%A4%E9%80%9A/index.xml" rel="self" type="application/rss+xml" />
     <description>智慧交通</description>
-    <generator>Wowchemy (https://wowchemy.com)</generator><language>en-us</language><copyright>© CoolCats</copyright><lastBuildDate>Mon, 28 Dec 2020 10:01:58 +0800</lastBuildDate>
+    <generator>Wowchemy (https://wowchemy.com)</generator><language>en-us</language><lastBuildDate>Mon, 28 Dec 2020 10:01:58 +0800</lastBuildDate>
     <image>
-      <url>https://coolgiserz.github.io/images/icon_hue03491371183284312b8b116a73ae5ab_79511_512x512_fill_lanczos_center_2.png</url>
+      <url>/media/icon_hue03491371183284312b8b116a73ae5ab_79511_512x512_fill_lanczos_center_3.png</url>
       <title>智慧交通</title>
-      <link>https://coolgiserz.github.io/tag/%E6%99%BA%E6%85%A7%E4%BA%A4%E9%80%9A/</link>
+      <link>/tag/%E6%99%BA%E6%85%A7%E4%BA%A4%E9%80%9A/</link>
     </image>
     
     <item>
       <title>「论文阅读」-STGCN：面向交通流预测的深度学习框架</title>
-      <link>https://coolgiserz.github.io/publication/stgcn-deep-learning-framework-for-traffic-forecasting/</link>
+      <link>/publication/stgcn-deep-learning-framework-for-traffic-forecasting/</link>
       <pubDate>Mon, 28 Dec 2020 10:01:58 +0800</pubDate>
-      <guid>https://coolgiserz.github.io/publication/stgcn-deep-learning-framework-for-traffic-forecasting/</guid>
+      <guid>/publication/stgcn-deep-learning-framework-for-traffic-forecasting/</guid>
       <description>&lt;h2 id=&#34;文章分析&#34;&gt;文章分析&lt;/h2&gt;
 &lt;h3 id=&#34;引言&#34;&gt;引言&lt;/h3&gt;
 &lt;p&gt;为了充分利用空间特征，一些研究者使用卷积神经网络（CNN）来捕捉交通网络之间的相邻关系，同时在时间轴上采用循环神经网络（RNN）。通过结合长短期记忆（LSTM）网络[Hochreiter和Schmidhuber，1997]和一维CNN，Wu和Tan[2016]提出了一种用于短期交通预测的特征级融合架构CLTFP。虽然采用了简单明了的策略，但CLTFP还是首次尝试将空间和时间规律性统一起来。之后，Shi等人[2015]提出了卷积LSTM，它是一种扩展的全连接LSTM（FC-LSTM），内嵌卷积层。但是，应用的普通卷积操作限制了模型只能处理网格结构（如图像、视频），而不是一般的域。同时，用于序列学习的递归网络需要进行迭代训练，这就引入了分步的误差积累。此外，基于RNN的网络（包括LSTM）通常被认为难以训练且计算量大。&lt;/p&gt;
 &lt;p&gt;为了克服这些问题，我们引入了几种策略来有效地模拟交通流的时间动态和空间依赖性。为了充分利用空间信息，我们用一个总图来模拟交通网络，而不是单独处理（如网格或段）。为了处理循环网络的固有缺陷，我们在时间轴上采用了完全卷积结构。最重要的是，我们提出了一种新型的深度学习架构，即时空图卷积网络，用于交通预测任务。该架构由多个时空卷积块组成，它是图卷积层[Defferrard et al.，2016]和卷积序列学习层的组合，以模拟空间和时间上的依赖关系。据我们所知，这是第一次在交通研究中应用纯卷积结构从图结构的时间序列中同时提取时空特征。我们在两个真实世界的交通数据集上评估了我们提出的模型。实验表明，我们的框架在多种预设预测长度和网络规模的预测任务中优于现有的基线。&lt;/p&gt;
 &lt;h3 id=&#34;方法&#34;&gt;方法&lt;/h3&gt;
-&lt;p&gt;&lt;img src=&#34;images/fig1.png&#34; alt=&#34;fig1&#34;&gt;&lt;/p&gt;
+&lt;p&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure  &gt;
+  &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img src=&#34;./images/fig1.png&#34; alt=&#34;fig1&#34; loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+  &lt;/div&gt;&lt;/figure&gt;
+&lt;/p&gt;
 &lt;h4 id=&#34;网络架构&#34;&gt;网络架构&lt;/h4&gt;
 &lt;p&gt;在本节中，我们将详细介绍所提出的时空图卷积网络（STGCN）的架构。如图2所示，STGCN由多个时空卷积块组成，每个时空卷积块组成一个 &amp;ldquo;三明治 &amp;ldquo;结构，其中有两个门控顺序卷积层，中间有一个空间图卷积层。各个模块的细节介绍如下。&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;images/fig2.png&#34; alt=&#34;fig2&#34;&gt;&lt;/p&gt;
+&lt;p&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure  &gt;
+  &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img src=&#34;./images/fig2.png&#34; alt=&#34;fig2&#34; loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+  &lt;/div&gt;&lt;/figure&gt;
+&lt;/p&gt;
 &lt;h5 id=&#34;基于图cnn提取空间特征&#34;&gt;基于图CNN提取空间特征&lt;/h5&gt;
 &lt;p&gt;交通网一般以图的结构来组织。将道路网作为图形进行数学表述是自然和合理的。然而，以往的研究忽视了交通网的空间属性：由于交通网被分割成多个片段或网格，因此忽略了交通网的连通性和全局性。即使在网格上进行二维卷积，由于数据建模的妥协，也只能大致捕捉到空间的局部性。 因此，在我们的模型中，图卷积被直接运用在图结构数据上，以提取空间域中有意义的模式和特征。虽然在图卷积中，由式(2)计算内核Θ可能是昂贵的，由于O(n2)乘法与图傅里叶基础，两个近似策略被应用来克服这个问题：&lt;/p&gt;
 &lt;ul&gt;
@@ -57,24 +97,144 @@
 &lt;p&gt;BJER4是通过双环检测仪采集北京市东环4号线路的主要区域。我们的实验共选取了12条道路。每5分钟汇总一次交通数据。所用时间段为2014年7月1日至8月31日，周末除外。我们选择第一个月的历史车速记录作为训练集，其余分别作为验证集和测试集。&lt;/p&gt;
 &lt;h5 id=&#34;pemsd7&#34;&gt;PeMSD7&lt;/h5&gt;
 &lt;p&gt;PeMSD7是由加州交通局的性能监测系统(PeMS)收集的，该系统由部署在加州公路系统主要城市地区的39,000多个传感器站实时收集[Chen等，2001]。数据集也由30秒的数据样本汇总成5分钟的时间间隔。我们在加州第7区中随机选取一个中等规模和一个大规模，分别包含228个和1026个站点，分别标注为PeMSD7(M)和PeMSD7(L)，作为数据源(如图3左侧所示)。PeMSD7数据集的时间范围为2012年5月和6月的工作日。我们基于上述相同的原则，将训练集和测试集进行拆分。
-&lt;img src=&#34;images/fig3.png&#34; alt=&#34;fig3&#34;&gt;&lt;/p&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure  &gt;
+  &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img src=&#34;./images/fig3.png&#34; alt=&#34;fig3&#34; loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+  &lt;/div&gt;&lt;/figure&gt;
+&lt;/p&gt;
 &lt;h4 id=&#34;数据预处理&#34;&gt;数据预处理&lt;/h4&gt;
 &lt;p&gt;两个数据集的标准时间间隔设置为5分钟。因此，道路图的每个节点每天包含288个数据点。在数据清洗后，采用线性插值法填补缺失值。另外，输入的数据采用Z-Score法进行归一化处理。&lt;/p&gt;
 &lt;p&gt;在BJER4中，通过传感器站的部署图，构建了北京东四环路系统的道路图拓扑结构。通过整理每条道路的隶属关系、方向和起止点，可以将环线系统数字化为有向图。&lt;/p&gt;
 &lt;p&gt;在PeMSD7中，道路图的邻接矩阵是根据交通网中各站点之间的距离来计算的。加权邻接矩阵W可以形成为：
-&lt;img src=&#34;images/equation10.png&#34; alt=&#34;eq10&#34;&gt;&lt;/p&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure  &gt;
+  &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img src=&#34;./images/equation10.png&#34; alt=&#34;eq10&#34; loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+  &lt;/div&gt;&lt;/figure&gt;
+&lt;/p&gt;
 &lt;h4 id=&#34;实验设置&#34;&gt;实验设置&lt;/h4&gt;
 &lt;p&gt;所有的实验都是在Linux集群上编译和测试的（CPU: Intel(R) Xeon(R) CPU E5-2620 v4 @ 2.10GHz, GPU: NVIDIA GeForce GTX 1080）) 为了消除非典型交通，我们的经验中只采用工作日的交通数据[Li et al.] 我们执行网格搜索策略来定位验证上的最佳参数。所有的测试都采用60分钟作为历史时间窗口，也就是12个观察到的数据点（M=12）来预测未来15、30、45分钟的交通状况（H=3、6、9）。&lt;/p&gt;
 &lt;h4 id=&#34;实验结果&#34;&gt;实验结果&lt;/h4&gt;
 &lt;p&gt;表1和表2展示了STGCN和基线在数据集BJER4和PeMSD7（M/L）上的结果。我们提出的模型在三个评价指标中都取得了具有统计学意义的最佳性能（双尾T检验，α=0.01，P&amp;lt;0.01）。我们可以很容易地观察到，传统的统计和机器学习方法在短期预测中可能表现良好，但由于误差积累、记忆问题和空间信息的缺失，其长期预测并不准确。ARIMA模型由于无法处理复杂的时空数据而表现最差。深度学习方法普遍取得了比传统机器学习模型更好的预测结果。
-&lt;img src=&#34;images/table1.png&#34; alt=&#34;table1&#34;&gt;&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;images/table2.png&#34; alt=&#34;table2&#34;&gt;&lt;/p&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure  &gt;
+  &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img src=&#34;./images/table1.png&#34; alt=&#34;table1&#34; loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+  &lt;/div&gt;&lt;/figure&gt;
+&lt;/p&gt;
+&lt;p&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure  &gt;
+  &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img src=&#34;./images/table2.png&#34; alt=&#34;table2&#34; loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+  &lt;/div&gt;&lt;/figure&gt;
+&lt;/p&gt;
 &lt;h5 id=&#34;空间拓扑的好处&#34;&gt;空间拓扑的好处&lt;/h5&gt;
 &lt;p&gt;以往的方法没有结合空间拓扑结构，对时间序列进行粗粒度建模。不同的是，通过对传感器的空间拓扑建模，我们的模型STGCN在短期和中长期预报上取得了显著的提高。在数据集PeMSD7上，STGCN的优势比BJER4更加明显，因为PeMS的传感器网络更加复杂，结构更加复杂(如图3所示)，我们的模型可以有效地利用空间结构进行更准确的预测。为了比较三种基于图卷积的方法。GCGRU、STGCN(Cheb)和STGCN(1st)三种方法，我们展示了它们在早晚高峰时段的预测结果，如图4所示。很容易观察到，我们提出的STGCN比其他方法更准确地捕捉到了高峰时段的趋势；而且它比其他方法更早地检测到了高峰时段的结束。我们的模型由于高效的图卷积和堆叠的时间卷积结构，能够快速响应交通网络之间的动态变化，而不像大多数循环网络那样过度依赖历史平均值。
-&lt;img src=&#34;images/fig5.png&#34; alt=&#34;fig5&#34;&gt;&lt;/p&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure  &gt;
+  &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img src=&#34;./images/fig5.png&#34; alt=&#34;fig5&#34; loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+  &lt;/div&gt;&lt;/figure&gt;
+&lt;/p&gt;
 &lt;h5 id=&#34;训练效率和泛化性&#34;&gt;训练效率和泛化性&lt;/h5&gt;
-&lt;p&gt;为了看到我们提出的沿时间轴卷积的好处，我们在表3中总结了STGCN和GCGRU的训练时间对比。在公平性方面，GCGRU由三层组成，分别在实验中为PeMSD7(M)提供64、64、128个单元，STGCN使用了4.3节所述的默认设置。我们的模型STGCN只消耗了272秒，而RNN型的模型GCGRU在PeMSD7(M)上花费了3824秒。这种14倍的训练速度的加快主要得益于应用了时间卷积而不是递归结构，可以实现完全并行训练，而不是像RNN那样完全依靠链式结构。对于PeMSD7(L)来说，由于GCGRU的GPU消耗超过了单卡的内存容量，因此不得不使用一半的批处理量(结果在表2中标为 &amp;ldquo;*&amp;quot;);而STGCN只需要将ST-Conv块中间的通道增加一倍。
-&lt;img src=&#34;images/table3.png&#34; alt=&#34;table3&#34;&gt;&lt;/p&gt;
+&lt;p&gt;为了看到我们提出的沿时间轴卷积的好处，我们在表3中总结了STGCN和GCGRU的训练时间对比。在公平性方面，GCGRU由三层组成，分别在实验中为PeMSD7(M)提供64、64、128个单元，STGCN使用了4.3节所述的默认设置。我们的模型STGCN只消耗了272秒，而RNN型的模型GCGRU在PeMSD7(M)上花费了3824秒。这种14倍的训练速度的加快主要得益于应用了时间卷积而不是递归结构，可以实现完全并行训练，而不是像RNN那样完全依靠链式结构。对于PeMSD7(L)来说，由于GCGRU的GPU消耗超过了单卡的内存容量，因此不得不使用一半的批处理量(结果在表2中标为 &amp;ldquo;*&amp;rdquo;);而STGCN只需要将ST-Conv块中间的通道增加一倍。
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure  &gt;
+  &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img src=&#34;./images/table3.png&#34; alt=&#34;table3&#34; loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+  &lt;/div&gt;&lt;/figure&gt;
+&lt;/p&gt;
 &lt;h3 id=&#34;相关工作&#34;&gt;相关工作&lt;/h3&gt;
 &lt;p&gt;最近有一些深度学习研究也是以图卷积在时空任务中的应用为动机。Seo等人[2016]引入了图卷积循环网络（GCRN），从结构化的数据序列中共同识别空间结构和动态变化。本研究的关键挑战是确定特定环境下循环网络和图卷积的最佳组合。基于上述原理，Li等人[2018]成功地采用门控递归单元（GRU）与图卷积进行长期交通预测。与这些工作相比，我们的模型完全由卷积结构建立起来；ST-Conv块是专门为统一处理结构化数据而设计的，内部有残差连接和瓶颈策略；我们的模型中也采用了更高效的图卷积核。&lt;/p&gt;
 &lt;h3 id=&#34;结论&#34;&gt;结论&lt;/h3&gt;
@@ -84,9 +244,9 @@
     
     <item>
       <title>「论文阅读」-T-GCN: 一种用于流量预测的时空图卷积网络</title>
-      <link>https://coolgiserz.github.io/publication/tgcn-a-temporal-graph-convolutional-network-for-traffic-prediction/</link>
+      <link>/publication/tgcn-a-temporal-graph-convolutional-network-for-traffic-prediction/</link>
       <pubDate>Thu, 24 Dec 2020 11:20:31 +0800</pubDate>
-      <guid>https://coolgiserz.github.io/publication/tgcn-a-temporal-graph-convolutional-network-for-traffic-prediction/</guid>
+      <guid>/publication/tgcn-a-temporal-graph-convolutional-network-for-traffic-prediction/</guid>
       <description>&lt;h1 id=&#34;t-gcn-a-temporal-graph-convolutional-network-for-traffic-prediction&#34;&gt;T-GCN: A Temporal Graph Convolutional Network for Traffic Prediction&lt;/h1&gt;
 &lt;h2 id=&#34;文章分析&#34;&gt;文章分析&lt;/h2&gt;
 &lt;h3 id=&#34;本文工作&#34;&gt;本文工作&lt;/h3&gt;
@@ -101,30 +261,157 @@
 &lt;p&gt;参数模型以回归函数为前提，通过对原始数据的处理确定参数，然后根据回归函数实现交通预测。时间序列模型、线性回归模型[27]、[28]和卡尔曼滤波模型是常用的方法。时间序列模型是将观测到的时间序列拟合成参数模型来预测未来的数据。早在1976年，Box和Jenkins[5]就提出了自回归积分移动平均模型（Autoregressive Integrate Moving Average Model，ARIMA），这是最广泛使用的时间序列模型。1995年，Hamed等人[6]利用ARIMA模型预测城市干道的交通量。为了提高模型的预测精度，产生了不同的变体，包括Kohonen ARIMA[29]、子集ARIMA[30]、季节性ARIMA[31]等。Lippi等[32]将支持向量回归模型与季节性ARIMA模型进行比较，发现SARIMA模型在交通拥堵方面有更好的效果。线性回归模型根据历史交通数据建立回归函数来预测交通流量。2004年，Sun等[27]利用局部线性模型解决了区间预测问题，在实际交通数据集上取得了较好的效果。卡尔曼滤波模型根据前一时刻和当前时刻的交通状态预测未来的交通状况。1984年，Okutani等人[7]利用卡尔曼滤波理论建立了交通流状态预测模型。随后，一些研究[33]、[34]利用卡尔曼滤波模型实现了交通预测任务。&lt;/p&gt;
 &lt;p&gt;传统的参数模型具有算法简单、计算方便的特点，但这些模型依赖于静止的假设，不能反映交通数据的非线性和不确定性特征，不能克服交通事故等随机事件的干扰。非参数模型可以很好地解决这些问题，只需要足够的历史数据就可以自动学习交通数据的统计规律性。常见的非参数模型包括：k-最近邻模型[10]、支持向量回归模型[8]、[9]、[35]、模糊逻辑模型[36]、贝叶斯网络模型[11]、神经网络模型等。&lt;/p&gt;
 &lt;p&gt;近年来，随着深度学习[37]、[38]、[39]的快速发展，深度神经网络模型由于能够很好地捕捉交通数据的动态特征，取得了目前最好的效果，因此受到了人们的关注。根据是否考虑空间依赖性，可以将模型分为两类。有些方法只考虑时间依赖性，如Park等[40]采用Feed Forward NN实现交通流预测任务。Huang等[12]提出了一种由深度信念网络(DBN)和回归模型组成的网络架构，并验证了该网络可以从多个数据集的交通数据中捕获随机特征，该模型提高了交通预测的预测能力。此外，由于循环神经网络(RNN)及其变体具有长短期记忆(LSTM)，门控循环单元(GRU)可以有效利用自循环机制，因此可以很好地学习时间依赖性，取得较好的预测效果[13]，[41]。&lt;/p&gt;
-&lt;p&gt;这些模型考虑了时间上的特征，但忽略了空间上的依赖性，使交通数据的变化不受城市路网的约束，因而不能准确预测道路上的交通状态。充分利用空间和时间的依赖性是解决交通预测问题的关键。为了更好地描述空间特征，许多研究都在此基础上进行了改进。Lv等[42]提出了一种SAE模型，从交通数据中捕捉时空特征，实现短期交通流量预测。Zhang等[14]提出了一种名为ST-ResNet的深度学习模型，根据人群流动的时间紧密性、周期性和趋势性，为每个属性设计了残差卷积网络，然后将三个网络和外部因素动态聚合，预测城市各区域人群的流入和流出。Wu等[15]结合CNN和LSTM设计了一种短期预测的特征融合架构。采用一维CNN来捕捉空间依赖性，采用两个LSTM来挖掘交通流的短期变化性和周期性。Cao等[16]提出了一种名为ITRCN的端到端模型，将交互式网络流量转化为图像，利用CNN捕捉流量的交互函数，利用GRU提取时间特征，证明该模型的预测误差分别比GRU和CNN高14.3%和13.0%.Ke等[43]提出了一种新的深度学习方法，称为融合卷积长短期记忆网络(FCL-Net)，考虑空间依赖性、时间依赖性和外生依赖性进行短期客流需求预测。Yu等[44]利用深度卷积神经网络(DCNN)捕捉空间依赖性，利用LSTM捕捉时间动态性，并通过北京交通网数据实验证明了SRCN模型的优越性。&lt;/p&gt;
+&lt;p&gt;这些模型考虑了时间上的特征，但忽略了空间上的依赖性，使交通数据的变化不受城市路网的约束，因而不能准确预测道路上的交通状态。充分利用空间和时间的依赖性是解决交通预测问题的关键。为了更好地描述空间特征，许多研究都在此基础上进行了改进。Lv等[42]提出了一种SAE模型，从交通数据中捕捉时空特征，实现短期交通流量预测。Zhang等[14]提出了一种名为ST-ResNet的深度学习模型，为人群流动的时间紧密性、周期性和趋势性每个属性设计了残差卷积网络，然后将三个网络和外部因素动态聚合，预测城市各区域人群的流入和流出。Wu等[15]结合CNN和LSTM设计了一种短期预测的特征融合架构。采用一维CNN来捕捉空间依赖性，采用两个LSTM来挖掘交通流的短期变化和周期性。Cao等[16]提出了一种名为ITRCN的端到端模型，将交互式网络流量转化为图像，利用CNN捕捉流量的交互函数，利用GRU提取时间特征，证明该模型的预测误差分别比GRU和CNN高14.3%和13.0%.Ke等[43]提出了一种新的深度学习方法，称为融合卷积长短期记忆网络(FCL-Net)，考虑空间依赖性、时间依赖性和外生依赖性进行短期客流需求预测。Yu等[44]利用深度卷积神经网络(DCNN)捕捉空间依赖性，利用LSTM捕捉时间动态性，并通过北京交通网数据实验证明了SRCN模型的优越性。&lt;/p&gt;
 &lt;p&gt;虽然上述方法引入了CNN来模拟空间依赖性，并在交通预测任务中取得了很大的进展，但CNN基本上适用于欧氏空间，如图像、规则网格等，对具有复杂拓扑结构的交通网络有一定的局限性，因而不能从本质上描述空间依赖性。因此，这类方法也存在一定的缺陷。近年来，随着图卷积网络模型[45]的发展，可以用来捕捉图网络的结构特征，为上述问题提供了很好的解决方案。Li等[46]提出了一种DCRNN模型，该模型通过在图上的随机行走来捕捉空间特征，通过编码器-解码器结构来捕捉时间特征。&lt;/p&gt;
 &lt;p&gt;基于这样的背景，本文提出了一种新的神经网络方法，可以从交通数据中捕捉复杂的时间和空间特征，然后可以用于基于城市路网的交通预测任务。&lt;/p&gt;
 &lt;h3 id=&#34;方法&#34;&gt;方法&lt;/h3&gt;
 &lt;p&gt;在本文中，交通预测的目标是根据道路上的历史交通信息，预测一定时期内的交通信息。在我们的方法中，交通信息是一个笼统的概念，可以是交通速度、交通流量和交通密度。在不失一般性的前提下，我们在实验部分以交通速度作为交通信息的例子。&lt;/p&gt;
 &lt;h4 id=&#34;概述&#34;&gt;概述&lt;/h4&gt;
 &lt;p&gt;本节将介绍如何利用T-GCN模型实现基于城市道路的交通预测任务。具体来说，T-GCN模型由图卷积网络和门控递归单元两部分组成。如图3所示，首先，我们以历史n个时间序列数据为输入，利用图卷积网络捕捉城市路网的拓扑结构，得到空间特征。其次，将得到的具有空间特征的时间序列输入到门控递归单元模型中，通过单元之间的信息传递得到动态变化，捕捉时间特征。最后，我们通过全连接层得到结果。
-&lt;img src=&#34;images/fig3.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure  &gt;
+  &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img src=&#34;./images/fig3.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+  &lt;/div&gt;&lt;/figure&gt;
+&lt;/p&gt;
 &lt;h4 id=&#34;模型&#34;&gt;模型&lt;/h4&gt;
 &lt;h5 id=&#34;空间依赖建模&#34;&gt;空间依赖建模&lt;/h5&gt;
 &lt;p&gt;获取复杂的空间依赖性是交通预测中的一个关键问题。传统的卷积神经网络(CNN)可以获得局部空间特征，但它只能在欧氏空间中使用，如图像、规则网格等。城市路网是以图的形式而不是二维网格的形式，这意味着CNN模型不能反映城市路网复杂的拓扑结构，因而不能准确地捕捉空间依赖性。最近，将CNN泛化为图卷积网络（GCN），可以处理任意的图结构数据，受到广泛关注。GCN模型已经成功地用于许多应用，包括文档分类[17]、无监督学习[45]和图像分类[47]。GCN模型在傅里叶域构造一个滤波器，滤波器作用于图的节点及其一阶邻域，捕捉节点之间的空间特征，然后通过堆叠多个卷积层，就可以建立GCN模型。如图4所示，假设节点1为中心道路，GCN模型可以得到中心道路与其周围道路之间的拓扑关系，对道路网络的拓扑结构和道路上的属性进行编码，然后得到空间依赖性。综上所述，我们利用GCN模型[47]从交通数据中学习空间特征。2层的GCN模型可以表示为：&lt;/p&gt;
 &lt;center&gt;$f(X,A)=\sigma(\hat{A} Relu(\hat{A}XW_{0})W_1)$&lt;/center&gt;
-&lt;p&gt;&lt;img src=&#34;images/fig4.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;p&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure  &gt;
+  &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img src=&#34;./images/fig4.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+  &lt;/div&gt;&lt;/figure&gt;
+&lt;/p&gt;
 &lt;h5 id=&#34;时间依赖建模&#34;&gt;时间依赖建模&lt;/h5&gt;
 &lt;p&gt;获取时间依赖性是交通预测的另一个关键问题。目前，用于处理序列数据的神经网络模型中，应用最广泛的是循环神经网络（RNN）。但由于存在梯度消失和梯度爆炸等缺陷，传统的循环神经网络对于长期预测有一定的局限性[48]。LSTM模型[49]和GRU模型[50]是循环神经网络的变种，已被证明可以解决上述问题。LSTM和GRU的基本原理大致相同[51].它们都是利用门控机制来记忆尽可能多的长期信息，对各种任务同样有效。但由于LSTM结构复杂，训练时间较长，而GRU模型结构相对简单，参数较少，训练能力较快。因此，我们选择GRU模型从交通数据中获取时间依赖性。如图5所示，$h_{t-1}$表示时间t-1时的隐藏状态；$x_t$表示时间t时的交通信息；$r_t$为复位门，用于控制对前一时刻状态信息的忽略程度；$u_t$为更新门，用于控制将前一时刻的状态信息带入当前状态的程度；$c_t$为时间t时存储的内存内容；$h_t$为时刻t时的输出状态。GRU以时刻t-1的隐藏状态和当前的交通信息作为输入，获取时刻t的交通状态。在获取当前时刻的交通信息的同时，模型仍然保留了历史交通信息的变化趋势，具有捕捉时间依赖性的能力。
-&lt;img src=&#34;images/fig5.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure  &gt;
+  &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img alt=&#34;&#34; srcset=&#34;
+               /publication/tgcn-a-temporal-graph-convolutional-network-for-traffic-prediction/images/fig5_hu1177988a5b6e6826f6484ab669901eda_205307_18d2d5239811cf60321d47da878e77ed.webp 400w,
+               /publication/tgcn-a-temporal-graph-convolutional-network-for-traffic-prediction/images/fig5_hu1177988a5b6e6826f6484ab669901eda_205307_64b574e7cd7d800fc541ad5392caac24.webp 760w,
+               /publication/tgcn-a-temporal-graph-convolutional-network-for-traffic-prediction/images/fig5_hu1177988a5b6e6826f6484ab669901eda_205307_1200x1200_fit_q75_h2_lanczos_3.webp 1200w&#34;
+               src=&#34;/publication/tgcn-a-temporal-graph-convolutional-network-for-traffic-prediction/images/fig5_hu1177988a5b6e6826f6484ab669901eda_205307_18d2d5239811cf60321d47da878e77ed.webp&#34;
+               width=&#34;760&#34;
+               height=&#34;335&#34;
+               loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+  &lt;/div&gt;&lt;/figure&gt;
+&lt;/p&gt;
 &lt;h5 id=&#34;时空图卷积&#34;&gt;时空图卷积&lt;/h5&gt;
 &lt;p&gt;为了同时捕捉交通数据的空间和时间依赖性，我们提出了一种基于图卷积网络和门控递归单元的时空图卷积网络模型（T-GCN）。如图6所示，左边是时空交通预测的过程，右边是T-GCN单元的具体结构，$h_{t-1}$表示时间t-1时的输出，GC为图卷积过程，$u_t$、$r_t$为时间t的更新门和复位门，$h_t$表示时间t的输出，具体计算过程如下图所示，$f(A,X_t)$表示图卷积过程，定义为式2。W和b代表训练过程中的权重和偏差。
-&lt;img src=&#34;images/equation3_6.png&#34; alt=&#34;&#34;&gt;
-&lt;img src=&#34;images/fig6.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure  &gt;
+  &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img src=&#34;./images/equation3_6.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+  &lt;/div&gt;&lt;/figure&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure  &gt;
+  &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img src=&#34;./images/fig6.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+  &lt;/div&gt;&lt;/figure&gt;
+&lt;/p&gt;
 &lt;p&gt;综上所述，T-GCN模型可以处理复杂的空间依赖性和时间动态性。 一方面，利用图卷积网络来捕捉城市路网的拓扑结构，以获得空间依赖性。另一方面，利用门控递归单元来捕捉道路上交通信息的动态变化，以获得时间上的依赖性，最终实现交通预测任务。&lt;/p&gt;
 &lt;h5 id=&#34;损失函数&#34;&gt;损失函数&lt;/h5&gt;
 &lt;p&gt;在训练过程中，目标是将误差——道路上的实际交通速度与预测速度之间的差距降到最低。我们用$Y$和$\hat{Y}$表示实际的交通速度和预测的速度，分别为。T-GCN模型的损失函数如式7所示。第一个项用于最小化实际交通速度与预测速度之间的误差。 第二项$L_{reg}$是L2正则项用于减少过拟合。
-&lt;img src=&#34;images/equation7.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure  &gt;
+  &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img src=&#34;./images/equation7.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+  &lt;/div&gt;&lt;/figure&gt;
+&lt;/p&gt;
 &lt;h3 id=&#34;实验&#34;&gt;实验&lt;/h3&gt;
 &lt;h4 id=&#34;数据集描述&#34;&gt;数据集描述&lt;/h4&gt;
 &lt;h5 id=&#34;sz-taxi&#34;&gt;SZ-taxi&lt;/h5&gt;
@@ -137,7 +424,27 @@
 &lt;p&gt;隐藏单元的数量是T-GCN模型中一个非常重要的参数，因为不同的隐藏单元可能会大大影响预测精度。为了选择最佳值，我们对不同的隐藏单元进行实验，通过比较预测结果来选择最佳值。&lt;/p&gt;
 &lt;p&gt;在实验中，对于SZ-taxi数据集，我们从[8，16，32，64，100，128]中选择隐藏单元数，分析预测精度的变化。如7所示，横轴代表隐藏单元数，纵轴代表不同指标的变化。图7(a)是不同隐藏单元的RMSE和MAE的结果。可以看出，当数量为100时，误差最小。图7(b)显示了不同隐藏单元的Accuracy、R2和Var的变化情况。同样，当数量为100时，结果达到最大。综上所述，当数量设置为100时，预测结果最好。当增加隐藏单元的数量时，预测精度先增大后减小。这主要是因为当隐藏单元大于一定程度时，模型的复杂度和计算难度都会大大增加，因此，预测精度会有所降低。因此，我们在所有实验中都将隐藏单元的数量设置为100。&lt;/p&gt;
 &lt;p&gt;同样的方法，Los-loop的结果如7(c)和7(d)所示，可以看出，当隐藏单元数为64时，预测精度最高，预测误差最小。&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;images/fig7.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;p&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure  &gt;
+  &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img src=&#34;./images/fig7.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+  &lt;/div&gt;&lt;/figure&gt;
+&lt;/p&gt;
 &lt;h5 id=&#34;数据划分&#34;&gt;数据划分&lt;/h5&gt;
 &lt;p&gt;对于输入层，在训练过程中取训练数据集（占整体数据的80%）作为输入，其余数据作为测试过程的输入。T-GCN模型采用Adam优化器进行训练。&lt;/p&gt;
 &lt;h4 id=&#34;实验结果&#34;&gt;实验结果&lt;/h4&gt;
@@ -150,7 +457,27 @@
 &lt;li&gt;Gated Recurrent Unit model (GRU)&lt;/li&gt;
 &lt;/ul&gt;
 &lt;p&gt;表1是T-GCN模型和其他基线方法在SZ-taxi和Los-loop数据集上15分钟、30分钟、45分钟和60分钟的情况。∗表示数值太小，可以忽略不计，说明模型的预测效果不好。可以看出，T-GCN模型在所有的评价指标下，在所有的预测范围内都获得了最好的预测性能，证明了T-GCN模型在时空交通预测中的有效性。
-&lt;img src=&#34;images/table1.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure  &gt;
+  &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img src=&#34;./images/table1.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+  &lt;/div&gt;&lt;/figure&gt;
+&lt;/p&gt;
 &lt;h4 id=&#34;扰动性分析&#34;&gt;扰动性分析&lt;/h4&gt;
 &lt;p&gt;在现实世界的数据采集过程中，不可避免地存在噪声。为了检验T-GCN模型的抗噪声能力，我们通过扰动分析实验来检验模型的鲁棒性。&lt;/p&gt;
 &lt;h4 id=&#34;模型解释性&#34;&gt;模型解释性&lt;/h4&gt;
@@ -158,10 +485,90 @@
 &lt;p&gt;(1)T-GCN模型在峰值处预测效果不佳。我们推测主要原因是GCN模型在傅里叶域定义了一个平滑滤波器，通过不断移动滤波器来捕捉空间特征。这个过程会导致整体预测结果发生微小的变化，使得峰值更加平滑。&lt;/p&gt;
 &lt;p&gt;(2)实际交通量的形成与预测结果之间存在一定的误差。误差之一主要是因为当道路上没有出租车时，就不会有零值的信息记录。另一个误差是由于当交通信息值较小时，微小的差异会造成较大的相对误差。&lt;/p&gt;
 &lt;p&gt;(3)无论预测范围如何，T-GCN模型总能取得较好的效果。T-GCN模型可以捕捉时空特征，获得道路上交通信息的变化趋势。此外，T-GCN模型还能检测到高峰期的开始和结束时间，并做出与实际交通速度相似的预测结果。这些特性对于预测交通拥堵等交通现象有很大帮助。&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;images/fig11.png&#34; alt=&#34;&#34;&gt;
-&lt;img src=&#34;images/fig12.png&#34; alt=&#34;&#34;&gt;
-&lt;img src=&#34;images/fig13.png&#34; alt=&#34;&#34;&gt;
-&lt;img src=&#34;images/fig14.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;p&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure  &gt;
+  &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img src=&#34;./images/fig11.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+  &lt;/div&gt;&lt;/figure&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure  &gt;
+  &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img src=&#34;./images/fig12.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+  &lt;/div&gt;&lt;/figure&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure  &gt;
+  &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img src=&#34;./images/fig13.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+  &lt;/div&gt;&lt;/figure&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure  &gt;
+  &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img src=&#34;./images/fig14.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+  &lt;/div&gt;&lt;/figure&gt;
+&lt;/p&gt;
 &lt;h3 id=&#34;总结&#34;&gt;总结&lt;/h3&gt;
 &lt;p&gt;本文提出了一种基于神经网络的新型交通预测方法，称为T-GCN，它结合了GCN和GRU。我们采用图网络对城市道路网进行建模，图上的节点代表道路，边代表道路之间的连接关系，道路上的交通信息被描述为图上节点的属性。一方面，利用GCN捕捉图的拓扑结构，得到空间上的依赖性；另一方面，利用GRU模型捕捉节点属性的动态变化，得到时间上的依赖性。最终采用T-GCN模型来解决时空交通预测任务。在两个真实世界的交通数据集上进行评估，并与HA模型、ARIMA模型、SVR模型、GCN模型和GRU模型进行比较，T-GCN模型在不同的预测视野下取得了最好的预测效果。此外，扰动分析也说明了我们方法的稳健性。综上所述，T-GCN模型可以成功-充分捕捉交通数据的时空特征，并且不局限于交通预测，还可以应用于其他时空任务。&lt;/p&gt;
 &lt;h2 id=&#34;问题&#34;&gt;问题&lt;/h2&gt;
@@ -174,9 +581,9 @@
     
     <item>
       <title>关于交通流预测的资源汇总</title>
-      <link>https://coolgiserz.github.io/project/awesome-traffic-prediction/</link>
+      <link>/project/awesome-traffic-prediction/</link>
       <pubDate>Sat, 19 Dec 2020 14:16:07 +0800</pubDate>
-      <guid>https://coolgiserz.github.io/project/awesome-traffic-prediction/</guid>
+      <guid>/project/awesome-traffic-prediction/</guid>
       <description>&lt;p&gt;汇总交通流预测相关资源，见项目网站。&lt;/p&gt;
 </description>
     </item>

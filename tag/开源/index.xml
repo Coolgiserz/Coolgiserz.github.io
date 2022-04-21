@@ -2,21 +2,21 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>开源 | CoolCats</title>
-    <link>https://coolgiserz.github.io/tag/%E5%BC%80%E6%BA%90/</link>
-      <atom:link href="https://coolgiserz.github.io/tag/%E5%BC%80%E6%BA%90/index.xml" rel="self" type="application/rss+xml" />
+    <link>/tag/%E5%BC%80%E6%BA%90/</link>
+      <atom:link href="/tag/%E5%BC%80%E6%BA%90/index.xml" rel="self" type="application/rss+xml" />
     <description>开源</description>
-    <generator>Wowchemy (https://wowchemy.com)</generator><language>en-us</language><copyright>© CoolCats</copyright><lastBuildDate>Thu, 10 Dec 2020 21:58:17 +0800</lastBuildDate>
+    <generator>Wowchemy (https://wowchemy.com)</generator><language>en-us</language><lastBuildDate>Thu, 10 Dec 2020 21:58:17 +0800</lastBuildDate>
     <image>
-      <url>https://coolgiserz.github.io/images/icon_hue03491371183284312b8b116a73ae5ab_79511_512x512_fill_lanczos_center_2.png</url>
+      <url>/media/icon_hue03491371183284312b8b116a73ae5ab_79511_512x512_fill_lanczos_center_3.png</url>
       <title>开源</title>
-      <link>https://coolgiserz.github.io/tag/%E5%BC%80%E6%BA%90/</link>
+      <link>/tag/%E5%BC%80%E6%BA%90/</link>
     </image>
     
     <item>
       <title>「论文阅读」-南美洲的自由和开放源码地理信息系统：政治进展和地方宣传</title>
-      <link>https://coolgiserz.github.io/publication/free-and-open-source-gis-in-south-america/</link>
+      <link>/publication/free-and-open-source-gis-in-south-america/</link>
       <pubDate>Thu, 10 Dec 2020 21:58:17 +0800</pubDate>
-      <guid>https://coolgiserz.github.io/publication/free-and-open-source-gis-in-south-america/</guid>
+      <guid>/publication/free-and-open-source-gis-in-south-america/</guid>
       <description>&lt;h1 id=&#34;free-and-open-source-gis-in-south-america-political-inroads-and-local-advocacy&#34;&gt;Free and open source GIS in South America: political inroads and local advocacy&lt;/h1&gt;
 &lt;p&gt;文章讨论了开源GIS，分析了南美洲自由开源GIS的发展及由来，重点讨论了政治上及地方性的支持对于南美洲开源GIS发展的积极推动作用。整篇文章相对而言技术性偏弱，侧重调查及讨论分析，但将南美洲各地开源GIS的发展历程呈现出来给读者，也有助于GIS社区对GIS技术发展趋势进行更深入的思考。&lt;/p&gt;
 &lt;p&gt;本文做了什么工作？
@@ -54,7 +54,34 @@
 &lt;h2 id=&#34;0x01-南美洲政府对于foss的接纳程度&#34;&gt;0x01 南美洲政府对于FOSS的接纳程度&lt;/h2&gt;
 &lt;h3 id=&#34;助攻1-鼓励在政府计算机中使用自由与开源软件&#34;&gt;助攻1: 鼓励在政府计算机中使用自由与开源软件&lt;/h3&gt;
 &lt;p&gt;南美洲的市、州和联邦各级都有各种独特的法律和法令，促进在政府计算机上使用自由和开放源码软件。这包括至少五项国家一级的政策(图1)，这一比例高于其他任何洲。
-&lt;img src=&#34;images/table1.png&#34; alt=&#34;table1.png&#34;&gt;&lt;/p&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure  &gt;
+  &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img alt=&#34;table1.png&#34; srcset=&#34;
+               /publication/free-and-open-source-gis-in-south-america/images/table1_hucd458623e81c6e0275cccfad6fc8e262_109962_51948b02747f552bacff5f38e4334c7b.webp 400w,
+               /publication/free-and-open-source-gis-in-south-america/images/table1_hucd458623e81c6e0275cccfad6fc8e262_109962_b665260c511f84bf9335a7bc055d9153.webp 760w,
+               /publication/free-and-open-source-gis-in-south-america/images/table1_hucd458623e81c6e0275cccfad6fc8e262_109962_1200x1200_fit_q75_h2_lanczos_3.webp 1200w&#34;
+               src=&#34;/publication/free-and-open-source-gis-in-south-america/images/table1_hucd458623e81c6e0275cccfad6fc8e262_109962_51948b02747f552bacff5f38e4334c7b.webp&#34;
+               width=&#34;704&#34;
+               height=&#34;333&#34;
+               loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+  &lt;/div&gt;&lt;/figure&gt;
+&lt;/p&gt;
 &lt;center&gt;图1 南美洲国家政府对于FOSS的政策法令&lt;/center&gt;
 &lt;h3 id=&#34;助攻2-鼓励在政府公务中使用foss&#34;&gt;助攻2: 鼓励在政府公务中使用FOSS&lt;/h3&gt;
 &lt;p&gt;除了鼓励FOSS之外，有些政府甚至规定在国家公务中使用FOSS。例如，委内瑞拉的 &amp;ldquo;Infogobierno &amp;ldquo;法律要求公共机构的技术架构向FOSS迁移，玻利维亚颁布了一系列法令，引导公共部门向FOSS迁移。&lt;/p&gt;
@@ -81,7 +108,7 @@
 &lt;ul&gt;
 &lt;li&gt;将FOSS作为摆脱美国公司垄断的途径&lt;/li&gt;
 &lt;/ul&gt;
-&lt;p&gt;南美洲对自由和开源软件最有力的支持政策是在2000年代初所谓的 &amp;ldquo;粉红潮 &amp;ldquo;时期，当时有一大批有号召力的左倾领导人上台，承诺挑战该地区的新自由主义霸权。作为该议程的一部分，他们热衷于推广自由软件，以替代美国制造的专有软件。2007年4月，当时的厄瓜多尔总统Rafael Correa甚至在电视上宣称，公开采用自由和开放源码软件是&amp;rsquo;拉丁美洲迈向一体化的重要步伐，或者说是走向解放的重要一步&#39;。&lt;/p&gt;
+&lt;p&gt;南美洲对自由和开源软件最有力的支持政策是在2000年代初所谓的 &amp;ldquo;粉红潮 &amp;ldquo;时期，当时有一大批有号召力的左倾领导人上台，承诺挑战该地区的新自由主义霸权。作为该议程的一部分，他们热衷于推广自由软件，以替代美国制造的专有软件。2007年4月，当时的厄瓜多尔总统Rafael Correa甚至在电视上宣称，公开采用自由和开放源码软件是&amp;rsquo;拉丁美洲迈向一体化的重要步伐，或者说是走向解放的重要一步&amp;rsquo;。&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;将自由和开源软件与社会主义理论联系起来&lt;/li&gt;
 &lt;/ul&gt;
@@ -93,13 +120,67 @@
 &lt;h3 id=&#34;通过对公开的网络地图的研究窥见实施模式&#34;&gt;通过对公开的网络地图的研究窥见实施模式&lt;/h3&gt;
 &lt;p&gt;与一般自由和开源软件一样，有证据表明，整个南美洲都有吸收和倡导自由和开放源码软件地理信息系统的强劲潮流，尽管有些是地方性的，需要在个别国家或分区域进行更详细的研究。例如，对公共或私营组织进行调查，询问它们对GIS软件的偏好，将是一种有用的方法。通过观察公开提供的地理信息系统和制图网站所使用的工具，也可以看出许多关于软件使用趋势的情况。为了说明南美洲各种政府地理信息系统团体积极使用自由和开放源码软件，这里在两个地理范围内采用后一种方法。&lt;/p&gt;
 &lt;p&gt;大多数南美国家都有一个制图机构，与公众分享在线地理数据和网络服务。这些机构经常主办交互式网络地图，用户可以在其中探索现有的地理图层或获得有关该国的一般信息。下表显示了研究时10个国家的主要地图可视化网站的地址，建立每个网站所使用的技术，以及这种技术是否可以被认为是FOSS。在本表中，&amp;ldquo;主要浏览者 &amp;ldquo;被认为是来自负责该国地理、制图或空间数据基础设施活动的机构。该技术是通过观察网站的源代码文件和网络流量来确定的，这些信息对于任何网站来说都是可以获得的，无论它是否是用自由和开源软件建立的。&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;images/img4.png&#34; alt=&#34;1.png&#34;&gt;&lt;/p&gt;
+&lt;p&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure  &gt;
+  &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img alt=&#34;1.png&#34; srcset=&#34;
+               /publication/free-and-open-source-gis-in-south-america/images/img4_hu2747bc98b7b340587f944ee79411c2f2_310286_f4a195a44f28c5f79f35bdeda653339c.webp 400w,
+               /publication/free-and-open-source-gis-in-south-america/images/img4_hu2747bc98b7b340587f944ee79411c2f2_310286_415921ab6f62bf08a35146e814560a0b.webp 760w,
+               /publication/free-and-open-source-gis-in-south-america/images/img4_hu2747bc98b7b340587f944ee79411c2f2_310286_1200x1200_fit_q75_h2_lanczos_3.webp 1200w&#34;
+               src=&#34;/publication/free-and-open-source-gis-in-south-america/images/img4_hu2747bc98b7b340587f944ee79411c2f2_310286_f4a195a44f28c5f79f35bdeda653339c.webp&#34;
+               width=&#34;760&#34;
+               height=&#34;597&#34;
+               loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+  &lt;/div&gt;&lt;/figure&gt;
+&lt;/p&gt;
 &lt;center&gt;南美洲国家政府在生产用于地理数据探索的网络地图时所采用的技术&lt;/center&gt;
 &lt;/br&gt;
 值得注意的是，在主要地图查看器中使用自由和开源软件GIS的四个国家(玻利维亚、厄瓜多尔、乌拉圭和委内瑞拉)也是通过国家一级的立法或法令支持自由和开源软件的国家。巴西是唯一一个在国家层面支持自由和开源软件，但在其主要地图查看器中没有使用自由和开源软件的国家，直到现在巴西对自由和开源软件的支持也没有其他一些国家的政策那样具有约束力。尽管这些国家在全面实施一般的FOSS迁移政策方面一直面临挑战（Machado，2017），但似乎这些政策正在影响GIS和地图服务。例如，Molina Rodriguez和Lesage(2013年)描述了玻利维亚如何设计其空间数据基础设施以支持基于自由和开源软件的网络浏览器。
 情况比上图所能说明的要复杂得多，因为一些较低级别的部委，甚至同一部委的不同部门，可能会开展测绘活动，并使用不同的软件组合维护在线地图查看器。例如，尽管阿根廷国家地理研究所(IGN)在其主要的面向公众的地图查看器中没有使用自由和开放源码软件，但如本文后面所述，其雇员日常使用自由和开放源码软件GIS，该研究所在2017年主办了一次使用自由和开放源码软件GIS的重要会议。
 &lt;p&gt;省级和市级政府的软件趋势可能与国家一级使用的软件有明显不同。例如，用同样的方法可以看出，阿根廷几乎所有的省级政府都在其地图查看器中使用自由和开放源码软件。表3显示，在阿根廷的23个省和联邦区中，有16个省提供了用FOSS GIS建立的地图查看器，而有一个省则是用专有的地理信息系统软件建立了地图查看器。这些数字与美国各州政府的专有GIS软件所占的强大市场地位形成鲜明对比。
-&lt;img src=&#34;images/img5.png&#34; alt=&#34;5.png&#34;&gt;&lt;/p&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure  &gt;
+  &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img alt=&#34;5.png&#34; srcset=&#34;
+               /publication/free-and-open-source-gis-in-south-america/images/img5_huc5a9dd02ead198f28cf02d9ff6a81a2f_427185_ede724fc525fe701ad98a1d438f2d88f.webp 400w,
+               /publication/free-and-open-source-gis-in-south-america/images/img5_huc5a9dd02ead198f28cf02d9ff6a81a2f_427185_8d5c76817811cad65c7fe9f0849fc885.webp 760w,
+               /publication/free-and-open-source-gis-in-south-america/images/img5_huc5a9dd02ead198f28cf02d9ff6a81a2f_427185_1200x1200_fit_q75_h2_lanczos_3.webp 1200w&#34;
+               src=&#34;/publication/free-and-open-source-gis-in-south-america/images/img5_huc5a9dd02ead198f28cf02d9ff6a81a2f_427185_ede724fc525fe701ad98a1d438f2d88f.webp&#34;
+               width=&#34;760&#34;
+               height=&#34;598&#34;
+               loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+  &lt;/div&gt;&lt;/figure&gt;
+&lt;/p&gt;
 &lt;center&gt;阿根廷内各省级政府生产用于地理数据探索的网络地图时采用的技术&lt;/center&gt;
 &lt;/br&gt;
 &lt;p&gt;上表中大部分省级站点都在使用OpenLayers、MapServer、GeoServer等知名的基础FOSS GIS软件。一些网站的稳定性和长期维护似乎是一个挑战：即使网站的其他部分似乎可以运作，但在本研究中访问时，有时流式地图层无法运作。需要进行更多的研究，以了解这些挑战是由于资金不足、难以找到或留住熟练工人、政府和顾问之间的动态、软件本身的缺陷，还是其他原因。&lt;/p&gt;
@@ -121,7 +202,34 @@ OSGeo是一个致力于推广开放地理空间技术的全球性非营利组织
 &lt;/ul&gt;
 &lt;p&gt;2011年，巴西系统分析师Fernando Quadro创办了一本葡萄牙语杂志，这也许是以期刊形式发布FOSS GIS信息的最雄心勃勃的努力。Quadro注意到巴西在FOSS GIS方面有很多有趣的工作，但是关于它的报道却分散在不同的出版物中，其中一些是以专有软件为中心。Quadro向他欣赏的人发出邀请，问他们是否愿意帮助创建一个完全关于FOSS GIS的出版物（Mendonça，2012）。结果是一本名为《FOSSGIS Brasil》的数字杂志，在2011-2012年出版了六期，内容丰富多彩，信息量很大，目标是每季度发行一次。期刊的长度大约在50至80页之间。&lt;/p&gt;
 &lt;p&gt;最初的编辑核心成员利用他们的专业网络寻找可以撰写内容的自由和开放源码地理信息系统专家。该杂志包括关于自由和开放源码地理信息系统软件选择的文章，一个比较自由和开放源码地理信息系统与专利软件功能的专栏，巴西政府各部门成功实施软件的案例研究，以及对巴西自由和开放源码地理信息系统界人物的采访。例如，有一期杂志刊登了与时任巴西国家空间研究所所长的Gilberto Câmara关于SPRING GIS发展的对话(Medeiros，2011)。 该杂志的地图画廊部分允许在巴西工业和政府工作的GIS分析师和制图师展示他们的工作。画廊的贡献者包括地理学家、教师和州、市两级的政府规划官员。
-&lt;img src=&#34;images/%E5%9B%BE1.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure  &gt;
+  &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img alt=&#34;&#34; srcset=&#34;
+               /publication/free-and-open-source-gis-in-south-america/images/%E5%9B%BE1_hudc6806be3b31df0488f37d4e04e8fd1e_844952_d8ebdd2efb1a3599a337ecc981abf985.webp 400w,
+               /publication/free-and-open-source-gis-in-south-america/images/%E5%9B%BE1_hudc6806be3b31df0488f37d4e04e8fd1e_844952_ee2ee66f03141bdf12030057aeb4d187.webp 760w,
+               /publication/free-and-open-source-gis-in-south-america/images/%E5%9B%BE1_hudc6806be3b31df0488f37d4e04e8fd1e_844952_1200x1200_fit_q75_h2_lanczos_3.webp 1200w&#34;
+               src=&#34;/publication/free-and-open-source-gis-in-south-america/images/%E5%9B%BE1_hudc6806be3b31df0488f37d4e04e8fd1e_844952_d8ebdd2efb1a3599a337ecc981abf985.webp&#34;
+               width=&#34;643&#34;
+               height=&#34;585&#34;
+               loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+  &lt;/div&gt;&lt;/figure&gt;
+&lt;/p&gt;
 &lt;center&gt;2011-2012年出版的FOSSGIS Brasil杂志&lt;/center&gt;
 &lt;ul&gt;
 &lt;li&gt;难以为继的壮志&lt;/li&gt;
@@ -163,13 +271,13 @@ Geoinquietos阿根廷分会在2013年、2016年、2017年和2019年组织了 &am
 世界各地的FOSS倡导团体可以从这些案例研究中学到什么？FOSSGIS Brasil杂志的退役和上面提到的一些其他技术支持团体（如Maptime）的活动水平有时会消失，这表明长期的势头是一个挑战。对于自由和开放源码软件来说尤其如此，因为很多工作都是由志愿者完成的，他们的兴趣和可能性可能会随着工作和生活阶段的不同而改变。Geoinquietos阿根廷分会的分权性质似乎帮助传递了持久的力量，Telegram消息系统使这个小组保持了灵活性、包容性和联系。最后，支持性合作机构的存在可以为会议提供场所，并提供一批有兴趣的活跃人士。
 面对面的聚会需要付出极大的努力来执行，但却能在技术上和社会上促进招募和加强组织者的核心团队。2018年，全球FOSS4G大会首次来到非洲（达累斯萨拉姆），Geoinquietos阿根廷分会正在准备申办2021年在布宜诺斯艾利斯举办的大会。重新评估 &amp;ldquo;北美、欧洲、世界其他地区 &amp;ldquo;三年一次的FOSS4G会议轮流举办，以包括更灵活的国家组合，可以帮助OSGeo培养更多的全球焦点（尽管这种做法确实确保北美和欧洲并不总是主导申办过程）。同时，OSGeo对区域和地方会议的支持有助于加强新的自由和开放源码软件社区。阿根廷FOSS4G和FOSS.4GIS.GOV都借助政府办公室帮助降低了费用，让更多的人能够参加会议，这与在波士顿举行的2017年全球FOSS4G会议形成了鲜明的对比，该会议在海港酒店和世界贸易中心举行，每人注册费用高达800美元。尽管如此，非政府资金流也是有帮助的：在巴西举行的FOSS.4GIS.GOV 2018会议由于资金来源较少，规模小于2016年的迭代会议，但如果与OSGeo保持紧密的联系，会议的长期延续和扩大前景似乎是积极的。随着软件的可访问性和普及程度的提高，这次会议和上述其他举措应该是那些正在推广和开发自由和开源软件的人未来的兴趣所在。&lt;/p&gt;
 &lt;h2 id=&#34;0x05-笔记&#34;&gt;0x05 笔记&lt;/h2&gt;
-&lt;p&gt;&lt;a href=&#34;http://www.youthmappers.org&#34;&gt;http://www.youthmappers.org&lt;/a&gt;.&lt;/p&gt;
-&lt;p&gt;&lt;a href=&#34;http://www.geochicas.org&#34;&gt;http://www.geochicas.org&lt;/a&gt;.&lt;/p&gt;
-&lt;p&gt;&lt;a href=&#34;https://wiki.openstreetmap.org/wiki/GeoChicas&#34;&gt;https://wiki.openstreetmap.org/wiki/GeoChicas&lt;/a&gt;.&lt;/p&gt;
-&lt;p&gt;&lt;a href=&#34;http://www.gvsig.com/pt/comunidade/grupos-de-comunidades&#34;&gt;http://www.gvsig.com/pt/comunidade/grupos-de-comunidades&lt;/a&gt;.&lt;/p&gt;
-&lt;p&gt;&lt;a href=&#34;https://softwarepublico.gov.br/social/i3geo&#34;&gt;https://softwarepublico.gov.br/social/i3geo&lt;/a&gt;.&lt;/p&gt;
-&lt;p&gt;&lt;a href=&#34;http://www.fernandoquadro.com.br/html/&#34;&gt;http://www.fernandoquadro.com.br/html/&lt;/a&gt;.&lt;/p&gt;
-&lt;p&gt;&lt;a href=&#34;https://wiki.osgeo.org/wiki/Cap%C3%ADtulo_Local_de_la_comunidad_hispanohablante&#34;&gt;https://wiki.osgeo.org/wiki/Cap%C3%ADtulo_Local_de_la_comunidad_hispanohablante&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;http://www.youthmappers.org&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;http://www.youthmappers.org&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;http://www.geochicas.org&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;http://www.geochicas.org&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;https://wiki.openstreetmap.org/wiki/GeoChicas&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;https://wiki.openstreetmap.org/wiki/GeoChicas&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;http://www.gvsig.com/pt/comunidade/grupos-de-comunidades&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;http://www.gvsig.com/pt/comunidade/grupos-de-comunidades&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;https://softwarepublico.gov.br/social/i3geo&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;https://softwarepublico.gov.br/social/i3geo&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;http://www.fernandoquadro.com.br/html/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;http://www.fernandoquadro.com.br/html/&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;https://wiki.osgeo.org/wiki/Cap%C3%ADtulo_Local_de_la_comunidad_hispanohablante&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;https://wiki.osgeo.org/wiki/Cap%C3%ADtulo_Local_de_la_comunidad_hispanohablante&lt;/a&gt;.&lt;/p&gt;
 </description>
     </item>
     

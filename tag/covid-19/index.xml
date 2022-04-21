@@ -2,21 +2,21 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>COVID-19 | CoolCats</title>
-    <link>https://coolgiserz.github.io/tag/covid-19/</link>
-      <atom:link href="https://coolgiserz.github.io/tag/covid-19/index.xml" rel="self" type="application/rss+xml" />
+    <link>/tag/covid-19/</link>
+      <atom:link href="/tag/covid-19/index.xml" rel="self" type="application/rss+xml" />
     <description>COVID-19</description>
-    <generator>Wowchemy (https://wowchemy.com)</generator><language>en-us</language><copyright>© CoolCats</copyright><lastBuildDate>Fri, 08 Jan 2021 16:38:40 +0800</lastBuildDate>
+    <generator>Wowchemy (https://wowchemy.com)</generator><language>en-us</language><lastBuildDate>Fri, 08 Jan 2021 16:38:40 +0800</lastBuildDate>
     <image>
-      <url>https://coolgiserz.github.io/images/icon_hue03491371183284312b8b116a73ae5ab_79511_512x512_fill_lanczos_center_2.png</url>
+      <url>/media/icon_hue03491371183284312b8b116a73ae5ab_79511_512x512_fill_lanczos_center_3.png</url>
       <title>COVID-19</title>
-      <link>https://coolgiserz.github.io/tag/covid-19/</link>
+      <link>/tag/covid-19/</link>
     </image>
     
     <item>
       <title>「论文翻译」-从阿拉伯文推文中识别COVID-19的信息超级传播者</title>
-      <link>https://coolgiserz.github.io/publication/identifying-information-superspreader-of-covid19-from-arabic-tweets/</link>
+      <link>/publication/identifying-information-superspreader-of-covid19-from-arabic-tweets/</link>
       <pubDate>Fri, 08 Jan 2021 16:38:40 +0800</pubDate>
-      <guid>https://coolgiserz.github.io/publication/identifying-information-superspreader-of-covid19-from-arabic-tweets/</guid>
+      <guid>/publication/identifying-information-superspreader-of-covid19-from-arabic-tweets/</guid>
       <description>&lt;h2 id=&#34;文章内容&#34;&gt;文章内容&lt;/h2&gt;
 &lt;h3 id=&#34;引言&#34;&gt;引言&lt;/h3&gt;
 &lt;p&gt;新型冠状病毒(COVID-19)给人类带来巨大挑战。首例新型冠状病毒(SARS-CoV-2)确诊病例于2019年12月在中国武汉市确诊。由于冠状病毒的高传播速度，全球已经有超过1000万确诊病例。自那以后，卫生官员迅速查明并遏制COVID-19的传播，与此同时，社交媒体平台上遭遇了前所未有的信息泛滥。 由于疾病的影响，以及缺乏与疾病相关的持续性官方验证信息，医疗误导信息在不同的社交媒体平台上迅速传播和扩散。在社交媒体上传播的有关COVID-19大流行的信息会强烈影响人们的行为，影响政府和卫生官员为控制病毒而制定的措施的实施效果。近年来，研究者的兴趣已经转移到关注是否可以通过特定的个人（通常被称为 &amp;ldquo;影响者 &amp;ldquo;或超级传播者）最大限度地扩大某一主题的信息传播。有影响力的人具有区别于其他人的特征，比如专业知识或连接性。这些特点使他们能够影响他们网络中的许多人。社交媒体上的影响者(或超级传播者)可能助长有关COVID-19大流行的错误信息的传播。因此，在COVID-19大流行期间识别他们对理解公众反应和信息传播有重要意义。&lt;/p&gt;
@@ -39,31 +39,220 @@
 &lt;h4 id=&#34;pagerank算法&#34;&gt;PageRank算法&lt;/h4&gt;
 &lt;p&gt;Google搜索引擎早期阶段开发的一个著名算法是PageRank算法，用来确定一个页面的相关性或重要性[5]。该算法通过估计每个页面所含链接的质量和数量，给每个页面分配一个重要性和权威性的相对数字分数。该算法采用简单的迭代算法计算，并基于随机冲浪者模型，即网络的随机冲浪者从一个页面开始随机形成链接到达目标页面的概率。&lt;/p&gt;
 &lt;p&gt;为了分析twitter的社交图谱，本文考虑了每个用户的PageRank得分。假设有转发或回复用户V的推特等互动行为的用户列表U，U中每个用户的PageRank得分平均分配给用户V。例如，用户$U_i$的PageRank得分为X，它总共与5个用户的推特进行了互动。Ui的PageRank得分X将被发送给Ui互动过的每个用户。它可以用数学方式表示如下[5]。
-&lt;img src=&#34;images/equation1.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure  &gt;
+  &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img alt=&#34;&#34; srcset=&#34;
+               /publication/identifying-information-superspreader-of-covid19-from-arabic-tweets/images/equation1_hu2e6bad1033da3c5732b9a60f19e2ef37_15925_052ffb1016b096acb0d50cdbd373fe1c.webp 400w,
+               /publication/identifying-information-superspreader-of-covid19-from-arabic-tweets/images/equation1_hu2e6bad1033da3c5732b9a60f19e2ef37_15925_395940e736cfbd1b924c7992dc0f105b.webp 760w,
+               /publication/identifying-information-superspreader-of-covid19-from-arabic-tweets/images/equation1_hu2e6bad1033da3c5732b9a60f19e2ef37_15925_1200x1200_fit_q75_h2_lanczos_3.webp 1200w&#34;
+               src=&#34;/publication/identifying-information-superspreader-of-covid19-from-arabic-tweets/images/equation1_hu2e6bad1033da3c5732b9a60f19e2ef37_15925_052ffb1016b096acb0d50cdbd373fe1c.webp&#34;
+               width=&#34;680&#34;
+               height=&#34;75&#34;
+               loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+  &lt;/div&gt;&lt;/figure&gt;
+&lt;/p&gt;
 &lt;p&gt;其中，$PR(A)$为计算出的某用户节点A的PageRank，N对应于图中的节点总数。$P(A)$是指向节点A的节点集合，$P(U_i)$是节点A到节点$U_1,&amp;hellip;,U_n$的外链数量。最后，参数d为阻尼系数，表示跳转到随机用户节点的概率，通常设置为0.85。&lt;/p&gt;
 &lt;h4 id=&#34;hits算法&#34;&gt;HITS算法&lt;/h4&gt;
 &lt;p&gt;HITS算法是由Kleinberg[6]开发的一种网页排名算法。该算法基于权威机构和枢纽的思想，其中权威机构是指有较多传入链接的网页，枢纽是指有许多相关权威机构的传出链接的网页。如果一个页面指向了很多好的权威机构，那么这个页面就被认为是一个好的枢纽，一个好的权威页面被很多好的枢纽指向。与PageRank算法不同的是，HITS算法的起点是由与搜索查询相关的页面和任何链接到相关页面的页面组成的网络子集。至于Twitter行为社交图分析，我们将每个节点N视为用户节点，每个节点包含一组Hub得分Nh和Authority得分Na。给定S是指向N的节点集 ，而T是N指向的节点集 。 枢纽得分和权威得分的迭代计算过程如下。用户N的权威得分auth(N)是指向用户N的节点S的所有枢纽得分的归一化和。
-&lt;img src=&#34;images/equation2.png&#34; alt=&#34;&#34;&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure  &gt;
+  &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img alt=&#34;&#34; srcset=&#34;
+               /publication/identifying-information-superspreader-of-covid19-from-arabic-tweets/images/equation2_hu90100da99611f4ee3bcf39841a51ae97_12410_a3c896984d9ed630c850a74b7de6fb3b.webp 400w,
+               /publication/identifying-information-superspreader-of-covid19-from-arabic-tweets/images/equation2_hu90100da99611f4ee3bcf39841a51ae97_12410_6d1f3921911a5558c6aeb42814e45000.webp 760w,
+               /publication/identifying-information-superspreader-of-covid19-from-arabic-tweets/images/equation2_hu90100da99611f4ee3bcf39841a51ae97_12410_1200x1200_fit_q75_h2_lanczos_3.webp 1200w&#34;
+               src=&#34;/publication/identifying-information-superspreader-of-covid19-from-arabic-tweets/images/equation2_hu90100da99611f4ee3bcf39841a51ae97_12410_a3c896984d9ed630c850a74b7de6fb3b.webp&#34;
+               width=&#34;680&#34;
+               height=&#34;60&#34;
+               loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+  &lt;/div&gt;&lt;/figure&gt;
+
 用户N的枢纽得分hub(N )是T指向的所有节点的权威得分的归一化和。
-&lt;img src=&#34;images/equation3.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure  &gt;
+  &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img alt=&#34;&#34; srcset=&#34;
+               /publication/identifying-information-superspreader-of-covid19-from-arabic-tweets/images/equation3_hu2e6bad1033da3c5732b9a60f19e2ef37_13410_8af4392cf3fa2447863dfe9c110b3536.webp 400w,
+               /publication/identifying-information-superspreader-of-covid19-from-arabic-tweets/images/equation3_hu2e6bad1033da3c5732b9a60f19e2ef37_13410_65064ad6f5bcda78f4daec9698a403ed.webp 760w,
+               /publication/identifying-information-superspreader-of-covid19-from-arabic-tweets/images/equation3_hu2e6bad1033da3c5732b9a60f19e2ef37_13410_1200x1200_fit_q75_h2_lanczos_3.webp 1200w&#34;
+               src=&#34;/publication/identifying-information-superspreader-of-covid19-from-arabic-tweets/images/equation3_hu2e6bad1033da3c5732b9a60f19e2ef37_13410_8af4392cf3fa2447863dfe9c110b3536.webp&#34;
+               width=&#34;680&#34;
+               height=&#34;75&#34;
+               loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+  &lt;/div&gt;&lt;/figure&gt;
+&lt;/p&gt;
 &lt;h3 id=&#34;实验&#34;&gt;实验&lt;/h3&gt;
 &lt;p&gt;为了识别COVID-19大流行期间的阿拉伯语推特影响者，我们使用我们的大型阿拉伯语数据集[30]中的推文。该数据集包含从2020年1月1日至2020年4月30日的超过4514.36亿条推文。我们创建了一个与COVID-19相关的最常见的阿拉伯语关键词列表来收集推文。使用Twitter的流媒体API和Tweepy Python库，我们根据关键词列表对推文进行提取和过滤。我们在MongoDB NoSQL数据库中存储了推文的完整对象，包括推文的时间戳、推文的id、用户资料信息，包括关注者数量和推文的地理位置。流包含了一条tweet被转发的次数信息。转发次数由以 &amp;ldquo;RT @user &amp;ldquo;开头的推文识别。数据集还包含关于提及、回复和引用的信息，这些信息代表了Twitter上用户之间的公开对话[30]。然而，在我们的实验中，我们只考虑了3月份（2020年3月1日至2020年3月30日）检索的推文。我们选择3月是出于这样一个事实，即几乎所有阿拉伯语国家都在2020年3月初确认了他们的第一例COVID-19。表1显示了3月份推文的一些统计数字。这些推文的每日分布如图1所示。
-&lt;img src=&#34;images/fig1.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure  &gt;
+  &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img alt=&#34;&#34; srcset=&#34;
+               /publication/identifying-information-superspreader-of-covid19-from-arabic-tweets/images/fig1_huba349adbc4ef6f3bbfd572c676b44ced_118212_caab05c10d3ee73a9b2b0f150ff01a98.webp 400w,
+               /publication/identifying-information-superspreader-of-covid19-from-arabic-tweets/images/fig1_huba349adbc4ef6f3bbfd572c676b44ced_118212_a765a6480b157f02f7b9efe6dbda0309.webp 760w,
+               /publication/identifying-information-superspreader-of-covid19-from-arabic-tweets/images/fig1_huba349adbc4ef6f3bbfd572c676b44ced_118212_1200x1200_fit_q75_h2_lanczos_3.webp 1200w&#34;
+               src=&#34;/publication/identifying-information-superspreader-of-covid19-from-arabic-tweets/images/fig1_huba349adbc4ef6f3bbfd572c676b44ced_118212_caab05c10d3ee73a9b2b0f150ff01a98.webp&#34;
+               width=&#34;760&#34;
+               height=&#34;587&#34;
+               loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+  &lt;/div&gt;&lt;/figure&gt;
+&lt;/p&gt;
 &lt;h4 id=&#34;数据预处理&#34;&gt;数据预处理&lt;/h4&gt;
 &lt;p&gt;在我们创建网络之前，通过删除空值和只考虑必要的列来清理数据。我们的数据集中有超过170万条推文，其中一些推文是由同一个用户写的。因此，我们只包含唯一的用户。我们对数据集中的每一条推文进行分析，以提取在数据集中提及、转发、引用或回复推文的用户。通过探索数据库中的JSON字段、转发状态和引用状态，我们恢复了每条转发的源推文的用户id和每条引用的推文的用户id。我们通过探索JSON字段实体中嵌入的JSON字段提及来收录提及某条推文的用户。最后，从回复中的JSON字段中，我们提取了该条推文是回复的用户id。增加了转发者、提及者、引用者.回复者等字段。这些字段以数组的形式包含了与该推文互动的用户的id号。我们从用户资料中提取了用户的位置，并且我们删除了或禁用的账户。&lt;/p&gt;
 &lt;h3 id=&#34;结果与讨论&#34;&gt;结果与讨论&lt;/h3&gt;
 &lt;p&gt;我们将账户分为两类：个人账户和组织账户。我们进一步将个人账户分为记者账户、名人账户和公民账户，组织账户分为媒体/新闻、政府、慈善或商业账户。组织账户被分为媒体/新闻、政府、慈善或商业账户.行为网络表达了一组更亲密的行动。我们的行为网络由不相连的组件组成，因为不是所有的节点都是相连的，只有6%的节点是强连接的。根据Smith等人[31]对Twitter网络结构的分类，我们的行为网络被认为是一个社区集群网络。这种类型的网络形成于一个热门话题，如我们案例中的COVID-19，围绕几个中心形成的多个小群体，每个群体都有其受众。鉴于我们的行为网络由近百万条边组成，当然不可能将其可视化。图3显示了与我们分析相关的不同参数的分布函数。y轴是数值小于或等于相应x轴值的点的分数。我们可以观察到，除了超级传播者节点的少数例外，其他节点的值都接近于零。&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;images/fig3.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;p&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure  &gt;
+  &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img alt=&#34;&#34; srcset=&#34;
+               /publication/identifying-information-superspreader-of-covid19-from-arabic-tweets/images/fig3_huf61b000434379d204596abd7df8d19ae_80826_e4b4ccef696f66b250a3a481447c9ed4.webp 400w,
+               /publication/identifying-information-superspreader-of-covid19-from-arabic-tweets/images/fig3_huf61b000434379d204596abd7df8d19ae_80826_06d199408c9b1dd50f72070c2472537f.webp 760w,
+               /publication/identifying-information-superspreader-of-covid19-from-arabic-tweets/images/fig3_huf61b000434379d204596abd7df8d19ae_80826_1200x1200_fit_q75_h2_lanczos_3.webp 1200w&#34;
+               src=&#34;/publication/identifying-information-superspreader-of-covid19-from-arabic-tweets/images/fig3_huf61b000434379d204596abd7df8d19ae_80826_e4b4ccef696f66b250a3a481447c9ed4.webp&#34;
+               width=&#34;760&#34;
+               height=&#34;458&#34;
+               loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+  &lt;/div&gt;&lt;/figure&gt;
+&lt;/p&gt;
 &lt;p&gt;尽管如此，我们还是选择了一个子图，其中包含了HITs和PageRank中的Top-100超级传播者及其直接连接。这个子图，在图4中可视化，显示了不同的模块化等级，其中节点大小是根据加权indegree调整的。黑色的节点代表HITs或PageRank中Top-100超级传播者中的用户。&lt;/p&gt;
 &lt;p&gt;表3显示了根据PageRank算法排名的前20名用户的信息。许多账户拥有大量的关注者，但是，在我们的网络中，有一些账户的关注者数量要多得多。这说明排名前20的账户与他们的粉丝有更多的互动。
 在我们的网络中，我们认为中心账户是一个经常与许多未连接的账户进行交互的用户，导致边缘指向远离中心节点，而权威账户是一个收到许多他人交互行为的用户，导致边缘指向权威。因此，可以认为权威账户比中心账户更有影响力。表4和表5分别显示了根据中枢和权威性得分进行排名的前20个屏幕名。SaudiMOH937账号是沙特阿拉伯卫生部的官方账号，根据权威性得分排名第四，根据中心得分排名第二十。这样的发现是合理的，因为SaudiMOH937账户播报的信息会收到很多他人的互动，也会通过Twitter提供帮助。&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;images/fig4_table3.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;p&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure  &gt;
+  &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img alt=&#34;&#34; srcset=&#34;
+               /publication/identifying-information-superspreader-of-covid19-from-arabic-tweets/images/fig4_table3_hu101a3b82406b9e33b968509eaa221fc3_468870_f89db4a47f4524b430bb5483185d8354.webp 400w,
+               /publication/identifying-information-superspreader-of-covid19-from-arabic-tweets/images/fig4_table3_hu101a3b82406b9e33b968509eaa221fc3_468870_731acd16a7c1009029ef5ec0964a2dcf.webp 760w,
+               /publication/identifying-information-superspreader-of-covid19-from-arabic-tweets/images/fig4_table3_hu101a3b82406b9e33b968509eaa221fc3_468870_1200x1200_fit_q75_h2_lanczos_3.webp 1200w&#34;
+               src=&#34;/publication/identifying-information-superspreader-of-covid19-from-arabic-tweets/images/fig4_table3_hu101a3b82406b9e33b968509eaa221fc3_468870_f89db4a47f4524b430bb5483185d8354.webp&#34;
+               width=&#34;546&#34;
+               height=&#34;760&#34;
+               loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+  &lt;/div&gt;&lt;/figure&gt;
+&lt;/p&gt;
 &lt;p&gt;可以看到，无论是PageRank算法还是HITS算法的权威性得分，都显示出各自TOP20的用户子集相似，比例为50%。值得注意的是，两者的顺序有很大的不同，只有10%的用户在两种算法中的排名完全相同，而且前20名用户中有40%的用户拥有验证账号。&lt;/p&gt;
 &lt;p&gt;综上所述，从确定的HITS和Page Rank两种算法的前20名有影响力的阿拉伯文推特用户中，有19个组织账号；8个媒体/新闻账号，8个沙特政府账号，2个慈善账号，1个商业账号。此外，有7个个人账户均为男性；3个个人账户为记者账户，2个名人账户，2个公民账户。&lt;/p&gt;
 &lt;p&gt;如结果所示，大部分有影响力的账户是新闻账户，其次是沙特阿拉伯各部委的政府账户。其中有三个账号属于沙特阿拉伯卫生部，其次是记者、名人和公民。属于沙特阿拉伯卫生部的新闻和政府账号在3月份的阿拉伯文推特中，两种算法的影响力榜单上都名列前茅。这是由于3月份中东地区，特别是海湾地区出现了COVID-19的确诊病例。因此，人们转而向经过验证的新闻来源，如卫生部在Twitter上的账户，以获取有关COVID- 19的信息，这表明Twitter成为了疾病动态的重要新闻和信息来源。然而，并不是所有的新闻账户都是可靠的来源。50%的有影响力的账户位于沙特阿拉伯。这可以解释为沙特阿拉伯是世界上最大的积极使用Twitter的国家之一。统计数据显示，2019年10月，Twitter有1090万来自沙特阿拉伯的活跃用户[32]，沙特阿拉伯41%的互联网用户使用Twitter。此外，大部分被评为影响者的账号都是经过验证的Twitter上的知名账号，并且拥有大量来自阿拉伯世界各地的粉丝，这也证实了社交媒体的作用，为人们提供了更多的机会直接影响他人，这在以前是不可能的。因此，无论信息的质量和可信度如何，个人在通过Twitter传播信息方面发挥着重要作用。&lt;/p&gt;
 &lt;p&gt;除了识别有影响力的人，根据他们的影响力进行排名也是积极利用他们的影响力的重要手段。结果显示，两种排名算法都对推特上具有不同影响程度的不同群体进行了排名。同时也注意到，两种算法都将沙特卫生部的四个账号归为影响力账号。在影响者的Page Rank榜单中，沙特卫生部账号位居第二，排在第四位的是沙特卫生部长Tawfiq Al-Rabiah的账号。而在HITS算法中，有4个与健康相关的账号，排在首位的是沙特卫生部的账号，然后排在第三位的是沙特卫生部长Tawfiq Al-Rabiah的账号。卫生部937账号排名第四，卫生部发言人的账号在榜单中排在第十二位。&lt;/p&gt;
 &lt;p&gt;这说明社交媒体，尤其是Twitter在教育沙特个人和社会方面发挥了重要作用。然而，有可能出现的情况是，已经确定的一些群体中的影响者，如媒体/新闻、记者和名人，可能有助于传播关于COVID-19的虚假信息。我们希望信息超级阅读者利用其在社会平台上的影响力为社会谋求更大的利益。
-&lt;img src=&#34;images/table4_5.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure  &gt;
+  &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img alt=&#34;&#34; srcset=&#34;
+               /publication/identifying-information-superspreader-of-covid19-from-arabic-tweets/images/table4_5_hu22a8db050e416797ea7ad1951567244a_438753_7d65675bd706b2ed140ddc03c64be715.webp 400w,
+               /publication/identifying-information-superspreader-of-covid19-from-arabic-tweets/images/table4_5_hu22a8db050e416797ea7ad1951567244a_438753_0e0a29a570815965c168999101bb8244.webp 760w,
+               /publication/identifying-information-superspreader-of-covid19-from-arabic-tweets/images/table4_5_hu22a8db050e416797ea7ad1951567244a_438753_1200x1200_fit_q75_h2_lanczos_3.webp 1200w&#34;
+               src=&#34;/publication/identifying-information-superspreader-of-covid19-from-arabic-tweets/images/table4_5_hu22a8db050e416797ea7ad1951567244a_438753_7d65675bd706b2ed140ddc03c64be715.webp&#34;
+               width=&#34;429&#34;
+               height=&#34;760&#34;
+               loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+  &lt;/div&gt;&lt;/figure&gt;
+&lt;/p&gt;
 &lt;h3 id=&#34;结论&#34;&gt;结论&lt;/h3&gt;
 &lt;p&gt;在社交媒体中识别信息超级传播者可以成为在大流行病期间提高意识的有效战略。使用可靠和值得信赖的超级传播者可以帮助减少关于疾病的错误信息的传播，并向更多的受众推广更好的健康实践。这项研究确定了2020年3月期间推特阿拉伯语内容中的影响者。然而，在这方面还需要进行更多的研究。一个潜在的工作是分析影响者在传播错误信息方面的作用，以及他们是否利用他们的影响力为社会带来更大的利益。另一条研究路线是分析Facebook和Instagram等其他社交平台上的信息超级传播者。在这方面，本研究中使用的方法可以用于其他社交平台，尽管互动方式不同。&lt;/p&gt;
 </description>
@@ -71,9 +260,9 @@
     
     <item>
       <title>面向Covid-19国内传播分析的人口流动网络分析</title>
-      <link>https://coolgiserz.github.io/project/network-analysis-for-covid-19/</link>
+      <link>/project/network-analysis-for-covid-19/</link>
       <pubDate>Fri, 13 Mar 2020 21:54:39 +0800</pubDate>
-      <guid>https://coolgiserz.github.io/project/network-analysis-for-covid-19/</guid>
+      <guid>/project/network-analysis-for-covid-19/</guid>
       <description>&lt;h3 id=&#34;数据集&#34;&gt;数据集&lt;/h3&gt;
 &lt;h4 id=&#34;病例统计数据&#34;&gt;病例统计数据&lt;/h4&gt;
 &lt;ul&gt;

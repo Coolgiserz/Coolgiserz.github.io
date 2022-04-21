@@ -1,0 +1,1072 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>爬虫 | CoolCats</title>
+    <link>/tag/%E7%88%AC%E8%99%AB/</link>
+      <atom:link href="/tag/%E7%88%AC%E8%99%AB/index.xml" rel="self" type="application/rss+xml" />
+    <description>爬虫</description>
+    <generator>Wowchemy (https://wowchemy.com)</generator><language>en-us</language><lastBuildDate>Mon, 11 Feb 2019 09:04:07 +0800</lastBuildDate>
+    <image>
+      <url>/media/icon_hue03491371183284312b8b116a73ae5ab_79511_512x512_fill_lanczos_center_3.png</url>
+      <title>爬虫</title>
+      <link>/tag/%E7%88%AC%E8%99%AB/</link>
+    </image>
+    
+    <item>
+      <title>爬虫框架Scrapy基本使用笔记</title>
+      <link>/post/scrapy-for-distributed-spider-summary/</link>
+      <pubDate>Mon, 11 Feb 2019 09:04:07 +0800</pubDate>
+      <guid>/post/scrapy-for-distributed-spider-summary/</guid>
+      <description>&lt;h2 id=&#34;前期准备&#34;&gt;前期准备&lt;/h2&gt;
+&lt;p&gt;&lt;a href=&#34;https://scrapy.org/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;官网&lt;/a&gt;&lt;/p&gt;
+&lt;h3 id=&#34;开发环境&#34;&gt;开发环境&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;Pycharm&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;virtualenv&lt;/p&gt;
+&lt;p&gt;创建python虚拟环境(&lt;a href=&#34;https://pypi.doubanio.com/simple&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;豆瓣源&lt;/a&gt;)&lt;/p&gt;
+&lt;p&gt;创建虚拟环境：&lt;code&gt;virtualenv -p PYTHON_PATH VITUAL_PAT&lt;/code&gt;;
+激活虚拟环境：&lt;code&gt;activate.bat&lt;/code&gt;;
+退出虚拟环境：&lt;code&gt;deactivate.bat&lt;/code&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a href=&#34;https://virtualenvwrapper.readthedocs.io/en/latest/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;virtualenvwrapper&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;管理虚拟环境的工具,windows系统下安装命令为&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;pip install virtualenvwrapper-win&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;添加虚拟环境：&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;mkvirtualenv -p PYTHON.EXE WORK_PATH&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;管理虚拟环境：&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;workon&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;退出虚拟环境：&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;deactivate&lt;/code&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;MySQL&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a href=&#34;https://www.navicat.com/en/products/navicat-for-mysql&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Navicat&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a href=&#34;https://www.lfd.uci.edu/~gohlke/pythonlibs/#twisted&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Twisted&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;选择相应的版本，另行安装，否则安装scrapy可能出错，如“Failed building wheel for Twisted”&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;pypiwin32&lt;/p&gt;
+&lt;p&gt;windows环境下需要&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;pillow&lt;/p&gt;
+&lt;p&gt;使用pipeline读写图片文件需要。安装命令：&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;pip -i https://pypi.douban.com/simple pillow&lt;/code&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;基础知识&#34;&gt;基础知识&lt;/h3&gt;
+&lt;h4 id=&#34;技术选型&#34;&gt;技术选型&lt;/h4&gt;
+&lt;ul&gt;
+&lt;li&gt;scrapy vs requests+beautifulsoup&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;scrapy框架基于&lt;a href=&#34;https://twistedmatrix.com/trac/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;twisted&lt;/a&gt;（异步IO特点），性能较高，scrapy内置的css、xpath selector，本身的功能足以完成beautifulsoup所有功能（bs4是纯python写出来的，scrapy相关功能是由C写的）&lt;/p&gt;
+&lt;h4 id=&#34;常见网页分类&#34;&gt;常见网页分类？&lt;/h4&gt;
+&lt;ul&gt;
+&lt;li&gt;静态网页&lt;/li&gt;
+&lt;li&gt;动态网页&lt;/li&gt;
+&lt;li&gt;webservice（restapi）&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&#34;爬虫用武之地&#34;&gt;爬虫用武之地？&lt;/h4&gt;
+&lt;ul&gt;
+&lt;li&gt;百度/谷歌类搜索引擎&lt;/li&gt;
+&lt;li&gt;垂直领域搜索引擎&lt;/li&gt;
+&lt;li&gt;推荐引擎:
+今日头条&lt;/li&gt;
+&lt;li&gt;机器学习的数据样本&lt;/li&gt;
+&lt;li&gt;数据分析:
+金融数据分析、舆情分析&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&#34;正则表达式httpszhwikipediaorgwikie6ada3e58899e8a1a8e8bebee5bc8f&#34;&gt;&lt;a href=&#34;https://zh.wikipedia.org/wiki/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;正则表达式&lt;/a&gt;&lt;/h4&gt;
+&lt;ul&gt;
+&lt;li&gt;特殊字符&lt;/li&gt;
+&lt;/ul&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;字符&lt;/th&gt;
+&lt;th&gt;意义&lt;/th&gt;
+&lt;th&gt;备注&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;^&lt;/td&gt;
+&lt;td&gt;起始字符&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;.&lt;/td&gt;
+&lt;td&gt;任意字符&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;*&lt;/td&gt;
+&lt;td&gt;出现多次&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;$&lt;/td&gt;
+&lt;td&gt;结尾字符&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;+&lt;/td&gt;
+&lt;td&gt;出现至少一次&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;非贪婪匹配&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;{10}&lt;/td&gt;
+&lt;td&gt;限定其前一字符出现频率为10&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;{10,}&lt;/td&gt;
+&lt;td&gt;限定其前一字符出现频率为10次以上&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;{10,20}&lt;/td&gt;
+&lt;td&gt;限定其前一字符出现频率为10到20次&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;pattern1|pattern2&lt;/td&gt;
+&lt;td&gt;匹配pattern1或pattern2，优先匹配前者&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;[2134]&lt;/td&gt;
+&lt;td&gt;其中字符任选其一&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;[0-9]&lt;/td&gt;
+&lt;td&gt;区间&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;[.*]&lt;/td&gt;
+&lt;td&gt;中括号中的*和.只是单纯的字符&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;\s&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;\S&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;\w&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;\W&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;\d&lt;/td&gt;
+&lt;td&gt;数字&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;[\u4E00-\u9FA5]&lt;/td&gt;
+&lt;td&gt;汉字unicode编码&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&amp;hellip;&lt;/td&gt;
+&lt;td&gt;&amp;hellip;&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;ul&gt;
+&lt;li&gt;python api
+python有内置模块&lt;a href=&#34;https://docs.python.org/3/library/re.html&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;re&lt;/a&gt;用于正则表达式。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&#34;深度优先广度优先&#34;&gt;深度优先&amp;amp;&amp;amp;广度优先&lt;/h4&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;网站的树结构
+网站URl设计是分层的，绘制出URL层次结构图就得到了一棵“树”（一级域名、二级域名、&amp;hellip;），针对“树”结构，常用策略就是深度优先和广度优先。&lt;strong&gt;但要注意URL环路&lt;/strong&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;深度优先&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;递归&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;广度优先&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;利用队列&lt;/p&gt;
+&lt;h4 id=&#34;url去重策略&#34;&gt;URL去重策略&lt;/h4&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;将访问过的url保存到数据库中&lt;/p&gt;
+&lt;p&gt;效率较低&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;将访问过的url保存到set中，以o(1)的代价查询url
+但爬虫通常涉及海量URL，URL长度也不定，用集合存储占用内存比较大&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;url经过md5等哈希方法后保存到set中&lt;/p&gt;
+&lt;p&gt;md5将任意长度的url映射到固定长度且不重复的字符串，但仍然占用内存较大&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;用bitmap方法，将访问过的url通过hash函数映射到某一位&lt;/p&gt;
+&lt;p&gt;冲突可能较高，将2个url映射到同一个位置。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a href=&#34;https://zh.wikipedia.org/wiki/%E5%B8%83%E9%9A%86%E8%BF%87%E6%BB%A4%E5%99%A8&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;bloomfilter&lt;/a&gt;
+是对bitmap的改进，本质上是多重hash函数降低哈希冲突。原理上，布隆过滤器通过&lt;strong&gt;很长&lt;/strong&gt;的二进制向量和映射函数检索一个元素是否在一个集合中。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;key-value数据库&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h4 id=&#34;字符串编码&#34;&gt;字符串编码&lt;/h4&gt;
+&lt;p&gt;写文件、网络传输时常出现字符串编码相关的错误。采用sys.getdefaultencoding()可得环境默认字符串编码。Window Python3默认utf8，Python2默认ascii。Linux环境下又有所不同。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;ASCII
+美国标准编码，一个字节表示所有英文字符。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;GB2312
+两个字节表示一个汉字。Window环境下python默认gb2312编码。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a href=&#34;https://zh.wikipedia.org/zh-hans/Unicode&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Unicode&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;将所有语言统一到一套编码，16 bit或32 bit囊括所有字符。如果内容全是英文时，unicode便会比ASCII需要多一倍+的存储空间，传输也需要更多时间。内存中读取文件采用unicode会较简单。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;utf-8&lt;/p&gt;
+&lt;p&gt;可变长的编码。把英文表示为一个字节。汉字3个字节。特别生僻的汉字以4-6个字节表示，传输大量英文。文件保存/网络传输时采用utf8更有效率。&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&#34;网络文件下载&#34;&gt;网络文件下载&lt;/h4&gt;
+&lt;p&gt;urllib.request模块下的urlretrieve函数可用于下载远程服务器中的资源。
+&lt;code&gt;urlretrieve(url, filename=None, reporthook=None, data=None)&lt;/code&gt;&lt;/p&gt;
+&lt;h3 id=&#34;scrapy&#34;&gt;scrapy&lt;/h3&gt;
+&lt;p&gt;github地址：https://github.com/scrapy/scrapy&lt;/p&gt;
+&lt;h4 id=&#34;安装&#34;&gt;安装&lt;/h4&gt;
+&lt;p&gt;可直接使用pip进行安装：&lt;code&gt;pip install -i https://pypi.douban.com/simple&lt;/code&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure  &gt;
+  &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img src=&#34;https://i.imgur.com/Z6MmxHK.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+  &lt;/div&gt;&lt;/figure&gt;
+&lt;/p&gt;
+&lt;h4 id=&#34;开启征程&#34;&gt;开启征程&lt;/h4&gt;
+&lt;p&gt;startproject即可建立scrapy项目，可选择模板、自定义模板
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure  &gt;
+  &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img src=&#34;https://i.imgur.com/QuIXkDg.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+  &lt;/div&gt;&lt;/figure&gt;
+
+查看现有模板方式:&lt;code&gt;scrapy genspider --list&lt;/code&gt;
+建立爬虫子任务命令：&lt;code&gt;scrapy genspider SUB_TASK&lt;/code&gt;
+指定模板创建爬虫任务：&lt;code&gt;scrapy genspider -t TEMPLATE_NAME TASK_NAME DOMAIN&lt;/code&gt;,如
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure  &gt;
+  &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img src=&#34;https://i.imgur.com/Byi0KYM.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+  &lt;/div&gt;&lt;/figure&gt;
+&lt;/p&gt;
+&lt;h4 id=&#34;spider调试&#34;&gt;Spider调试&lt;/h4&gt;
+&lt;ul&gt;
+&lt;li&gt;pycharm debug&lt;/li&gt;
+&lt;li&gt;scrapy shell
+示例：&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;code&gt;scrapy shell -s USER_AGENT=&amp;quot;Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/72.0.3626.109 Safari/537.36&amp;quot; https://www.lagou.com/jobs/5602462.html&lt;/code&gt;&lt;/p&gt;
+&lt;h4 id=&#34;xpath选择器&#34;&gt;xpath选择器&lt;/h4&gt;
+&lt;p&gt;&lt;a href=&#34;https://www.w3.org/TR/1999/REC-xpath-19991116/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;官网&lt;/a&gt;, &lt;a href=&#34;http://www.w3school.com.cn/xpath/xpath_syntax.ASP&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;w3cschool&lt;/a&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;特点&amp;amp;&amp;amp;用途&lt;/p&gt;
+&lt;p&gt;可使用路径表达式在xml和html中进行导航；包含标准函数库；w3c标准&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;术语&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;术语&lt;/th&gt;
+&lt;th&gt;说明&lt;/th&gt;
+&lt;th&gt;备注&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;父节点&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;子节点&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;同胞节点&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;先辈节点&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;后代节点&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;ul&gt;
+&lt;li&gt;语法&lt;/li&gt;
+&lt;/ul&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;表达式&lt;/th&gt;
+&lt;th&gt;说明&lt;/th&gt;
+&lt;th&gt;备注&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;article&lt;/td&gt;
+&lt;td&gt;选取所有article元素的所有子节点&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;/article&lt;/td&gt;
+&lt;td&gt;选取根元素article&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;article/a&lt;/td&gt;
+&lt;td&gt;选取所有属于article的子元素的a节点&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;//div&lt;/td&gt;
+&lt;td&gt;选取文档中所有div元素&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;article//div&lt;/td&gt;
+&lt;td&gt;article下所有div元素&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;//@class&lt;/td&gt;
+&lt;td&gt;选取所有名为class的属性&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;/article/div[1]&lt;/td&gt;
+&lt;td&gt;属于article子元素的第一个div&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;/article/div[last()]&lt;/td&gt;
+&lt;td&gt;属于article子元素的最后一个div&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;/article/div[last()-1]&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;//div[@lang]&lt;/td&gt;
+&lt;td&gt;选择所有拥有lang属性的div元素&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;//div[@lang=&amp;lsquo;eng&amp;rsquo;]&lt;/td&gt;
+&lt;td&gt;选择所有lang属性为eng的div元素&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;/div/*&lt;/td&gt;
+&lt;td&gt;选取所有属于div元素的所有子节点&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;//*&lt;/td&gt;
+&lt;td&gt;选取所有元素&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;//div[@*]&lt;/td&gt;
+&lt;td&gt;选取所有带属性的div元素&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;/div/a|//div/p&lt;/td&gt;
+&lt;td&gt;选取所有div元素的a和p元素&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;//span|//ul&lt;/td&gt;
+&lt;td&gt;选取文档中的span和ul元素&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;article/div/p|//span&lt;/td&gt;
+&lt;td&gt;选取所有属于article元素的div元素的p元素和所有span元素&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;常用函数&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;text()&lt;/li&gt;
+&lt;li&gt;extract()&lt;/li&gt;
+&lt;li&gt;extract_first()&lt;/li&gt;
+&lt;li&gt;contains()&lt;/li&gt;
+&lt;li&gt;strip()&lt;/li&gt;
+&lt;li&gt;replace()&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;注意
+选取xpath路径时，注意警惕ajax动态生成的标签，推荐使用chrome或firefox中copy xpath功能&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&#34;css选择器&#34;&gt;css选择器&lt;/h4&gt;
+&lt;p&gt;&lt;a href=&#34;http://www.w3school.com.cn/cssref/css_selectors.ASP&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;http://www.w3school.com.cn/cssref/css_selectors.ASP&lt;/a&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;语法&lt;/li&gt;
+&lt;/ul&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;表达式&lt;/th&gt;
+&lt;th&gt;说明&lt;/th&gt;
+&lt;th&gt;备注&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;.classname&lt;/td&gt;
+&lt;td&gt;选取class为classname的元素&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;#idname&lt;/td&gt;
+&lt;td&gt;选取id=idname的元素&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;div p&lt;/td&gt;
+&lt;td&gt;选取div元素下的所有p子元素&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;div+p&lt;/td&gt;
+&lt;td&gt;选取紧跟在div后的p&lt;/td&gt;
+&lt;td&gt;p和div是兄弟节点&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;div&amp;gt;p&lt;/td&gt;
+&lt;td&gt;选取div下第一个子元素p&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;div,p&lt;/td&gt;
+&lt;td&gt;选取所有名为class的属性&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;div#container&amp;gt;ul&lt;/td&gt;
+&lt;td&gt;选择id=container的div元素后的第一个ul元素&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;ul~p&lt;/td&gt;
+&lt;td&gt;选择与ul相邻的所有p元素&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;a[title]&lt;/td&gt;
+&lt;td&gt;选择所有有title属性的a元素&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;a[href=&amp;ldquo;http://www.baidu.com&amp;rdquo;]&lt;/td&gt;
+&lt;td&gt;选择href属性为http://www.baidu.com的a元素&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;a[href*=&amp;ldquo;baidu&amp;rdquo;]&lt;/td&gt;
+&lt;td&gt;选择href属性中包含baidu的a元素&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;a[href^=&amp;ldquo;baidu&amp;rdquo;]&lt;/td&gt;
+&lt;td&gt;选择href属性中以baidu开头的a元素&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;a[href$=&amp;ldquo;baidu&amp;rdquo;]&lt;/td&gt;
+&lt;td&gt;选择href属性中以baidu结尾的a元素&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;input[type=radio]:checked&lt;/td&gt;
+&lt;td&gt;选择所有处于选中状态的radio&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;div:not(#container)&lt;/td&gt;
+&lt;td&gt;选取所有id非container的div元素&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;li:nth-child(3)&lt;/td&gt;
+&lt;td&gt;选取第三个li元素&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;tr:nth-child(2n)&lt;/td&gt;
+&lt;td&gt;第偶数个tr&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;h4 id=&#34;session和cookie自动登录机制&#34;&gt;session和cookie自动登录机制&lt;/h4&gt;
+&lt;p&gt;理解模拟登陆和网站交互的基础。
+cookie中包含着标识用户的信息，但还存在隐患，session用于解决此隐患：对用户信息（账号密码等）作一定处理生成session_data存放在服务端，而后返回给客户端一个可用于检索session_data的session_key作为cookie，并设置session过期时间。
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure  &gt;
+  &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img src=&#34;https://i.imgur.com/CzvZvBW.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+  &lt;/div&gt;&lt;/figure&gt;
+&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;cookielib&lt;/li&gt;
+&lt;li&gt;cookJar&lt;/li&gt;
+&lt;li&gt;session&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&#34;http状态码&#34;&gt;HTTP状态码&lt;/h4&gt;
+&lt;p&gt;SEO优化需要了解，以免误导搜索引擎&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;200
+请求被成功处理&lt;/li&gt;
+&lt;li&gt;301/302
+永久性重定向/临时性重定向&lt;/li&gt;
+&lt;li&gt;403
+没有权限访问&lt;/li&gt;
+&lt;li&gt;404
+表示没有对应的资源。如遇到404页面，爬虫应不对其进行爬取&lt;/li&gt;
+&lt;li&gt;500
+服务器错误&lt;/li&gt;
+&lt;li&gt;503
+服务器停机或正在维护&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&#34;selenium模拟&#34;&gt;selenium模拟&lt;/h4&gt;
+&lt;h4 id=&#34;cmder&#34;&gt;cmder&lt;/h4&gt;
+&lt;p&gt;在windows下可使用部分linux命令
+&lt;a href=&#34;https://cmder.net/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;https://cmder.net/&lt;/a&gt;&lt;/p&gt;
+&lt;h3 id=&#34;实战1爬取伯乐在线所有技术文章&#34;&gt;实战1——爬取伯乐在线所有技术文章&lt;/h3&gt;
+&lt;h4 id=&#34;需求分析&#34;&gt;需求分析&lt;/h4&gt;
+&lt;p&gt;爬取所有技术文章的标题、正文、点赞数、评论数、发表时间、标签&lt;/p&gt;
+&lt;h4 id=&#34;爬取一篇文章的所需内容&#34;&gt;爬取一篇文章的所需内容&lt;/h4&gt;
+&lt;h4 id=&#34;实现翻页&#34;&gt;实现翻页&lt;/h4&gt;
+&lt;p&gt;寻找“下一页”的url&lt;/p&gt;
+&lt;h4 id=&#34;items设计&#34;&gt;items设计&lt;/h4&gt;
+&lt;p&gt;item即所要爬取的数据项，相当于数据需求&lt;/p&gt;
+&lt;h4 id=&#34;通过pipeline保存数据到mysql&#34;&gt;通过pipeline保存数据到mysql&lt;/h4&gt;
+&lt;p&gt;pipeline拦截item，将拦截下的item保存到mysql即可&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;python库
+&lt;ul&gt;
+&lt;li&gt;codecs
+与普通方式的区别在于文件编码&lt;/li&gt;
+&lt;li&gt;ItemExporter
+scrapy自带的item exporter，源码位于scrapy.exporters中，有各种类型的exporter
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure  &gt;
+  &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img src=&#34;https://i.imgur.com/TCn2X8q.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+  &lt;/div&gt;&lt;/figure&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;数据库设计
+数据库表与item中内容一一对应&lt;/li&gt;
+&lt;li&gt;数据保存的mysql中
+需要驱动如mysqlclient，如在ubuntu下还需要&lt;code&gt;sudo apt-get install libmysqlclient-dev&lt;/code&gt;,centos下需要&lt;code&gt;sudo yum install python-devel mysql-devel&lt;/code&gt;，否则可能安装失败。&lt;/li&gt;
+&lt;li&gt;异步操作——MySQL连接池
+上一步中插入mysql的方法有较大局限，scrapy解析速度大于数据库插入速度，所以可能会产生阻塞，采用twisted框架可较方便地实现MySQL插入异步化&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&#34;scrapi-item-loader机制&#34;&gt;scrapi item loader机制&lt;/h4&gt;
+&lt;p&gt;提供一个容器方便模块化，方便后期维护item&lt;/p&gt;
+&lt;h4 id=&#34;常见错误&#34;&gt;常见错误&lt;/h4&gt;
+&lt;ul&gt;
+&lt;li&gt;ValueError：Missing scheme in request url：h&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr&gt;
+&lt;h3 id=&#34;实战2拉勾网职位信息爬取&#34;&gt;实战2——拉勾网职位信息爬取&lt;/h3&gt;
+&lt;h4 id=&#34;crawlspider剖析&#34;&gt;Crawlspider剖析&lt;/h4&gt;
+&lt;p&gt;&lt;a href=&#34;https://docs.scrapy.org/en/latest/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;https://docs.scrapy.org/en/latest/&lt;/a&gt;&lt;/p&gt;
+&lt;h4 id=&#34;需求分析及策略&#34;&gt;需求分析及策略&lt;/h4&gt;
+&lt;p&gt;以 &lt;a href=&#34;https://www.lagou.com/jobs/5602462.html&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;https://www.lagou.com/jobs/5602462.html&lt;/a&gt; 为例，需要公司名称、招聘职位、薪资、工作城市、学历要求、工作经验要求、工作类型、职位诱惑、职位描述等数据&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;公司名称
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure  &gt;
+  &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img src=&#34;https://i.imgur.com/coeboer.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+  &lt;/div&gt;&lt;/figure&gt;
+
+公司名称写在一个logo的alt属性内
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure  &gt;
+  &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img src=&#34;https://i.imgur.com/mB9Zs1t.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+  &lt;/div&gt;&lt;/figure&gt;
+&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;招聘职位
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure  &gt;
+  &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img src=&#34;https://i.imgur.com/DPoH765.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+  &lt;/div&gt;&lt;/figure&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure  &gt;
+  &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img src=&#34;https://i.imgur.com/ibK2GBo.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+  &lt;/div&gt;&lt;/figure&gt;
+&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;工作要求
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure  &gt;
+  &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img src=&#34;https://i.imgur.com/Eu0q6DR.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+  &lt;/div&gt;&lt;/figure&gt;
+
+可见薪资范围、工作城市、学历要求、工作经验要求、工作类型等都在此可获得，在scrapy shell中测试如下：
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure  &gt;
+  &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img src=&#34;https://i.imgur.com/00TqQIt.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+  &lt;/div&gt;&lt;/figure&gt;
+&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;职位信息发布时间
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure  &gt;
+  &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img src=&#34;https://i.imgur.com/Lwqfhug.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+  &lt;/div&gt;&lt;/figure&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure  &gt;
+  &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img src=&#34;https://i.imgur.com/9XsRrLN.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+  &lt;/div&gt;&lt;/figure&gt;
+&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;标签
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure  &gt;
+  &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img src=&#34;https://i.imgur.com/e36K1ga.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+  &lt;/div&gt;&lt;/figure&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure  &gt;
+  &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img src=&#34;https://i.imgur.com/HTIyFoo.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+  &lt;/div&gt;&lt;/figure&gt;
+&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;职位诱惑
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure  &gt;
+  &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img src=&#34;https://i.imgur.com/Q2H92zT.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+  &lt;/div&gt;&lt;/figure&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure  &gt;
+  &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img src=&#34;https://i.imgur.com/evbDbos.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+  &lt;/div&gt;&lt;/figure&gt;
+&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;职位描述
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure  &gt;
+  &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img src=&#34;https://i.imgur.com/TmoQXvq.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+  &lt;/div&gt;&lt;/figure&gt;
+&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;工作地址
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure  &gt;
+  &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img src=&#34;https://i.imgur.com/tnBTu2n.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+  &lt;/div&gt;&lt;/figure&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure  &gt;
+  &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img src=&#34;https://i.imgur.com/qOc1Ico.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+  &lt;/div&gt;&lt;/figure&gt;
+&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&#34;item-loader及数据入库&#34;&gt;Item Loader及数据入库&lt;/h4&gt;
+&lt;p&gt;拉勾网目前会根据user-agent判断是否为爬虫，在chrome浏览器输入about:version可获得User-Agent信息。下面这个网站也可直接返回当前user-agent： &lt;a href=&#34;https://helloacm.com/api/user-agent/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;https://helloacm.com/api/user-agent/&lt;/a&gt;&lt;/p&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

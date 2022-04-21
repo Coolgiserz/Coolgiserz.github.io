@@ -1,0 +1,2276 @@
+<!DOCTYPE html><html lang="en-us" >
+
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  
+  
+  
+    <meta name="generator" content="Wowchemy 5.5.0 for Hugo" />
+  
+
+  
+  
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+  
+  
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  
+
+  
+  
+  
+    
+      
+      <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Roboto+Mono&family=Roboto:wght@400;700&display=swap">
+      <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Roboto+Mono&family=Roboto:wght@400;700&display=swap" media="print" onload="this.media='all'">
+    
+  
+
+  
+  
+  
+  
+  
+    
+    
+    
+  
+  
+
+  <meta name="author" content="CoolCats" />
+
+  
+  
+  
+    
+  
+  <meta name="description" content="如何用scrapy编写分布式爬虫？" />
+
+  
+  <link rel="alternate" hreflang="en-us" href="/post/scrapy-for-distributed-spider-summary/" />
+
+  
+  
+  
+    <meta name="theme-color" content="#1565c0" />
+  
+
+  
+  
+    
+    <script src="/js/mathjax-config.js"></script>
+  
+
+  
+
+  <link rel="stylesheet" href="/css/vendor-bundle.min.c7b8d9abd591ba2253ea42747e3ac3f5.css" media="print" onload="this.media='all'">
+
+  
+  
+  
+    
+    
+      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/academicons@1.9.1/css/academicons.min.css" integrity="sha512-W0xM4mr6dEP9nREo7Z9z+9X70wytKvMGeDsj7ps2+xg5QPrEBXC8tAW1IFnzjR6eoJ90JmCnFzerQJTLzIEHjA==" crossorigin="anonymous" media="print" onload="this.media='all'">
+    
+
+    
+    
+    
+    
+      
+      
+    
+    
+    
+
+    
+    
+    
+      
+    
+    
+      
+      
+        
+          <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@10.2.1/build/styles/github.min.css" crossorigin="anonymous" title="hl-light" media="print" onload="this.media='all'">
+          <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@10.2.1/build/styles/dracula.min.css" crossorigin="anonymous" title="hl-dark" media="print" onload="this.media='all'" disabled>
+        
+      
+    
+
+    
+    
+    
+      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.7.1/dist/leaflet.min.css" integrity="" crossorigin="anonymous" media="print" onload="this.media='all'">
+    
+
+    
+
+    
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js" integrity="" crossorigin="anonymous" async></script>
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+  
+
+  
+  
+  
+  
+  
+  <link rel="stylesheet" href="/css/wowchemy.8722fd0f5cb8e5cb38d3b73367786cc1.css" />
+
+  
+
+
+
+  
+
+
+  
+
+
+  
+
+
+
+
+  
+  
+  
+
+  
+
+  
+    <link rel="manifest" href="/manifest.webmanifest" />
+  
+
+  <link rel="icon" type="image/png" href="/media/icon_hue03491371183284312b8b116a73ae5ab_79511_32x32_fill_lanczos_center_3.png" />
+  <link rel="apple-touch-icon" type="image/png" href="/media/icon_hue03491371183284312b8b116a73ae5ab_79511_180x180_fill_lanczos_center_3.png" />
+
+  <link rel="canonical" href="/post/scrapy-for-distributed-spider-summary/" />
+
+  
+  
+  
+  
+  
+  
+  
+  
+    
+    
+  
+  
+
+  
+  
+    
+    
+  
+  <meta property="twitter:card" content="summary" />
+  
+    <meta property="twitter:site" content="@wowchemy" />
+    <meta property="twitter:creator" content="@wowchemy" />
+  
+  <meta property="og:site_name" content="CoolCats" />
+  <meta property="og:url" content="/post/scrapy-for-distributed-spider-summary/" />
+  <meta property="og:title" content="爬虫框架Scrapy基本使用笔记 | CoolCats" />
+  <meta property="og:description" content="如何用scrapy编写分布式爬虫？" /><meta property="og:image" content="/media/icon_hue03491371183284312b8b116a73ae5ab_79511_512x512_fill_lanczos_center_3.png" />
+    <meta property="twitter:image" content="/media/icon_hue03491371183284312b8b116a73ae5ab_79511_512x512_fill_lanczos_center_3.png" /><meta property="og:locale" content="en-us" />
+  
+    
+      <meta
+        property="article:published_time"
+        content="2019-02-11T09:04:07&#43;08:00"
+      />
+    
+    <meta property="article:modified_time" content="2019-02-11T09:04:07&#43;08:00">
+  
+
+  
+
+
+    
+
+
+
+
+
+
+  
+
+
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "/post/scrapy-for-distributed-spider-summary/"
+  },
+  "headline": "爬虫框架Scrapy基本使用笔记",
+  
+  "datePublished": "2019-02-11T09:04:07+08:00",
+  "dateModified": "2019-02-11T09:04:07+08:00",
+  
+  "author": {
+    "@type": "Person",
+    "name": "CoolCats"
+  },
+  
+  "publisher": {
+    "@type": "Organization",
+    "name": "CoolCats",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "/media/icon_hue03491371183284312b8b116a73ae5ab_79511_192x192_fill_lanczos_center_3.png"
+    }
+  },
+  "description": "如何用scrapy编写分布式爬虫？"
+}
+</script>
+
+  
+
+  
+
+  
+
+  
+
+
+
+
+
+  <title>爬虫框架Scrapy基本使用笔记 | CoolCats</title>
+</head>
+
+
+<body id="top" data-spy="scroll" data-offset="70" data-target="#TableOfContents" class="page-wrapper   " data-wc-page-id="2492a1a8542cebd53067a0b04142b9fb" >
+
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  <script src="/js/wowchemy-init.min.2ed908358299dd7ab553faae685c746c.js"></script>
+
+  
+
+
+<aside class="search-modal" id="search">
+  <div class="container">
+    <section class="search-header">
+
+      <div class="row no-gutters justify-content-between mb-3">
+        <div class="col-6">
+          <h1>Search</h1>
+        </div>
+        <div class="col-6 col-search-close">
+          <a class="js-search" href="#" aria-label="Close"><i class="fas fa-times-circle text-muted" aria-hidden="true"></i></a>
+        </div>
+      </div>
+
+      <div id="search-box">
+        
+        <input name="q" id="search-query" placeholder="Search..." autocapitalize="off"
+        autocomplete="off" autocorrect="off" spellcheck="false" type="search" class="form-control"
+        aria-label="Search...">
+        
+      </div>
+
+      
+      
+
+      
+
+    </section>
+    <section class="section-search-results">
+
+      <div id="search-hits">
+        
+      </div>
+
+    </section>
+  </div>
+</aside>
+
+
+
+  <div class="page-header">
+    
+
+
+
+
+
+
+
+
+
+
+
+
+<header class="header--fixed">
+  <nav class="navbar navbar-expand-lg navbar-light compensate-for-scrollbar" id="navbar-main">
+    <div class="container-xl">
+
+      
+      <div class="d-none d-lg-inline-flex">
+        <a class="navbar-brand" href="/">CoolCats</a>
+      </div>
+      
+
+      
+      <button type="button" class="navbar-toggler" data-toggle="collapse"
+              data-target="#navbar-content" aria-controls="navbar-content" aria-expanded="false" aria-label="Toggle navigation">
+      <span><i class="fas fa-bars"></i></span>
+      </button>
+      
+
+      
+      <div class="navbar-brand-mobile-wrapper d-inline-flex d-lg-none">
+        <a class="navbar-brand" href="/">CoolCats</a>
+      </div>
+      
+
+      
+      
+      <div class="navbar-collapse main-menu-item collapse justify-content-start" id="navbar-content">
+
+        
+        <ul class="navbar-nav d-md-inline-flex">
+          
+
+          
+
+          
+          
+          
+
+          
+
+          
+          
+          
+          
+
+          
+            
+              
+              
+            
+            
+          
+
+          <li class="nav-item">
+            <a class="nav-link  active" href="/post"><span>博客</span></a>
+          </li>
+
+          
+          
+
+          
+
+          
+          
+          
+            
+          
+
+          
+
+          
+          
+          
+          
+
+          
+            
+              
+              
+            
+            
+          
+
+          <li class="nav-item">
+            <a class="nav-link " href="/event"><span>趣事</span></a>
+          </li>
+
+          
+          
+
+          
+
+          
+          
+          
+            
+          
+
+          
+
+          
+          
+          
+          
+
+          
+            
+              
+              
+            
+            
+          
+
+          <li class="nav-item">
+            <a class="nav-link " href="/project"><span>项目</span></a>
+          </li>
+
+          
+          
+
+          
+
+          
+          
+          
+            
+          
+
+          
+
+          
+          
+          
+          
+
+          
+            
+              
+              
+            
+            
+          
+
+          <li class="nav-item">
+            <a class="nav-link " href="/publication"><span>论文</span></a>
+          </li>
+
+          
+          
+
+          
+
+          
+          
+          
+            
+          
+
+          
+
+          
+          
+          
+          
+
+          
+            
+              
+              
+            
+            
+          
+
+          <li class="nav-item">
+            <a class="nav-link " href="/contact"><span>联系</span></a>
+          </li>
+
+          
+          
+
+          
+
+          
+          
+          
+            
+          
+
+          
+
+          
+          
+          
+          
+
+          
+            
+              
+              
+            
+            
+          
+
+          <li class="nav-item">
+            <a class="nav-link " href="/media/files/cv"><span>简历</span></a>
+          </li>
+
+          
+          
+
+        
+
+          
+        </ul>
+      </div>
+
+      <ul class="nav-icons navbar-nav flex-row ml-auto d-flex pl-md-2">
+
+        
+        
+          
+        
+
+        
+        
+        <li class="nav-item">
+          <a class="nav-link js-search" href="#" aria-label="Search"><i class="fas fa-search" aria-hidden="true"></i></a>
+        </li>
+        
+
+        
+        
+        
+        <li class="nav-item dropdown theme-dropdown">
+          <a href="#" class="nav-link" data-toggle="dropdown" aria-haspopup="true" aria-label="Display preferences">
+            <i class="fas fa-moon" aria-hidden="true"></i>
+          </a>
+          <div class="dropdown-menu">
+            <a href="#" class="dropdown-item js-set-theme-light">
+              <span>Light</span>
+            </a>
+            <a href="#" class="dropdown-item js-set-theme-dark">
+              <span>Dark</span>
+            </a>
+            <a href="#" class="dropdown-item js-set-theme-auto">
+              <span>Automatic</span>
+            </a>
+          </div>
+        </li>
+        
+
+        
+        
+
+      </ul>
+
+    </div>
+  </nav>
+</header>
+
+
+  </div>
+
+  <div class="page-body">
+    
+    
+    
+
+    <article class="article">
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+  
+  
+<div class="article-container pt-3">
+  <h1>爬虫框架Scrapy基本使用笔记</h1>
+
+  
+
+  
+    
+
+
+<div class="article-metadata">
+
+  
+  
+
+  
+  <span class="article-date">
+    
+    
+      
+    
+    Feb 11, 2019
+  </span>
+  
+
+  
+
+  
+  <span class="middot-divider"></span>
+  <span class="article-reading-time">
+    2 min read
+  </span>
+  
+
+  
+  
+  
+  
+
+  
+  
+  <span class="middot-divider"></span>
+  <span class="article-categories">
+    <i class="fas fa-folder mr-1"></i><a href="/category/%E7%88%AC%E8%99%AB/">爬虫</a></span>
+  
+
+</div>
+
+    
+
+
+
+
+
+  
+</div>
+
+
+
+  <div class="article-container">
+
+    <div class="article-style">
+      <h2 id="前期准备">前期准备</h2>
+<p><a href="https://scrapy.org/" target="_blank" rel="noopener">官网</a></p>
+<h3 id="开发环境">开发环境</h3>
+<ul>
+<li>
+<p>Pycharm</p>
+<ul>
+<li>
+<p>virtualenv</p>
+<p>创建python虚拟环境(<a href="https://pypi.doubanio.com/simple" target="_blank" rel="noopener">豆瓣源</a>)</p>
+<p>创建虚拟环境：<code>virtualenv -p PYTHON_PATH VITUAL_PAT</code>;
+激活虚拟环境：<code>activate.bat</code>;
+退出虚拟环境：<code>deactivate.bat</code></p>
+</li>
+<li>
+<p><a href="https://virtualenvwrapper.readthedocs.io/en/latest/" target="_blank" rel="noopener">virtualenvwrapper</a></p>
+<p>管理虚拟环境的工具,windows系统下安装命令为</p>
+<p><code>pip install virtualenvwrapper-win</code></p>
+<p>添加虚拟环境：</p>
+<p><code>mkvirtualenv -p PYTHON.EXE WORK_PATH</code></p>
+<p>管理虚拟环境：</p>
+<p><code>workon</code></p>
+<p>退出虚拟环境：</p>
+<p><code>deactivate</code></p>
+</li>
+</ul>
+</li>
+<li>
+<p>MySQL</p>
+</li>
+<li>
+<p><a href="https://www.navicat.com/en/products/navicat-for-mysql" target="_blank" rel="noopener">Navicat</a></p>
+</li>
+<li>
+<p><a href="https://www.lfd.uci.edu/~gohlke/pythonlibs/#twisted" target="_blank" rel="noopener">Twisted</a></p>
+<p>选择相应的版本，另行安装，否则安装scrapy可能出错，如“Failed building wheel for Twisted”</p>
+</li>
+<li>
+<p>pypiwin32</p>
+<p>windows环境下需要</p>
+</li>
+<li>
+<p>pillow</p>
+<p>使用pipeline读写图片文件需要。安装命令：</p>
+<p><code>pip -i https://pypi.douban.com/simple pillow</code></p>
+</li>
+</ul>
+<h3 id="基础知识">基础知识</h3>
+<h4 id="技术选型">技术选型</h4>
+<ul>
+<li>scrapy vs requests+beautifulsoup</li>
+</ul>
+<p>scrapy框架基于<a href="https://twistedmatrix.com/trac/" target="_blank" rel="noopener">twisted</a>（异步IO特点），性能较高，scrapy内置的css、xpath selector，本身的功能足以完成beautifulsoup所有功能（bs4是纯python写出来的，scrapy相关功能是由C写的）</p>
+<h4 id="常见网页分类">常见网页分类？</h4>
+<ul>
+<li>静态网页</li>
+<li>动态网页</li>
+<li>webservice（restapi）</li>
+</ul>
+<h4 id="爬虫用武之地">爬虫用武之地？</h4>
+<ul>
+<li>百度/谷歌类搜索引擎</li>
+<li>垂直领域搜索引擎</li>
+<li>推荐引擎:
+今日头条</li>
+<li>机器学习的数据样本</li>
+<li>数据分析:
+金融数据分析、舆情分析</li>
+</ul>
+<h4 id="正则表达式httpszhwikipediaorgwikie6ada3e58899e8a1a8e8bebee5bc8f"><a href="https://zh.wikipedia.org/wiki/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F" target="_blank" rel="noopener">正则表达式</a></h4>
+<ul>
+<li>特殊字符</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>字符</th>
+<th>意义</th>
+<th>备注</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>^</td>
+<td>起始字符</td>
+<td></td>
+</tr>
+<tr>
+<td>.</td>
+<td>任意字符</td>
+<td></td>
+</tr>
+<tr>
+<td>*</td>
+<td>出现多次</td>
+<td></td>
+</tr>
+<tr>
+<td>$</td>
+<td>结尾字符</td>
+<td></td>
+</tr>
+<tr>
+<td>+</td>
+<td>出现至少一次</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>非贪婪匹配</td>
+<td></td>
+</tr>
+<tr>
+<td>{10}</td>
+<td>限定其前一字符出现频率为10</td>
+<td></td>
+</tr>
+<tr>
+<td>{10,}</td>
+<td>限定其前一字符出现频率为10次以上</td>
+<td></td>
+</tr>
+<tr>
+<td>{10,20}</td>
+<td>限定其前一字符出现频率为10到20次</td>
+<td></td>
+</tr>
+<tr>
+<td>pattern1|pattern2</td>
+<td>匹配pattern1或pattern2，优先匹配前者</td>
+<td></td>
+</tr>
+<tr>
+<td>[2134]</td>
+<td>其中字符任选其一</td>
+<td></td>
+</tr>
+<tr>
+<td>[0-9]</td>
+<td>区间</td>
+<td></td>
+</tr>
+<tr>
+<td>[.*]</td>
+<td>中括号中的*和.只是单纯的字符</td>
+<td></td>
+</tr>
+<tr>
+<td>\s</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>\S</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>\w</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>\W</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>\d</td>
+<td>数字</td>
+<td></td>
+</tr>
+<tr>
+<td>[\u4E00-\u9FA5]</td>
+<td>汉字unicode编码</td>
+<td></td>
+</tr>
+<tr>
+<td>&hellip;</td>
+<td>&hellip;</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>python api
+python有内置模块<a href="https://docs.python.org/3/library/re.html" target="_blank" rel="noopener">re</a>用于正则表达式。</li>
+</ul>
+<h4 id="深度优先广度优先">深度优先&amp;&amp;广度优先</h4>
+<ul>
+<li>
+<p>网站的树结构
+网站URl设计是分层的，绘制出URL层次结构图就得到了一棵“树”（一级域名、二级域名、&hellip;），针对“树”结构，常用策略就是深度优先和广度优先。<strong>但要注意URL环路</strong></p>
+</li>
+<li>
+<p>深度优先</p>
+</li>
+</ul>
+<p>递归</p>
+<ul>
+<li>广度优先</li>
+</ul>
+<p>利用队列</p>
+<h4 id="url去重策略">URL去重策略</h4>
+<ol>
+<li>
+<p>将访问过的url保存到数据库中</p>
+<p>效率较低</p>
+</li>
+<li>
+<p>将访问过的url保存到set中，以o(1)的代价查询url
+但爬虫通常涉及海量URL，URL长度也不定，用集合存储占用内存比较大</p>
+</li>
+<li>
+<p>url经过md5等哈希方法后保存到set中</p>
+<p>md5将任意长度的url映射到固定长度且不重复的字符串，但仍然占用内存较大</p>
+</li>
+<li>
+<p>用bitmap方法，将访问过的url通过hash函数映射到某一位</p>
+<p>冲突可能较高，将2个url映射到同一个位置。</p>
+</li>
+<li>
+<p><a href="https://zh.wikipedia.org/wiki/%E5%B8%83%E9%9A%86%E8%BF%87%E6%BB%A4%E5%99%A8" target="_blank" rel="noopener">bloomfilter</a>
+是对bitmap的改进，本质上是多重hash函数降低哈希冲突。原理上，布隆过滤器通过<strong>很长</strong>的二进制向量和映射函数检索一个元素是否在一个集合中。</p>
+</li>
+<li>
+<p>key-value数据库</p>
+</li>
+</ol>
+<h4 id="字符串编码">字符串编码</h4>
+<p>写文件、网络传输时常出现字符串编码相关的错误。采用sys.getdefaultencoding()可得环境默认字符串编码。Window Python3默认utf8，Python2默认ascii。Linux环境下又有所不同。</p>
+<ul>
+<li>
+<p>ASCII
+美国标准编码，一个字节表示所有英文字符。</p>
+</li>
+<li>
+<p>GB2312
+两个字节表示一个汉字。Window环境下python默认gb2312编码。</p>
+</li>
+<li>
+<p><a href="https://zh.wikipedia.org/zh-hans/Unicode" target="_blank" rel="noopener">Unicode</a></p>
+<p>将所有语言统一到一套编码，16 bit或32 bit囊括所有字符。如果内容全是英文时，unicode便会比ASCII需要多一倍+的存储空间，传输也需要更多时间。内存中读取文件采用unicode会较简单。</p>
+</li>
+<li>
+<p>utf-8</p>
+<p>可变长的编码。把英文表示为一个字节。汉字3个字节。特别生僻的汉字以4-6个字节表示，传输大量英文。文件保存/网络传输时采用utf8更有效率。</p>
+</li>
+</ul>
+<h4 id="网络文件下载">网络文件下载</h4>
+<p>urllib.request模块下的urlretrieve函数可用于下载远程服务器中的资源。
+<code>urlretrieve(url, filename=None, reporthook=None, data=None)</code></p>
+<h3 id="scrapy">scrapy</h3>
+<p>github地址：https://github.com/scrapy/scrapy</p>
+<h4 id="安装">安装</h4>
+<p>可直接使用pip进行安装：<code>pip install -i https://pypi.douban.com/simple</code>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<figure  >
+  <div class="d-flex justify-content-center">
+    <div class="w-100" ><img src="https://i.imgur.com/Z6MmxHK.png" alt="" loading="lazy" data-zoomable /></div>
+  </div></figure>
+</p>
+<h4 id="开启征程">开启征程</h4>
+<p>startproject即可建立scrapy项目，可选择模板、自定义模板
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<figure  >
+  <div class="d-flex justify-content-center">
+    <div class="w-100" ><img src="https://i.imgur.com/QuIXkDg.png" alt="" loading="lazy" data-zoomable /></div>
+  </div></figure>
+
+查看现有模板方式:<code>scrapy genspider --list</code>
+建立爬虫子任务命令：<code>scrapy genspider SUB_TASK</code>
+指定模板创建爬虫任务：<code>scrapy genspider -t TEMPLATE_NAME TASK_NAME DOMAIN</code>,如
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<figure  >
+  <div class="d-flex justify-content-center">
+    <div class="w-100" ><img src="https://i.imgur.com/Byi0KYM.png" alt="" loading="lazy" data-zoomable /></div>
+  </div></figure>
+</p>
+<h4 id="spider调试">Spider调试</h4>
+<ul>
+<li>pycharm debug</li>
+<li>scrapy shell
+示例：</li>
+</ul>
+<p><code>scrapy shell -s USER_AGENT=&quot;Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/72.0.3626.109 Safari/537.36&quot; https://www.lagou.com/jobs/5602462.html</code></p>
+<h4 id="xpath选择器">xpath选择器</h4>
+<p><a href="https://www.w3.org/TR/1999/REC-xpath-19991116/" target="_blank" rel="noopener">官网</a>, <a href="http://www.w3school.com.cn/xpath/xpath_syntax.ASP" target="_blank" rel="noopener">w3cschool</a></p>
+<ul>
+<li>
+<p>特点&amp;&amp;用途</p>
+<p>可使用路径表达式在xml和html中进行导航；包含标准函数库；w3c标准</p>
+</li>
+<li>
+<p>术语</p>
+</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>术语</th>
+<th>说明</th>
+<th>备注</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>父节点</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>子节点</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>同胞节点</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>先辈节点</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>后代节点</td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>语法</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>表达式</th>
+<th>说明</th>
+<th>备注</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>article</td>
+<td>选取所有article元素的所有子节点</td>
+<td></td>
+</tr>
+<tr>
+<td>/article</td>
+<td>选取根元素article</td>
+<td></td>
+</tr>
+<tr>
+<td>article/a</td>
+<td>选取所有属于article的子元素的a节点</td>
+<td></td>
+</tr>
+<tr>
+<td>//div</td>
+<td>选取文档中所有div元素</td>
+<td></td>
+</tr>
+<tr>
+<td>article//div</td>
+<td>article下所有div元素</td>
+<td></td>
+</tr>
+<tr>
+<td>//@class</td>
+<td>选取所有名为class的属性</td>
+<td></td>
+</tr>
+<tr>
+<td>/article/div[1]</td>
+<td>属于article子元素的第一个div</td>
+<td></td>
+</tr>
+<tr>
+<td>/article/div[last()]</td>
+<td>属于article子元素的最后一个div</td>
+<td></td>
+</tr>
+<tr>
+<td>/article/div[last()-1]</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>//div[@lang]</td>
+<td>选择所有拥有lang属性的div元素</td>
+<td></td>
+</tr>
+<tr>
+<td>//div[@lang=&lsquo;eng&rsquo;]</td>
+<td>选择所有lang属性为eng的div元素</td>
+<td></td>
+</tr>
+<tr>
+<td>/div/*</td>
+<td>选取所有属于div元素的所有子节点</td>
+<td></td>
+</tr>
+<tr>
+<td>//*</td>
+<td>选取所有元素</td>
+<td></td>
+</tr>
+<tr>
+<td>//div[@*]</td>
+<td>选取所有带属性的div元素</td>
+<td></td>
+</tr>
+<tr>
+<td>/div/a|//div/p</td>
+<td>选取所有div元素的a和p元素</td>
+<td></td>
+</tr>
+<tr>
+<td>//span|//ul</td>
+<td>选取文档中的span和ul元素</td>
+<td></td>
+</tr>
+<tr>
+<td>article/div/p|//span</td>
+<td>选取所有属于article元素的div元素的p元素和所有span元素</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>
+<p>常用函数</p>
+<ul>
+<li>text()</li>
+<li>extract()</li>
+<li>extract_first()</li>
+<li>contains()</li>
+<li>strip()</li>
+<li>replace()</li>
+</ul>
+</li>
+<li>
+<p>注意
+选取xpath路径时，注意警惕ajax动态生成的标签，推荐使用chrome或firefox中copy xpath功能</p>
+</li>
+</ul>
+<h4 id="css选择器">css选择器</h4>
+<p><a href="http://www.w3school.com.cn/cssref/css_selectors.ASP" target="_blank" rel="noopener">http://www.w3school.com.cn/cssref/css_selectors.ASP</a></p>
+<ul>
+<li>语法</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>表达式</th>
+<th>说明</th>
+<th>备注</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>.classname</td>
+<td>选取class为classname的元素</td>
+<td></td>
+</tr>
+<tr>
+<td>#idname</td>
+<td>选取id=idname的元素</td>
+<td></td>
+</tr>
+<tr>
+<td>div p</td>
+<td>选取div元素下的所有p子元素</td>
+<td></td>
+</tr>
+<tr>
+<td>div+p</td>
+<td>选取紧跟在div后的p</td>
+<td>p和div是兄弟节点</td>
+</tr>
+<tr>
+<td>div&gt;p</td>
+<td>选取div下第一个子元素p</td>
+<td></td>
+</tr>
+<tr>
+<td>div,p</td>
+<td>选取所有名为class的属性</td>
+<td></td>
+</tr>
+<tr>
+<td>div#container&gt;ul</td>
+<td>选择id=container的div元素后的第一个ul元素</td>
+<td></td>
+</tr>
+<tr>
+<td>ul~p</td>
+<td>选择与ul相邻的所有p元素</td>
+<td></td>
+</tr>
+<tr>
+<td>a[title]</td>
+<td>选择所有有title属性的a元素</td>
+<td></td>
+</tr>
+<tr>
+<td>a[href=&ldquo;http://www.baidu.com&rdquo;]</td>
+<td>选择href属性为http://www.baidu.com的a元素</td>
+<td></td>
+</tr>
+<tr>
+<td>a[href*=&ldquo;baidu&rdquo;]</td>
+<td>选择href属性中包含baidu的a元素</td>
+<td></td>
+</tr>
+<tr>
+<td>a[href^=&ldquo;baidu&rdquo;]</td>
+<td>选择href属性中以baidu开头的a元素</td>
+<td></td>
+</tr>
+<tr>
+<td>a[href$=&ldquo;baidu&rdquo;]</td>
+<td>选择href属性中以baidu结尾的a元素</td>
+<td></td>
+</tr>
+<tr>
+<td>input[type=radio]:checked</td>
+<td>选择所有处于选中状态的radio</td>
+<td></td>
+</tr>
+<tr>
+<td>div:not(#container)</td>
+<td>选取所有id非container的div元素</td>
+<td></td>
+</tr>
+<tr>
+<td>li:nth-child(3)</td>
+<td>选取第三个li元素</td>
+<td></td>
+</tr>
+<tr>
+<td>tr:nth-child(2n)</td>
+<td>第偶数个tr</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h4 id="session和cookie自动登录机制">session和cookie自动登录机制</h4>
+<p>理解模拟登陆和网站交互的基础。
+cookie中包含着标识用户的信息，但还存在隐患，session用于解决此隐患：对用户信息（账号密码等）作一定处理生成session_data存放在服务端，而后返回给客户端一个可用于检索session_data的session_key作为cookie，并设置session过期时间。
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<figure  >
+  <div class="d-flex justify-content-center">
+    <div class="w-100" ><img src="https://i.imgur.com/CzvZvBW.png" alt="" loading="lazy" data-zoomable /></div>
+  </div></figure>
+</p>
+<ul>
+<li>cookielib</li>
+<li>cookJar</li>
+<li>session</li>
+</ul>
+<h4 id="http状态码">HTTP状态码</h4>
+<p>SEO优化需要了解，以免误导搜索引擎</p>
+<ul>
+<li>200
+请求被成功处理</li>
+<li>301/302
+永久性重定向/临时性重定向</li>
+<li>403
+没有权限访问</li>
+<li>404
+表示没有对应的资源。如遇到404页面，爬虫应不对其进行爬取</li>
+<li>500
+服务器错误</li>
+<li>503
+服务器停机或正在维护</li>
+</ul>
+<h4 id="selenium模拟">selenium模拟</h4>
+<h4 id="cmder">cmder</h4>
+<p>在windows下可使用部分linux命令
+<a href="https://cmder.net/" target="_blank" rel="noopener">https://cmder.net/</a></p>
+<h3 id="实战1爬取伯乐在线所有技术文章">实战1——爬取伯乐在线所有技术文章</h3>
+<h4 id="需求分析">需求分析</h4>
+<p>爬取所有技术文章的标题、正文、点赞数、评论数、发表时间、标签</p>
+<h4 id="爬取一篇文章的所需内容">爬取一篇文章的所需内容</h4>
+<h4 id="实现翻页">实现翻页</h4>
+<p>寻找“下一页”的url</p>
+<h4 id="items设计">items设计</h4>
+<p>item即所要爬取的数据项，相当于数据需求</p>
+<h4 id="通过pipeline保存数据到mysql">通过pipeline保存数据到mysql</h4>
+<p>pipeline拦截item，将拦截下的item保存到mysql即可</p>
+<ul>
+<li>python库
+<ul>
+<li>codecs
+与普通方式的区别在于文件编码</li>
+<li>ItemExporter
+scrapy自带的item exporter，源码位于scrapy.exporters中，有各种类型的exporter
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<figure  >
+  <div class="d-flex justify-content-center">
+    <div class="w-100" ><img src="https://i.imgur.com/TCn2X8q.png" alt="" loading="lazy" data-zoomable /></div>
+  </div></figure>
+</li>
+</ul>
+</li>
+<li>数据库设计
+数据库表与item中内容一一对应</li>
+<li>数据保存的mysql中
+需要驱动如mysqlclient，如在ubuntu下还需要<code>sudo apt-get install libmysqlclient-dev</code>,centos下需要<code>sudo yum install python-devel mysql-devel</code>，否则可能安装失败。</li>
+<li>异步操作——MySQL连接池
+上一步中插入mysql的方法有较大局限，scrapy解析速度大于数据库插入速度，所以可能会产生阻塞，采用twisted框架可较方便地实现MySQL插入异步化</li>
+</ul>
+<h4 id="scrapi-item-loader机制">scrapi item loader机制</h4>
+<p>提供一个容器方便模块化，方便后期维护item</p>
+<h4 id="常见错误">常见错误</h4>
+<ul>
+<li>ValueError：Missing scheme in request url：h</li>
+</ul>
+<hr>
+<h3 id="实战2拉勾网职位信息爬取">实战2——拉勾网职位信息爬取</h3>
+<h4 id="crawlspider剖析">Crawlspider剖析</h4>
+<p><a href="https://docs.scrapy.org/en/latest/" target="_blank" rel="noopener">https://docs.scrapy.org/en/latest/</a></p>
+<h4 id="需求分析及策略">需求分析及策略</h4>
+<p>以 <a href="https://www.lagou.com/jobs/5602462.html" target="_blank" rel="noopener">https://www.lagou.com/jobs/5602462.html</a> 为例，需要公司名称、招聘职位、薪资、工作城市、学历要求、工作经验要求、工作类型、职位诱惑、职位描述等数据</p>
+<ul>
+<li>
+<p>公司名称
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<figure  >
+  <div class="d-flex justify-content-center">
+    <div class="w-100" ><img src="https://i.imgur.com/coeboer.png" alt="" loading="lazy" data-zoomable /></div>
+  </div></figure>
+
+公司名称写在一个logo的alt属性内
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<figure  >
+  <div class="d-flex justify-content-center">
+    <div class="w-100" ><img src="https://i.imgur.com/mB9Zs1t.png" alt="" loading="lazy" data-zoomable /></div>
+  </div></figure>
+</p>
+</li>
+<li>
+<p>招聘职位
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<figure  >
+  <div class="d-flex justify-content-center">
+    <div class="w-100" ><img src="https://i.imgur.com/DPoH765.png" alt="" loading="lazy" data-zoomable /></div>
+  </div></figure>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<figure  >
+  <div class="d-flex justify-content-center">
+    <div class="w-100" ><img src="https://i.imgur.com/ibK2GBo.png" alt="" loading="lazy" data-zoomable /></div>
+  </div></figure>
+</p>
+</li>
+<li>
+<p>工作要求
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<figure  >
+  <div class="d-flex justify-content-center">
+    <div class="w-100" ><img src="https://i.imgur.com/Eu0q6DR.png" alt="" loading="lazy" data-zoomable /></div>
+  </div></figure>
+
+可见薪资范围、工作城市、学历要求、工作经验要求、工作类型等都在此可获得，在scrapy shell中测试如下：
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<figure  >
+  <div class="d-flex justify-content-center">
+    <div class="w-100" ><img src="https://i.imgur.com/00TqQIt.png" alt="" loading="lazy" data-zoomable /></div>
+  </div></figure>
+</p>
+</li>
+<li>
+<p>职位信息发布时间
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<figure  >
+  <div class="d-flex justify-content-center">
+    <div class="w-100" ><img src="https://i.imgur.com/Lwqfhug.png" alt="" loading="lazy" data-zoomable /></div>
+  </div></figure>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<figure  >
+  <div class="d-flex justify-content-center">
+    <div class="w-100" ><img src="https://i.imgur.com/9XsRrLN.png" alt="" loading="lazy" data-zoomable /></div>
+  </div></figure>
+</p>
+</li>
+<li>
+<p>标签
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<figure  >
+  <div class="d-flex justify-content-center">
+    <div class="w-100" ><img src="https://i.imgur.com/e36K1ga.png" alt="" loading="lazy" data-zoomable /></div>
+  </div></figure>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<figure  >
+  <div class="d-flex justify-content-center">
+    <div class="w-100" ><img src="https://i.imgur.com/HTIyFoo.png" alt="" loading="lazy" data-zoomable /></div>
+  </div></figure>
+</p>
+</li>
+<li>
+<p>职位诱惑
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<figure  >
+  <div class="d-flex justify-content-center">
+    <div class="w-100" ><img src="https://i.imgur.com/Q2H92zT.png" alt="" loading="lazy" data-zoomable /></div>
+  </div></figure>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<figure  >
+  <div class="d-flex justify-content-center">
+    <div class="w-100" ><img src="https://i.imgur.com/evbDbos.png" alt="" loading="lazy" data-zoomable /></div>
+  </div></figure>
+</p>
+</li>
+<li>
+<p>职位描述
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<figure  >
+  <div class="d-flex justify-content-center">
+    <div class="w-100" ><img src="https://i.imgur.com/TmoQXvq.png" alt="" loading="lazy" data-zoomable /></div>
+  </div></figure>
+</p>
+</li>
+<li>
+<p>工作地址
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<figure  >
+  <div class="d-flex justify-content-center">
+    <div class="w-100" ><img src="https://i.imgur.com/tnBTu2n.png" alt="" loading="lazy" data-zoomable /></div>
+  </div></figure>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<figure  >
+  <div class="d-flex justify-content-center">
+    <div class="w-100" ><img src="https://i.imgur.com/qOc1Ico.png" alt="" loading="lazy" data-zoomable /></div>
+  </div></figure>
+</p>
+</li>
+</ul>
+<h4 id="item-loader及数据入库">Item Loader及数据入库</h4>
+<p>拉勾网目前会根据user-agent判断是否为爬虫，在chrome浏览器输入about:version可获得User-Agent信息。下面这个网站也可直接返回当前user-agent： <a href="https://helloacm.com/api/user-agent/" target="_blank" rel="noopener">https://helloacm.com/api/user-agent/</a></p>
+
+    </div>
+
+    
+
+
+
+
+<div class="article-tags">
+  
+  <a class="badge badge-light" href="/tag/%E7%88%AC%E8%99%AB/">爬虫</a>
+  
+</div>
+
+
+
+<div class="share-box">
+  <ul class="share">
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="https://twitter.com/intent/tweet?url=/post/scrapy-for-distributed-spider-summary/&amp;text=%e7%88%ac%e8%99%ab%e6%a1%86%e6%9e%b6Scrapy%e5%9f%ba%e6%9c%ac%e4%bd%bf%e7%94%a8%e7%ac%94%e8%ae%b0" target="_blank" rel="noopener" class="share-btn-twitter" aria-label="twitter">
+          <i class="fab fa-twitter"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="https://www.facebook.com/sharer.php?u=/post/scrapy-for-distributed-spider-summary/&amp;t=%e7%88%ac%e8%99%ab%e6%a1%86%e6%9e%b6Scrapy%e5%9f%ba%e6%9c%ac%e4%bd%bf%e7%94%a8%e7%ac%94%e8%ae%b0" target="_blank" rel="noopener" class="share-btn-facebook" aria-label="facebook">
+          <i class="fab fa-facebook"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="mailto:?subject=%e7%88%ac%e8%99%ab%e6%a1%86%e6%9e%b6Scrapy%e5%9f%ba%e6%9c%ac%e4%bd%bf%e7%94%a8%e7%ac%94%e8%ae%b0&amp;body=/post/scrapy-for-distributed-spider-summary/" target="_blank" rel="noopener" class="share-btn-email" aria-label="envelope">
+          <i class="fas fa-envelope"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="https://www.linkedin.com/shareArticle?url=/post/scrapy-for-distributed-spider-summary/&amp;title=%e7%88%ac%e8%99%ab%e6%a1%86%e6%9e%b6Scrapy%e5%9f%ba%e6%9c%ac%e4%bd%bf%e7%94%a8%e7%ac%94%e8%ae%b0" target="_blank" rel="noopener" class="share-btn-linkedin" aria-label="linkedin-in">
+          <i class="fab fa-linkedin-in"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="whatsapp://send?text=%e7%88%ac%e8%99%ab%e6%a1%86%e6%9e%b6Scrapy%e5%9f%ba%e6%9c%ac%e4%bd%bf%e7%94%a8%e7%ac%94%e8%ae%b0%20/post/scrapy-for-distributed-spider-summary/" target="_blank" rel="noopener" class="share-btn-whatsapp" aria-label="whatsapp">
+          <i class="fab fa-whatsapp"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="https://service.weibo.com/share/share.php?url=/post/scrapy-for-distributed-spider-summary/&amp;title=%e7%88%ac%e8%99%ab%e6%a1%86%e6%9e%b6Scrapy%e5%9f%ba%e6%9c%ac%e4%bd%bf%e7%94%a8%e7%ac%94%e8%ae%b0" target="_blank" rel="noopener" class="share-btn-weibo" aria-label="weibo">
+          <i class="fab fa-weibo"></i>
+        </a>
+      </li>
+    
+  </ul>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+
+
+
+  
+  
+  
+  
+  
+  <div class="media author-card content-widget-hr">
+    
+      
+      <a href="/authors/admin/"><img class="avatar mr-3 avatar-circle" src="/authors/admin/avatar_hue03491371183284312b8b116a73ae5ab_79511_270x270_fill_q75_lanczos_center.jpg" alt="CoolCats"></a>
+    
+
+    <div class="media-body">
+      <h5 class="card-title"><a href="/authors/admin/">CoolCats</a></h5>
+      <h6 class="card-subtitle">理学学士, 在读硕士</h6>
+      <p class="card-text">我的研究兴趣是城市计算、自然语言处理、通俗文学</p>
+      <ul class="network-icon" aria-hidden="true">
+  
+    
+    
+    
+      
+    
+    
+    
+    
+    
+    <li>
+      <a href="mailto:2811159909@qq.com" >
+        <i class="fas fa-envelope"></i>
+      </a>
+    </li>
+  
+    
+    
+    
+      
+    
+    
+    
+    
+    
+      
+    
+    <li>
+      <a href="https://github.com/Coolgiserz" target="_blank" rel="noopener">
+        <i class="fab fa-github"></i>
+      </a>
+    </li>
+  
+</ul>
+
+    </div>
+  </div>
+
+
+
+
+
+
+
+
+
+  
+  
+  
+
+  
+
+  
+
+
+
+
+
+
+
+
+
+
+  </div>
+</article>
+  </div>
+
+  <div class="page-footer">
+    
+    
+    <div class="container">
+      <footer class="site-footer">
+
+  
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+
+
+
+
+
+  
+  
+  
+
+  
+  
+    
+  
+  
+    
+  
+
+  
+
+  
+  <p class="powered-by copyright-license-text">
+    © 2022 CoolCats. This work is licensed under <a href="https://creativecommons.org/licenses/by-nc-nd/4.0" rel="noopener noreferrer" target="_blank">CC BY NC ND 4.0</a>
+  </p>
+  
+
+  <p class="powered-by footer-license-icons">
+    <a href="https://creativecommons.org/licenses/by-nc-nd/4.0" rel="noopener noreferrer" target="_blank" aria-label="Creative Commons">
+      <i class="fab fa-creative-commons fa-2x" aria-hidden="true"></i>
+      <i class="fab fa-creative-commons-by fa-2x" aria-hidden="true"></i>
+      
+        <i class="fab fa-creative-commons-nc fa-2x" aria-hidden="true"></i>
+      
+      
+        <i class="fab fa-creative-commons-nd fa-2x" aria-hidden="true"></i>
+      
+    </a>
+  </p>
+
+
+
+
+  <p class="powered-by">
+    
+    
+    
+      
+      
+      
+      
+      
+      
+      Published with <a href="https://wowchemy.com/?utm_campaign=poweredby" target="_blank" rel="noopener">Wowchemy</a> — the free, <a href="https://github.com/wowchemy/wowchemy-hugo-themes" target="_blank" rel="noopener">open source</a> website builder that empowers creators.
+    
+  </p>
+</footer>
+
+    </div>
+    
+  </div>
+
+      
+
+    
+    <script src="/js/vendor-bundle.min.0047d4febf356e7f0b988e541f50b065.js"></script>
+
+    
+    
+    
+      
+
+      
+      
+
+      
+
+      
+        
+        <script src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@10.2.1/build/highlight.min.js" integrity="sha512-Ypjm0o7jOxAd4hpdoppSEN0TQOC19UtPAqD+4s5AlXmUvbmmS/YMxYqAqarQYyxTnB6/rqip9qcxlNB/3U9Wdg==" crossorigin="anonymous"></script>
+        
+        
+        <script src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@10.2.1/build/languages/r.min.js" crossorigin="anonymous"></script>
+        
+        <script src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@10.2.1/build/languages/latex.min.js" crossorigin="anonymous"></script>
+        
+      
+
+    
+
+    
+    
+    
+      <script src="https://cdn.jsdelivr.net/npm/leaflet@1.7.1/dist/leaflet.min.js" integrity="" crossorigin="anonymous"></script>
+    
+
+    
+    
+
+    
+    
+    
+      
+      <script id="search-hit-fuse-template" type="text/x-template">
+        <div class="search-hit" id="summary-{{key}}">
+          <div class="search-hit-content">
+            <div class="search-hit-name">
+              <a href="{{relpermalink}}">{{title}}</a>
+              <div class="article-metadata search-hit-type">{{type}}</div>
+              <p class="search-hit-description">{{snippet}}</p>
+            </div>
+          </div>
+        </div>
+      </script>
+      
+        <script src="https://cdn.jsdelivr.net/gh/krisk/Fuse@v3.2.1/dist/fuse.min.js" integrity="sha512-o38bmzBGX+hD3JHWUFCDA09btWaqrNmoJ3RXLlrysA7PP01Kgs4UlE4MhelE1v5dJR3+cxlR4qQlotsW7jKsnw==" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/gh/julmot/mark.js@8.11.1/dist/jquery.mark.min.js" integrity="sha512-mhbv5DqBMgrWL+32MmsDOt/OAvqr/cHimk6B8y/bx/xS88MVkYGPiVv2ixKVrkywF2qHplNRUvFsAHUdxZ3Krg==" crossorigin="anonymous"></script>
+      
+    
+
+    
+    
+
+    
+    
+    
+    
+      <script id="dsq-count-scr" src="https://coolgiserz.disqus.com/count.js" async></script>
+    
+
+    
+    
+      
+      
+      
+      
+      
+      
+      
+    
+
+    
+
+    
+    
+    
+    <script id="page-data" type="application/json">{"use_headroom":true}</script>
+
+    
+    
+      <script src="/js/wowchemy-headroom.c251366b4128fd5e6b046d4c97a62a51.js" type="module"></script>
+    
+    
+    
+    
+    
+    
+    
+      
+      
+    
+    
+    <script src="/en/js/wowchemy.min.ab2f2890dbe3e2e83579366d3d6e8fd9.js"></script>
+
+    
+    
+      <script src="/js/wowchemy-map.a26e9d2f7238ba5b868384f1c5bc6477.js" type="module"></script>
+    
+    
+    
+    
+      
+<div id="modal" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Cite</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <pre><code class="tex hljs"></code></pre>
+      </div>
+      <div class="modal-footer">
+        <a class="btn btn-outline-primary my-1 js-copy-cite" href="#" target="_blank">
+          <i class="fas fa-copy"></i> Copy
+        </a>
+        <a class="btn btn-outline-primary my-1 js-download-cite" href="#" target="_blank">
+          <i class="fas fa-download"></i> Download
+        </a>
+        <div id="modal-error"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+      <script src="/js/wowchemy-publication.68f8d7090562ca65fc6d3cb3f8f2d2cb.js" type="module"></script>
+
+
+
+
+
+
+</body>
+</html>

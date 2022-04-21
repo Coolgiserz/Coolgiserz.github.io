@@ -2,21 +2,21 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>隐马尔可夫模型 | CoolCats</title>
-    <link>https://coolgiserz.github.io/tag/%E9%9A%90%E9%A9%AC%E5%B0%94%E5%8F%AF%E5%A4%AB%E6%A8%A1%E5%9E%8B/</link>
-      <atom:link href="https://coolgiserz.github.io/tag/%E9%9A%90%E9%A9%AC%E5%B0%94%E5%8F%AF%E5%A4%AB%E6%A8%A1%E5%9E%8B/index.xml" rel="self" type="application/rss+xml" />
+    <link>/tag/%E9%9A%90%E9%A9%AC%E5%B0%94%E5%8F%AF%E5%A4%AB%E6%A8%A1%E5%9E%8B/</link>
+      <atom:link href="/tag/%E9%9A%90%E9%A9%AC%E5%B0%94%E5%8F%AF%E5%A4%AB%E6%A8%A1%E5%9E%8B/index.xml" rel="self" type="application/rss+xml" />
     <description>隐马尔可夫模型</description>
-    <generator>Wowchemy (https://wowchemy.com)</generator><language>en-us</language><copyright>© CoolCats</copyright><lastBuildDate>Sat, 21 Mar 2020 20:23:11 +0800</lastBuildDate>
+    <generator>Wowchemy (https://wowchemy.com)</generator><language>en-us</language><lastBuildDate>Sat, 21 Mar 2020 20:23:11 +0800</lastBuildDate>
     <image>
-      <url>https://coolgiserz.github.io/images/icon_hue03491371183284312b8b116a73ae5ab_79511_512x512_fill_lanczos_center_2.png</url>
+      <url>/media/icon_hue03491371183284312b8b116a73ae5ab_79511_512x512_fill_lanczos_center_3.png</url>
       <title>隐马尔可夫模型</title>
-      <link>https://coolgiserz.github.io/tag/%E9%9A%90%E9%A9%AC%E5%B0%94%E5%8F%AF%E5%A4%AB%E6%A8%A1%E5%9E%8B/</link>
+      <link>/tag/%E9%9A%90%E9%A9%AC%E5%B0%94%E5%8F%AF%E5%A4%AB%E6%A8%A1%E5%9E%8B/</link>
     </image>
     
     <item>
       <title>基于隐马尔可夫模型实现简易词性分析器</title>
-      <link>https://coolgiserz.github.io/project/pos-tagger-implemented-on-hmm-model/</link>
+      <link>/project/pos-tagger-implemented-on-hmm-model/</link>
       <pubDate>Sat, 21 Mar 2020 20:23:11 +0800</pubDate>
-      <guid>https://coolgiserz.github.io/project/pos-tagger-implemented-on-hmm-model/</guid>
+      <guid>/project/pos-tagger-implemented-on-hmm-model/</guid>
       <description>&lt;h2 id=&#34;前言&#34;&gt;前言&lt;/h2&gt;
 &lt;p&gt;本项目基于隐马尔可夫模型实现一个简易的词性标注器。首先简单介绍下面几个问题：&lt;/p&gt;
 &lt;ul&gt;
@@ -99,9 +99,49 @@
 &lt;h4 id=&#34;基于hmm模型的词性分析器有何缺点&#34;&gt;基于HMM模型的词性分析器有何缺点？&lt;/h4&gt;
 &lt;p&gt;HMM的假设很简洁，也能够在一些简单场景下工作得很好，但成也简洁，败也简洁。所做的两个假设对于真实情况下的复杂语言现象而言还是过分简单了：t位置的词性不止受t-1位置的词性的影响，可能还受更前面的，甚至后面的词性的影响；词汇的词性本身可能存在歧义；……&lt;/p&gt;
 &lt;h2 id=&#34;项目结构&#34;&gt;项目结构&lt;/h2&gt;
-&lt;p&gt;&lt;img src=&#34;images/framework.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;p&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure  &gt;
+  &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img src=&#34;./images/framework.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+  &lt;/div&gt;&lt;/figure&gt;
+&lt;/p&gt;
 &lt;h3 id=&#34;测试结果&#34;&gt;测试结果&lt;/h3&gt;
-&lt;p&gt;&lt;img src=&#34;images/test.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;p&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure  &gt;
+  &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img src=&#34;./images/test.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+  &lt;/div&gt;&lt;/figure&gt;
+&lt;/p&gt;
 &lt;h3 id=&#34;更多扩展&#34;&gt;更多扩展&lt;/h3&gt;
 &lt;ul&gt;
 &lt;li&gt;

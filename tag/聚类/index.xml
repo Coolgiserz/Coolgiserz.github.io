@@ -2,21 +2,21 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>聚类 | CoolCats</title>
-    <link>https://coolgiserz.github.io/tag/%E8%81%9A%E7%B1%BB/</link>
-      <atom:link href="https://coolgiserz.github.io/tag/%E8%81%9A%E7%B1%BB/index.xml" rel="self" type="application/rss+xml" />
+    <link>/tag/%E8%81%9A%E7%B1%BB/</link>
+      <atom:link href="/tag/%E8%81%9A%E7%B1%BB/index.xml" rel="self" type="application/rss+xml" />
     <description>聚类</description>
-    <generator>Wowchemy (https://wowchemy.com)</generator><language>en-us</language><copyright>© CoolCats</copyright><lastBuildDate>Wed, 19 Feb 2020 10:40:17 +0800</lastBuildDate>
+    <generator>Wowchemy (https://wowchemy.com)</generator><language>en-us</language><lastBuildDate>Wed, 19 Feb 2020 10:40:17 +0800</lastBuildDate>
     <image>
-      <url>https://coolgiserz.github.io/images/icon_hue03491371183284312b8b116a73ae5ab_79511_512x512_fill_lanczos_center_2.png</url>
+      <url>/media/icon_hue03491371183284312b8b116a73ae5ab_79511_512x512_fill_lanczos_center_3.png</url>
       <title>聚类</title>
-      <link>https://coolgiserz.github.io/tag/%E8%81%9A%E7%B1%BB/</link>
+      <link>/tag/%E8%81%9A%E7%B1%BB/</link>
     </image>
     
     <item>
       <title>基于RFM和Kmeans的用户分群</title>
-      <link>https://coolgiserz.github.io/project/rfm-and-kmeans-based-personalizing-marketing/</link>
+      <link>/project/rfm-and-kmeans-based-personalizing-marketing/</link>
       <pubDate>Wed, 19 Feb 2020 10:40:17 +0800</pubDate>
-      <guid>https://coolgiserz.github.io/project/rfm-and-kmeans-based-personalizing-marketing/</guid>
+      <guid>/project/rfm-and-kmeans-based-personalizing-marketing/</guid>
       <description>&lt;h2 id=&#34;前言&#34;&gt;前言&lt;/h2&gt;
 &lt;p&gt;营销业务中比较重要的环节就是用户分群，其目的是做针对性、个性化的营销，而不是对每个用户都采用同样的营销。那么如何对用户进行分群就是一门值得研究的学问。&lt;/p&gt;
 &lt;p&gt;本项目实现经典的RFM用户分群模型，并用Kmeans对RFM特征进行聚类，作为探索个性化营销的初步尝试。&lt;/p&gt;

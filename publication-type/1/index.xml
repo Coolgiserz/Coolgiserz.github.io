@@ -2,30 +2,235 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>1 | CoolCats</title>
-    <link>https://coolgiserz.github.io/publication-type/1/</link>
-      <atom:link href="https://coolgiserz.github.io/publication-type/1/index.xml" rel="self" type="application/rss+xml" />
+    <link>/publication-type/1/</link>
+      <atom:link href="/publication-type/1/index.xml" rel="self" type="application/rss+xml" />
     <description>1</description>
-    <generator>Wowchemy (https://wowchemy.com)</generator><language>en-us</language><copyright>© CoolCats</copyright><lastBuildDate>Mon, 28 Dec 2020 10:01:58 +0800</lastBuildDate>
+    <generator>Wowchemy (https://wowchemy.com)</generator><language>en-us</language><lastBuildDate>Sat, 16 Jan 2021 20:34:17 +0800</lastBuildDate>
     <image>
-      <url>https://coolgiserz.github.io/images/icon_hue03491371183284312b8b116a73ae5ab_79511_512x512_fill_lanczos_center_2.png</url>
+      <url>/media/icon_hue03491371183284312b8b116a73ae5ab_79511_512x512_fill_lanczos_center_3.png</url>
       <title>1</title>
-      <link>https://coolgiserz.github.io/publication-type/1/</link>
+      <link>/publication-type/1/</link>
     </image>
     
     <item>
+      <title>「论文阅读」- 重新审视时空相似性：一种面向交通流预测的深度学习框架</title>
+      <link>/publication/revisiting-spatial-temporal-similarity-a-deep-learning-framework-for-traffic-prediction/</link>
+      <pubDate>Sat, 16 Jan 2021 20:34:17 +0800</pubDate>
+      <guid>/publication/revisiting-spatial-temporal-similarity-a-deep-learning-framework-for-traffic-prediction/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>「论文阅读」- 用于交通流预测的自适应图卷积循环网络</title>
+      <link>/publication/adaptive-graph-convolutional-recurrent-network-for-traffic-forecasting/</link>
+      <pubDate>Fri, 15 Jan 2021 09:58:49 +0800</pubDate>
+      <guid>/publication/adaptive-graph-convolutional-recurrent-network-for-traffic-forecasting/</guid>
+      <description>&lt;p&gt;快速的城市化使城市人口不断增加，并为人口流动性和发展可持续性带来了巨大挑战。在这些挑战中，智能交通系统(ITS)已经成为一个活跃的研究领域[1]，因为它具有促进系统效率和决策的潜力。作为智能交通系统的重要步骤，交通预测旨在预测城市交通系统的未来状态（如交通流量和速度，以及乘客需求）。它在交通调度和管理中起着至关重要的作用，近年来引起了机器学习研究界的极大关注[2，3，4，5，6]。&lt;/p&gt;
+&lt;p&gt;由于不同来源的交通流量和交通速度预测的不同环形检测器/交叉口，以及乘客需求预测的不同车站/地区，产生了复杂的内部依赖关系(即一个交通序列中的时间相关性)和相互依赖关系(即多个相关交通序列之间的空间相关性)[3]，因此交通预测具有挑战性。传统的方法只是简单地部署时间序列模型，如将自回归综合移动平均(ARIMA)和向量自回归(VAR)用于交通预测。这些方法无法捕捉大规模交通数据中的非线性关联性和复杂的时空模式。最近，研究人员转向基于深度学习的方法，并专注于设计新的神经网络架构，以捕获所有交通序列共享的突出时空模式。他们通常用循环神经网络[7，8，9，10]（如长短时记忆和门控循环单元）或时空卷积模块[3，4]来模拟时空相关性。关于空间相关性，他们通常使用基于GCN的方法[2，4，3，6，11，5，12]来模拟非结构化的交通序列及其相互依赖性。&lt;/p&gt;
+&lt;p&gt;虽然最近基于深度学习的方法取得了可喜的成果，但它们偏重于所有交通序列中突出的和共享的模式&amp;ndash;共享的参数空间使得目前的方法在准确捕捉细粒度的数据源特定模式方面存在不足。事实上，交通序列呈现出多样化的模式(如图 1 所示)，它们在不同的数据源中可能出现相似、不同甚至矛盾的属性[7, 13]。此外，现有的基于 GCN 的方法需要通过相似度或距离度量[14]来预先定义一个互连图，以捕获空间相关性。这进一步要求大量的领域知识，并且对图的质量很敏感。这种方式生成的图通常是直观的、不完整的，并不直接针对预测任务，在没有相应知识的情况下，可能会存在偏差，不能适应领域。
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure  &gt;
+  &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img src=&#34;./images/fig1.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+  &lt;/div&gt;&lt;/figure&gt;
+&lt;/p&gt;
+&lt;p&gt;与其设计更复杂的网络架构，我们提出了两种简洁而有效的机制，通过修改当前方法的基本构件（即GCN）来分别解决上述问题。具体来说，我们提出在GCN中加入两个自适应模块来增强流量预测任务。1）节点自适应参数学习（NAPL）模块，用于学习每个交通系列的节点特定模式&amp;ndash;NAPL将传统GCN中的参数进行因子化，并根据节点嵌入情况从所有节点共享的权重池和偏置池中生成节点特定参数；2）数据自适应图形生成（DAGG）模块，用于从数据中推断节点嵌入（属性），并在训练时生成图形。NAPL和DAGG是独立的，可以单独或联合适应现有的基于GCN的交通预测模型。模块中的所有参数都可以很容易地以端到端的方式进行学习。此外，我们将NAPL和DAGG与循环网络相结合，提出了一个统一的交通预测模型&amp;ndash;自适应图卷积循环网络（AGCRN）。AGCRN可以捕捉交通序列中细粒度的节点特异性空间和时间相关性，并将修正后的GCNs中的节点嵌入与DAGG中的嵌入统一起来。因此，训练AGCRN可以为每个交通序列源（例如，交通速度/流量的道路，乘客需求的车站/区域）提供有意义的节点表示向量。学习到的节点表示包含了关于道路/区域的有价值的信息，并有可能应用于其他任务[15]。&lt;/p&gt;
+&lt;p&gt;我们在两个真实世界的数据集上对AGCRN进行了多步骤交通预测任务的评估，并与几个有代表性的交通预测模型进行了比较。实验结果表明，AGCRN以显著的优势优于最先进的技术。我们还进行了消融研究，并证明了NAPL和DAGG的有效性。&lt;/p&gt;
+&lt;h3 id=&#34;讨论&#34;&gt;讨论&lt;/h3&gt;
+&lt;p&gt;多变量/相关时间序列预测是许多应用的基本任务，如流行病传播预测[42]、气象学（如空气质量、降雨量）预测[43]、股票预测[44]和销售预测[45]。虽然我们的工作是以交通预测任务为动机，但所提出的两个自适应模块和我们的AGCRN模型也可以单独或联合适应各种多变量/相关时间序列预测任务。&lt;/p&gt;
+&lt;p&gt;从数据中自动发现不同相关序列之间的相互依赖关系是可能的，这一发现弥补了基于图的预测模型与一般相关时间序列预测问题难以预定义图关系的鸿沟。我们未来的工作将着重从两个角度研究我们工作的可扩展性。1）数据角度&amp;ndash;在更多的时间序列预测任务上验证AGCRN的性能；2）模型角度&amp;ndash;将NAPL和DAGG适配到更多基于GCN的交通预测模型上。&lt;/p&gt;
+&lt;h3 id=&#34;结论&#34;&gt;结论&lt;/h3&gt;
+&lt;p&gt;本文提出在传统图卷积网络的基础上，分别加入节点自适应参数学习和数据自适应图生成模块，用于学习节点特定模式和从数据中发现空间相关性。在这两个模块的基础上，我们进一步提出了自适应图卷积循环网络，该网络可以在没有预设图的情况下，自动捕捉时间序列数据中节点特定的空间和时间相关性。在多步骤交通预测任务上的大量实验证明了AGCRN和所提出的自适应模块的有效性。该工作揭示了将基于GCN的模型应用于相关时间序列预测中，通过推断数据的相互依赖性，并揭示了学习节点特定模式对于理解相关时间序列数据至关重要。&lt;/p&gt;
+&lt;h3 id=&#34;影响&#34;&gt;影响&lt;/h3&gt;
+&lt;p&gt;总的来说，这项工作可以实现更准确的交通预测，为出租车调度和路线规划等更高层次的交通调度提供便利。通过这种方式，我们的工作可以帮助旅客节省时间，为交通运营商提高效率和收入，并节省能源消耗。从广义上讲，在大数据时代的社会和商业广泛应用的相关时间序列分析中，自适应性是可取的。所提出的自适应模块可以使基于动态的、相互依赖的、时间序列数据的数据分析和相关应用的鲁棒性得到提升。该研究总体上支持对基于复杂的显性和隐性关联的图结构的多通道数据进行更好的建模和分析。它对解决许多依赖复杂时间序列数据的世界范围的经济和社会问题，如流感爆发、经济增长和气候变化的预测，具有影响，并有可能加快研究进度。这项工作可能带来的负面影响是打车平台的公平问题。在出租车供给不能保证需求的情况下，平台可能会过于强调预测的高需求区域，这将增加低需求区域旅客的等待时间。&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>「论文翻译」- 基于轨迹大数据的个性化路径推荐</title>
+      <link>/publication/personalized-route-recommendation-using-big-trajectory-data/</link>
+      <pubDate>Mon, 11 Jan 2021 11:29:26 +0800</pubDate>
+      <guid>/publication/personalized-route-recommendation-using-big-trajectory-data/</guid>
+      <description>&lt;p&gt;出行在我们的生活中扮演着重要的角色，越来越多的人选择使用车辆出行。为了方便选择路线，各种导航服务应运而生，在给出来源地、目的地，有时还给出出发时间时，就能推荐路线。然而，现有的导航服务所推荐的路线并不总是所有司机都喜欢的。例如，最近的一项研究表明，领先的导航服务提供的路线往往与当地司机选择的路线不一致[5]。&lt;/p&gt;
+&lt;p&gt;产生分歧的原因可能有两个方面。首先，现有的导航服务大多只考虑有限的几种出行成本，如距离或出行时间，以及尽量降低单一出行成本的返回路线，如最短路线或最快路线。相反，司机可能会考虑多种不同的出行成本。例如，由于公众环保意识的增强和燃料价格的高涨，许多驾驶员除了考虑旅行时间和旅行距离外，还越来越多地考虑燃料消耗[1]。&lt;/p&gt;
+&lt;p&gt;其次，现有的导航服务为所有驾驶员提供相同的路线(如最短路线或最快路线)，而且没有考虑到个别驾驶员的驾驶偏好(如省时驾驶、省油驾驶或两者之间的某种权衡)。&lt;/p&gt;
+&lt;p&gt;这些都促使我们研究如何对司机的驾驶偏好进行建模，为不同的司机提供个性化的路线，从而更好地满足司机的需求。&lt;/p&gt;
+&lt;p&gt;图1显示了两种不同的司机选择的路线，从源地s到目的地d，两条路线的距离相近。然而，路线A耗时较少，路线B耗油较少。这清楚地表明，两个司机有不同的驾驶偏好&amp;ndash;一个试图节省时间，另一个旨在节省燃料。在很多情况下，司机也会根据多种出行成本的利益权衡来选择路线。由于不同的驾驶者可能有不同的权衡，单一的推荐路线不可能被所有驾驶者所选择。
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure  &gt;
+  &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img alt=&#34;&#34; srcset=&#34;
+               /publication/personalized-route-recommendation-using-big-trajectory-data/images/fig1_hu29c927f7891b310cf73b92b0a1ee6e31_277347_d8a6765eb367463e5084f2c5b5e99167.webp 400w,
+               /publication/personalized-route-recommendation-using-big-trajectory-data/images/fig1_hu29c927f7891b310cf73b92b0a1ee6e31_277347_f5a55f8e0b90a23263594174e2fbaa1d.webp 760w,
+               /publication/personalized-route-recommendation-using-big-trajectory-data/images/fig1_hu29c927f7891b310cf73b92b0a1ee6e31_277347_1200x1200_fit_q75_h2_lanczos_3.webp 1200w&#34;
+               src=&#34;/publication/personalized-route-recommendation-using-big-trajectory-data/images/fig1_hu29c927f7891b310cf73b92b0a1ee6e31_277347_d8a6765eb367463e5084f2c5b5e99167.webp&#34;
+               width=&#34;760&#34;
+               height=&#34;403&#34;
+               loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+  &lt;/div&gt;&lt;/figure&gt;
+&lt;/p&gt;
+&lt;p&gt;随着车辆跟踪技术(如GPS)的快速发展和持续使用，大轨迹数据变得可用[24]、[16]。大轨迹数据为实现更好的导航服务提供了机会，如考虑多种出行成本和个体驾驶员的驾驶偏好。特别是，它可以根据驾驶员的驾驶轨迹来学习和更新他们的驾驶偏好。此外，当司机规划路线时，可以利用与司机有相似驾驶偏好的司机所使用的轨迹，向司机建议个性化的路线。&lt;/p&gt;
+&lt;p&gt;据我们所知，本文是第一篇探索利用大轨迹数据提供个性化路线推荐的可能性的论文。具体来说，本文有四个贡献。首先，它提出了一个基于大轨迹数据的个性化路线推荐的新问题。其次，它提出了从驾驶员的轨迹中建模和更新驾驶偏好的技术。我们的驾驶偏好模型可以支持任意数量的感兴趣的出行成本和成本比的分布。第三，它提出了一种局部和全局路线推荐算法，以推荐个性化路线给司机。该算法的新颖之处在于：(a)参考轨迹是从大轨迹中选取的，同时考虑驾驶偏好；(b)提出了本地和全局路线推荐，以支持不同的路线选择场景。第四，报告了在大量真实轨迹数据集上进行的综合实验。这些引出了本文建议的设计特性，并表征了个性化路线推荐的效率和效果。&lt;/p&gt;
+&lt;p&gt;本文的其余部分结构如下。第二节定义了驱动偏好，并将问题形式化。第三节描述索引。第四节描述参考轨迹的检索。第五节介绍个性化路线推荐方法。第六节报告实证评价。第七节回顾相关工作，第八节为本文的结论。&lt;/p&gt;
+&lt;h3 id=&#34;问题形式化&#34;&gt;问题形式化&lt;/h3&gt;
+&lt;h3 id=&#34;索引构建&#34;&gt;索引构建&lt;/h3&gt;
+&lt;h3 id=&#34;轨迹检索&#34;&gt;轨迹检索&lt;/h3&gt;
+&lt;h3 id=&#34;个性化路径推荐&#34;&gt;个性化路径推荐&lt;/h3&gt;
+&lt;h3 id=&#34;实证研究&#34;&gt;实证研究&lt;/h3&gt;
+&lt;h3 id=&#34;相关工作回顾&#34;&gt;相关工作回顾&lt;/h3&gt;
+&lt;h3 id=&#34;结论&#34;&gt;结论&lt;/h3&gt;
+&lt;p&gt;我们提出并研究了利用大轨迹数据的个性化路线推荐问题。我们提供了驾驶员驾驶偏好的建模和更新技术，并提供了两种不同环境下高效、有效的个性化路线推荐方法：本地路线推荐和全局路线推荐。我们还提供了在本地路线推荐和全局路线推荐两种不同环境下推荐个性化路线的有效方法。通过大型真实轨迹数据集的实证研究表明，本文提出的建议是高效且有效的。&lt;/p&gt;
+&lt;p&gt;在未来的工作中，加入具有更丰富语义（如兴趣点）的资源来进行个性化的路线推荐是有意义的。此外，将其他驾驶偏好模型整合到个性化路线推荐框架中也很有意义。&lt;/p&gt;
+&lt;h2 id=&#34;相关资源&#34;&gt;相关资源&lt;/h2&gt;
+&lt;h3 id=&#34;相关文章&#34;&gt;相关文章&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a href=&#34;https://ieeexplore.ieee.org/abstract/document/8107512&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Finding top-k shortest paths with diversity&lt;/a&gt;
+经典的K最短路径(KSP)问题，即在一个有向图中识别k条最短路径，在许多应用领域中发挥着重要作用，例如为车辆路由服务提供替代路径。然而，返回的k条最短路径可能高度相似，即共享大量的边，从而对服务质量产生不利影响。在本文中，我们形式化了K Shortest Paths with Diversity(KSPD)问题，该问题可以识别出top-k最短路径，使路径之间相互不相似，并且路径的总长度最小化。我们首先证明了KSPD问题是NP-hard的，然后提出了一个通用的贪婪框架来解决KSPD问题，其意义在于：(1)它支持文献中广泛采用的各种路径相似性度量；(2)如果没有指定路径相似性度量，它也能够有效地解决传统的KSP问题。该框架的核心包括使用两个经过精心设计的下界，其中一个下界依赖于所选的路径相似度量，另一个下界与所选的路径相似度量无关，从而有效地减小了搜索空间，显著提高了效率。通过对5个真实世界和合成图以及5个不同路径相似度量的实证研究，深入了解了所提出的一般框架的设计特性，并提供了所提出的下界是有效的证据。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a href=&#34;https://link.springer.com/article/10.1007/s00778-015-0378-1&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Toward personalized, context-aware routing&lt;/a&gt;
+司机对前往目的地的路线的选择可能取决于路线的长度和行驶时间，但其他许多可能难以形成形式的方面也可能成为司机决定的因素。有证据表明，司机对路线的选择是依赖于上下文的，例如，在不同的时间段内，路线选择也因司机而异。相比之下，传统的路由服务几乎不支持上下文依赖性，它们向所有司机提供相同的路线。我们研究如何从历史轨迹中识别出个人司机的情境感知驾驶偏好，从而为个性化导航提供基础，也为专业的司机教育和交通规划提供基础。我们提供的技术能够从轨迹中捕捉动态旅行成本的时间依赖性和不确定性属性，如旅行时间和燃料消耗，我们提供的技术能够捕捉不同司机在多个动态旅行成本方面的驾驶行为。此外，我们还提出了能够识别驾驶员的上下文，然后利用驾驶员的历史轨迹识别每个上下文的驾驶偏好的技术。通过大量轨迹数据集的实证研究，为所提出的技术的设计特性提供了深刻的认识，并表明它们是有效的。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a href=&#34;https://ieeexplore.ieee.org/abstract/document/7534822&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;SemanticTraj: A New Approach to Interacting with Massive Taxi Trajectories&lt;/a&gt;
+海量出租车轨迹数据被用于交通和城市规划中的知识发现。现有的工具在检索和探索出租车轨迹和乘客行程时，通常需要用户在地图上选择和漫游地理空间区域。要回答一些看似简单的问题，如 &amp;ldquo;早上从主街出发，到华尔街结束的出租车车次是多少？&amp;ldquo;或者 &amp;ldquo;中午到达美术馆的出租车一般从哪里来？&amp;ldquo;由于轨迹的GPS数字点与 &amp;ldquo;主街&amp;rdquo;、&amp;ldquo;华尔街&amp;rdquo;、&amp;ldquo;美术馆 &amp;ldquo;等关键词没有直接关联，通常需要进行繁琐且耗时的交互。在本文中，我们提出了SemanticTraj，这是一种新的方法，用于以直观、丰富的语义和高效的方式管理和可视化出租车轨迹数据。通过SemanticTraj，领域和公众用户可以通过基于术语的直接查询，轻松找到上述问题的答案。他们还可以在由轨迹和行程的语义信息增强的可视化中交互式地探索检索到的数据。特别是，出租车轨迹通过文本化转换过程被转化为出租车文档。这个过程将GPS点映射成一系列的街道/POI名称和上/下车地点。它还将车速转化为用户定义的描述性术语。然后，形成一个出租车文档语料库并进行索引，以便在文本搜索引擎上进行灵活的语义查询。语义标签和结果的元摘要与SemanticTraj原型中的一套可视化功能集成在一起，这有助于用户快速、轻松地研究出租车轨迹。我们提出了一组使用场景，以展示该系统的可用性。我们还收集了领域专家的反馈意见，并进行了初步的用户研究，以评估该可视化系统。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a href=&#34;https://ieeexplore.ieee.org/abstract/document/7502155&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Personalized and Situation-Aware Multimodal Route Recommendations: The FAVOUR Algorithm&lt;/a&gt;
+多模态网络中的路线选择在不同的个体和当前的情景语境之间表现出相当大的差异。推荐算法的个性化和情境感知在许多领域已经很常见，例如在线零售。然而，大多数在线路由应用仍然只提供最短距离或最短旅行时间的路线，忽视了个人的偏好以及当前的情况。在多模式环境下，这两个方面都尤为重要，因为一些交通模式的吸引力，如自行车，关键取决于个人特征和外生因素，如天气。作为一种替代方案，本文引入了FAVOUR（Fourite rOUte Recommendation）方法，以提供基于三个步骤的个性化、情境感知的路线建议：首先，在初始化阶段，用户提供有限的信息（家庭位置、工作地点、移动性选择、社会人口统计学），用于从少量初始配置文件中选择一个。其次，基于这些信息，设计一个陈述的偏好调查，以锐化配置文件。在这一步骤中，使用大众偏好先验（MPP）来编码来自步骤一中确定的类的偏好的先验知识。第三步，随后，在使用路由服务的过程中不断地更新轮廓。最后两步使用贝叶斯学习技术，以纳入所有贡献个体的信息。详细介绍了FAVOUR方法，并在少量的调查参与者身上进行了测试。在这个真实世界的数据集上的实验结果表明，FAVOUR产生的推荐质量比文献中的其他学习算法更好。特别是，第二步初始化的MPP的定义被证明比文献中的一些替代算法提供了更好的预测。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;[PLBS 2016]&lt;a href=&#34;https://link.springer.com/chapter/10.1007/978-3-319-47289-8_11&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;A heuristic for multi-modal route planning&lt;/a&gt;
+目前流行的多模式路线系统通常不只是将定期安排的公共交通与步行、自行车或汽车驾驶结合起来，很少包括其他出行选择，如拼车、汽车共享或自行车共享，以及根据个人用户的具体需求和偏好计算个性化结果的可能性。很少包括其他出行方式，如拼车、汽车共享或自行车共享，以及根据个人用户的具体需求和偏好计算个性化结果的可能性。部分原因是由于各种交通方式和用户需求的加入会迅速导致复杂的、语义丰富的图结构，这在一定程度上阻碍了动态图更新或路线查询等下游程序。在本文中，我们旨在通过使用前面的启发式来降低个性化多模式路由的计算工作量和规范复杂度，根据存储在用户配置文件中的信息，推导出一组可行的候选出行方案，然后可以通过传统的路由算法进行评估。我们通过两个实际例子来证明所提出的系统的适用性。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;[IJGIS 2018]&lt;a href=&#34;https://www.tandfonline.com/doi/abs/10.1080/13658816.2018.1458988&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;A hybrid ensemble learning method for tourist route recommendations based on geo-tagged social networks&lt;/a&gt;
+社交网络上的地理标签旅游照片通常包含兴趣点（POI）等位置数据，也包含用户的旅游偏好。在本文中，我们提出了一种混合型的集合学习方法BAyes-Knn，通过从这些位置标记数据中挖掘旅行者的地理偏好，为旅行者预测个性化的旅游路线。我们的方法训练了两种类型的基础分类器来共同预测下一个旅游目的地。(1)K-最近邻(KNN)分类器将用户的位置历史、天气状况、温度和季节性进行量化，并使用特征加权距离模型预测用户在未去过的地点的个性化兴趣。(2)贝叶斯分类器引入平稳内核函数来估计特征的先验概率，然后结合这些概率来预测用户在某个地点的潜在兴趣。通过使用Borda计数投票法，将这些子分类器的所有结果合并成一个最终的预测结果。我们在2005年1月1日至2016年7月1日收集的Flickr地理标签照片和北京天气数据上评估了我们的方法。结果表明，我们的合集方法优于其他12个基线模型。此外，结果表明，我们的框架比上下文感知的重要旅行序列模式推荐和频繁旅行序列模式有更好的预测精度。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;[IJCRR 2016]&lt;a href=&#34;https://link.springer.com/chapter/10.1007/978-3-319-99906-7_21&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Learning Condition–Action Rules for Personalised Journey Recommendations&lt;/a&gt;
+我们将学习分类器系统XCSI应用于为乘客提供个性化建议的任务中。学习型分类器系统将进化计算与基于规则的机器学习相结合，通过与环境的交互来改变规则群以实现目标。在这里，XCSI与模拟环境中的乘客在伦敦地铁网络中旅行，受到干扰的情况下进行交互。我们表明，XCSI成功地学习了个别乘客的偏好，并可用于在中断的情况下建议对继续旅行进行个性化调整。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a href=&#34;https://dl.acm.org/doi/abs/10.14778/3021924.3021926&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Path cost distribution estimation using trajectory data&lt;/a&gt;
+随着车辆轨迹数据量的不断增加，越来越有可能捕捉到路网中时变和不确定的旅行成本，包括旅行时间和燃料消耗。目前的范式将路网表示为一个加权图；它将轨迹爆破成符合底层边缘的小碎片，为边缘分配权重；然后将路由算法应用于所得图。我们提出了一种新的范式，即混合图，其目标是更准确、更高效的路径成本分布估计。新的范式避免了将轨迹炸成小碎片，而是将权重分配给路径而不是简单的边。
+我们展示了如何使用轨迹数据计算路径权重，同时考虑到路径中边缘之间的旅行成本依赖性。给定一个出发时间和一个查询路径，我们展示了如何选择一个最优的权重集，其关联的路径覆盖了查询路径，并且这些权重能够为查询路径提供最精确的联合成本分布估计。然后利用联合分布准确计算出查询路径的成本分布。最后，我们展示了所得到的计算路径成本分布的方法如何可以整合到现有的路由算法中。来自两个不同城市的大量轨迹数据的实证研究为所提出的方法的设计特性提供了深刻的认识，并证实了该方法在现实世界中是有效的。&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;工作岗位&#34;&gt;工作岗位&lt;/h3&gt;
+&lt;h5 id=&#34;地图搜索推荐算法工程师httpswwwzhipincomjob_detaile90a058006a29aa80xb839q0f1mhtmlkaseo-search-word-job29_blanklidnull&#34;&gt;&lt;a href=&#34;https://www.zhipin.com/job_detail/e90a058006a29aa80XB839q0F1M~.html?ka=seo-search-word-job29_blank&amp;amp;lid=null&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;地图搜索推荐算法工程师&lt;/a&gt;&lt;/h5&gt;
+&lt;p&gt;岗位职责：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;负责百亿级别PV的地图路线排序或者召回引擎的算法研发；&lt;/li&gt;
+&lt;li&gt;负责地图路线个性化推荐等方向的技术研发；&lt;/li&gt;
+&lt;li&gt;研究搜索系统、推荐系统等相关机器学习技术解决出行问题，包括Learning To Rank、Deep Learning、Reinforcement Learning等；
+任职要求：&lt;/li&gt;
+&lt;li&gt;本科以上学历，数学、计算机、通信等相关专业；&lt;/li&gt;
+&lt;li&gt;在广告、搜索、NLP、推荐系统、数据挖掘、路径规划等任一领域中至少三年经验，发表过高质量论文者优先；&lt;/li&gt;
+&lt;li&gt;熟悉常见的分类、排序、深度学习等机器学习算法；熟悉常用的特征工程方法；&lt;/li&gt;
+&lt;li&gt;熟悉Linux编程环境，有 hadoop/spark或其他类似大数据平台工作经验；&lt;/li&gt;
+&lt;li&gt;拥有扎实的算法基础和良好的沟通合作能力；&lt;/li&gt;
+&lt;li&gt;熟悉地图业务/路径规划算法/权值算法背景是plus。&lt;/li&gt;
+&lt;li&gt;有团队管理相关经验优先。&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h5 id=&#34;ai地图算法工程师httpswwwzhipincomjob_detail9ed3f38a033fc5bb0xb839q-gvuhtmlkaseo-search-word-job26_blanklidnull&#34;&gt;&lt;a href=&#34;https://www.zhipin.com/job_detail/9ed3f38a033fc5bb0XB839q-GVU~.html?ka=seo-search-word-job26_blank&amp;amp;lid=null&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;AI地图算法工程师&lt;/a&gt;&lt;/h5&gt;
+&lt;p&gt;利用滴滴海量的出行数据，对路线达到时间估计，路线规划，路况计算，路径还原等问题进行建模，使用数据挖掘和机器学习技术优化滴滴地理信息模型，提升滴滴用户的出行体验和平台效率，保障司乘安全；
+任职要求：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;熟悉常用的机器学习算法，例如GBDT、LR、LTR，深度学习，强化学习等&lt;/li&gt;
+&lt;li&gt;熟悉常用的特征工程方法&lt;/li&gt;
+&lt;li&gt;熟练掌握Python,Scala,C++ 中至少一门语言，并能快速熟悉其他语言
+有使用hadoop/spark/mpi 或其他类似系统的经验&lt;/li&gt;
+&lt;li&gt;责任心强，有快速学习的能力&lt;/li&gt;
+&lt;/ol&gt;
+</description>
+    </item>
+    
+    <item>
       <title>「论文阅读」-STGCN：面向交通流预测的深度学习框架</title>
-      <link>https://coolgiserz.github.io/publication/stgcn-deep-learning-framework-for-traffic-forecasting/</link>
+      <link>/publication/stgcn-deep-learning-framework-for-traffic-forecasting/</link>
       <pubDate>Mon, 28 Dec 2020 10:01:58 +0800</pubDate>
-      <guid>https://coolgiserz.github.io/publication/stgcn-deep-learning-framework-for-traffic-forecasting/</guid>
+      <guid>/publication/stgcn-deep-learning-framework-for-traffic-forecasting/</guid>
       <description>&lt;h2 id=&#34;文章分析&#34;&gt;文章分析&lt;/h2&gt;
 &lt;h3 id=&#34;引言&#34;&gt;引言&lt;/h3&gt;
 &lt;p&gt;为了充分利用空间特征，一些研究者使用卷积神经网络（CNN）来捕捉交通网络之间的相邻关系，同时在时间轴上采用循环神经网络（RNN）。通过结合长短期记忆（LSTM）网络[Hochreiter和Schmidhuber，1997]和一维CNN，Wu和Tan[2016]提出了一种用于短期交通预测的特征级融合架构CLTFP。虽然采用了简单明了的策略，但CLTFP还是首次尝试将空间和时间规律性统一起来。之后，Shi等人[2015]提出了卷积LSTM，它是一种扩展的全连接LSTM（FC-LSTM），内嵌卷积层。但是，应用的普通卷积操作限制了模型只能处理网格结构（如图像、视频），而不是一般的域。同时，用于序列学习的递归网络需要进行迭代训练，这就引入了分步的误差积累。此外，基于RNN的网络（包括LSTM）通常被认为难以训练且计算量大。&lt;/p&gt;
 &lt;p&gt;为了克服这些问题，我们引入了几种策略来有效地模拟交通流的时间动态和空间依赖性。为了充分利用空间信息，我们用一个总图来模拟交通网络，而不是单独处理（如网格或段）。为了处理循环网络的固有缺陷，我们在时间轴上采用了完全卷积结构。最重要的是，我们提出了一种新型的深度学习架构，即时空图卷积网络，用于交通预测任务。该架构由多个时空卷积块组成，它是图卷积层[Defferrard et al.，2016]和卷积序列学习层的组合，以模拟空间和时间上的依赖关系。据我们所知，这是第一次在交通研究中应用纯卷积结构从图结构的时间序列中同时提取时空特征。我们在两个真实世界的交通数据集上评估了我们提出的模型。实验表明，我们的框架在多种预设预测长度和网络规模的预测任务中优于现有的基线。&lt;/p&gt;
 &lt;h3 id=&#34;方法&#34;&gt;方法&lt;/h3&gt;
-&lt;p&gt;&lt;img src=&#34;images/fig1.png&#34; alt=&#34;fig1&#34;&gt;&lt;/p&gt;
+&lt;p&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure  &gt;
+  &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img src=&#34;./images/fig1.png&#34; alt=&#34;fig1&#34; loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+  &lt;/div&gt;&lt;/figure&gt;
+&lt;/p&gt;
 &lt;h4 id=&#34;网络架构&#34;&gt;网络架构&lt;/h4&gt;
 &lt;p&gt;在本节中，我们将详细介绍所提出的时空图卷积网络（STGCN）的架构。如图2所示，STGCN由多个时空卷积块组成，每个时空卷积块组成一个 &amp;ldquo;三明治 &amp;ldquo;结构，其中有两个门控顺序卷积层，中间有一个空间图卷积层。各个模块的细节介绍如下。&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;images/fig2.png&#34; alt=&#34;fig2&#34;&gt;&lt;/p&gt;
+&lt;p&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure  &gt;
+  &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img src=&#34;./images/fig2.png&#34; alt=&#34;fig2&#34; loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+  &lt;/div&gt;&lt;/figure&gt;
+&lt;/p&gt;
 &lt;h5 id=&#34;基于图cnn提取空间特征&#34;&gt;基于图CNN提取空间特征&lt;/h5&gt;
 &lt;p&gt;交通网一般以图的结构来组织。将道路网作为图形进行数学表述是自然和合理的。然而，以往的研究忽视了交通网的空间属性：由于交通网被分割成多个片段或网格，因此忽略了交通网的连通性和全局性。即使在网格上进行二维卷积，由于数据建模的妥协，也只能大致捕捉到空间的局部性。 因此，在我们的模型中，图卷积被直接运用在图结构数据上，以提取空间域中有意义的模式和特征。虽然在图卷积中，由式(2)计算内核Θ可能是昂贵的，由于O(n2)乘法与图傅里叶基础，两个近似策略被应用来克服这个问题：&lt;/p&gt;
 &lt;ul&gt;
@@ -57,24 +262,144 @@
 &lt;p&gt;BJER4是通过双环检测仪采集北京市东环4号线路的主要区域。我们的实验共选取了12条道路。每5分钟汇总一次交通数据。所用时间段为2014年7月1日至8月31日，周末除外。我们选择第一个月的历史车速记录作为训练集，其余分别作为验证集和测试集。&lt;/p&gt;
 &lt;h5 id=&#34;pemsd7&#34;&gt;PeMSD7&lt;/h5&gt;
 &lt;p&gt;PeMSD7是由加州交通局的性能监测系统(PeMS)收集的，该系统由部署在加州公路系统主要城市地区的39,000多个传感器站实时收集[Chen等，2001]。数据集也由30秒的数据样本汇总成5分钟的时间间隔。我们在加州第7区中随机选取一个中等规模和一个大规模，分别包含228个和1026个站点，分别标注为PeMSD7(M)和PeMSD7(L)，作为数据源(如图3左侧所示)。PeMSD7数据集的时间范围为2012年5月和6月的工作日。我们基于上述相同的原则，将训练集和测试集进行拆分。
-&lt;img src=&#34;images/fig3.png&#34; alt=&#34;fig3&#34;&gt;&lt;/p&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure  &gt;
+  &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img src=&#34;./images/fig3.png&#34; alt=&#34;fig3&#34; loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+  &lt;/div&gt;&lt;/figure&gt;
+&lt;/p&gt;
 &lt;h4 id=&#34;数据预处理&#34;&gt;数据预处理&lt;/h4&gt;
 &lt;p&gt;两个数据集的标准时间间隔设置为5分钟。因此，道路图的每个节点每天包含288个数据点。在数据清洗后，采用线性插值法填补缺失值。另外，输入的数据采用Z-Score法进行归一化处理。&lt;/p&gt;
 &lt;p&gt;在BJER4中，通过传感器站的部署图，构建了北京东四环路系统的道路图拓扑结构。通过整理每条道路的隶属关系、方向和起止点，可以将环线系统数字化为有向图。&lt;/p&gt;
 &lt;p&gt;在PeMSD7中，道路图的邻接矩阵是根据交通网中各站点之间的距离来计算的。加权邻接矩阵W可以形成为：
-&lt;img src=&#34;images/equation10.png&#34; alt=&#34;eq10&#34;&gt;&lt;/p&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure  &gt;
+  &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img src=&#34;./images/equation10.png&#34; alt=&#34;eq10&#34; loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+  &lt;/div&gt;&lt;/figure&gt;
+&lt;/p&gt;
 &lt;h4 id=&#34;实验设置&#34;&gt;实验设置&lt;/h4&gt;
 &lt;p&gt;所有的实验都是在Linux集群上编译和测试的（CPU: Intel(R) Xeon(R) CPU E5-2620 v4 @ 2.10GHz, GPU: NVIDIA GeForce GTX 1080）) 为了消除非典型交通，我们的经验中只采用工作日的交通数据[Li et al.] 我们执行网格搜索策略来定位验证上的最佳参数。所有的测试都采用60分钟作为历史时间窗口，也就是12个观察到的数据点（M=12）来预测未来15、30、45分钟的交通状况（H=3、6、9）。&lt;/p&gt;
 &lt;h4 id=&#34;实验结果&#34;&gt;实验结果&lt;/h4&gt;
 &lt;p&gt;表1和表2展示了STGCN和基线在数据集BJER4和PeMSD7（M/L）上的结果。我们提出的模型在三个评价指标中都取得了具有统计学意义的最佳性能（双尾T检验，α=0.01，P&amp;lt;0.01）。我们可以很容易地观察到，传统的统计和机器学习方法在短期预测中可能表现良好，但由于误差积累、记忆问题和空间信息的缺失，其长期预测并不准确。ARIMA模型由于无法处理复杂的时空数据而表现最差。深度学习方法普遍取得了比传统机器学习模型更好的预测结果。
-&lt;img src=&#34;images/table1.png&#34; alt=&#34;table1&#34;&gt;&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;images/table2.png&#34; alt=&#34;table2&#34;&gt;&lt;/p&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure  &gt;
+  &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img src=&#34;./images/table1.png&#34; alt=&#34;table1&#34; loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+  &lt;/div&gt;&lt;/figure&gt;
+&lt;/p&gt;
+&lt;p&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure  &gt;
+  &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img src=&#34;./images/table2.png&#34; alt=&#34;table2&#34; loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+  &lt;/div&gt;&lt;/figure&gt;
+&lt;/p&gt;
 &lt;h5 id=&#34;空间拓扑的好处&#34;&gt;空间拓扑的好处&lt;/h5&gt;
 &lt;p&gt;以往的方法没有结合空间拓扑结构，对时间序列进行粗粒度建模。不同的是，通过对传感器的空间拓扑建模，我们的模型STGCN在短期和中长期预报上取得了显著的提高。在数据集PeMSD7上，STGCN的优势比BJER4更加明显，因为PeMS的传感器网络更加复杂，结构更加复杂(如图3所示)，我们的模型可以有效地利用空间结构进行更准确的预测。为了比较三种基于图卷积的方法。GCGRU、STGCN(Cheb)和STGCN(1st)三种方法，我们展示了它们在早晚高峰时段的预测结果，如图4所示。很容易观察到，我们提出的STGCN比其他方法更准确地捕捉到了高峰时段的趋势；而且它比其他方法更早地检测到了高峰时段的结束。我们的模型由于高效的图卷积和堆叠的时间卷积结构，能够快速响应交通网络之间的动态变化，而不像大多数循环网络那样过度依赖历史平均值。
-&lt;img src=&#34;images/fig5.png&#34; alt=&#34;fig5&#34;&gt;&lt;/p&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure  &gt;
+  &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img src=&#34;./images/fig5.png&#34; alt=&#34;fig5&#34; loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+  &lt;/div&gt;&lt;/figure&gt;
+&lt;/p&gt;
 &lt;h5 id=&#34;训练效率和泛化性&#34;&gt;训练效率和泛化性&lt;/h5&gt;
-&lt;p&gt;为了看到我们提出的沿时间轴卷积的好处，我们在表3中总结了STGCN和GCGRU的训练时间对比。在公平性方面，GCGRU由三层组成，分别在实验中为PeMSD7(M)提供64、64、128个单元，STGCN使用了4.3节所述的默认设置。我们的模型STGCN只消耗了272秒，而RNN型的模型GCGRU在PeMSD7(M)上花费了3824秒。这种14倍的训练速度的加快主要得益于应用了时间卷积而不是递归结构，可以实现完全并行训练，而不是像RNN那样完全依靠链式结构。对于PeMSD7(L)来说，由于GCGRU的GPU消耗超过了单卡的内存容量，因此不得不使用一半的批处理量(结果在表2中标为 &amp;ldquo;*&amp;quot;);而STGCN只需要将ST-Conv块中间的通道增加一倍。
-&lt;img src=&#34;images/table3.png&#34; alt=&#34;table3&#34;&gt;&lt;/p&gt;
+&lt;p&gt;为了看到我们提出的沿时间轴卷积的好处，我们在表3中总结了STGCN和GCGRU的训练时间对比。在公平性方面，GCGRU由三层组成，分别在实验中为PeMSD7(M)提供64、64、128个单元，STGCN使用了4.3节所述的默认设置。我们的模型STGCN只消耗了272秒，而RNN型的模型GCGRU在PeMSD7(M)上花费了3824秒。这种14倍的训练速度的加快主要得益于应用了时间卷积而不是递归结构，可以实现完全并行训练，而不是像RNN那样完全依靠链式结构。对于PeMSD7(L)来说，由于GCGRU的GPU消耗超过了单卡的内存容量，因此不得不使用一半的批处理量(结果在表2中标为 &amp;ldquo;*&amp;rdquo;);而STGCN只需要将ST-Conv块中间的通道增加一倍。
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure  &gt;
+  &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img src=&#34;./images/table3.png&#34; alt=&#34;table3&#34; loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+  &lt;/div&gt;&lt;/figure&gt;
+&lt;/p&gt;
 &lt;h3 id=&#34;相关工作&#34;&gt;相关工作&lt;/h3&gt;
 &lt;p&gt;最近有一些深度学习研究也是以图卷积在时空任务中的应用为动机。Seo等人[2016]引入了图卷积循环网络（GCRN），从结构化的数据序列中共同识别空间结构和动态变化。本研究的关键挑战是确定特定环境下循环网络和图卷积的最佳组合。基于上述原理，Li等人[2018]成功地采用门控递归单元（GRU）与图卷积进行长期交通预测。与这些工作相比，我们的模型完全由卷积结构建立起来；ST-Conv块是专门为统一处理结构化数据而设计的，内部有残差连接和瓶颈策略；我们的模型中也采用了更高效的图卷积核。&lt;/p&gt;
 &lt;h3 id=&#34;结论&#34;&gt;结论&lt;/h3&gt;
@@ -84,17 +409,62 @@
     
     <item>
       <title>「论文阅读」—GMAN: 一种用于交通预测的图多注意力网络</title>
-      <link>https://coolgiserz.github.io/publication/gman-a-graph-multi-attention-network-for-traffic-prediction/</link>
+      <link>/publication/gman-a-graph-multi-attention-network-for-traffic-prediction/</link>
       <pubDate>Wed, 23 Dec 2020 11:25:09 +0800</pubDate>
-      <guid>https://coolgiserz.github.io/publication/gman-a-graph-multi-attention-network-for-traffic-prediction/</guid>
-      <description></description>
+      <guid>/publication/gman-a-graph-multi-attention-network-for-traffic-prediction/</guid>
+      <description>&lt;h2 id=&#34;文章&#34;&gt;文章&lt;/h2&gt;
+&lt;p&gt;交通预测的目的是根据历史观测结果（如通过传感器记录的数据）预测道路网络中未来的交通状况（如交通量或速度）。它在许多现实世界的应用中发挥着重要作用。例如，准确的交通预测可以帮助交通机构更好地控制交通，以减少交通拥堵（Lv等，2018；Zheng等，2019）。&lt;/p&gt;
+&lt;h2 id=&#34;模型&#34;&gt;模型&lt;/h2&gt;
+&lt;h3 id=&#34;细节&#34;&gt;细节&lt;/h3&gt;
+&lt;h4 id=&#34;时空嵌入&#34;&gt;时空嵌入&lt;/h4&gt;
+&lt;p&gt;交通状况的演化受基础道路网的限制（Lv等人，2018），有必要将道路网信息整合到预测模型。文章使用node2vec学习节点表示，将包含图结构信息的向量与整个模型共同训练。&lt;/p&gt;
+&lt;h4 id=&#34;空间注意力&#34;&gt;空间注意力&lt;/h4&gt;
+&lt;p&gt;建模道路间的空间相关性。关键思想是在不同时间步将不同的权重分配给不同顶点。&lt;/p&gt;
+&lt;h4 id=&#34;时间注意力&#34;&gt;时间注意力&lt;/h4&gt;
+&lt;p&gt;某一地点的交通状况与其历史观测值相关，且相关性随时间增长发送非线性变化。为了模拟这些特性，设计了一个时间注意机制来自适应地模拟不同时间步之间的非线性关系，如图所示。
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure  &gt;
+  &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img alt=&#34;&#34; srcset=&#34;
+               /publication/gman-a-graph-multi-attention-network-for-traffic-prediction/images/fig5_hu7715b61d25ea775e6dd96e73608c3993_78890_fcb7d4f6643f3ca3412e9c608cf38e20.webp 400w,
+               /publication/gman-a-graph-multi-attention-network-for-traffic-prediction/images/fig5_hu7715b61d25ea775e6dd96e73608c3993_78890_778ff39eaa02ba2fd6c4c6e2ad6602bc.webp 760w,
+               /publication/gman-a-graph-multi-attention-network-for-traffic-prediction/images/fig5_hu7715b61d25ea775e6dd96e73608c3993_78890_1200x1200_fit_q75_h2_lanczos_3.webp 1200w&#34;
+               src=&#34;/publication/gman-a-graph-multi-attention-network-for-traffic-prediction/images/fig5_hu7715b61d25ea775e6dd96e73608c3993_78890_fcb7d4f6643f3ca3412e9c608cf38e20.webp&#34;
+               width=&#34;728&#34;
+               height=&#34;424&#34;
+               loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+  &lt;/div&gt;&lt;/figure&gt;
+&lt;/p&gt;
+&lt;h4 id=&#34;变换注意力&#34;&gt;变换注意力&lt;/h4&gt;
+&lt;p&gt;在编码器和解码器之间，用于建模每一个未来时间步和历史时间步长的直接关系&lt;/p&gt;
+&lt;h4 id=&#34;编码器解码器结构&#34;&gt;编码器——解码器结构&lt;/h4&gt;
+&lt;h3 id=&#34;问题&#34;&gt;问题&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;很多交通流预测的文章都会将MAE指标交通流预测结果评价，而GMAN的文章中中直接以MAE作为损失函数，这像是一个trick。对于交通流预测而言，损失函数应该如何设计？&lt;/li&gt;
+&lt;/ul&gt;
+</description>
     </item>
     
     <item>
       <title>「论文阅读」-学习用于通勤流嵌入的地理上下文嵌入</title>
-      <link>https://coolgiserz.github.io/publication/learning-geo-embeding-for-commute-flow-prediction/</link>
+      <link>/publication/learning-geo-embeding-for-commute-flow-prediction/</link>
       <pubDate>Wed, 09 Dec 2020 20:18:23 +0800</pubDate>
-      <guid>https://coolgiserz.github.io/publication/learning-geo-embeding-for-commute-flow-prediction/</guid>
+      <guid>/publication/learning-geo-embeding-for-commute-flow-prediction/</guid>
       <description>&lt;h1 id=&#34;learning-geo-contextual-embeddings-for-commuting-flow-prediction&#34;&gt;Learning Geo-Contextual Embeddings for Commuting Flow Prediction&lt;/h1&gt;
 &lt;h2 id=&#34;0x00-引言&#34;&gt;0x00 引言&lt;/h2&gt;
 &lt;p&gt;本文章题为“用于&lt;strong&gt;通勤流&lt;/strong&gt;预测的&lt;strong&gt;地理上下文嵌入&lt;/strong&gt;学习”。&lt;/p&gt;
@@ -109,7 +479,34 @@
 &lt;h4 id=&#34;什么是通勤流&#34;&gt;什么是通勤流？&lt;/h4&gt;
 &lt;p&gt;通勤是一种从家到工作地的往返过程。日复一日的通勤行为形成了一个与社会经济因素密切关联的复杂网络。&lt;/p&gt;
 &lt;p&gt;通勤流也被看作城市规划中的一个基本问题，因为其揭示了城市中劳动力供给与需求之间的空间关系。所以从城市规划的角度来看，有必要研究基础设施和土地利用对通勤流的影响。&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;images/network.png&#34; alt=&#34;通勤网络&#34;&gt;&lt;/p&gt;
+&lt;p&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure  &gt;
+  &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img alt=&#34;通勤网络&#34; srcset=&#34;
+               /publication/learning-geo-embeding-for-commute-flow-prediction/images/network_hubaff1d27d2e8195db4523c4cc8c31b1c_478450_fd801f0ba2012a967787ba0f88df7381.webp 400w,
+               /publication/learning-geo-embeding-for-commute-flow-prediction/images/network_hubaff1d27d2e8195db4523c4cc8c31b1c_478450_4f0c8ee3465889a97c1aa796c36bdc09.webp 760w,
+               /publication/learning-geo-embeding-for-commute-flow-prediction/images/network_hubaff1d27d2e8195db4523c4cc8c31b1c_478450_1200x1200_fit_q75_h2_lanczos_3.webp 1200w&#34;
+               src=&#34;/publication/learning-geo-embeding-for-commute-flow-prediction/images/network_hubaff1d27d2e8195db4523c4cc8c31b1c_478450_fd801f0ba2012a967787ba0f88df7381.webp&#34;
+               width=&#34;567&#34;
+               height=&#34;628&#34;
+               loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+  &lt;/div&gt;&lt;/figure&gt;
+&lt;/p&gt;
 &lt;center&gt;通勤流&lt;/center&gt;
 &lt;h4 id=&#34;通勤流预测与交通流预测有何区别&#34;&gt;通勤流预测与交通流预测有何区别？&lt;/h4&gt;
 &lt;p&gt;说的通勤流预测可能又容易联想到交通流预测，两者有什么区别呢？&lt;/p&gt;
@@ -129,7 +526,34 @@
 &lt;li&gt;针对通勤网络&lt;/li&gt;
 &lt;li&gt;通过地理上下文嵌入学习地理单元及其上下文信息，通过多任务预测损失函数约束嵌入向量中的信息更适合进行通勤流预测。所谓的地理上下文信息就是指地理单元周围的POI、土地利用等信息，抽象来说就是邻域节点的属性。&lt;/li&gt;
 &lt;/ol&gt;
-&lt;p&gt;&lt;img src=&#34;images/gmel.png&#34; alt=&#34;GMEL&#34;&gt;&lt;center&gt;GMEL&lt;/center&gt;&lt;/p&gt;
+&lt;p&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure  &gt;
+  &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img alt=&#34;GMEL&#34; srcset=&#34;
+               /publication/learning-geo-embeding-for-commute-flow-prediction/images/gmel_hu17ac8b9c4882d12d1f36d3dea926d512_119997_04b4a22e38f8076794b85edd2744c9ca.webp 400w,
+               /publication/learning-geo-embeding-for-commute-flow-prediction/images/gmel_hu17ac8b9c4882d12d1f36d3dea926d512_119997_0db64feb146c310b7470c46be661cbea.webp 760w,
+               /publication/learning-geo-embeding-for-commute-flow-prediction/images/gmel_hu17ac8b9c4882d12d1f36d3dea926d512_119997_1200x1200_fit_q75_h2_lanczos_3.webp 1200w&#34;
+               src=&#34;/publication/learning-geo-embeding-for-commute-flow-prediction/images/gmel_hu17ac8b9c4882d12d1f36d3dea926d512_119997_04b4a22e38f8076794b85edd2744c9ca.webp&#34;
+               width=&#34;760&#34;
+               height=&#34;420&#34;
+               loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+  &lt;/div&gt;&lt;/figure&gt;
+&lt;center&gt;GMEL&lt;/center&gt;&lt;/p&gt;
 &lt;h3 id=&#34;用gat将地理上下文信息编码到嵌入空间中&#34;&gt;用GAT将地理上下文信息编码到嵌入空间中&lt;/h3&gt;
 &lt;p&gt;这里要注意的是文章提出用2个GAT分别建模出发地和目的地的特征，即要把劳动供给侧和需求侧的特征进行解耦。&lt;/p&gt;
 &lt;p&gt;然后通过多任务学习框架约束嵌入向量更适应于流预测表示。&lt;/p&gt;
@@ -141,7 +565,34 @@
 &lt;li&gt;端到端地训练一个GMEL（预训练过程）&lt;/li&gt;
 &lt;li&gt;基于嵌入向量再训练一个流预测模型&lt;/li&gt;
 &lt;/ol&gt;
-&lt;p&gt;&lt;img src=&#34;images/algo.png&#34; alt=&#34;GMEL&#34;&gt;&lt;/p&gt;
+&lt;p&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure  &gt;
+  &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img alt=&#34;GMEL&#34; srcset=&#34;
+               /publication/learning-geo-embeding-for-commute-flow-prediction/images/algo_huf9fc8b5ae68b3f522fe6f6f61b13b518_203638_b2cf5a09b6099309fd8716fd5e9f92d1.webp 400w,
+               /publication/learning-geo-embeding-for-commute-flow-prediction/images/algo_huf9fc8b5ae68b3f522fe6f6f61b13b518_203638_d45c9adfa1144b51d69f8859d362cc06.webp 760w,
+               /publication/learning-geo-embeding-for-commute-flow-prediction/images/algo_huf9fc8b5ae68b3f522fe6f6f61b13b518_203638_1200x1200_fit_q75_h2_lanczos_3.webp 1200w&#34;
+               src=&#34;/publication/learning-geo-embeding-for-commute-flow-prediction/images/algo_huf9fc8b5ae68b3f522fe6f6f61b13b518_203638_b2cf5a09b6099309fd8716fd5e9f92d1.webp&#34;
+               width=&#34;543&#34;
+               height=&#34;760&#34;
+               loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+  &lt;/div&gt;&lt;/figure&gt;
+&lt;/p&gt;
 &lt;center&gt;训练算法&lt;/center&gt;
 &lt;h2 id=&#34;0x03-实验&#34;&gt;0x03 实验&lt;/h2&gt;
 &lt;p&gt;实验部分需要验证的点包括：&lt;/p&gt;
@@ -158,10 +609,64 @@
 &lt;li&gt;所有GMEL系列的模型都比基准模型要好，表明地理上下文信息有助于通勤流来说&lt;/li&gt;
 &lt;li&gt;标准的GMEL比另外两个变种表现好，验证了多任务学习框架的有效性和对供需特征解耦的必要性&lt;/li&gt;
 &lt;/ul&gt;
-&lt;p&gt;&lt;img src=&#34;images/test_set.png&#34; alt=&#34;测试集&#34;&gt;&lt;/p&gt;
+&lt;p&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure  &gt;
+  &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img alt=&#34;测试集&#34; srcset=&#34;
+               /publication/learning-geo-embeding-for-commute-flow-prediction/images/test_set_huaf0371918803daba3ec3808a5c70ae00_107551_35643127bc8ce10aad6df4cf98b532f9.webp 400w,
+               /publication/learning-geo-embeding-for-commute-flow-prediction/images/test_set_huaf0371918803daba3ec3808a5c70ae00_107551_d64a09809848f449bb1dcb6e8e07d4d6.webp 760w,
+               /publication/learning-geo-embeding-for-commute-flow-prediction/images/test_set_huaf0371918803daba3ec3808a5c70ae00_107551_1200x1200_fit_q75_h2_lanczos_3.webp 1200w&#34;
+               src=&#34;/publication/learning-geo-embeding-for-commute-flow-prediction/images/test_set_huaf0371918803daba3ec3808a5c70ae00_107551_35643127bc8ce10aad6df4cf98b532f9.webp&#34;
+               width=&#34;567&#34;
+               height=&#34;497&#34;
+               loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+  &lt;/div&gt;&lt;/figure&gt;
+&lt;/p&gt;
 &lt;center&gt;测试表现&lt;/center&gt;
 &lt;p&gt;参数敏感性分析 、残差分析也表明方法的鲁棒性。&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;images/residual.png&#34; alt=&#34;残差&#34;&gt;&lt;/p&gt;
+&lt;p&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure  &gt;
+  &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img alt=&#34;残差&#34; srcset=&#34;
+               /publication/learning-geo-embeding-for-commute-flow-prediction/images/residual_hu840bbd1bf0f27265d0aa4d2a4d3fde58_516351_52e8b2e0973163e659f876620b02f256.webp 400w,
+               /publication/learning-geo-embeding-for-commute-flow-prediction/images/residual_hu840bbd1bf0f27265d0aa4d2a4d3fde58_516351_b27989e2da9404d46ccd2697e78ec5e3.webp 760w,
+               /publication/learning-geo-embeding-for-commute-flow-prediction/images/residual_hu840bbd1bf0f27265d0aa4d2a4d3fde58_516351_1200x1200_fit_q75_h2_lanczos_3.webp 1200w&#34;
+               src=&#34;/publication/learning-geo-embeding-for-commute-flow-prediction/images/residual_hu840bbd1bf0f27265d0aa4d2a4d3fde58_516351_52e8b2e0973163e659f876620b02f256.webp&#34;
+               width=&#34;760&#34;
+               height=&#34;416&#34;
+               loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+  &lt;/div&gt;&lt;/figure&gt;
+&lt;/p&gt;
 &lt;center&gt;残差分析&lt;/center&gt;
 &lt;h2 id=&#34;0x04-结论&#34;&gt;0x04 结论&lt;/h2&gt;
 &lt;p&gt;总结全文，文章提出利用地理上下文信息预测通勤流，并提出一个嵌入学习框架来学习地理单元的上下文信息，结果表明引入这种信息是有助于通勤流预测的。&lt;/p&gt;
@@ -170,9 +675,9 @@
     
     <item>
       <title>「论文翻译」- 你需要的只是注意力</title>
-      <link>https://coolgiserz.github.io/publication/attention-is-all-you-need/</link>
+      <link>/publication/attention-is-all-you-need/</link>
       <pubDate>Wed, 30 Sep 2020 19:09:30 +0800</pubDate>
-      <guid>https://coolgiserz.github.io/publication/attention-is-all-you-need/</guid>
+      <guid>/publication/attention-is-all-you-need/</guid>
       <description>&lt;h3 id=&#34;引言&#34;&gt;引言&lt;/h3&gt;
 &lt;p&gt;循环神经网络，特别是长短期记忆[12]和门控循环[7]神经网络，已经被牢固地确立为语言建模和机器翻译等序列建模和转换问题的最先进方法[29，2，5]。此后，大量的努力继续推动循环语言模型和编码器-解码器架构的边界[31，21，13]。&lt;/p&gt;
 &lt;p&gt;循环模型通常沿着输入和输出序列的符号位置进行因子计算。这种固有的顺序性使得我们无法训练实例中的并行化，这在较长的序列长度上变得至关重要，因为内存约束限制了跨实例的批处理。最近的工作通过因子化技巧[18]和条件计算[26]实现了计算效率的显著提高，同时也提高了后者情况下的模型性能。然而，顺序计算的基本约束仍然存在。&lt;/p&gt;
@@ -184,9 +689,52 @@
 &lt;p&gt;端到端记忆网络是基于循环注意机制而不是序列排列的循环，已被证明在简单语言问题回答和语言建模任务中表现良好[28]。&lt;/p&gt;
 &lt;p&gt;然而，据我们所知，Transformer是第一个完全依靠自注意力来计算其输入和输出的表示，而不使用序列对齐的RNNs或卷积的转导模型。在下面的章节中，我们将描述Transformer，激励自注意力，并讨论其与[14，15]和[8]等模型相比的优势。&lt;/p&gt;
 &lt;h3 id=&#34;模型架构&#34;&gt;模型架构&lt;/h3&gt;
-&lt;p&gt;&lt;img src=&#34;images/fig1.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;images/fig2.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;p&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure  &gt;
+  &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img src=&#34;./images/fig1.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+  &lt;/div&gt;&lt;/figure&gt;
+&lt;/p&gt;
+&lt;p&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure  &gt;
+  &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img src=&#34;./images/fig2.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+  &lt;/div&gt;&lt;/figure&gt;
+&lt;/p&gt;
 &lt;h3 id=&#34;结论&#34;&gt;结论&lt;/h3&gt;
+&lt;p&gt;在这项工作中，我们提出了Transformer，这是第一个完全基于注意力的序列转换模型，用多头自注意力取代了编码器-解码器架构中最常用的循环层。&lt;/p&gt;
+&lt;p&gt;对于翻译任务，Transformer的训练速度可以显著快于基于循环层或卷积层的架构。在WMT 2014英译德和WMT 2014英译法两个翻译任务上，我们实现了新的技术状态。在前一个任务中，我们的最佳模型甚至超过了之前报道的所有合集。&lt;/p&gt;
+&lt;p&gt;我们对基于注意力的模型的未来感到兴奋，并计划将其应用于其他任务。我们计划将Transformer扩展到涉及文本以外的输入和输出模式的问题，并研究局部的、受限的注意力机制，以有效地处理图像、音频和视频等大型输入和输出。让生成的顺序性降低是我们的另一个研究目标。&lt;/p&gt;
 </description>
     </item>
     
