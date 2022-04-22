@@ -13,7 +13,7 @@
     </image>
     
     <item>
-      <title>「心灵成长计划」- 书单</title>
+      <title>「心灵成长计划」- 我的书单</title>
       <link>/project/reading-list/</link>
       <pubDate>Tue, 24 Dec 2019 18:37:19 +0800</pubDate>
       <guid>/project/reading-list/</guid>
@@ -109,7 +109,9 @@
 &lt;h4 id=&#34;按类型分&#34;&gt;按类型分&lt;/h4&gt;
 &lt;h5 id=&#34;科幻&#34;&gt;科幻&lt;/h5&gt;
 &lt;ul&gt;
+&lt;li&gt;三体&lt;/li&gt;
 &lt;li&gt;100: 科幻之书（ongoing）&lt;/li&gt;
+&lt;li&gt;安德的游戏（to do）&lt;/li&gt;
 &lt;/ul&gt;
 &lt;h5 id=&#34;其他&#34;&gt;其他&lt;/h5&gt;
 &lt;ul&gt;
@@ -124,10 +126,16 @@
 &lt;h5 id=&#34;奇幻&#34;&gt;奇幻&lt;/h5&gt;
 &lt;ul&gt;
 &lt;li&gt;魔兽世界（to do）&lt;/li&gt;
+&lt;li&gt;霍比特人（to do）&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h5 id=&#34;历史&#34;&gt;历史&lt;/h5&gt;
+&lt;ul&gt;
+&lt;li&gt;红楼梦（to do）&lt;/li&gt;
 &lt;/ul&gt;
 &lt;h3 id=&#34;心理思维&#34;&gt;心理/思维&lt;/h3&gt;
 &lt;ul&gt;
 &lt;li&gt;批判性思维方法&lt;/li&gt;
+&lt;li&gt;人性的弱点&lt;/li&gt;
 &lt;li&gt;北大哲思录&lt;/li&gt;
 &lt;li&gt;被讨厌的勇气
 &lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;阿德勒心理学系列读物，否定弗洛伊德“原因论”、“精神创伤说”，认为人的行为都是由“目的”驱动而
@@ -136,6 +144,7 @@
 &lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
 &lt;/ul&gt;
 &lt;h3 id=&#34;科普&#34;&gt;科普&lt;/h3&gt;
+&lt;h4 id=&#34;物理数学&#34;&gt;物理/数学&lt;/h4&gt;
 &lt;ul&gt;
 &lt;li&gt;
 &lt;p&gt;宇宙的琴弦&lt;/p&gt;
@@ -150,25 +159,16 @@
 &lt;p&gt;复杂&lt;/p&gt;
 &lt;/li&gt;
 &lt;li&gt;
-&lt;p&gt;智慧城市——大数据、物联网和云计算&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
 &lt;p&gt;数学之美&lt;/p&gt;
 &lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;吴军老师所写的一本关于“数学的用处”的科普书，讲述了很多看似很简单的定理和知识其实在现在的工
 业应用中能起到非常大的作用，许多看起来高端不可思议的产品及功能（搜索引擎、推荐系统等）背后
 可能就是简单而精妙的数学知识。如中学所学的余弦定在工业系统中用于度量用户特征相似性，谷歌起
 家的算法PageRank原理是马尔可夫过程。以前我们学数学的时候可能并没有深入思考所学的东西到底
 蕴涵着什么深刻的意义或者能转化成什么价值。
-&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;浪潮之巅&lt;/p&gt;
-&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;关于近两个世纪，计算机科技巨头公司的兴衰发展史。具体分析和各大公司为什么能成功？又因何走向衰亡。
+&lt;/code&gt;&lt;/pre&gt;&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;关于近两个世纪，计算机科技巨头公司的兴衰发展史。具体分析和各大公司为什么能成功？又因何走向衰亡。
 &lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
 &lt;li&gt;
 &lt;p&gt;女士品茶&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;云计算通俗讲义&lt;/p&gt;
 &lt;/li&gt;
 &lt;li&gt;
 &lt;p&gt;为什么（ongoing）&lt;/p&gt;
@@ -179,6 +179,19 @@
 &lt;li&gt;
 &lt;p&gt;代数的历史（to do）&lt;/p&gt;
 &lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&#34;技术&#34;&gt;技术&lt;/h4&gt;
+&lt;ul&gt;
+&lt;li&gt;云计算通俗讲义&lt;/li&gt;
+&lt;li&gt;智慧城市——大数据、物联网和云计算&lt;/li&gt;
+&lt;li&gt;浪潮之巅&lt;/li&gt;
+&lt;li&gt;地理学与生活&lt;/li&gt;
+&lt;li&gt;网络是怎么连接的&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&#34;产品思维&#34;&gt;产品思维&lt;/h4&gt;
+&lt;ul&gt;
+&lt;li&gt;人人都是产品经理（to do）&lt;/li&gt;
+&lt;li&gt;谷歌、亚马逊如何做产品（to do）&lt;/li&gt;
 &lt;/ul&gt;
 &lt;h3 id=&#34;政治&#34;&gt;政治&lt;/h3&gt;
 &lt;ul&gt;
@@ -192,7 +205,7 @@
 &lt;li&gt;金融市场基础知识（ongoing）&lt;/li&gt;
 &lt;li&gt;吴敬琏三部曲（to do）&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h3 id=&#34;技术&#34;&gt;技术&lt;/h3&gt;
+&lt;h3 id=&#34;技术-1&#34;&gt;技术&lt;/h3&gt;
 &lt;h4 id=&#34;编程语言&#34;&gt;编程语言&lt;/h4&gt;
 &lt;ul&gt;
 &lt;li&gt;C++ Primer&lt;/li&gt;
@@ -213,11 +226,6 @@
 &lt;h4 id=&#34;数学与算法&#34;&gt;数学与算法&lt;/h4&gt;
 &lt;ul&gt;
 &lt;li&gt;统计自然语言处理（ongoing）&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h4 id=&#34;产品思维&#34;&gt;产品思维&lt;/h4&gt;
-&lt;ul&gt;
-&lt;li&gt;人人都是产品经理（to do）&lt;/li&gt;
-&lt;li&gt;谷歌、亚马逊如何做产品（to do）&lt;/li&gt;
 &lt;/ul&gt;
 </description>
     </item>
