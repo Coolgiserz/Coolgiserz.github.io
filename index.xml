@@ -104,6 +104,11 @@
 &lt;p&gt;对于研究方案，要明确研究目标、研究内容和拟解决的关键问题，介绍拟采取的研究方法及可行性分析，说明本项目的创新之处、预期研究进展和预期成果。&lt;/p&gt;
 &lt;h4 id=&#34;研究基础&#34;&gt;研究基础&lt;/h4&gt;
 &lt;p&gt;与本项目有关的研究工作积累和已取得的研究工作成绩及目前承担项目的情况。&lt;/p&gt;
+&lt;h2 id=&#34;参考文献&#34;&gt;参考文献&lt;/h2&gt;
+&lt;h3 id=&#34;如何写摘要&#34;&gt;如何写摘要？&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://users.ece.cmu.edu/~koopman/essays/abstract.html&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;How to Write an Abstract&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
 </description>
     </item>
     
@@ -1227,9 +1232,8 @@
                loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
   &lt;/div&gt;&lt;/figure&gt;
 &lt;/p&gt;
-&lt;h4 id=&#34;变换注意力&#34;&gt;变换注意力&lt;/h4&gt;
-&lt;p&gt;在编码器和解码器之间，用于建模每一个未来时间步和历史时间步长的直接关系&lt;/p&gt;
-&lt;h4 id=&#34;编码器解码器结构&#34;&gt;编码器——解码器结构&lt;/h4&gt;
+&lt;h4 id=&#34;注意力转换模块&#34;&gt;注意力转换模块&lt;/h4&gt;
+&lt;p&gt;在编码器和解码器之间，用于建模每一个未来时间步和历史时间步长的直接关系。&lt;/p&gt;
 &lt;h3 id=&#34;问题&#34;&gt;问题&lt;/h3&gt;
 &lt;ul&gt;
 &lt;li&gt;很多交通流预测的文章都会将MAE指标交通流预测结果评价，而GMAN的文章中中直接以MAE作为损失函数，这像是一个trick。对于交通流预测而言，损失函数应该如何设计？&lt;/li&gt;
@@ -3455,6 +3459,10 @@ g值和h值&lt;/p&gt;
 &lt;li&gt;
 &lt;p&gt;蓝血十杰（to do）&lt;/p&gt;
 &lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;微分几何之父-陈省身传&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;向世界证明中国人也能做好数学，毕生奉献给数学事业（包括前沿理论以及中国数学人才培养），且爱好文学（金庸武侠、诗词、...）、书画、桥牌等活动，博学睿智、为国为民的大师、大侠。
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
 &lt;/ul&gt;
 &lt;h4 id=&#34;纪实&#34;&gt;纪实&lt;/h4&gt;
 &lt;ul&gt;
@@ -3591,6 +3599,11 @@ g值和h值&lt;/p&gt;
 &lt;li&gt;魔兽世界（to do）&lt;/li&gt;
 &lt;li&gt;霍比特人（to do）&lt;/li&gt;
 &lt;/ul&gt;
+&lt;h5 id=&#34;戏剧&#34;&gt;戏剧&lt;/h5&gt;
+&lt;ul&gt;
+&lt;li&gt;莎士比亚喜剧&lt;/li&gt;
+&lt;li&gt;莎士比亚悲剧&lt;/li&gt;
+&lt;/ul&gt;
 &lt;h3 id=&#34;心理思维&#34;&gt;心理/思维&lt;/h3&gt;
 &lt;ul&gt;
 &lt;li&gt;批判性思维方法&lt;/li&gt;
@@ -3647,6 +3660,18 @@ g值和h值&lt;/p&gt;
 &lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;最早是从北京集智俱乐部了解到这本书，个人觉得是目前复杂网络最经典的教材之一，对于学科起源及
 研究问题的分类都比较系统，其中介绍的方法也具有新颖性。
 &lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;云端脚下：从一元二次方程到规范场论（to do）&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;一念非凡（ongoing）&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;陈省身与几何学的发展（to do）&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;古今数学思想（ongoing）&lt;/p&gt;
+&lt;/li&gt;
 &lt;/ul&gt;
 &lt;h4 id=&#34;技术&#34;&gt;技术&lt;/h4&gt;
 &lt;ul&gt;
@@ -3655,6 +3680,10 @@ g值和h值&lt;/p&gt;
 &lt;li&gt;浪潮之巅&lt;/li&gt;
 &lt;li&gt;地理学与生活&lt;/li&gt;
 &lt;li&gt;网络是怎么连接的&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&#34;历史地理&#34;&gt;历史/地理&lt;/h4&gt;
+&lt;ul&gt;
+&lt;li&gt;城市发展史（to do）&lt;/li&gt;
 &lt;/ul&gt;
 &lt;h4 id=&#34;产品思维&#34;&gt;产品思维&lt;/h4&gt;
 &lt;ul&gt;

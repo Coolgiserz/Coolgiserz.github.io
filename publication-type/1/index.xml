@@ -450,9 +450,8 @@
                loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
   &lt;/div&gt;&lt;/figure&gt;
 &lt;/p&gt;
-&lt;h4 id=&#34;变换注意力&#34;&gt;变换注意力&lt;/h4&gt;
-&lt;p&gt;在编码器和解码器之间，用于建模每一个未来时间步和历史时间步长的直接关系&lt;/p&gt;
-&lt;h4 id=&#34;编码器解码器结构&#34;&gt;编码器——解码器结构&lt;/h4&gt;
+&lt;h4 id=&#34;注意力转换模块&#34;&gt;注意力转换模块&lt;/h4&gt;
+&lt;p&gt;在编码器和解码器之间，用于建模每一个未来时间步和历史时间步长的直接关系。&lt;/p&gt;
 &lt;h3 id=&#34;问题&#34;&gt;问题&lt;/h3&gt;
 &lt;ul&gt;
 &lt;li&gt;很多交通流预测的文章都会将MAE指标交通流预测结果评价，而GMAN的文章中中直接以MAE作为损失函数，这像是一个trick。对于交通流预测而言，损失函数应该如何设计？&lt;/li&gt;
