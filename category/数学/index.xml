@@ -5,12 +5,75 @@
     <link>/category/%E6%95%B0%E5%AD%A6/</link>
       <atom:link href="/category/%E6%95%B0%E5%AD%A6/index.xml" rel="self" type="application/rss+xml" />
     <description>数学</description>
-    <generator>Wowchemy (https://wowchemy.com)</generator><language>en-us</language><lastBuildDate>Thu, 19 May 2022 15:31:51 +0800</lastBuildDate>
+    <generator>Wowchemy (https://wowchemy.com)</generator><language>en-us</language><lastBuildDate>Fri, 20 May 2022 10:38:29 +0800</lastBuildDate>
     <image>
       <url>/media/icon_hue03491371183284312b8b116a73ae5ab_79511_512x512_fill_lanczos_center_3.png</url>
       <title>数学</title>
       <link>/category/%E6%95%B0%E5%AD%A6/</link>
     </image>
+    
+    <item>
+      <title>关于图上的离散Ricci曲率意义的思考</title>
+      <link>/post/understanding-graph-ricci-curvature/</link>
+      <pubDate>Fri, 20 May 2022 10:38:29 +0800</pubDate>
+      <guid>/post/understanding-graph-ricci-curvature/</guid>
+      <description>&lt;h2 id=&#34;灵魂拷问&#34;&gt;灵魂拷问&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;曲率是什么？正曲率、零曲率、负曲率各自代表什么意义(几何、物理)？能给我们什么启发？&lt;/li&gt;
+&lt;li&gt;高维空间中的曲率如何定义？&lt;/li&gt;
+&lt;li&gt;黎曼流形中的Ricci曲率与流形的性质有什么关联？&lt;/li&gt;
+&lt;li&gt;图和流形有什么联系？&lt;/li&gt;
+&lt;li&gt;为什么要将流形上的曲率迁移到图/网络上？&lt;/li&gt;
+&lt;li&gt;有多少种离散化的Ricci曲率？不同的离散化含义相同吗？离散化的策略会不会存在什么问题？&lt;/li&gt;
+&lt;li&gt;Olliver Ricci曲率的定义是有意义的吗？&lt;/li&gt;
+&lt;li&gt;图上的Ricci曲率与图的性质有什么关联？&lt;/li&gt;
+&lt;li&gt;Ricci曲率与网络演化有关联吗？&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;参考资料&#34;&gt;参考资料&lt;/h2&gt;
+&lt;h3 id=&#34;相关讨论&#34;&gt;相关讨论&lt;/h3&gt;
+&lt;h4 id=&#34;关于曲率的解释&#34;&gt;关于曲率的解释&lt;/h4&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://www.zhihu.com/question/25952605&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;如何简明地解释曲率（curvature）？&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://www.quora.com/Whats-the-difference-between-positive-curvature-and-negative-curvature-in-Physics&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;What&amp;rsquo;s the difference between positive curvature and negative curvature in Physics?&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;相关教材&#34;&gt;相关教材&lt;/h3&gt;
+&lt;h4 id=&#34;黎曼几何&#34;&gt;黎曼几何&lt;/h4&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://link.springer.com/content/pdf/10.1007/978-3-642-21298-7.pdf&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Riemannian Geometry and Geometric Analysis&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;相关论文&#34;&gt;相关论文&lt;/h3&gt;
+&lt;h4 id=&#34;ricci曲率&#34;&gt;Ricci曲率&lt;/h4&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://towardsdatascience.com/over-squashing-bottlenecks-and-graph-ricci-curvature-c238b7169e16&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Over-squashing, Bottlenecks, and Graph Ricci curvature&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://link.springer.com/article/10.1007/s00454-013-9558-1&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Ollivier’s Ricci Curvature, Local Clustering and Curvature-Dimension Inequalities on Graphs&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://www.nature.com/articles/s41598-018-27001-3&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Comparative analysis of two discretizations of Ricci curvature for complex networks&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://arxiv.org/abs/2102.10134&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Ricci curvature, graphs and eigenvalues&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://www.sciencedirect.com/science/article/pii/S002212360800493X&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Ricci curvature of Markov chains on metric spaces&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://link.springer.com/article/10.1007/s00454-002-0743-x&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Bochner&amp;rsquo;s Method for Cell Complexes and Combinatorial Ricci Curvature&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://arxiv.org/pdf/1907.06733.pdf&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;CONDENSED RICCI CURVATURE OF COMPLETE AND STRONGLY REGULAR GRAPHS&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h5 id=&#34;曲率与网络分析&#34;&gt;曲率与网络分析&lt;/h5&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://match.pmf.kg.ac.rs/electronic_versions/Match80/n3/match80n3_605-622.pdf&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Discrete curvatures and network analysis&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://academic.oup.com/comnet/article/5/4/527/3110988?login=true&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Characterizing complex networks with Forman-Ricci curvature and associated geometric flows&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://arxiv.org/pdf/1603.00386.pdf&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Forman curvature for complex networks&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;[Forman curvature for directed networks]&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://arxiv.org/abs/1306.6741&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Exact and asymptotic results on coarse Ricci curvature of graphs&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://www.nature.com/articles/s41598-019-46380-9.pdf&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Community Detection on Networks with Ricci Flow&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&#34;复杂网络&#34;&gt;复杂网络&lt;/h4&gt;
+&lt;h5 id=&#34;边指标&#34;&gt;边指标&lt;/h5&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://watermark.silverchair.com/63-2-482.pdf?token=AQECAHi208BE49Ooan9kkhW_Ercy7Dm3ZL_9Cf3qfKAc485ysgAAArswggK3BgkqhkiG9w0BBwagggKoMIICpAIBADCCAp0GCSqGSIb3DQEHATAeBglghkgBZQMEAS4wEQQMS-RDvkUXND0s-lIpAgEQgIICbszsviJmn2PUQqXgIFnSXP7RtWz798rjivAA15ezzhDIJjw9IifwfwBZT5NxdBh9DUZMEfn_iGl1wOhY9FA6oDu6Fi0LhB7usCscIoRH7uzQcgKuM1JHrdT-0GY12TDWWGkFSHqeJaTgmMePGdRdv_WaVzyLv5jNuVQzhkuClarIqiSRyI6ncOebYnqGnGJK6VeDXsaGWewGDFxz4vMQK4XKbPk-em13h9ylazpDy16fdLMiHTvjn0PYy3_7tPpTOIu1f0UNUeCBdAf-nhCVXhvQfOpyMydX0fCq2I2o0By8KTSSnjPkTrPsdnnm7Kvw1EYz-jKuEVOlDS5NaChjK-iDD4DFEDa_GYwEqhJzITTImRaxTte6o-fOoaj2sTIcsPHVd3bxioMjrYMY58jrp2W6kkKTTcrf-KX_yuaUfu721_i7-OXILcy5e9-sr-4IxrNaht4uJJGJn6hLG2XPhX8YO1kwICpP11OnT_q9XTisBE9iVOpH54NB8tVE9tYFygKJ7kngqTZ-GyKHBca-29fKWTy24r21oI6TwIgWg81PyTTJt1ZYkrUn0Fi0MedWTM0bNyUprdX_Tze023xg-6V2BruGhGiubSGcjvrITQYUdCJsIhQaA7UVm9xixFKrWgN2iXwOEFGnNwY4rnu7j0Z-ZPBtSqbSKcnpZF83VYr6C35BLDImkzavne1XcMJrRpIc0WQXTpu3UyNwNSNKp7nuJufPP1kd9Rzk1b4heJj7_dgDQKaCEMsq2X3-IWAV14rfKi2sBNwQzxCtPU8PPrqyfSfRnuTLg307WkHv6x3nqnx1owTcc3Ar9dysZ74&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Measuring tie strength&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://dl.acm.org/doi/10.1145/2531602.2531642&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Romantic partnerships and the dispersion of social ties: a network analysis of relationship status on Facebook&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;工具包&#34;&gt;工具包&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://graphriccicurvature.readthedocs.io/en/v0.5.1/tutorial.html&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Tutorial: GraphRicciCurvature&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://www.sagemath.org&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;SageMath&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
     
     <item>
       <title>「论文阅读」-针对复杂网络上两种离散Ricci曲率的对比分析</title>

@@ -64,10 +64,10 @@
   
     
   
-  <meta name="description" content="A highly-customizable Hugo academic resume theme powered by Wowchemy website builder." />
+  <meta name="description" content="Ricci曲率从连续到离散的旅程" />
 
   
-  <link rel="alternate" hreflang="en-us" href="/categories/" />
+  <link rel="alternate" hreflang="en-us" href="/post/understanding-graph-ricci-curvature/" />
 
   
   
@@ -289,8 +289,6 @@
   
 
   
-    <link rel="alternate" href="/categories/index.xml" type="application/rss+xml" title="CoolCats" />
-  
 
   
     <link rel="manifest" href="/manifest.webmanifest" />
@@ -299,7 +297,7 @@
   <link rel="icon" type="image/png" href="/media/icon_hue03491371183284312b8b116a73ae5ab_79511_32x32_fill_lanczos_center_3.png" />
   <link rel="apple-touch-icon" type="image/png" href="/media/icon_hue03491371183284312b8b116a73ae5ab_79511_180x180_fill_lanczos_center_3.png" />
 
-  <link rel="canonical" href="/categories/" />
+  <link rel="canonical" href="/post/understanding-graph-ricci-curvature/" />
 
   
   
@@ -325,33 +323,82 @@
     <meta property="twitter:creator" content="@wowchemy" />
   
   <meta property="og:site_name" content="CoolCats" />
-  <meta property="og:url" content="/categories/" />
-  <meta property="og:title" content="Categories | CoolCats" />
-  <meta property="og:description" content="A highly-customizable Hugo academic resume theme powered by Wowchemy website builder." /><meta property="og:image" content="/media/icon_hue03491371183284312b8b116a73ae5ab_79511_512x512_fill_lanczos_center_3.png" />
+  <meta property="og:url" content="/post/understanding-graph-ricci-curvature/" />
+  <meta property="og:title" content="关于图上的离散Ricci曲率意义的思考 | CoolCats" />
+  <meta property="og:description" content="Ricci曲率从连续到离散的旅程" /><meta property="og:image" content="/media/icon_hue03491371183284312b8b116a73ae5ab_79511_512x512_fill_lanczos_center_3.png" />
     <meta property="twitter:image" content="/media/icon_hue03491371183284312b8b116a73ae5ab_79511_512x512_fill_lanczos_center_3.png" /><meta property="og:locale" content="en-us" />
   
     
-      <meta property="og:updated_time" content="2022-05-20T10:38:29&#43;08:00" />
+      <meta
+        property="article:published_time"
+        content="2022-05-20T10:38:29&#43;08:00"
+      />
     
+    <meta property="article:modified_time" content="2022-05-20T10:38:29&#43;08:00">
+  
+
+  
+
+
+    
+
+
+
+
+
+
+  
+
+
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "/post/understanding-graph-ricci-curvature/"
+  },
+  "headline": "关于图上的离散Ricci曲率意义的思考",
+  
+  "datePublished": "2022-05-20T10:38:29+08:00",
+  "dateModified": "2022-05-20T10:38:29+08:00",
+  
+  "author": {
+    "@type": "Person",
+    "name": "CoolCats"
+  },
+  
+  "publisher": {
+    "@type": "Organization",
+    "name": "CoolCats",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "/media/icon_hue03491371183284312b8b116a73ae5ab_79511_192x192_fill_lanczos_center_3.png"
+    }
+  },
+  "description": "Ricci曲率从连续到离散的旅程"
+}
+</script>
+
+  
+
+  
+
   
 
   
 
 
 
-  
-
-  
 
 
-
-
-
-  <title>Categories | CoolCats</title>
+  <title>关于图上的离散Ricci曲率意义的思考 | CoolCats</title>
 </head>
 
 
-<body id="top" data-spy="scroll" data-offset="70" data-target="#TableOfContents" class="page-wrapper   "  >
+<body id="top" data-spy="scroll" data-offset="70" data-target="#TableOfContents" class="page-wrapper   " data-wc-page-id="30f93790d042d67a9ee54a832e7d2913" >
 
   
   
@@ -473,7 +520,7 @@
           
 
           <li class="nav-item">
-            <a class="nav-link " href="/post"><span>博客</span></a>
+            <a class="nav-link  active" href="/post"><span>博客</span></a>
           </li>
 
           
@@ -687,7 +734,9 @@
     
     
 
-    
+    <article class="article">
+
+  
 
 
 
@@ -705,53 +754,13 @@
   
   
   
-    
-  
-<div class="universal-wrapper pt-3">
-  <h1>Categories</h1>
+<div class="article-container pt-3">
+  <h1>关于图上的离散Ricci曲率意义的思考</h1>
 
   
 
-  
-</div>
-
-
-
-<div class="universal-wrapper">
-  
-
-  
   
     
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<div class="media stream-item view-compact">
-  <div class="media-body">
-
-    <div class="section-subheading article-title mb-0 mt-0">
-      <a href="/category/%E9%80%9A%E5%8B%A4%E6%B5%81%E9%A2%84%E6%B5%8B/" >通勤流预测</a>
-    </div>
-
-    
-
-    <div class="stream-meta article-metadata">
-
-      
-
-      
-        
 
 
 <div class="article-metadata">
@@ -765,13 +774,18 @@
     
       
     
-    Dec 9, 2020
+    May 20, 2022
   </span>
   
 
   
 
   
+  <span class="middot-divider"></span>
+  <span class="article-reading-time">
+    1 min read
+  </span>
+  
 
   
   
@@ -779,704 +793,283 @@
   
 
   
+  
+  <span class="middot-divider"></span>
+  <span class="article-categories">
+    <i class="fas fa-folder mr-1"></i><a href="/category/%E6%95%B0%E5%AD%A6/">数学</a>, <a href="/category/%E5%A4%8D%E6%9D%82%E7%BD%91%E7%BB%9C/">复杂网络</a></span>
   
 
 </div>
 
-      
-    </div>
-
     
 
-  </div>
-  <div class="ml-3">
-    
-    
-  </div>
-</div>
+
+
+
 
   
-    
+</div>
 
 
 
+  <div class="article-container">
 
+    <div class="article-style">
+      <h2 id="灵魂拷问">灵魂拷问</h2>
+<ul>
+<li>曲率是什么？正曲率、零曲率、负曲率各自代表什么意义(几何、物理)？能给我们什么启发？</li>
+<li>高维空间中的曲率如何定义？</li>
+<li>黎曼流形中的Ricci曲率与流形的性质有什么关联？</li>
+<li>图和流形有什么联系？</li>
+<li>为什么要将流形上的曲率迁移到图/网络上？</li>
+<li>有多少种离散化的Ricci曲率？不同的离散化含义相同吗？离散化的策略会不会存在什么问题？</li>
+<li>Olliver Ricci曲率的定义是有意义的吗？</li>
+<li>图上的Ricci曲率与图的性质有什么关联？</li>
+<li>Ricci曲率与网络演化有关联吗？</li>
+</ul>
+<h2 id="参考资料">参考资料</h2>
+<h3 id="相关讨论">相关讨论</h3>
+<h4 id="关于曲率的解释">关于曲率的解释</h4>
+<ul>
+<li><a href="https://www.zhihu.com/question/25952605" target="_blank" rel="noopener">如何简明地解释曲率（curvature）？</a></li>
+<li><a href="https://www.quora.com/Whats-the-difference-between-positive-curvature-and-negative-curvature-in-Physics" target="_blank" rel="noopener">What&rsquo;s the difference between positive curvature and negative curvature in Physics?</a></li>
+</ul>
+<h3 id="相关教材">相关教材</h3>
+<h4 id="黎曼几何">黎曼几何</h4>
+<ul>
+<li><a href="https://link.springer.com/content/pdf/10.1007/978-3-642-21298-7.pdf" target="_blank" rel="noopener">Riemannian Geometry and Geometric Analysis</a></li>
+</ul>
+<h3 id="相关论文">相关论文</h3>
+<h4 id="ricci曲率">Ricci曲率</h4>
+<ul>
+<li><a href="https://towardsdatascience.com/over-squashing-bottlenecks-and-graph-ricci-curvature-c238b7169e16" target="_blank" rel="noopener">Over-squashing, Bottlenecks, and Graph Ricci curvature</a></li>
+<li><a href="https://link.springer.com/article/10.1007/s00454-013-9558-1" target="_blank" rel="noopener">Ollivier’s Ricci Curvature, Local Clustering and Curvature-Dimension Inequalities on Graphs</a></li>
+<li><a href="https://www.nature.com/articles/s41598-018-27001-3" target="_blank" rel="noopener">Comparative analysis of two discretizations of Ricci curvature for complex networks</a></li>
+<li><a href="https://arxiv.org/abs/2102.10134" target="_blank" rel="noopener">Ricci curvature, graphs and eigenvalues</a></li>
+<li><a href="https://www.sciencedirect.com/science/article/pii/S002212360800493X" target="_blank" rel="noopener">Ricci curvature of Markov chains on metric spaces</a></li>
+<li><a href="https://link.springer.com/article/10.1007/s00454-002-0743-x" target="_blank" rel="noopener">Bochner&rsquo;s Method for Cell Complexes and Combinatorial Ricci Curvature</a></li>
+<li><a href="https://arxiv.org/pdf/1907.06733.pdf" target="_blank" rel="noopener">CONDENSED RICCI CURVATURE OF COMPLETE AND STRONGLY REGULAR GRAPHS</a></li>
+</ul>
+<h5 id="曲率与网络分析">曲率与网络分析</h5>
+<ul>
+<li><a href="https://match.pmf.kg.ac.rs/electronic_versions/Match80/n3/match80n3_605-622.pdf" target="_blank" rel="noopener">Discrete curvatures and network analysis</a></li>
+<li><a href="https://academic.oup.com/comnet/article/5/4/527/3110988?login=true" target="_blank" rel="noopener">Characterizing complex networks with Forman-Ricci curvature and associated geometric flows</a></li>
+<li><a href="https://arxiv.org/pdf/1603.00386.pdf" target="_blank" rel="noopener">Forman curvature for complex networks</a></li>
+<li>[Forman curvature for directed networks]</li>
+<li><a href="https://arxiv.org/abs/1306.6741" target="_blank" rel="noopener">Exact and asymptotic results on coarse Ricci curvature of graphs</a></li>
+<li><a href="https://www.nature.com/articles/s41598-019-46380-9.pdf" target="_blank" rel="noopener">Community Detection on Networks with Ricci Flow</a></li>
+</ul>
+<h4 id="复杂网络">复杂网络</h4>
+<h5 id="边指标">边指标</h5>
+<ul>
+<li><a href="https://watermark.silverchair.com/63-2-482.pdf?token=AQECAHi208BE49Ooan9kkhW_Ercy7Dm3ZL_9Cf3qfKAc485ysgAAArswggK3BgkqhkiG9w0BBwagggKoMIICpAIBADCCAp0GCSqGSIb3DQEHATAeBglghkgBZQMEAS4wEQQMS-RDvkUXND0s-lIpAgEQgIICbszsviJmn2PUQqXgIFnSXP7RtWz798rjivAA15ezzhDIJjw9IifwfwBZT5NxdBh9DUZMEfn_iGl1wOhY9FA6oDu6Fi0LhB7usCscIoRH7uzQcgKuM1JHrdT-0GY12TDWWGkFSHqeJaTgmMePGdRdv_WaVzyLv5jNuVQzhkuClarIqiSRyI6ncOebYnqGnGJK6VeDXsaGWewGDFxz4vMQK4XKbPk-em13h9ylazpDy16fdLMiHTvjn0PYy3_7tPpTOIu1f0UNUeCBdAf-nhCVXhvQfOpyMydX0fCq2I2o0By8KTSSnjPkTrPsdnnm7Kvw1EYz-jKuEVOlDS5NaChjK-iDD4DFEDa_GYwEqhJzITTImRaxTte6o-fOoaj2sTIcsPHVd3bxioMjrYMY58jrp2W6kkKTTcrf-KX_yuaUfu721_i7-OXILcy5e9-sr-4IxrNaht4uJJGJn6hLG2XPhX8YO1kwICpP11OnT_q9XTisBE9iVOpH54NB8tVE9tYFygKJ7kngqTZ-GyKHBca-29fKWTy24r21oI6TwIgWg81PyTTJt1ZYkrUn0Fi0MedWTM0bNyUprdX_Tze023xg-6V2BruGhGiubSGcjvrITQYUdCJsIhQaA7UVm9xixFKrWgN2iXwOEFGnNwY4rnu7j0Z-ZPBtSqbSKcnpZF83VYr6C35BLDImkzavne1XcMJrRpIc0WQXTpu3UyNwNSNKp7nuJufPP1kd9Rzk1b4heJj7_dgDQKaCEMsq2X3-IWAV14rfKi2sBNwQzxCtPU8PPrqyfSfRnuTLg307WkHv6x3nqnx1owTcc3Ar9dysZ74" target="_blank" rel="noopener">Measuring tie strength</a></li>
+<li><a href="https://dl.acm.org/doi/10.1145/2531602.2531642" target="_blank" rel="noopener">Romantic partnerships and the dispersion of social ties: a network analysis of relationship status on Facebook</a></li>
+</ul>
+<h3 id="工具包">工具包</h3>
+<ul>
+<li><a href="https://graphriccicurvature.readthedocs.io/en/v0.5.1/tutorial.html" target="_blank" rel="noopener">Tutorial: GraphRicciCurvature</a></li>
+<li><a href="https://www.sagemath.org" target="_blank" rel="noopener">SageMath</a></li>
+</ul>
 
-
-
-
-
-
-
-
-
-
-<div class="media stream-item view-compact">
-  <div class="media-body">
-
-    <div class="section-subheading article-title mb-0 mt-0">
-      <a href="/category/%E7%AE%97%E6%B3%95/" >算法</a>
     </div>
 
     
 
-    <div class="stream-meta article-metadata">
 
+
+
+<div class="article-tags">
+  
+  <a class="badge badge-light" href="/tag/%E6%9C%80%E4%BC%98%E4%BC%A0%E8%BE%93/">最优传输</a>
+  
+  <a class="badge badge-light" href="/tag/%E9%BB%8E%E6%9B%BC%E5%87%A0%E4%BD%95/">黎曼几何</a>
+  
+  <a class="badge badge-light" href="/tag/%E5%9B%BE%E8%AE%BA/">图论</a>
+  
+</div>
+
+
+
+<div class="share-box">
+  <ul class="share">
+    
       
-
+      
       
         
-
-
-<div class="article-metadata">
-
-  
-  
-
-  
-  <span class="article-date">
-    
+      
+      
+      
+      <li>
+        <a href="https://twitter.com/intent/tweet?url=/post/understanding-graph-ricci-curvature/&amp;text=%e5%85%b3%e4%ba%8e%e5%9b%be%e4%b8%8a%e7%9a%84%e7%a6%bb%e6%95%a3Ricci%e6%9b%b2%e7%8e%87%e6%84%8f%e4%b9%89%e7%9a%84%e6%80%9d%e8%80%83" target="_blank" rel="noopener" class="share-btn-twitter" aria-label="twitter">
+          <i class="fab fa-twitter"></i>
+        </a>
+      </li>
     
       
-    
-    Apr 27, 2020
-  </span>
-  
-
-  
-
-  
-
-  
-  
-  
-  
-
-  
-  
-
-</div>
-
       
-    </div>
-
-    
-
-  </div>
-  <div class="ml-3">
-    
-    
-  </div>
-</div>
-
-  
-    
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<div class="media stream-item view-compact">
-  <div class="media-body">
-
-    <div class="section-subheading article-title mb-0 mt-0">
-      <a href="/category/%E8%B7%AF%E5%BE%84%E8%A7%84%E5%88%92/" >路径规划</a>
-    </div>
-
-    
-
-    <div class="stream-meta article-metadata">
-
-      
-
       
         
-
-
-<div class="article-metadata">
-
-  
-  
-
-  
-  <span class="article-date">
-    
+      
+      
+      
+      <li>
+        <a href="https://www.facebook.com/sharer.php?u=/post/understanding-graph-ricci-curvature/&amp;t=%e5%85%b3%e4%ba%8e%e5%9b%be%e4%b8%8a%e7%9a%84%e7%a6%bb%e6%95%a3Ricci%e6%9b%b2%e7%8e%87%e6%84%8f%e4%b9%89%e7%9a%84%e6%80%9d%e8%80%83" target="_blank" rel="noopener" class="share-btn-facebook" aria-label="facebook">
+          <i class="fab fa-facebook"></i>
+        </a>
+      </li>
     
       
-    
-    Apr 27, 2020
-  </span>
-  
-
-  
-
-  
-
-  
-  
-  
-  
-
-  
-  
-
-</div>
-
       
-    </div>
-
-    
-
-  </div>
-  <div class="ml-3">
-    
-    
-  </div>
-</div>
-
-  
-    
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<div class="media stream-item view-compact">
-  <div class="media-body">
-
-    <div class="section-subheading article-title mb-0 mt-0">
-      <a href="/category/%E7%BD%91%E7%BB%9C%E5%88%86%E6%9E%90/" >网络分析</a>
-    </div>
-
-    
-
-    <div class="stream-meta article-metadata">
-
-      
-
       
         
-
-
-<div class="article-metadata">
-
-  
-  
-
-  
-  <span class="article-date">
-    
+      
+      
+      
+      <li>
+        <a href="mailto:?subject=%e5%85%b3%e4%ba%8e%e5%9b%be%e4%b8%8a%e7%9a%84%e7%a6%bb%e6%95%a3Ricci%e6%9b%b2%e7%8e%87%e6%84%8f%e4%b9%89%e7%9a%84%e6%80%9d%e8%80%83&amp;body=/post/understanding-graph-ricci-curvature/" target="_blank" rel="noopener" class="share-btn-email" aria-label="envelope">
+          <i class="fas fa-envelope"></i>
+        </a>
+      </li>
     
       
-    
-    Mar 13, 2020
-  </span>
-  
-
-  
-
-  
-
-  
-  
-  
-  
-
-  
-  
-
-</div>
-
       
-    </div>
-
-    
-
-  </div>
-  <div class="ml-3">
-    
-    
-  </div>
-</div>
-
-  
-    
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<div class="media stream-item view-compact">
-  <div class="media-body">
-
-    <div class="section-subheading article-title mb-0 mt-0">
-      <a href="/category/%E6%B5%8B%E8%AF%95/" >测试</a>
-    </div>
-
-    
-
-    <div class="stream-meta article-metadata">
-
-      
-
       
         
-
-
-<div class="article-metadata">
-
-  
-  
-
-  
-  <span class="article-date">
-    
+      
+      
+      
+      <li>
+        <a href="https://www.linkedin.com/shareArticle?url=/post/understanding-graph-ricci-curvature/&amp;title=%e5%85%b3%e4%ba%8e%e5%9b%be%e4%b8%8a%e7%9a%84%e7%a6%bb%e6%95%a3Ricci%e6%9b%b2%e7%8e%87%e6%84%8f%e4%b9%89%e7%9a%84%e6%80%9d%e8%80%83" target="_blank" rel="noopener" class="share-btn-linkedin" aria-label="linkedin-in">
+          <i class="fab fa-linkedin-in"></i>
+        </a>
+      </li>
     
       
-    
-    Mar 9, 2020
-  </span>
-  
-
-  
-
-  
-
-  
-  
-  
-  
-
-  
-  
-
-</div>
-
       
-    </div>
-
-    
-
-  </div>
-  <div class="ml-3">
-    
-    
-  </div>
-</div>
-
-  
-    
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<div class="media stream-item view-compact">
-  <div class="media-body">
-
-    <div class="section-subheading article-title mb-0 mt-0">
-      <a href="/category/%E4%B8%AA%E6%80%A7%E5%8C%96%E8%90%A5%E9%94%80/" >个性化营销</a>
-    </div>
-
-    
-
-    <div class="stream-meta article-metadata">
-
-      
-
       
         
-
-
-<div class="article-metadata">
-
-  
-  
-
-  
-  <span class="article-date">
-    
+      
+      
+      
+      <li>
+        <a href="whatsapp://send?text=%e5%85%b3%e4%ba%8e%e5%9b%be%e4%b8%8a%e7%9a%84%e7%a6%bb%e6%95%a3Ricci%e6%9b%b2%e7%8e%87%e6%84%8f%e4%b9%89%e7%9a%84%e6%80%9d%e8%80%83%20/post/understanding-graph-ricci-curvature/" target="_blank" rel="noopener" class="share-btn-whatsapp" aria-label="whatsapp">
+          <i class="fab fa-whatsapp"></i>
+        </a>
+      </li>
     
       
-    
-    Feb 19, 2020
-  </span>
-  
-
-  
-
-  
-
-  
-  
-  
-  
-
-  
-  
-
-</div>
-
       
-    </div>
-
-    
-
-  </div>
-  <div class="ml-3">
-    
-    
-  </div>
-</div>
-
-  
-    
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<div class="media stream-item view-compact">
-  <div class="media-body">
-
-    <div class="section-subheading article-title mb-0 mt-0">
-      <a href="/category/%E8%81%9A%E7%B1%BB/" >聚类</a>
-    </div>
-
-    
-
-    <div class="stream-meta article-metadata">
-
-      
-
       
         
-
-
-<div class="article-metadata">
-
-  
-  
-
-  
-  <span class="article-date">
-    
-    
       
-    
-    Feb 19, 2020
-  </span>
-  
-
-  
-
-  
-
-  
-  
-  
-  
-
-  
-  
-
-</div>
-
       
-    </div>
-
-    
-
-  </div>
-  <div class="ml-3">
-    
-    
-  </div>
-</div>
-
-  
-    
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<div class="media stream-item view-compact">
-  <div class="media-body">
-
-    <div class="section-subheading article-title mb-0 mt-0">
-      <a href="/category/%E9%98%85%E8%AF%BB/" >阅读</a>
-    </div>
-
-    
-
-    <div class="stream-meta article-metadata">
-
       
-
-      
-        
-
-
-<div class="article-metadata">
-
-  
-  
-
-  
-  <span class="article-date">
-    
-    
-      
-    
-    Dec 24, 2019
-  </span>
-  
-
-  
-
-  
-
-  
-  
-  
-  
-
-  
-  
-
-</div>
-
-      
-    </div>
-
-    
-
-  </div>
-  <div class="ml-3">
-    
-    
-  </div>
-</div>
-
-  
-    
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<div class="media stream-item view-compact">
-  <div class="media-body">
-
-    <div class="section-subheading article-title mb-0 mt-0">
-      <a href="/category/%E6%95%B0%E6%8D%AE%E5%BA%93/" >数据库</a>
-    </div>
-
-    
-
-    <div class="stream-meta article-metadata">
-
-      
-
-      
-        
-
-
-<div class="article-metadata">
-
-  
-  
-
-  
-  <span class="article-date">
-    
-    
-      
-    
-    Jul 8, 2019
-  </span>
-  
-
-  
-
-  
-
-  
-  
-  
-  
-
-  
-  
-
-</div>
-
-      
-    </div>
-
-    
-
-  </div>
-  <div class="ml-3">
-    
-    
-  </div>
-</div>
-
-  
-    
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<div class="media stream-item view-compact">
-  <div class="media-body">
-
-    <div class="section-subheading article-title mb-0 mt-0">
-      <a href="/category/%E6%96%87%E5%8C%96/" >文化</a>
-    </div>
-
-    
-
-    <div class="stream-meta article-metadata">
-
-      
-
-      
-        
-
-
-<div class="article-metadata">
-
-  
-  
-
-  
-  <span class="article-date">
-    
-    
-      
-    
-    Jul 8, 2019
-  </span>
-  
-
-  
-
-  
-
-  
-  
-  
-  
-
-  
-  
-
-</div>
-
-      
-    </div>
-
-    
-
-  </div>
-  <div class="ml-3">
-    
-    
-  </div>
-</div>
-
-  
-
-  
-<nav class="mt-1">
-  <ul class="pagination justify-content-center">
-    
-    <li class="page-item"><a class="page-link" href="/categories/">&laquo;</a></li>
-    
-    
-    <li class="page-item"><a class="page-link" href="/categories/page/3/">&raquo;</a></li>
+      <li>
+        <a href="https://service.weibo.com/share/share.php?url=/post/understanding-graph-ricci-curvature/&amp;title=%e5%85%b3%e4%ba%8e%e5%9b%be%e4%b8%8a%e7%9a%84%e7%a6%bb%e6%95%a3Ricci%e6%9b%b2%e7%8e%87%e6%84%8f%e4%b9%89%e7%9a%84%e6%80%9d%e8%80%83" target="_blank" rel="noopener" class="share-btn-weibo" aria-label="weibo">
+          <i class="fab fa-weibo"></i>
+        </a>
+      </li>
     
   </ul>
-</nav>
-
-
 </div>
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+
+
+
+  
+  
+  
+  
+  
+  <div class="media author-card content-widget-hr">
+    
+      
+      <a href="/authors/admin/"><img class="avatar mr-3 avatar-circle" src="/authors/admin/avatar_hue03491371183284312b8b116a73ae5ab_79511_270x270_fill_q75_lanczos_center.jpg" alt="CoolCats"></a>
+    
+
+    <div class="media-body">
+      <h5 class="card-title"><a href="/authors/admin/">CoolCats</a></h5>
+      <h6 class="card-subtitle">理学学士, 在读硕士</h6>
+      <p class="card-text">我的研究兴趣是时空拓扑分析、自然语言处理、通俗文学</p>
+      <ul class="network-icon" aria-hidden="true">
+  
+    
+    
+    
+      
+    
+    
+    
+    
+    
+    <li>
+      <a href="mailto:2811159909@qq.com" >
+        <i class="fas fa-envelope"></i>
+      </a>
+    </li>
+  
+    
+    
+    
+      
+    
+    
+    
+    
+    
+      
+    
+    <li>
+      <a href="https://github.com/Coolgiserz" target="_blank" rel="noopener">
+        <i class="fab fa-github"></i>
+      </a>
+    </li>
+  
+</ul>
+
+    </div>
+  </div>
+
+
+
+
+
+
+
+
+
+  
+  
+  
+
+  
+
+  
+
+
+
+
+
+
+
+
+
+
+  </div>
+</article>
   </div>
 
   <div class="page-footer">
