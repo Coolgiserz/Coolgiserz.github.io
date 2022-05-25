@@ -22,6 +22,14 @@
 &lt;li&gt;多变量时间序列预测的基本假设是？&lt;/li&gt;
 &lt;li&gt;现有方法能否充分利用多变量时间序列中隐藏的空间依赖关系？&lt;/li&gt;
 &lt;li&gt;是否可以通过一个图学习模块自动提取变量间依赖关系？&lt;/li&gt;
+&lt;li&gt;现有可用于多变量时间序列预测的模型有？&lt;/li&gt;
+&lt;li&gt;时空图神经网络在建模多变量时间序列预测问题时面临哪些挑战？
+&lt;ul&gt;
+&lt;li&gt;变量间依赖关系知道吗？&lt;/li&gt;
+&lt;li&gt;给定一个预定义的图结构，其就是最优的图结构吗？能否在训练中被优化？&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;从数据中自适应学习图结构是否会带来计算效率的瓶颈？如何解决？&lt;/li&gt;
 &lt;/ul&gt;
 </description>
     </item>
@@ -593,6 +601,14 @@
 &lt;h3 id=&#34;结论&#34;&gt;结论&lt;/h3&gt;
 &lt;p&gt;在这项研究中，我们已经引入了新颖的非循环式架构，称为Traffic Transformer。我们已经成功地将其用于交通预测，以捕获时空依赖性。这个架构可以看作是自然语言处理中一个著名的顺序模型Transformer的扩展。为了探索如何在Transformer中捕获时空依赖性，我们提出了七种不同的时间序列的连续性和周期性建模方法。时间序列分段法取得了最好的效果。另外，我们在Transformer中引入了图卷积神经网络，用于建模交通的空间依赖性。通过这样做，可以捕捉到流量的动态时空特征。在两个基准数据集上的广泛实验表明，我们的模型优于基线，展示了我们提出的时空编码方法和我们提出的整体架构的有效性。本文的一个局限性是，我们只考虑了时间上的注意力机制，而不同时间的上游道路可能会有不同的贡献。在未来的工作中，我们将探索如何设计时空注意力机制，以更精细地解决这个问题。&lt;/p&gt;
 </description>
+    </item>
+    
+    <item>
+      <title>「论文阅读」-DCRNN: 数据驱动的交通流预测</title>
+      <link>/publication/dcrnn-data-driven-traffic-forecasting/</link>
+      <pubDate>Mon, 28 Dec 2020 15:28:24 +0800</pubDate>
+      <guid>/publication/dcrnn-data-driven-traffic-forecasting/</guid>
+      <description></description>
     </item>
     
     <item>

@@ -22,6 +22,14 @@
 &lt;li&gt;多变量时间序列预测的基本假设是？&lt;/li&gt;
 &lt;li&gt;现有方法能否充分利用多变量时间序列中隐藏的空间依赖关系？&lt;/li&gt;
 &lt;li&gt;是否可以通过一个图学习模块自动提取变量间依赖关系？&lt;/li&gt;
+&lt;li&gt;现有可用于多变量时间序列预测的模型有？&lt;/li&gt;
+&lt;li&gt;时空图神经网络在建模多变量时间序列预测问题时面临哪些挑战？
+&lt;ul&gt;
+&lt;li&gt;变量间依赖关系知道吗？&lt;/li&gt;
+&lt;li&gt;给定一个预定义的图结构，其就是最优的图结构吗？能否在训练中被优化？&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;从数据中自适应学习图结构是否会带来计算效率的瓶颈？如何解决？&lt;/li&gt;
 &lt;/ul&gt;
 </description>
     </item>
@@ -189,6 +197,14 @@
 &lt;li&gt;责任心强，有快速学习的能力&lt;/li&gt;
 &lt;/ol&gt;
 </description>
+    </item>
+    
+    <item>
+      <title>「论文阅读」-DCRNN: 数据驱动的交通流预测</title>
+      <link>/publication/dcrnn-data-driven-traffic-forecasting/</link>
+      <pubDate>Mon, 28 Dec 2020 15:28:24 +0800</pubDate>
+      <guid>/publication/dcrnn-data-driven-traffic-forecasting/</guid>
+      <description></description>
     </item>
     
     <item>
