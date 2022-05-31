@@ -204,6 +204,8 @@ MAE对所有误差项一视同仁。对异常值不那么敏感。&lt;/p&gt;
 &lt;p&gt;与MSE、RMSE、MAE相比，R2是相对性的评价指标，不能从绝对水平告诉你预测的精度。&lt;/p&gt;
 &lt;p&gt;(6)EVAR&lt;/p&gt;
 &lt;p&gt;（暂略）&lt;/p&gt;
+&lt;p&gt;(7)Huber Loss&lt;/p&gt;
+&lt;h5 id=&#34;heading&#34;&gt;&lt;/h5&gt;
 &lt;h5 id=&#34;思考&#34;&gt;思考&lt;/h5&gt;
 &lt;ul&gt;
 &lt;li&gt;我们在评价模型时，应该对所有误差项一视同仁吗？&lt;/li&gt;
@@ -248,12 +250,14 @@ MAE对所有误差项一视同仁。对异常值不那么敏感。&lt;/p&gt;
 &lt;/li&gt;
 &lt;li&gt;
 &lt;p&gt;&lt;a href=&#34;https://www.statisticshowto.com/probability-and-statistics/statistics-definitions/adjusted-r2/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Adjusted R2 / Adjusted R-Squared: What is it used for?&lt;/a&gt;&lt;/p&gt;
-&lt;/li&gt;
-&lt;/ul&gt;
 &lt;h4 id=&#34;评估回归模型&#34;&gt;评估回归模型&lt;/h4&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;https://towardsdatascience.com/what-are-the-best-metrics-to-evaluate-your-regression-model-418ca481755b&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;3 Best metrics to evaluate Regression Model?&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://www.dataquest.io/blog/understanding-regression-error-metrics/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Tutorial: Understanding Regression Error Metrics in Python&lt;/a&gt;&lt;/li&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a href=&#34;https://towardsdatascience.com/what-are-the-best-metrics-to-evaluate-your-regression-model-418ca481755b&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;3 Best metrics to evaluate Regression Model?&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a href=&#34;https://www.dataquest.io/blog/understanding-regression-error-metrics/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Tutorial: Understanding Regression Error Metrics in Python&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
 &lt;/ul&gt;
 </description>
     </item>

@@ -5,12 +5,213 @@
     <link>/</link>
       <atom:link href="/index.xml" rel="self" type="application/rss+xml" />
     <description>CoolCats</description>
-    <generator>Wowchemy (https://wowchemy.com)</generator><language>en-us</language><lastBuildDate>Tue, 24 May 2022 19:26:02 +0800</lastBuildDate>
+    <generator>Wowchemy (https://wowchemy.com)</generator><language>en-us</language><lastBuildDate>Mon, 30 May 2022 19:36:23 +0800</lastBuildDate>
     <image>
       <url>/media/icon_hue03491371183284312b8b116a73ae5ab_79511_512x512_fill_lanczos_center_3.png</url>
       <title>CoolCats</title>
       <link>/</link>
     </image>
+    
+    <item>
+      <title>「论文阅读」- 动态图卷积循环神经网络：面向交通流预测的评价基准和解决方案</title>
+      <link>/publication/dynamic-graph-convolutional-recurrent-network-for-traffic-prediction-benchmark-and-solution/</link>
+      <pubDate>Mon, 30 May 2022 19:36:23 +0800</pubDate>
+      <guid>/publication/dynamic-graph-convolutional-recurrent-network-for-traffic-prediction-benchmark-and-solution/</guid>
+      <description>&lt;h3 id=&#34;摘要&#34;&gt;摘要&lt;/h3&gt;
+&lt;h5 id=&#34;背景交通预测的意义&#34;&gt;背景（交通预测的意义）&lt;/h5&gt;
+&lt;p&gt;交通预测是智能交通系统的基础&lt;/p&gt;
+&lt;h5 id=&#34;问题陈述现有时空网络建模方法的不足在于&#34;&gt;问题陈述（现有时空网络建模方法的不足在于？）&lt;/h5&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;忽略路网空间相关性的动态特性&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;基于RNN的方法效率低&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;缺乏公平的比较&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h5 id=&#34;方法本文如何应对目前的挑战&#34;&gt;方法（本文如何应对目前的挑战？）&lt;/h5&gt;
+&lt;p&gt;提出一个新颖的交通预测框架，名曰DGCRN。新颖之处在：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;每一个时间步都生成动态的滤波器参数，从节点属性中提取动态特性&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;对节点嵌入进行过滤，并使用他们生成动态图，集成于预定义的静态图中&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;应用一种新的训练策略，提高效率和模型表现。&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h5 id=&#34;实验&#34;&gt;实验&lt;/h5&gt;
+&lt;p&gt;新模型超越15个基线模型。&lt;/p&gt;
+&lt;h3 id=&#34;引言&#34;&gt;引言&lt;/h3&gt;
+&lt;h5 id=&#34;背景&#34;&gt;背景&lt;/h5&gt;
+&lt;p&gt;（关于社会对智能交通系统的需求、目前实现智能交通的可能性（从数据源和方法两个角度讨论））。&lt;/p&gt;
+&lt;h5 id=&#34;陈述交通预测所面临的挑战&#34;&gt;陈述交通预测所面临的挑战&lt;/h5&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;捕获时空相关性方面&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;空间依赖性&lt;/p&gt;
+&lt;p&gt;相似的交通模式会在路网的局部发生。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;时间依赖性&lt;/p&gt;
+&lt;p&gt;同一位置的交通状况具有非线性变化模式且具有周期性&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;时空相关性&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;不同位置间的交互是动态变化的。&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;利用地理属性方面&lt;/p&gt;
+&lt;p&gt;待预测的交通属性是否与道路地理属性有关系？如何更充分利用外部的地理特征？&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;路网距离、节点连通性&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;POI&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;流&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;……&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;对不同模型进行公平的评价&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h5 id=&#34;引出本文的工作&#34;&gt;引出本文的工作&lt;/h5&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;提出新模型&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;应用通用的面向RNN的训练策略&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;开展实验验证新模型的有效性&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;发布新的真实数据集&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;文献综述&#34;&gt;文献综述&lt;/h3&gt;
+&lt;p&gt;对现有模型进行分类，按空间拓扑构造方式、空间依赖性、时间依赖性建模方法、是否利用外部特征进行分类。&lt;/p&gt;
+&lt;p&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure  id=&#34;figure-模型分类&#34;&gt;
+  &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img alt=&#34;模型分类&#34; srcset=&#34;
+               /publication/dynamic-graph-convolutional-recurrent-network-for-traffic-prediction-benchmark-and-solution/images/model-classfication_hub4aab1c2e7d5709300b2ee5204882b4e_428641_703a30dd6e78a5dd521233e9b41dbc4a.webp 400w,
+               /publication/dynamic-graph-convolutional-recurrent-network-for-traffic-prediction-benchmark-and-solution/images/model-classfication_hub4aab1c2e7d5709300b2ee5204882b4e_428641_086e1ce19e3e0eb8aade229081778c20.webp 760w,
+               /publication/dynamic-graph-convolutional-recurrent-network-for-traffic-prediction-benchmark-and-solution/images/model-classfication_hub4aab1c2e7d5709300b2ee5204882b4e_428641_1200x1200_fit_q75_h2_lanczos_3.webp 1200w&#34;
+               src=&#34;/publication/dynamic-graph-convolutional-recurrent-network-for-traffic-prediction-benchmark-and-solution/images/model-classfication_hub4aab1c2e7d5709300b2ee5204882b4e_428641_703a30dd6e78a5dd521233e9b41dbc4a.webp&#34;
+               width=&#34;760&#34;
+               height=&#34;431&#34;
+               loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+  &lt;/div&gt;&lt;figcaption&gt;
+      模型分类
+    &lt;/figcaption&gt;&lt;/figure&gt;
+&lt;/p&gt;
+&lt;h3 id=&#34;方法&#34;&gt;方法&lt;/h3&gt;
+&lt;p&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure  id=&#34;figure-模型架构&#34;&gt;
+  &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img alt=&#34;模型架构&#34; srcset=&#34;
+               /publication/dynamic-graph-convolutional-recurrent-network-for-traffic-prediction-benchmark-and-solution/images/model-architecture_hu64e78b6105f7ed110e70884a0af2e61f_637971_2d8e4e64df7bcc1b9b3b4cced598b2a0.webp 400w,
+               /publication/dynamic-graph-convolutional-recurrent-network-for-traffic-prediction-benchmark-and-solution/images/model-architecture_hu64e78b6105f7ed110e70884a0af2e61f_637971_26c5967fda46088976dc0f016456f73d.webp 760w,
+               /publication/dynamic-graph-convolutional-recurrent-network-for-traffic-prediction-benchmark-and-solution/images/model-architecture_hu64e78b6105f7ed110e70884a0af2e61f_637971_1200x1200_fit_q75_h2_lanczos_3.webp 1200w&#34;
+               src=&#34;/publication/dynamic-graph-convolutional-recurrent-network-for-traffic-prediction-benchmark-and-solution/images/model-architecture_hu64e78b6105f7ed110e70884a0af2e61f_637971_2d8e4e64df7bcc1b9b3b4cced598b2a0.webp&#34;
+               width=&#34;760&#34;
+               height=&#34;550&#34;
+               loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+  &lt;/div&gt;&lt;figcaption&gt;
+      模型架构
+    &lt;/figcaption&gt;&lt;/figure&gt;
+&lt;/p&gt;
+&lt;p&gt;DGCRN包含两个主要模块&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;图生成器&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;动态图卷积循环模块&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;实验设置&#34;&gt;实验设置&lt;/h3&gt;
+&lt;h4 id=&#34;数据集&#34;&gt;数据集&lt;/h4&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;METR-LA&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;PEMS-BAY&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;NE-BJ&lt;/p&gt;
+&lt;p&gt;新发布的城市道路数据集，数据源为腾讯地图导航数据。&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;对数据集进行统计分析（Pearson相关性分析、速度值分布分析），观察数据集是否能体现出空间关系的存在。&lt;/p&gt;
+&lt;h3 id=&#34;网上讨论&#34;&gt;网上讨论&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a href=&#34;https://www.bilibili.com/video/BV1uV411p7M8/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;https://www.bilibili.com/video/BV1uV411p7M8/&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;知乎 &lt;a href=&#34;https://zhuanlan.zhihu.com/p/388403900&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;# 细读好文 之 Dynamic Graph Convolutional Recurrent Network for Traffic Prediction: Benchmark and Solution&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>「论文阅读」-基于Ricci流的网络社区检测</title>
+      <link>/publication/community-detection-on-networks-with-ricci-flow/</link>
+      <pubDate>Wed, 25 May 2022 14:55:05 +0800</pubDate>
+      <guid>/publication/community-detection-on-networks-with-ricci-flow/</guid>
+      <description></description>
+    </item>
     
     <item>
       <title>「论文阅读」-Connecting the Dots基于GNN进行多变量时间序列预测</title>
@@ -226,6 +427,8 @@ MAE对所有误差项一视同仁。对异常值不那么敏感。&lt;/p&gt;
 &lt;p&gt;与MSE、RMSE、MAE相比，R2是相对性的评价指标，不能从绝对水平告诉你预测的精度。&lt;/p&gt;
 &lt;p&gt;(6)EVAR&lt;/p&gt;
 &lt;p&gt;（暂略）&lt;/p&gt;
+&lt;p&gt;(7)Huber Loss&lt;/p&gt;
+&lt;h5 id=&#34;heading&#34;&gt;&lt;/h5&gt;
 &lt;h5 id=&#34;思考&#34;&gt;思考&lt;/h5&gt;
 &lt;ul&gt;
 &lt;li&gt;我们在评价模型时，应该对所有误差项一视同仁吗？&lt;/li&gt;
@@ -270,12 +473,14 @@ MAE对所有误差项一视同仁。对异常值不那么敏感。&lt;/p&gt;
 &lt;/li&gt;
 &lt;li&gt;
 &lt;p&gt;&lt;a href=&#34;https://www.statisticshowto.com/probability-and-statistics/statistics-definitions/adjusted-r2/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Adjusted R2 / Adjusted R-Squared: What is it used for?&lt;/a&gt;&lt;/p&gt;
-&lt;/li&gt;
-&lt;/ul&gt;
 &lt;h4 id=&#34;评估回归模型&#34;&gt;评估回归模型&lt;/h4&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;https://towardsdatascience.com/what-are-the-best-metrics-to-evaluate-your-regression-model-418ca481755b&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;3 Best metrics to evaluate Regression Model?&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://www.dataquest.io/blog/understanding-regression-error-metrics/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Tutorial: Understanding Regression Error Metrics in Python&lt;/a&gt;&lt;/li&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a href=&#34;https://towardsdatascience.com/what-are-the-best-metrics-to-evaluate-your-regression-model-418ca481755b&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;3 Best metrics to evaluate Regression Model?&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a href=&#34;https://www.dataquest.io/blog/understanding-regression-error-metrics/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Tutorial: Understanding Regression Error Metrics in Python&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
 &lt;/ul&gt;
 </description>
     </item>
