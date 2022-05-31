@@ -787,6 +787,9 @@
   
   
   
+    <span class="middot-divider"></span>
+    <a href="/project/osm-route-planning/#disqus_thread"></a>
+  
 
   
   
@@ -860,7 +863,7 @@
     <div class="article-style">
       <h2 id="0x00-背景介绍">0x00 背景介绍</h2>
 <p>路径规划是运动规划中的一个主要问题，在很多领域中都有应用，高新领域有如机器人运动、无人机飞行、巡航导弹运动等；日常生活有如出行导航、路网规划等。在不同的场景中有不同的目标和约束，规划的方案会有所不同，也可能不止一个。比如说我们使用百度地图/高德地图等软件的导航功能时，软件返回的方案会包括时间最短、距离最短、红绿灯最少等方案，根据骑行、步行、自驾小汽车、公交等出行方式的不同又会有不同的方案（如下图），有时我们可能还要求所规划的路线必须经过某些指定地点。所以说路径规划本身的问题可以是非常复杂的，因为现实就是很复杂。</p>
- <img src="images/baidumap.jpg" width = "300" height = "200" alt="百度地图" align=center />
+<img src="images/baidumap.jpg" width = "300" height = "200" alt="百度地图" align=center />
 <p>本项目以练手和规划算法学习为目标，以日常生活场景中的出行导航路径规划为例，搭建一个基本的路径规划框架，这个框架满足：</p>
 <ol>
 <li>基于真实地图数据（OpenStreetMap数据）</li>
@@ -1168,21 +1171,21 @@ g值和h值</p>
 </ul>
 <h5 id="a算法改进思路">A*算法改进思路</h5>
 <ol>
-<li>预计算启发式值</li>
-</ol>
+<li>预计算启发式值
 <ul>
 <li>提前计算每对节点之间的最短路径</li>
 <li>提前计算地图上一些具有代表性的节点之间的最短路径</li>
 </ul>
-<ol start="2">
-<li>改进待搜索列表的更新策略</li>
-</ol>
+</li>
+<li>改进待搜索列表的更新策略
 <ul>
 <li>Beam Search</li>
 <li>Bandwidth Search</li>
 <li>Bidirectional Search</li>
 <li>……</li>
 </ul>
+</li>
+</ol>
 <h2 id="0x03-项目扩展思路">0x03 项目扩展思路</h2>
 <ul>
 <li>
@@ -1228,11 +1231,13 @@ g值和h值</p>
 </ul>
 <h4 id="a改进思路">A*改进思路</h4>
 <ul>
-<li><a href="https://dl.acm.org/doi/abs/10.1145/3292500.3330824" target="_blank" rel="noopener">Empowering A ∗ Search Algorithms with Neural Networks for Personalized Route Recommendation</a></li>
-</ul>
+<li>
+<p><a href="https://dl.acm.org/doi/abs/10.1145/3292500.3330824" target="_blank" rel="noopener">Empowering A ∗ Search Algorithms with Neural Networks for Personalized Route Recommendation</a></p>
 <h3 id="地图表示">地图表示</h3>
-<ul>
-<li><a href="http://theory.stanford.edu/~amitp/GameProgramming/MapRepresentations.html#waypoints" target="_blank" rel="noopener">Map representations</a></li>
+</li>
+<li>
+<p><a href="http://theory.stanford.edu/~amitp/GameProgramming/MapRepresentations.html#waypoints" target="_blank" rel="noopener">Map representations</a></p>
+</li>
 </ul>
 
     </div>
@@ -1425,6 +1430,32 @@ g值和h值</p>
 
   
 
+  
+  <section id="comments">
+    
+<div id="disqus_thread"></div>
+<script>
+  var disqus_config = function () {
+    
+    
+    
+  };
+  (function() {
+    if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+      document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+      return;
+    }
+    var d = document, s = d.createElement('script'); s.async = true;
+    s.src = 'https://' + "coolgiserz" + '.disqus.com/embed.js';
+    s.setAttribute('data-timestamp', +new Date());
+    (d.head || d.body).appendChild(s);
+  })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+
+
+  </section>
   
 
 

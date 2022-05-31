@@ -2106,11 +2106,11 @@ MAE对所有误差项一视同仁。对异常值不那么敏感。&lt;/p&gt;
 &lt;h2 id=&#34;模型&#34;&gt;模型&lt;/h2&gt;
 &lt;h4 id=&#34;交通流预测模型面临的挑战&#34;&gt;交通流预测模型面临的挑战&lt;/h4&gt;
 &lt;p&gt;虽然现有的海量交通数据、高性能计算和存储平台、丰富的机器学习算法也为交通流预测提供了巨大的机遇，但由于数据本身的问题和现实世界中交通流影响因子的复杂性，交通流预测仍面临着巨大的挑战，这些挑战主要可归为如下三个方面：
-(1).	交通大数据的多尺度特性、有偏性、不完备性等特性影响着交通流预测结果的准确性和可用性
+(1).    交通大数据的多尺度特性、有偏性、不完备性等特性影响着交通流预测结果的准确性和可用性
 传感器通常每隔一定时间对数据进行采样，不同的采样尺度
-(2).	地理单元间的复杂的时空依赖关系对模型的复杂度提出了较高要求
+(2).    地理单元间的复杂的时空依赖关系对模型的复杂度提出了较高要求
 地理单元（道路、OD点）
-(3).	影响交通流多种外部因素带来的不确定性&lt;/p&gt;
+(3).    影响交通流多种外部因素带来的不确定性&lt;/p&gt;
 &lt;h2 id=&#34;学习资料&#34;&gt;学习资料&lt;/h2&gt;
 &lt;p&gt;&lt;a href=&#34;https://towardsdatascience.com/how-to-predict-severe-traffic-jams-with-python-and-recurrent-neural-networks-e53b6d411e8d&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;How to Predict Severe Traffic Jams with Python and Recurrent Neural Networks?&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;&lt;a href=&#34;https://www.tensorflow.org/tutorials/structured_data/time_series&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Time series forecasting-Tensorflow Tutorial&lt;/a&gt;&lt;/p&gt;
@@ -3181,7 +3181,7 @@ Geoinquietos阿根廷分会在2013年、2016年、2017年和2019年组织了 &am
       <guid>/project/osm-route-planning/</guid>
       <description>&lt;h2 id=&#34;0x00-背景介绍&#34;&gt;0x00 背景介绍&lt;/h2&gt;
 &lt;p&gt;路径规划是运动规划中的一个主要问题，在很多领域中都有应用，高新领域有如机器人运动、无人机飞行、巡航导弹运动等；日常生活有如出行导航、路网规划等。在不同的场景中有不同的目标和约束，规划的方案会有所不同，也可能不止一个。比如说我们使用百度地图/高德地图等软件的导航功能时，软件返回的方案会包括时间最短、距离最短、红绿灯最少等方案，根据骑行、步行、自驾小汽车、公交等出行方式的不同又会有不同的方案（如下图），有时我们可能还要求所规划的路线必须经过某些指定地点。所以说路径规划本身的问题可以是非常复杂的，因为现实就是很复杂。&lt;/p&gt;
- &lt;img src=&#34;images/baidumap.jpg&#34; width = &#34;300&#34; height = &#34;200&#34; alt=&#34;百度地图&#34; align=center /&gt;
+&lt;img src=&#34;images/baidumap.jpg&#34; width = &#34;300&#34; height = &#34;200&#34; alt=&#34;百度地图&#34; align=center /&gt;
 &lt;p&gt;本项目以练手和规划算法学习为目标，以日常生活场景中的出行导航路径规划为例，搭建一个基本的路径规划框架，这个框架满足：&lt;/p&gt;
 &lt;ol&gt;
 &lt;li&gt;基于真实地图数据（OpenStreetMap数据）&lt;/li&gt;
@@ -3489,21 +3489,21 @@ g值和h值&lt;/p&gt;
 &lt;/ul&gt;
 &lt;h5 id=&#34;a算法改进思路&#34;&gt;A*算法改进思路&lt;/h5&gt;
 &lt;ol&gt;
-&lt;li&gt;预计算启发式值&lt;/li&gt;
-&lt;/ol&gt;
+&lt;li&gt;预计算启发式值
 &lt;ul&gt;
 &lt;li&gt;提前计算每对节点之间的最短路径&lt;/li&gt;
 &lt;li&gt;提前计算地图上一些具有代表性的节点之间的最短路径&lt;/li&gt;
 &lt;/ul&gt;
-&lt;ol start=&#34;2&#34;&gt;
-&lt;li&gt;改进待搜索列表的更新策略&lt;/li&gt;
-&lt;/ol&gt;
+&lt;/li&gt;
+&lt;li&gt;改进待搜索列表的更新策略
 &lt;ul&gt;
 &lt;li&gt;Beam Search&lt;/li&gt;
 &lt;li&gt;Bandwidth Search&lt;/li&gt;
 &lt;li&gt;Bidirectional Search&lt;/li&gt;
 &lt;li&gt;……&lt;/li&gt;
 &lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
 &lt;h2 id=&#34;0x03-项目扩展思路&#34;&gt;0x03 项目扩展思路&lt;/h2&gt;
 &lt;ul&gt;
 &lt;li&gt;
@@ -3549,11 +3549,13 @@ g值和h值&lt;/p&gt;
 &lt;/ul&gt;
 &lt;h4 id=&#34;a改进思路&#34;&gt;A*改进思路&lt;/h4&gt;
 &lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;https://dl.acm.org/doi/abs/10.1145/3292500.3330824&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Empowering A ∗ Search Algorithms with Neural Networks for Personalized Route Recommendation&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a href=&#34;https://dl.acm.org/doi/abs/10.1145/3292500.3330824&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Empowering A ∗ Search Algorithms with Neural Networks for Personalized Route Recommendation&lt;/a&gt;&lt;/p&gt;
 &lt;h3 id=&#34;地图表示&#34;&gt;地图表示&lt;/h3&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;http://theory.stanford.edu/~amitp/GameProgramming/MapRepresentations.html#waypoints&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Map representations&lt;/a&gt;&lt;/li&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a href=&#34;http://theory.stanford.edu/~amitp/GameProgramming/MapRepresentations.html#waypoints&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Map representations&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
 &lt;/ul&gt;
 </description>
     </item>
