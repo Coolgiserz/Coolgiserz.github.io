@@ -124,19 +124,10 @@
 
 
 
-&lt;figure  id=&#34;figure-模型分类&#34;&gt;
+&lt;figure  &gt;
   &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
-    &lt;div class=&#34;w-100&#34; &gt;&lt;img alt=&#34;模型分类&#34; srcset=&#34;
-               /publication/dynamic-graph-convolutional-recurrent-network-for-traffic-prediction-benchmark-and-solution/images/model-classfication_hub4aab1c2e7d5709300b2ee5204882b4e_428641_703a30dd6e78a5dd521233e9b41dbc4a.webp 400w,
-               /publication/dynamic-graph-convolutional-recurrent-network-for-traffic-prediction-benchmark-and-solution/images/model-classfication_hub4aab1c2e7d5709300b2ee5204882b4e_428641_086e1ce19e3e0eb8aade229081778c20.webp 760w,
-               /publication/dynamic-graph-convolutional-recurrent-network-for-traffic-prediction-benchmark-and-solution/images/model-classfication_hub4aab1c2e7d5709300b2ee5204882b4e_428641_1200x1200_fit_q75_h2_lanczos_3.webp 1200w&#34;
-               src=&#34;/publication/dynamic-graph-convolutional-recurrent-network-for-traffic-prediction-benchmark-and-solution/images/model-classfication_hub4aab1c2e7d5709300b2ee5204882b4e_428641_703a30dd6e78a5dd521233e9b41dbc4a.webp&#34;
-               width=&#34;760&#34;
-               height=&#34;431&#34;
-               loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
-  &lt;/div&gt;&lt;figcaption&gt;
-      模型分类
-    &lt;/figcaption&gt;&lt;/figure&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img src=&#34;./images/model-classfication.png&#34; alt=&#34;模型分类&#34; loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+  &lt;/div&gt;&lt;/figure&gt;
 &lt;/p&gt;
 &lt;h3 id=&#34;方法&#34;&gt;方法&lt;/h3&gt;
 &lt;p&gt;
@@ -155,19 +146,10 @@
 
 
 
-&lt;figure  id=&#34;figure-模型架构&#34;&gt;
+&lt;figure  &gt;
   &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
-    &lt;div class=&#34;w-100&#34; &gt;&lt;img alt=&#34;模型架构&#34; srcset=&#34;
-               /publication/dynamic-graph-convolutional-recurrent-network-for-traffic-prediction-benchmark-and-solution/images/model-architecture_hu64e78b6105f7ed110e70884a0af2e61f_637971_2d8e4e64df7bcc1b9b3b4cced598b2a0.webp 400w,
-               /publication/dynamic-graph-convolutional-recurrent-network-for-traffic-prediction-benchmark-and-solution/images/model-architecture_hu64e78b6105f7ed110e70884a0af2e61f_637971_26c5967fda46088976dc0f016456f73d.webp 760w,
-               /publication/dynamic-graph-convolutional-recurrent-network-for-traffic-prediction-benchmark-and-solution/images/model-architecture_hu64e78b6105f7ed110e70884a0af2e61f_637971_1200x1200_fit_q75_h2_lanczos_3.webp 1200w&#34;
-               src=&#34;/publication/dynamic-graph-convolutional-recurrent-network-for-traffic-prediction-benchmark-and-solution/images/model-architecture_hu64e78b6105f7ed110e70884a0af2e61f_637971_2d8e4e64df7bcc1b9b3b4cced598b2a0.webp&#34;
-               width=&#34;760&#34;
-               height=&#34;550&#34;
-               loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
-  &lt;/div&gt;&lt;figcaption&gt;
-      模型架构
-    &lt;/figcaption&gt;&lt;/figure&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img src=&#34;./images/model-architecture.png&#34; alt=&#34;模型架构&#34; loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+  &lt;/div&gt;&lt;/figure&gt;
 &lt;/p&gt;
 &lt;p&gt;DGCRN包含两个主要模块&lt;/p&gt;
 &lt;ul&gt;
@@ -189,7 +171,7 @@
 &lt;/li&gt;
 &lt;li&gt;
 &lt;p&gt;NE-BJ&lt;/p&gt;
-&lt;p&gt;新发布的城市道路数据集，数据源为腾讯地图导航数据。&lt;/p&gt;
+&lt;p&gt;“新发布的城市道路数据集，数据源为腾讯地图导航数据。”(PS：实际上还未发布，github上的issue无回复)&lt;/p&gt;
 &lt;/li&gt;
 &lt;/ul&gt;
 &lt;p&gt;对数据集进行统计分析（Pearson相关性分析、速度值分布分析），观察数据集是否能体现出空间关系的存在。&lt;/p&gt;
