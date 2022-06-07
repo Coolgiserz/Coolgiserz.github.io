@@ -5,12 +5,20 @@
     <link>/publication/</link>
       <atom:link href="/publication/index.xml" rel="self" type="application/rss+xml" />
     <description>论文</description>
-    <generator>Wowchemy (https://wowchemy.com)</generator><language>en-us</language><lastBuildDate>Mon, 30 May 2022 19:36:23 +0800</lastBuildDate>
+    <generator>Wowchemy (https://wowchemy.com)</generator><language>en-us</language><lastBuildDate>Tue, 07 Jun 2022 15:28:47 +0800</lastBuildDate>
     <image>
       <url>/media/icon_hue03491371183284312b8b116a73ae5ab_79511_512x512_fill_lanczos_center_3.png</url>
       <title>论文</title>
       <link>/publication/</link>
     </image>
+    
+    <item>
+      <title>「论文阅读」- 基于时空多图卷积网络的网约车需求预测</title>
+      <link>/publication/stmgcn-spatial-temporal-multi-graph-convolution-network-for-ride-hailing-demand-forecasting/</link>
+      <pubDate>Tue, 07 Jun 2022 15:28:47 +0800</pubDate>
+      <guid>/publication/stmgcn-spatial-temporal-multi-graph-convolution-network-for-ride-hailing-demand-forecasting/</guid>
+      <description></description>
+    </item>
     
     <item>
       <title>「论文阅读」- 动态图卷积循环神经网络：面向交通流预测的评价基准和解决方案</title>
@@ -19,7 +27,7 @@
       <guid>/publication/dynamic-graph-convolutional-recurrent-network-for-traffic-prediction-benchmark-and-solution/</guid>
       <description>&lt;h3 id=&#34;摘要&#34;&gt;摘要&lt;/h3&gt;
 &lt;h5 id=&#34;背景交通预测的意义&#34;&gt;背景（交通预测的意义）&lt;/h5&gt;
-&lt;p&gt;交通预测是智能交通系统的基础&lt;/p&gt;
+&lt;p&gt;交通预测是智能交通系统的基础，对于建设智慧城市而言至关重要。&lt;/p&gt;
 &lt;h5 id=&#34;问题陈述现有时空网络建模方法的不足在于&#34;&gt;问题陈述（现有时空网络建模方法的不足在于？）&lt;/h5&gt;
 &lt;ol&gt;
 &lt;li&gt;
