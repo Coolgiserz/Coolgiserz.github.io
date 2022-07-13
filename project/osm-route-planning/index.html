@@ -861,7 +861,37 @@
   <div class="article-container">
 
     <div class="article-style">
-      <h2 id="0x00-背景介绍">0x00 背景介绍</h2>
+      <details class="toc-inpage d-print-none  " open>
+  <summary class="font-weight-bold">Table of Contents</summary>
+  <nav id="TableOfContents">
+  <ul>
+    <li><a href="#0x00-背景介绍">0x00 背景介绍</a></li>
+    <li><a href="#0x01-项目方案">0x01 项目方案</a>
+      <ul>
+        <li><a href="#总体框架">总体框架</a></li>
+        <li><a href="#代码结构">代码结构</a></li>
+        <li><a href="#算法执行流程">算法执行流程</a></li>
+        <li><a href="#项目测试">项目测试</a></li>
+      </ul>
+    </li>
+    <li><a href="#0x02-原理详解">0x02 原理详解</a>
+      <ul>
+        <li><a href="#openstreetmap">OpenStreetMap</a></li>
+        <li><a href="#路径规划算法">路径规划算法</a></li>
+      </ul>
+    </li>
+    <li><a href="#0x03-项目扩展思路">0x03 项目扩展思路</a></li>
+    <li><a href="#0x04-相关资源">0x04 相关资源</a>
+      <ul>
+        <li><a href="#a算法及其改进思路">A*算法及其改进思路</a></li>
+        <li><a href="#地图表示">地图表示</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+</details>
+
+<h2 id="0x00-背景介绍">0x00 背景介绍</h2>
 <p>路径规划是运动规划中的一个主要问题，在很多领域中都有应用，高新领域有如机器人运动、无人机飞行、巡航导弹运动等；日常生活有如出行导航、路网规划等。在不同的场景中有不同的目标和约束，规划的方案会有所不同，也可能不止一个。比如说我们使用百度地图/高德地图等软件的导航功能时，软件返回的方案会包括时间最短、距离最短、红绿灯最少等方案，根据骑行、步行、自驾小汽车、公交等出行方式的不同又会有不同的方案（如下图），有时我们可能还要求所规划的路线必须经过某些指定地点。所以说路径规划本身的问题可以是非常复杂的，因为现实就是很复杂。</p>
 <img src="images/baidumap.jpg" width = "300" height = "200" alt="百度地图" align=center />
 <p>本项目以练手和规划算法学习为目标，以日常生活场景中的出行导航路径规划为例，搭建一个基本的路径规划框架，这个框架满足：</p>

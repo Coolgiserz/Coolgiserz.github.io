@@ -37,6 +37,14 @@
 &lt;li&gt;图上的Ricci曲率与图的性质有什么关联？&lt;/li&gt;
 &lt;li&gt;Ricci曲率与网络演化有关联吗？&lt;/li&gt;
 &lt;/ul&gt;
+&lt;h2 id=&#34;高维连续空间下的曲率&#34;&gt;高维连续空间下的曲率&lt;/h2&gt;
+&lt;h3 id=&#34;ricci曲率&#34;&gt;Ricci曲率&lt;/h3&gt;
+&lt;p&gt;黎曼几何中度量流形在局部偏离于欧式空间的程度。&lt;/p&gt;
+&lt;h2 id=&#34;离散ricci曲率&#34;&gt;离散Ricci曲率&lt;/h2&gt;
+&lt;h3 id=&#34;ollivier-ricci曲率&#34;&gt;Ollivier-Ricci曲率&lt;/h3&gt;
+&lt;p&gt;基于最优传输理论定义。&lt;/p&gt;
+&lt;h3 id=&#34;forman-ricci曲率&#34;&gt;Forman-Ricci曲率&lt;/h3&gt;
+&lt;p&gt;基于CW复形定义&lt;/p&gt;
 &lt;h2 id=&#34;参考资料&#34;&gt;参考资料&lt;/h2&gt;
 &lt;h3 id=&#34;相关讨论&#34;&gt;相关讨论&lt;/h3&gt;
 &lt;h4 id=&#34;关于曲率的解释&#34;&gt;关于曲率的解释&lt;/h4&gt;
@@ -50,7 +58,7 @@
 &lt;li&gt;&lt;a href=&#34;https://link.springer.com/content/pdf/10.1007/978-3-642-21298-7.pdf&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Riemannian Geometry and Geometric Analysis&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 &lt;h3 id=&#34;相关论文&#34;&gt;相关论文&lt;/h3&gt;
-&lt;h4 id=&#34;ricci曲率&#34;&gt;Ricci曲率&lt;/h4&gt;
+&lt;h4 id=&#34;ricci曲率-1&#34;&gt;Ricci曲率&lt;/h4&gt;
 &lt;p&gt;曲率定义、数学性质分析、几何意义&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;a href=&#34;https://towardsdatascience.com/over-squashing-bottlenecks-and-graph-ricci-curvature-c238b7169e16&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Over-squashing, Bottlenecks, and Graph Ricci curvature&lt;/a&gt;&lt;/li&gt;
@@ -63,6 +71,7 @@
 &lt;li&gt;&lt;a href=&#34;https://www.sciencedirect.com/science/article/pii/S0195669812000686&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Volume and diameter of a graph and Ollivier’s Ricci curvature&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;https://www.intlpress.com/site/pub/files/_fulltext/journals/mrl/2012/0019/0006/MRL-2012-0019-0006-a002.pdf&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;OLLIVIER–RICCI CURVATURE AND THE SPECTRUM OF THE NORMALIZED GRAPH LAPLACE OPERATOR&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;https://arxiv.org/abs/1105.3803&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;OLLIVIER-RICCI CURVATURE AND THE SPECTRUM OF THENORMALIZED GRAPH LAPLACE OPERATOR&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;DISCRETE OLLIVIER-RICCI CURVATURE&lt;/li&gt;
 &lt;/ul&gt;
 &lt;h5 id=&#34;曲率与网络分析&#34;&gt;曲率与网络分析&lt;/h5&gt;
 &lt;p&gt;基于曲率“度量”丰富模式识别、数据挖掘的算法&lt;/p&gt;

@@ -808,6 +808,65 @@
 
 
 
+<div class="btn-links mb-3">
+  
+  
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  
+  
+  
+  
+  
+    
+  
+  <a class="btn btn-outline-primary btn-page-header" href="https://arxiv.org/pdf/2005.11650.pdf" target="_blank" rel="noopener">
+    <i class="ai ai-arxiv mr-1"></i>Paper</a>
+
+  
+  
+  
+    
+  
+  
+  
+  
+  
+    
+  
+  <a class="btn btn-outline-primary btn-page-header" href="https://github.com/nnzhan/MTGNN" target="_blank" rel="noopener">
+    <i class="fab fa-github mr-1"></i>SourceCode</a>
+
+
+</div>
+
 
   
 </div>
@@ -858,6 +917,12 @@
 </li>
 <li>从数据中自适应学习图结构是否会带来计算效率的瓶颈？如何解决？</li>
 </ul>
+<h2 id="记录">记录</h2>
+<h3 id="问题-1">问题</h3>
+<p>文章研究的主题是基于图神经网络进行多变量时间序列预测，其中核心在于“Connecting the Dots”，即为节点构建联系/连接。</p>
+<p>如何理解文中的“Connecting the Dots”？我们可以先回顾多变量时间序列预测问题，这个问题的基本假设是多个变量之间存在依赖关系（假设是交通预测的场景，则每个变量是交通传感器所记录的历史交通状态，不同传感器之间的历史交通状态是有依赖关系的）。然而，文章作者认为现有的方法未能充分利用变量之间的隐藏的空间依赖性。针对今年来在关系型数据中具有较高潜力、表现良好的GNN模型来说，GNN要求输入一个预先定义良好的图结构用于消息传递，这意味着当多变量间的依赖关系无法预先得知时，无法使用GNN进行时间序列预测。</p>
+<h3 id="方法">方法</h3>
+<p>因此，这篇文章提出一种通用的图神经网络框架。</p>
 </div>
 
     
