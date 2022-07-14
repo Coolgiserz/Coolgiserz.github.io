@@ -1058,7 +1058,7 @@ style=&#34;float: left; margin-right: 10px;&#34; /&gt;&lt;/p&gt;
 &lt;p&gt;Goroutine的调度(协程如何分配给线程)由调度器决定。&lt;/p&gt;
 &lt;p&gt;&lt;img src=&#34;images/goroutine/dispatcher.png&#34;
 alt=&#34;dispatcher&#34;
-style=&#34;float: left; margin-right: 10px;&#34; /&gt;&lt;/p&gt;
+style=&#34;float: middle; margin-right: 10px;&#34; /&gt;&lt;/p&gt;
 &lt;p&gt;关于goroutine调度器：&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;
