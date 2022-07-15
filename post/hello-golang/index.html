@@ -2092,9 +2092,26 @@ style="float: middle; margin-right: 10px;" /></p>
 <h3 id="golang中的传统同步机制">Golang中的传统同步机制</h3>
 <p>除了Select风格的通过通信共享内存完成复杂逻辑，Golang也支持传统同步机制（如WaitGroup、互斥量Mutex、条件变量Cond……）的方式完成复杂逻辑/实现线程安全的代码。</p>
 <h3 id="并发模式">并发模式</h3>
-<p>（TODO）</p>
+<p>（如何利用并发机制实现一些实用功能）</p>
+<ul>
+<li>fanIn</li>
+<li>fanOut</li>
+</ul>
 <h3 id="并发任务的控制">并发任务的控制</h3>
-<p>（TODO）</p>
+<ul>
+<li>
+<p>非阻塞等待</p>
+</li>
+<li>
+<p>超时机制</p>
+</li>
+<li>
+<p>任务中断/退出</p>
+</li>
+<li>
+<p>优雅退出</p>
+</li>
+</ul>
 <h3 id="阅读材料-4">阅读材料</h3>
 <h4 id="并发原理">并发原理</h4>
 <ul>
@@ -2131,6 +2148,10 @@ style="float: middle; margin-right: 10px;" /></p>
 <h4 id="同步机制">同步机制</h4>
 <ul>
 <li><a href="https://draveness.me/golang/docs/part3-runtime/ch06-concurrency/golang-sync-primitives/#62-%e5%90%8c%e6%ad%a5%e5%8e%9f%e8%af%ad%e4%b8%8e%e9%94%81" target="_blank" rel="noopener">Go语言设计与实现# 6.2 同步原语与锁</a></li>
+</ul>
+<h4 id="并发模式-1">并发模式</h4>
+<ul>
+<li><a href="https://segmentfault.com/a/1190000017182416" target="_blank" rel="noopener">Golang并发模型：轻松入门流水线FAN模式</a></li>
 </ul>
 <h2 id="0x09-标准库">0x09 标准库</h2>
 <p>http、gin、……</p>
