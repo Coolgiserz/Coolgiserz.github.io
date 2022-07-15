@@ -942,7 +942,9 @@
         <li><a href="#协程coroutine">协程（Coroutine）</a></li>
         <li><a href="#channel">channel</a></li>
         <li><a href="#通过select实现多路复用">通过select实现多路复用</a></li>
+        <li><a href="#golang中的传统同步机制">Golang中的传统同步机制</a></li>
         <li><a href="#并发模式">并发模式</a></li>
+        <li><a href="#并发任务的控制">并发任务的控制</a></li>
         <li><a href="#阅读材料-4">阅读材料</a></li>
       </ul>
     </li>
@@ -1820,7 +1822,7 @@ style="float: left; margin-right: 10px;" /></p>
 </ul>
 <h2 id="0x08-并发编程">0x08 并发编程</h2>
 <p>并发指多个任务可以在同一时间段进行。考虑如何进行并发编程，基本问题就是如何“同时”启动多个执行单元以及多个执行单元之间如何协作。</p>
-<p>Golang中通过goroutine和channel实现启动多个执行单元和单元间的通信。</p>
+<p>Golang中通过go实现启动多个执行单元（goroutine）；在多个执行单元的协作方面，即支持传统的同步原语和原子操作，又提供独有的channel通信机制和扩展同步原语。</p>
 <h3 id="协程coroutine">协程（Coroutine）</h3>
 <p>协程vs线程</p>
 <p>普通函数vs协程</p>
@@ -2073,7 +2075,25 @@ style="float: middle; margin-right: 10px;" /></p>
 </span></span><span class="line"><span class="cl">    <span class="p">}</span>
 </span></span></code></pre></div><h3 id="通过select实现多路复用">通过select实现多路复用</h3>
 <p>（具体场景？传统做法？golang的风格）</p>
+<p>现实中，我们决定一件事情是否终止可能受多方面的因素（如事情已完成，或者由于客观不可抗拒原因或主观因素决定）影响，对应到编程实现就是我们需要监听来自多个通道/信息流的指令/数据以决定程序的执行路径。但通常来说想要同时接收多个通道的数据是麻烦的事情，因为我们在试图接收来自通道的数据时，如果通道没有数据可供接收，协程会发生阻塞。虽然可以通过实现轮询或在死循环中不断询问通道是否有可接收的数据以完成复杂逻辑，如下代码所示，但运行性能较差。</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-go" data-lang="go"><span class="line"><span class="cl"><span class="k">for</span><span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">data</span><span class="p">,</span> <span class="nx">ok</span> <span class="o">:=</span> <span class="o">&lt;-</span> <span class="nx">c1</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">data</span><span class="p">,</span> <span class="nx">ok</span> <span class="o">:=</span> <span class="o">&lt;-</span> <span class="nx">c2</span>
+</span></span><span class="line"><span class="cl">    <span class="c1">//……
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="p">}</span>
+</span></span></code></pre></div><p>Go语言提供select关键字使我们可以等待来自多个通道的数据。select语句会阻塞直到某一个收/发通道准备就绪，如果多个通道同时就绪，则会随机选择其中一个。</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-go" data-lang="go"><span class="line"><span class="cl"><span class="k">select</span><span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="k">case</span> <span class="nx">n</span> <span class="o">:=</span> <span class="o">&lt;-</span><span class="nx">c1</span>
+</span></span><span class="line"><span class="cl">        <span class="c1">//received data from c1
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="k">case</span> <span class="nx">n</span> <span class="o">:=</span> <span class="o">&lt;-</span><span class="nx">c2</span>
+</span></span><span class="line"><span class="cl">         <span class="c1">//received data from c2
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="p">}</span>
+</span></span></code></pre></div><p>更多关于select的例子可参考：https://github.com/Coolgiserz/golang-learning/tree/main/channel/select</p>
+<h3 id="golang中的传统同步机制">Golang中的传统同步机制</h3>
+<p>除了Select风格的通过通信共享内存完成复杂逻辑，Golang也支持传统同步机制（如WaitGroup、互斥量Mutex、条件变量Cond……）的方式完成复杂逻辑/实现线程安全的代码。</p>
 <h3 id="并发模式">并发模式</h3>
+<p>（TODO）</p>
+<h3 id="并发任务的控制">并发任务的控制</h3>
 <p>（TODO）</p>
 <h3 id="阅读材料-4">阅读材料</h3>
 <h4 id="并发原理">并发原理</h4>
@@ -2083,6 +2103,8 @@ style="float: middle; margin-right: 10px;" /></p>
 <li><a href="https://qcrao91.gitbook.io/go/channel/shi-mo-shi-csp" target="_blank" rel="noopener">什么是 CSP</a></li>
 <li><a href="https://www.zhihu.com/question/26192499" target="_blank" rel="noopener"># 如何深入浅出地解释并发模型中的 CSP 模型？</a></li>
 <li><a href="https://dl.acm.org/doi/pdf/10.1145/359576.359585" target="_blank" rel="noopener">Communicating Sequential Processes</a></li>
+<li><a href="https://time.geekbang.org/column/intro/100061801" target="_blank" rel="noopener">极客时间-《Go并发编程实战》</a></li>
+<li><a href="https://github.com/jay-xl/fun-golang/blob/master/pdf/Go%e5%b9%b6%e5%8f%91%e7%bc%96%e7%a8%8b%e5%ae%9e%e6%88%98.pdf" target="_blank" rel="noopener">go并发编程实战(第二版)</a></li>
 </ul>
 <h4 id="通道">通道</h4>
 <ul>
@@ -2094,11 +2116,21 @@ style="float: middle; margin-right: 10px;" /></p>
 <p><a href="https://www.zhihu.com/question/28594409" target="_blank" rel="noopener"># I/O多路复用技术（multiplexing）是什么？</a></p>
 </li>
 <li>
-<p><a href="[Go%e8%af%ad%e8%a8%80%e9%80%9a%e9%81%93%e7%9a%84%e5%a4%9a%e8%b7%af%e5%a4%8d%e7%94%a8%e2%80%94%e2%80%94%e5%90%8c%e6%97%b6%e5%a4%84%e7%90%86%e6%8e%a5%e6%94%b6%e5%92%8c%e5%8f%91%e9%80%81%e5%a4%9a%e4%b8%aa%e9%80%9a%e9%81%93%e7%9a%84%e6%95%b0%e6%8d%ae]%28http://c.biancheng.net/view/101.html%29">Go语言通道的多路复用——同时处理接收和发送多个通道的数据</a></p>
+<p><a href="https://go.dev/tour/concurrency/5" target="_blank" rel="noopener">A Tour of Go</a></p>
+</li>
+<li>
+<p><a href="http://c.biancheng.net/view/101.html" target="_blank" rel="noopener">Go语言通道的多路复用——同时处理接收和发送多个通道的数据</a></p>
 </li>
 <li>
 <p><a href="https://gobyexample.com/select" target="_blank" rel="noopener">Go by Example: Select</a></p>
 </li>
+<li>
+<p><a href="https://golangbot.com/select/" target="_blank" rel="noopener">GOLANGBOT.COM# Select</a></p>
+</li>
+</ul>
+<h4 id="同步机制">同步机制</h4>
+<ul>
+<li><a href="https://draveness.me/golang/docs/part3-runtime/ch06-concurrency/golang-sync-primitives/#62-%e5%90%8c%e6%ad%a5%e5%8e%9f%e8%af%ad%e4%b8%8e%e9%94%81" target="_blank" rel="noopener">Go语言设计与实现# 6.2 同步原语与锁</a></li>
 </ul>
 <h2 id="0x09-标准库">0x09 标准库</h2>
 <p>http、gin、……</p>
