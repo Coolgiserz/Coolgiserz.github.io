@@ -1238,7 +1238,7 @@ style=&#34;float: middle; margin-right: 10px;&#34; /&gt;&lt;/p&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;&lt;/span&gt;    &lt;span class=&#34;k&#34;&gt;case&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;n&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;:=&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;&amp;lt;-&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;c2&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;         &lt;span class=&#34;c1&#34;&gt;//received data from c2
 &lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;更多关于select的例子可参考：https://github.com/Coolgiserz/golang-learning/tree/main/channel/select&lt;/p&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;更多关于select的例子可参考：https://github.com/Coolgiserz/golang-learning/tree/main/channel/select/select.go&lt;/p&gt;
 &lt;h3 id=&#34;golang中的传统同步机制&#34;&gt;Golang中的传统同步机制&lt;/h3&gt;
 &lt;p&gt;除了Select风格的通过通信共享内存完成复杂逻辑，Golang也支持传统同步机制（如WaitGroup、互斥量Mutex、条件变量Cond……）的方式完成复杂逻辑/实现线程安全的代码。&lt;/p&gt;
 &lt;h3 id=&#34;并发模式&#34;&gt;并发模式&lt;/h3&gt;
