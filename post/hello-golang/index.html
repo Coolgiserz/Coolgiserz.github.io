@@ -64,7 +64,7 @@
   
     
   
-  <meta name="description" content="代码驱动梳理go语言基础知识" />
+  <meta name="description" content="整理Golang基础知识、阅读材料、示例代码及经典框架" />
 
   
   <link rel="alternate" hreflang="en-us" href="/post/hello-golang/" />
@@ -325,16 +325,16 @@
   <meta property="og:site_name" content="CoolCats" />
   <meta property="og:url" content="/post/hello-golang/" />
   <meta property="og:title" content="Golang基础知识小抄 | CoolCats" />
-  <meta property="og:description" content="代码驱动梳理go语言基础知识" /><meta property="og:image" content="/media/icon_hue03491371183284312b8b116a73ae5ab_79511_512x512_fill_lanczos_center_3.png" />
+  <meta property="og:description" content="整理Golang基础知识、阅读材料、示例代码及经典框架" /><meta property="og:image" content="/media/icon_hue03491371183284312b8b116a73ae5ab_79511_512x512_fill_lanczos_center_3.png" />
     <meta property="twitter:image" content="/media/icon_hue03491371183284312b8b116a73ae5ab_79511_512x512_fill_lanczos_center_3.png" /><meta property="og:locale" content="en-us" />
   
     
       <meta
         property="article:published_time"
-        content="2021-12-28T23:05:19&#43;08:00"
+        content="2021-10-28T23:05:19&#43;08:00"
       />
     
-    <meta property="article:modified_time" content="2022-06-28T23:05:19&#43;08:00">
+    <meta property="article:modified_time" content="2021-12-28T23:05:19&#43;08:00">
   
 
   
@@ -362,8 +362,8 @@
   },
   "headline": "Golang基础知识小抄",
   
-  "datePublished": "2021-12-28T23:05:19+08:00",
-  "dateModified": "2022-06-28T23:05:19+08:00",
+  "datePublished": "2021-10-28T23:05:19+08:00",
+  "dateModified": "2021-12-28T23:05:19+08:00",
   
   "author": {
     "@type": "Person",
@@ -378,7 +378,7 @@
       "url": "/media/icon_hue03491371183284312b8b116a73ae5ab_79511_192x192_fill_lanczos_center_3.png"
     }
   },
-  "description": "代码驱动梳理go语言基础知识"
+  "description": "整理Golang基础知识、阅读材料、示例代码及经典框架"
 }
 </script>
 
@@ -776,7 +776,7 @@
           Last updated on
       
     
-    Jun 28, 2022
+    Dec 28, 2021
   </span>
   
 
@@ -785,7 +785,7 @@
   
   <span class="middot-divider"></span>
   <span class="article-reading-time">
-    10 min read
+    11 min read
   </span>
   
 
@@ -948,9 +948,20 @@
         <li><a href="#阅读材料-4">阅读材料</a></li>
       </ul>
     </li>
-    <li><a href="#0x09-标准库">0x09 标准库</a></li>
+    <li><a href="#0x09-标准库">0x09 标准库</a>
+      <ul>
+        <li><a href="#http">http</a></li>
+        <li><a href="#bufio">bufio</a></li>
+        <li><a href="#log">log</a></li>
+        <li><a href="#encodingjson">encoding/json</a></li>
+        <li><a href="#regexp">regexp</a></li>
+        <li><a href="#time">time</a></li>
+        <li><a href="#stringsmathrand">strings/math/rand</a></li>
+        <li><a href="#第三方api数据格式解析">第三方API数据格式解析</a></li>
+        <li><a href="#第三方http框架gin">第三方http框架——gin</a></li>
+      </ul>
+    </li>
     <li><a href="#0x10-实践">0x10 实践</a></li>
-    <li><a href="#heading-1"></a></li>
   </ul>
 </nav>
 </details>
@@ -1318,7 +1329,7 @@
 </span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="kd">var</span> <span class="nx">s2</span> <span class="p">[]</span><span class="kt">int</span><span class="p">{</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">}</span>
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl"><span class="c1">//3.使用内建函数make创建指定长度或cap的切片
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="kd">var</span> <span class="nx">s3</span> <span class="o">:=</span> <span class="nb">make</span><span class="p">([]</span><span class="kt">int</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">32</span><span class="p">)</span>
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="nx">s3</span> <span class="o">:=</span> <span class="nb">make</span><span class="p">([]</span><span class="kt">int</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">32</span><span class="p">)</span>
 </span></span></code></pre></div></li>
 <li>
 <p>复制切片(copy)</p>
@@ -2106,10 +2117,10 @@ style="float: middle; margin-right: 10px;" /></p>
 <p>超时机制</p>
 </li>
 <li>
-<p>任务中断/退出</p>
+<p>从main中发指令中断协程</p>
 </li>
 <li>
-<p>优雅退出</p>
+<p>确保main在子协程中断后再退出（接收协程的指令）</p>
 </li>
 </ul>
 <h3 id="阅读材料-4">阅读材料</h3>
@@ -2152,9 +2163,135 @@ style="float: middle; margin-right: 10px;" /></p>
 <h4 id="并发模式-1">并发模式</h4>
 <ul>
 <li><a href="https://segmentfault.com/a/1190000017182416" target="_blank" rel="noopener">Golang并发模型：轻松入门流水线FAN模式</a></li>
+<li><a href="https://medium.com/geekculture/golang-concurrency-patterns-fan-in-fan-out-1ee43c6830c4" target="_blank" rel="noopener"># Golang Concurrency Patterns : Fan in, Fan out</a></li>
 </ul>
 <h2 id="0x09-标准库">0x09 标准库</h2>
 <p>http、gin、……</p>
+<p>通过[文档](http://studygolang/pgkdoc学习标准库</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">go doc -http :8888
+</span></span></code></pre></div><h3 id="http">http</h3>
+<ul>
+<li>
+<p>服务器操作</p>
+</li>
+<li>
+<p>客户端操作</p>
+<ul>
+<li>
+<p>DefaultClient</p>
+</li>
+<li>
+<p>自己构造Client</p>
+</li>
+<li>
+<p>……</p>
+</li>
+</ul>
+</li>
+<li>
+<p>http性能分析(cpu、内存、……)</p>
+<ul>
+<li>
+<p>import _ &ldquo;net/http/pprof&rdquo;&quot;</p>
+</li>
+<li>
+<p>/debug/pprof/</p>
+</li>
+<li>
+<p>go tool pprof http://&lt;ADDR&gt;:&lt;PORT&gt;/debug/pprof/&lt;parameter&gt;</p>
+<p>详见pprof.go的注释</p>
+<pre tabindex="0"><code>http://localhost:8000/debug/pprof/profile
+http://localhost:8000/debug/pprof/heap
+</code></pre></li>
+</ul>
+</li>
+</ul>
+<h3 id="bufio">bufio</h3>
+<h3 id="log">log</h3>
+<h3 id="encodingjson">encoding/json</h3>
+<p>结构体对象转json的关键在于定义结构体时设置结构体tag。</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-go" data-lang="go"><span class="line"><span class="cl"><span class="c1">//需要注意首字母大小写，决定着字段能否被外部包（包括json.Marsgal)访问
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="kd">type</span> <span class="nx">Order</span> <span class="kd">struct</span> <span class="p">{</span> <span class="c1">//为结构体打上json tag，tag会被json.Marshal看到
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="nx">ID</span>         <span class="kt">string</span>       <span class="s">`json:&#34;id&#34;`</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">Item</span>       <span class="o">*</span><span class="p">[]</span><span class="nx">OrderItem</span> <span class="s">`json:&#34;item&#34;`</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">Quantity</span>   <span class="kt">int</span>          <span class="s">`json:&#34;quantity&#34;`</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">TotalPrice</span> <span class="kt">string</span>       <span class="s">`json:&#34;total_price&#34;`</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kd">type</span> <span class="nx">OrderItem</span> <span class="kd">struct</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">ID</span>    <span class="kt">string</span>  <span class="s">`json:&#34;id&#34;`</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">Name</span>  <span class="kt">string</span>  <span class="s">`json:&#34;name&#34;`</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">Price</span> <span class="kt">float64</span> <span class="s">`json:&#34;price&#34;`</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></div><p>利用json.Marshal(v interface{})(b []byte, error)将结构体对象序列化成json字符串（以可用于网络传输的[]byte格式存储）</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-go" data-lang="go"><span class="line"><span class="cl"><span class="kn">package</span> <span class="nx">main</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kn">import</span> <span class="p">(</span>
+</span></span><span class="line"><span class="cl">    <span class="s">&#34;encoding/json&#34;</span>
+</span></span><span class="line"><span class="cl">    <span class="s">&#34;fmt&#34;</span>
+</span></span><span class="line"><span class="cl"><span class="p">)</span><span class="kd">func</span> <span class="nf">main</span><span class="p">(){</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">o</span> <span class="o">:=</span> <span class="nx">Order</span><span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="nx">ID</span><span class="p">:</span> <span class="s">&#34;no1&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">        <span class="nx">Item</span><span class="p">:</span> <span class="o">&amp;</span><span class="p">[]</span><span class="nx">OrderItem</span><span class="p">{</span>
+</span></span><span class="line"><span class="cl">            <span class="p">{</span>
+</span></span><span class="line"><span class="cl">                <span class="nx">Name</span><span class="p">:</span>  <span class="s">&#34;book&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">                <span class="nx">Price</span><span class="p">:</span> <span class="mf">4.2</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">            <span class="p">},</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">                <span class="nx">Name</span><span class="p">:</span>  <span class="s">&#34;course&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">                <span class="nx">Price</span><span class="p">:</span> <span class="mf">94.2</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">            <span class="p">},</span>
+</span></span><span class="line"><span class="cl">        <span class="p">},</span>
+</span></span><span class="line"><span class="cl">        <span class="nx">Quantity</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">fmt</span><span class="p">.</span><span class="nf">Printf</span><span class="p">(</span><span class="s">&#34;%+v\n&#34;</span><span class="p">,</span> <span class="nx">o</span><span class="p">)</span>    <span class="c1">//%+v 打印结构体
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="nx">b</span><span class="p">,</span> <span class="nx">err</span> <span class="o">:=</span> <span class="nx">json</span><span class="p">.</span><span class="nf">Marshal</span><span class="p">(</span><span class="nx">o</span><span class="p">)</span> <span class="c1">//将结构体序列化成可以在网络上传输的字节。（e.g.json格式)
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="k">if</span> <span class="nx">err</span> <span class="o">!=</span> <span class="kc">nil</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="nb">panic</span><span class="p">(</span><span class="nx">err</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">fmt</span><span class="p">.</span><span class="nf">Printf</span><span class="p">(</span><span class="s">&#34;%s\n&#34;</span><span class="p">,</span> <span class="nx">b</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">// Output:
+</span></span></span><span class="line"><span class="cl"><span class="c1">//{&#34;id&#34;:&#34;no1&#34;,&#34;item&#34;:{&#34;id&#34;:&#34;&#34;,&#34;name&#34;:&#34;book&#34;,&#34;price&#34;:4.2},&#34;quantity&#34;:2,&#34;total_price&#34;:&#34;&#34;}
+</span></span></span></code></pre></div><h3 id="regexp">regexp</h3>
+<p>正则表达式</p>
+<h3 id="time">time</h3>
+<p>时钟、定时器</p>
+<h3 id="stringsmathrand">strings/math/rand</h3>
+<h3 id="第三方api数据格式解析">第三方API数据格式解析</h3>
+<ul>
+<li>
+<p>解析为json格式的struct</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-go" data-lang="go"><span class="line"><span class="cl"><span class="nb">make</span><span class="p">(</span><span class="kd">map</span><span class="p">[</span><span class="kt">string</span><span class="p">]</span><span class="kd">interface</span><span class="p">{})</span>
+</span></span></code></pre></div></li>
+<li>
+<p>解析为结构体对象</p>
+</li>
+</ul>
+<h3 id="第三方http框架gin">第三方http框架——gin</h3>
+<ul>
+<li>
+<p>gin设计思路、重要概念</p>
+</li>
+<li>
+<p>天然支持中间件middleware，方便接入新特性</p>
+<p>中间件是可以拦截http请求-响应生命周期的特殊函数，作用于发起请求和返回响应的中间过程，可提供包括但不限于如下功能：</p>
+<ul>
+<li>
+<p>权限校验</p>
+</li>
+<li>
+<p>日志记录</p>
+</li>
+</ul>
+</li>
+<li>
+<p>gin.Context</p>
+<p>包含请求、响应相关信息</p>
+</li>
+</ul>
+<p><a href="https://github.com/gin-gonic/gin" target="_blank" rel="noopener">https://github.com/gin-gonic/gin</a></p>
 <h2 id="0x10-实践">0x10 实践</h2>
 <ul>
 <li>
@@ -2173,7 +2310,7 @@ style="float: middle; margin-right: 10px;" /></p>
 <p>……</p>
 </li>
 </ul>
-<h2 id="heading-1"></h2>
+<p>go tool pprof http://localhost:8000/debug/pprof/heap</p>
 
     </div>
 
