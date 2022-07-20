@@ -37,6 +37,37 @@
 &lt;p&gt;如何理解文中的“Connecting the Dots”？我们可以先回顾多变量时间序列预测问题，这个问题的基本假设是多个变量之间存在依赖关系（假设是交通预测的场景，则每个变量是交通传感器所记录的历史交通状态，不同传感器之间的历史交通状态是有依赖关系的）。然而，文章作者认为现有的方法未能充分利用变量之间的隐藏的空间依赖性。针对今年来在关系型数据中具有较高潜力、表现良好的GNN模型来说，GNN要求输入一个预先定义良好的图结构用于消息传递，这意味着当多变量间的依赖关系无法预先得知时，无法使用GNN进行时间序列预测。&lt;/p&gt;
 &lt;h3 id=&#34;方法&#34;&gt;方法&lt;/h3&gt;
 &lt;p&gt;因此，这篇文章提出一种通用的图神经网络框架。&lt;/p&gt;
+&lt;h3 id=&#34;实验&#34;&gt;实验&lt;/h3&gt;
+&lt;h4 id=&#34;主要结果&#34;&gt;主要结果&lt;/h4&gt;
+&lt;h5 id=&#34;single-step-forecasting&#34;&gt;single-step forecasting&lt;/h5&gt;
+&lt;p&gt;只根据历史交通状态预测未来一个时间步的交通状态&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;images/table2.png&#34;
+alt=&#34;table2-single-step&#34;
+style=&#34;float: middle; margin-right: 10px;&#34; /&gt;&lt;/p&gt;
+&lt;h5 id=&#34;multi-step-forecasting&#34;&gt;multi-step forecasting&lt;/h5&gt;
+&lt;p&gt;同时预测未来多个时间步的交通状态&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;images/table3.png&#34;
+alt=&#34;table3-multi-step&#34;
+style=&#34;float: middle; margin-right: 10px;&#34; /&gt;&lt;/p&gt;
+&lt;h4 id=&#34;消融实验&#34;&gt;消融实验&lt;/h4&gt;
+&lt;p&gt;验证一些关键组件对于模型效果提升的贡献&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;w/o GC&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;w/o Mix-hop&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;w/o Inception&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;w/o CL&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;img src=&#34;images/table4.png&#34;
+alt=&#34;table4-ablation-study&#34;
+style=&#34;float: middle; margin-right: 10px;&#34; /&gt;&lt;/p&gt;
 </description>
     </item>
     
