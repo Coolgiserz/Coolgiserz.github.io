@@ -8407,6 +8407,40 @@ scrapy自带的item exporter，源码位于scrapy.exporters中，有各种类型
     </item>
     
     <item>
+      <title>Critical Thinking Notes</title>
+      <link>/post/critical-thinking-notes/</link>
+      <pubDate>Thu, 31 Jan 2019 13:44:14 +0800</pubDate>
+      <guid>/post/critical-thinking-notes/</guid>
+      <description>&lt;h2 id=&#34;批判性思维要点&#34;&gt;批判性思维要点&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;对自己的思维进行评估。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;学会评估论证。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;清晰的思考、清晰的写作。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;思考信息来源的可信性。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;警惕诉诸情感的谬误&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;区分解释与论证。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;解释用于说明已知的现象，论证用于支持或证明某个主张&lt;/li&gt;
+&lt;li&gt;形成因果假说会涉及最佳解释的推理&lt;/li&gt;
+&lt;li&gt;因果解释的著名错误“共同变化，是为因果”以及“在此之后，因是之故”&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
+    
+    <item>
       <title>MCM/ICM 2019 Problem E</title>
       <link>/post/icm-2019/</link>
       <pubDate>Tue, 29 Jan 2019 23:02:35 +0800</pubDate>
@@ -9096,11 +9130,382 @@ net primary production&lt;/p&gt;
     </item>
     
     <item>
+      <title>数学建模训练赛: ICM 2015 问题D</title>
+      <link>/post/icm-2015-practice/</link>
+      <pubDate>Mon, 21 Jan 2019 13:35:34 +0800</pubDate>
+      <guid>/post/icm-2015-practice/</guid>
+      <description>&lt;p&gt;MCM：http://www.comap-math.com/mcm/index.html&lt;/p&gt;
+&lt;p&gt;CSU：http://lib.csu.edu.cn/&lt;/p&gt;
+&lt;p&gt;Web Of Science：http://libdb.csu.edu.cn/resdetail?rid=&lt;/p&gt;
+&lt;p&gt;万方数据资源系统：http://libdb.csu.edu.cn/resdetail?rid=WF&lt;/p&gt;
+&lt;p&gt;维普中文期刊：http://libdb.csu.edu.cn/resdetail?rid=VIP&lt;/p&gt;
+&lt;h2 id=&#34;task&#34;&gt;Task&lt;/h2&gt;
+&lt;h3 id=&#34;要回答解决什么问题&#34;&gt;要回答/解决什么问题？&lt;/h3&gt;
+&lt;p&gt;&lt;strong&gt;主题：如何在保障地球健康以及满足人类需要中取平衡&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;地球资源是有限的，如何处理人口增长和资源耗费问题？&lt;/li&gt;
+&lt;li&gt;可以如何增加公平以及削减贫穷？&lt;/li&gt;
+&lt;li&gt;经济发展和生态系统健康是否有矛盾？&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;引出：可持续发展&lt;/strong&gt;
+情景：ICM雇佣你利用他们广泛的财政资源以及影响力帮助他们创造更可持续的世界，他们特别关心发展中国家&amp;hellip;&lt;/p&gt;
+&lt;h3 id=&#34;task1可持续性评价&#34;&gt;Task1:可持续性评价&lt;/h3&gt;
+&lt;p&gt;明确定义一个国家是否可持续，&lt;strong&gt;考虑各个指标间的相互作用关系&lt;/strong&gt;
+（参考联合国列举依据）&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;环境（生态承载力度量）（REPI、EPI、ESI）考虑当前环境资源状况、当前需求量、资源消耗速率&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;生态足迹
+&lt;ul&gt;
+&lt;li&gt;影响因素&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;环境承载力&lt;/li&gt;
+&lt;li&gt;清洁水&lt;/li&gt;
+&lt;li&gt;资源开采可持续&lt;/li&gt;
+&lt;li&gt;能源利用可持续&lt;/li&gt;
+&lt;li&gt;气候变化&lt;/li&gt;
+&lt;li&gt;生态承载力&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;社会（社会不稳定性度量？）（HPI）（当前、需要、消耗）&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;人均收入&lt;/li&gt;
+&lt;li&gt;贫困&lt;/li&gt;
+&lt;li&gt;食品安全&lt;/li&gt;
+&lt;li&gt;健康保障&lt;/li&gt;
+&lt;li&gt;公平包容的教育机会&lt;/li&gt;
+&lt;li&gt;性别平等&lt;/li&gt;
+&lt;li&gt;安居乐业&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;经济（经济实力以及潜力度量）（当前、需要、消耗）&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;经济总体实力
+&lt;ul&gt;
+&lt;li&gt;GDP（查询全球各国公布GDP数据）&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;创新指数
+&lt;ul&gt;
+&lt;li&gt;知识产权&lt;/li&gt;
+&lt;li&gt;科技出版物&lt;/li&gt;
+&lt;li&gt;论文数量&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;经济结构&lt;/li&gt;
+&lt;li&gt;经济效益&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;国际关系&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;伙伴关系&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;task2可持续发展计划&#34;&gt;Task2:可持续发展计划&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;人口&lt;/li&gt;
+&lt;li&gt;自然资源&lt;/li&gt;
+&lt;li&gt;生态环境&lt;/li&gt;
+&lt;li&gt;社会和政策条件&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;评估20年可持续发展计划的对国家可持续发展的有效性&#34;&gt;评估20年可持续发展计划的对国家可持续发展的有效性&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;评估哪项政策或程序有最好的效果&lt;/li&gt;
+&lt;li&gt;考虑其它环境因素
+&lt;ul&gt;
+&lt;li&gt;随机的&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;方法
+&lt;ul&gt;
+&lt;li&gt;回归
+利用历史数据建立回归模型，预测20年后的情况&lt;/li&gt;
+&lt;li&gt;模拟（元胞自动机等）
+&lt;a href=&#34;https://www.zhihu.com/topic/19610596/hot&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;https://www.zhihu.com/topic/19610596/hot&lt;/a&gt;
+&lt;a href=&#34;https://mathpretty.com/8893.html&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;https://mathpretty.com/8893.html&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;resources&#34;&gt;Resources&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;美国政府经济和社会时间2015 可持续发展知识平台
+&lt;a href=&#34;https://sustainabledevelopment.un.org/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;https://sustainabledevelopment.un.org/&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;全球足迹网络2015
+&lt;a href=&#34;https://www.footprintnetwork.org/our-work/ecological-footprint/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;https://www.footprintnetwork.org/our-work/ecological-footprint/&lt;/a&gt;
+&lt;ul&gt;
+&lt;li&gt;生态承载力：http://data.footprintnetwork.org/#/&lt;/li&gt;
+&lt;li&gt;国家工作：https://www.footprintnetwork.org/our-work/countries/&lt;/li&gt;
+&lt;li&gt;20个国家的生态财富：https://www.footprintnetwork.org/2015/07/14/states/&lt;/li&gt;
+&lt;li&gt;哈佛大学what is sustainable?：https://sites.hks.harvard.edu/sustsci/ists/docs/whatisSD_env_kates_0504.pdf&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;国际可持续发展机构
+&lt;a href=&#34;https://www.iisd.org/topic/sustainable-development&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;https://www.iisd.org/topic/sustainable-development&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;世界银行
+&lt;a href=&#34;http://data.worldbank.org/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;http://data.worldbank.org/&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;世界知识产权官网
+&lt;a href=&#34;https://www.wipo.int/publications/zh/details.jsp?id=4330&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;https://www.wipo.int/publications/zh/details.jsp?id=4330&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;全球创新指数官网
+&lt;a href=&#34;https://www.globalinnovationindex.org/Home&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;https://www.globalinnovationindex.org/Home&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;维基百科
+可持续发展：https://zh.wikipedia.org/wiki/%E5%8F%AF%E6%8C%81%E7%BB%AD%E5%8F%91%E5%B1%95
+&lt;a href=&#34;https://baike.baidu.com/item/%E5%8F%AF%E6%8C%81%E7%BB%AD%E5%8F%91%E5%B1%95/360491&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;https://baike.baidu.com/item/%E5%8F%AF%E6%8C%81%E7%BB%AD%E5%8F%91%E5%B1%95/360491&lt;/a&gt;
+生态承载力：https://en.wikipedia.org/wiki/Biocapacity&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;人类发展指数：https://zh.wikipedia.org/wiki/%E4%BA%BA%E7%B1%BB%E5%8F%91%E5%B1%95%E6%8C%87%E6%95%B0
+基尼系数：https://zh.wikipedia.org/wiki/%E5%9F%BA%E5%B0%BC%E7%B3%BB%E6%95%B0
+戴尔指数：https://zh.wikipedia.org/wiki/%E6%88%B4%E5%B0%94%E6%8C%87%E6%95%B0
+经济指标：https://en.wikipedia.org/wiki/Economic_indicator
+Malmquist指数：https://en.wikipedia.org/wiki/Malmquist_index
+最不发达国家：https://zh.wikipedia.org/wiki/%E6%9C%80%E4%B8%8D%E5%8F%91%E8%BE%BE%E5%9B%BD%E5%AE%B6&lt;/p&gt;
+&lt;h2 id=&#34;论文&#34;&gt;论文&lt;/h2&gt;
+&lt;h3 id=&#34;中文&#34;&gt;中文&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;国家可持续发展实验区创新能力评价指标体系：http://www.most.gov.cn/cxdc/cxdczbtx/201311/P020131204404695937840.pdf&lt;/li&gt;
+&lt;li&gt;国际可持续性评价方法研究进展与趋势：
+&lt;a href=&#34;http://or.nsfc.gov.cn/bitstream/00001903-5/257985/1/1000015093836.pdf&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;http://or.nsfc.gov.cn/bitstream/00001903-5/257985/1/1000015093836.pdf&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;生态足迹分析理论与方法
+&lt;a href=&#34;http://libdb.csu.edu.cn/rwt/WF/http/M6YHPZLPM3RX635EMF4GCLUDN7XT6Z5P/details/detail.do?_type=perio&amp;amp;id=dqkxjz200006002&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;http://libdb.csu.edu.cn/rwt/WF/http/M6YHPZLPM3RX635EMF4GCLUDN7XT6Z5P/details/detail.do?_type=perio&amp;id=dqkxjz200006002&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;水资源承载力评价指标体系研究&lt;/li&gt;
+&lt;li&gt;沈阳经济区经济与环境系统动态耦合协调演化
+&lt;a href=&#34;http://www.cjae.net/CN/abstract/abstract17931.shtml&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;http://www.cjae.net/CN/abstract/abstract17931.shtml&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;英文&#34;&gt;英文&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;tradingeconomics：https://tradingeconomics.com/indicators&lt;/li&gt;
+&lt;li&gt;Sustainable Development and Sustainability Metrics：https://onlinelibrary.wiley.com/doi/pdf/10.1002/aic.690490802&lt;/li&gt;
+&lt;li&gt;Sustainable Development Indicators: From Statistics to Policy：https://onlinelibrary.wiley.com/doi/pdf/10.1002/eet.1597&lt;/li&gt;
+&lt;li&gt;What Is Sustainable Development? Goals, Indicators,Values, and Practice：http://www.cepn-paris13.fr/epog/wp-content/uploads/2016/01/CONSOLO_Kates-et-al.pdf&lt;/li&gt;
+&lt;li&gt;Indicators for Sustainable Development:Theory, Method, Applications：http://www.ulb.ac.be/ceese/STAFF/Tom/bossel.pdf&lt;/li&gt;
+&lt;li&gt;The 2010 Biodiversity Indicators: Challenges for Science and Policy：https://www.napawatersheds.org/img/managed/Document/3455/Mace%20and%20Baillie%20-%202007%20-%20the%202010%20Biodiversity%20Indicators%20.pdf&lt;/li&gt;
+&lt;li&gt;Sustainable development in the European Union 2017版：https://ec.europa.eu/eurostat/documents/3217494/8461633/KS-04-17-780-EN-N.pdf&lt;/li&gt;
+&lt;li&gt;法国外交官：https://www.diplomatie.gouv.fr/en/french-foreign-policy/development-assistance/the-international-development-agenda/article/2030-agenda-for-sustainable-development-how-is-france-doing-may-2017&lt;/li&gt;
+&lt;li&gt;Indicators of Effective Policy Development &amp;amp; Implementation：http://www.swiftschools.org/sites/default/files/SWIFT%20Issue%20Brief%208%20Effective%20Policy%20Indicators.pdf&lt;/li&gt;
+&lt;li&gt;Use of Indicators in Policy Analysis
+&lt;a href=&#34;https://www.iisd.org/pdf/2006/measure_use_indicators.pdf&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;https://www.iisd.org/pdf/2006/measure_use_indicators.pdf&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;数据&#34;&gt;数据&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;世界银行
+&lt;a href=&#34;https://data.worldbank.org/indicator&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;https://data.worldbank.org/indicator&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;世界发展指标
+&lt;a href=&#34;http://wdi.worldbank.org/tables&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;http://wdi.worldbank.org/tables&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://tradingeconomics.com/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;https://tradingeconomics.com/&lt;/a&gt;
+&lt;a href=&#34;https://tradingeconomics.com/indicators&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;https://tradingeconomics.com/indicators&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;可持续发展指标以及相关数据（可直接下载）：http://www.indicators.be/en/t/SDI/Sustainable_development_indicators&lt;/li&gt;
+&lt;li&gt;爱尔兰2017可持续发展指标（附数据，易获取）：https://www.cso.ie/en/releasesandpublications/ep/psdii/sustainabledevelopmentindicatorsireland2017/&lt;/li&gt;
+&lt;li&gt;美国可持续发展指标（有部分数据）：https://sdg.data.gov/&lt;/li&gt;
+&lt;li&gt;世界卫生组织WHO（数据丰富）：https://www.who.int/sdg/en/  &lt;a href=&#34;https://www.who.int/zh&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;https://www.who.int/zh&lt;/a&gt;
+&lt;a href=&#34;http://apps.who.int/gho/data/?theme=main&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;http://apps.who.int/gho/data/?theme=main&lt;/a&gt; &lt;a href=&#34;http://apps.who.int/gho/data/node.i&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;http://apps.who.int/gho/data/node.i&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;全球知识产权数据
+&lt;a href=&#34;https://www.wipo.int/ipstats/zh/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;https://www.wipo.int/ipstats/zh/&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;美国数据
+&lt;ul&gt;
+&lt;li&gt;美国统计署：https://www.census.gov/&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;生态足迹
+&lt;a href=&#34;http://data.footprintnetwork.org/#/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;http://data.footprintnetwork.org/#/&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;方法&#34;&gt;方法&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;熵值法
+&lt;a href=&#34;https://hujichn.github.io/2016/08/10/%E7%86%B5%E5%80%BC%E6%B3%95%E7%A1%AE%E5%AE%9A%E6%9D%83%E9%87%8D%E7%9A%84%E6%AD%A5%E9%AA%A4%E5%8F%8A%E9%80%82%E7%94%A8%E8%8C%83%E5%9B%B4/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;https://hujichn.github.io/2016/08/10/%E7%86%B5%E5%80%BC%E6%B3%95%E7%A1%AE%E5%AE%9A%E6%9D%83%E9%87%8D%E7%9A%84%E6%AD%A5%E9%AA%A4%E5%8F%8A%E9%80%82%E7%94%A8%E8%8C%83%E5%9B%B4/&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;层次分析
+建立判断矩阵时，需要有专家知识方能保证客观，存在争议的可能性&lt;/li&gt;
+&lt;li&gt;数据包络分析&lt;/li&gt;
+&lt;li&gt;BP神经网路&lt;/li&gt;
+&lt;li&gt;CAS复杂适应系统
+&lt;a href=&#34;https://wiki.mbalib.com/wiki/%E5%A4%8D%E6%9D%82%E9%80%82%E5%BA%94%E7%B3%BB%E7%BB%9F%E7%90%86%E8%AE%BA&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;https://wiki.mbalib.com/wiki/%E5%A4%8D%E6%9D%82%E9%80%82%E5%BA%94%E7%B3%BB%E7%BB%9F%E7%90%86%E8%AE%BA&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;PSR模型
+可反映指标间的影响关系
+&lt;a href=&#34;https://baike.baidu.com/item/PSR/16014155&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;https://baike.baidu.com/item/PSR/16014155&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;加速遗传算法&lt;/li&gt;
+&lt;li&gt;耦合协调度评价
+&lt;a href=&#34;http://iceam.swu.edu.cn/viscms/u/cms/xbbjb/201403/21114947qess/X2014-02-080.pdf&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;http://iceam.swu.edu.cn/viscms/u/cms/xbbjb/201403/21114947qess/X2014-02-080.pdf&lt;/a&gt;
+&lt;a href=&#34;http://www.cjae.net/CN/abstract/abstract17931.shtml&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;http://www.cjae.net/CN/abstract/abstract17931.shtml&lt;/a&gt;
+（中国地质大学）https://gg.swjtu.edu.cn/__local/E/8B/26/9F92DC76DC608D089E07F35CD7F_A94299D3_178239.pdf&lt;/li&gt;
+&lt;li&gt;CRITIC法
+&lt;a href=&#34;https://wiki.mbalib.com/wiki/CRITIC%E6%96%B9%E6%B3%95&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;https://wiki.mbalib.com/wiki/CRITIC%E6%96%B9%E6%B3%95&lt;/a&gt;
+&lt;a href=&#34;http://blog.sina.com.cn/s/blog_8f03874a0102wgi3.html&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;http://blog.sina.com.cn/s/blog_8f03874a0102wgi3.html&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;五种客观赋权方法对比
+&lt;a href=&#34;http://image.sciencenet.cn/olddata/kexue.com.cn/upload/blog/file/2010/12/2010121116722667242.pdf&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;http://image.sciencenet.cn/olddata/kexue.com.cn/upload/blog/file/2010/12/2010121116722667242.pdf&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;离差法、均方差法、回归系数法、主成分分析法
+感觉几种方法都可评价可持续发展能力，偏向采用客观的方法，还需要想如何划分可持续和不可持续的阈值/边界&lt;/li&gt;
+&lt;li&gt;投影寻踪模型
+&lt;a href=&#34;https://en.wikipedia.org/wiki/Projection_pursuit&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;https://en.wikipedia.org/wiki/Projection_pursuit&lt;/a&gt;
+&lt;a href=&#34;https://www.stat.washington.edu/wxs/Visualization-papers/projection-pursuit.pdf&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;https://www.stat.washington.edu/wxs/Visualization-papers/projection-pursuit.pdf&lt;/a&gt;
+&lt;a href=&#34;http://www.slac.stanford.edu/pubs/slacpubs/1250/slac-pub-1312.pdf&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;http://www.slac.stanford.edu/pubs/slacpubs/1250/slac-pub-1312.pdf&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;元胞自动机
+&lt;a href=&#34;http://mathworld.wolfram.com/CellularAutomaton.html&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;http://mathworld.wolfram.com/CellularAutomaton.html&lt;/a&gt;
+A New kind of Science：https://www.wolframscience.com/nks/&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;问题&#34;&gt;问题&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;熵权法时采用归一化和标准化得到的结果相差较大，应该使用何种？&lt;/li&gt;
+&lt;li&gt;如何确定评价指标的临界值？
+聚类？线性内插？&lt;/li&gt;
+&lt;li&gt;如果使用元胞自动机模拟未来二十年的情况，应该如何定义更新规则？&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;总结&#34;&gt;总结&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;Matlab
+导出数值数组到文件：https://ww2.mathworks.cn/help/matlab/import_export/write-to-delimited-data-files.html
+集合运算：https://blog.csdn.net/shengchaohua163/article/details/78938955
+把数组转为元胞数组：https://ww2.mathworks.cn/help/matlab/ref/num2cell.html
+表转同构数组：https://ww2.mathworks.cn/help/matlab/ref/table2array.html&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;可视化&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;饼图：https://zh.wikipedia.org/zh-hans/%E9%A5%BC%E5%9B%BE
+用于描述量、频率或百分比之间的相对关系。可描述几个可持续发展指标的下级指标关系&lt;/li&gt;
+&lt;li&gt;条形图：https://zh.wikipedia.org/wiki/%E6%9D%A1%E5%BD%A2%E7%BB%9F%E8%AE%A1%E5%9B%BE
+长条图用来比较两个或以上的价值（不同时间或者不同条件），只有一个变量，通常利用于较小的数据集分析。长条图亦可横向排列，或用多维方式表达。&lt;/li&gt;
+&lt;li&gt;柱状图：&lt;/li&gt;
+&lt;li&gt;堆叠图：&lt;/li&gt;
+&lt;li&gt;风向玫瑰图
+&lt;a href=&#34;https://gallery.echartsjs.com/editor.html?c=xSkKj8TuiW&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;https://gallery.echartsjs.com/editor.html?c=xSkKj8TuiW&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;仪盘表
+&lt;a href=&#34;https://jshare.com.cn/demos/hhhhiD?hc-theme=grid-light&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;https://jshare.com.cn/demos/hhhhiD?hc-theme=grid-light&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;子弹图&lt;/li&gt;
+&lt;li&gt;蜘蛛图
+&lt;a href=&#34;https://jshare.com.cn/demos/hhhhi6?hc-theme=grid-light&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;https://jshare.com.cn/demos/hhhhi6?hc-theme=grid-light&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;多雷达图
+&lt;a href=&#34;https://www.highcharts.com.cn/demo/highcharts/polar-spider&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;https://www.highcharts.com.cn/demo/highcharts/polar-spider&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;可视化工具
+Tableau：https://en.wikipedia.org/wiki/Tableau_Software
+EChart:https://vis.baidu.com/chartusage/stackedarea/ ；https://echarts.baidu.com/api.html#echartsInstance
+highcharts：https://www.highcharts.com/demo/polar-wind-rose ;
+&lt;a href=&#34;https://www.highcharts.com.cn/demo/highcharts#heatmap-treemap&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;https://www.highcharts.com.cn/demo/highcharts#heatmap-treemap&lt;/a&gt;
+infogram:https://infogram.com/app/#/welcome
+Plotly：https://plot.ly/r/#basic-charts
+Codepen:https://codepen.io/pen
+知乎可视化工具推荐：https://www.zhihu.com/question/19929609
+Mathematica：https://tiebamma.github.io/InstallTutorial/&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;经济可持续强大的国家
+卢森堡：https://zh.wikipedia.org/wiki/%E5%8D%A2%E6%A3%AE%E5%A0%A1
+瑞典：https://zh.wikipedia.org/wiki/%E7%91%9E%E5%85%B8
+瑞士（Switzerland）：https://zh.wikipedia.org/wiki/%E7%91%9E%E5%A3%AB
+丹麦（Denmark）：https://zh.wikipedia.org/wiki/%E4%B8%B9%E9%BA%A6&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;新闻
+联合国经济和社会事务部：https://www.un.org/development/desa/zh/news/policy/four-steps-for-global-economy.html
+目标8——促进持久、包容和可持续经济增长，促进充分的生产性就业和人人获得体面工作：https://www.un.org/sustainabledevelopment/zh/economic-growth/&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;建模过程注意&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;理清楚问题
+如2015D可持续问题，应决定分哪几个维度定义可持续，各个可持续维度之间是否相互独立还是说会相互作用，不同的假定就有不同的解决方向。&lt;/li&gt;
+&lt;li&gt;理清楚数据
+要用到哪些数据？如果想要数据缺失了是舍弃该数据还是进行插值补全？插值的话应该采用何种插值方法会比较符合现实情况？&lt;/li&gt;
+&lt;li&gt;注重团队配合&lt;/li&gt;
+&lt;li&gt;优化可视化效果&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>地理空间分析python常用包</title>
+      <link>/post/geospatial-analysis-python-library/</link>
+      <pubDate>Fri, 28 Dec 2018 13:49:42 +0800</pubDate>
+      <guid>/post/geospatial-analysis-python-library/</guid>
+      <description>&lt;h2 id=&#34;0x00-gis-python包汇总&#34;&gt;0x00 GIS python包汇总&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;GDAL（https://www.lfd.uci.edu/~gohlke/pythonlibs/#gdal）
+访问处理空间数据的库，非纯净python脚本包，安装途径非常规&lt;/li&gt;
+&lt;li&gt;Shapely
+通用几何库&lt;/li&gt;
+&lt;li&gt;Fiona（https://www.lfd.uci.edu/~gohlke/pythonlibs/#fiona）
+OGR库的简介访问API&lt;/li&gt;
+&lt;li&gt;pyproj（http://code.google.com/p/pyproj/）
+对点进行地图投影转换&lt;/li&gt;
+&lt;li&gt;geopandas（http://geopandas.org/install.html）&lt;/li&gt;
+&lt;li&gt;mapnik&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;0x01-shapefile基本操作&#34;&gt;0x01 shapefile基本操作&lt;/h2&gt;
+&lt;p&gt;（todo）&lt;/p&gt;
+&lt;h2 id=&#34;0x02-shapefile高端操作&#34;&gt;0x02 shapefile高端操作&lt;/h2&gt;
+&lt;p&gt;（todo）&lt;/p&gt;
+&lt;h2 id=&#34;0x03-网络分析进阶&#34;&gt;0x03 网络分析进阶&lt;/h2&gt;
+&lt;h3 id=&#34;概念&#34;&gt;概念&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;网络表示学习
+知乎网络表示学习概述：https://zhuanlan.zhihu.com/p/32504175
+Must-read papers on NRL/NE：https://github.com/thunlp/NRLPapers&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;包汇总&#34;&gt;包汇总&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;networkx
+官网：https://networkx.github.io/
+维基百科：https://en.wikipedia.org/wiki/NetworkX
+文档：https://networkx.github.io/documentation/latest/&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;node2vec
+Github_aditya-grover:https://github.com/aditya-grover/node2vec
+Github_eliorc:https://github.com/eliorc/node2vec
+机器之心:https://www.jiqizhixin.com/articles/2017-10-28-3&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;struc2vec
+&lt;a href=&#34;http://jackieanxis.coding.me/2018/01/17/STRUC2VEC/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;http://jackieanxis.coding.me/2018/01/17/STRUC2VEC/&lt;/a&gt;
+Github：https://github.com/leoribeiro/struc2vec
+KDD2017:https://www.kdd.org/kdd2017/
+Youtube_KDD2017：https://www.youtube.com/watch?v=5usgZOTy0YY
+知乎网友：https://zhuanlan.zhihu.com/p/42559966&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;openNE（用于网络嵌入的开源库）
+Github：https://github.com/thunlp/OpenNE&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;gudhi（拓扑数据分析包）&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
+    
+    <item>
       <title>高德地图 Js Api总结</title>
       <link>/post/amap-js-api-summary/</link>
       <pubDate>Fri, 21 Dec 2018 00:47:38 +0800</pubDate>
       <guid>/post/amap-js-api-summary/</guid>
-      <description>&lt;h2 id=&#34;0x00-api分类文档&#34;&gt;0x00 API分类文档&lt;/h2&gt;
+      <description>&lt;details class=&#34;toc-inpage d-print-none  &#34; open&gt;
+  &lt;summary class=&#34;font-weight-bold&#34;&gt;Table of Contents&lt;/summary&gt;
+  &lt;nav id=&#34;TableOfContents&#34;&gt;
+  &lt;ul&gt;
+    &lt;li&gt;&lt;a href=&#34;#0x00-api分类文档&#34;&gt;0x00 API分类文档&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href=&#34;#0x01-分类示例&#34;&gt;0x01 分类示例&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href=&#34;#0x02-常用python解析文件库&#34;&gt;0x02 常用python解析文件库&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href=&#34;#0x03-部分代码&#34;&gt;0x03 部分代码&lt;/a&gt;
+      &lt;ul&gt;
+        &lt;li&gt;&lt;a href=&#34;#上海市poi&#34;&gt;上海市POI&lt;/a&gt;&lt;/li&gt;
+      &lt;/ul&gt;
+    &lt;/li&gt;
+    &lt;li&gt;&lt;a href=&#34;#0x04-别人的文章&#34;&gt;0x04 别人的文章&lt;/a&gt;&lt;/li&gt;
+  &lt;/ul&gt;
+&lt;/nav&gt;
+&lt;/details&gt;
+
+&lt;h2 id=&#34;0x00-api分类文档&#34;&gt;0x00 API分类文档&lt;/h2&gt;
 &lt;p&gt;&lt;a href=&#34;https://lbs.amap.com/api/webservice/guide/api/search&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;https://lbs.amap.com/api/webservice/guide/api/search&lt;/a&gt;
 &lt;a href=&#34;https://lbs.amap.com/api/webservice/guide/api/search#polygon&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;https://lbs.amap.com/api/webservice/guide/api/search#polygon&lt;/a&gt;
 &lt;a href=&#34;https://lbs.amap.com/api/webservice/guide/api/convert/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;https://lbs.amap.com/api/webservice/guide/api/convert/&lt;/a&gt;&lt;/p&gt;
