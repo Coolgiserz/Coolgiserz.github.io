@@ -7285,6 +7285,602 @@ Mac用草图软件&lt;/p&gt;
     </item>
     
     <item>
+      <title>交通灯智能优化SUMO库随笔记录</title>
+      <link>/post/sumo-notes-for-traffic-light-optimization/</link>
+      <pubDate>Sat, 16 Feb 2019 11:42:45 +0800</pubDate>
+      <guid>/post/sumo-notes-for-traffic-light-optimization/</guid>
+      <description>&lt;h2 id=&#34;sumo项目&#34;&gt;SUMO项目&lt;/h2&gt;
+&lt;p&gt;近期研究交通灯优化相关问题，查到了SUMO这个项目，此文章仅对此作简单的记录总结。&lt;/p&gt;
+&lt;h3 id=&#34;sumo项目介绍&#34;&gt;SUMO项目介绍&lt;/h3&gt;
+&lt;p&gt;&lt;a href=&#34;https://www.dlr.de/ts/en/desktopdefault.aspx/tabid-9883/16931_read-41000/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;https://www.dlr.de/ts/en/desktopdefault.aspx/tabid-9883/16931_read-41000/&lt;/a&gt;&lt;/p&gt;
+&lt;h3 id=&#34;相关论文&#34;&gt;相关论文&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a href=&#34;https://pdfs.semanticscholar.org/59e8/ceba039b8e33d1eb2c66c4595bf474bf1dc8.pdf&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Optimized Sensor Network and Multi-Agent Decision
+Support for Smart Traffic Light Management&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a href=&#34;https://home.cse.ust.hk/~yqsong/teaching/comp3211/projects/2017Fall/G17.pdf&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Optimazation of Traffic Light Controlling with Reinforcement Learning COMP 3211 Final Project, Group 9, Fall 2017-2018&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a href=&#34;http://people.cs.aau.dk/~muniz/strategoTraffic.pdf&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Uppaal Stratego for Intelligent Traffic Lights &lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a href=&#34;http://cs229.stanford.edu/proj2016spr/report/047.pdf&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Reinforcement Learning for Traffic Optimization&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;教程&#34;&gt;教程&lt;/h2&gt;
+&lt;h3 id=&#34;学习平台&#34;&gt;学习平台&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a href=&#34;https://sumo.dlr.de/wiki/SUMO_User_Documentation&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Wiki Tutorial&lt;/a&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://sumo.dlr.de/wiki/TraCI&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;TraCI在线互动&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://sumo.dlr.de/wiki/Tutorials/TraCI4Traffic_Lights&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;TraCI4Traffic Lights&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;DLR&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Youtube
+&lt;a href=&#34;https://www.youtube.com/watch?v=s6tfcSIBjsU&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Dynamic Traffic Light Simulation - YouTube&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Other Plamforms
+&lt;a href=&#34;https://wenku.baidu.com/view/dd44decec8d376eeaeaa31a1.html&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;https://wenku.baidu.com/view/dd44decec8d376eeaeaa31a1.html&lt;/a&gt;&lt;/p&gt;
+&lt;h3 id=&#34;常用命令&#34;&gt;常用命令&lt;/h3&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;netconvert
+可将来源于OpenStreetMap的.osm文件转成.net.xml文件，生成交通场景；&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;polyconvert
+生成.poly.xml文件&lt;/p&gt;
+&lt;h3 id=&#34;配置文件&#34;&gt;配置文件&lt;/h3&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;.con.xml&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;.net.xml&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;tlLogic
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure  &gt;
+  &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img src=&#34;https://i.imgur.com/AIBv4av.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+  &lt;/div&gt;&lt;/figure&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;.rou.xml&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;.nod.xml&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;.edg.xml&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;.det.xml&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;.sumocfg
+总配置文件，指定网络、路线等配置文件。如：
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure  &gt;
+  &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img src=&#34;https://i.imgur.com/gEmdbpt.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+  &lt;/div&gt;&lt;/figure&gt;
+&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;常用python模块&#34;&gt;常用python模块&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;traci
+&lt;ul&gt;
+&lt;li&gt;TLS（Traffic Light Signal for a sumo network）
+&lt;a href=&#34;https://sumo.dlr.de/daily/pydoc/sumolib.net.html#TLS&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;https://sumo.dlr.de/daily/pydoc/sumolib.net.html#TLS&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;TLSProgram&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://www.tensorflow.org/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;tensorflow&lt;/a&gt;
+安装后numpy出现问题：
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure  &gt;
+  &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img src=&#34;https://i.imgur.com/tQISDwU.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+  &lt;/div&gt;&lt;/figure&gt;
+
+更新numpy至1.16解决此错误：https://github.com/alpacahq/pylivetrader/issues/73
+更新模块命令示例：pip3 install -U packageName&lt;/li&gt;
+&lt;li&gt;rl
+强化学习相关库，[介绍](&lt;a href=&#34;https://morvanzhou.github.io/tutorials/machine-learning/reinforcement-learning/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;强化学习 Reinforcement Learning 教程系列 | 莫烦Python&lt;/a&gt;)
+安装过程中出现问题：
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure  &gt;
+  &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img src=&#34;https://i.imgur.com/zUSvf3W.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+  &lt;/div&gt;&lt;/figure&gt;
+
+解决办法：pip3 install [keras-rl](&lt;a href=&#34;https://pypi.org/project/keras-rl/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;keras-rl · PyPI&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://rise.cs.berkeley.edu/projects/ray/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Ray&lt;/a&gt;
+Ray是加州伯克利分校的RISE实验室退出的一个分布式执行平台。
+Ray RLib是一个可扩展的强化学习库，可在多个机器上运行与openAI gym完全兼容，支持Tensorflow和PyTorch。
+Ray.tune是一个高效的分布式超参数搜索库，提供了API以执行深度学习、强化学习和其它计算密集型任务。
+安装过程出现问题：
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure  &gt;
+  &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img src=&#34;https://i.imgur.com/lCTgRYA.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+  &lt;/div&gt;&lt;/figure&gt;
+
+&lt;a href=&#34;https://github.com/ray-project/ray/issues/2683&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;https://github.com/ray-project/ray/issues/2683&lt;/a&gt;
+见以上issue，目前ray模块不支持windows，于Linux or windows的Linux子系统可安装
+&lt;a href=&#34;https://pypi.org/simple/ray/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;https://pypi.org/simple/ray/&lt;/a&gt;
+使用Ray中的DQNAgent时，报错&amp;rsquo;PolicyEvaluator&amp;rsquo; object has no attribute &amp;lsquo;sampler&amp;rsquo;&lt;/li&gt;
+&lt;li&gt;keras&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;traci-api&#34;&gt;Traci API&lt;/h3&gt;
+&lt;h4 id=&#34;connection重点函数&#34;&gt;connection重点函数&lt;/h4&gt;
+&lt;ul&gt;
+&lt;li&gt;simulationStep(self, step=0.)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;Make a simulation step and simulate up to the given second in sim time.
+If the given value is 0 or absent, exactly one step is performed.
+Values smaller than or equal to the current sim time result in no action.
+&lt;/code&gt;&lt;/pre&gt;&lt;h4 id=&#34;simulation重点函数&#34;&gt;simulation重点函数&lt;/h4&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;getCurrentTime(self)&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;getCurrentTime() -&amp;gt; integer
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Returns the current simulation time in ms.&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;- getLoadedNumber(self)
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;getLoadedNumber() -&amp;gt; integer&lt;/p&gt;
+&lt;p&gt;Returns the number of vehicles which were loaded in this time step.&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;#### lane重点函数
+- getLastStepVehicleNumber(self, laneID)
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;getLastStepVehicleNumber(string) -&amp;gt; integer&lt;/p&gt;
+&lt;p&gt;Returns the total number of vehicles for the last time step on the given lane.&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;- getLastStepHaltingNumber(self, laneID)
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;getLastStepHaltingNumber(string) -&amp;gt; integer&lt;/p&gt;
+&lt;p&gt;Returns the total number of halting vehicles for the last time step on the given lane.
+A speed of less than 0.1 m/s is considered a halt.&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;#### vehicle重点函数
+- getWaitingTime(self, vehID)
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;getWaitingTime() -&amp;gt; double
+计算车辆等待时间（若车辆有意停在服务区/停车区，则不作等待时间算）
+The waiting time of a vehicle is defined as the time (in seconds) spent with a
+speed below 0.1m/s since the last time it was faster than 0.1m/s.
+(basically, the waiting time of a vehicle is reset to 0 every time it moves).
+A vehicle that is stopping intentionally with a &lt;stop&gt; does not accumulate waiting time.&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;- getAccumulatedWaitingTime(self, vehID)
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;getAccumulatedWaitingTime() -&amp;gt; double
+计算一定时间间隔内某车的累计等待时间，时间间隔的以waiting-time-memory设置
+The accumulated waiting time of a vehicle collects the vehicle&amp;rsquo;s waiting time over a
+certain time interval (interval length is set per option &amp;lsquo;&amp;ndash;waiting-time-memory&amp;rsquo;)&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;#### trafficlight重点函数
+-  getIDList(self)
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;getIDList() -&amp;gt; list(string)&lt;/p&gt;
+&lt;p&gt;Returns a list of all objects in the network.&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;- getPhase(self,tlsID)
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;getPhase(string) -&amp;gt; integer
+注意！此函数返回的是相位索引！
+Returns the index of the current phase within the list of all phases of the
+current program.&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;- getPhaseDuration(self, tlsID)
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;getPhaseDuration(string) -&amp;gt; double
+返回当前相位的总共持续时间
+Returns the total duration of the current phase (in seconds). This value is not
+affected by the elapsed or remaining duration of the current phase.&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;- setPhase(self,tlsID,index)
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;setPhase(string, integer) -&amp;gt; None&lt;/p&gt;
+&lt;p&gt;Switches to the phase with the given index in the list of all phases
+for the current program.&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;- setPhaseDuration(self,tlsID,phaseDuration)
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;setPhaseDuration(string, double) -&amp;gt; None
+设置当前相位的剩余持续时间（秒），对之后周期的此相位的无影响！
+Set the remaining phase duration of the current phase in seconds.
+This value has no effect on subsquent repetitions of this phase.&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;- getControlledLanes(self, tlsID)
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;getControlledLanes(string) -&amp;gt; c&lt;/p&gt;
+&lt;p&gt;Returns the list of lanes which are controlled by the named traffic light.&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;- setCompleteRedYellowGreenDefinition(self, tlsID, tls)
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;setCompleteRedYellowGreenDefinition(string, Logic) -&amp;gt; None&lt;/p&gt;
+&lt;p&gt;Sets a new program for the given tlsID from a Logic object.
+See getCompleteRedYellowGreenDefinition.&lt;/p&gt;
+&lt;h4 id=&#34;traci重点类构造函数&#34;&gt;traci重点类构造函数&lt;/h4&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;Phase&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-python&#34; data-lang=&#34;python&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;k&#34;&gt;class&lt;/span&gt; &lt;span class=&#34;nc&#34;&gt;Phase&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;k&#34;&gt;def&lt;/span&gt; &lt;span class=&#34;fm&#34;&gt;__init__&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;bp&#34;&gt;self&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;duration&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;state&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;minDur&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=-&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;1&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;maxDur&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=-&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;1&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;nb&#34;&gt;next&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=-&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;1&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;):&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        &lt;span class=&#34;bp&#34;&gt;self&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;duration&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;duration&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        &lt;span class=&#34;bp&#34;&gt;self&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;state&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;state&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        &lt;span class=&#34;bp&#34;&gt;self&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;minDur&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;minDur&lt;/span&gt;  &lt;span class=&#34;c1&#34;&gt;# minimum duration (only for actuated tls)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        &lt;span class=&#34;bp&#34;&gt;self&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;maxDur&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;maxDur&lt;/span&gt;  &lt;span class=&#34;c1&#34;&gt;# maximum duration (only for actuated tls)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        &lt;span class=&#34;bp&#34;&gt;self&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;next&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;nb&#34;&gt;next&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;k&#34;&gt;def&lt;/span&gt; &lt;span class=&#34;fm&#34;&gt;__repr__&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;bp&#34;&gt;self&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;):&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        &lt;span class=&#34;k&#34;&gt;return&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;Phase(duration=&lt;/span&gt;&lt;span class=&#34;si&#34;&gt;%s&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;, state=&amp;#39;&lt;/span&gt;&lt;span class=&#34;si&#34;&gt;%s&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#39;, minDur=&lt;/span&gt;&lt;span class=&#34;si&#34;&gt;%s&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;, maxDur=&lt;/span&gt;&lt;span class=&#34;si&#34;&gt;%s&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;, next=&lt;/span&gt;&lt;span class=&#34;si&#34;&gt;%s&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;)&amp;#34;&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;%&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;                &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;bp&#34;&gt;self&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;duration&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;bp&#34;&gt;self&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;state&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;bp&#34;&gt;self&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;minDur&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;bp&#34;&gt;self&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;maxDur&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;bp&#34;&gt;self&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;next&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;))&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Logic&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-python&#34; data-lang=&#34;python&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;k&#34;&gt;class&lt;/span&gt; &lt;span class=&#34;nc&#34;&gt;Logic&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  &lt;span class=&#34;k&#34;&gt;def&lt;/span&gt; &lt;span class=&#34;fm&#34;&gt;__init__&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;bp&#34;&gt;self&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;programID&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;nb&#34;&gt;type&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;currentPhaseIndex&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;phases&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;kc&#34;&gt;None&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;subParameter&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;kc&#34;&gt;None&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;):&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;      &lt;span class=&#34;bp&#34;&gt;self&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;programID&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;programID&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;      &lt;span class=&#34;bp&#34;&gt;self&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;type&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;nb&#34;&gt;type&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;      &lt;span class=&#34;bp&#34;&gt;self&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;currentPhaseIndex&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;currentPhaseIndex&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;      &lt;span class=&#34;bp&#34;&gt;self&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;phases&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;phases&lt;/span&gt; &lt;span class=&#34;k&#34;&gt;if&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;phases&lt;/span&gt; &lt;span class=&#34;ow&#34;&gt;is&lt;/span&gt; &lt;span class=&#34;ow&#34;&gt;not&lt;/span&gt; &lt;span class=&#34;kc&#34;&gt;None&lt;/span&gt; &lt;span class=&#34;k&#34;&gt;else&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;[]&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;      &lt;span class=&#34;bp&#34;&gt;self&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;subParameter&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;subParameter&lt;/span&gt; &lt;span class=&#34;k&#34;&gt;if&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;subParameter&lt;/span&gt; &lt;span class=&#34;ow&#34;&gt;is&lt;/span&gt; &lt;span class=&#34;ow&#34;&gt;not&lt;/span&gt; &lt;span class=&#34;kc&#34;&gt;None&lt;/span&gt; &lt;span class=&#34;k&#34;&gt;else&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{}&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  &lt;span class=&#34;k&#34;&gt;def&lt;/span&gt; &lt;span class=&#34;nf&#34;&gt;getPhases&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;bp&#34;&gt;self&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;):&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;      &lt;span class=&#34;k&#34;&gt;return&lt;/span&gt; &lt;span class=&#34;bp&#34;&gt;self&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;phases&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  &lt;span class=&#34;k&#34;&gt;def&lt;/span&gt; &lt;span class=&#34;nf&#34;&gt;getSubID&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;bp&#34;&gt;self&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;):&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;      &lt;span class=&#34;k&#34;&gt;return&lt;/span&gt; &lt;span class=&#34;bp&#34;&gt;self&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;programID&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  &lt;span class=&#34;k&#34;&gt;def&lt;/span&gt; &lt;span class=&#34;nf&#34;&gt;getType&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;bp&#34;&gt;self&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;):&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;      &lt;span class=&#34;k&#34;&gt;return&lt;/span&gt; &lt;span class=&#34;bp&#34;&gt;self&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;type&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  &lt;span class=&#34;k&#34;&gt;def&lt;/span&gt; &lt;span class=&#34;nf&#34;&gt;getParameters&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;bp&#34;&gt;self&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;):&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;      &lt;span class=&#34;k&#34;&gt;return&lt;/span&gt; &lt;span class=&#34;bp&#34;&gt;self&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;subParameter&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  &lt;span class=&#34;k&#34;&gt;def&lt;/span&gt; &lt;span class=&#34;nf&#34;&gt;getParameter&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;bp&#34;&gt;self&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;key&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;default&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;kc&#34;&gt;None&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;):&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;      &lt;span class=&#34;k&#34;&gt;return&lt;/span&gt; &lt;span class=&#34;bp&#34;&gt;self&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;subParameter&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;get&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;key&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;default&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  &lt;span class=&#34;k&#34;&gt;def&lt;/span&gt; &lt;span class=&#34;fm&#34;&gt;__repr__&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;bp&#34;&gt;self&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;):&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;      &lt;span class=&#34;k&#34;&gt;return&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;Logic(programID=&amp;#39;&lt;/span&gt;&lt;span class=&#34;si&#34;&gt;%s&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#39;, type=&lt;/span&gt;&lt;span class=&#34;si&#34;&gt;%s&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;, currentPhaseIndex=&lt;/span&gt;&lt;span class=&#34;si&#34;&gt;%s&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;, phases=&lt;/span&gt;&lt;span class=&#34;si&#34;&gt;%s&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;, subParameter=&lt;/span&gt;&lt;span class=&#34;si&#34;&gt;%s&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;)&amp;#34;&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;%&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;              &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;bp&#34;&gt;self&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;programID&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;bp&#34;&gt;self&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;type&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;bp&#34;&gt;self&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;currentPhaseIndex&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;bp&#34;&gt;self&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;phases&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;bp&#34;&gt;self&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;subParameter&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;))&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&#34;自定义类结构&#34;&gt;自定义类结构&lt;/h4&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-python&#34; data-lang=&#34;python&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;k&#34;&gt;class&lt;/span&gt; &lt;span class=&#34;nc&#34;&gt;TrafficSignal&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;k&#34;&gt;def&lt;/span&gt; &lt;span class=&#34;fm&#34;&gt;__init__&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;bp&#34;&gt;self&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;env&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;ts_id&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;delta_time&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;min_green&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;max_green&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;phases&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;):&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        &lt;span class=&#34;bp&#34;&gt;self&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;id&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;ts_id&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        &lt;span class=&#34;bp&#34;&gt;self&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;env&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;env&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        &lt;span class=&#34;bp&#34;&gt;self&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;time_on_phase&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;0&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        &lt;span class=&#34;bp&#34;&gt;self&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;delta_time&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;delta_time&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        &lt;span class=&#34;bp&#34;&gt;self&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;min_green&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;min_green&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        &lt;span class=&#34;bp&#34;&gt;self&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;max_green&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;max_green&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        &lt;span class=&#34;bp&#34;&gt;self&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;green_phase&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;0&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        &lt;span class=&#34;bp&#34;&gt;self&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;num_green_phases&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;nb&#34;&gt;len&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;phases&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;//&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;2&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        &lt;span class=&#34;bp&#34;&gt;self&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;edges&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;bp&#34;&gt;self&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;_compute_edges&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;()&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        &lt;span class=&#34;bp&#34;&gt;self&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;edges_capacity&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;bp&#34;&gt;self&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;_compute_edges_capacity&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;()&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        &lt;span class=&#34;n&#34;&gt;logic&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;traci&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;trafficlight&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;Logic&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;ProgramID&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;0&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;00&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;phases&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        &lt;span class=&#34;n&#34;&gt;traci&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;trafficlight&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;setCompleteRedYellowGreenDefinition&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;bp&#34;&gt;self&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;id&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;logic&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;err&#34;&gt;·&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h4 id=&#34;自定义计算模块&#34;&gt;自定义计算模块&lt;/h4&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;edges_capacity&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;边容量
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;lane_density&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;车道密度
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;- stopped_vehicles_num
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;平均停车数
+新的绿灯相位到来时每条边上的车道在仿真的上一步的停车数之和
+[sum([traci.lane.getLastStepHaltingNumber(lane) for lane in self.edges[p]]) for p in range(self.num_green_phases)]&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;- road_waiting_time
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;道路平均等待/延迟时间&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;- total_stopped
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;总共停车次数&lt;/p&gt;
+&lt;h4 id=&#34;模块封装&#34;&gt;模块封装&lt;/h4&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;- update_phase
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;改变相位&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;- waiting_time_reward
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;基于车均等待/延迟时间的奖励函数&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;- queue_average_reward
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;基于平均排队长度的奖励函数&lt;/p&gt;
+&lt;h2 id=&#34;数据&#34;&gt;数据&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a href=&#34;https://sourceforge.net/projects/sumo/files/traffic_data/scenarios/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;https://sourceforge.net/projects/sumo/files/traffic_data/scenarios/&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a href=&#34;http://opendata.dc.gov/datasets/31ccad579ec449938c13a0ac82c9f46e_16&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;http://opendata.dc.gov/datasets/31ccad579ec449938c13a0ac82c9f46e_16&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a href=&#34;https://sumo.dlr.de/wiki/Data/Scenarios&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;https://sumo.dlr.de/wiki/Data/Scenarios&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;论文阅读&#34;&gt;论文阅读&lt;/h2&gt;
+&lt;h3 id=&#34;towards-a-unified-evaluation-of-traffic-light-algorithms&#34;&gt;Towards a unified Evaluation of Traffic Light Algorithms&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;keywords
+traffic lights evaluation，traffic simulation，performance metrics&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;metrics to monitor the traffic light algorithms
+waiting time,queue size,delay,travel time
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure  &gt;
+  &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img src=&#34;https://i.imgur.com/lOhQ5tk.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+  &lt;/div&gt;&lt;/figure&gt;
+&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;实践&#34;&gt;实践&lt;/h2&gt;
+&lt;h3 id=&#34;遇到问题&#34;&gt;遇到问题&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;没有设置SUMO_HOME
+如在linux系统中，export &amp;ldquo;SUMO_HOME=/usr/share/sumo&amp;quot;即可&lt;/li&gt;
+&lt;li&gt;Could not access configuration &amp;lsquo;XXXXX配置文件XXXXX&amp;rsquo;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure  &gt;
+  &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img src=&#34;https://i.imgur.com/mQqkMFx.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+  &lt;/div&gt;&lt;/figure&gt;
+&lt;/li&gt;
+&lt;li&gt;Error: Answered with error to command 0xa2: Traffic light &amp;lsquo;0&amp;rsquo; is not known&lt;/li&gt;
+&lt;li&gt;ImportError: cannot import name &amp;lsquo;Timestamp&amp;rsquo; from &amp;lsquo;pandas.lib&amp;rsquo;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure  &gt;
+  &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img src=&#34;https://i.imgur.com/7H6zoUQ.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+  &lt;/div&gt;&lt;/figure&gt;
+
+解决办法：删除下图中的.lib&lt;/li&gt;
+&lt;li&gt;Could not connect to TraCI server at localhost:XXXXX&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;命令通道&#34;&gt;命令通道&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;单车道单交叉路口
+python3 experiments/ql_single-intersection.py -route /home/zhuge/Documents/TrafficSim/sumo-rl/nets/single-intersection/single-intersection.rou.xml -gui&lt;/li&gt;
+&lt;li&gt;双车道单交叉路口
+python3 experiments/ql_single-intersection.py -route /home/zhuge/Documents/TrafficSim/sumo-rl/nets/2way-single-intersection/single-intersection.rou.xml -gui&lt;/li&gt;
+&lt;li&gt;双车道4*4路网——并行计算DQN&lt;/li&gt;
+&lt;li&gt;双车道4*4路网——并行计算A&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;强化学习&#34;&gt;强化学习&lt;/h3&gt;
+&lt;h4 id=&#34;强化学习大体流程&#34;&gt;强化学习大体流程&lt;/h4&gt;
+&lt;h4 id=&#34;重点&#34;&gt;重点&lt;/h4&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;状态空间定义
+状态空间即环境状态的量化描述，针对交通灯问题，可把状态空间定义为车辆密度&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;动作空间定义&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;转移函数设计&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;奖励函数设计
+针对此问题，交通灯优化的程度可以从路口的车辆平均等待时间/车均延迟/排队长度等方面反映出来，故奖励函数可围绕这几个方面设计.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&#34;仿真参数&#34;&gt;仿真参数&lt;/h4&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;seconds
+仿真程序持续秒数，固定秒数，一般时间长一点会更体现效果&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;alpha
+学习率&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;gamma
+折扣率&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;epsilon
+探索率&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;reward
+奖励函数，&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;runs
+示例命令：python3 experiments/ql_2way-single-intersection.py -route /home/zhuge/Documents/TrafficSim/sumo-rl/nets/2way-single-intersection/single-intersection.rou.xml -g 0.9 -r waitingtime -runs 10&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&#34;openai库gym&#34;&gt;openAI库gym&lt;/h4&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a href=&#34;https://gym.openai.com/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;gym&lt;/a&gt;是一个提供强化学习环境的类库，内置的经典环境有CartPole-v0、&lt;a href=&#34;https://gym.openai.com/envs/MountainCar-v0/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;MountainCar-v0&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a href=&#34;https://github.com/openai/multiagent-particle-envs&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;MultiAgentEnv&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&#34;参数搜索&#34;&gt;参数搜索&lt;/h4&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;http://www.cs.cmu.edu/~muli/file/ps.pdf&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Parameter Server for Distributed Machine Learning&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&#34;统计分析&#34;&gt;统计分析&lt;/h4&gt;
+&lt;p&gt;评价交通灯算法优劣
+示例命令：python3 plot.py -f 2way-single-intersection\a3cteste9.csv&lt;/p&gt;
+&lt;h3 id=&#34;v01闭环步骤&#34;&gt;v0.1闭环步骤&lt;/h3&gt;
+&lt;h4 id=&#34;输出起始相位和终止相位&#34;&gt;输出起始相位和终止相位&lt;/h4&gt;
+&lt;h2 id=&#34;小结&#34;&gt;小结&lt;/h2&gt;
+&lt;h3 id=&#34;已有的交通信号控制系统算法&#34;&gt;已有的交通信号控制系统/算法&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://www.swarco.com/products/software/urban-traffic-management/utopia&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;UTOPIA&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;……&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;相关可参考项目&#34;&gt;相关可参考项目&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://github.com/flow-project/flow&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;https://github.com/flow-project/flow&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://github.com/sumoprojects/SumoEasyMiner&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;https://github.com/sumoprojects/SumoEasyMiner&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://github.com/JDGlick/sumo_reinforcement_learning&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;https://github.com/JDGlick/sumo_reinforcement_learning&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://github.com/lcodeca/MoSTScenario&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;https://github.com/lcodeca/MoSTScenario&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://github.com/LucasAlegre/sumo-rl/tree/master/experiments&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;https://github.com/LucasAlegre/sumo-rl/tree/master/experiments&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://github.com/Starofall/CrowdNav&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;https://github.com/Starofall/CrowdNav&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://github.com/openai/universe&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;https://github.com/openai/universe&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;拓展阅读&#34;&gt;拓展阅读&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;Ray：https://www.jiqizhixin.com/articles/2018-01-10-2&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a href=&#34;https://www.oreilly.com.cn/ideas/?p=1503&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;RLlib简介：一个可组合和可扩展的强化学习计算库&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Berkeley RISE：https://rise.cs.berkeley.edu/&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a href=&#34;https://ray-project.github.io/2018/07/15/parameter-server-in-fifteen-lines.html&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Implementing A Parameter Server in 15 Lines of Python with Ray | Ray: A fast and simple framework for distributed applications&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a href=&#34;https://blog.openai.com/faulty-reward-functions/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Faulty Reward Fuction in the wild&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a href=&#34;https://www.jiqizhixin.com/articles/2016-12-20-4&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;腾讯开源高性能计算平台Angel&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a href=&#34;https://www.ctolib.com/topics-132722.html&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;滴滴参数服务器&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;任务&#34;&gt;任务&lt;/h2&gt;
+&lt;ol&gt;
+&lt;li&gt;采用已有奖励函数，实现强化学习若干回合，输出&lt;strong&gt;各个回合&lt;/strong&gt;的&lt;strong&gt;首尾状态各信号相位配时&lt;/strong&gt;以及&lt;strong&gt;得分（停车次数、等待时间、排队长度）&lt;/strong&gt;，可视化展现，看随着强化学习次数的增加表现是否有越来越好的趋势&lt;/li&gt;
+&lt;li&gt;更新建立函数，参考网上论文（以前看过的），找一种看起来合理的更改看能否提高表现&lt;/li&gt;
+&lt;/ol&gt;
+</description>
+    </item>
+    
+    <item>
       <title>爬虫框架Scrapy基本使用笔记</title>
       <link>/post/scrapy-for-distributed-spider-summary/</link>
       <pubDate>Mon, 11 Feb 2019 09:04:07 +0800</pubDate>
@@ -10153,14 +10749,6 @@ static可以修饰的内容包括&lt;/p&gt;
     </item>
     
     <item>
-      <title>衡山之旅：两登祝融峰</title>
-      <link>/talk/%E8%A1%A1%E5%B1%B1%E4%B9%8B%E6%97%85%E4%B8%A4%E7%99%BB%E7%A5%9D%E8%9E%8D%E5%B3%B0/</link>
-      <pubDate>Thu, 26 Oct 2017 16:13:59 +0800</pubDate>
-      <guid>/talk/%E8%A1%A1%E5%B1%B1%E4%B9%8B%E6%97%85%E4%B8%A4%E7%99%BB%E7%A5%9D%E8%9E%8D%E5%B3%B0/</guid>
-      <description></description>
-    </item>
-    
-    <item>
       <title>三峡游记：地质考察之行</title>
       <link>/talk/%E4%B8%89%E5%B3%A1%E6%B8%B8%E8%AE%B0%E5%9C%B0%E8%B4%A8%E8%80%83%E5%AF%9F%E4%B9%8B%E8%A1%8C/</link>
       <pubDate>Tue, 26 Sep 2017 16:26:57 +0800</pubDate>
@@ -10171,6 +10759,14 @@ static可以修饰的内容包括&lt;/p&gt;
 &lt;li&gt;屈原故里探访&lt;/li&gt;
 &lt;/ul&gt;
 </description>
+    </item>
+    
+    <item>
+      <title>衡山之旅：两登祝融峰</title>
+      <link>/talk/%E8%A1%A1%E5%B1%B1%E4%B9%8B%E6%97%85%E4%B8%A4%E7%99%BB%E7%A5%9D%E8%9E%8D%E5%B3%B0/</link>
+      <pubDate>Tue, 26 Jan 2016 16:13:59 +0800</pubDate>
+      <guid>/talk/%E8%A1%A1%E5%B1%B1%E4%B9%8B%E6%97%85%E4%B8%A4%E7%99%BB%E7%A5%9D%E8%9E%8D%E5%B3%B0/</guid>
+      <description></description>
     </item>
     
     <item>

@@ -1,0 +1,1824 @@
+<!DOCTYPE html><html lang="en-us" >
+
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  
+  
+  
+    <meta name="generator" content="Wowchemy 5.5.0 for Hugo" />
+  
+
+  
+  
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+  
+  
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  
+
+  
+  
+  
+    
+      
+      <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Roboto+Mono&family=Roboto:wght@400;700&display=swap">
+      <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Roboto+Mono&family=Roboto:wght@400;700&display=swap" media="print" onload="this.media='all'">
+    
+  
+
+  
+  
+  
+  
+  
+    
+    
+    
+  
+  
+
+  <meta name="author" content="CoolCats" />
+
+  
+  
+  
+    
+  
+  <meta name="description" content="SUMO核心代码接口与代码逻辑随笔" />
+
+  
+  <link rel="alternate" hreflang="en-us" href="/post/sumo-notes-for-traffic-light-optimization/" />
+
+  
+  
+  
+    <meta name="theme-color" content="#1565c0" />
+  
+
+  
+  
+    
+    <script src="/js/mathjax-config.js"></script>
+  
+
+  
+
+  <link rel="stylesheet" href="/css/vendor-bundle.min.c7b8d9abd591ba2253ea42747e3ac3f5.css" media="print" onload="this.media='all'">
+
+  
+  
+  
+    
+    
+      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/academicons@1.9.1/css/academicons.min.css" integrity="sha512-W0xM4mr6dEP9nREo7Z9z+9X70wytKvMGeDsj7ps2+xg5QPrEBXC8tAW1IFnzjR6eoJ90JmCnFzerQJTLzIEHjA==" crossorigin="anonymous" media="print" onload="this.media='all'">
+    
+
+    
+    
+    
+    
+      
+      
+    
+    
+    
+
+    
+    
+    
+      
+    
+    
+      
+      
+        
+          <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@10.2.1/build/styles/github.min.css" crossorigin="anonymous" title="hl-light" media="print" onload="this.media='all'">
+          <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@10.2.1/build/styles/dracula.min.css" crossorigin="anonymous" title="hl-dark" media="print" onload="this.media='all'" disabled>
+        
+      
+    
+
+    
+    
+    
+      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.7.1/dist/leaflet.min.css" integrity="" crossorigin="anonymous" media="print" onload="this.media='all'">
+    
+
+    
+
+    
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js" integrity="" crossorigin="anonymous" async></script>
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+  
+
+  
+  
+  
+  
+  
+  <link rel="stylesheet" href="/css/wowchemy.1052fab8b7700a3dc49ee23683097d66.css" />
+
+  
+
+
+
+  
+
+
+  
+
+
+  
+
+
+  <script>
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?51ae6db546b05b91d4053193ba49123d";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+  
+  
+  
+
+  
+
+  
+    <link rel="manifest" href="/manifest.webmanifest" />
+  
+
+  <link rel="icon" type="image/png" href="/media/icon_hue03491371183284312b8b116a73ae5ab_79511_32x32_fill_lanczos_center_3.png" />
+  <link rel="apple-touch-icon" type="image/png" href="/media/icon_hue03491371183284312b8b116a73ae5ab_79511_180x180_fill_lanczos_center_3.png" />
+
+  <link rel="canonical" href="/post/sumo-notes-for-traffic-light-optimization/" />
+
+  
+  
+  
+  
+  
+  
+  
+  
+    
+    
+  
+  
+
+  
+  
+    
+    
+  
+  <meta property="twitter:card" content="summary" />
+  
+    <meta property="twitter:site" content="@wowchemy" />
+    <meta property="twitter:creator" content="@wowchemy" />
+  
+  <meta property="og:site_name" content="CoolCats" />
+  <meta property="og:url" content="/post/sumo-notes-for-traffic-light-optimization/" />
+  <meta property="og:title" content="交通灯智能优化SUMO库随笔记录 | CoolCats" />
+  <meta property="og:description" content="SUMO核心代码接口与代码逻辑随笔" /><meta property="og:image" content="/media/icon_hue03491371183284312b8b116a73ae5ab_79511_512x512_fill_lanczos_center_3.png" />
+    <meta property="twitter:image" content="/media/icon_hue03491371183284312b8b116a73ae5ab_79511_512x512_fill_lanczos_center_3.png" /><meta property="og:locale" content="en-us" />
+  
+    
+      <meta
+        property="article:published_time"
+        content="2019-02-16T11:42:45&#43;08:00"
+      />
+    
+    <meta property="article:modified_time" content="2019-02-16T11:42:45&#43;08:00">
+  
+
+  
+
+
+    
+
+
+
+
+
+
+  
+
+
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "/post/sumo-notes-for-traffic-light-optimization/"
+  },
+  "headline": "交通灯智能优化SUMO库随笔记录",
+  
+  "datePublished": "2019-02-16T11:42:45+08:00",
+  "dateModified": "2019-02-16T11:42:45+08:00",
+  
+  "author": {
+    "@type": "Person",
+    "name": "CoolCats"
+  },
+  
+  "publisher": {
+    "@type": "Organization",
+    "name": "CoolCats",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "/media/icon_hue03491371183284312b8b116a73ae5ab_79511_192x192_fill_lanczos_center_3.png"
+    }
+  },
+  "description": "SUMO核心代码接口与代码逻辑随笔"
+}
+</script>
+
+  
+
+  
+
+  
+
+  
+
+
+
+
+
+  <title>交通灯智能优化SUMO库随笔记录 | CoolCats</title>
+</head>
+
+
+<body id="top" data-spy="scroll" data-offset="70" data-target="#TableOfContents" class="page-wrapper   " data-wc-page-id="62d9990026817c6d9c84bde2dc6deae8" >
+
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  <script src="/js/wowchemy-init.min.2ed908358299dd7ab553faae685c746c.js"></script>
+
+  
+
+
+<aside class="search-modal" id="search">
+  <div class="container">
+    <section class="search-header">
+
+      <div class="row no-gutters justify-content-between mb-3">
+        <div class="col-6">
+          <h1>Search</h1>
+        </div>
+        <div class="col-6 col-search-close">
+          <a class="js-search" href="#" aria-label="Close"><i class="fas fa-times-circle text-muted" aria-hidden="true"></i></a>
+        </div>
+      </div>
+
+      <div id="search-box">
+        
+        <input name="q" id="search-query" placeholder="Search..." autocapitalize="off"
+        autocomplete="off" autocorrect="off" spellcheck="false" type="search" class="form-control"
+        aria-label="Search...">
+        
+      </div>
+
+      
+      
+
+      
+
+    </section>
+    <section class="section-search-results">
+
+      <div id="search-hits">
+        
+      </div>
+
+    </section>
+  </div>
+</aside>
+
+
+
+  <div class="page-header">
+    
+
+
+
+
+
+
+
+
+
+
+
+
+<header class="header--fixed">
+  <nav class="navbar navbar-expand-lg navbar-light compensate-for-scrollbar" id="navbar-main">
+    <div class="container-xl">
+
+      
+      <div class="d-none d-lg-inline-flex">
+        <a class="navbar-brand" href="/">CoolCats</a>
+      </div>
+      
+
+      
+      <button type="button" class="navbar-toggler" data-toggle="collapse"
+              data-target="#navbar-content" aria-controls="navbar-content" aria-expanded="false" aria-label="Toggle navigation">
+      <span><i class="fas fa-bars"></i></span>
+      </button>
+      
+
+      
+      <div class="navbar-brand-mobile-wrapper d-inline-flex d-lg-none">
+        <a class="navbar-brand" href="/">CoolCats</a>
+      </div>
+      
+
+      
+      
+      <div class="navbar-collapse main-menu-item collapse justify-content-start" id="navbar-content">
+
+        
+        <ul class="navbar-nav d-md-inline-flex">
+          
+
+          
+
+          
+          
+          
+
+          
+
+          
+          
+          
+          
+
+          
+            
+              
+              
+            
+            
+          
+
+          <li class="nav-item">
+            <a class="nav-link  active" href="/post"><span>博客</span></a>
+          </li>
+
+          
+          
+
+          
+
+          
+          
+          
+            
+          
+
+          
+
+          
+          
+          
+          
+
+          
+            
+              
+              
+            
+            
+          
+
+          <li class="nav-item">
+            <a class="nav-link " href="/event"><span>趣事</span></a>
+          </li>
+
+          
+          
+
+          
+
+          
+          
+          
+            
+          
+
+          
+
+          
+          
+          
+          
+
+          
+            
+              
+              
+            
+            
+          
+
+          <li class="nav-item">
+            <a class="nav-link " href="/project"><span>项目</span></a>
+          </li>
+
+          
+          
+
+          
+
+          
+          
+          
+            
+          
+
+          
+
+          
+          
+          
+          
+
+          
+            
+              
+              
+            
+            
+          
+
+          <li class="nav-item">
+            <a class="nav-link " href="/publication"><span>论文</span></a>
+          </li>
+
+          
+          
+
+          
+
+          
+          
+          
+            
+          
+
+          
+
+          
+          
+          
+          
+
+          
+            
+              
+              
+            
+            
+          
+
+          <li class="nav-item">
+            <a class="nav-link " href="/contact"><span>联系</span></a>
+          </li>
+
+          
+          
+
+          
+
+          
+          
+          
+            
+          
+
+          
+
+          
+          
+          
+          
+
+          
+            
+              
+              
+            
+            
+          
+
+          <li class="nav-item">
+            <a class="nav-link " href="/media/files/cv"><span>简历</span></a>
+          </li>
+
+          
+          
+
+        
+
+          
+        </ul>
+      </div>
+
+      <ul class="nav-icons navbar-nav flex-row ml-auto d-flex pl-md-2">
+
+        
+        
+          
+        
+
+        
+        
+        <li class="nav-item">
+          <a class="nav-link js-search" href="#" aria-label="Search"><i class="fas fa-search" aria-hidden="true"></i></a>
+        </li>
+        
+
+        
+        
+        
+        <li class="nav-item dropdown theme-dropdown">
+          <a href="#" class="nav-link" data-toggle="dropdown" aria-haspopup="true" aria-label="Display preferences">
+            <i class="fas fa-moon" aria-hidden="true"></i>
+          </a>
+          <div class="dropdown-menu">
+            <a href="#" class="dropdown-item js-set-theme-light">
+              <span>Light</span>
+            </a>
+            <a href="#" class="dropdown-item js-set-theme-dark">
+              <span>Dark</span>
+            </a>
+            <a href="#" class="dropdown-item js-set-theme-auto">
+              <span>Automatic</span>
+            </a>
+          </div>
+        </li>
+        
+
+        
+        
+
+      </ul>
+
+    </div>
+  </nav>
+</header>
+
+
+  </div>
+
+  <div class="page-body">
+    
+    
+    
+
+    <article class="article">
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+  
+  
+<div class="article-container pt-3">
+  <h1>交通灯智能优化SUMO库随笔记录</h1>
+
+  
+
+  
+    
+
+
+<div class="article-metadata">
+
+  
+  
+
+  
+  <span class="article-date">
+    
+    
+      
+    
+    Feb 16, 2019
+  </span>
+  
+
+  
+
+  
+  <span class="middot-divider"></span>
+  <span class="article-reading-time">
+    5 min read
+  </span>
+  
+
+  
+  
+  
+  
+
+  
+  
+
+</div>
+
+    
+
+
+
+
+
+  
+</div>
+
+
+
+  <div class="article-container">
+
+    <div class="article-style">
+      <h2 id="sumo项目">SUMO项目</h2>
+<p>近期研究交通灯优化相关问题，查到了SUMO这个项目，此文章仅对此作简单的记录总结。</p>
+<h3 id="sumo项目介绍">SUMO项目介绍</h3>
+<p><a href="https://www.dlr.de/ts/en/desktopdefault.aspx/tabid-9883/16931_read-41000/" target="_blank" rel="noopener">https://www.dlr.de/ts/en/desktopdefault.aspx/tabid-9883/16931_read-41000/</a></p>
+<h3 id="相关论文">相关论文</h3>
+<ul>
+<li>
+<p><a href="https://pdfs.semanticscholar.org/59e8/ceba039b8e33d1eb2c66c4595bf474bf1dc8.pdf" target="_blank" rel="noopener">Optimized Sensor Network and Multi-Agent Decision
+Support for Smart Traffic Light Management</a></p>
+</li>
+<li>
+<p><a href="https://home.cse.ust.hk/~yqsong/teaching/comp3211/projects/2017Fall/G17.pdf" target="_blank" rel="noopener">Optimazation of Traffic Light Controlling with Reinforcement Learning COMP 3211 Final Project, Group 9, Fall 2017-2018</a></p>
+</li>
+<li>
+<p><a href="http://people.cs.aau.dk/~muniz/strategoTraffic.pdf" target="_blank" rel="noopener">Uppaal Stratego for Intelligent Traffic Lights </a></p>
+</li>
+<li>
+<p><a href="http://cs229.stanford.edu/proj2016spr/report/047.pdf" target="_blank" rel="noopener">Reinforcement Learning for Traffic Optimization</a></p>
+</li>
+</ul>
+<hr>
+<h2 id="教程">教程</h2>
+<h3 id="学习平台">学习平台</h3>
+<ul>
+<li>
+<p><a href="https://sumo.dlr.de/wiki/SUMO_User_Documentation" target="_blank" rel="noopener">Wiki Tutorial</a></p>
+<ul>
+<li><a href="https://sumo.dlr.de/wiki/TraCI" target="_blank" rel="noopener">TraCI在线互动</a></li>
+<li><a href="https://sumo.dlr.de/wiki/Tutorials/TraCI4Traffic_Lights" target="_blank" rel="noopener">TraCI4Traffic Lights</a></li>
+</ul>
+</li>
+<li>
+<p>DLR</p>
+</li>
+<li>
+<p>Youtube
+<a href="https://www.youtube.com/watch?v=s6tfcSIBjsU" target="_blank" rel="noopener">Dynamic Traffic Light Simulation - YouTube</a></p>
+</li>
+<li>
+<p>Other Plamforms
+<a href="https://wenku.baidu.com/view/dd44decec8d376eeaeaa31a1.html" target="_blank" rel="noopener">https://wenku.baidu.com/view/dd44decec8d376eeaeaa31a1.html</a></p>
+<h3 id="常用命令">常用命令</h3>
+</li>
+<li>
+<p>netconvert
+可将来源于OpenStreetMap的.osm文件转成.net.xml文件，生成交通场景；</p>
+</li>
+<li>
+<p>polyconvert
+生成.poly.xml文件</p>
+<h3 id="配置文件">配置文件</h3>
+</li>
+<li>
+<p>.con.xml</p>
+</li>
+<li>
+<p>.net.xml</p>
+<ul>
+<li>tlLogic
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<figure  >
+  <div class="d-flex justify-content-center">
+    <div class="w-100" ><img src="https://i.imgur.com/AIBv4av.png" alt="" loading="lazy" data-zoomable /></div>
+  </div></figure>
+</li>
+</ul>
+</li>
+<li>
+<p>.rou.xml</p>
+</li>
+<li>
+<p>.nod.xml</p>
+</li>
+<li>
+<p>.edg.xml</p>
+</li>
+<li>
+<p>.det.xml</p>
+</li>
+<li>
+<p>.sumocfg
+总配置文件，指定网络、路线等配置文件。如：
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<figure  >
+  <div class="d-flex justify-content-center">
+    <div class="w-100" ><img src="https://i.imgur.com/gEmdbpt.png" alt="" loading="lazy" data-zoomable /></div>
+  </div></figure>
+</p>
+</li>
+</ul>
+<h3 id="常用python模块">常用python模块</h3>
+<ul>
+<li>traci
+<ul>
+<li>TLS（Traffic Light Signal for a sumo network）
+<a href="https://sumo.dlr.de/daily/pydoc/sumolib.net.html#TLS" target="_blank" rel="noopener">https://sumo.dlr.de/daily/pydoc/sumolib.net.html#TLS</a></li>
+<li>TLSProgram</li>
+</ul>
+</li>
+<li><a href="https://www.tensorflow.org/" target="_blank" rel="noopener">tensorflow</a>
+安装后numpy出现问题：
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<figure  >
+  <div class="d-flex justify-content-center">
+    <div class="w-100" ><img src="https://i.imgur.com/tQISDwU.png" alt="" loading="lazy" data-zoomable /></div>
+  </div></figure>
+
+更新numpy至1.16解决此错误：https://github.com/alpacahq/pylivetrader/issues/73
+更新模块命令示例：pip3 install -U packageName</li>
+<li>rl
+强化学习相关库，[介绍](<a href="https://morvanzhou.github.io/tutorials/machine-learning/reinforcement-learning/" target="_blank" rel="noopener">强化学习 Reinforcement Learning 教程系列 | 莫烦Python</a>)
+安装过程中出现问题：
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<figure  >
+  <div class="d-flex justify-content-center">
+    <div class="w-100" ><img src="https://i.imgur.com/zUSvf3W.png" alt="" loading="lazy" data-zoomable /></div>
+  </div></figure>
+
+解决办法：pip3 install [keras-rl](<a href="https://pypi.org/project/keras-rl/" target="_blank" rel="noopener">keras-rl · PyPI</a>)</li>
+<li><a href="https://rise.cs.berkeley.edu/projects/ray/" target="_blank" rel="noopener">Ray</a>
+Ray是加州伯克利分校的RISE实验室退出的一个分布式执行平台。
+Ray RLib是一个可扩展的强化学习库，可在多个机器上运行与openAI gym完全兼容，支持Tensorflow和PyTorch。
+Ray.tune是一个高效的分布式超参数搜索库，提供了API以执行深度学习、强化学习和其它计算密集型任务。
+安装过程出现问题：
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<figure  >
+  <div class="d-flex justify-content-center">
+    <div class="w-100" ><img src="https://i.imgur.com/lCTgRYA.png" alt="" loading="lazy" data-zoomable /></div>
+  </div></figure>
+
+<a href="https://github.com/ray-project/ray/issues/2683" target="_blank" rel="noopener">https://github.com/ray-project/ray/issues/2683</a>
+见以上issue，目前ray模块不支持windows，于Linux or windows的Linux子系统可安装
+<a href="https://pypi.org/simple/ray/" target="_blank" rel="noopener">https://pypi.org/simple/ray/</a>
+使用Ray中的DQNAgent时，报错&rsquo;PolicyEvaluator&rsquo; object has no attribute &lsquo;sampler&rsquo;</li>
+<li>keras</li>
+</ul>
+<h3 id="traci-api">Traci API</h3>
+<h4 id="connection重点函数">connection重点函数</h4>
+<ul>
+<li>simulationStep(self, step=0.)</li>
+</ul>
+<pre tabindex="0"><code>Make a simulation step and simulate up to the given second in sim time.
+If the given value is 0 or absent, exactly one step is performed.
+Values smaller than or equal to the current sim time result in no action.
+</code></pre><h4 id="simulation重点函数">simulation重点函数</h4>
+<ul>
+<li>
+<p>getCurrentTime(self)</p>
+<pre tabindex="0"><code>getCurrentTime() -&gt; integer
+</code></pre></li>
+</ul>
+<p>Returns the current simulation time in ms.</p>
+<pre tabindex="0"><code>- getLoadedNumber(self)
+</code></pre><p>getLoadedNumber() -&gt; integer</p>
+<p>Returns the number of vehicles which were loaded in this time step.</p>
+<pre tabindex="0"><code>#### lane重点函数
+- getLastStepVehicleNumber(self, laneID)
+</code></pre><p>getLastStepVehicleNumber(string) -&gt; integer</p>
+<p>Returns the total number of vehicles for the last time step on the given lane.</p>
+<pre tabindex="0"><code>- getLastStepHaltingNumber(self, laneID)
+</code></pre><p>getLastStepHaltingNumber(string) -&gt; integer</p>
+<p>Returns the total number of halting vehicles for the last time step on the given lane.
+A speed of less than 0.1 m/s is considered a halt.</p>
+<pre tabindex="0"><code>#### vehicle重点函数
+- getWaitingTime(self, vehID)
+</code></pre><p>getWaitingTime() -&gt; double
+计算车辆等待时间（若车辆有意停在服务区/停车区，则不作等待时间算）
+The waiting time of a vehicle is defined as the time (in seconds) spent with a
+speed below 0.1m/s since the last time it was faster than 0.1m/s.
+(basically, the waiting time of a vehicle is reset to 0 every time it moves).
+A vehicle that is stopping intentionally with a <stop> does not accumulate waiting time.</p>
+<pre tabindex="0"><code>- getAccumulatedWaitingTime(self, vehID)
+</code></pre><p>getAccumulatedWaitingTime() -&gt; double
+计算一定时间间隔内某车的累计等待时间，时间间隔的以waiting-time-memory设置
+The accumulated waiting time of a vehicle collects the vehicle&rsquo;s waiting time over a
+certain time interval (interval length is set per option &lsquo;&ndash;waiting-time-memory&rsquo;)</p>
+<pre tabindex="0"><code>#### trafficlight重点函数
+-  getIDList(self)
+</code></pre><p>getIDList() -&gt; list(string)</p>
+<p>Returns a list of all objects in the network.</p>
+<pre tabindex="0"><code>- getPhase(self,tlsID)
+</code></pre><p>getPhase(string) -&gt; integer
+注意！此函数返回的是相位索引！
+Returns the index of the current phase within the list of all phases of the
+current program.</p>
+<pre tabindex="0"><code>- getPhaseDuration(self, tlsID)
+</code></pre><p>getPhaseDuration(string) -&gt; double
+返回当前相位的总共持续时间
+Returns the total duration of the current phase (in seconds). This value is not
+affected by the elapsed or remaining duration of the current phase.</p>
+<pre tabindex="0"><code>- setPhase(self,tlsID,index)
+</code></pre><p>setPhase(string, integer) -&gt; None</p>
+<p>Switches to the phase with the given index in the list of all phases
+for the current program.</p>
+<pre tabindex="0"><code>- setPhaseDuration(self,tlsID,phaseDuration)
+</code></pre><p>setPhaseDuration(string, double) -&gt; None
+设置当前相位的剩余持续时间（秒），对之后周期的此相位的无影响！
+Set the remaining phase duration of the current phase in seconds.
+This value has no effect on subsquent repetitions of this phase.</p>
+<pre tabindex="0"><code>- getControlledLanes(self, tlsID)
+</code></pre><p>getControlledLanes(string) -&gt; c</p>
+<p>Returns the list of lanes which are controlled by the named traffic light.</p>
+<pre tabindex="0"><code>- setCompleteRedYellowGreenDefinition(self, tlsID, tls)
+</code></pre><p>setCompleteRedYellowGreenDefinition(string, Logic) -&gt; None</p>
+<p>Sets a new program for the given tlsID from a Logic object.
+See getCompleteRedYellowGreenDefinition.</p>
+<h4 id="traci重点类构造函数">traci重点类构造函数</h4>
+<ul>
+<li>
+<p>Phase</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="k">class</span> <span class="nc">Phase</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">duration</span><span class="p">,</span> <span class="n">state</span><span class="p">,</span> <span class="n">minDur</span><span class="o">=-</span><span class="mi">1</span><span class="p">,</span> <span class="n">maxDur</span><span class="o">=-</span><span class="mi">1</span><span class="p">,</span> <span class="nb">next</span><span class="o">=-</span><span class="mi">1</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">        <span class="bp">self</span><span class="o">.</span><span class="n">duration</span> <span class="o">=</span> <span class="n">duration</span>
+</span></span><span class="line"><span class="cl">        <span class="bp">self</span><span class="o">.</span><span class="n">state</span> <span class="o">=</span> <span class="n">state</span>
+</span></span><span class="line"><span class="cl">        <span class="bp">self</span><span class="o">.</span><span class="n">minDur</span> <span class="o">=</span> <span class="n">minDur</span>  <span class="c1"># minimum duration (only for actuated tls)</span>
+</span></span><span class="line"><span class="cl">        <span class="bp">self</span><span class="o">.</span><span class="n">maxDur</span> <span class="o">=</span> <span class="n">maxDur</span>  <span class="c1"># maximum duration (only for actuated tls)</span>
+</span></span><span class="line"><span class="cl">        <span class="bp">self</span><span class="o">.</span><span class="n">next</span> <span class="o">=</span> <span class="nb">next</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="k">def</span> <span class="fm">__repr__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="p">(</span><span class="s2">&#34;Phase(duration=</span><span class="si">%s</span><span class="s2">, state=&#39;</span><span class="si">%s</span><span class="s2">&#39;, minDur=</span><span class="si">%s</span><span class="s2">, maxDur=</span><span class="si">%s</span><span class="s2">, next=</span><span class="si">%s</span><span class="s2">)&#34;</span> <span class="o">%</span>
+</span></span><span class="line"><span class="cl">                <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">duration</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">state</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">minDur</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">maxDur</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">next</span><span class="p">))</span>
+</span></span></code></pre></div></li>
+<li>
+<p>Logic</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="k">class</span> <span class="nc">Logic</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">  <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">programID</span><span class="p">,</span> <span class="nb">type</span><span class="p">,</span> <span class="n">currentPhaseIndex</span><span class="p">,</span> <span class="n">phases</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">subParameter</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">      <span class="bp">self</span><span class="o">.</span><span class="n">programID</span> <span class="o">=</span> <span class="n">programID</span>
+</span></span><span class="line"><span class="cl">      <span class="bp">self</span><span class="o">.</span><span class="n">type</span> <span class="o">=</span> <span class="nb">type</span>
+</span></span><span class="line"><span class="cl">      <span class="bp">self</span><span class="o">.</span><span class="n">currentPhaseIndex</span> <span class="o">=</span> <span class="n">currentPhaseIndex</span>
+</span></span><span class="line"><span class="cl">      <span class="bp">self</span><span class="o">.</span><span class="n">phases</span> <span class="o">=</span> <span class="n">phases</span> <span class="k">if</span> <span class="n">phases</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="k">else</span> <span class="p">[]</span>
+</span></span><span class="line"><span class="cl">      <span class="bp">self</span><span class="o">.</span><span class="n">subParameter</span> <span class="o">=</span> <span class="n">subParameter</span> <span class="k">if</span> <span class="n">subParameter</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="k">else</span> <span class="p">{}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">  <span class="k">def</span> <span class="nf">getPhases</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">      <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">phases</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">  <span class="k">def</span> <span class="nf">getSubID</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">      <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">programID</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">  <span class="k">def</span> <span class="nf">getType</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">      <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">type</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">  <span class="k">def</span> <span class="nf">getParameters</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">      <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">subParameter</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">  <span class="k">def</span> <span class="nf">getParameter</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">key</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">      <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">subParameter</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">key</span><span class="p">,</span> <span class="n">default</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">  <span class="k">def</span> <span class="fm">__repr__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">      <span class="k">return</span> <span class="p">(</span><span class="s2">&#34;Logic(programID=&#39;</span><span class="si">%s</span><span class="s2">&#39;, type=</span><span class="si">%s</span><span class="s2">, currentPhaseIndex=</span><span class="si">%s</span><span class="s2">, phases=</span><span class="si">%s</span><span class="s2">, subParameter=</span><span class="si">%s</span><span class="s2">)&#34;</span> <span class="o">%</span>
+</span></span><span class="line"><span class="cl">              <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">programID</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">type</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">currentPhaseIndex</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">phases</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">subParameter</span><span class="p">))</span>
+</span></span></code></pre></div></li>
+</ul>
+<h4 id="自定义类结构">自定义类结构</h4>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="k">class</span> <span class="nc">TrafficSignal</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">env</span><span class="p">,</span> <span class="n">ts_id</span><span class="p">,</span> <span class="n">delta_time</span><span class="p">,</span> <span class="n">min_green</span><span class="p">,</span> <span class="n">max_green</span><span class="p">,</span> <span class="n">phases</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">        <span class="bp">self</span><span class="o">.</span><span class="n">id</span> <span class="o">=</span> <span class="n">ts_id</span>
+</span></span><span class="line"><span class="cl">        <span class="bp">self</span><span class="o">.</span><span class="n">env</span> <span class="o">=</span> <span class="n">env</span>
+</span></span><span class="line"><span class="cl">        <span class="bp">self</span><span class="o">.</span><span class="n">time_on_phase</span> <span class="o">=</span> <span class="mi">0</span>
+</span></span><span class="line"><span class="cl">        <span class="bp">self</span><span class="o">.</span><span class="n">delta_time</span> <span class="o">=</span> <span class="n">delta_time</span>
+</span></span><span class="line"><span class="cl">        <span class="bp">self</span><span class="o">.</span><span class="n">min_green</span> <span class="o">=</span> <span class="n">min_green</span>
+</span></span><span class="line"><span class="cl">        <span class="bp">self</span><span class="o">.</span><span class="n">max_green</span> <span class="o">=</span> <span class="n">max_green</span>
+</span></span><span class="line"><span class="cl">        <span class="bp">self</span><span class="o">.</span><span class="n">green_phase</span> <span class="o">=</span> <span class="mi">0</span>
+</span></span><span class="line"><span class="cl">        <span class="bp">self</span><span class="o">.</span><span class="n">num_green_phases</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">phases</span><span class="p">)</span> <span class="o">//</span> <span class="mi">2</span>
+</span></span><span class="line"><span class="cl">        <span class="bp">self</span><span class="o">.</span><span class="n">edges</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_compute_edges</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">        <span class="bp">self</span><span class="o">.</span><span class="n">edges_capacity</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_compute_edges_capacity</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">        <span class="n">logic</span> <span class="o">=</span> <span class="n">traci</span><span class="o">.</span><span class="n">trafficlight</span><span class="o">.</span><span class="n">Logic</span><span class="p">(</span><span class="s2">&#34;ProgramID&#34;</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">00</span><span class="p">,</span> <span class="n">phases</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="n">traci</span><span class="o">.</span><span class="n">trafficlight</span><span class="o">.</span><span class="n">setCompleteRedYellowGreenDefinition</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">id</span><span class="p">,</span> <span class="n">logic</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="err">·</span>
+</span></span></code></pre></div><h4 id="自定义计算模块">自定义计算模块</h4>
+<ul>
+<li>
+<p>edges_capacity</p>
+<pre tabindex="0"><code>边容量
+</code></pre></li>
+<li>
+<p>lane_density</p>
+<pre tabindex="0"><code>车道密度
+</code></pre></li>
+</ul>
+<pre tabindex="0"><code>- stopped_vehicles_num
+</code></pre><p>平均停车数
+新的绿灯相位到来时每条边上的车道在仿真的上一步的停车数之和
+[sum([traci.lane.getLastStepHaltingNumber(lane) for lane in self.edges[p]]) for p in range(self.num_green_phases)]</p>
+<pre tabindex="0"><code>- road_waiting_time
+</code></pre><p>道路平均等待/延迟时间</p>
+<pre tabindex="0"><code>- total_stopped
+</code></pre><p>总共停车次数</p>
+<h4 id="模块封装">模块封装</h4>
+<pre tabindex="0"><code>- update_phase
+</code></pre><p>改变相位</p>
+<pre tabindex="0"><code>- waiting_time_reward
+</code></pre><p>基于车均等待/延迟时间的奖励函数</p>
+<pre tabindex="0"><code>- queue_average_reward
+</code></pre><p>基于平均排队长度的奖励函数</p>
+<h2 id="数据">数据</h2>
+<ul>
+<li>
+<p><a href="https://sourceforge.net/projects/sumo/files/traffic_data/scenarios/" target="_blank" rel="noopener">https://sourceforge.net/projects/sumo/files/traffic_data/scenarios/</a></p>
+</li>
+<li>
+<p><a href="http://opendata.dc.gov/datasets/31ccad579ec449938c13a0ac82c9f46e_16" target="_blank" rel="noopener">http://opendata.dc.gov/datasets/31ccad579ec449938c13a0ac82c9f46e_16</a></p>
+</li>
+<li>
+<p><a href="https://sumo.dlr.de/wiki/Data/Scenarios" target="_blank" rel="noopener">https://sumo.dlr.de/wiki/Data/Scenarios</a></p>
+</li>
+</ul>
+<h2 id="论文阅读">论文阅读</h2>
+<h3 id="towards-a-unified-evaluation-of-traffic-light-algorithms">Towards a unified Evaluation of Traffic Light Algorithms</h3>
+<ul>
+<li>
+<p>keywords
+traffic lights evaluation，traffic simulation，performance metrics</p>
+</li>
+<li>
+<p>metrics to monitor the traffic light algorithms
+waiting time,queue size,delay,travel time
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<figure  >
+  <div class="d-flex justify-content-center">
+    <div class="w-100" ><img src="https://i.imgur.com/lOhQ5tk.png" alt="" loading="lazy" data-zoomable /></div>
+  </div></figure>
+</p>
+</li>
+</ul>
+<h2 id="实践">实践</h2>
+<h3 id="遇到问题">遇到问题</h3>
+<ul>
+<li>没有设置SUMO_HOME
+如在linux系统中，export &ldquo;SUMO_HOME=/usr/share/sumo&quot;即可</li>
+<li>Could not access configuration &lsquo;XXXXX配置文件XXXXX&rsquo;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<figure  >
+  <div class="d-flex justify-content-center">
+    <div class="w-100" ><img src="https://i.imgur.com/mQqkMFx.png" alt="" loading="lazy" data-zoomable /></div>
+  </div></figure>
+</li>
+<li>Error: Answered with error to command 0xa2: Traffic light &lsquo;0&rsquo; is not known</li>
+<li>ImportError: cannot import name &lsquo;Timestamp&rsquo; from &lsquo;pandas.lib&rsquo;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<figure  >
+  <div class="d-flex justify-content-center">
+    <div class="w-100" ><img src="https://i.imgur.com/7H6zoUQ.png" alt="" loading="lazy" data-zoomable /></div>
+  </div></figure>
+
+解决办法：删除下图中的.lib</li>
+<li>Could not connect to TraCI server at localhost:XXXXX</li>
+</ul>
+<h3 id="命令通道">命令通道</h3>
+<ul>
+<li>单车道单交叉路口
+python3 experiments/ql_single-intersection.py -route /home/zhuge/Documents/TrafficSim/sumo-rl/nets/single-intersection/single-intersection.rou.xml -gui</li>
+<li>双车道单交叉路口
+python3 experiments/ql_single-intersection.py -route /home/zhuge/Documents/TrafficSim/sumo-rl/nets/2way-single-intersection/single-intersection.rou.xml -gui</li>
+<li>双车道4*4路网——并行计算DQN</li>
+<li>双车道4*4路网——并行计算A</li>
+</ul>
+<h3 id="强化学习">强化学习</h3>
+<h4 id="强化学习大体流程">强化学习大体流程</h4>
+<h4 id="重点">重点</h4>
+<ul>
+<li>
+<p>状态空间定义
+状态空间即环境状态的量化描述，针对交通灯问题，可把状态空间定义为车辆密度</p>
+</li>
+<li>
+<p>动作空间定义</p>
+</li>
+<li>
+<p>转移函数设计</p>
+</li>
+<li>
+<p>奖励函数设计
+针对此问题，交通灯优化的程度可以从路口的车辆平均等待时间/车均延迟/排队长度等方面反映出来，故奖励函数可围绕这几个方面设计.</p>
+</li>
+</ul>
+<h4 id="仿真参数">仿真参数</h4>
+<ul>
+<li>
+<p>seconds
+仿真程序持续秒数，固定秒数，一般时间长一点会更体现效果</p>
+</li>
+<li>
+<p>alpha
+学习率</p>
+</li>
+<li>
+<p>gamma
+折扣率</p>
+</li>
+<li>
+<p>epsilon
+探索率</p>
+</li>
+<li>
+<p>reward
+奖励函数，</p>
+</li>
+<li>
+<p>runs
+示例命令：python3 experiments/ql_2way-single-intersection.py -route /home/zhuge/Documents/TrafficSim/sumo-rl/nets/2way-single-intersection/single-intersection.rou.xml -g 0.9 -r waitingtime -runs 10</p>
+</li>
+</ul>
+<h4 id="openai库gym">openAI库gym</h4>
+<ul>
+<li>
+<p><a href="https://gym.openai.com/" target="_blank" rel="noopener">gym</a>是一个提供强化学习环境的类库，内置的经典环境有CartPole-v0、<a href="https://gym.openai.com/envs/MountainCar-v0/" target="_blank" rel="noopener">MountainCar-v0</a></p>
+</li>
+<li>
+<p><a href="https://github.com/openai/multiagent-particle-envs" target="_blank" rel="noopener">MultiAgentEnv</a></p>
+</li>
+</ul>
+<h4 id="参数搜索">参数搜索</h4>
+<ul>
+<li><a href="http://www.cs.cmu.edu/~muli/file/ps.pdf" target="_blank" rel="noopener">Parameter Server for Distributed Machine Learning</a></li>
+</ul>
+<h4 id="统计分析">统计分析</h4>
+<p>评价交通灯算法优劣
+示例命令：python3 plot.py -f 2way-single-intersection\a3cteste9.csv</p>
+<h3 id="v01闭环步骤">v0.1闭环步骤</h3>
+<h4 id="输出起始相位和终止相位">输出起始相位和终止相位</h4>
+<h2 id="小结">小结</h2>
+<h3 id="已有的交通信号控制系统算法">已有的交通信号控制系统/算法</h3>
+<ul>
+<li><a href="https://www.swarco.com/products/software/urban-traffic-management/utopia" target="_blank" rel="noopener">UTOPIA</a></li>
+<li>……</li>
+</ul>
+<h3 id="相关可参考项目">相关可参考项目</h3>
+<ul>
+<li><a href="https://github.com/flow-project/flow" target="_blank" rel="noopener">https://github.com/flow-project/flow</a></li>
+<li><a href="https://github.com/sumoprojects/SumoEasyMiner" target="_blank" rel="noopener">https://github.com/sumoprojects/SumoEasyMiner</a></li>
+<li><a href="https://github.com/JDGlick/sumo_reinforcement_learning" target="_blank" rel="noopener">https://github.com/JDGlick/sumo_reinforcement_learning</a></li>
+<li><a href="https://github.com/lcodeca/MoSTScenario" target="_blank" rel="noopener">https://github.com/lcodeca/MoSTScenario</a></li>
+<li><a href="https://github.com/LucasAlegre/sumo-rl/tree/master/experiments" target="_blank" rel="noopener">https://github.com/LucasAlegre/sumo-rl/tree/master/experiments</a></li>
+<li><a href="https://github.com/Starofall/CrowdNav" target="_blank" rel="noopener">https://github.com/Starofall/CrowdNav</a></li>
+<li><a href="https://github.com/openai/universe" target="_blank" rel="noopener">https://github.com/openai/universe</a></li>
+</ul>
+<h3 id="拓展阅读">拓展阅读</h3>
+<ul>
+<li>
+<p>Ray：https://www.jiqizhixin.com/articles/2018-01-10-2</p>
+</li>
+<li>
+<p><a href="https://www.oreilly.com.cn/ideas/?p=1503" target="_blank" rel="noopener">RLlib简介：一个可组合和可扩展的强化学习计算库</a></p>
+</li>
+<li>
+<p>Berkeley RISE：https://rise.cs.berkeley.edu/</p>
+</li>
+<li>
+<p><a href="https://ray-project.github.io/2018/07/15/parameter-server-in-fifteen-lines.html" target="_blank" rel="noopener">Implementing A Parameter Server in 15 Lines of Python with Ray | Ray: A fast and simple framework for distributed applications</a></p>
+</li>
+<li>
+<p><a href="https://blog.openai.com/faulty-reward-functions/" target="_blank" rel="noopener">Faulty Reward Fuction in the wild</a></p>
+</li>
+<li>
+<p><a href="https://www.jiqizhixin.com/articles/2016-12-20-4" target="_blank" rel="noopener">腾讯开源高性能计算平台Angel</a></p>
+</li>
+<li>
+<p><a href="https://www.ctolib.com/topics-132722.html" target="_blank" rel="noopener">滴滴参数服务器</a></p>
+</li>
+</ul>
+<h2 id="任务">任务</h2>
+<ol>
+<li>采用已有奖励函数，实现强化学习若干回合，输出<strong>各个回合</strong>的<strong>首尾状态各信号相位配时</strong>以及<strong>得分（停车次数、等待时间、排队长度）</strong>，可视化展现，看随着强化学习次数的增加表现是否有越来越好的趋势</li>
+<li>更新建立函数，参考网上论文（以前看过的），找一种看起来合理的更改看能否提高表现</li>
+</ol>
+
+    </div>
+
+    
+
+
+
+
+<div class="article-tags">
+  
+  <a class="badge badge-light" href="/tag/%E6%99%BA%E6%85%A7%E4%BA%A4%E9%80%9A/">智慧交通</a>
+  
+  <a class="badge badge-light" href="/tag/%E6%A8%A1%E6%8B%9F%E4%BB%BF%E7%9C%9F/">模拟仿真</a>
+  
+</div>
+
+
+
+<div class="share-box">
+  <ul class="share">
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="https://twitter.com/intent/tweet?url=/post/sumo-notes-for-traffic-light-optimization/&amp;text=%e4%ba%a4%e9%80%9a%e7%81%af%e6%99%ba%e8%83%bd%e4%bc%98%e5%8c%96SUMO%e5%ba%93%e9%9a%8f%e7%ac%94%e8%ae%b0%e5%bd%95" target="_blank" rel="noopener" class="share-btn-twitter" aria-label="twitter">
+          <i class="fab fa-twitter"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="https://www.facebook.com/sharer.php?u=/post/sumo-notes-for-traffic-light-optimization/&amp;t=%e4%ba%a4%e9%80%9a%e7%81%af%e6%99%ba%e8%83%bd%e4%bc%98%e5%8c%96SUMO%e5%ba%93%e9%9a%8f%e7%ac%94%e8%ae%b0%e5%bd%95" target="_blank" rel="noopener" class="share-btn-facebook" aria-label="facebook">
+          <i class="fab fa-facebook"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="mailto:?subject=%e4%ba%a4%e9%80%9a%e7%81%af%e6%99%ba%e8%83%bd%e4%bc%98%e5%8c%96SUMO%e5%ba%93%e9%9a%8f%e7%ac%94%e8%ae%b0%e5%bd%95&amp;body=/post/sumo-notes-for-traffic-light-optimization/" target="_blank" rel="noopener" class="share-btn-email" aria-label="envelope">
+          <i class="fas fa-envelope"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="https://www.linkedin.com/shareArticle?url=/post/sumo-notes-for-traffic-light-optimization/&amp;title=%e4%ba%a4%e9%80%9a%e7%81%af%e6%99%ba%e8%83%bd%e4%bc%98%e5%8c%96SUMO%e5%ba%93%e9%9a%8f%e7%ac%94%e8%ae%b0%e5%bd%95" target="_blank" rel="noopener" class="share-btn-linkedin" aria-label="linkedin-in">
+          <i class="fab fa-linkedin-in"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="whatsapp://send?text=%e4%ba%a4%e9%80%9a%e7%81%af%e6%99%ba%e8%83%bd%e4%bc%98%e5%8c%96SUMO%e5%ba%93%e9%9a%8f%e7%ac%94%e8%ae%b0%e5%bd%95%20/post/sumo-notes-for-traffic-light-optimization/" target="_blank" rel="noopener" class="share-btn-whatsapp" aria-label="whatsapp">
+          <i class="fab fa-whatsapp"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="https://service.weibo.com/share/share.php?url=/post/sumo-notes-for-traffic-light-optimization/&amp;title=%e4%ba%a4%e9%80%9a%e7%81%af%e6%99%ba%e8%83%bd%e4%bc%98%e5%8c%96SUMO%e5%ba%93%e9%9a%8f%e7%ac%94%e8%ae%b0%e5%bd%95" target="_blank" rel="noopener" class="share-btn-weibo" aria-label="weibo">
+          <i class="fab fa-weibo"></i>
+        </a>
+      </li>
+    
+  </ul>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+
+
+
+  
+  
+  
+  
+  
+  <div class="media author-card content-widget-hr">
+    
+      
+      <a href="/authors/admin/"><img class="avatar mr-3 avatar-circle" src="/authors/admin/avatar_hue03491371183284312b8b116a73ae5ab_79511_270x270_fill_q75_lanczos_center.jpg" alt="CoolCats"></a>
+    
+
+    <div class="media-body">
+      <h5 class="card-title"><a href="/authors/admin/">CoolCats</a></h5>
+      <h6 class="card-subtitle">理学学士, 在读硕士</h6>
+      <p class="card-text">我的研究兴趣是时空数据分析、自然语言处理、服务端开发</p>
+      <ul class="network-icon" aria-hidden="true">
+  
+    
+    
+    
+      
+    
+    
+    
+    
+    
+    <li>
+      <a href="mailto:2811159909@qq.com" >
+        <i class="fas fa-envelope"></i>
+      </a>
+    </li>
+  
+    
+    
+    
+      
+    
+    
+    
+    
+    
+      
+    
+    <li>
+      <a href="https://github.com/Coolgiserz" target="_blank" rel="noopener">
+        <i class="fab fa-github"></i>
+      </a>
+    </li>
+  
+</ul>
+
+    </div>
+  </div>
+
+
+
+
+
+
+
+
+
+  
+  
+  
+
+  
+
+  
+
+
+
+
+
+
+
+
+
+
+  </div>
+</article>
+  </div>
+
+  <div class="page-footer">
+    
+    
+    <div class="container">
+      <footer class="site-footer">
+
+  
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+
+
+
+
+
+  
+  
+  
+
+  
+  
+    
+  
+  
+    
+  
+
+  
+
+  
+  <p class="powered-by copyright-license-text">
+    © 2022 CoolCats. This work is licensed under <a href="https://creativecommons.org/licenses/by-nc-nd/4.0" rel="noopener noreferrer" target="_blank">CC BY NC ND 4.0</a>
+  </p>
+  
+
+  <p class="powered-by footer-license-icons">
+    <a href="https://creativecommons.org/licenses/by-nc-nd/4.0" rel="noopener noreferrer" target="_blank" aria-label="Creative Commons">
+      <i class="fab fa-creative-commons fa-2x" aria-hidden="true"></i>
+      <i class="fab fa-creative-commons-by fa-2x" aria-hidden="true"></i>
+      
+        <i class="fab fa-creative-commons-nc fa-2x" aria-hidden="true"></i>
+      
+      
+        <i class="fab fa-creative-commons-nd fa-2x" aria-hidden="true"></i>
+      
+    </a>
+  </p>
+
+
+
+
+  <p class="powered-by">
+    
+    
+    
+      
+      
+      
+      
+      
+      
+      Published with <a href="https://wowchemy.com/?utm_campaign=poweredby" target="_blank" rel="noopener">Wowchemy</a> — the free, <a href="https://github.com/wowchemy/wowchemy-hugo-themes" target="_blank" rel="noopener">open source</a> website builder that empowers creators.
+    
+  </p>
+</footer>
+
+    </div>
+    
+  </div>
+
+      
+
+    
+    <script src="/js/vendor-bundle.min.fab8b449b814cc9f95b22fcf2e45f05b.js"></script>
+
+    
+    
+    
+      
+
+      
+      
+
+      
+
+      
+        
+        <script src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@10.2.1/build/highlight.min.js" integrity="sha512-Ypjm0o7jOxAd4hpdoppSEN0TQOC19UtPAqD+4s5AlXmUvbmmS/YMxYqAqarQYyxTnB6/rqip9qcxlNB/3U9Wdg==" crossorigin="anonymous"></script>
+        
+        
+        <script src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@10.2.1/build/languages/r.min.js" crossorigin="anonymous"></script>
+        
+        <script src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@10.2.1/build/languages/latex.min.js" crossorigin="anonymous"></script>
+        
+      
+
+    
+
+    
+    
+    
+      <script src="https://cdn.jsdelivr.net/npm/leaflet@1.7.1/dist/leaflet.min.js" integrity="" crossorigin="anonymous"></script>
+    
+
+    
+    
+
+    
+    
+    
+      
+      <script id="search-hit-fuse-template" type="text/x-template">
+        <div class="search-hit" id="summary-{{key}}">
+          <div class="search-hit-content">
+            <div class="search-hit-name">
+              <a href="{{relpermalink}}">{{title}}</a>
+              <div class="article-metadata search-hit-type">{{type}}</div>
+              <p class="search-hit-description">{{snippet}}</p>
+            </div>
+          </div>
+        </div>
+      </script>
+      
+        <script src="https://cdn.jsdelivr.net/gh/krisk/Fuse@v3.2.1/dist/fuse.min.js" integrity="sha512-o38bmzBGX+hD3JHWUFCDA09btWaqrNmoJ3RXLlrysA7PP01Kgs4UlE4MhelE1v5dJR3+cxlR4qQlotsW7jKsnw==" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/gh/julmot/mark.js@8.11.1/dist/jquery.mark.min.js" integrity="sha512-mhbv5DqBMgrWL+32MmsDOt/OAvqr/cHimk6B8y/bx/xS88MVkYGPiVv2ixKVrkywF2qHplNRUvFsAHUdxZ3Krg==" crossorigin="anonymous"></script>
+      
+    
+
+    
+    
+
+    
+    
+    
+    
+      <script id="dsq-count-scr" src="https://coolgiserz.disqus.com/count.js" async></script>
+    
+
+    
+    
+      
+      
+      
+      
+      
+      
+      
+    
+
+    
+
+    
+    
+    
+    <script id="page-data" type="application/json">{"use_headroom":true}</script>
+
+    
+    
+      <script src="/js/wowchemy-headroom.c251366b4128fd5e6b046d4c97a62a51.js" type="module"></script>
+    
+    
+    
+    
+    
+    
+    
+      
+      
+    
+    
+    <script src="/en/js/wowchemy.min.ab2f2890dbe3e2e83579366d3d6e8fd9.js"></script>
+
+    
+    
+      <script src="/js/wowchemy-map.a26e9d2f7238ba5b868384f1c5bc6477.js" type="module"></script>
+    
+    
+    
+    
+      
+<div id="modal" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Cite</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <pre><code class="tex hljs"></code></pre>
+      </div>
+      <div class="modal-footer">
+        <a class="btn btn-outline-primary my-1 js-copy-cite" href="#" target="_blank">
+          <i class="fas fa-copy"></i> Copy
+        </a>
+        <a class="btn btn-outline-primary my-1 js-download-cite" href="#" target="_blank">
+          <i class="fas fa-download"></i> Download
+        </a>
+        <div id="modal-error"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+      <script src="/js/wowchemy-publication.68f8d7090562ca65fc6d3cb3f8f2d2cb.js" type="module"></script>
+
+
+
+
+
+
+</body>
+</html>
