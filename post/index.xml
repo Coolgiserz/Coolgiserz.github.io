@@ -5,12 +5,63 @@
     <link>/post/</link>
       <atom:link href="/post/index.xml" rel="self" type="application/rss+xml" />
     <description>博客</description>
-    <generator>Wowchemy (https://wowchemy.com)</generator><language>en-us</language><lastBuildDate>Fri, 20 May 2022 10:38:29 +0800</lastBuildDate>
+    <generator>Wowchemy (https://wowchemy.com)</generator><language>en-us</language><lastBuildDate>Sun, 07 Aug 2022 09:24:58 +0800</lastBuildDate>
     <image>
       <url>/media/icon_hue03491371183284312b8b116a73ae5ab_79511_512x512_fill_lanczos_center_3.png</url>
       <title>博客</title>
       <link>/post/</link>
     </image>
+    
+    <item>
+      <title>Transformer &amp;&amp; Multivariate Time Series Forecasting</title>
+      <link>/post/transformer-for-time-series-forecasting/</link>
+      <pubDate>Sun, 07 Aug 2022 09:24:58 +0800</pubDate>
+      <guid>/post/transformer-for-time-series-forecasting/</guid>
+      <description>&lt;h2 id=&#34;summary&#34;&gt;Summary&lt;/h2&gt;
+&lt;h4 id=&#34;canonical-transformer&#34;&gt;Canonical Transformer&lt;/h4&gt;
+&lt;h5 id=&#34;blog&#34;&gt;Blog&lt;/h5&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;Transformers Explained Visually (Part 1): Overview of Functionality. &lt;a href=&#34;https://towardsdatascience.com/transformers-explained-visually-part-1-overview-of-functionality-95a6dd460452&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;[blog]&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Transformers Explained Visually (Part 2): How it works, step-by-step &lt;a href=&#34;https://towardsdatascience.com/transformers-explained-visually-part-2-how-it-works-step-by-step-b49fa4a64f34&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;[blog]&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;The Illustrated Transformer. &lt;a href=&#34;http://jalammar.github.io/illustrated-transformer/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;[blog]&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h4 id=&#34;spatial-temporal-transformer&#34;&gt;Spatial Temporal Transformer&lt;/h4&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;Long-Range Transformers for Dynamic Spatiotemporal Forecasting. &lt;a href=&#34;https://arxiv.org/pdf/2109.12218.pdf&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;[paper]&lt;/a&gt; &lt;a href=&#34;https://github.com/QData/spacetimeformer&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;[code]&lt;/a&gt; &lt;a href=&#34;https://towardsdatascience.com/multivariate-time-series-forecasting-with-transformers-384dc6ce989b&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;[blog]&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Spatial-Temporal Transformer for Dynamic Scene Graph Generation. &lt;a href=&#34;https://arxiv.org/pdf/2107.12309.pdf&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;[paper]&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Forecaster: A Graph Transformer for Forecasting Spatial and Time-Dependent Data. &lt;a href=&#34;https://www.andrew.cmu.edu/user/yangli1/Forecaster_ECAI2020.pdf&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;[paper]&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h4 id=&#34;multivariate-time-series-forecasting&#34;&gt;Multivariate Time-series Forecasting&lt;/h4&gt;
+&lt;ol&gt;
+&lt;li&gt;Spectral Temporal Graph Neural Network for Multivariate Time-series Forecasting. &lt;a href=&#34;https://papers.nips.cc/paper/2020/file/cdf6581cb7aca4b7e19ef136c6e601a5-Paper.pdf&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;[paper]&lt;/a&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h4 id=&#34;transformer-on-time-series-forecasting&#34;&gt;Transformer on Time Series Forecasting&lt;/h4&gt;
+&lt;h5 id=&#34;paper&#34;&gt;Paper&lt;/h5&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;Enhancing the Locality and Breaking the Memory Bottleneck of Transformer on Time Series Forecasting. &lt;a href=&#34;https://arxiv.org/pdf/1907.00235.pdf&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;[paper]&lt;/a&gt; &lt;a href=&#34;https://github.com/mlpotter/Transformer_Time_Series&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;[code]&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Deep Transformer Models for Time Series Forecasting: The Influenza Prevalence Case. &lt;a href=&#34;https://arxiv.org/abs/2001.08317&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;[paper]&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;A Transformer-based Framework for Multivariate Time Series Representation Learning. &lt;a href=&#34;http://brown.edu/Research/AI/files/pubs/kdd21.pdf&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;[paper]&lt;/a&gt;&lt;a href=&#34;https://github.com/gzerveas/mvts_transformer&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;[code]&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+</description>
+    </item>
     
     <item>
       <title>关于图上的离散Ricci曲率意义的思考</title>
@@ -2161,21 +2212,133 @@ http://localhost:8000/debug/pprof/heap
 &lt;p&gt;对于广大普通群众来说，你可以依赖交通流预测工具来通知亲朋好友你是否有可能会迟到，也可以依据路况信息为重要会议的出发时间点作合理规划：不至于迟到也不至于过早出发而空空等待。
 对于商业公司来说，如共享单车/出租车公司可以依据区域交通状况规划车源的分配，达到最大的收益和效率。&lt;/p&gt;
 &lt;h3 id=&#34;如何进行交通流预测&#34;&gt;如何进行交通流预测？&lt;/h3&gt;
-&lt;p&gt;依赖的是什么数据？路段的在线交通数据&lt;/p&gt;
+&lt;p&gt;依赖的是什么数据？路段的在线交通数据
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure  &gt;
+  &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img alt=&#34;&#34; srcset=&#34;
+               /post/traffic-prediction-review/images/real_word_example_of_road_level_graph_hue709360c9252efc1b7ee5beba3d5e6ff_1087466_26d9eb075fb3173dc31e034108983a38.webp 400w,
+               /post/traffic-prediction-review/images/real_word_example_of_road_level_graph_hue709360c9252efc1b7ee5beba3d5e6ff_1087466_a3e3d366acaeb7d4fcd2549deed87039.webp 760w,
+               /post/traffic-prediction-review/images/real_word_example_of_road_level_graph_hue709360c9252efc1b7ee5beba3d5e6ff_1087466_1200x1200_fit_q75_h2_lanczos_3.webp 1200w&#34;
+               src=&#34;/post/traffic-prediction-review/images/real_word_example_of_road_level_graph_hue709360c9252efc1b7ee5beba3d5e6ff_1087466_26d9eb075fb3173dc31e034108983a38.webp&#34;
+               width=&#34;760&#34;
+               height=&#34;512&#34;
+               loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+  &lt;/div&gt;&lt;/figure&gt;
+&lt;/p&gt;
 &lt;h4 id=&#34;影响交通流的因素有&#34;&gt;影响交通流的因素有？&lt;/h4&gt;
 &lt;p&gt;但想要准确地估计交通状况会遇到一些困难。&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;
 &lt;p&gt;交通流存在一些如周期性、趋势性的模式，并且这种模式是存在波动性的；&lt;/p&gt;
-&lt;p&gt;如：尽管每个早上晚上都会有交通高峰期，但高峰期出现的准确时间会有很大波动&lt;/p&gt;
+&lt;p&gt;如：尽管每个早上晚上都会有交通高峰期，但高峰期出现的准确时间会有很大波动
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure  &gt;
+  &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img alt=&#34;&#34; srcset=&#34;
+               /post/traffic-prediction-review/images/spatial_temporal_correlation_hu552c503b5c083997e622452fdf88ed92_167662_e007c5035e4f9bad2d2fabfbce7f4d7d.webp 400w,
+               /post/traffic-prediction-review/images/spatial_temporal_correlation_hu552c503b5c083997e622452fdf88ed92_167662_8150f1920586b2d15518cd858f6b4787.webp 760w,
+               /post/traffic-prediction-review/images/spatial_temporal_correlation_hu552c503b5c083997e622452fdf88ed92_167662_1200x1200_fit_q75_h2_lanczos_3.webp 1200w&#34;
+               src=&#34;/post/traffic-prediction-review/images/spatial_temporal_correlation_hu552c503b5c083997e622452fdf88ed92_167662_e007c5035e4f9bad2d2fabfbce7f4d7d.webp&#34;
+               width=&#34;760&#34;
+               height=&#34;644&#34;
+               loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+  &lt;/div&gt;&lt;/figure&gt;
+&lt;/p&gt;
 &lt;/li&gt;
 &lt;li&gt;
 &lt;p&gt;道路之间的交通情况存在空间依赖性；&lt;/p&gt;
-&lt;p&gt;一条道路的交通状况会影响周围路段的交通状况&lt;/p&gt;
+&lt;p&gt;一条道路的交通状况会影响周围路段的交通状况
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure  &gt;
+  &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img alt=&#34;&#34; srcset=&#34;
+               /post/traffic-prediction-review/images/spatial_dependence_hud820a286f5026cd97ff3dbbb2cd762ca_241454_f8b1ad3fc6ddc08c4be9af3670f8ca37.webp 400w,
+               /post/traffic-prediction-review/images/spatial_dependence_hud820a286f5026cd97ff3dbbb2cd762ca_241454_a612534ffc39f4e7eda69b93f5dd8920.webp 760w,
+               /post/traffic-prediction-review/images/spatial_dependence_hud820a286f5026cd97ff3dbbb2cd762ca_241454_1200x1200_fit_q75_h2_lanczos_3.webp 1200w&#34;
+               src=&#34;/post/traffic-prediction-review/images/spatial_dependence_hud820a286f5026cd97ff3dbbb2cd762ca_241454_f8b1ad3fc6ddc08c4be9af3670f8ca37.webp&#34;
+               width=&#34;760&#34;
+               height=&#34;573&#34;
+               loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+  &lt;/div&gt;&lt;/figure&gt;
+&lt;/p&gt;
 &lt;/li&gt;
 &lt;li&gt;
 &lt;p&gt;多种外部因素会影响交通情况；&lt;/p&gt;
-&lt;p&gt;如道路质量、速度限制、事故、道路关闭等外部因素对交通流预测有所影响，增加了交通流预测模型的复杂性。&lt;/p&gt;
+&lt;p&gt;如道路质量、速度限制、事故、道路关闭等外部因素对交通流预测有所影响，增加了交通流预测模型的复杂性。
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure  &gt;
+  &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img alt=&#34;&#34; srcset=&#34;
+               /post/traffic-prediction-review/images/single_step_traffic_forecasting_problem_huc53dd7d8d8613a1e49d902a7d9afa85c_163688_0f2355263448adaa81099bd16072b1a8.webp 400w,
+               /post/traffic-prediction-review/images/single_step_traffic_forecasting_problem_huc53dd7d8d8613a1e49d902a7d9afa85c_163688_d883d60ec718b77375c921df49a4ae94.webp 760w,
+               /post/traffic-prediction-review/images/single_step_traffic_forecasting_problem_huc53dd7d8d8613a1e49d902a7d9afa85c_163688_1200x1200_fit_q75_h2_lanczos_3.webp 1200w&#34;
+               src=&#34;/post/traffic-prediction-review/images/single_step_traffic_forecasting_problem_huc53dd7d8d8613a1e49d902a7d9afa85c_163688_0f2355263448adaa81099bd16072b1a8.webp&#34;
+               width=&#34;760&#34;
+               height=&#34;460&#34;
+               loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+  &lt;/div&gt;&lt;/figure&gt;
+&lt;/p&gt;
 &lt;/li&gt;
 &lt;/ul&gt;
 &lt;h4 id=&#34;交通流预测最关键的问题是&#34;&gt;交通流预测最关键的问题是？&lt;/h4&gt;
@@ -6079,6 +6242,7 @@ Github：https://github.com/thunlp/OpenNE&lt;/p&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        &lt;span class=&#34;k&#34;&gt;for&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;p&lt;/span&gt; &lt;span class=&#34;ow&#34;&gt;in&lt;/span&gt; &lt;span class=&#34;bp&#34;&gt;self&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;poi&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;            &lt;span class=&#34;n&#34;&gt;f&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;write&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;bp&#34;&gt;self&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;json2plain&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;p&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;))&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        &lt;span class=&#34;n&#34;&gt;f&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;close&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;()&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;k&#34;&gt;def&lt;/span&gt; &lt;span class=&#34;nf&#34;&gt;poi2txt&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;bp&#34;&gt;self&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;mpage&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;):&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        &lt;span class=&#34;bp&#34;&gt;self&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;url&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;s1&#34;&gt;&amp;#39;http://restapi.amap.com/v3/place/text?&amp;amp;keywords=&amp;#39;&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;+&lt;/span&gt;&lt;span class=&#34;bp&#34;&gt;self&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;keyword&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;+&lt;/span&gt;&lt;span class=&#34;s1&#34;&gt;&amp;#39;&amp;amp;city=&amp;#39;&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;+&lt;/span&gt;&lt;span class=&#34;bp&#34;&gt;self&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;city&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;+&lt;/span&gt;&lt;span class=&#34;s1&#34;&gt;&amp;#39;&amp;amp;output=json&amp;amp;offset=&amp;#39;&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;+&lt;/span&gt;&lt;span class=&#34;nb&#34;&gt;str&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;bp&#34;&gt;self&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;offset&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;+&lt;/span&gt;&lt;span class=&#34;s1&#34;&gt;&amp;#39;&amp;amp;page=&amp;#39;&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;+&lt;/span&gt;&lt;span class=&#34;nb&#34;&gt;str&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;mpage&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;+&lt;/span&gt;&lt;span class=&#34;s1&#34;&gt;&amp;#39;&amp;amp;key=&amp;#39;&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;+&lt;/span&gt;&lt;span class=&#34;bp&#34;&gt;self&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;key&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;+&lt;/span&gt;&lt;span class=&#34;s1&#34;&gt;&amp;#39;&amp;amp;extensions=&amp;#39;&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;+&lt;/span&gt;&lt;span class=&#34;bp&#34;&gt;self&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;extension&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        &lt;span class=&#34;n&#34;&gt;text&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;bp&#34;&gt;self&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;url2text&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;()&lt;/span&gt;
@@ -6101,6 +6265,7 @@ Github：https://github.com/thunlp/OpenNE&lt;/p&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        &lt;span class=&#34;n&#34;&gt;poi&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;bp&#34;&gt;self&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;text2json&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;text&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        &lt;span class=&#34;k&#34;&gt;for&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;p&lt;/span&gt; &lt;span class=&#34;ow&#34;&gt;in&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;poi&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;            &lt;span class=&#34;bp&#34;&gt;self&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;file&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;write&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;bp&#34;&gt;self&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;json2plain&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;p&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;))&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;            
 &lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;k&#34;&gt;def&lt;/span&gt; &lt;span class=&#34;nf&#34;&gt;poi2txtplus&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;bp&#34;&gt;self&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;pages&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;poitype&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;fname&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;):&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        &lt;span class=&#34;bp&#34;&gt;self&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;file&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;nb&#34;&gt;open&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;fname&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;s1&#34;&gt;&amp;#39;a+&amp;#39;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        &lt;span class=&#34;k&#34;&gt;if&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nb&#34;&gt;len&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;pages&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;&amp;lt;&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;0&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;):&lt;/span&gt;
@@ -6110,9 +6275,11 @@ Github：https://github.com/thunlp/OpenNE&lt;/p&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;                &lt;span class=&#34;nb&#34;&gt;print&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s1&#34;&gt;&amp;#39;爬取内容:&lt;/span&gt;&lt;span class=&#34;si&#34;&gt;%s&lt;/span&gt;&lt;span class=&#34;s1&#34;&gt; &lt;/span&gt;&lt;span class=&#34;si&#34;&gt;%s&lt;/span&gt;&lt;span class=&#34;s1&#34;&gt; 页码-&lt;/span&gt;&lt;span class=&#34;si&#34;&gt;%d&lt;/span&gt;&lt;span class=&#34;s1&#34;&gt;&amp;#39;&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;%&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;city&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;nb&#34;&gt;type&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;p&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;))&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;                &lt;span class=&#34;bp&#34;&gt;self&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;poi2file&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;p&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;&lt;span class=&#34;nb&#34;&gt;str&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nb&#34;&gt;type&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;))&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id=&#34;0x04-别人的文章&#34;&gt;0x04 别人的文章&lt;/h2&gt;
-&lt;p&gt;高德分类代码总结：https://wenku.baidu.com/view/fc0805ed51e2524de518964bcf84b9d528ea2c1f.html
-获取矩形范围POI：https://www.cnblogs.com/sparrowjack/p/5151477.html
-根据关键字在城市范围搜索：https://blog.csdn.net/qq_34464926/article/details/79128211&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://wenku.baidu.com/view/fc0805ed51e2524de518964bcf84b9d528ea2c1f.html&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;高德分类代码总结&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://www.cnblogs.com/sparrowjack/p/5151477.html&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;获取矩形范围POI&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://blog.csdn.net/qq_34464926/article/details/79128211&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;根据关键字在城市范围搜索&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
 </description>
     </item>
     

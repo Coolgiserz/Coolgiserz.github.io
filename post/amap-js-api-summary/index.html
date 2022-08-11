@@ -923,6 +923,7 @@
 </span></span><span class="line"><span class="cl">        <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">poi</span><span class="p">:</span>
 </span></span><span class="line"><span class="cl">            <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">json2plain</span><span class="p">(</span><span class="n">p</span><span class="p">))</span>
 </span></span><span class="line"><span class="cl">        <span class="n">f</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl">    <span class="k">def</span> <span class="nf">poi2txt</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">mpage</span><span class="p">):</span>
 </span></span><span class="line"><span class="cl">        <span class="bp">self</span><span class="o">.</span><span class="n">url</span> <span class="o">=</span> <span class="s1">&#39;http://restapi.amap.com/v3/place/text?&amp;keywords=&#39;</span><span class="o">+</span><span class="bp">self</span><span class="o">.</span><span class="n">keyword</span><span class="o">+</span><span class="s1">&#39;&amp;city=&#39;</span><span class="o">+</span><span class="bp">self</span><span class="o">.</span><span class="n">city</span><span class="o">+</span><span class="s1">&#39;&amp;output=json&amp;offset=&#39;</span><span class="o">+</span><span class="nb">str</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">offset</span><span class="p">)</span><span class="o">+</span><span class="s1">&#39;&amp;page=&#39;</span><span class="o">+</span><span class="nb">str</span><span class="p">(</span><span class="n">mpage</span><span class="p">)</span><span class="o">+</span><span class="s1">&#39;&amp;key=&#39;</span><span class="o">+</span><span class="bp">self</span><span class="o">.</span><span class="n">key</span><span class="o">+</span><span class="s1">&#39;&amp;extensions=&#39;</span><span class="o">+</span><span class="bp">self</span><span class="o">.</span><span class="n">extension</span>
 </span></span><span class="line"><span class="cl">        <span class="n">text</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">url2text</span><span class="p">()</span>
@@ -945,6 +946,7 @@
 </span></span><span class="line"><span class="cl">        <span class="n">poi</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">text2json</span><span class="p">(</span><span class="n">text</span><span class="p">)</span>
 </span></span><span class="line"><span class="cl">        <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="n">poi</span><span class="p">:</span>
 </span></span><span class="line"><span class="cl">            <span class="bp">self</span><span class="o">.</span><span class="n">file</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">json2plain</span><span class="p">(</span><span class="n">p</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl">            
 </span></span><span class="line"><span class="cl">    <span class="k">def</span> <span class="nf">poi2txtplus</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">pages</span><span class="p">,</span> <span class="n">poitype</span><span class="p">,</span><span class="n">fname</span><span class="p">):</span>
 </span></span><span class="line"><span class="cl">        <span class="bp">self</span><span class="o">.</span><span class="n">file</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="n">fname</span><span class="p">,</span> <span class="s1">&#39;a+&#39;</span><span class="p">)</span>
 </span></span><span class="line"><span class="cl">        <span class="k">if</span> <span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">pages</span><span class="p">)</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">):</span>
@@ -954,9 +956,11 @@
 </span></span><span class="line"><span class="cl">                <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;爬取内容:</span><span class="si">%s</span><span class="s1"> </span><span class="si">%s</span><span class="s1"> 页码-</span><span class="si">%d</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="n">city</span><span class="p">,</span> <span class="nb">type</span><span class="p">,</span> <span class="n">p</span><span class="p">))</span>
 </span></span><span class="line"><span class="cl">                <span class="bp">self</span><span class="o">.</span><span class="n">poi2file</span><span class="p">(</span><span class="n">p</span><span class="p">,</span><span class="nb">str</span><span class="p">(</span><span class="nb">type</span><span class="p">))</span>
 </span></span></code></pre></div><h2 id="0x04-别人的文章">0x04 别人的文章</h2>
-<p>高德分类代码总结：https://wenku.baidu.com/view/fc0805ed51e2524de518964bcf84b9d528ea2c1f.html
-获取矩形范围POI：https://www.cnblogs.com/sparrowjack/p/5151477.html
-根据关键字在城市范围搜索：https://blog.csdn.net/qq_34464926/article/details/79128211</p>
+<ul>
+<li><a href="https://wenku.baidu.com/view/fc0805ed51e2524de518964bcf84b9d528ea2c1f.html" target="_blank" rel="noopener">高德分类代码总结</a></li>
+<li><a href="https://www.cnblogs.com/sparrowjack/p/5151477.html" target="_blank" rel="noopener">获取矩形范围POI</a></li>
+<li><a href="https://blog.csdn.net/qq_34464926/article/details/79128211" target="_blank" rel="noopener">根据关键字在城市范围搜索</a></li>
+</ul>
 
     </div>
 

@@ -64,10 +64,10 @@
   
     
   
-  <meta name="description" content="入门交通流预测应该知道的事儿" />
+  <meta name="description" content="Resources about Transformer Architecture and Multivariate Time Series Forecasting" />
 
   
-  <link rel="alternate" hreflang="en-us" href="/post/traffic-prediction-review/" />
+  <link rel="alternate" hreflang="en-us" href="/post/transformer-for-time-series-forecasting/" />
 
   
   
@@ -297,7 +297,7 @@
   <link rel="icon" type="image/png" href="/media/icon_hue03491371183284312b8b116a73ae5ab_79511_32x32_fill_lanczos_center_3.png" />
   <link rel="apple-touch-icon" type="image/png" href="/media/icon_hue03491371183284312b8b116a73ae5ab_79511_180x180_fill_lanczos_center_3.png" />
 
-  <link rel="canonical" href="/post/traffic-prediction-review/" />
+  <link rel="canonical" href="/post/transformer-for-time-series-forecasting/" />
 
   
   
@@ -323,18 +323,18 @@
     <meta property="twitter:creator" content="@wowchemy" />
   
   <meta property="og:site_name" content="CoolCats" />
-  <meta property="og:url" content="/post/traffic-prediction-review/" />
-  <meta property="og:title" content="交通流预测总结 | CoolCats" />
-  <meta property="og:description" content="入门交通流预测应该知道的事儿" /><meta property="og:image" content="/media/icon_hue03491371183284312b8b116a73ae5ab_79511_512x512_fill_lanczos_center_3.png" />
+  <meta property="og:url" content="/post/transformer-for-time-series-forecasting/" />
+  <meta property="og:title" content="Transformer &amp;&amp; Multivariate Time Series Forecasting | CoolCats" />
+  <meta property="og:description" content="Resources about Transformer Architecture and Multivariate Time Series Forecasting" /><meta property="og:image" content="/media/icon_hue03491371183284312b8b116a73ae5ab_79511_512x512_fill_lanczos_center_3.png" />
     <meta property="twitter:image" content="/media/icon_hue03491371183284312b8b116a73ae5ab_79511_512x512_fill_lanczos_center_3.png" /><meta property="og:locale" content="en-us" />
   
     
       <meta
         property="article:published_time"
-        content="2020-12-12T22:22:01&#43;08:00"
+        content="2022-08-07T09:24:58&#43;08:00"
       />
     
-    <meta property="article:modified_time" content="2020-12-12T22:22:01&#43;08:00">
+    <meta property="article:modified_time" content="2022-08-07T09:24:58&#43;08:00">
   
 
   
@@ -358,12 +358,12 @@
   "@type": "BlogPosting",
   "mainEntityOfPage": {
     "@type": "WebPage",
-    "@id": "/post/traffic-prediction-review/"
+    "@id": "/post/transformer-for-time-series-forecasting/"
   },
-  "headline": "交通流预测总结",
+  "headline": "Transformer \u0026\u0026 Multivariate Time Series Forecasting",
   
-  "datePublished": "2020-12-12T22:22:01+08:00",
-  "dateModified": "2020-12-12T22:22:01+08:00",
+  "datePublished": "2022-08-07T09:24:58+08:00",
+  "dateModified": "2022-08-07T09:24:58+08:00",
   
   "author": {
     "@type": "Person",
@@ -378,7 +378,7 @@
       "url": "/media/icon_hue03491371183284312b8b116a73ae5ab_79511_192x192_fill_lanczos_center_3.png"
     }
   },
-  "description": "入门交通流预测应该知道的事儿"
+  "description": "Resources about Transformer Architecture and Multivariate Time Series Forecasting"
 }
 </script>
 
@@ -394,11 +394,11 @@
 
 
 
-  <title>交通流预测总结 | CoolCats</title>
+  <title>Transformer &amp;&amp; Multivariate Time Series Forecasting | CoolCats</title>
 </head>
 
 
-<body id="top" data-spy="scroll" data-offset="70" data-target="#TableOfContents" class="page-wrapper   " data-wc-page-id="75235cf9f7ac6df27f9fdf2b9582c655" >
+<body id="top" data-spy="scroll" data-offset="70" data-target="#TableOfContents" class="page-wrapper   " data-wc-page-id="8b320dadcdc4407948d8e2172a6dddfd" >
 
   
   
@@ -755,7 +755,7 @@
   
   
 <div class="article-container pt-3">
-  <h1>交通流预测总结</h1>
+  <h1>Transformer &amp;&amp; Multivariate Time Series Forecasting</h1>
 
   
 
@@ -774,7 +774,7 @@
     
       
     
-    Dec 12, 2020
+    Aug 7, 2022
   </span>
   
 
@@ -791,9 +791,6 @@
   
   
   
-    <span class="middot-divider"></span>
-    <a href="/post/traffic-prediction-review/#disqus_thread"></a>
-  
 
   
   
@@ -805,45 +802,6 @@
 
 
 
-<div class="btn-links mb-3">
-  
-  
-
-
-
-
-
-
-
-
-  
-
-
-
-
-
-
-
-
-
-  
-  <a class="btn btn-outline-primary btn-page-header" href="/project/awesome-traffic-prediction/">
-    Project
-  </a>
-  
-
-
-
-
-
-
-
-
-
-
-
-</div>
-
 
   
 </div>
@@ -853,369 +811,49 @@
   <div class="article-container">
 
     <div class="article-style">
-      <h1 id="交通流预测">交通流预测</h1>
-<h2 id="背景介绍">背景介绍</h2>
-<h3 id="交通流预测有何意义">交通流预测有何意义？</h3>
-<p>交通流预测包括道路交通状况（速度、流量等）估计、行程到达时间估计，对人们的生活具有重要意义。</p>
-<p>对于广大普通群众来说，你可以依赖交通流预测工具来通知亲朋好友你是否有可能会迟到，也可以依据路况信息为重要会议的出发时间点作合理规划：不至于迟到也不至于过早出发而空空等待。
-对于商业公司来说，如共享单车/出租车公司可以依据区域交通状况规划车源的分配，达到最大的收益和效率。</p>
-<h3 id="如何进行交通流预测">如何进行交通流预测？</h3>
-<p>依赖的是什么数据？路段的在线交通数据
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<figure  >
-  <div class="d-flex justify-content-center">
-    <div class="w-100" ><img alt="" srcset="
-               /post/traffic-prediction-review/images/real_word_example_of_road_level_graph_hue709360c9252efc1b7ee5beba3d5e6ff_1087466_26d9eb075fb3173dc31e034108983a38.webp 400w,
-               /post/traffic-prediction-review/images/real_word_example_of_road_level_graph_hue709360c9252efc1b7ee5beba3d5e6ff_1087466_a3e3d366acaeb7d4fcd2549deed87039.webp 760w,
-               /post/traffic-prediction-review/images/real_word_example_of_road_level_graph_hue709360c9252efc1b7ee5beba3d5e6ff_1087466_1200x1200_fit_q75_h2_lanczos_3.webp 1200w"
-               src="/post/traffic-prediction-review/images/real_word_example_of_road_level_graph_hue709360c9252efc1b7ee5beba3d5e6ff_1087466_26d9eb075fb3173dc31e034108983a38.webp"
-               width="760"
-               height="512"
-               loading="lazy" data-zoomable /></div>
-  </div></figure>
-</p>
-<h4 id="影响交通流的因素有">影响交通流的因素有？</h4>
-<p>但想要准确地估计交通状况会遇到一些困难。</p>
-<ul>
+      <h2 id="summary">Summary</h2>
+<h4 id="canonical-transformer">Canonical Transformer</h4>
+<h5 id="blog">Blog</h5>
+<ol>
 <li>
-<p>交通流存在一些如周期性、趋势性的模式，并且这种模式是存在波动性的；</p>
-<p>如：尽管每个早上晚上都会有交通高峰期，但高峰期出现的准确时间会有很大波动
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<figure  >
-  <div class="d-flex justify-content-center">
-    <div class="w-100" ><img alt="" srcset="
-               /post/traffic-prediction-review/images/spatial_temporal_correlation_hu552c503b5c083997e622452fdf88ed92_167662_e007c5035e4f9bad2d2fabfbce7f4d7d.webp 400w,
-               /post/traffic-prediction-review/images/spatial_temporal_correlation_hu552c503b5c083997e622452fdf88ed92_167662_8150f1920586b2d15518cd858f6b4787.webp 760w,
-               /post/traffic-prediction-review/images/spatial_temporal_correlation_hu552c503b5c083997e622452fdf88ed92_167662_1200x1200_fit_q75_h2_lanczos_3.webp 1200w"
-               src="/post/traffic-prediction-review/images/spatial_temporal_correlation_hu552c503b5c083997e622452fdf88ed92_167662_e007c5035e4f9bad2d2fabfbce7f4d7d.webp"
-               width="760"
-               height="644"
-               loading="lazy" data-zoomable /></div>
-  </div></figure>
-</p>
+<p>Transformers Explained Visually (Part 1): Overview of Functionality. <a href="https://towardsdatascience.com/transformers-explained-visually-part-1-overview-of-functionality-95a6dd460452" target="_blank" rel="noopener">[blog]</a></p>
 </li>
 <li>
-<p>道路之间的交通情况存在空间依赖性；</p>
-<p>一条道路的交通状况会影响周围路段的交通状况
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<figure  >
-  <div class="d-flex justify-content-center">
-    <div class="w-100" ><img alt="" srcset="
-               /post/traffic-prediction-review/images/spatial_dependence_hud820a286f5026cd97ff3dbbb2cd762ca_241454_f8b1ad3fc6ddc08c4be9af3670f8ca37.webp 400w,
-               /post/traffic-prediction-review/images/spatial_dependence_hud820a286f5026cd97ff3dbbb2cd762ca_241454_a612534ffc39f4e7eda69b93f5dd8920.webp 760w,
-               /post/traffic-prediction-review/images/spatial_dependence_hud820a286f5026cd97ff3dbbb2cd762ca_241454_1200x1200_fit_q75_h2_lanczos_3.webp 1200w"
-               src="/post/traffic-prediction-review/images/spatial_dependence_hud820a286f5026cd97ff3dbbb2cd762ca_241454_f8b1ad3fc6ddc08c4be9af3670f8ca37.webp"
-               width="760"
-               height="573"
-               loading="lazy" data-zoomable /></div>
-  </div></figure>
-</p>
+<p>Transformers Explained Visually (Part 2): How it works, step-by-step <a href="https://towardsdatascience.com/transformers-explained-visually-part-2-how-it-works-step-by-step-b49fa4a64f34" target="_blank" rel="noopener">[blog]</a></p>
 </li>
 <li>
-<p>多种外部因素会影响交通情况；</p>
-<p>如道路质量、速度限制、事故、道路关闭等外部因素对交通流预测有所影响，增加了交通流预测模型的复杂性。
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<figure  >
-  <div class="d-flex justify-content-center">
-    <div class="w-100" ><img alt="" srcset="
-               /post/traffic-prediction-review/images/single_step_traffic_forecasting_problem_huc53dd7d8d8613a1e49d902a7d9afa85c_163688_0f2355263448adaa81099bd16072b1a8.webp 400w,
-               /post/traffic-prediction-review/images/single_step_traffic_forecasting_problem_huc53dd7d8d8613a1e49d902a7d9afa85c_163688_d883d60ec718b77375c921df49a4ae94.webp 760w,
-               /post/traffic-prediction-review/images/single_step_traffic_forecasting_problem_huc53dd7d8d8613a1e49d902a7d9afa85c_163688_1200x1200_fit_q75_h2_lanczos_3.webp 1200w"
-               src="/post/traffic-prediction-review/images/single_step_traffic_forecasting_problem_huc53dd7d8d8613a1e49d902a7d9afa85c_163688_0f2355263448adaa81099bd16072b1a8.webp"
-               width="760"
-               height="460"
-               loading="lazy" data-zoomable /></div>
-  </div></figure>
-</p>
+<p>The Illustrated Transformer. <a href="http://jalammar.github.io/illustrated-transformer/" target="_blank" rel="noopener">[blog]</a></p>
 </li>
-</ul>
-<h4 id="交通流预测最关键的问题是">交通流预测最关键的问题是？</h4>
-<h5 id="假设数据质量较高">假设数据质量较高</h5>
-<ul>
+</ol>
+<h4 id="spatial-temporal-transformer">Spatial Temporal Transformer</h4>
+<ol>
 <li>
-<p>如何建模路段交通流之间的空间依赖性？</p>
+<p>Long-Range Transformers for Dynamic Spatiotemporal Forecasting. <a href="https://arxiv.org/pdf/2109.12218.pdf" target="_blank" rel="noopener">[paper]</a> <a href="https://github.com/QData/spacetimeformer" target="_blank" rel="noopener">[code]</a> <a href="https://towardsdatascience.com/multivariate-time-series-forecasting-with-transformers-384dc6ce989b" target="_blank" rel="noopener">[blog]</a></p>
 </li>
 <li>
-<p>如何建模历史交通流的时序模式？</p>
+<p>Spatial-Temporal Transformer for Dynamic Scene Graph Generation. <a href="https://arxiv.org/pdf/2107.12309.pdf" target="_blank" rel="noopener">[paper]</a></p>
 </li>
 <li>
-<p>哪些外部因素会影响交通状况，如何将这些因素融合到交通流预测模型中？</p>
+<p>Forecaster: A Graph Transformer for Forecasting Spatial and Time-Dependent Data. <a href="https://www.andrew.cmu.edu/user/yangli1/Forecaster_ECAI2020.pdf" target="_blank" rel="noopener">[paper]</a></p>
 </li>
-</ul>
-<h5 id="假设数据质量不足">假设数据质量不足</h5>
-<p>除了上面几个问题以外，还需要考虑数据收集不全或者有噪声的情形。</p>
-<ul>
+</ol>
+<h4 id="multivariate-time-series-forecasting">Multivariate Time-series Forecasting</h4>
+<ol>
+<li>Spectral Temporal Graph Neural Network for Multivariate Time-series Forecasting. <a href="https://papers.nips.cc/paper/2020/file/cdf6581cb7aca4b7e19ef136c6e601a5-Paper.pdf" target="_blank" rel="noopener">[paper]</a></li>
+</ol>
+<h4 id="transformer-on-time-series-forecasting">Transformer on Time Series Forecasting</h4>
+<h5 id="paper">Paper</h5>
+<ol>
 <li>
-<p>如何评价交通流数据的质量？</p>
-</li>
-<li>
-<p>如何从有噪声的数据中准确地预测交通状况？</p>
-</li>
-<li>
-<p>如何进行交通流数据补全？</p>
-</li>
-</ul>
-<h4 id="如何评价交通流预测的效果">如何评价交通流预测的效果？</h4>
-<h5 id="评价角度">评价角度</h5>
-<ul>
-<li>总体预测精度</li>
-<li>局部预测精度：峰值</li>
-<li>不同时间划分下的预测精度</li>
-<li>对噪声扰动的鲁棒性分析</li>
-</ul>
-<h5 id="评价指标">评价指标</h5>
-<ul>
-<li>
-<p>绝对平均误差（MAE）
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<figure  >
-  <div class="d-flex justify-content-center">
-    <div class="w-100" ><img alt="" srcset="
-               /post/traffic-prediction-review/images/mae_hu4c65dc9af98806240c070a373cfcee1e_11229_639899fa236932be4ea3cde1829a819c.webp 400w,
-               /post/traffic-prediction-review/images/mae_hu4c65dc9af98806240c070a373cfcee1e_11229_9105a4b03fec867b5b507c8f9782b5da.webp 760w,
-               /post/traffic-prediction-review/images/mae_hu4c65dc9af98806240c070a373cfcee1e_11229_1200x1200_fit_q75_h2_lanczos_3.webp 1200w"
-               src="/post/traffic-prediction-review/images/mae_hu4c65dc9af98806240c070a373cfcee1e_11229_639899fa236932be4ea3cde1829a819c.webp"
-               width="340"
-               height="85"
-               loading="lazy" data-zoomable /></div>
-  </div></figure>
-</p>
+<p>Enhancing the Locality and Breaking the Memory Bottleneck of Transformer on Time Series Forecasting. <a href="https://arxiv.org/pdf/1907.00235.pdf" target="_blank" rel="noopener">[paper]</a> <a href="https://github.com/mlpotter/Transformer_Time_Series" target="_blank" rel="noopener">[code]</a></p>
 </li>
 <li>
-<p>均方根误差（RMSE）
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<figure  >
-  <div class="d-flex justify-content-center">
-    <div class="w-100" ><img alt="" srcset="
-               /post/traffic-prediction-review/images/rmse_hu29e493d142137f4fd07bc65f7b2d38a0_13600_30d1bef5926aa52e1a760987cf8bd760.webp 400w,
-               /post/traffic-prediction-review/images/rmse_hu29e493d142137f4fd07bc65f7b2d38a0_13600_1b1e6388c5e3e4361fa1826ba6b75a65.webp 760w,
-               /post/traffic-prediction-review/images/rmse_hu29e493d142137f4fd07bc65f7b2d38a0_13600_1200x1200_fit_q75_h2_lanczos_3.webp 1200w"
-               src="/post/traffic-prediction-review/images/rmse_hu29e493d142137f4fd07bc65f7b2d38a0_13600_30d1bef5926aa52e1a760987cf8bd760.webp"
-               width="340"
-               height="89"
-               loading="lazy" data-zoomable /></div>
-  </div></figure>
-</p>
+<p>Deep Transformer Models for Time Series Forecasting: The Influenza Prevalence Case. <a href="https://arxiv.org/abs/2001.08317" target="_blank" rel="noopener">[paper]</a></p>
 </li>
 <li>
-<p>准确度（Accuracy）
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<figure  >
-  <div class="d-flex justify-content-center">
-    <div class="w-100" ><img src="./images/accuracy.png" alt="" loading="lazy" data-zoomable /></div>
-  </div></figure>
-</p>
+<p>A Transformer-based Framework for Multivariate Time Series Representation Learning. <a href="http://brown.edu/Research/AI/files/pubs/kdd21.pdf" target="_blank" rel="noopener">[paper]</a><a href="https://github.com/gzerveas/mvts_transformer" target="_blank" rel="noopener">[code]</a></p>
 </li>
-<li>
-<p>判定系数
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<figure  >
-  <div class="d-flex justify-content-center">
-    <div class="w-100" ><img alt="" srcset="
-               /post/traffic-prediction-review/images/coefficient_of_determination_hu8dd9e1c45d11226df4afaa53a2fe4bb1_14602_5ea6f67e2242abeaa3798c71f9705b59.webp 400w,
-               /post/traffic-prediction-review/images/coefficient_of_determination_hu8dd9e1c45d11226df4afaa53a2fe4bb1_14602_dbb43a36a693193e9ac317d4bad918c8.webp 760w,
-               /post/traffic-prediction-review/images/coefficient_of_determination_hu8dd9e1c45d11226df4afaa53a2fe4bb1_14602_1200x1200_fit_q75_h2_lanczos_3.webp 1200w"
-               src="/post/traffic-prediction-review/images/coefficient_of_determination_hu8dd9e1c45d11226df4afaa53a2fe4bb1_14602_5ea6f67e2242abeaa3798c71f9705b59.webp"
-               width="340"
-               height="104"
-               loading="lazy" data-zoomable /></div>
-  </div></figure>
-</p>
-</li>
-<li>
-<p>方差
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<figure  >
-  <div class="d-flex justify-content-center">
-    <div class="w-100" ><img alt="" srcset="
-               /post/traffic-prediction-review/images/variance_hu2b29e9815e925599c8054a52beda1db5_13596_8bf0c54a0d47106171695ece5c69a444.webp 400w,
-               /post/traffic-prediction-review/images/variance_hu2b29e9815e925599c8054a52beda1db5_13596_6569f25284c880e0fb28357395b027d5.webp 760w,
-               /post/traffic-prediction-review/images/variance_hu2b29e9815e925599c8054a52beda1db5_13596_1200x1200_fit_q75_h2_lanczos_3.webp 1200w"
-               src="/post/traffic-prediction-review/images/variance_hu2b29e9815e925599c8054a52beda1db5_13596_8bf0c54a0d47106171695ece5c69a444.webp"
-               width="340"
-               height="94"
-               loading="lazy" data-zoomable /></div>
-  </div></figure>
-</p>
-</li>
-</ul>
-<h2 id="模型">模型</h2>
-<h4 id="交通流预测模型面临的挑战">交通流预测模型面临的挑战</h4>
-<p>虽然现有的海量交通数据、高性能计算和存储平台、丰富的机器学习算法也为交通流预测提供了巨大的机遇，但由于数据本身的问题和现实世界中交通流影响因子的复杂性，交通流预测仍面临着巨大的挑战，这些挑战主要可归为如下三个方面：
-(1).    交通大数据的多尺度特性、有偏性、不完备性等特性影响着交通流预测结果的准确性和可用性
-传感器通常每隔一定时间对数据进行采样，不同的采样尺度
-(2).    地理单元间的复杂的时空依赖关系对模型的复杂度提出了较高要求
-地理单元（道路、OD点）
-(3).    影响交通流多种外部因素带来的不确定性</p>
-<h4 id="传统时间序列预测模型">传统时间序列预测模型</h4>
-<ul>
-<li>HA</li>
-<li>VAR</li>
-<li>SVR</li>
-<li>……</li>
-</ul>
-<h4 id="基于图神经网络的交通流预测模型st-gnn">基于图神经网络的交通流预测模型(ST-GNN)</h4>
-<p>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<figure  >
-  <div class="d-flex justify-content-center">
-    <div class="w-100" ><img src="./images/stgnn-pipeline.png" alt="" loading="lazy" data-zoomable /></div>
-  </div></figure>
-</p>
-<h2 id="学习资料">学习资料</h2>
-<h3 id="教程">教程</h3>
-<p><a href="https://towardsdatascience.com/how-to-predict-severe-traffic-jams-with-python-and-recurrent-neural-networks-e53b6d411e8d" target="_blank" rel="noopener">How to Predict Severe Traffic Jams with Python and Recurrent Neural Networks?</a></p>
-<p><a href="https://www.tensorflow.org/tutorials/structured_data/time_series" target="_blank" rel="noopener">Time series forecasting-Tensorflow Tutorial</a></p>
-<h2 id="模型-1">模型</h2>
+</ol>
 
     </div>
 
@@ -1237,7 +875,7 @@
       
       
       <li>
-        <a href="https://twitter.com/intent/tweet?url=/post/traffic-prediction-review/&amp;text=%e4%ba%a4%e9%80%9a%e6%b5%81%e9%a2%84%e6%b5%8b%e6%80%bb%e7%bb%93" target="_blank" rel="noopener" class="share-btn-twitter" aria-label="twitter">
+        <a href="https://twitter.com/intent/tweet?url=/post/transformer-for-time-series-forecasting/&amp;text=Transformer%20&amp;amp;&amp;amp;%20Multivariate%20Time%20Series%20Forecasting" target="_blank" rel="noopener" class="share-btn-twitter" aria-label="twitter">
           <i class="fab fa-twitter"></i>
         </a>
       </li>
@@ -1250,7 +888,7 @@
       
       
       <li>
-        <a href="https://www.facebook.com/sharer.php?u=/post/traffic-prediction-review/&amp;t=%e4%ba%a4%e9%80%9a%e6%b5%81%e9%a2%84%e6%b5%8b%e6%80%bb%e7%bb%93" target="_blank" rel="noopener" class="share-btn-facebook" aria-label="facebook">
+        <a href="https://www.facebook.com/sharer.php?u=/post/transformer-for-time-series-forecasting/&amp;t=Transformer%20&amp;amp;&amp;amp;%20Multivariate%20Time%20Series%20Forecasting" target="_blank" rel="noopener" class="share-btn-facebook" aria-label="facebook">
           <i class="fab fa-facebook"></i>
         </a>
       </li>
@@ -1263,7 +901,7 @@
       
       
       <li>
-        <a href="mailto:?subject=%e4%ba%a4%e9%80%9a%e6%b5%81%e9%a2%84%e6%b5%8b%e6%80%bb%e7%bb%93&amp;body=/post/traffic-prediction-review/" target="_blank" rel="noopener" class="share-btn-email" aria-label="envelope">
+        <a href="mailto:?subject=Transformer%20&amp;amp;&amp;amp;%20Multivariate%20Time%20Series%20Forecasting&amp;body=/post/transformer-for-time-series-forecasting/" target="_blank" rel="noopener" class="share-btn-email" aria-label="envelope">
           <i class="fas fa-envelope"></i>
         </a>
       </li>
@@ -1276,7 +914,7 @@
       
       
       <li>
-        <a href="https://www.linkedin.com/shareArticle?url=/post/traffic-prediction-review/&amp;title=%e4%ba%a4%e9%80%9a%e6%b5%81%e9%a2%84%e6%b5%8b%e6%80%bb%e7%bb%93" target="_blank" rel="noopener" class="share-btn-linkedin" aria-label="linkedin-in">
+        <a href="https://www.linkedin.com/shareArticle?url=/post/transformer-for-time-series-forecasting/&amp;title=Transformer%20&amp;amp;&amp;amp;%20Multivariate%20Time%20Series%20Forecasting" target="_blank" rel="noopener" class="share-btn-linkedin" aria-label="linkedin-in">
           <i class="fab fa-linkedin-in"></i>
         </a>
       </li>
@@ -1289,7 +927,7 @@
       
       
       <li>
-        <a href="whatsapp://send?text=%e4%ba%a4%e9%80%9a%e6%b5%81%e9%a2%84%e6%b5%8b%e6%80%bb%e7%bb%93%20/post/traffic-prediction-review/" target="_blank" rel="noopener" class="share-btn-whatsapp" aria-label="whatsapp">
+        <a href="whatsapp://send?text=Transformer%20&amp;amp;&amp;amp;%20Multivariate%20Time%20Series%20Forecasting%20/post/transformer-for-time-series-forecasting/" target="_blank" rel="noopener" class="share-btn-whatsapp" aria-label="whatsapp">
           <i class="fab fa-whatsapp"></i>
         </a>
       </li>
@@ -1302,7 +940,7 @@
       
       
       <li>
-        <a href="https://service.weibo.com/share/share.php?url=/post/traffic-prediction-review/&amp;title=%e4%ba%a4%e9%80%9a%e6%b5%81%e9%a2%84%e6%b5%8b%e6%80%bb%e7%bb%93" target="_blank" rel="noopener" class="share-btn-weibo" aria-label="weibo">
+        <a href="https://service.weibo.com/share/share.php?url=/post/transformer-for-time-series-forecasting/&amp;title=Transformer%20&amp;amp;&amp;amp;%20Multivariate%20Time%20Series%20Forecasting" target="_blank" rel="noopener" class="share-btn-weibo" aria-label="weibo">
           <i class="fab fa-weibo"></i>
         </a>
       </li>
@@ -1393,32 +1031,6 @@
 
   
 
-  
-  <section id="comments">
-    
-<div id="disqus_thread"></div>
-<script>
-  var disqus_config = function () {
-    
-    
-    
-  };
-  (function() {
-    if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
-      document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
-      return;
-    }
-    var d = document, s = d.createElement('script'); s.async = true;
-    s.src = 'https://' + "coolgiserz" + '.disqus.com/embed.js';
-    s.setAttribute('data-timestamp', +new Date());
-    (d.head || d.body).appendChild(s);
-  })();
-</script>
-<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
-<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
-
-
-  </section>
   
 
 
