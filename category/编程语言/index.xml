@@ -112,6 +112,7 @@
       &lt;/ul&gt;
     &lt;/li&gt;
     &lt;li&gt;&lt;a href=&#34;#0x10-实践&#34;&gt;0x10 实践&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href=&#34;#0x11-go没有的东西&#34;&gt;0x11 Go没有的东西&lt;/a&gt;&lt;/li&gt;
   &lt;/ul&gt;
 &lt;/nav&gt;
 &lt;/details&gt;
@@ -159,6 +160,9 @@
 &lt;/li&gt;
 &lt;li&gt;
 &lt;p&gt;&lt;a href=&#34;https://github.com/golang-design/Go-Questions&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Go程序员面试笔试宝典|从问题切入，串联知识&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a href=&#34;https://www.topgoer.com&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;topgoer&lt;/a&gt;&lt;/p&gt;
 &lt;h4 id=&#34;源代码&#34;&gt;源代码&lt;/h4&gt;
 &lt;/li&gt;
 &lt;li&gt;
@@ -1470,6 +1474,35 @@ http://localhost:8000/debug/pprof/heap
 &lt;/li&gt;
 &lt;/ul&gt;
 &lt;p&gt;go tool pprof http://localhost:8000/debug/pprof/heap&lt;/p&gt;
+&lt;h2 id=&#34;0x11-go没有的东西&#34;&gt;0x11 Go没有的东西&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;类、继承、多态、重载
+go语言拥有不同的世界观
+设计模式：变继承为组合&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;函数式编程&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;try/catch/finally
+太多错误被当作异常
+很多c++项目组禁用try/catch
+try/catch在产品代码中不能减小开发人员负担
+使用defer/panic/recover来处理异常更为简洁&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;构造函数/析构函数/RAII
+大型项目很少使用构造函数，多使用工厂函数
+值类型的构造由结构体初始化完成
+RAII技巧性太强，隐藏了意图
+析构函数与垃圾回收不匹配&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;泛型
+泛型的作用是作为模版类型（实际是为了实现duck typing及接口组合的实现）、约束参数类型&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
 </description>
     </item>
     

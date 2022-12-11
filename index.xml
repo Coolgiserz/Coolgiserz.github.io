@@ -5,12 +5,36 @@
     <link>/</link>
       <atom:link href="/index.xml" rel="self" type="application/rss+xml" />
     <description>CoolCats</description>
-    <generator>Wowchemy (https://wowchemy.com)</generator><language>en-us</language><lastBuildDate>Sun, 07 Aug 2022 09:24:58 +0800</lastBuildDate>
+    <generator>Wowchemy (https://wowchemy.com)</generator><language>en-us</language><lastBuildDate>Mon, 05 Dec 2022 10:58:00 +0800</lastBuildDate>
     <image>
       <url>/media/icon_hue03491371183284312b8b116a73ae5ab_79511_512x512_fill_lanczos_center_3.png</url>
       <title>CoolCats</title>
       <link>/</link>
     </image>
+    
+    <item>
+      <title>线上生日会玩法</title>
+      <link>/post/virtual-birthday-party-ideas-summary/</link>
+      <pubDate>Mon, 05 Dec 2022 10:58:00 +0800</pubDate>
+      <guid>/post/virtual-birthday-party-ideas-summary/</guid>
+      <description>&lt;p&gt;自新冠疫情以来，为了防止疫情扩散，有时侯所在地区不得已进行封控措施，限制线下聚会，这对于想要具有仪式感地度过某些具有纪念意义的日子的人来说会带来一些苦恼，但我相信小小的阻碍不会使这些人放弃掉那种“仪式感”。那么，通过Online的方式能否组织成功的聚会，有助于参与者收获充实，营造出与线下同样热闹甚至更热闹有趣的氛围呢？现有方案能否满足参与party的人的大部分需求（庆祝/交友/娱乐放松/置身热闹氛围等）？线上party成本与线下相比如何？&lt;/p&gt;
+&lt;p&gt;本文整理一部分网友对于“如何组织线上生日会”问题的想法。&lt;/p&gt;
+&lt;p&gt;素材链接：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://izxxz.com/article/1727&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;线上生日会有哪些创意玩法？&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://teambuilding.com/blog/virtual-birthday-party&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;23 Virtual Birthday Party Ideas &amp;amp; Games for Adults in 2022&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://snacknation.com/blog/virtual-birthday-party/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;44 Memorable Fun Virtual Birthday Party Ideas, Games, &amp;amp; Activities For Celebrating In 2022&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>深秋登大云山</title>
+      <link>/talk/%E6%B7%B1%E7%A7%8B%E7%99%BB%E5%A4%A7%E4%BA%91%E5%B1%B1/</link>
+      <pubDate>Sun, 20 Nov 2022 15:08:30 +0800</pubDate>
+      <guid>/talk/%E6%B7%B1%E7%A7%8B%E7%99%BB%E5%A4%A7%E4%BA%91%E5%B1%B1/</guid>
+      <description></description>
+    </item>
     
     <item>
       <title>Transformer &amp;&amp; Multivariate Time Series Forecasting</title>
@@ -955,6 +979,7 @@ MAE对所有误差项一视同仁。对异常值不那么敏感。&lt;/p&gt;
       &lt;/ul&gt;
     &lt;/li&gt;
     &lt;li&gt;&lt;a href=&#34;#0x10-实践&#34;&gt;0x10 实践&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href=&#34;#0x11-go没有的东西&#34;&gt;0x11 Go没有的东西&lt;/a&gt;&lt;/li&gt;
   &lt;/ul&gt;
 &lt;/nav&gt;
 &lt;/details&gt;
@@ -1002,6 +1027,9 @@ MAE对所有误差项一视同仁。对异常值不那么敏感。&lt;/p&gt;
 &lt;/li&gt;
 &lt;li&gt;
 &lt;p&gt;&lt;a href=&#34;https://github.com/golang-design/Go-Questions&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Go程序员面试笔试宝典|从问题切入，串联知识&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a href=&#34;https://www.topgoer.com&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;topgoer&lt;/a&gt;&lt;/p&gt;
 &lt;h4 id=&#34;源代码&#34;&gt;源代码&lt;/h4&gt;
 &lt;/li&gt;
 &lt;li&gt;
@@ -2313,6 +2341,35 @@ http://localhost:8000/debug/pprof/heap
 &lt;/li&gt;
 &lt;/ul&gt;
 &lt;p&gt;go tool pprof http://localhost:8000/debug/pprof/heap&lt;/p&gt;
+&lt;h2 id=&#34;0x11-go没有的东西&#34;&gt;0x11 Go没有的东西&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;类、继承、多态、重载
+go语言拥有不同的世界观
+设计模式：变继承为组合&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;函数式编程&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;try/catch/finally
+太多错误被当作异常
+很多c++项目组禁用try/catch
+try/catch在产品代码中不能减小开发人员负担
+使用defer/panic/recover来处理异常更为简洁&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;构造函数/析构函数/RAII
+大型项目很少使用构造函数，多使用工厂函数
+值类型的构造由结构体初始化完成
+RAII技巧性太强，隐藏了意图
+析构函数与垃圾回收不匹配&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;泛型
+泛型的作用是作为模版类型（实际是为了实现duck typing及接口组合的实现）、约束参数类型&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
 </description>
     </item>
     
@@ -3367,6 +3424,7 @@ style=&#34;float: middle; margin-right: 10px;&#34; /&gt;&lt;/p&gt;
         &lt;li&gt;&lt;a href=&#34;#科普&#34;&gt;科普&lt;/a&gt;&lt;/li&gt;
         &lt;li&gt;&lt;a href=&#34;#政治&#34;&gt;政治&lt;/a&gt;&lt;/li&gt;
         &lt;li&gt;&lt;a href=&#34;#经济&#34;&gt;经济&lt;/a&gt;&lt;/li&gt;
+        &lt;li&gt;&lt;a href=&#34;#哲学&#34;&gt;哲学&lt;/a&gt;&lt;/li&gt;
         &lt;li&gt;&lt;a href=&#34;#法律&#34;&gt;法律&lt;/a&gt;&lt;/li&gt;
         &lt;li&gt;&lt;a href=&#34;#技术-1&#34;&gt;技术&lt;/a&gt;&lt;/li&gt;
       &lt;/ul&gt;
@@ -3556,7 +3614,7 @@ style=&#34;float: middle; margin-right: 10px;&#34; /&gt;&lt;/p&gt;
 &lt;p&gt;100: 科幻之书（ongoing）&lt;/p&gt;
 &lt;/li&gt;
 &lt;li&gt;
-&lt;p&gt;安德的游戏（to do）&lt;/p&gt;
+&lt;p&gt;安德的游戏（ongoing）&lt;/p&gt;
 &lt;/li&gt;
 &lt;/ul&gt;
 &lt;h5 id=&#34;历史&#34;&gt;历史&lt;/h5&gt;
@@ -3696,6 +3754,15 @@ style=&#34;float: middle; margin-right: 10px;&#34; /&gt;&lt;/p&gt;
 &lt;li&gt;陈志武金融通识课&lt;/li&gt;
 &lt;li&gt;金融市场基础知识（ongoing）&lt;/li&gt;
 &lt;li&gt;吴敬琏三部曲（to do）&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;哲学&#34;&gt;哲学&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;与孤独为伍&lt;/li&gt;
+&lt;li&gt;查拉图斯特拉如是说(ongoing)&lt;/li&gt;
+&lt;li&gt;人性的、太人性的(to do)&lt;/li&gt;
+&lt;li&gt;悲剧的诞生(to do)&lt;/li&gt;
+&lt;li&gt;偶像的黄昏(to do)&lt;/li&gt;
+&lt;li&gt;敌基督者(to do)&lt;/li&gt;
 &lt;/ul&gt;
 &lt;h3 id=&#34;法律&#34;&gt;法律&lt;/h3&gt;
 &lt;ul&gt;
@@ -4364,10 +4431,10 @@ style=&#34;float: middle; margin-right: 10px;&#34; /&gt;&lt;/p&gt;
 &lt;figure  &gt;
   &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
     &lt;div class=&#34;w-100&#34; &gt;&lt;img alt=&#34;&#34; srcset=&#34;
-               /post/traffic-prediction-review/images/real_word_example_of_road_level_graph_hue709360c9252efc1b7ee5beba3d5e6ff_1087466_26d9eb075fb3173dc31e034108983a38.webp 400w,
+               /post/traffic-prediction-review/images/real_word_example_of_road_level_graph_hue709360c9252efc1b7ee5beba3d5e6ff_1087466_7440d8813033d40c7efc396d33e57939.webp 400w,
                /post/traffic-prediction-review/images/real_word_example_of_road_level_graph_hue709360c9252efc1b7ee5beba3d5e6ff_1087466_a3e3d366acaeb7d4fcd2549deed87039.webp 760w,
                /post/traffic-prediction-review/images/real_word_example_of_road_level_graph_hue709360c9252efc1b7ee5beba3d5e6ff_1087466_1200x1200_fit_q75_h2_lanczos_3.webp 1200w&#34;
-               src=&#34;/post/traffic-prediction-review/images/real_word_example_of_road_level_graph_hue709360c9252efc1b7ee5beba3d5e6ff_1087466_26d9eb075fb3173dc31e034108983a38.webp&#34;
+               src=&#34;/post/traffic-prediction-review/images/real_word_example_of_road_level_graph_hue709360c9252efc1b7ee5beba3d5e6ff_1087466_7440d8813033d40c7efc396d33e57939.webp&#34;
                width=&#34;760&#34;
                height=&#34;512&#34;
                loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
@@ -4438,11 +4505,39 @@ style=&#34;float: middle; margin-right: 10px;&#34; /&gt;&lt;/p&gt;
                height=&#34;573&#34;
                loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
   &lt;/div&gt;&lt;/figure&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure  &gt;
+  &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img alt=&#34;&#34; srcset=&#34;
+               /post/traffic-prediction-review/images/different_correlations_among_regions_hub2b1c3fe74eba554d34bfde1b8464358_192157_610e17da810abe66e385d77e241095a1.webp 400w,
+               /post/traffic-prediction-review/images/different_correlations_among_regions_hub2b1c3fe74eba554d34bfde1b8464358_192157_907027251e54de9b396be055b1a7a312.webp 760w,
+               /post/traffic-prediction-review/images/different_correlations_among_regions_hub2b1c3fe74eba554d34bfde1b8464358_192157_1200x1200_fit_q75_h2_lanczos_3.webp 1200w&#34;
+               src=&#34;/post/traffic-prediction-review/images/different_correlations_among_regions_hub2b1c3fe74eba554d34bfde1b8464358_192157_610e17da810abe66e385d77e241095a1.webp&#34;
+               width=&#34;760&#34;
+               height=&#34;651&#34;
+               loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+  &lt;/div&gt;&lt;/figure&gt;
 &lt;/p&gt;
 &lt;/li&gt;
 &lt;li&gt;
-&lt;p&gt;多种外部因素会影响交通情况；&lt;/p&gt;
-&lt;p&gt;如道路质量、速度限制、事故、道路关闭等外部因素对交通流预测有所影响，增加了交通流预测模型的复杂性。
+&lt;p&gt;多种外部因素会影响交通情况；
+如道路质量、速度限制、事故、道路关闭等外部因素对交通流预测有所影响，增加了交通流预测模型的复杂性。
 
 
 

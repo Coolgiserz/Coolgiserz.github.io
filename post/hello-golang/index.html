@@ -962,6 +962,7 @@
       </ul>
     </li>
     <li><a href="#0x10-实践">0x10 实践</a></li>
+    <li><a href="#0x11-go没有的东西">0x11 Go没有的东西</a></li>
   </ul>
 </nav>
 </details>
@@ -1009,6 +1010,9 @@
 </li>
 <li>
 <p><a href="https://github.com/golang-design/Go-Questions" target="_blank" rel="noopener">Go程序员面试笔试宝典|从问题切入，串联知识</a></p>
+</li>
+<li>
+<p><a href="https://www.topgoer.com" target="_blank" rel="noopener">topgoer</a></p>
 <h4 id="源代码">源代码</h4>
 </li>
 <li>
@@ -2320,6 +2324,35 @@ http://localhost:8000/debug/pprof/heap
 </li>
 </ul>
 <p>go tool pprof http://localhost:8000/debug/pprof/heap</p>
+<h2 id="0x11-go没有的东西">0x11 Go没有的东西</h2>
+<ul>
+<li>
+<p>类、继承、多态、重载
+go语言拥有不同的世界观
+设计模式：变继承为组合</p>
+</li>
+<li>
+<p>函数式编程</p>
+</li>
+<li>
+<p>try/catch/finally
+太多错误被当作异常
+很多c++项目组禁用try/catch
+try/catch在产品代码中不能减小开发人员负担
+使用defer/panic/recover来处理异常更为简洁</p>
+</li>
+<li>
+<p>构造函数/析构函数/RAII
+大型项目很少使用构造函数，多使用工厂函数
+值类型的构造由结构体初始化完成
+RAII技巧性太强，隐藏了意图
+析构函数与垃圾回收不匹配</p>
+</li>
+<li>
+<p>泛型
+泛型的作用是作为模版类型（实际是为了实现duck typing及接口组合的实现）、约束参数类型</p>
+</li>
+</ul>
 
     </div>
 
