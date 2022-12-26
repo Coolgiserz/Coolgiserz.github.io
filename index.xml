@@ -5,12 +5,59 @@
     <link>/</link>
       <atom:link href="/index.xml" rel="self" type="application/rss+xml" />
     <description>CoolCats</description>
-    <generator>Wowchemy (https://wowchemy.com)</generator><language>en-us</language><lastBuildDate>Mon, 05 Dec 2022 10:58:00 +0800</lastBuildDate>
+    <generator>Wowchemy (https://wowchemy.com)</generator><language>en-us</language><lastBuildDate>Mon, 05 Dec 2022 19:40:21 +0800</lastBuildDate>
     <image>
       <url>/media/icon_hue03491371183284312b8b116a73ae5ab_79511_512x512_fill_lanczos_center_3.png</url>
       <title>CoolCats</title>
       <link>/</link>
     </image>
+    
+    <item>
+      <title>声乐课初体验</title>
+      <link>/post/taking-vocal-music-class/</link>
+      <pubDate>Mon, 05 Dec 2022 19:40:21 +0800</pubDate>
+      <guid>/post/taking-vocal-music-class/</guid>
+      <description>&lt;h3 id=&#34;第一课20221205&#34;&gt;第一课：2022.12.05&lt;/h3&gt;
+&lt;ol&gt;
+&lt;li&gt;对音乐的理解&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;功用上看：陶冶性情、治愈心灵&lt;/p&gt;
+&lt;ol start=&#34;2&#34;&gt;
+&lt;li&gt;技巧说明&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;唱之前嘴大口吸气、气尽量下沉、唱完一个“句”要及时换气（鼻子呼气），歌唱时不能泄气，尽量保持音在一个位置&lt;/p&gt;
+&lt;ol start=&#34;3&#34;&gt;
+&lt;li&gt;开嗓练习&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;通过变换音阶练字来开嗓，也能测试音域的宽广程度。
+先练连续的字、后练断音。&lt;/p&gt;
+&lt;ol start=&#34;4&#34;&gt;
+&lt;li&gt;歌唱练习&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;《那时错，这时对》&lt;/p&gt;
+&lt;ol start=&#34;5&#34;&gt;
+&lt;li&gt;课后作业&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;打“嘟”训练&lt;/p&gt;
+&lt;h3 id=&#34;第二课20221213&#34;&gt;第二课：2022.12.13&lt;/h3&gt;
+&lt;ol&gt;
+&lt;li&gt;上堂回顾&amp;amp;&amp;amp;开嗓练习&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;打Du训练&lt;/p&gt;
+&lt;ol start=&#34;2&#34;&gt;
+&lt;li&gt;技巧学习：鼻腔哼鸣&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;声音通过鼻腔发出，边发声边张开嘴检验声音是否变化，如果是鼻腔发声则张嘴不会影响声音。&lt;/p&gt;
+&lt;ol start=&#34;3&#34;&gt;
+&lt;li&gt;歌唱练习&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;练习《那时错，这时对》并划分歌词的气口。&lt;/p&gt;
+&lt;ol start=&#34;4&#34;&gt;
+&lt;li&gt;课后作业&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;自学歌曲《我们》（陈奕迅）&lt;/p&gt;
+</description>
+    </item>
     
     <item>
       <title>线上生日会玩法</title>
@@ -875,6 +922,63 @@ MAE对所有误差项一视同仁。对异常值不那么敏感。&lt;/p&gt;
 &lt;li&gt;
 &lt;p&gt;&lt;a href=&#34;https://www.dataquest.io/blog/understanding-regression-error-metrics/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Tutorial: Understanding Regression Error Metrics in Python&lt;/a&gt;&lt;/p&gt;
 &lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>如何为Git Commit进行备注？</title>
+      <link>/post/how-to-write-memo-for-explaining-your-commit/</link>
+      <pubDate>Mon, 25 Apr 2022 09:32:03 +0800</pubDate>
+      <guid>/post/how-to-write-memo-for-explaining-your-commit/</guid>
+      <description>&lt;h2 id=&#34;0x00-前言&#34;&gt;0x00 前言&lt;/h2&gt;
+&lt;p&gt;无论是个人开发还是团队开发，我们都很有可能用到版本管理工具如git、svn等，使用它们我们可以针对每次提交的代码进行备注，以便日后追溯或查看时容易理解当时变更代码的目的。&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;git commit -m &amp;#34;进行了代码变更&amp;#34;
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;相比于个人以随心所欲的方式去备注自己的每一次提交，我们希望项目开发者以一种规范的备注风格让项目成员能够更方便地理解代码变更。&lt;/p&gt;
+&lt;h2 id=&#34;0x01-提交备注的规范&#34;&gt;0x01 提交备注的规范&lt;/h2&gt;
+&lt;p&gt;提交备注（Commit Message）可以分文三个部分：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;Header&lt;/p&gt;
+&lt;p&gt;备注的标题行，描述主要变更内容&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Body&lt;/p&gt;
+&lt;p&gt;主体内容，以更详细的文本说明变更目的、方法、风险等&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Footer&lt;/p&gt;
+&lt;p&gt;尾部内容，附带可能需要新创建或者关闭的issue的链接&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;其中Body和Footer往往可以省略，Header部分则是必需。&lt;/p&gt;
+&lt;p&gt;提交备注的Header部分又可以分为type、scope、subject三个部分。&lt;/p&gt;
+&lt;h5 id=&#34;1-type&#34;&gt;(1) type&lt;/h5&gt;
+&lt;p&gt;用于说明提交的类别，是必需部分。可以用如下关键字标识提交类别：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;feat: 新功能(feature)&lt;/li&gt;
+&lt;li&gt;fix: 修复(bug)&lt;/li&gt;
+&lt;li&gt;docs: 文档(document)&lt;/li&gt;
+&lt;li&gt;style: 格式（不影响代码运行的变动）&lt;/li&gt;
+&lt;li&gt;refactor: 重构（既不是新增功能，也不是修复bug的改动）&lt;/li&gt;
+&lt;li&gt;test: 增加测试（单元测试、业务测试）&lt;/li&gt;
+&lt;li&gt;chore: 构建过程或辅助工具的变动&lt;/li&gt;
+&lt;li&gt;perf: 性能优化相关变动&lt;/li&gt;
+&lt;li&gt;revert: 代码回滚到上一个版本&lt;/li&gt;
+&lt;li&gt;&amp;hellip;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;type的标识会影响change log的内容。&lt;/p&gt;
+&lt;h5 id=&#34;2-scope&#34;&gt;(2) scope&lt;/h5&gt;
+&lt;p&gt;用于说明提交影响的范围，如数据层(DAO)、控制层(Controller)、视图层(View)&lt;/p&gt;
+&lt;h5 id=&#34;3-subject&#34;&gt;(3) subject&lt;/h5&gt;
+&lt;p&gt;对提交目的进行简短描述。&lt;/p&gt;
+&lt;p&gt;编写subject时以动词开头、首字母小写且结尾无句号&lt;/p&gt;
+&lt;h2 id=&#34;参考资料&#34;&gt;参考资料&lt;/h2&gt;
+&lt;p&gt;本文感谢以下作者/团队的分享：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;阮一峰：&lt;a href=&#34;https://www.ruanyifeng.com/blog/2016/01/commit_message_change_log.html&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Commit message 和 Change log 编写指南&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;阿里开发者: &lt;a href=&#34;https://zhuanlan.zhihu.com/p/182553920&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;如何规范你的Git commit？&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;feflow&lt;a href=&#34;https://feflowjs.com/zh/guide/rule-git-commit.html&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Git Commit 规范&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 </description>
     </item>
