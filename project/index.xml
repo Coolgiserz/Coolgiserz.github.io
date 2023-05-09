@@ -5,12 +5,28 @@
     <link>/project/</link>
       <atom:link href="/project/index.xml" rel="self" type="application/rss+xml" />
     <description>项目</description>
-    <generator>Wowchemy (https://wowchemy.com)</generator><language>en-us</language><lastBuildDate>Mon, 11 Jan 2021 09:18:49 +0800</lastBuildDate>
+    <generator>Wowchemy (https://wowchemy.com)</generator><language>en-us</language><lastBuildDate>Wed, 10 May 2023 00:24:05 +0800</lastBuildDate>
     <image>
       <url>/media/icon_hue03491371183284312b8b116a73ae5ab_79511_512x512_fill_lanczos_center_3.png</url>
       <title>项目</title>
       <link>/project/</link>
     </image>
+    
+    <item>
+      <title>多源遥感卫星数据采集管理系统</title>
+      <link>/project/remote-sensing-data-collect/</link>
+      <pubDate>Wed, 10 May 2023 00:24:05 +0800</pubDate>
+      <guid>/project/remote-sensing-data-collect/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>专题制图自动化服务</title>
+      <link>/project/arcpy-based-automatic-mapping/</link>
+      <pubDate>Tue, 21 Mar 2023 00:20:58 +0800</pubDate>
+      <guid>/project/arcpy-based-automatic-mapping/</guid>
+      <description></description>
+    </item>
     
     <item>
       <title>基于类别的Yelp评论情感分析系统</title>
@@ -217,9 +233,12 @@
 &lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
 &lt;li&gt;
 &lt;p&gt;百变王牌（to do）&lt;/p&gt;
+&lt;h4 id=&#34;heading&#34;&gt;&lt;/h4&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
 &lt;h4 id=&#34;按类型分&#34;&gt;按类型分&lt;/h4&gt;
 &lt;h5 id=&#34;科幻&#34;&gt;科幻&lt;/h5&gt;
-&lt;/li&gt;
+&lt;ul&gt;
 &lt;li&gt;
 &lt;p&gt;三体&lt;/p&gt;
 &lt;/li&gt;
@@ -228,6 +247,15 @@
 &lt;/li&gt;
 &lt;li&gt;
 &lt;p&gt;安德的游戏（ongoing）&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h5 id=&#34;推理&#34;&gt;推理&lt;/h5&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;福尔摩斯探案集&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;东方快车谋杀案(to do)&lt;/p&gt;
 &lt;/li&gt;
 &lt;/ul&gt;
 &lt;h5 id=&#34;历史&#34;&gt;历史&lt;/h5&gt;
@@ -346,6 +374,7 @@
 &lt;li&gt;网络是怎么连接的&lt;/li&gt;
 &lt;li&gt;社交网络演化计算&lt;/li&gt;
 &lt;li&gt;图神经网络导论（ongoing）&lt;/li&gt;
+&lt;li&gt;信息简史(to do)&lt;/li&gt;
 &lt;/ul&gt;
 &lt;h4 id=&#34;历史地理&#34;&gt;历史/地理&lt;/h4&gt;
 &lt;ul&gt;
@@ -412,6 +441,7 @@
 &lt;li&gt;剑指Offer&lt;/li&gt;
 &lt;li&gt;编程珠玑（to do）&lt;/li&gt;
 &lt;li&gt;计算之魂（to do）&lt;/li&gt;
+&lt;li&gt;重构：改善既有代码设计(to do)&lt;/li&gt;
 &lt;/ul&gt;
 &lt;h4 id=&#34;数学与算法&#34;&gt;数学与算法&lt;/h4&gt;
 &lt;ul&gt;

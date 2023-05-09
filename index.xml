@@ -5,12 +5,42 @@
     <link>/</link>
       <atom:link href="/index.xml" rel="self" type="application/rss+xml" />
     <description>CoolCats</description>
-    <generator>Wowchemy (https://wowchemy.com)</generator><language>en-us</language><lastBuildDate>Mon, 27 Mar 2023 19:09:05 +0800</lastBuildDate>
+    <generator>Wowchemy (https://wowchemy.com)</generator><language>en-us</language><lastBuildDate>Wed, 10 May 2023 00:24:05 +0800</lastBuildDate>
     <image>
       <url>/media/icon_hue03491371183284312b8b116a73ae5ab_79511_512x512_fill_lanczos_center_3.png</url>
       <title>CoolCats</title>
       <link>/</link>
     </image>
+    
+    <item>
+      <title>多源遥感卫星数据采集管理系统</title>
+      <link>/project/remote-sensing-data-collect/</link>
+      <pubDate>Wed, 10 May 2023 00:24:05 +0800</pubDate>
+      <guid>/project/remote-sensing-data-collect/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>《重构-改善既有代码设计》阅读笔记1</title>
+      <link>/post/refactor-note1/</link>
+      <pubDate>Tue, 09 May 2023 23:45:03 +0800</pubDate>
+      <guid>/post/refactor-note1/</guid>
+      <description>&lt;h2 id=&#34;阅读目标&#34;&gt;阅读目标&lt;/h2&gt;
+&lt;p&gt;重构是什么？&lt;/p&gt;
+&lt;p&gt;为什么应该重构？&lt;/p&gt;
+&lt;p&gt;应该在什么地方重构？&lt;/p&gt;
+&lt;p&gt;有哪些重构名录经典案例？&lt;/p&gt;
+&lt;h2 id=&#34;资源清单&#34;&gt;资源清单&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;英文电子书地址（官方）: &lt;a href=&#34;https://memberservices.informit.com/my_account/webedition/9780135425664/html/toc.html&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Refactoring: Web Edition&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;中文电子书地址: &lt;a href=&#34;https://github.com/rabbit2002/Refactoring_2nd_ebook&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;https://github.com/rabbit2002/Refactoring_2nd_ebook&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
     
     <item>
       <title>GDAL栅格数据重采样示例</title>
@@ -121,48 +151,11 @@
     </item>
     
     <item>
-      <title>基于Arcpy的自动化制图实战</title>
-      <link>/post/arcpy-based-automatic-mapping/</link>
-      <pubDate>Tue, 21 Mar 2023 12:06:53 +0800</pubDate>
-      <guid>/post/arcpy-based-automatic-mapping/</guid>
-      <description>&lt;h2 id=&#34;关于arcpy&#34;&gt;关于ArcPy&lt;/h2&gt;
-&lt;p&gt;arcpy.mapping模块被设计成可以用来修改已经存在的地图文件（.mxd）或图层文件（.lyr）中的现有元素。换句话说，它有助于现有特征的自动化，但不能用来编写新对象。它不是为了完全替代ArcObjects，也不是为了给ArcMap界面中每一个可以想象的按钮、对话框、菜单选择或上下文项目创建一个函数、方法或属性（这就是ArcObjects提供的）。您必须提前使用ArcMap仔细编写一个包含所有适当元素的地图文档或图层文件，然后使用arcpy.mapping来操作其内容。&lt;/p&gt;
-&lt;p&gt;下面只是一些关于如何使用arcpy.mapping的简单例子。&lt;/p&gt;
-&lt;p&gt;替换一个图层的数据源。
-遍历一系列数据框架的外延，找到并替换文本值，并将页面布局导出为PDF。
-通过将PDF文件附加到最终产品中，建立一个完整的地图书。&lt;/p&gt;
-&lt;p&gt;可以对现有的地图文档或图层文件进行修改，然后使用MapDocument或Layer对象上的saveACopy方法将修改内容保存到新的文件中。&lt;/p&gt;
-&lt;h2 id=&#34;任务描述&#34;&gt;任务描述&lt;/h2&gt;
-&lt;p&gt;服务器会定时采集各种要素的.tif文件，并进行自动矢量化；&lt;/p&gt;
-&lt;p&gt;现需要根据&lt;/p&gt;
-&lt;h2 id=&#34;流程&#34;&gt;流程&lt;/h2&gt;
-&lt;ol&gt;
-&lt;li&gt;
-&lt;p&gt;制作地图模版&lt;/p&gt;
-&lt;p&gt;给定数据源&lt;/p&gt;
-&lt;p&gt;制图信息：制图时间、制图单位&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;arcpy读取地图文档&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;arcpy操纵地图文档，修改数据源和制图信息&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;保存地图&lt;/p&gt;
-&lt;/li&gt;
-&lt;/ol&gt;
-&lt;p&gt;&lt;a href=&#34;https://www.giserdqy.com/arcgis/arcpy/34658/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;使用arcpy.mapping 更新和修复数据源&lt;/a&gt;&lt;/p&gt;
-&lt;h2 id=&#34;参考&#34;&gt;参考&lt;/h2&gt;
-&lt;ul&gt;
-&lt;li&gt;
-&lt;p&gt;&lt;a href=&#34;https://diluvium.colorado.edu/arcgis/portalhelp/en/notebook/latest/python/linux/guidelinesforarcpymapping.htm&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Guidelines for arcpy.mapping&lt;/a&gt;&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;&lt;a href=&#34;https://gisgeography.com/qgis-arcgis-differences/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;27 Differences Between ArcGIS and QGIS - The Most Epic GIS Software Battle in GIS History - GIS Geography&lt;/a&gt;&lt;/p&gt;
-&lt;/li&gt;
-&lt;/ul&gt;
-</description>
+      <title>专题制图自动化服务</title>
+      <link>/project/arcpy-based-automatic-mapping/</link>
+      <pubDate>Tue, 21 Mar 2023 00:20:58 +0800</pubDate>
+      <guid>/project/arcpy-based-automatic-mapping/</guid>
+      <description></description>
     </item>
     
     <item>
@@ -4211,9 +4204,12 @@ style=&#34;float: middle; margin-right: 10px;&#34; /&gt;&lt;/p&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
 &lt;li&gt;
 &lt;p&gt;百变王牌（to do）&lt;/p&gt;
+&lt;h4 id=&#34;heading&#34;&gt;&lt;/h4&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
 &lt;h4 id=&#34;按类型分&#34;&gt;按类型分&lt;/h4&gt;
 &lt;h5 id=&#34;科幻&#34;&gt;科幻&lt;/h5&gt;
-&lt;/li&gt;
+&lt;ul&gt;
 &lt;li&gt;
 &lt;p&gt;三体&lt;/p&gt;
 &lt;/li&gt;
@@ -4222,6 +4218,15 @@ style=&#34;float: middle; margin-right: 10px;&#34; /&gt;&lt;/p&gt;
 &lt;/li&gt;
 &lt;li&gt;
 &lt;p&gt;安德的游戏（ongoing）&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h5 id=&#34;推理&#34;&gt;推理&lt;/h5&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;福尔摩斯探案集&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;东方快车谋杀案(to do)&lt;/p&gt;
 &lt;/li&gt;
 &lt;/ul&gt;
 &lt;h5 id=&#34;历史&#34;&gt;历史&lt;/h5&gt;
@@ -4340,6 +4345,7 @@ style=&#34;float: middle; margin-right: 10px;&#34; /&gt;&lt;/p&gt;
 &lt;li&gt;网络是怎么连接的&lt;/li&gt;
 &lt;li&gt;社交网络演化计算&lt;/li&gt;
 &lt;li&gt;图神经网络导论（ongoing）&lt;/li&gt;
+&lt;li&gt;信息简史(to do)&lt;/li&gt;
 &lt;/ul&gt;
 &lt;h4 id=&#34;历史地理&#34;&gt;历史/地理&lt;/h4&gt;
 &lt;ul&gt;
@@ -4406,6 +4412,7 @@ style=&#34;float: middle; margin-right: 10px;&#34; /&gt;&lt;/p&gt;
 &lt;li&gt;剑指Offer&lt;/li&gt;
 &lt;li&gt;编程珠玑（to do）&lt;/li&gt;
 &lt;li&gt;计算之魂（to do）&lt;/li&gt;
+&lt;li&gt;重构：改善既有代码设计(to do)&lt;/li&gt;
 &lt;/ul&gt;
 &lt;h4 id=&#34;数学与算法&#34;&gt;数学与算法&lt;/h4&gt;
 &lt;ul&gt;
