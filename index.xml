@@ -5,12 +5,63 @@
     <link>/</link>
       <atom:link href="/index.xml" rel="self" type="application/rss+xml" />
     <description>CoolCats</description>
-    <generator>Wowchemy (https://wowchemy.com)</generator><language>en-us</language><lastBuildDate>Wed, 10 May 2023 00:24:05 +0800</lastBuildDate>
+    <generator>Wowchemy (https://wowchemy.com)</generator><language>en-us</language><lastBuildDate>Sat, 20 May 2023 23:49:19 +0800</lastBuildDate>
     <image>
       <url>/media/icon_hue03491371183284312b8b116a73ae5ab_79511_512x512_fill_lanczos_center_3.png</url>
       <title>CoolCats</title>
       <link>/</link>
     </image>
+    
+    <item>
+      <title>《Python软件架构》知识点练习代码</title>
+      <link>/project/python-software-architecture-practice/</link>
+      <pubDate>Sat, 20 May 2023 23:49:19 +0800</pubDate>
+      <guid>/project/python-software-architecture-practice/</guid>
+      <description>&lt;p&gt;Python软件架构知识点练习代码&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Mac13编译安装Postgres15及初始化配置笔记</title>
+      <link>/post/mac13-postgres15-startup/</link>
+      <pubDate>Wed, 10 May 2023 01:16:22 +0800</pubDate>
+      <guid>/post/mac13-postgres15-startup/</guid>
+      <description>&lt;p&gt;Postgres官网下载postgresql-15.2源代码。&lt;/p&gt;
+&lt;p&gt;参考源码文件INSTALL文件进行安装及初始化：&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-text&#34; data-lang=&#34;text&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;Short Version
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    ./configure
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    make
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    su
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    make install
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    adduser postgres
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    mkdir -p /usr/local/pgsql/data
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    chown postgres /usr/local/pgsql/data
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    su - postgres
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    /usr/local/pgsql/bin/initdb -D /usr/local/pgsql/data
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    /usr/local/pgsql/bin/pg_ctl -D /usr/local/pgsql/data -l logfile start
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    /usr/local/pgsql/bin/createdb test
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    /usr/local/pgsql/bin/psql test
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;The long version is the rest of this document.
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;部分过程记录&#34;&gt;部分过程记录&lt;/h3&gt;
+&lt;p&gt;(按默认命令）安装pgsql后，部分命令安装位置：&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;/bin/sh ../../../config/install-sh -c -d &amp;#39;/usr/local/pgsql/bin&amp;#39;
+/usr/bin/install -c  createdb   &amp;#39;/usr/local/pgsql/bin&amp;#39;/createdb
+/usr/bin/install -c  dropdb     &amp;#39;/usr/local/pgsql/bin&amp;#39;/dropdb
+/usr/bin/install -c  createuser &amp;#39;/usr/local/pgsql/bin&amp;#39;/createuser
+/usr/bin/install -c  dropuser   &amp;#39;/usr/local/pgsql/bin&amp;#39;/dropuser
+/usr/bin/install -c  clusterdb  &amp;#39;/usr/local/pgsql/bin&amp;#39;/clusterdb
+/usr/bin/install -c  vacuumdb   &amp;#39;/usr/local/pgsql/bin&amp;#39;/vacuumdb
+/usr/bin/install -c  reindexdb  &amp;#39;/usr/local/pgsql/bin&amp;#39;/reindexdb
+/usr/bin/install -c  pg_isready &amp;#39;/usr/local/pgsql/bin&amp;#39;/pg_isready
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;若需要指定安装目录，如下命令：&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;./configure --prefix=/Users/weirdgiser/Documents/Softwares/installed/pgsql
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;启动pgsql服务：&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;/usr/local/pgsql/bin/pg_ctl -D /Users/weirdgiser/Data/pgsql15/data -l logfile start
+waiting for server to start.... done
+&lt;/code&gt;&lt;/pre&gt;</description>
+    </item>
     
     <item>
       <title>多源遥感卫星数据采集管理系统</title>
@@ -156,6 +207,88 @@
       <pubDate>Tue, 21 Mar 2023 00:20:58 +0800</pubDate>
       <guid>/project/arcpy-based-automatic-mapping/</guid>
       <description></description>
+    </item>
+    
+    <item>
+      <title>《软件架构Python语言实现》阅读心得1</title>
+      <link>/post/software-architecture-with-python-reading-notes/</link>
+      <pubDate>Sat, 11 Mar 2023 16:21:05 +0800</pubDate>
+      <guid>/post/software-architecture-with-python-reading-notes/</guid>
+      <description>&lt;h2 id=&#34;前言&#34;&gt;前言&lt;/h2&gt;
+&lt;p&gt;翻开本书之前，本人的期望是通过研读和实践本书所述的软件架构原理，能够使我对于如下问题具有更清晰具体的答案，而非停留在空泛的原则层面：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;好的软件架构应该具有什么特征？&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;如何让我们开发的软件具备这些特征？&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;常见的架构有哪些？解决了什么问题？还存在什么问题？&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;如何评价（定量）一套软件架构的好坏？&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;如何增强软件架构设计能力？使软件系统“健壮”？&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;……&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;当然，既然需要讨论的问题都关于“软件架构”，那首先需要了解这个词的定义。一些常见的定义如下：&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;软件架构指的是系统的子系统或组件及他们之间关系的描述
+&lt;/code&gt;&lt;/pre&gt;&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;Software architecture is the set of structures needed to reason about a software system and the discipline of creating such structures and systems. Each structure comprises software elements, relations among them, and properties of both elements and relations.
+&lt;/code&gt;&lt;/pre&gt;&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;软件架构是指软件系统中的结构化组织，它包括软件元素、元素之间的关系和它们的属性。软件架构定义了一个软件系统的基本组成部分，以及它们相互之间的关系和规则。软件架构通常包括一个或多个视图，每个视图都描述了系统的不同方面，例如组件、模块、部署、流程等。软件架构通常用于指导软件开发人员设计、实现和维护软件系统，以确保系统满足特定的需求和质量标准，并具有可扩展性、可维护性和可重用性等特性。
+&lt;/code&gt;&lt;/pre&gt;&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;软件架构是系统的基本组织结构，涵盖组件、组件间的关系、组件与环境的关系，指导架构设计和演进的原则等内容。
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;总结来说，软件架构包括软件的组件、环境及其相互关系，但也包括这种架构设计的原则（指导程序员设计出“当前”的软件架构并决定软件系统未来的演进道路）&lt;/p&gt;
+&lt;h2 id=&#34;为何需要关注软件架构&#34;&gt;为何需要关注软件架构？&lt;/h2&gt;
+&lt;p&gt;可以去考虑这样的问题：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;软件系统的成败（不管是商业上、还是软件开发本身在技术、协作上）与哪些人的&lt;strong&gt;利益&lt;/strong&gt;有关系？&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;一个软件系统从需求分析到开发、测试直到最终上线投入使用会涉及到用户/客户、项目经理、产品经理、开发团队、测试团队、运维团队等，对于规模较大的系统开发任务，还会有架构师这个角色，在项目初期对整个软件系统进行架构设计工作。那么为什么我们要对架构如此关注呢？&lt;/p&gt;
+&lt;p&gt;对于用户来说，其实他们并不关心你系统内部如何设计、具体实现是什么，他们想要看到的是一个可用、可靠、能够解决他们需求的产品；&lt;/p&gt;
+&lt;p&gt;对于开发团队而言，他们关注产品开发过程中的特征演化和性能问题。（需求可能随时变，如何以最少的工时开发出满足用户需求的产品？）&lt;/p&gt;
+&lt;p&gt;对于项目经理而言，还需要兼顾开发成本和和预算问题。&lt;/p&gt;
+&lt;p&gt;&amp;hellip;&lt;/p&gt;
+&lt;p&gt;也就是说，不同利益相关人员对于软件系统的关注点不同。因此，为了各方人员能进行有效沟通，需要一种统一语言来减少沟通成本。而架构作为系统的一种文档化描述，正好为软件系统相关人员的沟通提供了一种统一语言。&lt;/p&gt;
+&lt;h2 id=&#34;何为好的软件架构&#34;&gt;何为“好“的软件架构？&lt;/h2&gt;
+&lt;p&gt;总结起来，“好”的软件架构具有如下属性：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;可修改性&lt;/p&gt;
+&lt;p&gt;对系统进行修改的容易程度。修改包括增加新特性、提高性能、问题修复等。大多数软件系统都具有生命周期，在生命周期中难免需要进行修改。因此好的软件架构应该使得系统容易进行修改。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;可测试性&lt;/p&gt;
+&lt;p&gt;可测试性体现在系统所包含缺陷向用户和测试人员隐藏的程度。可测试性越好，系统能隐藏的缺陷越少。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;可扩展性&lt;/p&gt;
+&lt;p&gt;可扩展性表现在系统随着需求的增长性能是否能保持在可接受的水平中。对于Web应用而言，系统用户规模的扩张是很常见的，系统能否适应扩张的需求即为可扩展性的表现。&lt;/p&gt;
+&lt;p&gt;细分来说，可扩展性可分为水平可扩展性和垂直可扩展性。其中水平可扩展性意味着向系统添加或减少更多节点来改变可扩展性，（添加更多节点为向外扩展，scaling out；减少节点为向内扩展，scaling in）；&lt;/p&gt;
+&lt;p&gt;垂直可扩展性意味着对单个节点资源的添加或移除，如通过增加工作进程数增加服务器进程的容量，增加数据库最大连接数提高单服务器的负载容量。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;高性能&lt;/p&gt;
+&lt;p&gt;系统在给定计算资源内完成的工作量，可通过完成的工作量和计算资源数量比例度量。&lt;/p&gt;
+&lt;p&gt;常见性能度量指标：响应时间、延迟、吞吐量。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;高可靠性&lt;/p&gt;
+&lt;p&gt;从故障中恢复的能力。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;安全性&lt;/p&gt;
+&lt;p&gt;避免被未经身份认证的访问损害数据和逻辑，向通过认证的系统和角色提供服务。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;可部署性&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;       产品从开发环境移交到生产环境的难易程度。&lt;/p&gt;
+</description>
     </item>
     
     <item>
@@ -4412,6 +4545,7 @@ style=&#34;float: middle; margin-right: 10px;&#34; /&gt;&lt;/p&gt;
 &lt;li&gt;剑指Offer&lt;/li&gt;
 &lt;li&gt;编程珠玑（to do）&lt;/li&gt;
 &lt;li&gt;计算之魂（to do）&lt;/li&gt;
+&lt;li&gt;软件架构：Python语言实现&lt;/li&gt;
 &lt;li&gt;重构：改善既有代码设计(to do)&lt;/li&gt;
 &lt;/ul&gt;
 &lt;h4 id=&#34;数学与算法&#34;&gt;数学与算法&lt;/h4&gt;
