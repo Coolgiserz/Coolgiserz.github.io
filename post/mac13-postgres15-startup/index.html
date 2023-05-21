@@ -326,7 +326,7 @@ Short Version ./configure make su make install adduser postgres mkdir -p /usr/lo
   
   <meta property="og:site_name" content="CoolCats" />
   <meta property="og:url" content="/post/mac13-postgres15-startup/" />
-  <meta property="og:title" content="Mac13编译安装Postgres15及初始化配置笔记 | CoolCats" />
+  <meta property="og:title" content="Mac13编译安装Postgres15.2及初始化配置笔记 | CoolCats" />
   <meta property="og:description" content="Postgres官网下载postgresql-15.2源代码。
 参考源码文件INSTALL文件进行安装及初始化：
 Short Version ./configure make su make install adduser postgres mkdir -p /usr/local/pgsql/data chown postgres /usr/local/pgsql/data su - postgres /usr/local/pgsql/bin/initdb -D /usr/local/pgsql/data /usr/local/pgsql/bin/pg_ctl -D /usr/local/pgsql/data -l logfile start /usr/local/pgsql/bin/createdb test /usr/local/pgsql/bin/psql test The long version is the rest of this document." /><meta property="og:image" content="/media/icon_hue03491371183284312b8b116a73ae5ab_79511_512x512_fill_lanczos_center_3.png" />
@@ -364,7 +364,7 @@ Short Version ./configure make su make install adduser postgres mkdir -p /usr/lo
     "@type": "WebPage",
     "@id": "/post/mac13-postgres15-startup/"
   },
-  "headline": "Mac13编译安装Postgres15及初始化配置笔记",
+  "headline": "Mac13编译安装Postgres15.2及初始化配置笔记",
   
   "datePublished": "2023-05-10T01:16:22+08:00",
   "dateModified": "2023-05-10T01:16:22+08:00",
@@ -398,7 +398,7 @@ Short Version ./configure make su make install adduser postgres mkdir -p /usr/lo
 
 
 
-  <title>Mac13编译安装Postgres15及初始化配置笔记 | CoolCats</title>
+  <title>Mac13编译安装Postgres15.2及初始化配置笔记 | CoolCats</title>
 </head>
 
 
@@ -759,7 +759,7 @@ Short Version ./configure make su make install adduser postgres mkdir -p /usr/lo
   
   
 <div class="article-container pt-3">
-  <h1>Mac13编译安装Postgres15及初始化配置笔记</h1>
+  <h1>Mac13编译安装Postgres15.2及初始化配置笔记</h1>
 
   
 
@@ -849,6 +849,74 @@ Short Version ./configure make su make install adduser postgres mkdir -p /usr/lo
 </code></pre><p>启动pgsql服务：</p>
 <pre tabindex="0"><code>/usr/local/pgsql/bin/pg_ctl -D /Users/weirdgiser/Data/pgsql15/data -l logfile start
 waiting for server to start.... done
+</code></pre><p>创建测试数据库</p>
+<pre tabindex="0"><code>/usr/local/pgsql/bin/createdb test
+</code></pre><p>连接测试数据库</p>
+<pre tabindex="0"><code>/usr/local/pgsql/bin/psql test
+</code></pre><p>通过DBeaver连接:
+若有多个数据库版本，注意选择合适的客户端
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<figure  >
+  <div class="d-flex justify-content-center">
+    <div class="w-100" ><img alt="" srcset="
+               /post/mac13-postgres15-startup/images/multi_version_hu0ade19df3b0ca7b9b51dbaa7ee3980c9_266057_d710a1248a6b7bf781890a7ec83e2314.webp 400w,
+               /post/mac13-postgres15-startup/images/multi_version_hu0ade19df3b0ca7b9b51dbaa7ee3980c9_266057_0ec573ccc97c0d27d3678514af6afb45.webp 760w,
+               /post/mac13-postgres15-startup/images/multi_version_hu0ade19df3b0ca7b9b51dbaa7ee3980c9_266057_1200x1200_fit_q75_h2_lanczos_3.webp 1200w"
+               src="/post/mac13-postgres15-startup/images/multi_version_hu0ade19df3b0ca7b9b51dbaa7ee3980c9_266057_d710a1248a6b7bf781890a7ec83e2314.webp"
+               width="760"
+               height="651"
+               loading="lazy" data-zoomable /></div>
+  </div></figure>
+</p>
+<img src="images/2023-05-21-11-41-12-image.png" title="" alt="" data-align="inline">
+<p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<figure  >
+  <div class="d-flex justify-content-center">
+    <div class="w-100" ><img alt="" srcset="
+               /post/mac13-postgres15-startup/images/2023-05-21-11-44-15-image_hu9efb4eb19564ac2c721336d4e45203ea_319986_19ec1a98f213032a97ed873ccb480c32.webp 400w,
+               /post/mac13-postgres15-startup/images/2023-05-21-11-44-15-image_hu9efb4eb19564ac2c721336d4e45203ea_319986_d4bbf5f77b13a1cb76f27c48f1dc7c79.webp 760w,
+               /post/mac13-postgres15-startup/images/2023-05-21-11-44-15-image_hu9efb4eb19564ac2c721336d4e45203ea_319986_1200x1200_fit_q75_h2_lanczos_3.webp 1200w"
+               src="/post/mac13-postgres15-startup/images/2023-05-21-11-44-15-image_hu9efb4eb19564ac2c721336d4e45203ea_319986_19ec1a98f213032a97ed873ccb480c32.webp"
+               width="582"
+               height="760"
+               loading="lazy" data-zoomable /></div>
+  </div></figure>
+</p>
+<h2 id="常用命令">常用命令</h2>
+<pre tabindex="0"><code>\l 列举数据库
+\c DB 连接数据库
+\d 列举数据表
+\q 退出
 </code></pre>
     </div>
 
@@ -876,7 +944,7 @@ waiting for server to start.... done
       
       
       <li>
-        <a href="https://twitter.com/intent/tweet?url=/post/mac13-postgres15-startup/&amp;text=Mac13%e7%bc%96%e8%af%91%e5%ae%89%e8%a3%85Postgres15%e5%8f%8a%e5%88%9d%e5%a7%8b%e5%8c%96%e9%85%8d%e7%bd%ae%e7%ac%94%e8%ae%b0" target="_blank" rel="noopener" class="share-btn-twitter" aria-label="twitter">
+        <a href="https://twitter.com/intent/tweet?url=/post/mac13-postgres15-startup/&amp;text=Mac13%e7%bc%96%e8%af%91%e5%ae%89%e8%a3%85Postgres15.2%e5%8f%8a%e5%88%9d%e5%a7%8b%e5%8c%96%e9%85%8d%e7%bd%ae%e7%ac%94%e8%ae%b0" target="_blank" rel="noopener" class="share-btn-twitter" aria-label="twitter">
           <i class="fab fa-twitter"></i>
         </a>
       </li>
@@ -889,7 +957,7 @@ waiting for server to start.... done
       
       
       <li>
-        <a href="https://www.facebook.com/sharer.php?u=/post/mac13-postgres15-startup/&amp;t=Mac13%e7%bc%96%e8%af%91%e5%ae%89%e8%a3%85Postgres15%e5%8f%8a%e5%88%9d%e5%a7%8b%e5%8c%96%e9%85%8d%e7%bd%ae%e7%ac%94%e8%ae%b0" target="_blank" rel="noopener" class="share-btn-facebook" aria-label="facebook">
+        <a href="https://www.facebook.com/sharer.php?u=/post/mac13-postgres15-startup/&amp;t=Mac13%e7%bc%96%e8%af%91%e5%ae%89%e8%a3%85Postgres15.2%e5%8f%8a%e5%88%9d%e5%a7%8b%e5%8c%96%e9%85%8d%e7%bd%ae%e7%ac%94%e8%ae%b0" target="_blank" rel="noopener" class="share-btn-facebook" aria-label="facebook">
           <i class="fab fa-facebook"></i>
         </a>
       </li>
@@ -902,7 +970,7 @@ waiting for server to start.... done
       
       
       <li>
-        <a href="mailto:?subject=Mac13%e7%bc%96%e8%af%91%e5%ae%89%e8%a3%85Postgres15%e5%8f%8a%e5%88%9d%e5%a7%8b%e5%8c%96%e9%85%8d%e7%bd%ae%e7%ac%94%e8%ae%b0&amp;body=/post/mac13-postgres15-startup/" target="_blank" rel="noopener" class="share-btn-email" aria-label="envelope">
+        <a href="mailto:?subject=Mac13%e7%bc%96%e8%af%91%e5%ae%89%e8%a3%85Postgres15.2%e5%8f%8a%e5%88%9d%e5%a7%8b%e5%8c%96%e9%85%8d%e7%bd%ae%e7%ac%94%e8%ae%b0&amp;body=/post/mac13-postgres15-startup/" target="_blank" rel="noopener" class="share-btn-email" aria-label="envelope">
           <i class="fas fa-envelope"></i>
         </a>
       </li>
@@ -915,7 +983,7 @@ waiting for server to start.... done
       
       
       <li>
-        <a href="https://www.linkedin.com/shareArticle?url=/post/mac13-postgres15-startup/&amp;title=Mac13%e7%bc%96%e8%af%91%e5%ae%89%e8%a3%85Postgres15%e5%8f%8a%e5%88%9d%e5%a7%8b%e5%8c%96%e9%85%8d%e7%bd%ae%e7%ac%94%e8%ae%b0" target="_blank" rel="noopener" class="share-btn-linkedin" aria-label="linkedin-in">
+        <a href="https://www.linkedin.com/shareArticle?url=/post/mac13-postgres15-startup/&amp;title=Mac13%e7%bc%96%e8%af%91%e5%ae%89%e8%a3%85Postgres15.2%e5%8f%8a%e5%88%9d%e5%a7%8b%e5%8c%96%e9%85%8d%e7%bd%ae%e7%ac%94%e8%ae%b0" target="_blank" rel="noopener" class="share-btn-linkedin" aria-label="linkedin-in">
           <i class="fab fa-linkedin-in"></i>
         </a>
       </li>
@@ -928,7 +996,7 @@ waiting for server to start.... done
       
       
       <li>
-        <a href="whatsapp://send?text=Mac13%e7%bc%96%e8%af%91%e5%ae%89%e8%a3%85Postgres15%e5%8f%8a%e5%88%9d%e5%a7%8b%e5%8c%96%e9%85%8d%e7%bd%ae%e7%ac%94%e8%ae%b0%20/post/mac13-postgres15-startup/" target="_blank" rel="noopener" class="share-btn-whatsapp" aria-label="whatsapp">
+        <a href="whatsapp://send?text=Mac13%e7%bc%96%e8%af%91%e5%ae%89%e8%a3%85Postgres15.2%e5%8f%8a%e5%88%9d%e5%a7%8b%e5%8c%96%e9%85%8d%e7%bd%ae%e7%ac%94%e8%ae%b0%20/post/mac13-postgres15-startup/" target="_blank" rel="noopener" class="share-btn-whatsapp" aria-label="whatsapp">
           <i class="fab fa-whatsapp"></i>
         </a>
       </li>
@@ -941,7 +1009,7 @@ waiting for server to start.... done
       
       
       <li>
-        <a href="https://service.weibo.com/share/share.php?url=/post/mac13-postgres15-startup/&amp;title=Mac13%e7%bc%96%e8%af%91%e5%ae%89%e8%a3%85Postgres15%e5%8f%8a%e5%88%9d%e5%a7%8b%e5%8c%96%e9%85%8d%e7%bd%ae%e7%ac%94%e8%ae%b0" target="_blank" rel="noopener" class="share-btn-weibo" aria-label="weibo">
+        <a href="https://service.weibo.com/share/share.php?url=/post/mac13-postgres15-startup/&amp;title=Mac13%e7%bc%96%e8%af%91%e5%ae%89%e8%a3%85Postgres15.2%e5%8f%8a%e5%88%9d%e5%a7%8b%e5%8c%96%e9%85%8d%e7%bd%ae%e7%ac%94%e8%ae%b0" target="_blank" rel="noopener" class="share-btn-weibo" aria-label="weibo">
           <i class="fab fa-weibo"></i>
         </a>
       </li>

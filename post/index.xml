@@ -13,7 +13,7 @@
     </image>
     
     <item>
-      <title>Mac13编译安装Postgres15及初始化配置笔记</title>
+      <title>Mac13编译安装Postgres15.2及初始化配置笔记</title>
       <link>/post/mac13-postgres15-startup/</link>
       <pubDate>Wed, 10 May 2023 01:16:22 +0800</pubDate>
       <guid>/post/mac13-postgres15-startup/</guid>
@@ -51,6 +51,74 @@
 &lt;/code&gt;&lt;/pre&gt;&lt;p&gt;启动pgsql服务：&lt;/p&gt;
 &lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;/usr/local/pgsql/bin/pg_ctl -D /Users/weirdgiser/Data/pgsql15/data -l logfile start
 waiting for server to start.... done
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;创建测试数据库&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;/usr/local/pgsql/bin/createdb test
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;连接测试数据库&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;/usr/local/pgsql/bin/psql test
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;通过DBeaver连接:
+若有多个数据库版本，注意选择合适的客户端
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure  &gt;
+  &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img alt=&#34;&#34; srcset=&#34;
+               /post/mac13-postgres15-startup/images/multi_version_hu0ade19df3b0ca7b9b51dbaa7ee3980c9_266057_d710a1248a6b7bf781890a7ec83e2314.webp 400w,
+               /post/mac13-postgres15-startup/images/multi_version_hu0ade19df3b0ca7b9b51dbaa7ee3980c9_266057_0ec573ccc97c0d27d3678514af6afb45.webp 760w,
+               /post/mac13-postgres15-startup/images/multi_version_hu0ade19df3b0ca7b9b51dbaa7ee3980c9_266057_1200x1200_fit_q75_h2_lanczos_3.webp 1200w&#34;
+               src=&#34;/post/mac13-postgres15-startup/images/multi_version_hu0ade19df3b0ca7b9b51dbaa7ee3980c9_266057_d710a1248a6b7bf781890a7ec83e2314.webp&#34;
+               width=&#34;760&#34;
+               height=&#34;651&#34;
+               loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+  &lt;/div&gt;&lt;/figure&gt;
+&lt;/p&gt;
+&lt;img src=&#34;images/2023-05-21-11-41-12-image.png&#34; title=&#34;&#34; alt=&#34;&#34; data-align=&#34;inline&#34;&gt;
+&lt;p&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure  &gt;
+  &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img alt=&#34;&#34; srcset=&#34;
+               /post/mac13-postgres15-startup/images/2023-05-21-11-44-15-image_hu9efb4eb19564ac2c721336d4e45203ea_319986_19ec1a98f213032a97ed873ccb480c32.webp 400w,
+               /post/mac13-postgres15-startup/images/2023-05-21-11-44-15-image_hu9efb4eb19564ac2c721336d4e45203ea_319986_d4bbf5f77b13a1cb76f27c48f1dc7c79.webp 760w,
+               /post/mac13-postgres15-startup/images/2023-05-21-11-44-15-image_hu9efb4eb19564ac2c721336d4e45203ea_319986_1200x1200_fit_q75_h2_lanczos_3.webp 1200w&#34;
+               src=&#34;/post/mac13-postgres15-startup/images/2023-05-21-11-44-15-image_hu9efb4eb19564ac2c721336d4e45203ea_319986_19ec1a98f213032a97ed873ccb480c32.webp&#34;
+               width=&#34;582&#34;
+               height=&#34;760&#34;
+               loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+  &lt;/div&gt;&lt;/figure&gt;
+&lt;/p&gt;
+&lt;h2 id=&#34;常用命令&#34;&gt;常用命令&lt;/h2&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;\l 列举数据库
+\c DB 连接数据库
+\d 列举数据表
+\q 退出
 &lt;/code&gt;&lt;/pre&gt;</description>
     </item>
     
@@ -611,6 +679,102 @@ waiting for server to start.... done
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/li&gt;
 &lt;li&gt;
 &lt;p&gt;……&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;代码检查工具&#34;&gt;代码检查工具&lt;/h2&gt;
+&lt;p&gt;可通过源代码错误和代码质量检查器辅助检查代码可读性&lt;/p&gt;
+&lt;h3 id=&#34;pylint&#34;&gt;pylint&lt;/h3&gt;
+&lt;p&gt;pylint通过与PEP8标准进行一致性对比，为待检查代码打分。常见消息码：&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;R: 违反“良好实践”原则
+C: 违反编程规范
+W: 不严重的编程问题
+E: 严重的编程问题（可能是错误）
+F: 致命错误，pylint无法运行
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure  &gt;
+  &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img alt=&#34;&#34; srcset=&#34;
+               /post/python-readability-note/images/pylint_hufe677db97d3ca52c4f17e566558f64ba_143750_1089e03d25e4d858912f41e73da267a4.webp 400w,
+               /post/python-readability-note/images/pylint_hufe677db97d3ca52c4f17e566558f64ba_143750_c8fc231ce825f431ea7c051ebd07a814.webp 760w,
+               /post/python-readability-note/images/pylint_hufe677db97d3ca52c4f17e566558f64ba_143750_1200x1200_fit_q75_h2_lanczos_3.webp 1200w&#34;
+               src=&#34;/post/python-readability-note/images/pylint_hufe677db97d3ca52c4f17e566558f64ba_143750_1089e03d25e4d858912f41e73da267a4.webp&#34;
+               width=&#34;760&#34;
+               height=&#34;276&#34;
+               loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+  &lt;/div&gt;&lt;/figure&gt;
+&lt;/p&gt;
+&lt;p&gt;注意：pylint默认检查最大行长为100，而PEP8建议行最大字符数为79，若需要对齐PEP8，可通过参数调整检查规则，如&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt; pylint --max-line-length&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;m&#34;&gt;79&lt;/span&gt; Projects/project1/fake_name.py
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;pycodestyle&#34;&gt;pycodestyle&lt;/h3&gt;
+&lt;h3 id=&#34;flake8&#34;&gt;Flake8&lt;/h3&gt;
+&lt;h3 id=&#34;pydocstring&#34;&gt;pydocstring&lt;/h3&gt;
+&lt;p&gt;文档字符串检查工具，检查文档字符串是否符合&lt;a href=&#34;https://peps.python.org/pep-0257/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;PEP257标准&lt;/a&gt;&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt; pip install pydocstyle
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure  &gt;
+  &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img alt=&#34;&#34; srcset=&#34;
+               /post/python-readability-note/images/pydocstyle_hu273e6218728d84c1beba536d789bd66f_130463_e83212fa62c7bf75b695a4b83c38ec39.webp 400w,
+               /post/python-readability-note/images/pydocstyle_hu273e6218728d84c1beba536d789bd66f_130463_bb238b301f2cdd4869df9ad4de1dfe20.webp 760w,
+               /post/python-readability-note/images/pydocstyle_hu273e6218728d84c1beba536d789bd66f_130463_1200x1200_fit_q75_h2_lanczos_3.webp 1200w&#34;
+               src=&#34;/post/python-readability-note/images/pydocstyle_hu273e6218728d84c1beba536d789bd66f_130463_e83212fa62c7bf75b695a4b83c38ec39.webp&#34;
+               width=&#34;760&#34;
+               height=&#34;262&#34;
+               loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+  &lt;/div&gt;&lt;/figure&gt;
+&lt;/p&gt;
+&lt;h2 id=&#34;编程规范更多参考&#34;&gt;编程规范更多参考&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;PEP 8编程规范&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;PEP 257指导准则&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Google编程规范&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Google编程规范范例&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Numpy文档字符串标准&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Numpy文档字符串范例&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;reStructuredText模块及文档&lt;/p&gt;
 &lt;/li&gt;
 &lt;/ul&gt;
 </description>

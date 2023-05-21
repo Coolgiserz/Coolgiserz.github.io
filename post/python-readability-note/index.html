@@ -949,6 +949,102 @@
 <p>……</p>
 </li>
 </ul>
+<h2 id="代码检查工具">代码检查工具</h2>
+<p>可通过源代码错误和代码质量检查器辅助检查代码可读性</p>
+<h3 id="pylint">pylint</h3>
+<p>pylint通过与PEP8标准进行一致性对比，为待检查代码打分。常见消息码：</p>
+<pre tabindex="0"><code>R: 违反“良好实践”原则
+C: 违反编程规范
+W: 不严重的编程问题
+E: 严重的编程问题（可能是错误）
+F: 致命错误，pylint无法运行
+</code></pre><p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<figure  >
+  <div class="d-flex justify-content-center">
+    <div class="w-100" ><img alt="" srcset="
+               /post/python-readability-note/images/pylint_hufe677db97d3ca52c4f17e566558f64ba_143750_1089e03d25e4d858912f41e73da267a4.webp 400w,
+               /post/python-readability-note/images/pylint_hufe677db97d3ca52c4f17e566558f64ba_143750_c8fc231ce825f431ea7c051ebd07a814.webp 760w,
+               /post/python-readability-note/images/pylint_hufe677db97d3ca52c4f17e566558f64ba_143750_1200x1200_fit_q75_h2_lanczos_3.webp 1200w"
+               src="/post/python-readability-note/images/pylint_hufe677db97d3ca52c4f17e566558f64ba_143750_1089e03d25e4d858912f41e73da267a4.webp"
+               width="760"
+               height="276"
+               loading="lazy" data-zoomable /></div>
+  </div></figure>
+</p>
+<p>注意：pylint默认检查最大行长为100，而PEP8建议行最大字符数为79，若需要对齐PEP8，可通过参数调整检查规则，如</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl"> pylint --max-line-length<span class="o">=</span><span class="m">79</span> Projects/project1/fake_name.py
+</span></span></code></pre></div><h3 id="pycodestyle">pycodestyle</h3>
+<h3 id="flake8">Flake8</h3>
+<h3 id="pydocstring">pydocstring</h3>
+<p>文档字符串检查工具，检查文档字符串是否符合<a href="https://peps.python.org/pep-0257/" target="_blank" rel="noopener">PEP257标准</a></p>
+<pre tabindex="0"><code> pip install pydocstyle
+</code></pre><p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<figure  >
+  <div class="d-flex justify-content-center">
+    <div class="w-100" ><img alt="" srcset="
+               /post/python-readability-note/images/pydocstyle_hu273e6218728d84c1beba536d789bd66f_130463_e83212fa62c7bf75b695a4b83c38ec39.webp 400w,
+               /post/python-readability-note/images/pydocstyle_hu273e6218728d84c1beba536d789bd66f_130463_bb238b301f2cdd4869df9ad4de1dfe20.webp 760w,
+               /post/python-readability-note/images/pydocstyle_hu273e6218728d84c1beba536d789bd66f_130463_1200x1200_fit_q75_h2_lanczos_3.webp 1200w"
+               src="/post/python-readability-note/images/pydocstyle_hu273e6218728d84c1beba536d789bd66f_130463_e83212fa62c7bf75b695a4b83c38ec39.webp"
+               width="760"
+               height="262"
+               loading="lazy" data-zoomable /></div>
+  </div></figure>
+</p>
+<h2 id="编程规范更多参考">编程规范更多参考</h2>
+<ul>
+<li>
+<p>PEP 8编程规范</p>
+</li>
+<li>
+<p>PEP 257指导准则</p>
+</li>
+<li>
+<p>Google编程规范</p>
+</li>
+<li>
+<p>Google编程规范范例</p>
+</li>
+<li>
+<p>Numpy文档字符串标准</p>
+</li>
+<li>
+<p>Numpy文档字符串范例</p>
+</li>
+<li>
+<p>reStructuredText模块及文档</p>
+</li>
+</ul>
 
     </div>
 
