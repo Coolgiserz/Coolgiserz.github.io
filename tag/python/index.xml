@@ -5,12 +5,93 @@
     <link>/tag/python/</link>
       <atom:link href="/tag/python/index.xml" rel="self" type="application/rss+xml" />
     <description>Python</description>
-    <generator>Wowchemy (https://wowchemy.com)</generator><language>en-us</language><lastBuildDate>Sat, 20 May 2023 23:49:19 +0800</lastBuildDate>
+    <generator>Wowchemy (https://wowchemy.com)</generator><language>en-us</language><lastBuildDate>Thu, 25 May 2023 21:14:36 +0800</lastBuildDate>
     <image>
       <url>/media/icon_hue03491371183284312b8b116a73ae5ab_79511_512x512_fill_lanczos_center_3.png</url>
       <title>Python</title>
       <link>/tag/python/</link>
     </image>
+    
+    <item>
+      <title>Python执行系统命令的几种方法</title>
+      <link>/post/execute-system-command-in_python/</link>
+      <pubDate>Thu, 25 May 2023 21:14:36 +0800</pubDate>
+      <guid>/post/execute-system-command-in_python/</guid>
+      <description>&lt;h2 id=&#34;问题引出&#34;&gt;问题引出&lt;/h2&gt;
+&lt;p&gt;假定面临一个需求，需要在Python程序中调用系统命令/其它可执行程序完成一些事项（下载文件） ，那么有哪些方法可以实现需求？一个示例的 代码结构如下：&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-python&#34; data-lang=&#34;python&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;k&#34;&gt;class&lt;/span&gt; &lt;span class=&#34;nc&#34;&gt;CMDExecutor&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;k&#34;&gt;def&lt;/span&gt; &lt;span class=&#34;fm&#34;&gt;__init__&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;bp&#34;&gt;self&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;executable_path&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;):&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        &lt;span class=&#34;bp&#34;&gt;self&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;executable&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;executable_path&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;k&#34;&gt;def&lt;/span&gt; &lt;span class=&#34;nf&#34;&gt;execute&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;bp&#34;&gt;self&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;params&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;kc&#34;&gt;None&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;):&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        &lt;span class=&#34;s2&#34;&gt;&amp;#34;&amp;#34;&amp;#34;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;s2&#34;&gt;        执行系统命令
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;s2&#34;&gt;        :param command:
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;s2&#34;&gt;        :return:
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;s2&#34;&gt;        &amp;#34;&amp;#34;&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        &lt;span class=&#34;k&#34;&gt;if&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;paramsis&lt;/span&gt; &lt;span class=&#34;kc&#34;&gt;None&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;            &lt;span class=&#34;n&#34;&gt;params&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;bp&#34;&gt;self&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;__params&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        &lt;span class=&#34;c1&#34;&gt;# TODO: 执行系统命令&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        &lt;span class=&#34;k&#34;&gt;pass&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;方法一通过ossystem执行系统命令&#34;&gt;方法一：通过os.system执行系统命令&lt;/h3&gt;
+&lt;p&gt;根据官方文档对os.system的介绍，&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;    os.system()通过调用标准 C 函数 system() 来实现在子进程中执行命令（字符串）。
+对 sys.stdin 的更改等不会反映在所执行命令的环境中。 
+如果 command 生成了任何输出，它将被发送到解释器的标准输出流。 
+
+    C 标准没有指明这个 C 函数返回值的含义，因此这个 Python 函数的返回值取决于具体系统。
+在 Unix 上，返回值为进程的退出状态，以针对 wait() 而指定的格式进行编码。
+在 Windows 上，返回值是运行 command 后系统 Shell 返回的值。该 Shell 由 Windows
+ 环境变量 COMSPEC: 给出：通常是 cmd.exe，它会返回命令的退出状态。
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;具体操作方式示例1：&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;os.system(&amp;#34; &amp;#34;.join([self.executable, params]))
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;效果：在命令正确的情况下，os.system会启动一个子进程，并阻塞父进程，直到子进程返回结果。&lt;/p&gt;
+&lt;p&gt;具体操作方式示例2：如果想要避免主进程被os.system阻塞，可以使用windows的start命令开启一个cmd窗口，代码如下 ：&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-python&#34; data-lang=&#34;python&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;result&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;os&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;system&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34; &amp;#34;&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;join&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;([&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;start&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;bp&#34;&gt;self&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;executable&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;params&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;]))&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;但方式2也有问题，如果命令错误（如通过下载器下载文件，指定的url有误），则cmd窗口会挂起（空操作），要实现完整的程序，需要考虑跟踪该cmd子进程并杀死空操作的cmd进程。&lt;/p&gt;
+&lt;h3 id=&#34;方法二ospopen&#34;&gt;方法二：os.popen&lt;/h3&gt;
+&lt;p&gt;新建一个子进程，在子进程中执行命令，并创建一个管道用于父进程和子进程之间的通信。父进程可以从管道读消息或者向管道写消息。&lt;/p&gt;
+&lt;p&gt;与os.system的明显不同是popen方便父子进程交互，默认不阻塞父进程，除非父进程要从 子进程中读信息&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;p= os.popen(&amp;#34; &amp;#34;.join([self.executable, command]))
+print(p.name)
+p.read() # 会阻塞父进程
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;效果简介：非阻塞方式启用子进程执行命令&lt;/p&gt;
+&lt;h3 id=&#34;方法三subprocesspopen&#34;&gt;方法三：subprocess.Popen()&lt;/h3&gt;
+&lt;p&gt;根据官方文档描述，&lt;a href=&#34;https://docs.python.org/zh-cn/3/library/subprocess.html#module-subprocess&#34; title=&#34;subprocess: Subprocess management.&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;&lt;code&gt;subprocess&lt;/code&gt;&lt;/a&gt; 模块允许你生成新的进程，连接它们的输入、输出、错误管道，并且获取它们的返回码。此模块打算代替一些老旧的模块与功能：&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;os.system
+os.spawn*
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;就功能而言，subprocess.Popen模块允许我们更方便地跟踪子进程的状态&lt;/p&gt;
+&lt;p&gt;具体使用方式示例 ：&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-python&#34; data-lang=&#34;python&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;p&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;subprocess&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;Popen&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34; &amp;#34;&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;join&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;([&lt;/span&gt;&lt;span class=&#34;bp&#34;&gt;self&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;executable&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;command&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;]),&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;shell&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;kc&#34;&gt;False&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;stdin&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;subprocess&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;DEVNULL&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;stdout&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;subprocess&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;DEVNULL&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;                         &lt;span class=&#34;n&#34;&gt;stderr&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;subprocess&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;DEVNULL&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;p的常用属性和方法包括：&lt;/p&gt;
+&lt;p&gt;pid： 子进程PID。需要注意如果使用Popen构造函数时将shell参数设置为True，则会启用一个系统终端，默认返回的子进程id是该终端进程的id，而不是在该终端上所执行命令启用的子进程id。&lt;/p&gt;
+&lt;p&gt;kill()： 杀死子进程。&lt;/p&gt;
+&lt;p&gt;因此若要杀死通过Popen创建的子进程，只需要调用p.kill()或者调用os模块下的方法，把进程id和信号作为参数传递给kill方法即可。&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;os.kill(p.pid, signal.SIGTERM)
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;备注：SIGTERM和SIGKILL都是终止进程的信号，前者较为温和（可能 被进程捕获并 忽略），后者是强制终止信号，会杀死子进程，拒绝抵抗。&lt;/p&gt;
+&lt;h2 id=&#34;参考阅读&#34;&gt;参考阅读&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;调试时遇到一些问题：调用os.killpg(p.pid, signal.SIGUSR1)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;报错：AttributeError: module &amp;lsquo;signal&amp;rsquo; has no attribute &amp;lsquo;SIGUSR1&amp;rsquo;&lt;/p&gt;
+&lt;p&gt;原因：参考&lt;a href=&#34;https://github.com/rinongal/textual_inversion/issues/12&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;issue&lt;/a&gt;&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;&amp;#34;windows doesn&amp;#39;t have the same SIGUSR signals. After a quick search, the suggestion
+ from other sources was to revert to using SIGTERM when running on windows.&amp;#34;
+&lt;/code&gt;&lt;/pre&gt;&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://blog.csdn.net/bcfdsagbfcisbg/article/details/78134172&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;# python中os.system、os.popen、subprocess.popen的区别&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;参考文档&#34;&gt;参考文档&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a href=&#34;https://docs.python.org/zh-cn/3/library/os.html#os.system&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;python os.system官方文档&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a href=&#34;https://docs.python.org/zh-cn/3/library/subprocess.html#subprocess.Popen&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;subprocess &amp;mdash; 子进程管理 — Python 3.11.3 文档&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
     
     <item>
       <title>《Python软件架构》知识点练习代码</title>
@@ -26,7 +107,27 @@
       <link>/project/impractical-python-projects-practices/</link>
       <pubDate>Wed, 29 Mar 2023 00:14:49 +0800</pubDate>
       <guid>/project/impractical-python-projects-practices/</guid>
-      <description></description>
+      <description>&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;虚假姓名生成器&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;寻找回文单词&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;寻找回文短语&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;寻找易位词&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;寻找易位短语&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;……&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+</description>
     </item>
     
     <item>
