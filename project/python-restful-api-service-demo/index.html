@@ -1243,14 +1243,55 @@ Hello, world! 你好世界！%
 <p>flask提供了uri_for方法用于构造url。</p>
 <p><a href="https://stackoverflow.com/questions/7478366/create-dynamic-urls-in-flask-with-url-for" target="_blank" rel="noopener">Create dynamic URLs in Flask with url_for()</a></p>
 <h4 id="加强restful-web-service的安全性">加强RESTful web service的安全性</h4>
-<p>有时候我们不希望接口对所有人公开，因此需要为接口提供认证功能，要求只有通过认证的客户端方能访问RESTful接口。</p>
+<p>有时候我们不希望接口对所有人公开，因此需要为接口提供认证功能，要求只有通过认证的客户端方能访问RESTful接口。一种简单认证方式是遵循HTTP协议的认证机制，这一功能可通过flask-httpauth扩展方便地实现。</p>
 <p>Flask-HTTPAuth</p>
 <pre tabindex="0"><code>pip install flask-httpauth
-</code></pre><h3 id="小结">小结</h3>
+</code></pre><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="kn">from</span> <span class="nn">flask_httpauth</span> <span class="kn">import</span> <span class="n">HTTPBasicAuth</span>
+</span></span><span class="line"><span class="cl"><span class="n">auth</span> <span class="o">=</span> <span class="n">HTTPBasicAuth</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nd">@auth</span><span class="o">.</span><span class="n">get_password</span>
+</span></span><span class="line"><span class="cl"><span class="k">def</span> <span class="nf">authenticate</span><span class="p">(</span><span class="n">username</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">    <span class="k">if</span> <span class="n">username</span> <span class="o">==</span> <span class="s2">&#34;coolcats&#34;</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="s2">&#34;restful&#34;</span>
+</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="kc">None</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nd">@auth</span><span class="o">.</span><span class="n">error_handler</span>
+</span></span><span class="line"><span class="cl"><span class="k">def</span> <span class="nf">unauthorized</span><span class="p">():</span>
+</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="n">make_response</span><span class="p">(</span><span class="n">jsonify</span><span class="p">({</span><span class="s2">&#34;error&#34;</span><span class="p">:</span> <span class="s2">&#34;unauthorized access&#34;</span><span class="p">}),</span> <span class="mi">401</span><span class="p">)</span>
+</span></span></code></pre></div><p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<figure  >
+  <div class="d-flex justify-content-center">
+    <div class="w-100" ><img alt="" srcset="
+               /project/python-restful-api-service-demo/images/auth_hud839a269878409379b23cccd610a1bf3_303978_a94d17b680888d825ec29ae707a5214c.webp 400w,
+               /project/python-restful-api-service-demo/images/auth_hud839a269878409379b23cccd610a1bf3_303978_30e588c44ae4da7630fd359ac4ed1b44.webp 760w,
+               /project/python-restful-api-service-demo/images/auth_hud839a269878409379b23cccd610a1bf3_303978_1200x1200_fit_q75_h2_lanczos_3.webp 1200w"
+               src="/project/python-restful-api-service-demo/images/auth_hud839a269878409379b23cccd610a1bf3_303978_a94d17b680888d825ec29ae707a5214c.webp"
+               width="760"
+               height="445"
+               loading="lazy" data-zoomable /></div>
+  </div></figure>
+</p>
+<h3 id="小结">小结</h3>
 <h4 id="put和post的区别">PUT和POST的区别</h4>
 <p><strong>HTTP <code>PUT</code> 请求方法</strong>创建一个新的资源或用请求的有效载荷替换目标资源的表示。</p>
-<p><code>PUT</code> 与 <a href="https://developer.mozilla.org/zh-CN/docs/Web/HTTP/Methods/POST" target="_blank" rel="noopener"><code>POST</code></a> 方法的区别是，<code>PUT</code> 方法是幂等的：调用一次与连续调用多次效果是相同的（即没有<em>副</em>作用），而连续调用多次相同的 <a href="https://developer.mozilla.org/zh-CN/docs/Web/HTTP/Methods/POST" target="_blank" rel="noopener"><code>POST</code></a> 方法可能会有副作用，比如多次提交同一订单</p>
+<p><code>PUT</code> 与 <a href="https://developer.mozilla.org/zh-CN/docs/Web/HTTP/Methods/POST" target="_blank" rel="noopener"><code>POST</code></a> 方法的区别是，<code>PUT</code> 方法是幂等的：调用一次与连续调用多次效果是相同的（即没有<em>副</em>作用），而连续调用多次相同的 <a href="https://developer.mozilla.org/zh-CN/docs/Web/HTTP/Methods/POST" target="_blank" rel="noopener"><code>POST</code></a> 方法可能会有副作用，比如多次提交同一订单。</p>
 <h4 id="http协议认证机制">HTTP协议认证机制</h4>
+<p>Basic和Digest</p>
 <h3 id="项目地址">项目地址</h3>
 <p>pass</p>
 <h3 id="参考文档">参考文档</h3>

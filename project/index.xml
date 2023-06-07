@@ -456,14 +456,55 @@ Hello, world! 你好世界！%
 &lt;p&gt;flask提供了uri_for方法用于构造url。&lt;/p&gt;
 &lt;p&gt;&lt;a href=&#34;https://stackoverflow.com/questions/7478366/create-dynamic-urls-in-flask-with-url-for&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Create dynamic URLs in Flask with url_for()&lt;/a&gt;&lt;/p&gt;
 &lt;h4 id=&#34;加强restful-web-service的安全性&#34;&gt;加强RESTful web service的安全性&lt;/h4&gt;
-&lt;p&gt;有时候我们不希望接口对所有人公开，因此需要为接口提供认证功能，要求只有通过认证的客户端方能访问RESTful接口。&lt;/p&gt;
+&lt;p&gt;有时候我们不希望接口对所有人公开，因此需要为接口提供认证功能，要求只有通过认证的客户端方能访问RESTful接口。一种简单认证方式是遵循HTTP协议的认证机制，这一功能可通过flask-httpauth扩展方便地实现。&lt;/p&gt;
 &lt;p&gt;Flask-HTTPAuth&lt;/p&gt;
 &lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;pip install flask-httpauth
-&lt;/code&gt;&lt;/pre&gt;&lt;h3 id=&#34;小结&#34;&gt;小结&lt;/h3&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-python&#34; data-lang=&#34;python&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;kn&#34;&gt;from&lt;/span&gt; &lt;span class=&#34;nn&#34;&gt;flask_httpauth&lt;/span&gt; &lt;span class=&#34;kn&#34;&gt;import&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;HTTPBasicAuth&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;auth&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;HTTPBasicAuth&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;()&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nd&#34;&gt;@auth&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;get_password&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;k&#34;&gt;def&lt;/span&gt; &lt;span class=&#34;nf&#34;&gt;authenticate&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;username&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;):&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;k&#34;&gt;if&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;username&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;==&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;coolcats&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        &lt;span class=&#34;k&#34;&gt;return&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;restful&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;k&#34;&gt;return&lt;/span&gt; &lt;span class=&#34;kc&#34;&gt;None&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nd&#34;&gt;@auth&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;error_handler&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;k&#34;&gt;def&lt;/span&gt; &lt;span class=&#34;nf&#34;&gt;unauthorized&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;():&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;k&#34;&gt;return&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;make_response&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;jsonify&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;({&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;error&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;unauthorized access&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;}),&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;401&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure  &gt;
+  &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img alt=&#34;&#34; srcset=&#34;
+               /project/python-restful-api-service-demo/images/auth_hud839a269878409379b23cccd610a1bf3_303978_a94d17b680888d825ec29ae707a5214c.webp 400w,
+               /project/python-restful-api-service-demo/images/auth_hud839a269878409379b23cccd610a1bf3_303978_30e588c44ae4da7630fd359ac4ed1b44.webp 760w,
+               /project/python-restful-api-service-demo/images/auth_hud839a269878409379b23cccd610a1bf3_303978_1200x1200_fit_q75_h2_lanczos_3.webp 1200w&#34;
+               src=&#34;/project/python-restful-api-service-demo/images/auth_hud839a269878409379b23cccd610a1bf3_303978_a94d17b680888d825ec29ae707a5214c.webp&#34;
+               width=&#34;760&#34;
+               height=&#34;445&#34;
+               loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+  &lt;/div&gt;&lt;/figure&gt;
+&lt;/p&gt;
+&lt;h3 id=&#34;小结&#34;&gt;小结&lt;/h3&gt;
 &lt;h4 id=&#34;put和post的区别&#34;&gt;PUT和POST的区别&lt;/h4&gt;
 &lt;p&gt;&lt;strong&gt;HTTP &lt;code&gt;PUT&lt;/code&gt; 请求方法&lt;/strong&gt;创建一个新的资源或用请求的有效载荷替换目标资源的表示。&lt;/p&gt;
-&lt;p&gt;&lt;code&gt;PUT&lt;/code&gt; 与 &lt;a href=&#34;https://developer.mozilla.org/zh-CN/docs/Web/HTTP/Methods/POST&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;&lt;code&gt;POST&lt;/code&gt;&lt;/a&gt; 方法的区别是，&lt;code&gt;PUT&lt;/code&gt; 方法是幂等的：调用一次与连续调用多次效果是相同的（即没有&lt;em&gt;副&lt;/em&gt;作用），而连续调用多次相同的 &lt;a href=&#34;https://developer.mozilla.org/zh-CN/docs/Web/HTTP/Methods/POST&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;&lt;code&gt;POST&lt;/code&gt;&lt;/a&gt; 方法可能会有副作用，比如多次提交同一订单&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;PUT&lt;/code&gt; 与 &lt;a href=&#34;https://developer.mozilla.org/zh-CN/docs/Web/HTTP/Methods/POST&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;&lt;code&gt;POST&lt;/code&gt;&lt;/a&gt; 方法的区别是，&lt;code&gt;PUT&lt;/code&gt; 方法是幂等的：调用一次与连续调用多次效果是相同的（即没有&lt;em&gt;副&lt;/em&gt;作用），而连续调用多次相同的 &lt;a href=&#34;https://developer.mozilla.org/zh-CN/docs/Web/HTTP/Methods/POST&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;&lt;code&gt;POST&lt;/code&gt;&lt;/a&gt; 方法可能会有副作用，比如多次提交同一订单。&lt;/p&gt;
 &lt;h4 id=&#34;http协议认证机制&#34;&gt;HTTP协议认证机制&lt;/h4&gt;
+&lt;p&gt;Basic和Digest&lt;/p&gt;
 &lt;h3 id=&#34;项目地址&#34;&gt;项目地址&lt;/h3&gt;
 &lt;p&gt;pass&lt;/p&gt;
 &lt;h3 id=&#34;参考文档&#34;&gt;参考文档&lt;/h3&gt;
