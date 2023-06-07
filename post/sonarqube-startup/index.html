@@ -1,0 +1,1765 @@
+<!DOCTYPE html><html lang="en-us" >
+
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  
+  
+  
+    <meta name="generator" content="Wowchemy 5.5.0 for Hugo" />
+  
+
+  
+  
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+  
+  
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  
+
+  
+  
+  
+    
+      
+      <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Roboto+Mono&family=Roboto:wght@400;700&display=swap">
+      <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Roboto+Mono&family=Roboto:wght@400;700&display=swap" media="print" onload="this.media='all'">
+    
+  
+
+  
+  
+  
+  
+  
+    
+    
+    
+  
+  
+
+  <meta name="author" content="CoolCats" />
+
+  
+  
+  
+    
+  
+  <meta name="description" content="环境安装配置 本地配置环境 按照官网文档入门教程，Sonarqube服务需要Java17环境，否则无法启动服务，报错如下。
+     下载安装Java17，Java下载地址： Java Archive Downloads - Java SE 17
+  配置环境变量JAVA_HOME, CLASSPATH
+  尝试启动 sonarqube服务，依然报如上错误，需要设置java虚拟机内存（设置为512M）后方解决上述错误。
+但启动时报新错误（与elasticsearch有关 ）：
+   由于sonarqube官方文档未明确说明需要配置elasticsearch，因此不考虑配置。" />
+
+  
+  <link rel="alternate" hreflang="en-us" href="/post/sonarqube-startup/" />
+
+  
+  
+  
+    <meta name="theme-color" content="#1565c0" />
+  
+
+  
+  
+    
+    <script src="/js/mathjax-config.js"></script>
+  
+
+  
+
+  <link rel="stylesheet" href="/css/vendor-bundle.min.c7b8d9abd591ba2253ea42747e3ac3f5.css" media="print" onload="this.media='all'">
+
+  
+  
+  
+    
+    
+      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/academicons@1.9.1/css/academicons.min.css" integrity="sha512-W0xM4mr6dEP9nREo7Z9z+9X70wytKvMGeDsj7ps2+xg5QPrEBXC8tAW1IFnzjR6eoJ90JmCnFzerQJTLzIEHjA==" crossorigin="anonymous" media="print" onload="this.media='all'">
+    
+
+    
+    
+    
+    
+      
+      
+    
+    
+    
+
+    
+    
+    
+      
+    
+    
+      
+      
+        
+          <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@10.2.1/build/styles/github.min.css" crossorigin="anonymous" title="hl-light" media="print" onload="this.media='all'">
+          <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@10.2.1/build/styles/dracula.min.css" crossorigin="anonymous" title="hl-dark" media="print" onload="this.media='all'" disabled>
+        
+      
+    
+
+    
+    
+    
+      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.7.1/dist/leaflet.min.css" integrity="" crossorigin="anonymous" media="print" onload="this.media='all'">
+    
+
+    
+
+    
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js" integrity="" crossorigin="anonymous" async></script>
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+  
+
+  
+  
+  
+  
+  
+  <link rel="stylesheet" href="/css/wowchemy.1052fab8b7700a3dc49ee23683097d66.css" />
+
+  
+
+
+
+  
+
+
+  
+
+
+  
+
+
+  <script>
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?51ae6db546b05b91d4053193ba49123d";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+  
+  
+  
+
+  
+
+  
+    <link rel="manifest" href="/manifest.webmanifest" />
+  
+
+  <link rel="icon" type="image/png" href="/media/icon_hue03491371183284312b8b116a73ae5ab_79511_32x32_fill_lanczos_center_3.png" />
+  <link rel="apple-touch-icon" type="image/png" href="/media/icon_hue03491371183284312b8b116a73ae5ab_79511_180x180_fill_lanczos_center_3.png" />
+
+  <link rel="canonical" href="/post/sonarqube-startup/" />
+
+  
+  
+  
+  
+  
+  
+  
+  
+    
+    
+  
+  
+
+  
+  
+    
+    
+  
+  <meta property="twitter:card" content="summary" />
+  
+    <meta property="twitter:site" content="@wowchemy" />
+    <meta property="twitter:creator" content="@wowchemy" />
+  
+  <meta property="og:site_name" content="CoolCats" />
+  <meta property="og:url" content="/post/sonarqube-startup/" />
+  <meta property="og:title" content="Sonarqube安装配置及基本使用 | CoolCats" />
+  <meta property="og:description" content="环境安装配置 本地配置环境 按照官网文档入门教程，Sonarqube服务需要Java17环境，否则无法启动服务，报错如下。
+     下载安装Java17，Java下载地址： Java Archive Downloads - Java SE 17
+  配置环境变量JAVA_HOME, CLASSPATH
+  尝试启动 sonarqube服务，依然报如上错误，需要设置java虚拟机内存（设置为512M）后方解决上述错误。
+但启动时报新错误（与elasticsearch有关 ）：
+   由于sonarqube官方文档未明确说明需要配置elasticsearch，因此不考虑配置。" /><meta property="og:image" content="/media/icon_hue03491371183284312b8b116a73ae5ab_79511_512x512_fill_lanczos_center_3.png" />
+    <meta property="twitter:image" content="/media/icon_hue03491371183284312b8b116a73ae5ab_79511_512x512_fill_lanczos_center_3.png" /><meta property="og:locale" content="en-us" />
+  
+    
+      <meta
+        property="article:published_time"
+        content="2023-06-07T21:33:24&#43;08:00"
+      />
+    
+    <meta property="article:modified_time" content="2023-06-07T21:33:24&#43;08:00">
+  
+
+  
+
+
+    
+
+
+
+
+
+
+  
+
+
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "/post/sonarqube-startup/"
+  },
+  "headline": "Sonarqube安装配置及基本使用",
+  
+  "datePublished": "2023-06-07T21:33:24+08:00",
+  "dateModified": "2023-06-07T21:33:24+08:00",
+  
+  "author": {
+    "@type": "Person",
+    "name": "CoolCats"
+  },
+  
+  "publisher": {
+    "@type": "Organization",
+    "name": "CoolCats",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "/media/icon_hue03491371183284312b8b116a73ae5ab_79511_192x192_fill_lanczos_center_3.png"
+    }
+  },
+  "description": "环境安装配置 本地配置环境 按照官网文档入门教程，Sonarqube服务需要Java17环境，否则无法启动服务，报错如下。\n     下载安装Java17，Java下载地址： Java Archive Downloads - Java SE 17\n  配置环境变量JAVA_HOME, CLASSPATH\n  尝试启动 sonarqube服务，依然报如上错误，需要设置java虚拟机内存（设置为512M）后方解决上述错误。\n但启动时报新错误（与elasticsearch有关 ）：\n   由于sonarqube官方文档未明确说明需要配置elasticsearch，因此不考虑配置。"
+}
+</script>
+
+  
+
+  
+
+  
+
+  
+
+
+
+
+
+  <title>Sonarqube安装配置及基本使用 | CoolCats</title>
+</head>
+
+
+<body id="top" data-spy="scroll" data-offset="70" data-target="#TableOfContents" class="page-wrapper   " data-wc-page-id="26c4e56ada307ba62de7169f394aa4c9" >
+
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  <script src="/js/wowchemy-init.min.2ed908358299dd7ab553faae685c746c.js"></script>
+
+  
+
+
+<aside class="search-modal" id="search">
+  <div class="container">
+    <section class="search-header">
+
+      <div class="row no-gutters justify-content-between mb-3">
+        <div class="col-6">
+          <h1>Search</h1>
+        </div>
+        <div class="col-6 col-search-close">
+          <a class="js-search" href="#" aria-label="Close"><i class="fas fa-times-circle text-muted" aria-hidden="true"></i></a>
+        </div>
+      </div>
+
+      <div id="search-box">
+        
+        <input name="q" id="search-query" placeholder="Search..." autocapitalize="off"
+        autocomplete="off" autocorrect="off" spellcheck="false" type="search" class="form-control"
+        aria-label="Search...">
+        
+      </div>
+
+      
+      
+
+      
+
+    </section>
+    <section class="section-search-results">
+
+      <div id="search-hits">
+        
+      </div>
+
+    </section>
+  </div>
+</aside>
+
+
+
+  <div class="page-header">
+    
+
+
+
+
+
+
+
+
+
+
+
+
+<header class="header--fixed">
+  <nav class="navbar navbar-expand-lg navbar-light compensate-for-scrollbar" id="navbar-main">
+    <div class="container-xl">
+
+      
+      <div class="d-none d-lg-inline-flex">
+        <a class="navbar-brand" href="/">CoolCats</a>
+      </div>
+      
+
+      
+      <button type="button" class="navbar-toggler" data-toggle="collapse"
+              data-target="#navbar-content" aria-controls="navbar-content" aria-expanded="false" aria-label="Toggle navigation">
+      <span><i class="fas fa-bars"></i></span>
+      </button>
+      
+
+      
+      <div class="navbar-brand-mobile-wrapper d-inline-flex d-lg-none">
+        <a class="navbar-brand" href="/">CoolCats</a>
+      </div>
+      
+
+      
+      
+      <div class="navbar-collapse main-menu-item collapse justify-content-start" id="navbar-content">
+
+        
+        <ul class="navbar-nav d-md-inline-flex">
+          
+
+          
+
+          
+          
+          
+
+          
+
+          
+          
+          
+          
+
+          
+            
+              
+              
+            
+            
+          
+
+          <li class="nav-item">
+            <a class="nav-link  active" href="/post"><span>博客</span></a>
+          </li>
+
+          
+          
+
+          
+
+          
+          
+          
+            
+          
+
+          
+
+          
+          
+          
+          
+
+          
+            
+              
+              
+            
+            
+          
+
+          <li class="nav-item">
+            <a class="nav-link " href="/event"><span>趣事</span></a>
+          </li>
+
+          
+          
+
+          
+
+          
+          
+          
+            
+          
+
+          
+
+          
+          
+          
+          
+
+          
+            
+              
+              
+            
+            
+          
+
+          <li class="nav-item">
+            <a class="nav-link " href="/project"><span>项目</span></a>
+          </li>
+
+          
+          
+
+          
+
+          
+          
+          
+            
+          
+
+          
+
+          
+          
+          
+          
+
+          
+            
+              
+              
+            
+            
+          
+
+          <li class="nav-item">
+            <a class="nav-link " href="/publication"><span>论文</span></a>
+          </li>
+
+          
+          
+
+          
+
+          
+          
+          
+            
+          
+
+          
+
+          
+          
+          
+          
+
+          
+            
+              
+              
+            
+            
+          
+
+          <li class="nav-item">
+            <a class="nav-link " href="/contact"><span>联系</span></a>
+          </li>
+
+          
+          
+
+          
+
+          
+          
+          
+            
+          
+
+          
+
+          
+          
+          
+          
+
+          
+            
+              
+              
+            
+            
+          
+
+          <li class="nav-item">
+            <a class="nav-link " href="/media/files/cv"><span>简历</span></a>
+          </li>
+
+          
+          
+
+        
+
+          
+        </ul>
+      </div>
+
+      <ul class="nav-icons navbar-nav flex-row ml-auto d-flex pl-md-2">
+
+        
+        
+          
+        
+
+        
+        
+        <li class="nav-item">
+          <a class="nav-link js-search" href="#" aria-label="Search"><i class="fas fa-search" aria-hidden="true"></i></a>
+        </li>
+        
+
+        
+        
+        
+        <li class="nav-item dropdown theme-dropdown">
+          <a href="#" class="nav-link" data-toggle="dropdown" aria-haspopup="true" aria-label="Display preferences">
+            <i class="fas fa-moon" aria-hidden="true"></i>
+          </a>
+          <div class="dropdown-menu">
+            <a href="#" class="dropdown-item js-set-theme-light">
+              <span>Light</span>
+            </a>
+            <a href="#" class="dropdown-item js-set-theme-dark">
+              <span>Dark</span>
+            </a>
+            <a href="#" class="dropdown-item js-set-theme-auto">
+              <span>Automatic</span>
+            </a>
+          </div>
+        </li>
+        
+
+        
+        
+
+      </ul>
+
+    </div>
+  </nav>
+</header>
+
+
+  </div>
+
+  <div class="page-body">
+    
+    
+    
+
+    <article class="article">
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+  
+  
+<div class="article-container pt-3">
+  <h1>Sonarqube安装配置及基本使用</h1>
+
+  
+  <p class="page-subtitle">以Python项目为例</p>
+  
+
+  
+    
+
+
+<div class="article-metadata">
+
+  
+  
+
+  
+  <span class="article-date">
+    
+    
+      
+    
+    Jun 7, 2023
+  </span>
+  
+
+  
+
+  
+  <span class="middot-divider"></span>
+  <span class="article-reading-time">
+    1 min read
+  </span>
+  
+
+  
+  
+  
+  
+
+  
+  
+  <span class="middot-divider"></span>
+  <span class="article-categories">
+    <i class="fas fa-folder mr-1"></i><a href="/category/python/">Python</a></span>
+  
+
+</div>
+
+    
+
+
+
+
+
+  
+</div>
+
+
+
+  <div class="article-container">
+
+    <div class="article-style">
+      <h2 id="环境安装配置">环境安装配置</h2>
+<h3 id="本地配置环境">本地配置环境</h3>
+<p>按照官网文档入门教程，Sonarqube服务需要Java17环境，否则无法启动服务，报错如下。</p>
+<p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<figure  >
+  <div class="d-flex justify-content-center">
+    <div class="w-100" ><img alt="" srcset="
+               /post/sonarqube-startup/images/start_sonar_err1_hu2e5e788543a84268b5716abdf1ff6b24_34173_7d8963b254e6285f896f25e06d7d1443.webp 400w,
+               /post/sonarqube-startup/images/start_sonar_err1_hu2e5e788543a84268b5716abdf1ff6b24_34173_e422bab062054c951fceb0e66e0093ee.webp 760w,
+               /post/sonarqube-startup/images/start_sonar_err1_hu2e5e788543a84268b5716abdf1ff6b24_34173_1200x1200_fit_q75_h2_lanczos.webp 1200w"
+               src="/post/sonarqube-startup/images/start_sonar_err1_hu2e5e788543a84268b5716abdf1ff6b24_34173_7d8963b254e6285f896f25e06d7d1443.webp"
+               width="760"
+               height="97"
+               loading="lazy" data-zoomable /></div>
+  </div></figure>
+</p>
+<ol>
+<li>
+<p>下载安装Java17，Java下载地址： <a href="https://www.oracle.com/java/technologies/javase/jdk17-archive-downloads.html" target="_blank" rel="noopener">Java Archive Downloads - Java SE 17</a></p>
+</li>
+<li>
+<p>配置环境变量JAVA_HOME, CLASSPATH</p>
+</li>
+<li>
+<p>尝试启动 sonarqube服务，依然报如上错误，需要设置java虚拟机内存（设置为512M）后方解决上述错误。</p>
+<p>但启动时报新错误（与elasticsearch有关 ）：</p>
+<p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<figure  >
+  <div class="d-flex justify-content-center">
+    <div class="w-100" ><img src="images%5cstart_sonar_err2.jpg" alt="" loading="lazy" data-zoomable /></div>
+  </div></figure>
+
+由于<a href="https://docs.sonarqube.org/latest/requirements/prerequisites-and-overview/" target="_blank" rel="noopener">sonarqube官方文档</a>未明确说明需要配置elasticsearch，因此不考虑配置。</p>
+</li>
+</ol>
+<h3 id="基于docker推荐">基于Docker（推荐）</h3>
+<ol>
+<li>
+<p>下载安装<a href="https://www.docker.com/" target="_blank" rel="noopener">Docker</a>
+安装完毕后需要重启 Windows</p>
+</li>
+<li>
+<p>启动容器镜像
+若无，则会自动拉取镜像，拉取完毕后自动启动容器</p>
+<pre tabindex="0"><code>docker run -d --name sonarqube -e SONAR_ES_BOOTSTRAP_CHECKS_DISABLE=true -p 9000:9000 sonarqube:latest
+</code></pre><p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<figure  >
+  <div class="d-flex justify-content-center">
+    <div class="w-100" ><img alt="" srcset="
+               /post/sonarqube-startup/images/docker_sonarqube_hud2f811ccf65d7349f22f4b4ac808d1d1_75104_25401125eb92a153808b45a3c63ea837.webp 400w,
+               /post/sonarqube-startup/images/docker_sonarqube_hud2f811ccf65d7349f22f4b4ac808d1d1_75104_9e0dac9ffbf7dd54af3d3b6e2d4d19c3.webp 760w,
+               /post/sonarqube-startup/images/docker_sonarqube_hud2f811ccf65d7349f22f4b4ac808d1d1_75104_1200x1200_fit_q75_h2_lanczos.webp 1200w"
+               src="/post/sonarqube-startup/images/docker_sonarqube_hud2f811ccf65d7349f22f4b4ac808d1d1_75104_25401125eb92a153808b45a3c63ea837.webp"
+               width="760"
+               height="172"
+               loading="lazy" data-zoomable /></div>
+  </div></figure>
+</p>
+</li>
+</ol>
+<p>      容器启动成功后可通过浏览器访问localhost:9000访问sonarqube服务,默认用户名和密码均为admin</p>
+<p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<figure  >
+  <div class="d-flex justify-content-center">
+    <div class="w-100" ><img alt="" srcset="
+               /post/sonarqube-startup/images/docker_sonar_hu7ad4ac9c38a7bbe57056fe49a5b406e7_76525_d82551919e7ad412a7f91e35a5e256bf.webp 400w,
+               /post/sonarqube-startup/images/docker_sonar_hu7ad4ac9c38a7bbe57056fe49a5b406e7_76525_d44a353a357545b35336dc6b4bc185ed.webp 760w,
+               /post/sonarqube-startup/images/docker_sonar_hu7ad4ac9c38a7bbe57056fe49a5b406e7_76525_1200x1200_fit_q75_h2_lanczos.webp 1200w"
+               src="/post/sonarqube-startup/images/docker_sonar_hu7ad4ac9c38a7bbe57056fe49a5b406e7_76525_d82551919e7ad412a7f91e35a5e256bf.webp"
+               width="760"
+               height="462"
+               loading="lazy" data-zoomable /></div>
+  </div></figure>
+</p>
+<h3 id="基本使用">基本使用</h3>
+<p>基本步骤：</p>
+<ol>
+<li>
+<p>登录SonarQube，使用初始密码登录后更改密码</p>
+</li>
+<li>
+<p>创建新项目</p>
+<p>新项目可以通过各种流行DevOps平台（Azure、Butbucket Server、Github、Gitlab等）导入 ，也可以手动导入。
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<figure  >
+  <div class="d-flex justify-content-center">
+    <div class="w-100" ><img alt="" srcset="
+               /post/sonarqube-startup/images/create_project_hu2d1168a843b8037ae2832c450296a27d_147845_884b1070c2338ef3d0e2bd55ec880d89.webp 400w,
+               /post/sonarqube-startup/images/create_project_hu2d1168a843b8037ae2832c450296a27d_147845_0a6dab3fd5bf340f95bffa0f60162bee.webp 760w,
+               /post/sonarqube-startup/images/create_project_hu2d1168a843b8037ae2832c450296a27d_147845_1200x1200_fit_q75_h2_lanczos.webp 1200w"
+               src="/post/sonarqube-startup/images/create_project_hu2d1168a843b8037ae2832c450296a27d_147845_884b1070c2338ef3d0e2bd55ec880d89.webp"
+               width="760"
+               height="423"
+               loading="lazy" data-zoomable /></div>
+  </div></figure>
+</p>
+</li>
+<li>
+<p>分析项目</p>
+<p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<figure  >
+  <div class="d-flex justify-content-center">
+    <div class="w-100" ><img alt="" srcset="
+               /post/sonarqube-startup/images/analyze_project_hue11260f07803d5f2c39487e7bab96aea_131929_7d62f8f8f004cd05eea22706ae53253a.webp 400w,
+               /post/sonarqube-startup/images/analyze_project_hue11260f07803d5f2c39487e7bab96aea_131929_0d5825d4aa0e22a1ee2471766124653e.webp 760w,
+               /post/sonarqube-startup/images/analyze_project_hue11260f07803d5f2c39487e7bab96aea_131929_1200x1200_fit_q75_h2_lanczos.webp 1200w"
+               src="/post/sonarqube-startup/images/analyze_project_hue11260f07803d5f2c39487e7bab96aea_131929_7d62f8f8f004cd05eea22706ae53253a.webp"
+               width="760"
+               height="381"
+               loading="lazy" data-zoomable /></div>
+  </div></figure>
+</p>
+</li>
+<li>
+<p>查看报告</p>
+<p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<figure  >
+  <div class="d-flex justify-content-center">
+    <div class="w-100" ><img alt="" srcset="
+               /post/sonarqube-startup/images/sonar_check_code_hu121500145ae1c3637000c34c40a29e60_144149_8a46fc2db9f4851285b2336a1556294d.webp 400w,
+               /post/sonarqube-startup/images/sonar_check_code_hu121500145ae1c3637000c34c40a29e60_144149_da961d2b1202a92d227b9da8eaee2c23.webp 760w,
+               /post/sonarqube-startup/images/sonar_check_code_hu121500145ae1c3637000c34c40a29e60_144149_1200x1200_fit_q75_h2_lanczos.webp 1200w"
+               src="/post/sonarqube-startup/images/sonar_check_code_hu121500145ae1c3637000c34c40a29e60_144149_8a46fc2db9f4851285b2336a1556294d.webp"
+               width="760"
+               height="395"
+               loading="lazy" data-zoomable /></div>
+  </div></figure>
+</p>
+</li>
+<li>
+<p>修改代码、项目迭代</p>
+</li>
+</ol>
+<h3 id="分析项目">分析项目</h3>
+<h4 id="一些术语">一些术语</h4>
+<ul>
+<li>
+<p>Technical debt：技术负债/技术债务</p>
+<p>根据维基百科的定义:</p>
+<pre tabindex="0"><code>技術負債（英語：Technical debt），又譯技術債，也稱為設計負債（design debt）、
+程式碼負債（code debt），是程式設計及軟體工程中的一個比喻。指開發人員為了加速軟
+件開發，在應該採用最佳方案時進行了妥協，改用了短期內能加速軟件開發的方案，從而在
+未來給自己帶來的額外開發負擔。這種技術上的選擇，就像一筆債務一樣，雖然眼前看起來
+可以得到好處，但必須在未來償還。軟體工程師必須付出額外的時間和精力持續修復之前的
+妥協所造成的問題及副作用，或是進行重構，把架構改善為最佳實作方式。
+</code></pre><p>常见技术负债原因：</p>
+<pre tabindex="0"><code>不充足的事前定义
+商务压力
+缺少流程或理解
+紧耦合组件
+缺少测试套件
+缺少文档 
+缺乏合作
+拖延重构
+缺少知识
+技术领导力差
+...
+</code></pre></li>
+<li>
+<p>Code Smell：代码异味/代码坏味道</p>
+<p>根据维基百科的定义：</p>
+<pre tabindex="0"><code>程式開發領域，代碼中的任何可能導致深層次問題的症狀都可以叫做代碼異味。 通常，在對
+代碼做簡短的回饋迭代時，代碼異味會暴露出一些深層次的問題，這裡的回饋迭代，是指以
+一種小範圍的、可控的方式重構代碼。基於這些暴露的問題，人們會進一步的檢查設計和代碼
+中是否還存在別的代碼異味，然後再做進一步的重構。
+</code></pre><p>常见代码异味：</p>
+<pre tabindex="0"><code>代码重复
+长方法
+巨类
+参数过多
+特性依赖
+人为的复杂
+......
+</code></pre></li>
+<li>
+<p>Vulnerability， 脆弱性/漏洞； HotSpot，热点</p>
+<pre tabindex="0"><code>热点和漏洞的主要区别在于，在是否修改程序之前是否需要进行审查。
+
+热点会突出显示对安全敏感的代码片段，但可能不会影响整个应用程序的安全性，只是对可能存在
+的风险提出警示。是否有害安全性取决于开发人员对代码进行审查后的决定，确保不影响程序
+安全性的情况下可以不修改代码。
+
+漏洞意味着发现了影响应用程序安全性的问题，需要立即修复。
+</code></pre></li>
+<li>
+<p>&hellip;</p>
+</li>
+</ul>
+<h4 id="质量指标及合格基准">质量指标及合格基准</h4>
+<p>SonarQube主要针对以下维度对代码进行评价，每一个维度都有细分的评价子维度（与指定 的规则库相关）</p>
+<ul>
+<li>
+<p>可靠性</p>
+</li>
+<li>
+<p>安全性</p>
+</li>
+<li>
+<p>安全热点回顾</p>
+<p>突出需要检查的安全敏感代码段</p>
+</li>
+<li>
+<p>可维护性</p>
+</li>
+<li>
+<p>测试覆盖率</p>
+</li>
+<li>
+<p>重复行数
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<figure  >
+  <div class="d-flex justify-content-center">
+    <div class="w-100" ><img alt="" srcset="
+               /post/sonarqube-startup/images/condition_on_new_code_huc5890b0f8d8837e1ccc915c00111c57f_52830_d86723e1fd6cc6bf3d2475139d339090.webp 400w,
+               /post/sonarqube-startup/images/condition_on_new_code_huc5890b0f8d8837e1ccc915c00111c57f_52830_d334c70b981217c2cc76e7d520afab4d.webp 760w,
+               /post/sonarqube-startup/images/condition_on_new_code_huc5890b0f8d8837e1ccc915c00111c57f_52830_1200x1200_fit_q75_h2_lanczos.webp 1200w"
+               src="/post/sonarqube-startup/images/condition_on_new_code_huc5890b0f8d8837e1ccc915c00111c57f_52830_d86723e1fd6cc6bf3d2475139d339090.webp"
+               width="760"
+               height="274"
+               loading="lazy" data-zoomable /></div>
+  </div></figure>
+</p>
+</li>
+</ul>
+<h4 id="分析步骤">分析步骤</h4>
+<h5 id="1-下载扫描工具sonarscannerhttpsdocssonarqubeorg100analyzing-source-codescannerssonarscanner">1. 下载扫描工具<a href="https://docs.sonarqube.org/10.0/analyzing-source-code/scanners/sonarscanner/" target="_blank" rel="noopener">SonarScanner</a></h5>
+<h5 id="2-在项目目录中执行代码扫描脚本">2. 在项目目录中执行代码扫描脚本</h5>
+<p>示例命令如下：</p>
+<pre tabindex="0"><code>C:\Users\Administrator\Downloads\sonar-scanner-cli-4.8.0.2856-windows\sonar-scanner-4.8.0.2856-windows\bin\sonar-scanner.bat -D&#34;sonar.projectKey=RSDataGet&#34; -D&#34;sonar.sources=.&#34; -D&#34;sonar.host.url=http://localhost:9000&#34; -D&#34;sonar.token=sqp_0709400c95442657a158cfbe9104c7213b4007e6&#34;
+</code></pre><h5 id="3-查看分析报告">3. 查看分析报告</h5>
+<p>SonarQube通过统计数据和可视化图表展示代码审计结果。
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<figure  >
+  <div class="d-flex justify-content-center">
+    <div class="w-100" ><img alt="" srcset="
+               /post/sonarqube-startup/images/project_overview1_hu587b1a73eeeb6962b7df4ef82d1231e7_86648_860580d85ea925f54c998b7939c2bc64.webp 400w,
+               /post/sonarqube-startup/images/project_overview1_hu587b1a73eeeb6962b7df4ef82d1231e7_86648_40611aea2dcf3f29697ba083bdd3e232.webp 760w,
+               /post/sonarqube-startup/images/project_overview1_hu587b1a73eeeb6962b7df4ef82d1231e7_86648_1200x1200_fit_q75_h2_lanczos.webp 1200w"
+               src="/post/sonarqube-startup/images/project_overview1_hu587b1a73eeeb6962b7df4ef82d1231e7_86648_860580d85ea925f54c998b7939c2bc64.webp"
+               width="760"
+               height="286"
+               loading="lazy" data-zoomable /></div>
+  </div></figure>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<figure  >
+  <div class="d-flex justify-content-center">
+    <div class="w-100" ><img alt="" srcset="
+               /post/sonarqube-startup/images/stats_code_huf4d3e92e44075367d73b0ac87a132069_41623_7dc3a6195d4b9790fe23b4137ff9b32c.webp 400w,
+               /post/sonarqube-startup/images/stats_code_huf4d3e92e44075367d73b0ac87a132069_41623_742250272be1795408bd739cdd87525d.webp 760w,
+               /post/sonarqube-startup/images/stats_code_huf4d3e92e44075367d73b0ac87a132069_41623_1200x1200_fit_q75_h2_lanczos.webp 1200w"
+               src="/post/sonarqube-startup/images/stats_code_huf4d3e92e44075367d73b0ac87a132069_41623_7dc3a6195d4b9790fe23b4137ff9b32c.webp"
+               width="760"
+               height="474"
+               loading="lazy" data-zoomable /></div>
+  </div></figure>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<figure  >
+  <div class="d-flex justify-content-center">
+    <div class="w-100" ><img alt="" srcset="
+               /post/sonarqube-startup/images/project_overview_hu1f2e85ff62004213a7407078cae4d65d_119225_6023001be8045f798db6f80beba63b0c.webp 400w,
+               /post/sonarqube-startup/images/project_overview_hu1f2e85ff62004213a7407078cae4d65d_119225_4a5b60fdab0c45e2dddc5f1aef36042c.webp 760w,
+               /post/sonarqube-startup/images/project_overview_hu1f2e85ff62004213a7407078cae4d65d_119225_1200x1200_fit_q75_h2_lanczos.webp 1200w"
+               src="/post/sonarqube-startup/images/project_overview_hu1f2e85ff62004213a7407078cae4d65d_119225_6023001be8045f798db6f80beba63b0c.webp"
+               width="760"
+               height="317"
+               loading="lazy" data-zoomable /></div>
+  </div></figure>
+</p>
+<h5 id="4-解决问题">4. 解决问题</h5>
+<h6 id="审查安全热点">审查安全热点</h6>
+<p>如果确认代码无安全性问题，更改代码状态为“Safe”
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<figure  >
+  <div class="d-flex justify-content-center">
+    <div class="w-100" ><img alt="" srcset="
+               /post/sonarqube-startup/images/review_safe_hu8b7093694bafd26526ecdd5503db7564_82764_aced02160ea1120e41032b03b3c7fcb8.webp 400w,
+               /post/sonarqube-startup/images/review_safe_hu8b7093694bafd26526ecdd5503db7564_82764_35b144f9b4d13863088f05440bd4d8b8.webp 760w,
+               /post/sonarqube-startup/images/review_safe_hu8b7093694bafd26526ecdd5503db7564_82764_1200x1200_fit_q75_h2_lanczos.webp 1200w"
+               src="/post/sonarqube-startup/images/review_safe_hu8b7093694bafd26526ecdd5503db7564_82764_aced02160ea1120e41032b03b3c7fcb8.webp"
+               width="760"
+               height="663"
+               loading="lazy" data-zoomable /></div>
+  </div></figure>
+</p>
+<h6 id="代码测试覆盖率提高">代码测试覆盖率提高</h6>
+<ol>
+<li>
+<p>使用测试覆盖率工具生成测试报告文档，如使用<a href="https://coverage.readthedocs.io/en/latest/cmd.html" target="_blank" rel="noopener">coverage</a></p>
+<pre tabindex="0"><code>coverage run &lt;program&gt; args
+coverage xml -o coverage.xml
+</code></pre></li>
+<li>
+<p>在项目根目录的sonar-project.properties文件指定测试报告文档地址（详情参考文档<a href="https://docs.sonarqube.org/latest/analyzing-source-code/test-coverage/python-test-coverage/" target="_blank" rel="noopener">Python-test-coverage</a>）</p>
+<pre tabindex="0"><code>sonar.projectKey=&lt;sonar-project-key&gt;
+...
+sonar.python.coverage.reportPaths=coverage.xml
+</code></pre></li>
+<li>
+<p>使用SonarQube执行代码审查
+可以看到，代码覆盖率信息也被纳入到测试报告中
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<figure  >
+  <div class="d-flex justify-content-center">
+    <div class="w-100" ><img alt="" srcset="
+               /post/sonarqube-startup/images/coverage_hucd3fb14b800935da89630fdc4d8b419c_53744_a7f45c6aa448a35780779dd57b326af8.webp 400w,
+               /post/sonarqube-startup/images/coverage_hucd3fb14b800935da89630fdc4d8b419c_53744_d80ea9b5a9ff721b6fde9cfe9b7c808a.webp 760w,
+               /post/sonarqube-startup/images/coverage_hucd3fb14b800935da89630fdc4d8b419c_53744_1200x1200_fit_q75_h2_lanczos.webp 1200w"
+               src="/post/sonarqube-startup/images/coverage_hucd3fb14b800935da89630fdc4d8b419c_53744_a7f45c6aa448a35780779dd57b326af8.webp"
+               width="760"
+               height="380"
+               loading="lazy" data-zoomable /></div>
+  </div></figure>
+</p>
+</li>
+</ol>
+<h3 id="参考资料">参考资料</h3>
+<p><a href="https://docs.sonarqube.org/latest/user-guide/concepts/" target="_blank" rel="noopener">SonarQube User-Guide</a></p>
+<p>[Coverage &amp; Test Data](Generate Reports for Apex, C/C++, Objective-C, Go, JS/TS and Python](<a href="https://community.sonarsource.com/t/coverage-test-data-generate-reports-for-apex-c-c-objective-c-go-js-ts-and-python/9687" target="_blank" rel="noopener">https://community.sonarsource.com/t/coverage-test-data-generate-reports-for-apex-c-c-objective-c-go-js-ts-and-python/9687</a>)</p>
+
+    </div>
+
+    
+
+
+
+
+<div class="article-tags">
+  
+  <a class="badge badge-light" href="/tag/python/">Python</a>
+  
+</div>
+
+
+
+<div class="share-box">
+  <ul class="share">
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="https://twitter.com/intent/tweet?url=/post/sonarqube-startup/&amp;text=Sonarqube%e5%ae%89%e8%a3%85%e9%85%8d%e7%bd%ae%e5%8f%8a%e5%9f%ba%e6%9c%ac%e4%bd%bf%e7%94%a8" target="_blank" rel="noopener" class="share-btn-twitter" aria-label="twitter">
+          <i class="fab fa-twitter"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="https://www.facebook.com/sharer.php?u=/post/sonarqube-startup/&amp;t=Sonarqube%e5%ae%89%e8%a3%85%e9%85%8d%e7%bd%ae%e5%8f%8a%e5%9f%ba%e6%9c%ac%e4%bd%bf%e7%94%a8" target="_blank" rel="noopener" class="share-btn-facebook" aria-label="facebook">
+          <i class="fab fa-facebook"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="mailto:?subject=Sonarqube%e5%ae%89%e8%a3%85%e9%85%8d%e7%bd%ae%e5%8f%8a%e5%9f%ba%e6%9c%ac%e4%bd%bf%e7%94%a8&amp;body=/post/sonarqube-startup/" target="_blank" rel="noopener" class="share-btn-email" aria-label="envelope">
+          <i class="fas fa-envelope"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="https://www.linkedin.com/shareArticle?url=/post/sonarqube-startup/&amp;title=Sonarqube%e5%ae%89%e8%a3%85%e9%85%8d%e7%bd%ae%e5%8f%8a%e5%9f%ba%e6%9c%ac%e4%bd%bf%e7%94%a8" target="_blank" rel="noopener" class="share-btn-linkedin" aria-label="linkedin-in">
+          <i class="fab fa-linkedin-in"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="whatsapp://send?text=Sonarqube%e5%ae%89%e8%a3%85%e9%85%8d%e7%bd%ae%e5%8f%8a%e5%9f%ba%e6%9c%ac%e4%bd%bf%e7%94%a8%20/post/sonarqube-startup/" target="_blank" rel="noopener" class="share-btn-whatsapp" aria-label="whatsapp">
+          <i class="fab fa-whatsapp"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="https://service.weibo.com/share/share.php?url=/post/sonarqube-startup/&amp;title=Sonarqube%e5%ae%89%e8%a3%85%e9%85%8d%e7%bd%ae%e5%8f%8a%e5%9f%ba%e6%9c%ac%e4%bd%bf%e7%94%a8" target="_blank" rel="noopener" class="share-btn-weibo" aria-label="weibo">
+          <i class="fab fa-weibo"></i>
+        </a>
+      </li>
+    
+  </ul>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+
+
+
+  
+  
+  
+  
+  
+  <div class="media author-card content-widget-hr">
+    
+      
+      <a href="/authors/admin/"><img class="avatar mr-3 avatar-circle" src="/authors/admin/avatar_hu55194f19033f85038196a23353ffe543_580100_270x270_fill_q75_lanczos_center.jpg" alt="CoolCats"></a>
+    
+
+    <div class="media-body">
+      <h5 class="card-title"><a href="/authors/admin/">CoolCats</a></h5>
+      <h6 class="card-subtitle">理学学士</h6>
+      <p class="card-text">我的研究兴趣是时空数据分析、自然语言处理、服务端开发</p>
+      <ul class="network-icon" aria-hidden="true">
+  
+    
+    
+    
+      
+    
+    
+    
+    
+    
+    <li>
+      <a href="mailto:2811159909@qq.com" >
+        <i class="fas fa-envelope"></i>
+      </a>
+    </li>
+  
+    
+    
+    
+      
+    
+    
+    
+    
+    
+      
+    
+    <li>
+      <a href="https://github.com/Coolgiserz" target="_blank" rel="noopener">
+        <i class="fab fa-github"></i>
+      </a>
+    </li>
+  
+</ul>
+
+    </div>
+  </div>
+
+
+
+
+
+
+
+
+
+  
+  
+  
+
+  
+
+  
+
+
+
+
+
+
+
+
+
+
+  </div>
+</article>
+  </div>
+
+  <div class="page-footer">
+    
+    
+    <div class="container">
+      <footer class="site-footer">
+
+  
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+
+
+
+
+
+  
+  
+  
+
+  
+  
+    
+  
+  
+    
+  
+
+  
+
+  
+  <p class="powered-by copyright-license-text">
+    © 2023 CoolCats. This work is licensed under <a href="https://creativecommons.org/licenses/by-nc-nd/4.0" rel="noopener noreferrer" target="_blank">CC BY NC ND 4.0</a>
+  </p>
+  
+
+  <p class="powered-by footer-license-icons">
+    <a href="https://creativecommons.org/licenses/by-nc-nd/4.0" rel="noopener noreferrer" target="_blank" aria-label="Creative Commons">
+      <i class="fab fa-creative-commons fa-2x" aria-hidden="true"></i>
+      <i class="fab fa-creative-commons-by fa-2x" aria-hidden="true"></i>
+      
+        <i class="fab fa-creative-commons-nc fa-2x" aria-hidden="true"></i>
+      
+      
+        <i class="fab fa-creative-commons-nd fa-2x" aria-hidden="true"></i>
+      
+    </a>
+  </p>
+
+
+
+
+  <p class="powered-by">
+    
+    
+    
+      
+      
+      
+      
+      
+      
+      Published with <a href="https://wowchemy.com/?utm_campaign=poweredby" target="_blank" rel="noopener">Wowchemy</a> — the free, <a href="https://github.com/wowchemy/wowchemy-hugo-themes" target="_blank" rel="noopener">open source</a> website builder that empowers creators.
+    
+  </p>
+</footer>
+
+    </div>
+    
+  </div>
+
+      
+
+    
+    <script src="/js/vendor-bundle.min.fab8b449b814cc9f95b22fcf2e45f05b.js"></script>
+
+    
+    
+    
+      
+
+      
+      
+
+      
+
+      
+        
+        <script src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@10.2.1/build/highlight.min.js" integrity="sha512-Ypjm0o7jOxAd4hpdoppSEN0TQOC19UtPAqD+4s5AlXmUvbmmS/YMxYqAqarQYyxTnB6/rqip9qcxlNB/3U9Wdg==" crossorigin="anonymous"></script>
+        
+        
+        <script src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@10.2.1/build/languages/r.min.js" crossorigin="anonymous"></script>
+        
+        <script src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@10.2.1/build/languages/latex.min.js" crossorigin="anonymous"></script>
+        
+      
+
+    
+
+    
+    
+    
+      <script src="https://cdn.jsdelivr.net/npm/leaflet@1.7.1/dist/leaflet.min.js" integrity="" crossorigin="anonymous"></script>
+    
+
+    
+    
+
+    
+    
+    
+      
+      <script id="search-hit-fuse-template" type="text/x-template">
+        <div class="search-hit" id="summary-{{key}}">
+          <div class="search-hit-content">
+            <div class="search-hit-name">
+              <a href="{{relpermalink}}">{{title}}</a>
+              <div class="article-metadata search-hit-type">{{type}}</div>
+              <p class="search-hit-description">{{snippet}}</p>
+            </div>
+          </div>
+        </div>
+      </script>
+      
+        <script src="https://cdn.jsdelivr.net/gh/krisk/Fuse@v3.2.1/dist/fuse.min.js" integrity="sha512-o38bmzBGX+hD3JHWUFCDA09btWaqrNmoJ3RXLlrysA7PP01Kgs4UlE4MhelE1v5dJR3+cxlR4qQlotsW7jKsnw==" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/gh/julmot/mark.js@8.11.1/dist/jquery.mark.min.js" integrity="sha512-mhbv5DqBMgrWL+32MmsDOt/OAvqr/cHimk6B8y/bx/xS88MVkYGPiVv2ixKVrkywF2qHplNRUvFsAHUdxZ3Krg==" crossorigin="anonymous"></script>
+      
+    
+
+    
+    
+
+    
+    
+    
+    
+      <script id="dsq-count-scr" src="https://coolgiserz.disqus.com/count.js" async></script>
+    
+
+    
+    
+      
+      
+      
+      
+      
+      
+      
+    
+
+    
+
+    
+    
+    
+    <script id="page-data" type="application/json">{"use_headroom":true}</script>
+
+    
+    
+      <script src="/js/wowchemy-headroom.c251366b4128fd5e6b046d4c97a62a51.js" type="module"></script>
+    
+    
+    
+    
+    
+    
+    
+      
+      
+    
+    
+    <script src="/en/js/wowchemy.min.ab2f2890dbe3e2e83579366d3d6e8fd9.js"></script>
+
+    
+    
+      <script src="/js/wowchemy-map.a26e9d2f7238ba5b868384f1c5bc6477.js" type="module"></script>
+    
+    
+    
+    
+      
+<div id="modal" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Cite</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <pre><code class="tex hljs"></code></pre>
+      </div>
+      <div class="modal-footer">
+        <a class="btn btn-outline-primary my-1 js-copy-cite" href="#" target="_blank">
+          <i class="fas fa-copy"></i> Copy
+        </a>
+        <a class="btn btn-outline-primary my-1 js-download-cite" href="#" target="_blank">
+          <i class="fas fa-download"></i> Download
+        </a>
+        <div id="modal-error"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+      <script src="/js/wowchemy-publication.68f8d7090562ca65fc6d3cb3f8f2d2cb.js" type="module"></script>
+
+
+
+
+
+
+</body>
+</html>

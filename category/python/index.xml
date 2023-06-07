@@ -5,12 +5,535 @@
     <link>/category/python/</link>
       <atom:link href="/category/python/index.xml" rel="self" type="application/rss+xml" />
     <description>Python</description>
-    <generator>Wowchemy (https://wowchemy.com)</generator><language>en-us</language><lastBuildDate>Sat, 20 May 2023 23:49:19 +0800</lastBuildDate>
+    <generator>Wowchemy (https://wowchemy.com)</generator><language>en-us</language><lastBuildDate>Wed, 07 Jun 2023 21:33:24 +0800</lastBuildDate>
     <image>
       <url>/media/icon_hue03491371183284312b8b116a73ae5ab_79511_512x512_fill_lanczos_center_3.png</url>
       <title>Python</title>
       <link>/category/python/</link>
     </image>
+    
+    <item>
+      <title>Sonarqube安装配置及基本使用</title>
+      <link>/post/sonarqube-startup/</link>
+      <pubDate>Wed, 07 Jun 2023 21:33:24 +0800</pubDate>
+      <guid>/post/sonarqube-startup/</guid>
+      <description>&lt;h2 id=&#34;环境安装配置&#34;&gt;环境安装配置&lt;/h2&gt;
+&lt;h3 id=&#34;本地配置环境&#34;&gt;本地配置环境&lt;/h3&gt;
+&lt;p&gt;按照官网文档入门教程，Sonarqube服务需要Java17环境，否则无法启动服务，报错如下。&lt;/p&gt;
+&lt;p&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure  &gt;
+  &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img alt=&#34;&#34; srcset=&#34;
+               /post/sonarqube-startup/images/start_sonar_err1_hu2e5e788543a84268b5716abdf1ff6b24_34173_7d8963b254e6285f896f25e06d7d1443.webp 400w,
+               /post/sonarqube-startup/images/start_sonar_err1_hu2e5e788543a84268b5716abdf1ff6b24_34173_e422bab062054c951fceb0e66e0093ee.webp 760w,
+               /post/sonarqube-startup/images/start_sonar_err1_hu2e5e788543a84268b5716abdf1ff6b24_34173_1200x1200_fit_q75_h2_lanczos.webp 1200w&#34;
+               src=&#34;/post/sonarqube-startup/images/start_sonar_err1_hu2e5e788543a84268b5716abdf1ff6b24_34173_7d8963b254e6285f896f25e06d7d1443.webp&#34;
+               width=&#34;760&#34;
+               height=&#34;97&#34;
+               loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+  &lt;/div&gt;&lt;/figure&gt;
+&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;下载安装Java17，Java下载地址： &lt;a href=&#34;https://www.oracle.com/java/technologies/javase/jdk17-archive-downloads.html&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Java Archive Downloads - Java SE 17&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;配置环境变量JAVA_HOME, CLASSPATH&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;尝试启动 sonarqube服务，依然报如上错误，需要设置java虚拟机内存（设置为512M）后方解决上述错误。&lt;/p&gt;
+&lt;p&gt;但启动时报新错误（与elasticsearch有关 ）：&lt;/p&gt;
+&lt;p&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure  &gt;
+  &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img src=&#34;images%5cstart_sonar_err2.jpg&#34; alt=&#34;&#34; loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+  &lt;/div&gt;&lt;/figure&gt;
+
+由于&lt;a href=&#34;https://docs.sonarqube.org/latest/requirements/prerequisites-and-overview/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;sonarqube官方文档&lt;/a&gt;未明确说明需要配置elasticsearch，因此不考虑配置。&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h3 id=&#34;基于docker推荐&#34;&gt;基于Docker（推荐）&lt;/h3&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;下载安装&lt;a href=&#34;https://www.docker.com/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Docker&lt;/a&gt;
+安装完毕后需要重启 Windows&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;启动容器镜像
+若无，则会自动拉取镜像，拉取完毕后自动启动容器&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;docker run -d --name sonarqube -e SONAR_ES_BOOTSTRAP_CHECKS_DISABLE=true -p 9000:9000 sonarqube:latest
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure  &gt;
+  &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img alt=&#34;&#34; srcset=&#34;
+               /post/sonarqube-startup/images/docker_sonarqube_hud2f811ccf65d7349f22f4b4ac808d1d1_75104_25401125eb92a153808b45a3c63ea837.webp 400w,
+               /post/sonarqube-startup/images/docker_sonarqube_hud2f811ccf65d7349f22f4b4ac808d1d1_75104_9e0dac9ffbf7dd54af3d3b6e2d4d19c3.webp 760w,
+               /post/sonarqube-startup/images/docker_sonarqube_hud2f811ccf65d7349f22f4b4ac808d1d1_75104_1200x1200_fit_q75_h2_lanczos.webp 1200w&#34;
+               src=&#34;/post/sonarqube-startup/images/docker_sonarqube_hud2f811ccf65d7349f22f4b4ac808d1d1_75104_25401125eb92a153808b45a3c63ea837.webp&#34;
+               width=&#34;760&#34;
+               height=&#34;172&#34;
+               loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+  &lt;/div&gt;&lt;/figure&gt;
+&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;      容器启动成功后可通过浏览器访问localhost:9000访问sonarqube服务,默认用户名和密码均为admin&lt;/p&gt;
+&lt;p&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure  &gt;
+  &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img alt=&#34;&#34; srcset=&#34;
+               /post/sonarqube-startup/images/docker_sonar_hu7ad4ac9c38a7bbe57056fe49a5b406e7_76525_d82551919e7ad412a7f91e35a5e256bf.webp 400w,
+               /post/sonarqube-startup/images/docker_sonar_hu7ad4ac9c38a7bbe57056fe49a5b406e7_76525_d44a353a357545b35336dc6b4bc185ed.webp 760w,
+               /post/sonarqube-startup/images/docker_sonar_hu7ad4ac9c38a7bbe57056fe49a5b406e7_76525_1200x1200_fit_q75_h2_lanczos.webp 1200w&#34;
+               src=&#34;/post/sonarqube-startup/images/docker_sonar_hu7ad4ac9c38a7bbe57056fe49a5b406e7_76525_d82551919e7ad412a7f91e35a5e256bf.webp&#34;
+               width=&#34;760&#34;
+               height=&#34;462&#34;
+               loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+  &lt;/div&gt;&lt;/figure&gt;
+&lt;/p&gt;
+&lt;h3 id=&#34;基本使用&#34;&gt;基本使用&lt;/h3&gt;
+&lt;p&gt;基本步骤：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;登录SonarQube，使用初始密码登录后更改密码&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;创建新项目&lt;/p&gt;
+&lt;p&gt;新项目可以通过各种流行DevOps平台（Azure、Butbucket Server、Github、Gitlab等）导入 ，也可以手动导入。
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure  &gt;
+  &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img alt=&#34;&#34; srcset=&#34;
+               /post/sonarqube-startup/images/create_project_hu2d1168a843b8037ae2832c450296a27d_147845_884b1070c2338ef3d0e2bd55ec880d89.webp 400w,
+               /post/sonarqube-startup/images/create_project_hu2d1168a843b8037ae2832c450296a27d_147845_0a6dab3fd5bf340f95bffa0f60162bee.webp 760w,
+               /post/sonarqube-startup/images/create_project_hu2d1168a843b8037ae2832c450296a27d_147845_1200x1200_fit_q75_h2_lanczos.webp 1200w&#34;
+               src=&#34;/post/sonarqube-startup/images/create_project_hu2d1168a843b8037ae2832c450296a27d_147845_884b1070c2338ef3d0e2bd55ec880d89.webp&#34;
+               width=&#34;760&#34;
+               height=&#34;423&#34;
+               loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+  &lt;/div&gt;&lt;/figure&gt;
+&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;分析项目&lt;/p&gt;
+&lt;p&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure  &gt;
+  &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img alt=&#34;&#34; srcset=&#34;
+               /post/sonarqube-startup/images/analyze_project_hue11260f07803d5f2c39487e7bab96aea_131929_7d62f8f8f004cd05eea22706ae53253a.webp 400w,
+               /post/sonarqube-startup/images/analyze_project_hue11260f07803d5f2c39487e7bab96aea_131929_0d5825d4aa0e22a1ee2471766124653e.webp 760w,
+               /post/sonarqube-startup/images/analyze_project_hue11260f07803d5f2c39487e7bab96aea_131929_1200x1200_fit_q75_h2_lanczos.webp 1200w&#34;
+               src=&#34;/post/sonarqube-startup/images/analyze_project_hue11260f07803d5f2c39487e7bab96aea_131929_7d62f8f8f004cd05eea22706ae53253a.webp&#34;
+               width=&#34;760&#34;
+               height=&#34;381&#34;
+               loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+  &lt;/div&gt;&lt;/figure&gt;
+&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;查看报告&lt;/p&gt;
+&lt;p&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure  &gt;
+  &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img alt=&#34;&#34; srcset=&#34;
+               /post/sonarqube-startup/images/sonar_check_code_hu121500145ae1c3637000c34c40a29e60_144149_8a46fc2db9f4851285b2336a1556294d.webp 400w,
+               /post/sonarqube-startup/images/sonar_check_code_hu121500145ae1c3637000c34c40a29e60_144149_da961d2b1202a92d227b9da8eaee2c23.webp 760w,
+               /post/sonarqube-startup/images/sonar_check_code_hu121500145ae1c3637000c34c40a29e60_144149_1200x1200_fit_q75_h2_lanczos.webp 1200w&#34;
+               src=&#34;/post/sonarqube-startup/images/sonar_check_code_hu121500145ae1c3637000c34c40a29e60_144149_8a46fc2db9f4851285b2336a1556294d.webp&#34;
+               width=&#34;760&#34;
+               height=&#34;395&#34;
+               loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+  &lt;/div&gt;&lt;/figure&gt;
+&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;修改代码、项目迭代&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h3 id=&#34;分析项目&#34;&gt;分析项目&lt;/h3&gt;
+&lt;h4 id=&#34;一些术语&#34;&gt;一些术语&lt;/h4&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;Technical debt：技术负债/技术债务&lt;/p&gt;
+&lt;p&gt;根据维基百科的定义:&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;技術負債（英語：Technical debt），又譯技術債，也稱為設計負債（design debt）、
+程式碼負債（code debt），是程式設計及軟體工程中的一個比喻。指開發人員為了加速軟
+件開發，在應該採用最佳方案時進行了妥協，改用了短期內能加速軟件開發的方案，從而在
+未來給自己帶來的額外開發負擔。這種技術上的選擇，就像一筆債務一樣，雖然眼前看起來
+可以得到好處，但必須在未來償還。軟體工程師必須付出額外的時間和精力持續修復之前的
+妥協所造成的問題及副作用，或是進行重構，把架構改善為最佳實作方式。
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;常见技术负债原因：&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;不充足的事前定义
+商务压力
+缺少流程或理解
+紧耦合组件
+缺少测试套件
+缺少文档 
+缺乏合作
+拖延重构
+缺少知识
+技术领导力差
+...
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Code Smell：代码异味/代码坏味道&lt;/p&gt;
+&lt;p&gt;根据维基百科的定义：&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;程式開發領域，代碼中的任何可能導致深層次問題的症狀都可以叫做代碼異味。 通常，在對
+代碼做簡短的回饋迭代時，代碼異味會暴露出一些深層次的問題，這裡的回饋迭代，是指以
+一種小範圍的、可控的方式重構代碼。基於這些暴露的問題，人們會進一步的檢查設計和代碼
+中是否還存在別的代碼異味，然後再做進一步的重構。
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;常见代码异味：&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;代码重复
+长方法
+巨类
+参数过多
+特性依赖
+人为的复杂
+......
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Vulnerability， 脆弱性/漏洞； HotSpot，热点&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;热点和漏洞的主要区别在于，在是否修改程序之前是否需要进行审查。
+
+热点会突出显示对安全敏感的代码片段，但可能不会影响整个应用程序的安全性，只是对可能存在
+的风险提出警示。是否有害安全性取决于开发人员对代码进行审查后的决定，确保不影响程序
+安全性的情况下可以不修改代码。
+
+漏洞意味着发现了影响应用程序安全性的问题，需要立即修复。
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&amp;hellip;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&#34;质量指标及合格基准&#34;&gt;质量指标及合格基准&lt;/h4&gt;
+&lt;p&gt;SonarQube主要针对以下维度对代码进行评价，每一个维度都有细分的评价子维度（与指定 的规则库相关）&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;可靠性&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;安全性&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;安全热点回顾&lt;/p&gt;
+&lt;p&gt;突出需要检查的安全敏感代码段&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;可维护性&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;测试覆盖率&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;重复行数
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure  &gt;
+  &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img alt=&#34;&#34; srcset=&#34;
+               /post/sonarqube-startup/images/condition_on_new_code_huc5890b0f8d8837e1ccc915c00111c57f_52830_d86723e1fd6cc6bf3d2475139d339090.webp 400w,
+               /post/sonarqube-startup/images/condition_on_new_code_huc5890b0f8d8837e1ccc915c00111c57f_52830_d334c70b981217c2cc76e7d520afab4d.webp 760w,
+               /post/sonarqube-startup/images/condition_on_new_code_huc5890b0f8d8837e1ccc915c00111c57f_52830_1200x1200_fit_q75_h2_lanczos.webp 1200w&#34;
+               src=&#34;/post/sonarqube-startup/images/condition_on_new_code_huc5890b0f8d8837e1ccc915c00111c57f_52830_d86723e1fd6cc6bf3d2475139d339090.webp&#34;
+               width=&#34;760&#34;
+               height=&#34;274&#34;
+               loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+  &lt;/div&gt;&lt;/figure&gt;
+&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&#34;分析步骤&#34;&gt;分析步骤&lt;/h4&gt;
+&lt;h5 id=&#34;1-下载扫描工具sonarscannerhttpsdocssonarqubeorg100analyzing-source-codescannerssonarscanner&#34;&gt;1. 下载扫描工具&lt;a href=&#34;https://docs.sonarqube.org/10.0/analyzing-source-code/scanners/sonarscanner/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;SonarScanner&lt;/a&gt;&lt;/h5&gt;
+&lt;h5 id=&#34;2-在项目目录中执行代码扫描脚本&#34;&gt;2. 在项目目录中执行代码扫描脚本&lt;/h5&gt;
+&lt;p&gt;示例命令如下：&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;C:\Users\Administrator\Downloads\sonar-scanner-cli-4.8.0.2856-windows\sonar-scanner-4.8.0.2856-windows\bin\sonar-scanner.bat -D&amp;#34;sonar.projectKey=RSDataGet&amp;#34; -D&amp;#34;sonar.sources=.&amp;#34; -D&amp;#34;sonar.host.url=http://localhost:9000&amp;#34; -D&amp;#34;sonar.token=sqp_0709400c95442657a158cfbe9104c7213b4007e6&amp;#34;
+&lt;/code&gt;&lt;/pre&gt;&lt;h5 id=&#34;3-查看分析报告&#34;&gt;3. 查看分析报告&lt;/h5&gt;
+&lt;p&gt;SonarQube通过统计数据和可视化图表展示代码审计结果。
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure  &gt;
+  &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img alt=&#34;&#34; srcset=&#34;
+               /post/sonarqube-startup/images/project_overview1_hu587b1a73eeeb6962b7df4ef82d1231e7_86648_860580d85ea925f54c998b7939c2bc64.webp 400w,
+               /post/sonarqube-startup/images/project_overview1_hu587b1a73eeeb6962b7df4ef82d1231e7_86648_40611aea2dcf3f29697ba083bdd3e232.webp 760w,
+               /post/sonarqube-startup/images/project_overview1_hu587b1a73eeeb6962b7df4ef82d1231e7_86648_1200x1200_fit_q75_h2_lanczos.webp 1200w&#34;
+               src=&#34;/post/sonarqube-startup/images/project_overview1_hu587b1a73eeeb6962b7df4ef82d1231e7_86648_860580d85ea925f54c998b7939c2bc64.webp&#34;
+               width=&#34;760&#34;
+               height=&#34;286&#34;
+               loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+  &lt;/div&gt;&lt;/figure&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure  &gt;
+  &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img alt=&#34;&#34; srcset=&#34;
+               /post/sonarqube-startup/images/stats_code_huf4d3e92e44075367d73b0ac87a132069_41623_7dc3a6195d4b9790fe23b4137ff9b32c.webp 400w,
+               /post/sonarqube-startup/images/stats_code_huf4d3e92e44075367d73b0ac87a132069_41623_742250272be1795408bd739cdd87525d.webp 760w,
+               /post/sonarqube-startup/images/stats_code_huf4d3e92e44075367d73b0ac87a132069_41623_1200x1200_fit_q75_h2_lanczos.webp 1200w&#34;
+               src=&#34;/post/sonarqube-startup/images/stats_code_huf4d3e92e44075367d73b0ac87a132069_41623_7dc3a6195d4b9790fe23b4137ff9b32c.webp&#34;
+               width=&#34;760&#34;
+               height=&#34;474&#34;
+               loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+  &lt;/div&gt;&lt;/figure&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure  &gt;
+  &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img alt=&#34;&#34; srcset=&#34;
+               /post/sonarqube-startup/images/project_overview_hu1f2e85ff62004213a7407078cae4d65d_119225_6023001be8045f798db6f80beba63b0c.webp 400w,
+               /post/sonarqube-startup/images/project_overview_hu1f2e85ff62004213a7407078cae4d65d_119225_4a5b60fdab0c45e2dddc5f1aef36042c.webp 760w,
+               /post/sonarqube-startup/images/project_overview_hu1f2e85ff62004213a7407078cae4d65d_119225_1200x1200_fit_q75_h2_lanczos.webp 1200w&#34;
+               src=&#34;/post/sonarqube-startup/images/project_overview_hu1f2e85ff62004213a7407078cae4d65d_119225_6023001be8045f798db6f80beba63b0c.webp&#34;
+               width=&#34;760&#34;
+               height=&#34;317&#34;
+               loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+  &lt;/div&gt;&lt;/figure&gt;
+&lt;/p&gt;
+&lt;h5 id=&#34;4-解决问题&#34;&gt;4. 解决问题&lt;/h5&gt;
+&lt;h6 id=&#34;审查安全热点&#34;&gt;审查安全热点&lt;/h6&gt;
+&lt;p&gt;如果确认代码无安全性问题，更改代码状态为“Safe”
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure  &gt;
+  &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img alt=&#34;&#34; srcset=&#34;
+               /post/sonarqube-startup/images/review_safe_hu8b7093694bafd26526ecdd5503db7564_82764_aced02160ea1120e41032b03b3c7fcb8.webp 400w,
+               /post/sonarqube-startup/images/review_safe_hu8b7093694bafd26526ecdd5503db7564_82764_35b144f9b4d13863088f05440bd4d8b8.webp 760w,
+               /post/sonarqube-startup/images/review_safe_hu8b7093694bafd26526ecdd5503db7564_82764_1200x1200_fit_q75_h2_lanczos.webp 1200w&#34;
+               src=&#34;/post/sonarqube-startup/images/review_safe_hu8b7093694bafd26526ecdd5503db7564_82764_aced02160ea1120e41032b03b3c7fcb8.webp&#34;
+               width=&#34;760&#34;
+               height=&#34;663&#34;
+               loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+  &lt;/div&gt;&lt;/figure&gt;
+&lt;/p&gt;
+&lt;h6 id=&#34;代码测试覆盖率提高&#34;&gt;代码测试覆盖率提高&lt;/h6&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;使用测试覆盖率工具生成测试报告文档，如使用&lt;a href=&#34;https://coverage.readthedocs.io/en/latest/cmd.html&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;coverage&lt;/a&gt;&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;coverage run &amp;lt;program&amp;gt; args
+coverage xml -o coverage.xml
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;在项目根目录的sonar-project.properties文件指定测试报告文档地址（详情参考文档&lt;a href=&#34;https://docs.sonarqube.org/latest/analyzing-source-code/test-coverage/python-test-coverage/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Python-test-coverage&lt;/a&gt;）&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;sonar.projectKey=&amp;lt;sonar-project-key&amp;gt;
+...
+sonar.python.coverage.reportPaths=coverage.xml
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;使用SonarQube执行代码审查
+可以看到，代码覆盖率信息也被纳入到测试报告中
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure  &gt;
+  &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img alt=&#34;&#34; srcset=&#34;
+               /post/sonarqube-startup/images/coverage_hucd3fb14b800935da89630fdc4d8b419c_53744_a7f45c6aa448a35780779dd57b326af8.webp 400w,
+               /post/sonarqube-startup/images/coverage_hucd3fb14b800935da89630fdc4d8b419c_53744_d80ea9b5a9ff721b6fde9cfe9b7c808a.webp 760w,
+               /post/sonarqube-startup/images/coverage_hucd3fb14b800935da89630fdc4d8b419c_53744_1200x1200_fit_q75_h2_lanczos.webp 1200w&#34;
+               src=&#34;/post/sonarqube-startup/images/coverage_hucd3fb14b800935da89630fdc4d8b419c_53744_a7f45c6aa448a35780779dd57b326af8.webp&#34;
+               width=&#34;760&#34;
+               height=&#34;380&#34;
+               loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+  &lt;/div&gt;&lt;/figure&gt;
+&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h3 id=&#34;参考资料&#34;&gt;参考资料&lt;/h3&gt;
+&lt;p&gt;&lt;a href=&#34;https://docs.sonarqube.org/latest/user-guide/concepts/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;SonarQube User-Guide&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;[Coverage &amp;amp; Test Data](Generate Reports for Apex, C/C++, Objective-C, Go, JS/TS and Python](&lt;a href=&#34;https://community.sonarsource.com/t/coverage-test-data-generate-reports-for-apex-c-c-objective-c-go-js-ts-and-python/9687&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;https://community.sonarsource.com/t/coverage-test-data-generate-reports-for-apex-c-c-objective-c-go-js-ts-and-python/9687&lt;/a&gt;)&lt;/p&gt;
+</description>
+    </item>
     
     <item>
       <title>《Python软件架构》知识点练习代码</title>
