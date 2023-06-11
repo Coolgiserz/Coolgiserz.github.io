@@ -1,0 +1,2090 @@
+<!DOCTYPE html><html lang="en-us" >
+
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  
+  
+  
+    <meta name="generator" content="Wowchemy 5.5.0 for Hugo" />
+  
+
+  
+  
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+  
+  
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  
+
+  
+  
+  
+    
+      
+      <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Roboto+Mono&family=Roboto:wght@400;700&display=swap">
+      <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Roboto+Mono&family=Roboto:wght@400;700&display=swap" media="print" onload="this.media='all'">
+    
+  
+
+  
+  
+  
+  
+  
+    
+    
+    
+  
+  
+
+  <meta name="author" content="CoolCats" />
+
+  
+  
+  
+    
+  
+  <meta name="description" content="socket编程、计算机网络通信" />
+
+  
+  <link rel="alternate" hreflang="en-us" href="/post/socket-communication-between-two-machine/" />
+
+  
+  
+  
+    <meta name="theme-color" content="#1565c0" />
+  
+
+  
+  
+    
+    <script src="/js/mathjax-config.js"></script>
+  
+
+  
+
+  <link rel="stylesheet" href="/css/vendor-bundle.min.c7b8d9abd591ba2253ea42747e3ac3f5.css" media="print" onload="this.media='all'">
+
+  
+  
+  
+    
+    
+      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/academicons@1.9.1/css/academicons.min.css" integrity="sha512-W0xM4mr6dEP9nREo7Z9z+9X70wytKvMGeDsj7ps2+xg5QPrEBXC8tAW1IFnzjR6eoJ90JmCnFzerQJTLzIEHjA==" crossorigin="anonymous" media="print" onload="this.media='all'">
+    
+
+    
+    
+    
+    
+      
+      
+    
+    
+    
+
+    
+    
+    
+      
+    
+    
+      
+      
+        
+          <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@10.2.1/build/styles/github.min.css" crossorigin="anonymous" title="hl-light" media="print" onload="this.media='all'">
+          <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@10.2.1/build/styles/dracula.min.css" crossorigin="anonymous" title="hl-dark" media="print" onload="this.media='all'" disabled>
+        
+      
+    
+
+    
+    
+    
+      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.7.1/dist/leaflet.min.css" integrity="" crossorigin="anonymous" media="print" onload="this.media='all'">
+    
+
+    
+
+    
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js" integrity="" crossorigin="anonymous" async></script>
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+  
+
+  
+  
+  
+  
+  
+  <link rel="stylesheet" href="/css/wowchemy.1052fab8b7700a3dc49ee23683097d66.css" />
+
+  
+
+
+
+  
+
+
+  
+
+
+  
+
+
+  <script>
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?51ae6db546b05b91d4053193ba49123d";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+  
+  
+  
+
+  
+
+  
+
+  <link rel="icon" type="image/png" href="/media/icon_hue03491371183284312b8b116a73ae5ab_79511_32x32_fill_lanczos_center_3.png" />
+  <link rel="apple-touch-icon" type="image/png" href="/media/icon_hue03491371183284312b8b116a73ae5ab_79511_180x180_fill_lanczos_center_3.png" />
+
+  <link rel="canonical" href="/post/socket-communication-between-two-machine/" />
+
+  
+  
+  
+  
+  
+  
+  
+  
+    
+    
+  
+  
+
+  
+  
+    
+    
+  
+  <meta property="twitter:card" content="summary" />
+  
+    <meta property="twitter:site" content="@wowchemy" />
+    <meta property="twitter:creator" content="@wowchemy" />
+  
+  <meta property="og:site_name" content="CoolCats" />
+  <meta property="og:url" content="/post/socket-communication-between-two-machine/" />
+  <meta property="og:title" content="Windows Server间的通信: 基于Python-Socket编程的实现 | CoolCats" />
+  <meta property="og:description" content="socket编程、计算机网络通信" /><meta property="og:image" content="/media/icon_hue03491371183284312b8b116a73ae5ab_79511_512x512_fill_lanczos_center_3.png" />
+    <meta property="twitter:image" content="/media/icon_hue03491371183284312b8b116a73ae5ab_79511_512x512_fill_lanczos_center_3.png" /><meta property="og:locale" content="en-us" />
+  
+    
+      <meta
+        property="article:published_time"
+        content="2023-06-10T16:57:59&#43;08:00"
+      />
+    
+    <meta property="article:modified_time" content="2023-06-10T16:57:59&#43;08:00">
+  
+
+  
+
+
+    
+
+
+
+
+
+
+  
+
+
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "/post/socket-communication-between-two-machine/"
+  },
+  "headline": "Windows Server间的通信: 基于Python-Socket编程的实现",
+  
+  "datePublished": "2023-06-10T16:57:59+08:00",
+  "dateModified": "2023-06-10T16:57:59+08:00",
+  
+  "author": {
+    "@type": "Person",
+    "name": "CoolCats"
+  },
+  
+  "publisher": {
+    "@type": "Organization",
+    "name": "CoolCats",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "/media/icon_hue03491371183284312b8b116a73ae5ab_79511_192x192_fill_lanczos_center_3.png"
+    }
+  },
+  "description": "socket编程、计算机网络通信"
+}
+</script>
+
+  
+
+  
+
+  
+
+  
+
+
+
+
+
+  <title>Windows Server间的通信: 基于Python-Socket编程的实现 | CoolCats</title>
+</head>
+
+
+<body id="top" data-spy="scroll" data-offset="70" data-target="#TableOfContents" class="page-wrapper   " data-wc-page-id="1515fb30cf4ce69897b74911c85c2db2" >
+
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  <script src="/js/wowchemy-init.min.2ed908358299dd7ab553faae685c746c.js"></script>
+
+  
+
+
+<aside class="search-modal" id="search">
+  <div class="container">
+    <section class="search-header">
+
+      <div class="row no-gutters justify-content-between mb-3">
+        <div class="col-6">
+          <h1>Search</h1>
+        </div>
+        <div class="col-6 col-search-close">
+          <a class="js-search" href="#" aria-label="Close"><i class="fas fa-times-circle text-muted" aria-hidden="true"></i></a>
+        </div>
+      </div>
+
+      <div id="search-box">
+        
+        <input name="q" id="search-query" placeholder="Search..." autocapitalize="off"
+        autocomplete="off" autocorrect="off" spellcheck="false" type="search" class="form-control"
+        aria-label="Search...">
+        
+      </div>
+
+      
+      
+
+      
+
+    </section>
+    <section class="section-search-results">
+
+      <div id="search-hits">
+        
+      </div>
+
+    </section>
+  </div>
+</aside>
+
+
+
+  <div class="page-header">
+    
+
+
+
+
+
+
+
+
+
+
+
+
+<header class="header--fixed">
+  <nav class="navbar navbar-expand-lg navbar-light compensate-for-scrollbar" id="navbar-main">
+    <div class="container-xl">
+
+      
+      <div class="d-none d-lg-inline-flex">
+        <a class="navbar-brand" href="/">CoolCats</a>
+      </div>
+      
+
+      
+      <button type="button" class="navbar-toggler" data-toggle="collapse"
+              data-target="#navbar-content" aria-controls="navbar-content" aria-expanded="false" aria-label="Toggle navigation">
+      <span><i class="fas fa-bars"></i></span>
+      </button>
+      
+
+      
+      <div class="navbar-brand-mobile-wrapper d-inline-flex d-lg-none">
+        <a class="navbar-brand" href="/">CoolCats</a>
+      </div>
+      
+
+      
+      
+      <div class="navbar-collapse main-menu-item collapse justify-content-start" id="navbar-content">
+
+        
+        <ul class="navbar-nav d-md-inline-flex">
+          
+
+          
+
+          
+          
+          
+
+          
+
+          
+          
+          
+          
+
+          
+            
+              
+              
+            
+            
+          
+
+          <li class="nav-item">
+            <a class="nav-link  active" href="/post"><span>博客</span></a>
+          </li>
+
+          
+          
+
+          
+
+          
+          
+          
+            
+          
+
+          
+
+          
+          
+          
+          
+
+          
+            
+              
+              
+            
+            
+          
+
+          <li class="nav-item">
+            <a class="nav-link " href="/event"><span>趣事</span></a>
+          </li>
+
+          
+          
+
+          
+
+          
+          
+          
+            
+          
+
+          
+
+          
+          
+          
+          
+
+          
+            
+              
+              
+            
+            
+          
+
+          <li class="nav-item">
+            <a class="nav-link " href="/project"><span>项目</span></a>
+          </li>
+
+          
+          
+
+          
+
+          
+          
+          
+            
+          
+
+          
+
+          
+          
+          
+          
+
+          
+            
+              
+              
+            
+            
+          
+
+          <li class="nav-item">
+            <a class="nav-link " href="/publication"><span>论文</span></a>
+          </li>
+
+          
+          
+
+          
+
+          
+          
+          
+            
+          
+
+          
+
+          
+          
+          
+          
+
+          
+            
+              
+              
+            
+            
+          
+
+          <li class="nav-item">
+            <a class="nav-link " href="/contact"><span>联系</span></a>
+          </li>
+
+          
+          
+
+          
+
+          
+          
+          
+            
+          
+
+          
+
+          
+          
+          
+          
+
+          
+            
+              
+              
+            
+            
+          
+
+          <li class="nav-item">
+            <a class="nav-link " href="/media/files/cv"><span>简历</span></a>
+          </li>
+
+          
+          
+
+        
+
+          
+        </ul>
+      </div>
+
+      <ul class="nav-icons navbar-nav flex-row ml-auto d-flex pl-md-2">
+
+        
+        
+          
+        
+
+        
+        
+        <li class="nav-item">
+          <a class="nav-link js-search" href="#" aria-label="Search"><i class="fas fa-search" aria-hidden="true"></i></a>
+        </li>
+        
+
+        
+        
+        
+        <li class="nav-item dropdown theme-dropdown">
+          <a href="#" class="nav-link" data-toggle="dropdown" aria-haspopup="true" aria-label="Display preferences">
+            <i class="fas fa-moon" aria-hidden="true"></i>
+          </a>
+          <div class="dropdown-menu">
+            <a href="#" class="dropdown-item js-set-theme-light">
+              <span>Light</span>
+            </a>
+            <a href="#" class="dropdown-item js-set-theme-dark">
+              <span>Dark</span>
+            </a>
+            <a href="#" class="dropdown-item js-set-theme-auto">
+              <span>Automatic</span>
+            </a>
+          </div>
+        </li>
+        
+
+        
+        
+
+      </ul>
+
+    </div>
+  </nav>
+</header>
+
+
+  </div>
+
+  <div class="page-body">
+    
+    
+    
+
+    <article class="article">
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+  
+  
+<div class="article-container pt-3">
+  <h1>Windows Server间的通信: 基于Python-Socket编程的实现</h1>
+
+  
+
+  
+    
+
+
+<div class="article-metadata">
+
+  
+  
+
+  
+  <span class="article-date">
+    
+    
+      
+    
+    Jun 10, 2023
+  </span>
+  
+
+  
+
+  
+  <span class="middot-divider"></span>
+  <span class="article-reading-time">
+    4 min read
+  </span>
+  
+
+  
+  
+  
+  
+
+  
+  
+  <span class="middot-divider"></span>
+  <span class="article-categories">
+    <i class="fas fa-folder mr-1"></i><a href="/category/python/">Python</a>, <a href="/category/%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B/">网络编程</a></span>
+  
+
+</div>
+
+    
+
+
+
+
+
+  
+</div>
+
+
+
+  <div class="article-container">
+
+    <div class="article-style">
+      <h2 id="0x00-场景描述">0x00 场景描述</h2>
+<p>工作中遇到一个需求，有两台windows server，我们希望在一台server A中通知另一台server B执行Python程序，并将结果返回到服务器A中。</p>
+<h2 id="0x01-实现1基于socket客户端-服务器的实现">0x01 实现1：基于Socket客户端-服务器的实现</h2>
+<p>思路：在server B中实现一个Socket Server，开放指定端口，等待客户端（Server A）的请求，并进行数据交换：客户端向服务端发送python脚本执行命令：<Python Executable> <Python Script> <Args>。</p>
+<h3 id="创建测试用脚本">创建测试用脚本</h3>
+<p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<figure  >
+  <div class="d-flex justify-content-center">
+    <div class="w-100" ><img alt="" srcset="
+               /post/socket-communication-between-two-machine/images/task_hu7c6b90c2b95db9f63f03ba23d8a4e1a1_7594_3626fe19e79c4188dd3fdc224dcf1f9c.webp 400w,
+               /post/socket-communication-between-two-machine/images/task_hu7c6b90c2b95db9f63f03ba23d8a4e1a1_7594_5fe69cc0a5eb4302c60722fc567f3d9f.webp 760w,
+               /post/socket-communication-between-two-machine/images/task_hu7c6b90c2b95db9f63f03ba23d8a4e1a1_7594_1200x1200_fit_q75_h2_lanczos.webp 1200w"
+               src="/post/socket-communication-between-two-machine/images/task_hu7c6b90c2b95db9f63f03ba23d8a4e1a1_7594_3626fe19e79c4188dd3fdc224dcf1f9c.webp"
+               width="410"
+               height="140"
+               loading="lazy" data-zoomable /></div>
+  </div></figure>
+</p>
+<p>exec/task.py</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">argparse</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">def</span> <span class="nf">run</span><span class="p">(</span><span class="n">task_id</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">    <span class="n">msg</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&#34;you have successfully run task </span><span class="si">{</span><span class="n">task_id</span><span class="si">}</span><span class="s2">&#34;</span>
+</span></span><span class="line"><span class="cl">    <span class="nb">print</span><span class="p">(</span><span class="s2">&#34;print: &#34;</span><span class="p">,</span> <span class="n">msg</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="n">msg</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&#34;__main__&#34;</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">    <span class="n">parser</span> <span class="o">=</span> <span class="n">argparse</span><span class="o">.</span><span class="n">ArgumentParser</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">    <span class="n">parser</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s2">&#34;--task_id&#34;</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="nb">int</span><span class="p">,</span> <span class="n">dest</span><span class="o">=</span><span class="s2">&#34;task&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="n">a</span> <span class="o">=</span> <span class="n">parser</span><span class="o">.</span><span class="n">parse_args</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">    <span class="k">if</span> <span class="n">a</span><span class="o">.</span><span class="n">task</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">        <span class="nb">print</span><span class="p">(</span><span class="s2">&#34;No arg&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="k">else</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&#34;called from server </span><span class="si">{</span><span class="n">run</span><span class="p">(</span><span class="n">task_id</span><span class="o">=</span><span class="n">a</span><span class="o">.</span><span class="n">task</span><span class="p">)</span><span class="si">}</span><span class="s2">&#34;</span><span class="p">)</span>
+</span></span></code></pre></div><h3 id="服务端实现">服务端实现</h3>
+<p>server.py</p>
+<p>功能：在本地（127.0.0.1）的12138端口创建Socket服务 （使用AF_INET地址家族，TCP类型套接字），监听来自客户端的信息（命令），通过subprocess.check_output方法执行命令并得到返回结果。</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">socket</span>
+</span></span><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">subprocess</span>
+</span></span><span class="line"><span class="cl"><span class="kn">from</span> <span class="nn">time</span> <span class="kn">import</span> <span class="n">ctime</span>
+</span></span><span class="line"><span class="cl"><span class="n">BUF_SIZE</span> <span class="o">=</span> <span class="mi">1024</span>
+</span></span><span class="line"><span class="cl"><span class="k">class</span> <span class="nc">SocketServer</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">host</span><span class="o">=</span><span class="s1">&#39;127.0.0.1&#39;</span><span class="p">,</span> <span class="n">port</span><span class="o">=</span><span class="mi">12138</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">        <span class="bp">self</span><span class="o">.</span><span class="n">server</span> <span class="o">=</span> <span class="n">socket</span><span class="o">.</span><span class="n">socket</span><span class="p">(</span><span class="n">socket</span><span class="o">.</span><span class="n">AF_INET</span><span class="p">,</span> <span class="n">socket</span><span class="o">.</span><span class="n">SOCK_STREAM</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="c1"># 为服务绑定主机地址和端口号</span>
+</span></span><span class="line"><span class="cl">        <span class="bp">self</span><span class="o">.</span><span class="n">server</span><span class="o">.</span><span class="n">bind</span><span class="p">((</span><span class="n">host</span><span class="p">,</span> <span class="n">port</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl">        <span class="bp">self</span><span class="o">.</span><span class="n">server</span><span class="o">.</span><span class="n">listen</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="k">def</span> <span class="nf">run</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">        <span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">            <span class="k">try</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">                <span class="nb">print</span><span class="p">(</span><span class="s2">&#34;server listening...&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">                <span class="c1"># 等待客户端连接（阻塞，直到收到客户端的连接请求）</span>
+</span></span><span class="line"><span class="cl">                <span class="n">client_socket</span><span class="p">,</span> <span class="n">address</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">server</span><span class="o">.</span><span class="n">accept</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">                <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&#34;connected from </span><span class="si">{</span><span class="n">address</span><span class="si">}</span><span class="s2">...&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">                <span class="n">command</span> <span class="o">=</span> <span class="n">client_socket</span><span class="o">.</span><span class="n">recv</span><span class="p">(</span><span class="n">BUF_SIZE</span><span class="p">)</span><span class="o">.</span><span class="n">decode</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">                <span class="c1"># refer to https://docs.python.org/3/library/subprocess.html#subprocess.check_output</span>
+</span></span><span class="line"><span class="cl">                <span class="n">result</span> <span class="o">=</span> <span class="n">subprocess</span><span class="o">.</span><span class="n">check_output</span><span class="p">(</span><span class="n">command</span><span class="p">,</span> <span class="n">shell</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">                <span class="nb">print</span><span class="p">(</span><span class="n">result</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">                <span class="c1"># socket.sendall的参数是byte对象，需要将字符串通过encode方法转成byte对象</span>
+</span></span><span class="line"><span class="cl">                <span class="n">client_socket</span><span class="o">.</span><span class="n">sendall</span><span class="p">(</span><span class="sa">f</span><span class="s2">&#34;[</span><span class="si">{</span><span class="n">ctime</span><span class="p">()</span><span class="si">}</span><span class="s2">]-</span><span class="si">{</span><span class="n">result</span><span class="o">.</span><span class="n">decode</span><span class="p">()</span><span class="si">}</span><span class="s2">&#34;</span><span class="o">.</span><span class="n">encode</span><span class="p">())</span>
+</span></span><span class="line"><span class="cl">                <span class="n">client_socket</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">            <span class="k">except</span> <span class="n">subprocess</span><span class="o">.</span><span class="n">CalledProcessError</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">                <span class="c1"># raise RuntimeError(&#34;command &#39;{}&#39; return with error (code {}): {}&#34;.format(e.cmd, e.returncode, e.output))</span>
+</span></span><span class="line"><span class="cl">                <span class="nb">print</span><span class="p">(</span><span class="s2">&#34;command &#39;</span><span class="si">{}</span><span class="s2">&#39; return with error (code </span><span class="si">{}</span><span class="s2">): </span><span class="si">{}</span><span class="s2">&#34;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">e</span><span class="o">.</span><span class="n">cmd</span><span class="p">,</span> <span class="n">e</span><span class="o">.</span><span class="n">returncode</span><span class="p">,</span> <span class="n">e</span><span class="o">.</span><span class="n">output</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&#34;__main__&#34;</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">    <span class="n">server</span> <span class="o">=</span> <span class="n">SocketServer</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">    <span class="n">server</span><span class="o">.</span><span class="n">run</span><span class="p">()</span>
+</span></span></code></pre></div><p>注：该socket server的实现在一个无限循环中，如果要实现socket服务关闭的功能，需要调用socket.close方法关闭socket服务器连接，释放内存。</p>
+<p>在windows中，可通过netstat命令查看对应端口是否已有对应服务</p>
+<p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<figure  >
+  <div class="d-flex justify-content-center">
+    <div class="w-100" ><img alt="" srcset="
+               /post/socket-communication-between-two-machine/images/netstat_hu41b36796a7fc02953eecd9350dbb5685_29999_b4916fd2f4d9fb7de4fe0119e34ac5a1.webp 400w,
+               /post/socket-communication-between-two-machine/images/netstat_hu41b36796a7fc02953eecd9350dbb5685_29999_c272f3bb2b4f6270fffa0aacb095a2ff.webp 760w,
+               /post/socket-communication-between-two-machine/images/netstat_hu41b36796a7fc02953eecd9350dbb5685_29999_1200x1200_fit_q75_h2_lanczos.webp 1200w"
+               src="/post/socket-communication-between-two-machine/images/netstat_hu41b36796a7fc02953eecd9350dbb5685_29999_b4916fd2f4d9fb7de4fe0119e34ac5a1.webp"
+               width="760"
+               height="136"
+               loading="lazy" data-zoomable /></div>
+  </div></figure>
+</p>
+<h3 id="客户端实现">客户端实现</h3>
+<p>client.py</p>
+<p>功能：向服务地址和端口发起socket连接请求，发送待执行命令（byte），返回执行结果</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">socket</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">def</span> <span class="nf">send_command</span><span class="p">(</span><span class="n">command</span><span class="p">:</span><span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">    <span class="n">host</span> <span class="o">=</span> <span class="s1">&#39;127.0.0.1&#39;</span>
+</span></span><span class="line"><span class="cl">    <span class="n">port</span> <span class="o">=</span> <span class="mi">12138</span>
+</span></span><span class="line"><span class="cl">    <span class="n">client_socket</span> <span class="o">=</span> <span class="n">socket</span><span class="o">.</span><span class="n">socket</span><span class="p">(</span><span class="n">socket</span><span class="o">.</span><span class="n">AF_INET</span><span class="p">,</span> <span class="n">socket</span><span class="o">.</span><span class="n">SOCK_STREAM</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="n">client_socket</span><span class="o">.</span><span class="n">connect_ex</span><span class="p">((</span><span class="n">host</span><span class="p">,</span> <span class="n">port</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl">    <span class="n">client_socket</span><span class="o">.</span><span class="n">sendall</span><span class="p">(</span><span class="n">command</span><span class="o">.</span><span class="n">encode</span><span class="p">())</span>
+</span></span><span class="line"><span class="cl">    <span class="nb">print</span><span class="p">(</span><span class="n">client_socket</span><span class="o">.</span><span class="n">family</span><span class="p">,</span> <span class="n">client_socket</span><span class="o">.</span><span class="n">type</span><span class="p">,</span> <span class="n">client_socket</span><span class="o">.</span><span class="n">proto</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="n">result</span> <span class="o">=</span> <span class="n">client_socket</span><span class="o">.</span><span class="n">recv</span><span class="p">(</span><span class="mi">1024</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="n">result</span><span class="o">.</span><span class="n">decode</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&#34;__main__&#34;</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">    <span class="nb">print</span><span class="p">(</span><span class="n">send_command</span><span class="p">(</span><span class="s2">&#34;python --version&#34;</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl">    <span class="nb">print</span><span class="p">(</span><span class="n">send_command</span><span class="p">(</span><span class="s2">&#34;python ..\exec</span><span class="se">\\</span><span class="s2">task.py --task_id 1&#34;</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl">    <span class="nb">print</span><span class="p">(</span><span class="n">send_command</span><span class="p">(</span><span class="s2">&#34;python ..\exec</span><span class="se">\\</span><span class="s2">task.py --task_id 10&#34;</span><span class="p">))</span>
+</span></span></code></pre></div><p>先运行server.py，再运行client.py，输出结果：</p>
+<p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<figure  >
+  <div class="d-flex justify-content-center">
+    <div class="w-100" ><img alt="" srcset="
+               /post/socket-communication-between-two-machine/images/effect_hub654d5448d6eb63459f9819b75ad2ebc_76403_19a78eb650be3f29b1b7c7ad9f880f4d.webp 400w,
+               /post/socket-communication-between-two-machine/images/effect_hub654d5448d6eb63459f9819b75ad2ebc_76403_847bb3418e96c79355611080ef4c47d7.webp 760w,
+               /post/socket-communication-between-two-machine/images/effect_hub654d5448d6eb63459f9819b75ad2ebc_76403_1200x1200_fit_q75_h2_lanczos.webp 1200w"
+               src="/post/socket-communication-between-two-machine/images/effect_hub654d5448d6eb63459f9819b75ad2ebc_76403_19a78eb650be3f29b1b7c7ad9f880f4d.webp"
+               width="760"
+               height="273"
+               loading="lazy" data-zoomable /></div>
+  </div></figure>
+</p>
+<p>此时服务器端控制台输出如下：</p>
+<p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<figure  >
+  <div class="d-flex justify-content-center">
+    <div class="w-100" ><img alt="" srcset="
+               /post/socket-communication-between-two-machine/images/server_hu7d614aa2ca7aa11d2d485091bf8c021f_80359_b40f037468d0765673bcd0d62d7877dd.webp 400w,
+               /post/socket-communication-between-two-machine/images/server_hu7d614aa2ca7aa11d2d485091bf8c021f_80359_8e2b7f847b603bb81e02d391313b0430.webp 760w,
+               /post/socket-communication-between-two-machine/images/server_hu7d614aa2ca7aa11d2d485091bf8c021f_80359_1200x1200_fit_q75_h2_lanczos.webp 1200w"
+               src="/post/socket-communication-between-two-machine/images/server_hu7d614aa2ca7aa11d2d485091bf8c021f_80359_b40f037468d0765673bcd0d62d7877dd.webp"
+               width="760"
+               height="234"
+               loading="lazy" data-zoomable /></div>
+  </div></figure>
+</p>
+<p>注：测试代码仅实现远程命令执行，当生产环境开放类似功能给客户端使用时，尽量限制可执行命令权限，避免出现安全隐患。</p>
+<h3 id="小结">小结</h3>
+<p>实现1虽然给出两个windows server间通知脚本执行、数据交换的功能，但没有考虑通信的安全性，服务端没有对客户端进行身份验证 ，传输没有经过加密等，这样的服务不适合开放。如果要完善Socket服务实现（安全性角度），可以考虑如下方面 ：</p>
+<ol>
+<li>
+<p>基于SSL/TLS协议实现对Socket服务的加密通信</p>
+</li>
+<li>
+<p>使用Token验证</p>
+</li>
+<li>
+<p>使用SSH隧道对Socket服务进行 加密保护</p>
+</li>
+</ol>
+<h2 id="0x02-更多思路">0x02 更多思路</h2>
+<ol>
+<li>
+<p>基于HTTP请求: 在B服务器上部署一个Web服务器，在A服务器上向B服务器发送HTTP请求，请求中添加需要执行的Python脚本路径或者命令、参数，B服务器上的Web服务器解析请求并执行响应命令</p>
+</li>
+<li>
+<p>基于SSH服务：在B服务器上安装配置SSH服务并设置允许远程登录，在A服务器上使用诸如paramiko的库来连接到B服务器并执行Python命令</p>
+</li>
+<li>
+<p>基于消息队列：使用一个消息队列系统，如RabbitMQ或ZeroMQ，将消息从A服务器发送到消息队列，B服务器上监听消息队列并在接收到执行时执行需要的Python脚本或命令。</p>
+</li>
+</ol>
+<h2 id="0x03-知识点">0x03 知识点</h2>
+<h3 id="socket">Socket</h3>
+<p><a href="https://docs.python.org/3/library/socket.html" target="_blank" rel="noopener">https://docs.python.org/3/library/socket.html</a></p>
+<h4 id="socket的概念">Socket的概念</h4>
+<p>Socket是一种计算机网络中的一种通信机制，用于实现不同进程或不同计算机之间的数据传输，中文名叫“套接字”。通过创建Socket对象并指定相应的地址和端口，进程可以与其他进程建立网络连接，进行数据交换和通信。网络编程中，Socket是一种统一的接口，其提供一种通信方式让两方或多方之间可以进行任意类型的数据传输。</p>
+<h4 id="socket地址家族">Socket地址家族</h4>
+<p>AF表示地址家族（Address Family），部分系统会将地址家族表示为域（domain）协议家族（protocol family）</p>
+<ul>
+<li>
+<p>AF_UNIX</p>
+</li>
+<li>
+<p>AF_LOCAL</p>
+</li>
+<li>
+<p>AF_INET</p>
+<p>基于网络的地址家族。</p>
+</li>
+<li>
+<p>AF_INET6</p>
+<p>基于Ipv6（第6版因特网协议）寻址。</p>
+<p>如实现1，如果要使用IPv6，则客户端和服务端的代码需要修改以下部分 ：</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl">  <span class="k">def</span> <span class="nf">send_command</span><span class="p">(</span><span class="n">command</span><span class="p">:</span><span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">    <span class="c1"># host = &#39;127.0.0.1</span>
+</span></span><span class="line"><span class="cl">    <span class="c1"># CHANGE: 本地主机的IPv6地址 ::1</span>
+</span></span><span class="line"><span class="cl">    <span class="n">host</span> <span class="o">=</span> <span class="s1">&#39;::1&#39;</span>
+</span></span><span class="line"><span class="cl">    <span class="n">port</span> <span class="o">=</span> <span class="mi">12138</span>
+</span></span><span class="line"><span class="cl">    <span class="c1"># CHANGE: 地址家族参数设置为socket.AF_INET6</span>
+</span></span><span class="line"><span class="cl">    <span class="n">client_socket</span> <span class="o">=</span> <span class="n">socket</span><span class="o">.</span><span class="n">socket</span><span class="p">(</span><span class="n">socket</span><span class="o">.</span><span class="n">AF_INET6</span><span class="p">,</span> <span class="n">socket</span><span class="o">.</span><span class="n">SOCK_STREAM</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="n">client_socket</span><span class="o">.</span><span class="n">connect_ex</span><span class="p">((</span><span class="n">host</span><span class="p">,</span> <span class="n">port</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl">    <span class="n">client_socket</span><span class="o">.</span><span class="n">sendall</span><span class="p">(</span><span class="n">command</span><span class="o">.</span><span class="n">encode</span><span class="p">())</span>
+</span></span><span class="line"><span class="cl">    <span class="nb">print</span><span class="p">(</span><span class="n">client_socket</span><span class="o">.</span><span class="n">family</span><span class="p">,</span> <span class="n">client_socket</span><span class="o">.</span><span class="n">type</span><span class="p">,</span> <span class="n">client_socket</span><span class="o">.</span><span class="n">proto</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="n">result</span> <span class="o">=</span> <span class="n">client_socket</span><span class="o">.</span><span class="n">recv</span><span class="p">(</span><span class="mi">1024</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="n">result</span><span class="o">.</span><span class="n">decode</span><span class="p">()</span>
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="k">class</span> <span class="nc">SocketServer</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">host</span><span class="o">=</span><span class="s1">&#39;::1&#39;</span><span class="p">,</span> <span class="n">port</span><span class="o">=</span><span class="mi">12138</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="c1"># CHANGE: 地址家族参数设置为socket.AF_INET6:</span>
+</span></span><span class="line"><span class="cl">        <span class="bp">self</span><span class="o">.</span><span class="n">server</span> <span class="o">=</span> <span class="n">socket</span><span class="o">.</span><span class="n">socket</span><span class="p">(</span><span class="n">socket</span><span class="o">.</span><span class="n">AF_INET6</span><span class="p">,</span> <span class="n">socket</span><span class="o">.</span><span class="n">SOCK_STREAM</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="c1"># 为服务绑定主机地址和端口号</span>
+</span></span><span class="line"><span class="cl">        <span class="bp">self</span><span class="o">.</span><span class="n">server</span><span class="o">.</span><span class="n">bind</span><span class="p">((</span><span class="n">host</span><span class="p">,</span> <span class="n">port</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl">        <span class="bp">self</span><span class="o">.</span><span class="n">server</span><span class="o">.</span><span class="n">listen</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+</span></span></code></pre></div><p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<figure  >
+  <div class="d-flex justify-content-center">
+    <div class="w-100" ><img alt="" srcset="
+               /post/socket-communication-between-two-machine/images/udp_huf7015e7dc301efafd92d6cac58e7e978_56492_ae95330c6798b5bd15fa466ad741016c.webp 400w,
+               /post/socket-communication-between-two-machine/images/udp_huf7015e7dc301efafd92d6cac58e7e978_56492_5577f6cb2e2ef755188fc16d722898c6.webp 760w,
+               /post/socket-communication-between-two-machine/images/udp_huf7015e7dc301efafd92d6cac58e7e978_56492_1200x1200_fit_q75_h2_lanczos_3.webp 1200w"
+               src="/post/socket-communication-between-two-machine/images/udp_huf7015e7dc301efafd92d6cac58e7e978_56492_ae95330c6798b5bd15fa466ad741016c.webp"
+               width="682"
+               height="470"
+               loading="lazy" data-zoomable /></div>
+  </div></figure>
+</p>
+</li>
+<li>
+<p>AF_NETLINK</p>
+</li>
+<li>
+<p>AF_TIPC</p>
+</li>
+</ul>
+<h4 id="socket的类型">Socket的类型</h4>
+<p>存在两种风格的套接字：面向连接的套接字和无连接的套接字。</p>
+<h5 id="面向连接的套接字">面向连接的套接字</h5>
+<p>该类型连接在通信前需要先建立连接，类似使用电话系统给朋友打电话，该类型的通信也被成为<strong>虚拟电路</strong>或<strong>流套接字</strong>（Python中对此类套接字的常量命名为socket.SOCK_STREAM）；</p>
+<p>面向连接的通信提供 序列化、可靠、不重复的数据交付 ，每条消息可以拆分成多个片段 ，每一个消息 片段可以确保到达目的地 并按顺序组合成完整消息传递给正在等待的程序 。</p>
+<p>实现这种连接类型需要一种协议，主要采用传输控制协议（Transport Control Protocol，TCP协议），由于 AF_INET家族的套接字通常使用IP协议寻找网络中的主机，所以整个系统常常结合TCP协议和IP协议进行工作 。</p>
+<h5 id="无连接的套接字">无连接的套接字</h5>
+<p>无连接套接字常被称为数据报类型的套接字，该类型连接在通信开始之前不需要建立连接，传输过程中无法保证消息的顺序性、可靠性和重复性 。</p>
+<p>实现该类型连接的主要协议是用户数据报协议（User Datagram Protocol)，在python中使用命名为socket.SOCK_DGRAM，由于无连接套接字也使用IP协议寻找网络中 的主机，因此该类系统也被称为UDP/IP系统。</p>
+<p>基于Python实现一个简单的基于UDP协议的Socket服务器如下(udp_server.py)：</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="kn">from</span> <span class="nn">socket</span> <span class="kn">import</span> <span class="o">*</span>
+</span></span><span class="line"><span class="cl"><span class="kn">from</span> <span class="nn">time</span> <span class="kn">import</span> <span class="n">ctime</span>
+</span></span><span class="line"><span class="cl"><span class="n">ADDR</span> <span class="o">=</span> <span class="s2">&#34;::1&#34;</span>
+</span></span><span class="line"><span class="cl"><span class="n">PORT</span> <span class="o">=</span> <span class="mi">12135</span>
+</span></span><span class="line"><span class="cl"><span class="n">BUFSIZE</span> <span class="o">=</span> <span class="mi">1024</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">class</span> <span class="nc">UDPServer</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">    <span class="s2">&#34;&#34;&#34;UDP服务器&#34;&#34;&#34;</span>
+</span></span><span class="line"><span class="cl">    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">host</span><span class="p">,</span> <span class="n">port</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">        <span class="bp">self</span><span class="o">.</span><span class="n">udp_socket</span> <span class="o">=</span> <span class="n">socket</span><span class="p">(</span><span class="n">family</span><span class="o">=</span><span class="n">AF_INET6</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="n">SOCK_DGRAM</span><span class="p">,</span> <span class="n">proto</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="bp">self</span><span class="o">.</span><span class="n">udp_socket</span><span class="o">.</span><span class="n">bind</span><span class="p">((</span><span class="n">host</span><span class="p">,</span> <span class="n">port</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="k">def</span> <span class="nf">run</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">        <span class="k">try</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">            <span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">                <span class="nb">print</span><span class="p">(</span><span class="s2">&#34;Server is waiting data...&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">                <span class="n">data</span><span class="p">,</span> <span class="n">addr</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">udp_socket</span><span class="o">.</span><span class="n">recvfrom</span><span class="p">(</span><span class="n">BUFSIZE</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">                <span class="bp">self</span><span class="o">.</span><span class="n">udp_socket</span><span class="o">.</span><span class="n">sendto</span><span class="p">((</span><span class="s2">&#34;[</span><span class="si">%s</span><span class="s2">] </span><span class="si">%s</span><span class="s2">}&#34;</span><span class="o">%</span><span class="p">(</span><span class="n">ctime</span><span class="p">(),</span> <span class="n">data</span><span class="o">.</span><span class="n">decode</span><span class="p">(</span><span class="s2">&#34;utf-8&#34;</span><span class="p">)))</span><span class="o">.</span><span class="n">encode</span><span class="p">(),</span> <span class="n">addr</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">                <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&#34;received </span><span class="si">{</span><span class="n">data</span><span class="o">.</span><span class="n">decode</span><span class="p">(</span><span class="s1">&#39;utf-8&#39;</span><span class="p">)</span><span class="si">}</span><span class="s2"> from and returned to: </span><span class="si">{</span><span class="n">addr</span><span class="si">}</span><span class="s2">&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">            <span class="nb">print</span><span class="p">(</span><span class="nb">repr</span><span class="p">(</span><span class="n">e</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl">        <span class="k">finally</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">            <span class="bp">self</span><span class="o">.</span><span class="n">udp_socket</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&#34;__main__&#34;</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">    <span class="n">UDPServer</span><span class="p">(</span><span class="n">host</span><span class="o">=</span><span class="n">ADDR</span><span class="p">,</span> <span class="n">port</span><span class="o">=</span><span class="n">PORT</span><span class="p">)</span><span class="o">.</span><span class="n">run</span><span class="p">()</span>
+</span></span></code></pre></div><p>再实现一个udp客户端（udp_client.py)与服务端进行通信</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="kn">from</span> <span class="nn">socket</span> <span class="kn">import</span> <span class="o">*</span>
+</span></span><span class="line"><span class="cl"><span class="n">HOST</span> <span class="o">=</span> <span class="s2">&#34;::1&#34;</span>
+</span></span><span class="line"><span class="cl"><span class="n">PORT</span> <span class="o">=</span> <span class="mi">12135</span>
+</span></span><span class="line"><span class="cl"><span class="n">BUFSIZE</span> <span class="o">=</span> <span class="mi">1024</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&#34;__main__&#34;</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">    <span class="n">udp_client</span> <span class="o">=</span> <span class="n">socket</span><span class="p">(</span><span class="n">AF_INET6</span><span class="p">,</span> <span class="n">SOCK_DGRAM</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="k">try</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">        <span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">            <span class="n">data</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s2">&#34;&gt;&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">            <span class="k">if</span> <span class="ow">not</span> <span class="n">data</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">                <span class="k">break</span>
+</span></span><span class="line"><span class="cl">            <span class="n">udp_client</span><span class="o">.</span><span class="n">sendto</span><span class="p">(</span><span class="n">data</span><span class="o">.</span><span class="n">encode</span><span class="p">(),</span> <span class="p">(</span><span class="n">HOST</span><span class="p">,</span> <span class="n">PORT</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl">            <span class="n">data</span><span class="p">,</span> <span class="n">addr</span> <span class="o">=</span> <span class="n">udp_client</span><span class="o">.</span><span class="n">recvfrom</span><span class="p">(</span><span class="n">BUFSIZE</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">            <span class="k">if</span> <span class="ow">not</span> <span class="n">data</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">                <span class="k">break</span>
+</span></span><span class="line"><span class="cl">            <span class="nb">print</span><span class="p">(</span><span class="n">data</span><span class="o">.</span><span class="n">decode</span><span class="p">(</span><span class="s1">&#39;utf-8&#39;</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl">    <span class="k">finally</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">        <span class="n">udp_client</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+</span></span></code></pre></div><p>可以注意到，udp服务端不需要监听客户端连接并维持一个客户端的socket连接对象，只需要等待数据、发送数据即可。</p>
+<h5 id="虚拟电路类型连接-vs-用户数据报类型连接">虚拟电路类型连接 vs 用户数据报类型连接</h5>
+<p>前者提供对数据传输可靠性、顺序性的保证，但维护“虚拟电路”需要一定开销，传输效率相对较低；后者虽然不可靠，但不需要维护“虚拟电路”，低廉的成本及更好的性能适用于某些对实时性要求高但准确性要求低的程序，如DNS服务器、音视频即时通信等。</p>
+<h3 id="socketserver">socketserver</h3>
+<p>socketserver是一个socket编程的高级模块，其对socket库进行了封装，可以简化socket编程中一些样板代码。</p>
+<h4 id="基于socketserver的socket服务器tcp实现示例">基于socketserver的socket服务器（TCP）实现示例</h4>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="c1"># tcp_server.py</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="s2">&#34;&#34;&#34;
+</span></span></span><span class="line"><span class="cl"><span class="s2">使用socket高级模块socketserver
+</span></span></span><span class="line"><span class="cl"><span class="s2">&#34;&#34;&#34;</span>
+</span></span><span class="line"><span class="cl"><span class="kn">from</span> <span class="nn">socketserver</span> <span class="kn">import</span> <span class="p">(</span><span class="n">TCPServer</span> <span class="k">as</span> <span class="n">TCP</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">                          <span class="n">StreamRequestHandler</span> <span class="k">as</span> <span class="n">SRH</span>
+</span></span><span class="line"><span class="cl">                          <span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="kn">from</span> <span class="nn">time</span> <span class="kn">import</span> <span class="n">ctime</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">HOST</span> <span class="o">=</span> <span class="s2">&#34;127.0.0.1&#34;</span>
+</span></span><span class="line"><span class="cl"><span class="c1"># HOST = &#34;::1&#34;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">PORT</span> <span class="o">=</span> <span class="mi">12138</span>
+</span></span><span class="line"><span class="cl"><span class="n">ADDR</span> <span class="o">=</span> <span class="p">(</span><span class="n">HOST</span><span class="p">,</span> <span class="n">PORT</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">class</span> <span class="nc">MyRequestHandler</span><span class="p">(</span><span class="n">SRH</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">    <span class="k">def</span> <span class="nf">handle</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">        <span class="s2">&#34;&#34;&#34;
+</span></span></span><span class="line"><span class="cl"><span class="s2">        当接收到来自客户端的消息，就会调用handle方法
+</span></span></span><span class="line"><span class="cl"><span class="s2">        :return:
+</span></span></span><span class="line"><span class="cl"><span class="s2">        &#34;&#34;&#34;</span>
+</span></span><span class="line"><span class="cl">        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&#34;connected from: </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">client_address</span><span class="si">}</span><span class="s2">&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="bp">self</span><span class="o">.</span><span class="n">wfile</span><span class="o">.</span><span class="n">write</span><span class="p">((</span><span class="s1">&#39;[</span><span class="si">%s</span><span class="s1">] </span><span class="si">%s</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="n">ctime</span><span class="p">(),</span> <span class="bp">self</span><span class="o">.</span><span class="n">rfile</span><span class="o">.</span><span class="n">readline</span><span class="p">()</span><span class="o">.</span><span class="n">decode</span><span class="p">()))</span><span class="o">.</span><span class="n">encode</span><span class="p">())</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&#34;__main__&#34;</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">    <span class="c1"># 基于给定的主机信息和请求处理类创建TCP服务器</span>
+</span></span><span class="line"><span class="cl">    <span class="n">tcp_server</span> <span class="o">=</span> <span class="n">TCP</span><span class="p">(</span><span class="n">server_address</span><span class="o">=</span><span class="n">ADDR</span><span class="p">,</span> <span class="n">RequestHandlerClass</span><span class="o">=</span><span class="n">MyRequestHandler</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="nb">print</span><span class="p">(</span><span class="s2">&#34;waiting for connection...&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="n">tcp_server</span><span class="o">.</span><span class="n">serve_forever</span><span class="p">()</span>
+</span></span></code></pre></div><h4 id="socket客户端tcp示例代码">socket客户端（TCP）示例代码</h4>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="c1"># tcp_client.py</span>
+</span></span><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">socket</span>
+</span></span><span class="line"><span class="cl"><span class="n">HOST</span> <span class="o">=</span> <span class="s2">&#34;127.0.0.1&#34;</span>
+</span></span><span class="line"><span class="cl"><span class="n">PORT</span> <span class="o">=</span> <span class="mi">12138</span>
+</span></span><span class="line"><span class="cl"><span class="n">ADDR</span> <span class="o">=</span> <span class="p">(</span><span class="n">HOST</span><span class="p">,</span> <span class="n">PORT</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&#34;__main__&#34;</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">        <span class="n">client_socket</span> <span class="o">=</span> <span class="n">socket</span><span class="o">.</span><span class="n">socket</span><span class="p">(</span><span class="n">socket</span><span class="o">.</span><span class="n">AF_INET</span><span class="p">,</span> <span class="n">socket</span><span class="o">.</span><span class="n">SOCK_STREAM</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="n">client_socket</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="n">ADDR</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="n">data</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s2">&#34;&gt;&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="k">if</span> <span class="ow">not</span> <span class="n">data</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">            <span class="k">break</span>
+</span></span><span class="line"><span class="cl">        <span class="c1"># \r\n是行终止符，由于处理程序类对待套接字通信像对待文件一样所以需要行终止符才能让服务器完成数据读取</span>
+</span></span><span class="line"><span class="cl">        <span class="n">client_socket</span><span class="o">.</span><span class="n">send</span><span class="p">((</span><span class="s2">&#34;</span><span class="si">%s</span><span class="se">\r\n</span><span class="s2">&#34;</span><span class="o">%</span><span class="n">data</span><span class="p">)</span><span class="o">.</span><span class="n">encode</span><span class="p">())</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">        <span class="c1"># client_socket.send((&#34;%s\r\n&#34;%data).encode())</span>
+</span></span><span class="line"><span class="cl">        <span class="n">result</span> <span class="o">=</span> <span class="n">client_socket</span><span class="o">.</span><span class="n">recv</span><span class="p">(</span><span class="mi">1024</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="nb">print</span><span class="p">(</span><span class="n">result</span><span class="o">.</span><span class="n">strip</span><span class="p">())</span>
+</span></span><span class="line"><span class="cl">        <span class="n">client_socket</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+</span></span></code></pre></div><h3 id="subprocesscheck_output">subprocess.check_output</h3>
+<p>subprocess.check_output是Python内置的一个标准库函数，用于执行外部命令并返回命令结果的输出内容。该函数可以在Python中运行任何一条系统命令或子进程，其使用方法与subprocess.call、subprocess.Popen类似。</p>
+<p>注意：subprocess.check_output是一个阻塞函数，如果执行的命令耗时较长，会阻塞程序的执行，因此如果命令需要长时间执行，推荐使用subprocess.Popen。</p>
+<h3 id="ssltls协议">SSL/TLS协议</h3>
+<h4 id="原理">原理</h4>
+<p>SSL（Secure Socket Layer），安全套接字层。</p>
+<p><a href="https://learn.microsoft.com/en-us/previous-versions/windows/it-pro/windows-server-2003/cc785811%28v=ws.10%29?redirectedfrom=MSDN" target="_blank" rel="noopener">SSL/TLS in Detail | Microsoft Learn</a></p>
+<h4 id="实践-基于ssl保护的socket通信服务">实践: 基于SSL保护的socket通信服务</h4>
+<h5 id="基于openssl生成证书文件和密钥服务端">基于openssl生成证书文件和密钥(服务端)</h5>
+<p>openssl提供了通用的密码学库，包括了对称加密、非对称加密和消息摘要等各种密码学算法的实现，其应用范围非常广泛，目前可以用于安全通信、数字签名、证书颁发以及相应的密钥管理功能等。</p>
+<p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<figure  >
+  <div class="d-flex justify-content-center">
+    <div class="w-100" ><img alt="" srcset="
+               /post/socket-communication-between-two-machine/images/openssl_hudbdac26a98a35381d87907ae9d8924f3_104501_f3a633c1ab265a77fa15bbeb2d18fff6.webp 400w,
+               /post/socket-communication-between-two-machine/images/openssl_hudbdac26a98a35381d87907ae9d8924f3_104501_c88676a2793d333ed0742173e78e34da.webp 760w,
+               /post/socket-communication-between-two-machine/images/openssl_hudbdac26a98a35381d87907ae9d8924f3_104501_1200x1200_fit_q75_h2_lanczos_3.webp 1200w"
+               src="/post/socket-communication-between-two-machine/images/openssl_hudbdac26a98a35381d87907ae9d8924f3_104501_f3a633c1ab265a77fa15bbeb2d18fff6.webp"
+               width="760"
+               height="372"
+               loading="lazy" data-zoomable /></div>
+  </div></figure>
+</p>
+<ol>
+<li>
+<p>生成私钥文件server.key</p>
+<p>server.key 是服务器端 SSL/TLS 通信的私钥文件。在 SSL 连接建立时，SSL/TLS 协议需要使用一种加密密钥来保护通信数据的机密性和完整性，而密钥的安全性取决于私钥的保护。私钥被用于加密数据、解密数据以及创建和验证数字签名，只有获得私钥才能进行这些操作。通过openssl可以指定算法生成私钥文件，私钥格式包括 RSA、DSA 和 ECDSA，以下示例指定RSA算法生成私钥文件。</p>
+<pre tabindex="0"><code>openssl genpkey -algorithm RSA -out server.key  
+</code></pre><p>生成的server.key样式如下：
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<figure  >
+  <div class="d-flex justify-content-center">
+    <div class="w-100" ><img alt="" srcset="
+               /post/socket-communication-between-two-machine/images/server_key_hu7b17f77539eb3d3f091a0d2b96a6f53a_347952_0ccada7b3aef8ac3e1265e8a82dfb157.webp 400w,
+               /post/socket-communication-between-two-machine/images/server_key_hu7b17f77539eb3d3f091a0d2b96a6f53a_347952_8dcccd84ce9978b92c7e418bcda389c5.webp 760w,
+               /post/socket-communication-between-two-machine/images/server_key_hu7b17f77539eb3d3f091a0d2b96a6f53a_347952_1200x1200_fit_q75_h2_lanczos_3.webp 1200w"
+               src="/post/socket-communication-between-two-machine/images/server_key_hu7b17f77539eb3d3f091a0d2b96a6f53a_347952_0ccada7b3aef8ac3e1265e8a82dfb157.webp"
+               width="733"
+               height="760"
+               loading="lazy" data-zoomable /></div>
+  </div></figure>
+</p>
+<p>RSA算法的可靠性由极大整数因数分解的难度保证，目前还没有任何可靠的攻击RSA算法的方式，只有短RSA钥匙才可能被暴力破解。</p>
+</li>
+<li>
+<p>生成证书签名请求文件server.csr</p>
+<pre tabindex="0"><code>openssl req -new -key server.key -out server.csr
+</code></pre><p>该命令会使用上一步中生成的私钥文件来创建一个证书签名请求 (CSR)，其中包含您的站点的信息。您可以在执行此命令需要提供站点信息，或使用默认值。
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<figure  >
+  <div class="d-flex justify-content-center">
+    <div class="w-100" ><img alt="" srcset="
+               /post/socket-communication-between-two-machine/images/csr_file_hufa7604259cb6665f7d8a448e731fbc0a_149210_2b548a4e1a12b9c72ad509374b4d67fe.webp 400w,
+               /post/socket-communication-between-two-machine/images/csr_file_hufa7604259cb6665f7d8a448e731fbc0a_149210_479681a295e3ffbe4a8ee169233244ed.webp 760w,
+               /post/socket-communication-between-two-machine/images/csr_file_hufa7604259cb6665f7d8a448e731fbc0a_149210_1200x1200_fit_q75_h2_lanczos_3.webp 1200w"
+               src="/post/socket-communication-between-two-machine/images/csr_file_hufa7604259cb6665f7d8a448e731fbc0a_149210_2b548a4e1a12b9c72ad509374b4d67fe.webp"
+               width="760"
+               height="417"
+               loading="lazy" data-zoomable /></div>
+  </div></figure>
+
+生成的证书签名请求文件如下：
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<figure  >
+  <div class="d-flex justify-content-center">
+    <div class="w-100" ><img alt="" srcset="
+               /post/socket-communication-between-two-machine/images/server_csr_hu389a30546ef374062b576fe8c6c82771_201038_a338ac1ea5b7a0bf788d00a7a48d1eb6.webp 400w,
+               /post/socket-communication-between-two-machine/images/server_csr_hu389a30546ef374062b576fe8c6c82771_201038_e68de2cf413ac0ba4e7f760d64a203c7.webp 760w,
+               /post/socket-communication-between-two-machine/images/server_csr_hu389a30546ef374062b576fe8c6c82771_201038_1200x1200_fit_q75_h2_lanczos.webp 1200w"
+               src="/post/socket-communication-between-two-machine/images/server_csr_hu389a30546ef374062b576fe8c6c82771_201038_a338ac1ea5b7a0bf788d00a7a48d1eb6.webp"
+               width="760"
+               height="562"
+               loading="lazy" data-zoomable /></div>
+  </div></figure>
+</p>
+</li>
+<li>
+<p>使用csr文件和私钥文件生成证书文件server.crt
+将csr文件和私钥文件合并生成一个有效期365天的x509证书</p>
+<pre tabindex="0"><code>openssl x509 -req -days 365 -in server.csr -signkey server.key -out server.crt
+</code></pre><p>证书文件样式如下：
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<figure  >
+  <div class="d-flex justify-content-center">
+    <div class="w-100" ><img alt="" srcset="
+               /post/socket-communication-between-two-machine/images/server_crt_file_hu1828966197a32a721d63310344cbbfb4_302834_89dc94b31a969bb8916a16ce19c10f27.webp 400w,
+               /post/socket-communication-between-two-machine/images/server_crt_file_hu1828966197a32a721d63310344cbbfb4_302834_447c77d2747942e351ee6159a2174f9a.webp 760w,
+               /post/socket-communication-between-two-machine/images/server_crt_file_hu1828966197a32a721d63310344cbbfb4_302834_1200x1200_fit_q75_h2_lanczos.webp 1200w"
+               src="/post/socket-communication-between-two-machine/images/server_crt_file_hu1828966197a32a721d63310344cbbfb4_302834_89dc94b31a969bb8916a16ce19c10f27.webp"
+               width="709"
+               height="540"
+               loading="lazy" data-zoomable /></div>
+  </div></figure>
+</p>
+<p>生成的文件通常存储在管理SSL/TLS通信的服务器上供服务器使用。</p>
+</li>
+</ol>
+<h5 id="服务端实现-1">服务端实现</h5>
+<p>通过ssl库实现对socket的加密，代码如下：</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="c1"># ssl_server.py</span>
+</span></span><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">ssl</span>
+</span></span><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">socket</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># 服务器地址、端口以及协议类型配置</span>
+</span></span><span class="line"><span class="cl"><span class="n">server_address</span> <span class="o">=</span> <span class="p">(</span><span class="s1">&#39;localhost&#39;</span><span class="p">,</span> <span class="mi">12138</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">ssl_context</span> <span class="o">=</span> <span class="n">ssl</span><span class="o">.</span><span class="n">SSLContext</span><span class="p">(</span><span class="n">ssl</span><span class="o">.</span><span class="n">PROTOCOL_TLS_SERVER</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">ssl_context</span><span class="o">.</span><span class="n">load_cert_chain</span><span class="p">(</span><span class="n">certfile</span><span class="o">=</span><span class="s1">&#39;server.crt&#39;</span><span class="p">,</span> <span class="n">keyfile</span><span class="o">=</span><span class="s1">&#39;server.key&#39;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># 创建并配置套接字</span>
+</span></span><span class="line"><span class="cl"><span class="n">server_socket</span> <span class="o">=</span> <span class="n">socket</span><span class="o">.</span><span class="n">socket</span><span class="p">(</span><span class="n">socket</span><span class="o">.</span><span class="n">AF_INET</span><span class="p">,</span> <span class="n">socket</span><span class="o">.</span><span class="n">SOCK_STREAM</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">server_socket</span><span class="o">.</span><span class="n">bind</span><span class="p">(</span><span class="n">server_address</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">server_socket</span><span class="o">.</span><span class="n">listen</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># 循环等待连接请求并处理</span>
+</span></span><span class="line"><span class="cl"><span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">    <span class="n">client_socket</span><span class="p">,</span> <span class="n">client_address</span> <span class="o">=</span> <span class="n">server_socket</span><span class="o">.</span><span class="n">accept</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">    <span class="n">ssl_socket</span> <span class="o">=</span> <span class="n">ssl_context</span><span class="o">.</span><span class="n">wrap_socket</span><span class="p">(</span><span class="n">client_socket</span><span class="p">,</span> <span class="n">server_side</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Got connection from </span><span class="si">{</span><span class="n">client_address</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="n">received_data</span> <span class="o">=</span> <span class="n">ssl_socket</span><span class="o">.</span><span class="n">recv</span><span class="p">(</span><span class="mi">1024</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="k">if</span> <span class="n">received_data</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">        <span class="n">received_message</span> <span class="o">=</span> <span class="n">received_data</span><span class="o">.</span><span class="n">decode</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&#34;Received message: </span><span class="si">{</span><span class="n">received_message</span><span class="si">}</span><span class="s2">&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="n">response_message</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&#34;Received message: </span><span class="si">{</span><span class="n">received_message</span><span class="si">}</span><span class="s2">&#34;</span>
+</span></span><span class="line"><span class="cl">        <span class="n">ssl_socket</span><span class="o">.</span><span class="n">sendall</span><span class="p">(</span><span class="n">response_message</span><span class="o">.</span><span class="n">encode</span><span class="p">())</span>
+</span></span><span class="line"><span class="cl">    <span class="n">ssl_socket</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+</span></span></code></pre></div><h5 id="客户端实现-1">客户端实现</h5>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">ssl</span>
+</span></span><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">socket</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">client_socket</span> <span class="o">=</span> <span class="n">socket</span><span class="o">.</span><span class="n">socket</span><span class="p">(</span><span class="n">socket</span><span class="o">.</span><span class="n">AF_INET</span><span class="p">,</span> <span class="n">socket</span><span class="o">.</span><span class="n">SOCK_STREAM</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">ssl_socket</span> <span class="o">=</span> <span class="n">ssl</span><span class="o">.</span><span class="n">wrap_socket</span><span class="p">(</span><span class="n">client_socket</span><span class="p">,</span> <span class="n">ssl_version</span><span class="o">=</span><span class="n">ssl</span><span class="o">.</span><span class="n">PROTOCOL_TLSv1</span><span class="p">,</span> <span class="n">ciphers</span><span class="o">=</span><span class="s2">&#34;HIGH&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">ssl_socket</span><span class="o">.</span><span class="n">connect</span><span class="p">((</span><span class="s2">&#34;127.0.0.1&#34;</span><span class="p">,</span> <span class="mi">12138</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl"><span class="n">message</span> <span class="o">=</span> <span class="s2">&#34;This is a message encrypted by SSL&#34;</span>
+</span></span><span class="line"><span class="cl"><span class="n">ssl_socket</span><span class="o">.</span><span class="n">send</span><span class="p">(</span><span class="n">message</span><span class="o">.</span><span class="n">encode</span><span class="p">())</span>
+</span></span><span class="line"><span class="cl"><span class="n">response</span> <span class="o">=</span> <span class="n">ssl_socket</span><span class="o">.</span><span class="n">recv</span><span class="p">(</span><span class="mi">1024</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="nb">print</span><span class="p">(</span><span class="n">response</span><span class="p">)</span>
+</span></span></code></pre></div><h4 id="基于wireshark分析数据包">基于Wireshark分析数据包</h4>
+<h5 id="本地回环数据包抓取">本地回环数据包抓取</h5>
+<p>tcpdump命令可以监视网络中传输的数据包，支持指定协议、目的ip、源ip、源端口、目的端口等条件过两次数据包，可用参数如下：</p>
+<pre tabindex="0"><code>-i：指定监听的网络接口。
+-n：不将地址转换为名称。
+-X：将数据包以十六进制和ASCII码的形式打印出来。
+-s：指定获取数据包的大小。
+-c：指定捕获的数据包数量。
+-w：将捕获到的数据包存储在文件中。
+</code></pre><p>因此，可通过如下命令监听本地回环网络、tcp协议、端口为12138的数据包，并将数据包写入到12138.pcap（此文件可用wireshark打开分析）。
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<figure  >
+  <div class="d-flex justify-content-center">
+    <div class="w-100" ><img alt="" srcset="
+               /post/socket-communication-between-two-machine/images/tcpdump_ord_hu9ea4773db1bed381f188cbf34203df63_47607_5b9fca473104ccb2545cf9b61bbb3b7a.webp 400w,
+               /post/socket-communication-between-two-machine/images/tcpdump_ord_hu9ea4773db1bed381f188cbf34203df63_47607_1932b40e3375f7f807c21e74f7cc2d09.webp 760w,
+               /post/socket-communication-between-two-machine/images/tcpdump_ord_hu9ea4773db1bed381f188cbf34203df63_47607_1200x1200_fit_q75_h2_lanczos_3.webp 1200w"
+               src="/post/socket-communication-between-two-machine/images/tcpdump_ord_hu9ea4773db1bed381f188cbf34203df63_47607_5b9fca473104ccb2545cf9b61bbb3b7a.webp"
+               width="760"
+               height="100"
+               loading="lazy" data-zoomable /></div>
+  </div></figure>
+
+对于ssl socket通信的数据包抓取保存如下：
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<figure  >
+  <div class="d-flex justify-content-center">
+    <div class="w-100" ><img alt="" srcset="
+               /post/socket-communication-between-two-machine/images/tcpdump_ssl_hu28e4ce3d763b5654bae0604758a92423_43058_98db395cbe41eb1330b0f19bfa172953.webp 400w,
+               /post/socket-communication-between-two-machine/images/tcpdump_ssl_hu28e4ce3d763b5654bae0604758a92423_43058_44f2a8d83a87316846a80fb0c848951b.webp 760w,
+               /post/socket-communication-between-two-machine/images/tcpdump_ssl_hu28e4ce3d763b5654bae0604758a92423_43058_1200x1200_fit_q75_h2_lanczos_3.webp 1200w"
+               src="/post/socket-communication-between-two-machine/images/tcpdump_ssl_hu28e4ce3d763b5654bae0604758a92423_43058_98db395cbe41eb1330b0f19bfa172953.webp"
+               width="760"
+               height="80"
+               loading="lazy" data-zoomable /></div>
+  </div></figure>
+</p>
+<h5 id="无ssl的socket通信">无SSL的socket通信</h5>
+<p>从socket客户端发送到socket服务端的数据包(50298-&gt;12138)，可以看到，发送的数据以明文方式传输。</p>
+<p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<figure  >
+  <div class="d-flex justify-content-center">
+    <div class="w-100" ><img alt="" srcset="
+               /post/socket-communication-between-two-machine/images/tcp_src2dst_hu2626e9a562f0ac926376ff645a269aaf_702802_a7e47fed097808e9b39dbfcda5895cac.webp 400w,
+               /post/socket-communication-between-two-machine/images/tcp_src2dst_hu2626e9a562f0ac926376ff645a269aaf_702802_25217ad7c793bad747cdb13d0933aade.webp 760w,
+               /post/socket-communication-between-two-machine/images/tcp_src2dst_hu2626e9a562f0ac926376ff645a269aaf_702802_1200x1200_fit_q75_h2_lanczos_3.webp 1200w"
+               src="/post/socket-communication-between-two-machine/images/tcp_src2dst_hu2626e9a562f0ac926376ff645a269aaf_702802_a7e47fed097808e9b39dbfcda5895cac.webp"
+               width="760"
+               height="391"
+               loading="lazy" data-zoomable /></div>
+  </div></figure>
+</p>
+<p>从socket服务器发送到socket客户端的数据包(12138-&gt;50298)：
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<figure  >
+  <div class="d-flex justify-content-center">
+    <div class="w-100" ><img alt="" srcset="
+               /post/socket-communication-between-two-machine/images/tcp_ser2cli_hu41cb06eab3b2e1c5f91e3b3c2d319446_575927_111fd5df9f19d945ca6d8ac6e5e87341.webp 400w,
+               /post/socket-communication-between-two-machine/images/tcp_ser2cli_hu41cb06eab3b2e1c5f91e3b3c2d319446_575927_e99d2e9134b293cb70cdf93cd752969a.webp 760w,
+               /post/socket-communication-between-two-machine/images/tcp_ser2cli_hu41cb06eab3b2e1c5f91e3b3c2d319446_575927_1200x1200_fit_q75_h2_lanczos_3.webp 1200w"
+               src="/post/socket-communication-between-two-machine/images/tcp_ser2cli_hu41cb06eab3b2e1c5f91e3b3c2d319446_575927_111fd5df9f19d945ca6d8ac6e5e87341.webp"
+               width="760"
+               height="461"
+               loading="lazy" data-zoomable /></div>
+  </div></figure>
+</p>
+<h5 id="基于ssl协议保护的socket通信">基于SSL协议保护的socket通信</h5>
+<p>经ssl协议保护的数据包，经过加密而难以看出其中意义。</p>
+<p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<figure  >
+  <div class="d-flex justify-content-center">
+    <div class="w-100" ><img alt="" srcset="
+               /post/socket-communication-between-two-machine/images/ssl_server_hu4abb8e02e666ecd02056fbe6ae58f5a6_92857_b0938a6ddd53c8f5eaab6b782197c6bc.webp 400w,
+               /post/socket-communication-between-two-machine/images/ssl_server_hu4abb8e02e666ecd02056fbe6ae58f5a6_92857_aa230a4c99541832ee12cb79cc5379cd.webp 760w,
+               /post/socket-communication-between-two-machine/images/ssl_server_hu4abb8e02e666ecd02056fbe6ae58f5a6_92857_1200x1200_fit_q75_h2_lanczos_3.webp 1200w"
+               src="/post/socket-communication-between-two-machine/images/ssl_server_hu4abb8e02e666ecd02056fbe6ae58f5a6_92857_b0938a6ddd53c8f5eaab6b782197c6bc.webp"
+               width="760"
+               height="194"
+               loading="lazy" data-zoomable /></div>
+  </div></figure>
+</p>
+<p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<figure  >
+  <div class="d-flex justify-content-center">
+    <div class="w-100" ><img alt="" srcset="
+               /post/socket-communication-between-two-machine/images/tls_socket_hudf0cb0a6219361b8ee2ed4312b614b13_1126580_4caaeab8d6ff2b1bed90857527ff3130.webp 400w,
+               /post/socket-communication-between-two-machine/images/tls_socket_hudf0cb0a6219361b8ee2ed4312b614b13_1126580_7ceb9225f198a0dcdeec5b3d6ae5974b.webp 760w,
+               /post/socket-communication-between-two-machine/images/tls_socket_hudf0cb0a6219361b8ee2ed4312b614b13_1126580_1200x1200_fit_q75_h2_lanczos_3.webp 1200w"
+               src="/post/socket-communication-between-two-machine/images/tls_socket_hudf0cb0a6219361b8ee2ed4312b614b13_1126580_4caaeab8d6ff2b1bed90857527ff3130.webp"
+               width="760"
+               height="410"
+               loading="lazy" data-zoomable /></div>
+  </div></figure>
+</p>
+<p>注：要在wireshark中查看TLS协议，需要进行一定配置，默认情况下支持TLS协议解析，但如果发现不支持，可以查看wireshark配置文件中的disabled_protos看是否禁用了TLS协议，若发现disabled_protos中有tls，移除之并重启wireshark即可分析数据包中的额TLS层。</p>
+<p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<figure  >
+  <div class="d-flex justify-content-center">
+    <div class="w-100" ><img alt="" srcset="
+               /post/socket-communication-between-two-machine/images/wireshark_enable_hu1a273555546b9d622dbd6588051aff72_118731_7772c2909e44492b2caa362a8a9213ef.webp 400w,
+               /post/socket-communication-between-two-machine/images/wireshark_enable_hu1a273555546b9d622dbd6588051aff72_118731_9db9acc4d5870fbcef5d829584148588.webp 760w,
+               /post/socket-communication-between-two-machine/images/wireshark_enable_hu1a273555546b9d622dbd6588051aff72_118731_1200x1200_fit_q75_h2_lanczos_3.webp 1200w"
+               src="/post/socket-communication-between-two-machine/images/wireshark_enable_hu1a273555546b9d622dbd6588051aff72_118731_7772c2909e44492b2caa362a8a9213ef.webp"
+               width="760"
+               height="189"
+               loading="lazy" data-zoomable /></div>
+  </div></figure>
+</p>
+<h3 id="ssh协议">SSH协议</h3>
+<p><a href="https://www.fabfile.org/" target="_blank" rel="noopener">https://www.fabfile.org/</a></p>
+<p><a href="https://docs.paramiko.org/en/stable/" target="_blank" rel="noopener">Welcome to Paramiko’s documentation! — Paramiko documentation</a></p>
+<h2 id="0x04-扩展阅读">0x04 扩展阅读</h2>
+<ul>
+<li>众所周知的端口号列表: <a href="http://www.iana.org/assignments/service-names-port-numbers/service-names-port-numbers.xhtml" target="_blank" rel="noopener">Service Name and Transport Protocol Port Number Registry</a></li>
+<li><a href="https://www.ruanyifeng.com/blog/2014/02/ssl_tls.html" target="_blank" rel="noopener">SSL/TLS协议运行机制的概述</a></li>
+<li><a href="https://datatracker.ietf.org/doc/html/rfc5246" target="_blank" rel="noopener">The Transport Layer Security (TLS) Protocol Version 1.2</a></li>
+<li><a href="https://info.support.huawei.com/info-finder/encyclopedia/zh/SSH.html" target="_blank" rel="noopener">什么是SSH？SSH是如何工作的？ - 华为</a></li>
+<li><a href="https://www.ruanyifeng.com/blog/2011/12/ssh_remote_login.html" target="_blank" rel="noopener">SSH原理与运用（一）：远程登录 - 阮一峰的网络日志</a></li>
+</ul>
+
+    </div>
+
+    
+
+
+
+
+<div class="article-tags">
+  
+  <a class="badge badge-light" href="/tag/python/">Python</a>
+  
+  <a class="badge badge-light" href="/tag/socket/">Socket</a>
+  
+</div>
+
+
+
+<div class="share-box">
+  <ul class="share">
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="https://twitter.com/intent/tweet?url=/post/socket-communication-between-two-machine/&amp;text=Windows%20Server%e9%97%b4%e7%9a%84%e9%80%9a%e4%bf%a1:%20%e5%9f%ba%e4%ba%8ePython-Socket%e7%bc%96%e7%a8%8b%e7%9a%84%e5%ae%9e%e7%8e%b0" target="_blank" rel="noopener" class="share-btn-twitter" aria-label="twitter">
+          <i class="fab fa-twitter"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="https://www.facebook.com/sharer.php?u=/post/socket-communication-between-two-machine/&amp;t=Windows%20Server%e9%97%b4%e7%9a%84%e9%80%9a%e4%bf%a1:%20%e5%9f%ba%e4%ba%8ePython-Socket%e7%bc%96%e7%a8%8b%e7%9a%84%e5%ae%9e%e7%8e%b0" target="_blank" rel="noopener" class="share-btn-facebook" aria-label="facebook">
+          <i class="fab fa-facebook"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="mailto:?subject=Windows%20Server%e9%97%b4%e7%9a%84%e9%80%9a%e4%bf%a1:%20%e5%9f%ba%e4%ba%8ePython-Socket%e7%bc%96%e7%a8%8b%e7%9a%84%e5%ae%9e%e7%8e%b0&amp;body=/post/socket-communication-between-two-machine/" target="_blank" rel="noopener" class="share-btn-email" aria-label="envelope">
+          <i class="fas fa-envelope"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="https://www.linkedin.com/shareArticle?url=/post/socket-communication-between-two-machine/&amp;title=Windows%20Server%e9%97%b4%e7%9a%84%e9%80%9a%e4%bf%a1:%20%e5%9f%ba%e4%ba%8ePython-Socket%e7%bc%96%e7%a8%8b%e7%9a%84%e5%ae%9e%e7%8e%b0" target="_blank" rel="noopener" class="share-btn-linkedin" aria-label="linkedin-in">
+          <i class="fab fa-linkedin-in"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="whatsapp://send?text=Windows%20Server%e9%97%b4%e7%9a%84%e9%80%9a%e4%bf%a1:%20%e5%9f%ba%e4%ba%8ePython-Socket%e7%bc%96%e7%a8%8b%e7%9a%84%e5%ae%9e%e7%8e%b0%20/post/socket-communication-between-two-machine/" target="_blank" rel="noopener" class="share-btn-whatsapp" aria-label="whatsapp">
+          <i class="fab fa-whatsapp"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="https://service.weibo.com/share/share.php?url=/post/socket-communication-between-two-machine/&amp;title=Windows%20Server%e9%97%b4%e7%9a%84%e9%80%9a%e4%bf%a1:%20%e5%9f%ba%e4%ba%8ePython-Socket%e7%bc%96%e7%a8%8b%e7%9a%84%e5%ae%9e%e7%8e%b0" target="_blank" rel="noopener" class="share-btn-weibo" aria-label="weibo">
+          <i class="fab fa-weibo"></i>
+        </a>
+      </li>
+    
+  </ul>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+
+
+
+  
+  
+  
+  
+  
+  <div class="media author-card content-widget-hr">
+    
+      
+      <a href="/authors/admin/"><img class="avatar mr-3 avatar-circle" src="/authors/admin/avatar_hu55194f19033f85038196a23353ffe543_580100_270x270_fill_q75_lanczos_center.jpg" alt="CoolCats"></a>
+    
+
+    <div class="media-body">
+      <h5 class="card-title"><a href="/authors/admin/">CoolCats</a></h5>
+      <h6 class="card-subtitle">理学学士</h6>
+      <p class="card-text">我的研究兴趣是时空数据分析、自然语言处理、服务端开发</p>
+      <ul class="network-icon" aria-hidden="true">
+  
+    
+    
+    
+      
+    
+    
+    
+    
+    
+    <li>
+      <a href="mailto:2811159909@qq.com" >
+        <i class="fas fa-envelope"></i>
+      </a>
+    </li>
+  
+    
+    
+    
+      
+    
+    
+    
+    
+    
+      
+    
+    <li>
+      <a href="https://github.com/Coolgiserz" target="_blank" rel="noopener">
+        <i class="fab fa-github"></i>
+      </a>
+    </li>
+  
+</ul>
+
+    </div>
+  </div>
+
+
+
+
+
+
+
+
+
+  
+  
+  
+
+  
+
+  
+
+
+
+
+
+
+
+
+
+
+  </div>
+</article>
+  </div>
+
+  <div class="page-footer">
+    
+    
+    <div class="container">
+      <footer class="site-footer">
+
+  
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+
+
+
+
+
+  
+  
+  
+
+  
+  
+    
+  
+  
+    
+  
+
+  
+
+  
+  <p class="powered-by copyright-license-text">
+    © 2023 CoolCats. This work is licensed under <a href="https://creativecommons.org/licenses/by-nc-nd/4.0" rel="noopener noreferrer" target="_blank">CC BY NC ND 4.0</a>
+  </p>
+  
+
+  <p class="powered-by footer-license-icons">
+    <a href="https://creativecommons.org/licenses/by-nc-nd/4.0" rel="noopener noreferrer" target="_blank" aria-label="Creative Commons">
+      <i class="fab fa-creative-commons fa-2x" aria-hidden="true"></i>
+      <i class="fab fa-creative-commons-by fa-2x" aria-hidden="true"></i>
+      
+        <i class="fab fa-creative-commons-nc fa-2x" aria-hidden="true"></i>
+      
+      
+        <i class="fab fa-creative-commons-nd fa-2x" aria-hidden="true"></i>
+      
+    </a>
+  </p>
+
+
+
+
+  <p class="powered-by">
+    
+    
+    
+      
+      
+      
+      
+      
+      
+      Published with <a href="https://wowchemy.com/?utm_campaign=poweredby" target="_blank" rel="noopener">Wowchemy</a> — the free, <a href="https://github.com/wowchemy/wowchemy-hugo-themes" target="_blank" rel="noopener">open source</a> website builder that empowers creators.
+    
+  </p>
+</footer>
+
+    </div>
+    
+  </div>
+
+      
+
+    
+    <script src="/js/vendor-bundle.min.fab8b449b814cc9f95b22fcf2e45f05b.js"></script>
+
+    
+    
+    
+      
+
+      
+      
+
+      
+
+      
+        
+        <script src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@10.2.1/build/highlight.min.js" integrity="sha512-Ypjm0o7jOxAd4hpdoppSEN0TQOC19UtPAqD+4s5AlXmUvbmmS/YMxYqAqarQYyxTnB6/rqip9qcxlNB/3U9Wdg==" crossorigin="anonymous"></script>
+        
+        
+        <script src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@10.2.1/build/languages/r.min.js" crossorigin="anonymous"></script>
+        
+        <script src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@10.2.1/build/languages/latex.min.js" crossorigin="anonymous"></script>
+        
+      
+
+    
+
+    
+    
+    
+      <script src="https://cdn.jsdelivr.net/npm/leaflet@1.7.1/dist/leaflet.min.js" integrity="" crossorigin="anonymous"></script>
+    
+
+    
+    
+
+    
+    
+    
+      
+      <script id="search-hit-fuse-template" type="text/x-template">
+        <div class="search-hit" id="summary-{{key}}">
+          <div class="search-hit-content">
+            <div class="search-hit-name">
+              <a href="{{relpermalink}}">{{title}}</a>
+              <div class="article-metadata search-hit-type">{{type}}</div>
+              <p class="search-hit-description">{{snippet}}</p>
+            </div>
+          </div>
+        </div>
+      </script>
+      
+        <script src="https://cdn.jsdelivr.net/gh/krisk/Fuse@v3.2.1/dist/fuse.min.js" integrity="sha512-o38bmzBGX+hD3JHWUFCDA09btWaqrNmoJ3RXLlrysA7PP01Kgs4UlE4MhelE1v5dJR3+cxlR4qQlotsW7jKsnw==" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/gh/julmot/mark.js@8.11.1/dist/jquery.mark.min.js" integrity="sha512-mhbv5DqBMgrWL+32MmsDOt/OAvqr/cHimk6B8y/bx/xS88MVkYGPiVv2ixKVrkywF2qHplNRUvFsAHUdxZ3Krg==" crossorigin="anonymous"></script>
+      
+    
+
+    
+    
+
+    
+    
+    
+    
+      <script id="dsq-count-scr" src="https://coolgiserz.disqus.com/count.js" async></script>
+    
+
+    
+    
+      
+      
+      
+      
+      
+      
+      
+    
+
+    
+
+    
+    
+    
+    <script id="page-data" type="application/json">{"use_headroom":true}</script>
+
+    
+    
+      <script src="/js/wowchemy-headroom.c251366b4128fd5e6b046d4c97a62a51.js" type="module"></script>
+    
+    
+    
+    
+    
+    
+    
+      
+      
+    
+    
+    <script src="/en/js/wowchemy.min.ab2f2890dbe3e2e83579366d3d6e8fd9.js"></script>
+
+    
+    
+      <script src="/js/wowchemy-map.a26e9d2f7238ba5b868384f1c5bc6477.js" type="module"></script>
+    
+    
+    
+    
+      
+<div id="modal" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Cite</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <pre><code class="tex hljs"></code></pre>
+      </div>
+      <div class="modal-footer">
+        <a class="btn btn-outline-primary my-1 js-copy-cite" href="#" target="_blank">
+          <i class="fas fa-copy"></i> Copy
+        </a>
+        <a class="btn btn-outline-primary my-1 js-download-cite" href="#" target="_blank">
+          <i class="fas fa-download"></i> Download
+        </a>
+        <div id="modal-error"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+      <script src="/js/wowchemy-publication.68f8d7090562ca65fc6d3cb3f8f2d2cb.js" type="module"></script>
+
+
+
+
+
+
+</body>
+</html>
