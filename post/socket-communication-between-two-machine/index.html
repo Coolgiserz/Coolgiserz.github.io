@@ -813,7 +813,68 @@
   <div class="article-container">
 
     <div class="article-style">
-      <h2 id="0x00-场景描述">0x00 场景描述</h2>
+      <!-- START doctoc generated TOC please keep comment here to allow auto update -->
+<!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
+<p><em>目录</em></p>
+<ul>
+<li><a href="#0x00-%E5%9C%BA%E6%99%AF%E6%8F%8F%E8%BF%B0">0x00 场景描述</a></li>
+<li><a href="#0x01-%E5%AE%9E%E7%8E%B01%E5%9F%BA%E4%BA%8Esocket%E5%AE%A2%E6%88%B7%E7%AB%AF-%E6%9C%8D%E5%8A%A1%E5%99%A8%E7%9A%84%E5%AE%9E%E7%8E%B0">0x01 实现1：基于Socket客户端-服务器的实现</a>
+<ul>
+<li><a href="#%E5%88%9B%E5%BB%BA%E6%B5%8B%E8%AF%95%E7%94%A8%E8%84%9A%E6%9C%AC">创建测试用脚本</a></li>
+<li><a href="#%E6%9C%8D%E5%8A%A1%E7%AB%AF%E5%AE%9E%E7%8E%B0">服务端实现</a></li>
+<li><a href="#%E5%AE%A2%E6%88%B7%E7%AB%AF%E5%AE%9E%E7%8E%B0">客户端实现</a></li>
+<li><a href="#%E5%B0%8F%E7%BB%93">小结</a></li>
+</ul>
+</li>
+<li><a href="#0x02-%E6%9B%B4%E5%A4%9A%E6%80%9D%E8%B7%AF">0x02 更多思路</a></li>
+<li><a href="#0x03-%E7%9F%A5%E8%AF%86%E7%82%B9">0x03 知识点</a>
+<ul>
+<li><a href="#socket">Socket</a>
+<ul>
+<li><a href="#socket%E7%9A%84%E6%A6%82%E5%BF%B5">Socket的概念</a></li>
+<li><a href="#socket%E5%9C%B0%E5%9D%80%E5%AE%B6%E6%97%8F">Socket地址家族</a></li>
+<li><a href="#socket%E7%9A%84%E7%B1%BB%E5%9E%8B">Socket的类型</a>
+<ul>
+<li><a href="#%E9%9D%A2%E5%90%91%E8%BF%9E%E6%8E%A5%E7%9A%84%E5%A5%97%E6%8E%A5%E5%AD%97">面向连接的套接字</a></li>
+<li><a href="#%E6%97%A0%E8%BF%9E%E6%8E%A5%E7%9A%84%E5%A5%97%E6%8E%A5%E5%AD%97">无连接的套接字</a></li>
+<li><a href="#%E8%99%9A%E6%8B%9F%E7%94%B5%E8%B7%AF%E7%B1%BB%E5%9E%8B%E8%BF%9E%E6%8E%A5-vs-%E7%94%A8%E6%88%B7%E6%95%B0%E6%8D%AE%E6%8A%A5%E7%B1%BB%E5%9E%8B%E8%BF%9E%E6%8E%A5">虚拟电路类型连接 vs 用户数据报类型连接</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#socketserver">socketserver</a>
+<ul>
+<li><a href="#%E5%9F%BA%E4%BA%8Esocketserver%E7%9A%84socket%E6%9C%8D%E5%8A%A1%E5%99%A8tcp%E5%AE%9E%E7%8E%B0%E7%A4%BA%E4%BE%8B">基于socketserver的socket服务器（TCP）实现示例</a></li>
+<li><a href="#socket%E5%AE%A2%E6%88%B7%E7%AB%AFtcp%E7%A4%BA%E4%BE%8B%E4%BB%A3%E7%A0%81">socket客户端（TCP）示例代码</a></li>
+</ul>
+</li>
+<li><a href="#subprocesscheck_output">subprocess.check_output</a></li>
+<li><a href="#ssltls%E5%8D%8F%E8%AE%AE">SSL/TLS协议</a>
+<ul>
+<li><a href="#%E5%8E%9F%E7%90%86">原理</a></li>
+<li><a href="#%E5%AE%9E%E8%B7%B5-%E5%9F%BA%E4%BA%8Essl%E4%BF%9D%E6%8A%A4%E7%9A%84socket%E9%80%9A%E4%BF%A1%E6%9C%8D%E5%8A%A1">实践: 基于SSL保护的socket通信服务</a>
+<ul>
+<li><a href="#%E5%9F%BA%E4%BA%8Eopenssl%E7%94%9F%E6%88%90%E8%AF%81%E4%B9%A6%E6%96%87%E4%BB%B6%E5%92%8C%E5%AF%86%E9%92%A5%E6%9C%8D%E5%8A%A1%E7%AB%AF">基于openssl生成证书文件和密钥(服务端)</a></li>
+<li><a href="#%E6%9C%8D%E5%8A%A1%E7%AB%AF%E5%AE%9E%E7%8E%B0-1">服务端实现</a></li>
+<li><a href="#%E5%AE%A2%E6%88%B7%E7%AB%AF%E5%AE%9E%E7%8E%B0-1">客户端实现</a></li>
+</ul>
+</li>
+<li><a href="#%E5%9F%BA%E4%BA%8Ewireshark%E5%88%86%E6%9E%90%E6%95%B0%E6%8D%AE%E5%8C%85">基于Wireshark分析数据包</a>
+<ul>
+<li><a href="#%E6%9C%AC%E5%9C%B0%E5%9B%9E%E7%8E%AF%E6%95%B0%E6%8D%AE%E5%8C%85%E6%8A%93%E5%8F%96">本地回环数据包抓取</a></li>
+<li><a href="#%E6%97%A0ssl%E7%9A%84socket%E9%80%9A%E4%BF%A1">无SSL的socket通信</a></li>
+<li><a href="#%E5%9F%BA%E4%BA%8Essl%E5%8D%8F%E8%AE%AE%E4%BF%9D%E6%8A%A4%E7%9A%84socket%E9%80%9A%E4%BF%A1">基于SSL协议保护的socket通信</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#ssh%E5%8D%8F%E8%AE%AE">SSH协议</a></li>
+</ul>
+</li>
+<li><a href="#0x04-%E6%89%A9%E5%B1%95%E9%98%85%E8%AF%BB">0x04 扩展阅读</a></li>
+</ul>
+<!-- END doctoc generated TOC please keep comment here to allow auto update -->
+<h2 id="0x00-场景描述">0x00 场景描述</h2>
 <p>工作中遇到一个需求，有两台windows server，我们希望在一台server A中通知另一台server B执行Python程序，并将结果返回到服务器A中。</p>
 <h2 id="0x01-实现1基于socket客户端-服务器的实现">0x01 实现1：基于Socket客户端-服务器的实现</h2>
 <p>思路：在server B中实现一个Socket Server，开放指定端口，等待客户端（Server A）的请求，并进行数据交换：客户端向服务端发送python脚本执行命令：<Python Executable> <Python Script> <Args>。</p>
@@ -1662,6 +1723,7 @@
 <li>众所周知的端口号列表: <a href="http://www.iana.org/assignments/service-names-port-numbers/service-names-port-numbers.xhtml" target="_blank" rel="noopener">Service Name and Transport Protocol Port Number Registry</a></li>
 <li><a href="https://www.ruanyifeng.com/blog/2014/02/ssl_tls.html" target="_blank" rel="noopener">SSL/TLS协议运行机制的概述</a></li>
 <li><a href="https://datatracker.ietf.org/doc/html/rfc5246" target="_blank" rel="noopener">The Transport Layer Security (TLS) Protocol Version 1.2</a></li>
+<li><a href="https://www.sfn.cn/news/technology/detail/212.html?navId=22" target="_blank" rel="noopener">干货分享 | 浅析SSL证书的工作原理</a></li>
 <li><a href="https://info.support.huawei.com/info-finder/encyclopedia/zh/SSH.html" target="_blank" rel="noopener">什么是SSH？SSH是如何工作的？ - 华为</a></li>
 <li><a href="https://www.ruanyifeng.com/blog/2011/12/ssh_remote_login.html" target="_blank" rel="noopener">SSH原理与运用（一）：远程登录 - 阮一峰的网络日志</a></li>
 </ul>
