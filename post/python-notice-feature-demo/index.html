@@ -1,0 +1,1752 @@
+<!DOCTYPE html><html lang="en-us" >
+
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  
+  
+  
+    <meta name="generator" content="Wowchemy 5.5.0 for Hugo" />
+  
+
+  
+  
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+  
+  
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  
+
+  
+  
+  
+    
+      
+      <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Roboto+Mono&family=Roboto:wght@400;700&display=swap">
+      <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Roboto+Mono&family=Roboto:wght@400;700&display=swap" media="print" onload="this.media='all'">
+    
+  
+
+  
+  
+  
+  
+  
+    
+    
+    
+  
+  
+
+  <meta name="author" content="CoolCats" />
+
+  
+  
+  
+    
+  
+  <meta name="description" content="自动化系统的监控预警原型" />
+
+  
+  <link rel="alternate" hreflang="en-us" href="/post/python-notice-feature-demo/" />
+
+  
+  
+  
+    <meta name="theme-color" content="#1565c0" />
+  
+
+  
+  
+    
+    <script src="/js/mathjax-config.js"></script>
+  
+
+  
+
+  <link rel="stylesheet" href="/css/vendor-bundle.min.c7b8d9abd591ba2253ea42747e3ac3f5.css" media="print" onload="this.media='all'">
+
+  
+  
+  
+    
+    
+      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/academicons@1.9.1/css/academicons.min.css" integrity="sha512-W0xM4mr6dEP9nREo7Z9z+9X70wytKvMGeDsj7ps2+xg5QPrEBXC8tAW1IFnzjR6eoJ90JmCnFzerQJTLzIEHjA==" crossorigin="anonymous" media="print" onload="this.media='all'">
+    
+
+    
+    
+    
+    
+      
+      
+    
+    
+    
+
+    
+    
+    
+      
+    
+    
+      
+      
+        
+          <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@10.2.1/build/styles/github.min.css" crossorigin="anonymous" title="hl-light" media="print" onload="this.media='all'">
+          <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@10.2.1/build/styles/dracula.min.css" crossorigin="anonymous" title="hl-dark" media="print" onload="this.media='all'" disabled>
+        
+      
+    
+
+    
+    
+    
+      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.7.1/dist/leaflet.min.css" integrity="" crossorigin="anonymous" media="print" onload="this.media='all'">
+    
+
+    
+
+    
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js" integrity="" crossorigin="anonymous" async></script>
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+  
+
+  
+  
+  
+  
+  
+  <link rel="stylesheet" href="/css/wowchemy.1052fab8b7700a3dc49ee23683097d66.css" />
+
+  
+
+
+
+  
+
+
+  
+
+
+  
+
+
+  <script>
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?51ae6db546b05b91d4053193ba49123d";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+  
+  
+  
+
+  
+
+  
+
+  <link rel="icon" type="image/png" href="/media/icon_hue03491371183284312b8b116a73ae5ab_79511_32x32_fill_lanczos_center_3.png" />
+  <link rel="apple-touch-icon" type="image/png" href="/media/icon_hue03491371183284312b8b116a73ae5ab_79511_180x180_fill_lanczos_center_3.png" />
+
+  <link rel="canonical" href="/post/python-notice-feature-demo/" />
+
+  
+  
+  
+  
+  
+  
+  
+  
+    
+    
+  
+  
+
+  
+  
+    
+    
+  
+  <meta property="twitter:card" content="summary" />
+  
+    <meta property="twitter:site" content="@wowchemy" />
+    <meta property="twitter:creator" content="@wowchemy" />
+  
+  <meta property="og:site_name" content="CoolCats" />
+  <meta property="og:url" content="/post/python-notice-feature-demo/" />
+  <meta property="og:title" content="Python实现钉钉通报和邮件通知 | CoolCats" />
+  <meta property="og:description" content="自动化系统的监控预警原型" /><meta property="og:image" content="/media/icon_hue03491371183284312b8b116a73ae5ab_79511_512x512_fill_lanczos_center_3.png" />
+    <meta property="twitter:image" content="/media/icon_hue03491371183284312b8b116a73ae5ab_79511_512x512_fill_lanczos_center_3.png" /><meta property="og:locale" content="en-us" />
+  
+    
+      <meta
+        property="article:published_time"
+        content="2023-06-23T19:21:53&#43;08:00"
+      />
+    
+    <meta property="article:modified_time" content="2023-06-23T19:21:53&#43;08:00">
+  
+
+  
+
+
+    
+
+
+
+
+
+
+  
+
+
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "/post/python-notice-feature-demo/"
+  },
+  "headline": "Python实现钉钉通报和邮件通知",
+  
+  "datePublished": "2023-06-23T19:21:53+08:00",
+  "dateModified": "2023-06-23T19:21:53+08:00",
+  
+  "author": {
+    "@type": "Person",
+    "name": "CoolCats"
+  },
+  
+  "publisher": {
+    "@type": "Organization",
+    "name": "CoolCats",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "/media/icon_hue03491371183284312b8b116a73ae5ab_79511_192x192_fill_lanczos_center_3.png"
+    }
+  },
+  "description": "自动化系统的监控预警原型"
+}
+</script>
+
+  
+
+  
+
+  
+
+  
+
+
+
+
+
+  <title>Python实现钉钉通报和邮件通知 | CoolCats</title>
+</head>
+
+
+<body id="top" data-spy="scroll" data-offset="70" data-target="#TableOfContents" class="page-wrapper   " data-wc-page-id="61cb2c5c09536fb36fa3eba9f35009ec" >
+
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  <script src="/js/wowchemy-init.min.2ed908358299dd7ab553faae685c746c.js"></script>
+
+  
+
+
+<aside class="search-modal" id="search">
+  <div class="container">
+    <section class="search-header">
+
+      <div class="row no-gutters justify-content-between mb-3">
+        <div class="col-6">
+          <h1>Search</h1>
+        </div>
+        <div class="col-6 col-search-close">
+          <a class="js-search" href="#" aria-label="Close"><i class="fas fa-times-circle text-muted" aria-hidden="true"></i></a>
+        </div>
+      </div>
+
+      <div id="search-box">
+        
+        <input name="q" id="search-query" placeholder="Search..." autocapitalize="off"
+        autocomplete="off" autocorrect="off" spellcheck="false" type="search" class="form-control"
+        aria-label="Search...">
+        
+      </div>
+
+      
+      
+
+      
+
+    </section>
+    <section class="section-search-results">
+
+      <div id="search-hits">
+        
+      </div>
+
+    </section>
+  </div>
+</aside>
+
+
+
+  <div class="page-header">
+    
+
+
+
+
+
+
+
+
+
+
+
+
+<header class="header--fixed">
+  <nav class="navbar navbar-expand-lg navbar-light compensate-for-scrollbar" id="navbar-main">
+    <div class="container-xl">
+
+      
+      <div class="d-none d-lg-inline-flex">
+        <a class="navbar-brand" href="/">CoolCats</a>
+      </div>
+      
+
+      
+      <button type="button" class="navbar-toggler" data-toggle="collapse"
+              data-target="#navbar-content" aria-controls="navbar-content" aria-expanded="false" aria-label="Toggle navigation">
+      <span><i class="fas fa-bars"></i></span>
+      </button>
+      
+
+      
+      <div class="navbar-brand-mobile-wrapper d-inline-flex d-lg-none">
+        <a class="navbar-brand" href="/">CoolCats</a>
+      </div>
+      
+
+      
+      
+      <div class="navbar-collapse main-menu-item collapse justify-content-start" id="navbar-content">
+
+        
+        <ul class="navbar-nav d-md-inline-flex">
+          
+
+          
+
+          
+          
+          
+
+          
+
+          
+          
+          
+          
+
+          
+            
+              
+              
+            
+            
+          
+
+          <li class="nav-item">
+            <a class="nav-link  active" href="/post"><span>博客</span></a>
+          </li>
+
+          
+          
+
+          
+
+          
+          
+          
+            
+          
+
+          
+
+          
+          
+          
+          
+
+          
+            
+              
+              
+            
+            
+          
+
+          <li class="nav-item">
+            <a class="nav-link " href="/event"><span>趣事</span></a>
+          </li>
+
+          
+          
+
+          
+
+          
+          
+          
+            
+          
+
+          
+
+          
+          
+          
+          
+
+          
+            
+              
+              
+            
+            
+          
+
+          <li class="nav-item">
+            <a class="nav-link " href="/project"><span>项目</span></a>
+          </li>
+
+          
+          
+
+          
+
+          
+          
+          
+            
+          
+
+          
+
+          
+          
+          
+          
+
+          
+            
+              
+              
+            
+            
+          
+
+          <li class="nav-item">
+            <a class="nav-link " href="/publication"><span>论文</span></a>
+          </li>
+
+          
+          
+
+          
+
+          
+          
+          
+            
+          
+
+          
+
+          
+          
+          
+          
+
+          
+            
+              
+              
+            
+            
+          
+
+          <li class="nav-item">
+            <a class="nav-link " href="/contact"><span>联系</span></a>
+          </li>
+
+          
+          
+
+          
+
+          
+          
+          
+            
+          
+
+          
+
+          
+          
+          
+          
+
+          
+            
+              
+              
+            
+            
+          
+
+          <li class="nav-item">
+            <a class="nav-link " href="/media/files/cv"><span>简历</span></a>
+          </li>
+
+          
+          
+
+        
+
+          
+        </ul>
+      </div>
+
+      <ul class="nav-icons navbar-nav flex-row ml-auto d-flex pl-md-2">
+
+        
+        
+          
+        
+
+        
+        
+        <li class="nav-item">
+          <a class="nav-link js-search" href="#" aria-label="Search"><i class="fas fa-search" aria-hidden="true"></i></a>
+        </li>
+        
+
+        
+        
+        
+        <li class="nav-item dropdown theme-dropdown">
+          <a href="#" class="nav-link" data-toggle="dropdown" aria-haspopup="true" aria-label="Display preferences">
+            <i class="fas fa-moon" aria-hidden="true"></i>
+          </a>
+          <div class="dropdown-menu">
+            <a href="#" class="dropdown-item js-set-theme-light">
+              <span>Light</span>
+            </a>
+            <a href="#" class="dropdown-item js-set-theme-dark">
+              <span>Dark</span>
+            </a>
+            <a href="#" class="dropdown-item js-set-theme-auto">
+              <span>Automatic</span>
+            </a>
+          </div>
+        </li>
+        
+
+        
+        
+
+      </ul>
+
+    </div>
+  </nav>
+</header>
+
+
+  </div>
+
+  <div class="page-body">
+    
+    
+    
+
+    <article class="article">
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+  
+  
+<div class="article-container pt-3">
+  <h1>Python实现钉钉通报和邮件通知</h1>
+
+  
+
+  
+    
+
+
+<div class="article-metadata">
+
+  
+  
+
+  
+  <span class="article-date">
+    
+    
+      
+    
+    Jun 23, 2023
+  </span>
+  
+
+  
+
+  
+  <span class="middot-divider"></span>
+  <span class="article-reading-time">
+    3 min read
+  </span>
+  
+
+  
+  
+  
+  
+
+  
+  
+
+</div>
+
+    
+
+
+
+
+
+  
+</div>
+
+
+
+  <div class="article-container">
+
+    <div class="article-style">
+      <h2 id="概述">概述</h2>
+<p>监控预警是一个自动化系统中常见的模块，我们希望系统出问题时能够主动把问题推送给维护人员，而不是要维护人员定时主动到服务端去查看各项服务的运行状态。</p>
+<p>本文实现两种类型的消息通知功能：钉钉机器人通报和邮件通报。</p>
+<h2 id="基于webhook的钉钉机器人推送消息">基于Webhook的钉钉机器人推送消息</h2>
+<h4 id="准备步骤">准备步骤</h4>
+<ol>
+<li>
+<p>首先创建一个钉钉群聊，在群聊添加自定义机器人[</p>
+<p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<figure  >
+  <div class="d-flex justify-content-center">
+    <div class="w-100" ><img alt="" srcset="
+               /post/python-notice-feature-demo/images/robot_manager_hu49f619641c2d579aaec4f6252d1d85b5_40955_730a6be7ac162b1f20396d08f4186691.webp 400w,
+               /post/python-notice-feature-demo/images/robot_manager_hu49f619641c2d579aaec4f6252d1d85b5_40955_5bfea7cb9abb98ff98104687337d87dd.webp 760w,
+               /post/python-notice-feature-demo/images/robot_manager_hu49f619641c2d579aaec4f6252d1d85b5_40955_1200x1200_fit_q75_h2_lanczos.webp 1200w"
+               src="/post/python-notice-feature-demo/images/robot_manager_hu49f619641c2d579aaec4f6252d1d85b5_40955_730a6be7ac162b1f20396d08f4186691.webp"
+               width="579"
+               height="751"
+               loading="lazy" data-zoomable /></div>
+  </div></figure>
+</p>
+</li>
+<li>
+<p>机器人安全设置</p>
+<p>目前支持3种安全设置：</p>
+<ul>
+<li>
+<p>自定义关键词：消息中至少包含其中1个关键词才可以发送成功，最多可以设置10个关键词</p>
+</li>
+<li>
+<p>加签：根据钉钉机器人服务提供的密钥，结合时间戳生成签名字符串，使用 HmacSHA256算法 计算签名，然后依次进行Base64 Encode、urlEncode，得到最终的签名（需要使用UTF-8字符集）</p>
+</li>
+<li>
+<p>IP地址（段）。</p>
+</li>
+</ul>
+</li>
+</ol>
+<p>       以加签为例，机器人安全设置中勾选加签，系统会生成一个密钥，同意条款点击完成则会得到一个webhook接口，使用该接口并通过post方法附带要发送的消息内容及相关参数即可实现钉钉同步。</p>
+<p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<figure  >
+  <div class="d-flex justify-content-center">
+    <div class="w-100" ><img alt="" srcset="
+               /post/python-notice-feature-demo/images/add_new_robot_hu7091401721e8eb99d7d9fffdde0360cd_59974_bc616acce72681b537eebe0fa823760a.webp 400w,
+               /post/python-notice-feature-demo/images/add_new_robot_hu7091401721e8eb99d7d9fffdde0360cd_59974_01052c9300c67454ced78e15de6b5b18.webp 760w,
+               /post/python-notice-feature-demo/images/add_new_robot_hu7091401721e8eb99d7d9fffdde0360cd_59974_1200x1200_fit_q75_h2_lanczos.webp 1200w"
+               src="/post/python-notice-feature-demo/images/add_new_robot_hu7091401721e8eb99d7d9fffdde0360cd_59974_bc616acce72681b537eebe0fa823760a.webp"
+               width="760"
+               height="610"
+               loading="lazy" data-zoomable /></div>
+  </div></figure>
+</p>
+<p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<figure  >
+  <div class="d-flex justify-content-center">
+    <div class="w-100" ><img alt="" srcset="
+               /post/python-notice-feature-demo/images/set_webhook_huf44f48c50f7445134de09591794414d2_51263_a6f3e3528a4d1c29be478a1bc3a59a43.webp 400w,
+               /post/python-notice-feature-demo/images/set_webhook_huf44f48c50f7445134de09591794414d2_51263_40a586843df32574959c1846b82b7dd9.webp 760w,
+               /post/python-notice-feature-demo/images/set_webhook_huf44f48c50f7445134de09591794414d2_51263_1200x1200_fit_q75_h2_lanczos.webp 1200w"
+               src="/post/python-notice-feature-demo/images/set_webhook_huf44f48c50f7445134de09591794414d2_51263_a6f3e3528a4d1c29be478a1bc3a59a43.webp"
+               width="760"
+               height="624"
+               loading="lazy" data-zoomable /></div>
+  </div></figure>
+</p>
+<h4 id="代码示例">代码示例</h4>
+<p>利用时间戳和密钥生成签名字符串(timestamp+&quot;\n&quot;+secret)</p>
+<p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<figure  >
+  <div class="d-flex justify-content-center">
+    <div class="w-100" ><img alt="" srcset="
+               /post/python-notice-feature-demo/images/parameter_hu4cc2cd7c2725fc85da420845c4452971_25069_819972702258cc2f1346a888d75f0f91.webp 400w,
+               /post/python-notice-feature-demo/images/parameter_hu4cc2cd7c2725fc85da420845c4452971_25069_b32ea523783a91d51010dafc38e08a10.webp 760w,
+               /post/python-notice-feature-demo/images/parameter_hu4cc2cd7c2725fc85da420845c4452971_25069_1200x1200_fit_q75_h2_lanczos.webp 1200w"
+               src="/post/python-notice-feature-demo/images/parameter_hu4cc2cd7c2725fc85da420845c4452971_25069_819972702258cc2f1346a888d75f0f91.webp"
+               width="760"
+               height="150"
+               loading="lazy" data-zoomable /></div>
+  </div></figure>
+</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="c1">#python 3.8</span>
+</span></span><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">time</span>
+</span></span><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">hmac</span>
+</span></span><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">hashlib</span>
+</span></span><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">base64</span>
+</span></span><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">urllib.parse</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">timestamp</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="nb">round</span><span class="p">(</span><span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span> <span class="o">*</span> <span class="mi">1000</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl"><span class="n">secret</span> <span class="o">=</span> <span class="s1">&#39;this is secret&#39;</span>
+</span></span><span class="line"><span class="cl"><span class="n">secret_enc</span> <span class="o">=</span> <span class="n">secret</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span><span class="s1">&#39;utf-8&#39;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">string_to_sign</span> <span class="o">=</span> <span class="s1">&#39;</span><span class="si">{}</span><span class="se">\n</span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">timestamp</span><span class="p">,</span> <span class="n">secret</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">string_to_sign_enc</span> <span class="o">=</span> <span class="n">string_to_sign</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span><span class="s1">&#39;utf-8&#39;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">hmac_code</span> <span class="o">=</span> <span class="n">hmac</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="n">secret_enc</span><span class="p">,</span> <span class="n">string_to_sign_enc</span><span class="p">,</span> <span class="n">digestmod</span><span class="o">=</span><span class="n">hashlib</span><span class="o">.</span><span class="n">sha256</span><span class="p">)</span><span class="o">.</span><span class="n">digest</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl"><span class="n">sign</span> <span class="o">=</span> <span class="n">urllib</span><span class="o">.</span><span class="n">parse</span><span class="o">.</span><span class="n">quote_plus</span><span class="p">(</span><span class="n">base64</span><span class="o">.</span><span class="n">b64encode</span><span class="p">(</span><span class="n">hmac_code</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">url</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&#34;</span><span class="si">{</span><span class="n">webhook</span><span class="si">}</span><span class="s2">&amp;timestamp=</span><span class="si">{</span><span class="n">timestamp</span><span class="si">}</span><span class="s2">&amp;sign=</span><span class="si">{</span><span class="n">sign</span><span class="si">}</span><span class="s2">&#34;</span>
+</span></span><span class="line"><span class="cl"><span class="c1"># 钉钉文本消息格式</span>
+</span></span><span class="line"><span class="cl"><span class="n">data</span> <span class="o">=</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">      <span class="s2">&#34;at&#34;</span><span class="p">:</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">                <span class="s2">&#34;isAtAll&#34;</span><span class="p">:</span> <span class="n">at_all</span>
+</span></span><span class="line"><span class="cl">            <span class="p">},</span>
+</span></span><span class="line"><span class="cl">            <span class="s2">&#34;text&#34;</span><span class="p">:</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">                <span class="s2">&#34;content&#34;</span><span class="p">:</span> <span class="s2">&#34;测试通知&#34;</span>
+</span></span><span class="line"><span class="cl">            <span class="p">},</span>
+</span></span><span class="line"><span class="cl">            <span class="s2">&#34;msgtype&#34;</span><span class="p">:</span> <span class="s2">&#34;text&#34;</span>
+</span></span><span class="line"><span class="cl">  <span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">post</span><span class="p">(</span><span class="n">url</span><span class="o">=</span><span class="n">url</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">json</span><span class="o">.</span><span class="n">dumps</span><span class="p">(</span><span class="n">data</span><span class="p">),</span> <span class="n">headers</span><span class="o">=</span><span class="n">headers</span><span class="p">)</span><span class="o">.</span><span class="n">textp</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="nb">print</span><span class="p">(</span><span class="n">response</span><span class="p">)</span>
+</span></span></code></pre></div><p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<figure  >
+  <div class="d-flex justify-content-center">
+    <div class="w-100" ><img alt="" srcset="
+               /post/python-notice-feature-demo/images/success_demo_hue99a308f1963589bd555e99c7744548c_23593_5d677b90af324f71ffb3f1e9e2984c44.webp 400w,
+               /post/python-notice-feature-demo/images/success_demo_hue99a308f1963589bd555e99c7744548c_23593_88d7d77104ac290658076433c1813ef5.webp 760w,
+               /post/python-notice-feature-demo/images/success_demo_hue99a308f1963589bd555e99c7744548c_23593_1200x1200_fit_q75_h2_lanczos.webp 1200w"
+               src="/post/python-notice-feature-demo/images/success_demo_hue99a308f1963589bd555e99c7744548c_23593_5d677b90af324f71ffb3f1e9e2984c44.webp"
+               width="741"
+               height="293"
+               loading="lazy" data-zoomable /></div>
+  </div></figure>
+</p>
+<h4 id="更多消息类型">更多消息类型</h4>
+<p>钉钉自定义机器人支持文本(text)、链接(link)、markdown、ActionCard、FeedCard消息类型。根据钉钉开放平台的说明/建议:</p>
+<pre tabindex="0"><code>每个机器人每分钟最多发送20条。消息发送太频繁会严重影响群成员的使用体验，
+大量发消息的场景 (譬如系统监控报警) 可以将这些信息进行整合，通过markdown消息
+以摘要的形式发送到群里。
+</code></pre><ul>
+<li>
+<p>text: 文本类型</p>
+<pre tabindex="0"><code>{
+    &#34;at&#34;: {
+        &#34;atMobiles&#34;:[
+            &#34;180xxxxxx&#34;
+        ],
+        &#34;atUserIds&#34;:[
+            &#34;user123&#34;
+        ],
+        &#34;isAtAll&#34;: false
+    },
+    &#34;text&#34;: {
+        &#34;content&#34;:&#34;我就是我, @XXX 是不一样的烟火&#34;
+    },
+    &#34;msgtype&#34;:&#34;text&#34;
+}
+</code></pre></li>
+<li>
+<p>link：链接类型</p>
+<pre tabindex="0"><code>{
+    &#34;msgtype&#34;: &#34;link&#34;, 
+    &#34;link&#34;: {
+        &#34;text&#34;: &#34;这个即将发布的新版本，创始人xx称它为红树林。而在此之前，每当面临重大升级，产品经理们都会取一个应景的代号，这一次，为什么是红树林&#34;, 
+        &#34;title&#34;: &#34;时代的火车向前开&#34;, 
+        &#34;picUrl&#34;: &#34;&#34;, 
+        &#34;messageUrl&#34;: &#34;https://www.dingtalk.com/s?__biz=MzA4NjMwMTA2Ng==&amp;mid=2650316842&amp;idx=1&amp;sn=60da3ea2b29f1dcc43a7c8e4a7c97a16&amp;scene=2&amp;srcid=09189AnRJEdIiWVaKltFzNTw&amp;from=timeline&amp;isappinstalled=0&amp;key=&amp;ascene=2&amp;uin=&amp;devicetype=android-23&amp;version=26031933&amp;nettype=WIFI&#34;
+    }
+}
+</code></pre></li>
+<li>
+<p>markdown类型</p>
+<pre tabindex="0"><code>{
+     &#34;msgtype&#34;: &#34;markdown&#34;,
+     &#34;markdown&#34;: {
+         &#34;title&#34;:&#34;杭州天气&#34;,
+         &#34;text&#34;: &#34;#### 杭州天气 @150XXXXXXXX \n &gt; 9度，西北风1级，空气良89，相对温度73%\n &gt; ![screenshot](https://img.alicdn.com/tfs/TB1NwmBEL9TBuNjy1zbXXXpepXa-2400-1218.png)\n &gt; ###### 10点20分发布 [天气](https://www.dingtalk.com) \n&#34;
+     },
+      &#34;at&#34;: {
+          &#34;atMobiles&#34;: [
+              &#34;150XXXXXXXX&#34;
+          ],
+          &#34;atUserIds&#34;: [
+              &#34;user123&#34;
+          ],
+          &#34;isAtAll&#34;: false
+      }
+ }
+</code></pre><p>【注：只支持markdown语法的子集，详情参考<a href="https://open.dingtalk.com/document/robots/custom-robot-access/" target="_blank" rel="noopener">文档</a>】</p>
+</li>
+<li>
+<p>整体跳转ActionCard类型</p>
+<pre tabindex="0"><code>{
+    &#34;actionCard&#34;: {
+        &#34;title&#34;: &#34;乔布斯 20 年前想打造一间苹果咖啡厅，而它正是 Apple Store 的前身&#34;, 
+        &#34;text&#34;: &#34;![screenshot](https://gw.alicdn.com/tfs/TB1ut3xxbsrBKNjSZFpXXcXhFXa-846-786.png) 
+ ### 乔布斯 20 年前想打造的苹果咖啡厅 
+ Apple Store 的设计正从原来满满的科技感走向生活化，而其生活化的走向其实可以追溯到 20 年前苹果一个建立咖啡馆的计划&#34;, 
+        &#34;btnOrientation&#34;: &#34;0&#34;, 
+        &#34;singleTitle&#34; : &#34;阅读全文&#34;,
+        &#34;singleURL&#34; : &#34;https://www.dingtalk.com/&#34;
+    }, 
+    &#34;msgtype&#34;: &#34;actionCard&#34;
+}
+</code></pre></li>
+<li>
+<p>独立跳转ActionCard</p>
+<pre tabindex="0"><code>{
+    &#34;msgtype&#34;: &#34;actionCard&#34;,
+    &#34;actionCard&#34;: {
+        &#34;title&#34;: &#34;我 20 年前想打造一间苹果咖啡厅，而它正是 Apple Store 的前身&#34;, 
+        &#34;text&#34;: &#34;![screenshot](https://img.alicdn.com/tfs/TB1NwmBEL9TBuNjy1zbXXXpepXa-2400-1218.png) \n\n #### 乔布斯 20 年前想打造的苹果咖啡厅 \n\n Apple Store 的设计正从原来满满的科技感走向生活化，而其生活化的走向其实可以追溯到 20 年前苹果一个建立咖啡馆的计划&#34;, 
+        &#34;btnOrientation&#34;: &#34;0&#34;, 
+        &#34;btns&#34;: [
+            {
+                &#34;title&#34;: &#34;内容不错&#34;, 
+                &#34;actionURL&#34;: &#34;https://www.dingtalk.com/&#34;
+            }, 
+            {
+                &#34;title&#34;: &#34;不感兴趣&#34;, 
+                &#34;actionURL&#34;: &#34;https://www.dingtalk.com/&#34;
+            }
+        ]
+    }
+}
+</code></pre></li>
+<li>
+<p>FeedCard消息类型</p>
+<pre tabindex="0"><code>{
+    &#34;msgtype&#34;:&#34;feedCard&#34;,
+    &#34;feedCard&#34;: {
+        &#34;links&#34;: [
+            {
+                &#34;title&#34;: &#34;时代的火车向前开1&#34;, 
+                &#34;messageURL&#34;: &#34;https://www.dingtalk.com/&#34;, 
+                &#34;picURL&#34;: &#34;https://img.alicdn.com/tfs/TB1NwmBEL9TBuNjy1zbXXXpepXa-2400-1218.png&#34;
+            },
+            {
+                &#34;title&#34;: &#34;时代的火车向前开2&#34;, 
+                &#34;messageURL&#34;: &#34;https://www.dingtalk.com/&#34;, 
+                &#34;picURL&#34;: &#34;https://img.alicdn.com/tfs/TB1NwmBEL9TBuNjy1zbXXXpepXa-2400-1218.png&#34;
+            }
+        ]
+    }
+}
+</code></pre></li>
+</ul>
+<h4 id="常见错误">常见错误</h4>
+<pre tabindex="0"><code>// 消息内容中不包含任何关键词
+{
+  &#34;errcode&#34;:310000,
+  &#34;errmsg&#34;:&#34;keywords not in content&#34;
+}
+
+// timestamp 无效
+{
+  &#34;errcode&#34;:310000,
+  &#34;errmsg&#34;:&#34;invalid timestamp&#34;
+}
+
+// 签名不匹配
+{
+  &#34;errcode&#34;:310000,
+  &#34;errmsg&#34;:&#34;sign not match&#34;
+}
+
+// IP地址不在白名单
+{
+  &#34;errcode&#34;:310000,
+  &#34;errmsg&#34;:&#34;ip X.X.X.X not in whitelist&#34;
+}
+</code></pre><p>如时间戳超时，会收到如下报错信息：</p>
+<p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<figure  >
+  <div class="d-flex justify-content-center">
+    <div class="w-100" ><img alt="" srcset="
+               /post/python-notice-feature-demo/images/errcode310000_hua22021fc90f5fb8777b1658cd9ac34d9_24491_282e4d060cf2ec842122931590c5c76f.webp 400w,
+               /post/python-notice-feature-demo/images/errcode310000_hua22021fc90f5fb8777b1658cd9ac34d9_24491_156f4deacc6707676d96ab092afd4f1c.webp 760w,
+               /post/python-notice-feature-demo/images/errcode310000_hua22021fc90f5fb8777b1658cd9ac34d9_24491_1200x1200_fit_q75_h2_lanczos.webp 1200w"
+               src="/post/python-notice-feature-demo/images/errcode310000_hua22021fc90f5fb8777b1658cd9ac34d9_24491_282e4d060cf2ec842122931590c5c76f.webp"
+               width="760"
+               height="87"
+               loading="lazy" data-zoomable /></div>
+  </div></figure>
+</p>
+<h4 id="参考文档">参考文档</h4>
+<ul>
+<li>
+<p><a href="https://open.dingtalk.com/document/robots/custom-robot-access/" target="_blank" rel="noopener">自定义机器人接入 - 钉钉开放平台</a></p>
+</li>
+<li>
+<p><a href="https://open.dingtalk.com/document/robots/customize-robot-security-settings" target="_blank" rel="noopener">自定义机器人安全设置 - 钉钉开放平台</a></p>
+</li>
+</ul>
+<h3 id="邮件通知">邮件通知</h3>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="ch">#!/usr/bin/python</span>
+</span></span><span class="line"><span class="cl"><span class="c1"># -*- coding: UTF-8 -*-</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">smtplib</span>
+</span></span><span class="line"><span class="cl"><span class="kn">from</span> <span class="nn">email.mime.text</span> <span class="kn">import</span> <span class="n">MIMEText</span>
+</span></span><span class="line"><span class="cl"><span class="kn">from</span> <span class="nn">email.utils</span> <span class="kn">import</span> <span class="n">formataddr</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">my_sender</span> <span class="o">=</span> <span class="s1">&#39;test@foxmail.com&#39;</span>  <span class="c1"># 发件人邮箱账号</span>
+</span></span><span class="line"><span class="cl"><span class="n">my_pass</span> <span class="o">=</span> <span class="s1">&#39;XXXXXXXXXXX&#39;</span>  <span class="c1"># 发件人邮箱密码,若使用腾讯邮箱，则填对应的SMTP服务授权码</span>
+</span></span><span class="line"><span class="cl"><span class="n">my_user</span> <span class="o">=</span> <span class="s1">&#39;test@foxmail.com&#39;</span>  <span class="c1"># 收件人邮箱账号，我这边发送给自己</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">def</span> <span class="nf">mail</span><span class="p">():</span>
+</span></span><span class="line"><span class="cl">    <span class="n">ret</span> <span class="o">=</span> <span class="kc">True</span>
+</span></span><span class="line"><span class="cl">    <span class="k">try</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">        <span class="n">msg</span> <span class="o">=</span> <span class="n">MIMEText</span><span class="p">(</span><span class="s1">&#39;数据采集正常&#39;</span><span class="p">,</span> <span class="s1">&#39;plain&#39;</span><span class="p">,</span> <span class="s1">&#39;utf-8&#39;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="n">msg</span><span class="p">[</span><span class="s1">&#39;From&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">formataddr</span><span class="p">([</span><span class="s2">&#34;通知助手&#34;</span><span class="p">,</span> <span class="n">my_sender</span><span class="p">])</span>  <span class="c1"># 括号里的对应发件人邮箱昵称、发件人邮箱账号</span>
+</span></span><span class="line"><span class="cl">        <span class="n">msg</span><span class="p">[</span><span class="s1">&#39;To&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">formataddr</span><span class="p">([</span><span class="s2">&#34;FK&#34;</span><span class="p">,</span> <span class="n">my_user</span><span class="p">])</span>  <span class="c1"># 括号里的对应收件人邮箱昵称、收件人邮箱账号</span>
+</span></span><span class="line"><span class="cl">        <span class="n">msg</span><span class="p">[</span><span class="s1">&#39;Subject&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&#34;[任务执行成功] -------&#34;</span>  <span class="c1"># 邮件的主题，也可以说是标题</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">        <span class="n">server</span> <span class="o">=</span> <span class="n">smtplib</span><span class="o">.</span><span class="n">SMTP_SSL</span><span class="p">(</span><span class="s2">&#34;smtp.qq.com&#34;</span><span class="p">,</span> <span class="mi">465</span><span class="p">)</span>  <span class="c1"># 发件人邮箱中的SMTP服务器，端口是25</span>
+</span></span><span class="line"><span class="cl">        <span class="n">server</span><span class="o">.</span><span class="n">login</span><span class="p">(</span><span class="n">my_sender</span><span class="p">,</span> <span class="n">my_pass</span><span class="p">)</span>  <span class="c1"># 括号中对应的是发件人邮箱账号、邮箱密码</span>
+</span></span><span class="line"><span class="cl">        <span class="n">server</span><span class="o">.</span><span class="n">sendmail</span><span class="p">(</span><span class="n">my_sender</span><span class="p">,</span> <span class="p">[</span><span class="n">my_user</span><span class="p">,</span> <span class="p">],</span> <span class="n">msg</span><span class="o">.</span><span class="n">as_string</span><span class="p">())</span>  <span class="c1"># 括号中对应的是发件人邮箱账号、收件人邮箱账号、发送邮件</span>
+</span></span><span class="line"><span class="cl">        <span class="n">server</span><span class="o">.</span><span class="n">quit</span><span class="p">()</span>  <span class="c1"># 关闭连接</span>
+</span></span><span class="line"><span class="cl">    <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>  <span class="c1"># 如果 try 中的语句没有执行，则会执行下面的 ret=False</span>
+</span></span><span class="line"><span class="cl">        <span class="n">ret</span> <span class="o">=</span> <span class="kc">False</span>
+</span></span><span class="line"><span class="cl">        <span class="nb">print</span><span class="p">(</span><span class="n">e</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="n">ret</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">ret</span> <span class="o">=</span> <span class="n">mail</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl"><span class="k">if</span> <span class="n">ret</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">    <span class="nb">print</span><span class="p">(</span><span class="s2">&#34;邮件发送成功&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="k">else</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">    <span class="nb">print</span><span class="p">(</span><span class="s2">&#34;邮件发送失败&#34;</span><span class="p">)</span>
+</span></span></code></pre></div><h4 id="参考文档-1">参考文档</h4>
+<ul>
+<li><a href="https://www.runoob.com/python/python-email.html" target="_blank" rel="noopener">Python SMTP发送邮件 | 菜鸟教程</a></li>
+</ul>
+<h3 id="封装重构">封装重构</h3>
+<p>考虑到消息通知可能有多个渠道，针对同一个消息有时我们想同时通过钉钉、短信、邮件等途径进行通报，因此可考虑将每一个具体通知渠道抽象成一个消息处理单元（Handler），通过通知器（Noticer）进行来执行通报逻辑，当Handler作为Noticer的成员属性，当Noticer启用了什么类型的消息处理单元（Handler），就会进行什么类型的消息通报。一个简单的示例代码如下：</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">json</span>
+</span></span><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">time</span>
+</span></span><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">hmac</span>
+</span></span><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">hashlib</span>
+</span></span><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">base64</span>
+</span></span><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">urllib.parse</span>
+</span></span><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">requests</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">def</span> <span class="nf">create_noticer</span><span class="p">(</span><span class="n">enable_mail</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">enable_dingtalk</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">    <span class="n">noticer</span> <span class="o">=</span> <span class="n">Noticer</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">    <span class="k">if</span> <span class="n">enable_mail</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">        <span class="n">noticer</span><span class="o">.</span><span class="n">add_handler</span><span class="p">(</span><span class="n">MailHandler</span><span class="p">())</span>
+</span></span><span class="line"><span class="cl">    <span class="k">if</span> <span class="n">enable_dingtalk</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">        <span class="n">noticer</span><span class="o">.</span><span class="n">add_handler</span><span class="p">(</span><span class="n">DingTalkHandler</span><span class="p">())</span>
+</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="n">noticer</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">class</span> <span class="nc">Handler</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">    <span class="s2">&#34;&#34;&#34;通知处理程序&#34;&#34;&#34;</span>
+</span></span><span class="line"><span class="cl">    <span class="k">def</span> <span class="nf">send</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">msg</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">        <span class="s2">&#34;&#34;&#34;作为接口&#34;&#34;&#34;</span>
+</span></span><span class="line"><span class="cl">        <span class="k">pass</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">class</span> <span class="nc">DingTalkHandler</span><span class="p">(</span><span class="n">Handler</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">    <span class="s2">&#34;&#34;&#34;钉钉通知处理程序&#34;&#34;&#34;</span>
+</span></span><span class="line"><span class="cl">    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">        <span class="bp">self</span><span class="o">.</span><span class="n">init_variables</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">    <span class="k">def</span> <span class="nf">init_variables</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">        <span class="c1"># 密钥和webhook可抽出到配置文件中</span>
+</span></span><span class="line"><span class="cl">        <span class="bp">self</span><span class="o">.</span><span class="n">secret</span> <span class="o">=</span> <span class="s2">&#34;XXX&#34;</span>
+</span></span><span class="line"><span class="cl">        <span class="bp">self</span><span class="o">.</span><span class="n">webhook</span> <span class="o">=</span> <span class="s1">&#39;https://oapi.dingtalk.com/robot/send?access_token=XXX&#39;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="k">def</span> <span class="nf">send</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">msg</span><span class="p">,</span> <span class="n">at_all</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">        <span class="s2">&#34;&#34;&#34;
+</span></span></span><span class="line"><span class="cl"><span class="s2">        发送消息，当前只实现文本类型消息发送
+</span></span></span><span class="line"><span class="cl"><span class="s2">        :param msg:
+</span></span></span><span class="line"><span class="cl"><span class="s2">        :param at_all:
+</span></span></span><span class="line"><span class="cl"><span class="s2">        :return:
+</span></span></span><span class="line"><span class="cl"><span class="s2">        &#34;&#34;&#34;</span>
+</span></span><span class="line"><span class="cl">        <span class="n">headers</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;Content-Type&#39;</span><span class="p">:</span> <span class="s1">&#39;application/json&#39;</span><span class="p">,</span> <span class="s2">&#34;Charset&#34;</span><span class="p">:</span> <span class="s2">&#34;UTF-8&#34;</span><span class="p">}</span>
+</span></span><span class="line"><span class="cl">        <span class="c1">#  webhook 地址</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">        <span class="n">timestamp</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="nb">round</span><span class="p">(</span><span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span> <span class="o">*</span> <span class="mi">1000</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl">        <span class="c1"># 加签密钥</span>
+</span></span><span class="line"><span class="cl">        <span class="n">secret_enc</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">secret</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span><span class="s2">&#34;utf-8&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="n">string_to_sign</span> <span class="o">=</span> <span class="s1">&#39;</span><span class="si">{}</span><span class="se">\n</span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">timestamp</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">secret</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="n">string_to_sign_enc</span> <span class="o">=</span> <span class="n">string_to_sign</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span><span class="s2">&#34;utf-8&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="n">hmac_code</span> <span class="o">=</span> <span class="n">hmac</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="n">secret_enc</span><span class="p">,</span> <span class="n">string_to_sign_enc</span><span class="p">,</span> <span class="n">digestmod</span><span class="o">=</span><span class="n">hashlib</span><span class="o">.</span><span class="n">sha256</span><span class="p">)</span><span class="o">.</span><span class="n">digest</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">        <span class="n">sign</span> <span class="o">=</span> <span class="n">urllib</span><span class="o">.</span><span class="n">parse</span><span class="o">.</span><span class="n">quote_plus</span><span class="p">(</span><span class="n">base64</span><span class="o">.</span><span class="n">b64encode</span><span class="p">(</span><span class="n">hmac_code</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl">        <span class="n">url</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&#34;</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">webhook</span><span class="si">}</span><span class="s2">&amp;timestamp=</span><span class="si">{</span><span class="n">timestamp</span><span class="si">}</span><span class="s2">&amp;sign=</span><span class="si">{</span><span class="n">sign</span><span class="si">}</span><span class="s2">&#34;</span>
+</span></span><span class="line"><span class="cl">        <span class="c1"># 钉钉消息格式，其中 msg 就是我们要发送的具体内容</span>
+</span></span><span class="line"><span class="cl">        <span class="n">data</span> <span class="o">=</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">            <span class="s2">&#34;at&#34;</span><span class="p">:</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">                <span class="s2">&#34;isAtAll&#34;</span><span class="p">:</span> <span class="n">at_all</span>
+</span></span><span class="line"><span class="cl">            <span class="p">},</span>
+</span></span><span class="line"><span class="cl">            <span class="s2">&#34;text&#34;</span><span class="p">:</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">                <span class="s2">&#34;content&#34;</span><span class="p">:</span> <span class="n">msg</span>
+</span></span><span class="line"><span class="cl">            <span class="p">},</span>
+</span></span><span class="line"><span class="cl">            <span class="s2">&#34;msgtype&#34;</span><span class="p">:</span> <span class="s2">&#34;text&#34;</span>
+</span></span><span class="line"><span class="cl">        <span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="n">requests</span><span class="o">.</span><span class="n">post</span><span class="p">(</span><span class="n">url</span><span class="o">=</span><span class="n">url</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">json</span><span class="o">.</span><span class="n">dumps</span><span class="p">(</span><span class="n">data</span><span class="p">),</span> <span class="n">headers</span><span class="o">=</span><span class="n">headers</span><span class="p">)</span><span class="o">.</span><span class="n">text</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">class</span> <span class="nc">MailHandler</span><span class="p">(</span><span class="n">Handler</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">    <span class="s2">&#34;&#34;&#34;邮件通知处理程序&#34;&#34;&#34;</span>
+</span></span><span class="line"><span class="cl">    <span class="k">pass</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">class</span> <span class="nc">Noticer</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">    <span class="s2">&#34;&#34;&#34;
+</span></span></span><span class="line"><span class="cl"><span class="s2">    消息通知器
+</span></span></span><span class="line"><span class="cl"><span class="s2">    &#34;&#34;&#34;</span>
+</span></span><span class="line"><span class="cl">    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">        <span class="bp">self</span><span class="o">.</span><span class="n">handlers</span> <span class="o">=</span> <span class="p">[]</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="k">def</span> <span class="nf">notice</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">msg</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">        <span class="c1"># 对msg进行一定的封装、定制、格式化，此处省略</span>
+</span></span><span class="line"><span class="cl">        <span class="c1"># ...</span>
+</span></span><span class="line"><span class="cl">        <span class="bp">self</span><span class="o">.</span><span class="n">handle</span><span class="p">(</span><span class="n">msg</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="k">def</span> <span class="nf">handle</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">msg</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">        <span class="k">for</span> <span class="n">handler</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">handlers</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">            <span class="n">handler</span><span class="o">.</span><span class="n">send</span><span class="p">(</span><span class="n">msg</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="k">def</span> <span class="nf">add_handler</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">hdlr</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">        <span class="s2">&#34;&#34;&#34;
+</span></span></span><span class="line"><span class="cl"><span class="s2">        添加处理程序
+</span></span></span><span class="line"><span class="cl"><span class="s2">        WARNING: 如果Handler使用了文件或数据库，则该方法线程不安全，需针对数据同步问题进行优化
+</span></span></span><span class="line"><span class="cl"><span class="s2">        :param hdlr:
+</span></span></span><span class="line"><span class="cl"><span class="s2">        :return:
+</span></span></span><span class="line"><span class="cl"><span class="s2">        &#34;&#34;&#34;</span>
+</span></span><span class="line"><span class="cl">        <span class="k">if</span> <span class="ow">not</span> <span class="p">(</span><span class="n">hdlr</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">handlers</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">            <span class="bp">self</span><span class="o">.</span><span class="n">handlers</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">hdlr</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="k">def</span> <span class="nf">remove_handler</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">hdlr</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">        <span class="s2">&#34;&#34;&#34;
+</span></span></span><span class="line"><span class="cl"><span class="s2">        移除处理程序
+</span></span></span><span class="line"><span class="cl"><span class="s2">        WARNING: 如果Handler使用了文件或数据库，则该方法线程不安全
+</span></span></span><span class="line"><span class="cl"><span class="s2">
+</span></span></span><span class="line"><span class="cl"><span class="s2">        :param hdlr:
+</span></span></span><span class="line"><span class="cl"><span class="s2">        :return:
+</span></span></span><span class="line"><span class="cl"><span class="s2">        &#34;&#34;&#34;</span>
+</span></span><span class="line"><span class="cl">        <span class="k">if</span> <span class="n">hdlr</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">handlers</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">            <span class="bp">self</span><span class="o">.</span><span class="n">handlers</span><span class="o">.</span><span class="n">remove</span><span class="p">(</span><span class="n">hdlr</span><span class="p">)</span>
+</span></span></code></pre></div>
+    </div>
+
+    
+
+
+
+
+<div class="article-tags">
+  
+  <a class="badge badge-light" href="/tag/python/">Python</a>
+  
+  <a class="badge badge-light" href="/tag/%E9%92%89%E9%92%89%E6%9C%BA%E5%99%A8%E4%BA%BA/">钉钉机器人</a>
+  
+</div>
+
+
+
+<div class="share-box">
+  <ul class="share">
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="https://twitter.com/intent/tweet?url=/post/python-notice-feature-demo/&amp;text=Python%e5%ae%9e%e7%8e%b0%e9%92%89%e9%92%89%e9%80%9a%e6%8a%a5%e5%92%8c%e9%82%ae%e4%bb%b6%e9%80%9a%e7%9f%a5" target="_blank" rel="noopener" class="share-btn-twitter" aria-label="twitter">
+          <i class="fab fa-twitter"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="https://www.facebook.com/sharer.php?u=/post/python-notice-feature-demo/&amp;t=Python%e5%ae%9e%e7%8e%b0%e9%92%89%e9%92%89%e9%80%9a%e6%8a%a5%e5%92%8c%e9%82%ae%e4%bb%b6%e9%80%9a%e7%9f%a5" target="_blank" rel="noopener" class="share-btn-facebook" aria-label="facebook">
+          <i class="fab fa-facebook"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="mailto:?subject=Python%e5%ae%9e%e7%8e%b0%e9%92%89%e9%92%89%e9%80%9a%e6%8a%a5%e5%92%8c%e9%82%ae%e4%bb%b6%e9%80%9a%e7%9f%a5&amp;body=/post/python-notice-feature-demo/" target="_blank" rel="noopener" class="share-btn-email" aria-label="envelope">
+          <i class="fas fa-envelope"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="https://www.linkedin.com/shareArticle?url=/post/python-notice-feature-demo/&amp;title=Python%e5%ae%9e%e7%8e%b0%e9%92%89%e9%92%89%e9%80%9a%e6%8a%a5%e5%92%8c%e9%82%ae%e4%bb%b6%e9%80%9a%e7%9f%a5" target="_blank" rel="noopener" class="share-btn-linkedin" aria-label="linkedin-in">
+          <i class="fab fa-linkedin-in"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="whatsapp://send?text=Python%e5%ae%9e%e7%8e%b0%e9%92%89%e9%92%89%e9%80%9a%e6%8a%a5%e5%92%8c%e9%82%ae%e4%bb%b6%e9%80%9a%e7%9f%a5%20/post/python-notice-feature-demo/" target="_blank" rel="noopener" class="share-btn-whatsapp" aria-label="whatsapp">
+          <i class="fab fa-whatsapp"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="https://service.weibo.com/share/share.php?url=/post/python-notice-feature-demo/&amp;title=Python%e5%ae%9e%e7%8e%b0%e9%92%89%e9%92%89%e9%80%9a%e6%8a%a5%e5%92%8c%e9%82%ae%e4%bb%b6%e9%80%9a%e7%9f%a5" target="_blank" rel="noopener" class="share-btn-weibo" aria-label="weibo">
+          <i class="fab fa-weibo"></i>
+        </a>
+      </li>
+    
+  </ul>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+
+
+
+  
+  
+  
+  
+  
+  <div class="media author-card content-widget-hr">
+    
+      
+      <a href="/authors/admin/"><img class="avatar mr-3 avatar-circle" src="/authors/admin/avatar_hu55194f19033f85038196a23353ffe543_580100_270x270_fill_q75_lanczos_center.jpg" alt="CoolCats"></a>
+    
+
+    <div class="media-body">
+      <h5 class="card-title"><a href="/authors/admin/">CoolCats</a></h5>
+      <h6 class="card-subtitle">理学学士</h6>
+      <p class="card-text">我的研究兴趣是时空数据分析、自然语言处理、服务端开发</p>
+      <ul class="network-icon" aria-hidden="true">
+  
+    
+    
+    
+      
+    
+    
+    
+    
+    
+    <li>
+      <a href="mailto:2811159909@qq.com" >
+        <i class="fas fa-envelope"></i>
+      </a>
+    </li>
+  
+    
+    
+    
+      
+    
+    
+    
+    
+    
+      
+    
+    <li>
+      <a href="https://github.com/Coolgiserz" target="_blank" rel="noopener">
+        <i class="fab fa-github"></i>
+      </a>
+    </li>
+  
+</ul>
+
+    </div>
+  </div>
+
+
+
+
+
+
+
+
+
+  
+  
+  
+
+  
+
+  
+
+
+
+
+
+
+
+
+
+
+  </div>
+</article>
+  </div>
+
+  <div class="page-footer">
+    
+    
+    <div class="container">
+      <footer class="site-footer">
+
+  
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+
+
+
+
+
+  
+  
+  
+
+  
+  
+    
+  
+  
+    
+  
+
+  
+
+  
+  <p class="powered-by copyright-license-text">
+    © 2023 CoolCats. This work is licensed under <a href="https://creativecommons.org/licenses/by-nc-nd/4.0" rel="noopener noreferrer" target="_blank">CC BY NC ND 4.0</a>
+  </p>
+  
+
+  <p class="powered-by footer-license-icons">
+    <a href="https://creativecommons.org/licenses/by-nc-nd/4.0" rel="noopener noreferrer" target="_blank" aria-label="Creative Commons">
+      <i class="fab fa-creative-commons fa-2x" aria-hidden="true"></i>
+      <i class="fab fa-creative-commons-by fa-2x" aria-hidden="true"></i>
+      
+        <i class="fab fa-creative-commons-nc fa-2x" aria-hidden="true"></i>
+      
+      
+        <i class="fab fa-creative-commons-nd fa-2x" aria-hidden="true"></i>
+      
+    </a>
+  </p>
+
+
+
+
+  <p class="powered-by">
+    
+    
+    
+      
+      
+      
+      
+      
+      
+      Published with <a href="https://wowchemy.com/?utm_campaign=poweredby" target="_blank" rel="noopener">Wowchemy</a> — the free, <a href="https://github.com/wowchemy/wowchemy-hugo-themes" target="_blank" rel="noopener">open source</a> website builder that empowers creators.
+    
+  </p>
+</footer>
+
+    </div>
+    
+  </div>
+
+      
+
+    
+    <script src="/js/vendor-bundle.min.fab8b449b814cc9f95b22fcf2e45f05b.js"></script>
+
+    
+    
+    
+      
+
+      
+      
+
+      
+
+      
+        
+        <script src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@10.2.1/build/highlight.min.js" integrity="sha512-Ypjm0o7jOxAd4hpdoppSEN0TQOC19UtPAqD+4s5AlXmUvbmmS/YMxYqAqarQYyxTnB6/rqip9qcxlNB/3U9Wdg==" crossorigin="anonymous"></script>
+        
+        
+        <script src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@10.2.1/build/languages/r.min.js" crossorigin="anonymous"></script>
+        
+        <script src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@10.2.1/build/languages/latex.min.js" crossorigin="anonymous"></script>
+        
+      
+
+    
+
+    
+    
+    
+      <script src="https://cdn.jsdelivr.net/npm/leaflet@1.7.1/dist/leaflet.min.js" integrity="" crossorigin="anonymous"></script>
+    
+
+    
+    
+
+    
+    
+    
+      
+      <script id="search-hit-fuse-template" type="text/x-template">
+        <div class="search-hit" id="summary-{{key}}">
+          <div class="search-hit-content">
+            <div class="search-hit-name">
+              <a href="{{relpermalink}}">{{title}}</a>
+              <div class="article-metadata search-hit-type">{{type}}</div>
+              <p class="search-hit-description">{{snippet}}</p>
+            </div>
+          </div>
+        </div>
+      </script>
+      
+        <script src="https://cdn.jsdelivr.net/gh/krisk/Fuse@v3.2.1/dist/fuse.min.js" integrity="sha512-o38bmzBGX+hD3JHWUFCDA09btWaqrNmoJ3RXLlrysA7PP01Kgs4UlE4MhelE1v5dJR3+cxlR4qQlotsW7jKsnw==" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/gh/julmot/mark.js@8.11.1/dist/jquery.mark.min.js" integrity="sha512-mhbv5DqBMgrWL+32MmsDOt/OAvqr/cHimk6B8y/bx/xS88MVkYGPiVv2ixKVrkywF2qHplNRUvFsAHUdxZ3Krg==" crossorigin="anonymous"></script>
+      
+    
+
+    
+    
+
+    
+    
+    
+    
+      <script id="dsq-count-scr" src="https://coolgiserz.disqus.com/count.js" async></script>
+    
+
+    
+    
+      
+      
+      
+      
+      
+      
+      
+    
+
+    
+
+    
+    
+    
+    <script id="page-data" type="application/json">{"use_headroom":true}</script>
+
+    
+    
+      <script src="/js/wowchemy-headroom.c251366b4128fd5e6b046d4c97a62a51.js" type="module"></script>
+    
+    
+    
+    
+    
+    
+    
+      
+      
+    
+    
+    <script src="/en/js/wowchemy.min.ab2f2890dbe3e2e83579366d3d6e8fd9.js"></script>
+
+    
+    
+      <script src="/js/wowchemy-map.a26e9d2f7238ba5b868384f1c5bc6477.js" type="module"></script>
+    
+    
+    
+    
+      
+<div id="modal" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Cite</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <pre><code class="tex hljs"></code></pre>
+      </div>
+      <div class="modal-footer">
+        <a class="btn btn-outline-primary my-1 js-copy-cite" href="#" target="_blank">
+          <i class="fas fa-copy"></i> Copy
+        </a>
+        <a class="btn btn-outline-primary my-1 js-download-cite" href="#" target="_blank">
+          <i class="fas fa-download"></i> Download
+        </a>
+        <div id="modal-error"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+      <script src="/js/wowchemy-publication.68f8d7090562ca65fc6d3cb3f8f2d2cb.js" type="module"></script>
+
+
+
+
+
+
+</body>
+</html>
