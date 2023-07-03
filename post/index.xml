@@ -5,12 +5,625 @@
     <link>/post/</link>
       <atom:link href="/post/index.xml" rel="self" type="application/rss+xml" />
     <description>博客</description>
-    <generator>Wowchemy (https://wowchemy.com)</generator><language>en-us</language><lastBuildDate>Fri, 23 Jun 2023 19:21:53 +0800</lastBuildDate>
+    <generator>Wowchemy (https://wowchemy.com)</generator><language>en-us</language><lastBuildDate>Fri, 30 Jun 2023 21:18:19 +0800</lastBuildDate>
     <image>
       <url>/media/icon_hue03491371183284312b8b116a73ae5ab_79511_512x512_fill_lanczos_center_3.png</url>
       <title>博客</title>
       <link>/post/</link>
     </image>
+    
+    <item>
+      <title>Python程序打包为可执行程序的几种方法</title>
+      <link>/post/python-distribute-executable-program/</link>
+      <pubDate>Fri, 30 Jun 2023 21:18:19 +0800</pubDate>
+      <guid>/post/python-distribute-executable-program/</guid>
+      <description>&lt;p&gt;程序编写完成后需要打包，对于打包我们可能有以下一个或多个需求：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;打包成开源/闭源程序&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;打包成可执行程序，系统无需安装python环境也能使用&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;对源码进行加密混淆，不能被轻易破解&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;本文总结将Python程序打包成可执行程序的几种方法和一些工具。&lt;/p&gt;
+&lt;h2 id=&#34;0x00-前置知识&#34;&gt;0x00 前置知识&lt;/h2&gt;
+&lt;h3 id=&#34;文件&#34;&gt;文件&lt;/h3&gt;
+&lt;h4 id=&#34;pyc文件&#34;&gt;pyc文件&lt;/h4&gt;
+&lt;p&gt;PYC文件是Python的字节码文件（Bytecode File）的扩展名，它是经过Python解释器编译后生成的二进制文件。当Python脚本（.py文件）被解释器执行时，解释器会将其编译为字节码，并将字节码保存到PYC文件中。下次再次执行相同的脚本时，解释器会直接加载对应的PYC文件，而无需再次编译源代码，从而提高执行效率。&lt;/p&gt;
+&lt;h4 id=&#34;pyd文件&#34;&gt;pyd文件&lt;/h4&gt;
+&lt;p&gt;pyd 文件是用 Python 编写的动态链接库，可以在运行时由其他 Python 代码运行。它包含一个或多个 Python 模块，便于代码重用，并为编写应用程序提供模块架构。可以使用 .pyd 扩展名创建和保存 PYD 文件，例如 helloworld.pyd。应用程序开发人员可以使用 import 语句将 PYD 模块包含在他们的应用程序中。 PYD 文件可以使用适用于 Windows、Mac 和 Linux 操作系统的 Python Software Foundation Python 打开。&lt;/p&gt;
+&lt;h4 id=&#34;pyz文件&#34;&gt;pyz文件&lt;/h4&gt;
+&lt;p&gt;&amp;ldquo;pyz&amp;quot;文件通常是指一个Python Zip Archive（Python压缩归档）文件。该文件使用压缩算法将多个Python模块、库和脚本打包在一起，以便于分发和共享。&lt;/p&gt;
+&lt;p&gt;Python Zip Archive文件通常具有&amp;rdquo;.pyz&amp;quot;扩展名，并且可以通过Python解释器直接运行。在运行时，Python解释器会解压缩该文件并执行其中的代码。这种打包方式可以用于将单个可执行文件中的所有依赖项捆绑在一起，使得应用程序更易于分发和部署。&lt;/p&gt;
+&lt;h4 id=&#34;whl文件&#34;&gt;whl文件&lt;/h4&gt;
+&lt;p&gt;whl文件（wheel file）是Python软件包的一种打包格式，它是一种更先进、更完整、更方便的Python软件包安装和传播方案。相比于普通的Python软件包安装方式（通过源码安装），使用whl文件进行Python软件包的安装更加方便、更高效、更不容易出错。&lt;/p&gt;
+&lt;p&gt;whl包含了预编译的Python库文件、依赖配置、安装脚本等内容，因此在大部分情况下，我们可以直接通过pip命令，用whl文件进行Python包的安装。例如，可以使用以下命令安装已经下载好的whl文件：&lt;/p&gt;
+&lt;h3 id=&#34;包导入&#34;&gt;包导入&lt;/h3&gt;
+&lt;h4 id=&#34;隐式导入hidden-import&#34;&gt;隐式导入（hidden import）&lt;/h4&gt;
+&lt;p&gt;在打包过程中，某些模块的导入可能无法被打包工具自动识别出来。这可能是因为这些模块的导入是动态的、条件的或者在运行时根据一些动态因素发生的。此时，就需要通过指定&amp;quot;hidden import&amp;quot;来告诉打包工具这些模块的存在，以便正确打包。&lt;/p&gt;
+&lt;p&gt;例如，一些动态导入的模块、通过字符串导入的模块或者其他特殊情况下的模块，需要使用&amp;quot;hidden import&amp;quot;来确保打包工具能正确地识别它们的存在，并将其包含在打包后的可执行文件中。&lt;/p&gt;
+&lt;h2 id=&#34;0x01-pyinstaller&#34;&gt;0x01 PyInstaller&lt;/h2&gt;
+&lt;h3 id=&#34;重要组件&#34;&gt;重要组件&lt;/h3&gt;
+&lt;h4 id=&#34;analysis分析器&#34;&gt;Analysis（分析器）&lt;/h4&gt;
+&lt;p&gt;用于分析程序的导入和依赖。&lt;/p&gt;
+&lt;h4 id=&#34;pyzpython-zip&#34;&gt;PYZ（Python Zip）&lt;/h4&gt;
+&lt;h4 id=&#34;exe&#34;&gt;EXE&lt;/h4&gt;
+&lt;h3 id=&#34;简单示例&#34;&gt;简单示例&lt;/h3&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-python&#34; data-lang=&#34;python&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;# main.py&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;kn&#34;&gt;import&lt;/span&gt; &lt;span class=&#34;nn&#34;&gt;sys&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;kn&#34;&gt;import&lt;/span&gt; &lt;span class=&#34;nn&#34;&gt;lib&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;k&#34;&gt;def&lt;/span&gt; &lt;span class=&#34;nf&#34;&gt;say_hello&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;():&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;k&#34;&gt;try&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        &lt;span class=&#34;n&#34;&gt;lib&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;hello&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;sys&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;argv&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;k&#34;&gt;except&lt;/span&gt; &lt;span class=&#34;ne&#34;&gt;Exception&lt;/span&gt; &lt;span class=&#34;k&#34;&gt;as&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;e&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        &lt;span class=&#34;nb&#34;&gt;print&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;sa&#34;&gt;f&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;Exception &lt;/span&gt;&lt;span class=&#34;si&#34;&gt;{&lt;/span&gt;&lt;span class=&#34;nb&#34;&gt;repr&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;e&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;&lt;span class=&#34;si&#34;&gt;}&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;k&#34;&gt;if&lt;/span&gt; &lt;span class=&#34;vm&#34;&gt;__name__&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;==&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;__main__&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;nb&#34;&gt;print&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;Test PYinstaller&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;n&#34;&gt;say_hello&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;()&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-python&#34; data-lang=&#34;python&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;# lib.py&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;k&#34;&gt;def&lt;/span&gt; &lt;span class=&#34;nf&#34;&gt;hello&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;msg&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;deafule&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;):&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;nb&#34;&gt;print&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;sa&#34;&gt;f&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;Hello From Lib, &lt;/span&gt;&lt;span class=&#34;si&#34;&gt;{&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;msg&lt;/span&gt;&lt;span class=&#34;si&#34;&gt;}&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;当执行如下命令后，pyinstaller会生成main.spec文件（存储在&amp;ndash;specpath参数指定的目录中，默认是当前目录）。&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;pyinstaller main.py 
+&lt;/code&gt;&lt;/pre&gt;&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;# -*- mode: python ; coding: utf-8 -*-
+block_cipher = None
+a = Analysis(
+    [&amp;#39;main.py&amp;#39;],
+    pathex=[],
+    binaries=[],
+    datas=[],
+    hiddenimports=[],
+    hookspath=[],
+    hooksconfig={},
+    runtime_hooks=[],
+    excludes=[],
+    win_no_prefer_redirects=False,
+    win_private_assemblies=False,
+    cipher=block_cipher,
+    noarchive=False,
+)
+pyz = PYZ(a.pure, a.zipped_data, cipher=block_cipher)
+
+exe = EXE(
+    pyz,
+    a.scripts,
+    [],
+    exclude_binaries=True,
+    name=&amp;#39;main&amp;#39;,
+    debug=False,
+    bootloader_ignore_signals=False,
+    strip=False,
+    upx=True,
+    console=True,
+    disable_windowed_traceback=False,
+    argv_emulation=False,
+    target_arch=None,
+    codesign_identity=None,
+    entitlements_file=None,
+)
+coll = COLLECT(
+    exe,
+    a.binaries,
+    a.zipfiles,
+    a.datas,
+    strip=False,
+    upx=True,
+    upx_exclude=[],
+    name=&amp;#39;main&amp;#39;,
+)
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure  &gt;
+  &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img alt=&#34;&#34; srcset=&#34;
+               /post/python-distribute-executable-program/images/pyinstaller_huba9fc3e1458d9d905bcb2ace3f130bd6_71828_7abd6f9fae7233955a13645358fb5adb.webp 400w,
+               /post/python-distribute-executable-program/images/pyinstaller_huba9fc3e1458d9d905bcb2ace3f130bd6_71828_ffbaa7ce55298f14f612508260a89d50.webp 760w,
+               /post/python-distribute-executable-program/images/pyinstaller_huba9fc3e1458d9d905bcb2ace3f130bd6_71828_1200x1200_fit_q75_h2_lanczos.webp 1200w&#34;
+               src=&#34;/post/python-distribute-executable-program/images/pyinstaller_huba9fc3e1458d9d905bcb2ace3f130bd6_71828_7abd6f9fae7233955a13645358fb5adb.webp&#34;
+               width=&#34;760&#34;
+               height=&#34;241&#34;
+               loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+  &lt;/div&gt;&lt;/figure&gt;
+&lt;/p&gt;
+&lt;p&gt;.spec文件告知pyinstaller如何处理脚本,其编码了脚本的名称和大多数打包选项，pyinstaller根据spec文件的内容来构建可执行程序。
+大多数情况下无需修改spec文件，通常已经给出了足够的信息作为pyinstaller的打包选项。然而，以下情形你需要修改spec文件：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;你希望将数据文件捆绑到可执行程序中&lt;/li&gt;
+&lt;li&gt;你希望将动态依赖库(.dll, .so)包含在可执行程序中&lt;/li&gt;
+&lt;li&gt;你希望将Python的运行时选项添加到可执行程序中&lt;/li&gt;
+&lt;li&gt;你希望将多个程序捆绑成一个公共模块&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;可以通过pyi-makespec options name.py [other scripts&amp;hellip;]命令创建spec文件，该命令仅创建spec文件但不会构建可执行程序。当你将name.spec文件修改到符合要求时，可通过pyinstaller命令进行打包.&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;pyinstaller options name.spec
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;注: pyi-makespec和pyinstaller的options具有相同的选项，部分参数选项如下:
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure  &gt;
+  &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img alt=&#34;&#34; srcset=&#34;
+               /post/python-distribute-executable-program/images/pyinstaller-params_hu50683fdf87199a823f683b4372c8a6b6_238883_d274abf5cbea4f65d02ab2cd82084063.webp 400w,
+               /post/python-distribute-executable-program/images/pyinstaller-params_hu50683fdf87199a823f683b4372c8a6b6_238883_051a333b0cfbbb872e6d5583a3d6f7ea.webp 760w,
+               /post/python-distribute-executable-program/images/pyinstaller-params_hu50683fdf87199a823f683b4372c8a6b6_238883_1200x1200_fit_q75_h2_lanczos.webp 1200w&#34;
+               src=&#34;/post/python-distribute-executable-program/images/pyinstaller-params_hu50683fdf87199a823f683b4372c8a6b6_238883_d274abf5cbea4f65d02ab2cd82084063.webp&#34;
+               width=&#34;760&#34;
+               height=&#34;360&#34;
+               loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+  &lt;/div&gt;&lt;/figure&gt;
+&lt;/p&gt;
+&lt;h3 id=&#34;捆绑数据文件的程序打包&#34;&gt;捆绑数据文件的程序打包&lt;/h3&gt;
+&lt;h4 id=&#34;对照实验&#34;&gt;对照实验&lt;/h4&gt;
+&lt;p&gt;pyinstaller默认不会将数据文件捆绑到打包的文件夹中&lt;/p&gt;
+&lt;p&gt;创建一个文本文件config.txt，将lib.py的代码修改为读取config.txt文件的内容在进行打印&lt;/p&gt;
+&lt;p&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure  &gt;
+  &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img alt=&#34;&#34; srcset=&#34;
+               /post/python-distribute-executable-program/images/config_txt_huffc4e70ada228a967ecbadec80ec2b6f_12741_f17e9b16cfd0c55c9e63b18afe4c23ae.webp 400w,
+               /post/python-distribute-executable-program/images/config_txt_huffc4e70ada228a967ecbadec80ec2b6f_12741_be4dc8d70b931706102b9e342cc283a2.webp 760w,
+               /post/python-distribute-executable-program/images/config_txt_huffc4e70ada228a967ecbadec80ec2b6f_12741_1200x1200_fit_q75_h2_lanczos.webp 1200w&#34;
+               src=&#34;/post/python-distribute-executable-program/images/config_txt_huffc4e70ada228a967ecbadec80ec2b6f_12741_f17e9b16cfd0c55c9e63b18afe4c23ae.webp&#34;
+               width=&#34;694&#34;
+               height=&#34;224&#34;
+               loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+  &lt;/div&gt;&lt;/figure&gt;
+&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-python&#34; data-lang=&#34;python&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;# lib.py&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;k&#34;&gt;def&lt;/span&gt; &lt;span class=&#34;nf&#34;&gt;hello&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;msg&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;deafule&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;):&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;k&#34;&gt;with&lt;/span&gt; &lt;span class=&#34;nb&#34;&gt;open&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;config.txt&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;r&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;k&#34;&gt;as&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;fr&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        &lt;span class=&#34;nb&#34;&gt;print&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;sa&#34;&gt;f&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;&lt;/span&gt;&lt;span class=&#34;si&#34;&gt;{&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;fr&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;read&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;()&lt;/span&gt;&lt;span class=&#34;si&#34;&gt;}&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;, &lt;/span&gt;&lt;span class=&#34;si&#34;&gt;{&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;msg&lt;/span&gt;&lt;span class=&#34;si&#34;&gt;}&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;然后使用默认spec文件的参数对程序进行打包，你会发现config.txt文件没有被打包到dist目录下，运行main.exe自然也是以失败告终。
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure  &gt;
+  &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img alt=&#34;&#34; srcset=&#34;
+               /post/python-distribute-executable-program/images/file_not_found_exception_hu7663361d4b7823ef71c74a04d0cc687a_37299_a6485bb19e60bc2d0534acdd637e29f1.webp 400w,
+               /post/python-distribute-executable-program/images/file_not_found_exception_hu7663361d4b7823ef71c74a04d0cc687a_37299_1710872234f5580be6542582e1665a50.webp 760w,
+               /post/python-distribute-executable-program/images/file_not_found_exception_hu7663361d4b7823ef71c74a04d0cc687a_37299_1200x1200_fit_q75_h2_lanczos.webp 1200w&#34;
+               src=&#34;/post/python-distribute-executable-program/images/file_not_found_exception_hu7663361d4b7823ef71c74a04d0cc687a_37299_a6485bb19e60bc2d0534acdd637e29f1.webp&#34;
+               width=&#34;760&#34;
+               height=&#34;180&#34;
+               loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+  &lt;/div&gt;&lt;/figure&gt;
+&lt;/p&gt;
+&lt;p&gt;要将数据文件（此例的config.txt）打包，需在spec文件的Analysis.datas属性 进行 配置，如以下语句意味着你希望将当前目录下的config.txt文件打包到打包文件的根目录下。&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;datas = [(&amp;#39;config.txt&amp;#39;, &amp;#39;.&amp;#39;)]
+&lt;/code&gt;&lt;/pre&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-python&#34; data-lang=&#34;python&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;# main.spec&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;# ...&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;a&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;Analysis&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;s1&#34;&gt;&amp;#39;main.py&amp;#39;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;],&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;n&#34;&gt;pathex&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;[],&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;n&#34;&gt;binaries&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;[],&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;n&#34;&gt;datas&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;[(&lt;/span&gt;&lt;span class=&#34;s1&#34;&gt;&amp;#39;config.txt&amp;#39;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;&lt;span class=&#34;s1&#34;&gt;&amp;#39;.&amp;#39;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)],&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;n&#34;&gt;hiddenimports&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;[],&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;n&#34;&gt;hookspath&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;[],&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;n&#34;&gt;hooksconfig&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;{},&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;n&#34;&gt;runtime_hooks&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;[],&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;n&#34;&gt;excludes&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;[],&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;n&#34;&gt;win_no_prefer_redirects&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;kc&#34;&gt;False&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;n&#34;&gt;win_private_assemblies&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;kc&#34;&gt;False&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;n&#34;&gt;cipher&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;block_cipher&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;n&#34;&gt;noarchive&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;kc&#34;&gt;False&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;# ...&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure  &gt;
+  &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img alt=&#34;&#34; srcset=&#34;
+               /post/python-distribute-executable-program/images/pyinstaller_main_spec_hubb7b4118c26cac5ebf28e446a255c64d_203455_d35fd67430c280450e1404db9d4ce961.webp 400w,
+               /post/python-distribute-executable-program/images/pyinstaller_main_spec_hubb7b4118c26cac5ebf28e446a255c64d_203455_09edc85e3bd5f693b84050392370faa9.webp 760w,
+               /post/python-distribute-executable-program/images/pyinstaller_main_spec_hubb7b4118c26cac5ebf28e446a255c64d_203455_1200x1200_fit_q75_h2_lanczos.webp 1200w&#34;
+               src=&#34;/post/python-distribute-executable-program/images/pyinstaller_main_spec_hubb7b4118c26cac5ebf28e446a255c64d_203455_d35fd67430c280450e1404db9d4ce961.webp&#34;
+               width=&#34;760&#34;
+               height=&#34;400&#34;
+               loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+  &lt;/div&gt;&lt;/figure&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure  &gt;
+  &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img alt=&#34;&#34; srcset=&#34;
+               /post/python-distribute-executable-program/images/pyinstaller_main_spec1_hud50bda192d599b72cb10c5a763e1fc8c_181907_47487e2eb1b9df8e19f1a393dc0580ac.webp 400w,
+               /post/python-distribute-executable-program/images/pyinstaller_main_spec1_hud50bda192d599b72cb10c5a763e1fc8c_181907_7afd7b17b7c366cc8d0ae14fac635460.webp 760w,
+               /post/python-distribute-executable-program/images/pyinstaller_main_spec1_hud50bda192d599b72cb10c5a763e1fc8c_181907_1200x1200_fit_q75_h2_lanczos.webp 1200w&#34;
+               src=&#34;/post/python-distribute-executable-program/images/pyinstaller_main_spec1_hud50bda192d599b72cb10c5a763e1fc8c_181907_47487e2eb1b9df8e19f1a393dc0580ac.webp&#34;
+               width=&#34;760&#34;
+               height=&#34;329&#34;
+               loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+  &lt;/div&gt;&lt;/figure&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure  &gt;
+  &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img alt=&#34;&#34; srcset=&#34;
+               /post/python-distribute-executable-program/images/hello_from_config_huc13e8ffb00a9852a13d7c3115944c7ea_48714_80cf5d70e97ffd266cf52b5b00a015bd.webp 400w,
+               /post/python-distribute-executable-program/images/hello_from_config_huc13e8ffb00a9852a13d7c3115944c7ea_48714_e870018a7e264400aea6910f016351ea.webp 760w,
+               /post/python-distribute-executable-program/images/hello_from_config_huc13e8ffb00a9852a13d7c3115944c7ea_48714_1200x1200_fit_q75_h2_lanczos.webp 1200w&#34;
+               src=&#34;/post/python-distribute-executable-program/images/hello_from_config_huc13e8ffb00a9852a13d7c3115944c7ea_48714_80cf5d70e97ffd266cf52b5b00a015bd.webp&#34;
+               width=&#34;760&#34;
+               height=&#34;219&#34;
+               loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+  &lt;/div&gt;&lt;/figure&gt;
+&lt;/p&gt;
+&lt;p&gt;当然，也可以在命令行中通过&amp;ndash;add-data参数指定捆绑打包数据文件，参数的官方说明如下：&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;--add-data &amp;lt;SRC;DEST or SRC:DEST&amp;gt;
+Additional non-binary files or folders to be added to the executable. The path separator is platform specific, os.pathsep (which is ; on Windows and : on most unix systems) is used. This option can be used multiple times.
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;还可以打包整个文件夹，或使用通配符来指定多个待打包的数据文件，如：&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-python&#34; data-lang=&#34;python&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;added_files&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;         &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt; &lt;span class=&#34;s1&#34;&gt;&amp;#39;src/README.txt&amp;#39;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;s1&#34;&gt;&amp;#39;.&amp;#39;&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;),&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;         &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt; &lt;span class=&#34;s1&#34;&gt;&amp;#39;/mygame/data&amp;#39;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;s1&#34;&gt;&amp;#39;data&amp;#39;&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;),&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;         &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt; &lt;span class=&#34;s1&#34;&gt;&amp;#39;/mygame/sfx/*.mp3&amp;#39;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;s1&#34;&gt;&amp;#39;sfx&amp;#39;&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;         &lt;span class=&#34;p&#34;&gt;]&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;a&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;Analysis&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;...&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;         &lt;span class=&#34;n&#34;&gt;datas&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;added_files&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;         &lt;span class=&#34;o&#34;&gt;...&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;         &lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;pyinstaller打包的程序安全吗&#34;&gt;pyinstaller打包的程序安全吗？&lt;/h3&gt;
+&lt;p&gt;源代码是否会泄漏，能否加密打包？&lt;/p&gt;
+&lt;h4 id=&#34;使用开源工具pyinstxtractor测试&#34;&gt;使用开源工具pyinstxtractor测试&lt;/h4&gt;
+&lt;p&gt;工具下载&lt;a href=&#34;https://sourceforge.net/projects/pyinstallerextractor/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;地址&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;尝试对pyinstaller打包生成的main.exe文件进行解包，可以发现，解包完成后多了一个main.exe_extracted目录，其中一个子目录 中全是pyc文件&lt;/p&gt;
+&lt;p&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure  &gt;
+  &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img alt=&#34;&#34; srcset=&#34;
+               /post/python-distribute-executable-program/images/pyinstxtractor_demo_hu9aaf52b131952ca6dba31c29a16dbb21_100529_c78da36daa6eba655478d50baf6009e7.webp 400w,
+               /post/python-distribute-executable-program/images/pyinstxtractor_demo_hu9aaf52b131952ca6dba31c29a16dbb21_100529_6d7654599dc20d96df1e8c4340b5737c.webp 760w,
+               /post/python-distribute-executable-program/images/pyinstxtractor_demo_hu9aaf52b131952ca6dba31c29a16dbb21_100529_1200x1200_fit_q75_h2_lanczos.webp 1200w&#34;
+               src=&#34;/post/python-distribute-executable-program/images/pyinstxtractor_demo_hu9aaf52b131952ca6dba31c29a16dbb21_100529_c78da36daa6eba655478d50baf6009e7.webp&#34;
+               width=&#34;760&#34;
+               height=&#34;217&#34;
+               loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+  &lt;/div&gt;&lt;/figure&gt;
+&lt;/p&gt;
+&lt;p&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure  &gt;
+  &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img alt=&#34;&#34; srcset=&#34;
+               /post/python-distribute-executable-program/images/main_exe_extracted_hu5c77d1acaf220f067ef38a4078507ad2_26718_bffa5cd1d6df4ea9369061c2e1949a9c.webp 400w,
+               /post/python-distribute-executable-program/images/main_exe_extracted_hu5c77d1acaf220f067ef38a4078507ad2_26718_bdeb15f8c61c89a0fde8c37a39dfbf70.webp 760w,
+               /post/python-distribute-executable-program/images/main_exe_extracted_hu5c77d1acaf220f067ef38a4078507ad2_26718_1200x1200_fit_q75_h2_lanczos.webp 1200w&#34;
+               src=&#34;/post/python-distribute-executable-program/images/main_exe_extracted_hu5c77d1acaf220f067ef38a4078507ad2_26718_bffa5cd1d6df4ea9369061c2e1949a9c.webp&#34;
+               width=&#34;393&#34;
+               height=&#34;342&#34;
+               loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+  &lt;/div&gt;&lt;/figure&gt;
+&lt;/p&gt;
+&lt;p&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure  &gt;
+  &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img alt=&#34;&#34; srcset=&#34;
+               /post/python-distribute-executable-program/images/extracted_pyc_demo_hu0167bb048a85daead74289553992dd1d_133713_f00b08a3f220d993cbcdc4cb5c2d8702.webp 400w,
+               /post/python-distribute-executable-program/images/extracted_pyc_demo_hu0167bb048a85daead74289553992dd1d_133713_78b0803b42f0d30d3092710b20f5e569.webp 760w,
+               /post/python-distribute-executable-program/images/extracted_pyc_demo_hu0167bb048a85daead74289553992dd1d_133713_1200x1200_fit_q75_h2_lanczos.webp 1200w&#34;
+               src=&#34;/post/python-distribute-executable-program/images/extracted_pyc_demo_hu0167bb048a85daead74289553992dd1d_133713_f00b08a3f220d993cbcdc4cb5c2d8702.webp&#34;
+               width=&#34;760&#34;
+               height=&#34;537&#34;
+               loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+  &lt;/div&gt;&lt;/figure&gt;
+&lt;/p&gt;
+&lt;p&gt;尝试使用&lt;a href=&#34;https://github.com/rocky/python-uncompyle6/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;uncompyle6&lt;/a&gt;对上面过程得到的pyc文件进行反编译。&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;pip install uncompyle6
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure  &gt;
+  &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img alt=&#34;&#34; srcset=&#34;
+               /post/python-distribute-executable-program/images/err_pyc_decom_hu57fede16314ad7fa6555c754e2422012_130644_8e2d7f116c3352779c85dc72a08cfca9.webp 400w,
+               /post/python-distribute-executable-program/images/err_pyc_decom_hu57fede16314ad7fa6555c754e2422012_130644_6a3c68411bcc60ee81dffaa3622f430b.webp 760w,
+               /post/python-distribute-executable-program/images/err_pyc_decom_hu57fede16314ad7fa6555c754e2422012_130644_1200x1200_fit_q75_h2_lanczos.webp 1200w&#34;
+               src=&#34;/post/python-distribute-executable-program/images/err_pyc_decom_hu57fede16314ad7fa6555c754e2422012_130644_8e2d7f116c3352779c85dc72a08cfca9.webp&#34;
+               width=&#34;760&#34;
+               height=&#34;256&#34;
+               loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+  &lt;/div&gt;&lt;/figure&gt;
+
+报错，查看issue区，有人在python3.7版本也遇到的类似的错误，但问题未解决&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;https://github.com/rocky/python-uncompyle6/issues/320
+https://github.com/rocky/python-uncompyle6/issues/216
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;有人反映可能是由于&lt;a href=&#34;https://www.cnblogs.com/jzking121/p/15312628.html&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;pyc文件首部“损坏”导致无法反编译&lt;/a&gt;，对此未进行测试，但侧面反映了pyc文件对于源代码具有一定保护作用。&lt;/p&gt;
+&lt;h4 id=&#34;windows平台下执行打包程序遇到的一些问题&#34;&gt;Windows平台下执行打包程序遇到的一些问题&lt;/h4&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;中文字符乱码导致无法正常执行程序&lt;/p&gt;
+&lt;p&gt;将cmd字符集设置为utf-8&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;chcp 65001
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;参考文档&#34;&gt;参考文档&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://pyinstaller.org/en/stable/spec-files.html&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Using Spec Files&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;0x02-nuitka&#34;&gt;0x02 Nuitka&lt;/h2&gt;
+&lt;p&gt;&lt;a href=&#34;https://github.com/Nuitka/Nuitka&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Github地址&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;有网友推荐Nuitka，反馈其效率比pyinstaller更高。
+nuitka安装方法&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;pip install nuitka
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;基本使用方法：&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;python -m nuitka main.py
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;打包后生成一个main.build文件夹，其中可发现nuitka已经将python模块及扩展转换成了c层次的代码。
+Nuitka使用C编译器将转换后的代码编译为可执行文件。生成的目标文件通常具有&amp;quot;.o&amp;quot;或&amp;quot;.obj&amp;quot;的扩展名（取决于使用的操作系统和编译器。）&lt;/p&gt;
+&lt;p&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure  &gt;
+  &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img alt=&#34;&#34; srcset=&#34;
+               /post/python-distribute-executable-program/images/nuitka_main_build_hu7aa8b9192db792976fef566706ef965b_101841_ed6a1e70ee0590e39c84e5877f52c1f9.webp 400w,
+               /post/python-distribute-executable-program/images/nuitka_main_build_hu7aa8b9192db792976fef566706ef965b_101841_8210736745d09feb4dcb3198569f2ebc.webp 760w,
+               /post/python-distribute-executable-program/images/nuitka_main_build_hu7aa8b9192db792976fef566706ef965b_101841_1200x1200_fit_q75_h2_lanczos.webp 1200w&#34;
+               src=&#34;/post/python-distribute-executable-program/images/nuitka_main_build_hu7aa8b9192db792976fef566706ef965b_101841_ed6a1e70ee0590e39c84e5877f52c1f9.webp&#34;
+               width=&#34;760&#34;
+               height=&#34;510&#34;
+               loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+  &lt;/div&gt;&lt;/figure&gt;
+
+可执行程序执行效果：
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure  &gt;
+  &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img alt=&#34;&#34; srcset=&#34;
+               /post/python-distribute-executable-program/images/nuitka_demo_hu0335e56bf0db024b40e14b71c63960ae_66322_9b1afbd8ca409aea664be0ea22e4cfab.webp 400w,
+               /post/python-distribute-executable-program/images/nuitka_demo_hu0335e56bf0db024b40e14b71c63960ae_66322_42aca851c219885ba05342f2a570d39a.webp 760w,
+               /post/python-distribute-executable-program/images/nuitka_demo_hu0335e56bf0db024b40e14b71c63960ae_66322_1200x1200_fit_q75_h2_lanczos.webp 1200w&#34;
+               src=&#34;/post/python-distribute-executable-program/images/nuitka_demo_hu0335e56bf0db024b40e14b71c63960ae_66322_9b1afbd8ca409aea664be0ea22e4cfab.webp&#34;
+               width=&#34;698&#34;
+               height=&#34;390&#34;
+               loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+  &lt;/div&gt;&lt;/figure&gt;
+&lt;/p&gt;
+&lt;h2 id=&#34;0x03-cython&#34;&gt;0x03 Cython&lt;/h2&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;pip install Cython
+&lt;/code&gt;&lt;/pre&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-python&#34; data-lang=&#34;python&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;kn&#34;&gt;import&lt;/span&gt; &lt;span class=&#34;nn&#34;&gt;sys&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;k&#34;&gt;def&lt;/span&gt; &lt;span class=&#34;nf&#34;&gt;say_hello&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;():&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;nb&#34;&gt;print&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;Hello&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;sys&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;argv&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;k&#34;&gt;if&lt;/span&gt; &lt;span class=&#34;vm&#34;&gt;__name__&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;==&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;__main__&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;k&#34;&gt;pass&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-python&#34; data-lang=&#34;python&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;# setup.py&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;kn&#34;&gt;from&lt;/span&gt; &lt;span class=&#34;nn&#34;&gt;distutils.core&lt;/span&gt; &lt;span class=&#34;kn&#34;&gt;import&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;setup&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;kn&#34;&gt;from&lt;/span&gt; &lt;span class=&#34;nn&#34;&gt;Cython.Build&lt;/span&gt; &lt;span class=&#34;kn&#34;&gt;import&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;cythonize&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;setup&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;n&#34;&gt;name&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;Python Core&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;n&#34;&gt;ext_modules&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;cythonize&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;main.py&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure  &gt;
+  &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img alt=&#34;&#34; srcset=&#34;
+               /post/python-distribute-executable-program/images/say_hello_hu82643e790da69e32a4d5fe4610a8c33a_22445_0ee573afe5e9003e8b736c53f06823a3.webp 400w,
+               /post/python-distribute-executable-program/images/say_hello_hu82643e790da69e32a4d5fe4610a8c33a_22445_a1bf87e8cd9a13b5b1fb96b912df3b8c.webp 760w,
+               /post/python-distribute-executable-program/images/say_hello_hu82643e790da69e32a4d5fe4610a8c33a_22445_1200x1200_fit_q75_h2_lanczos.webp 1200w&#34;
+               src=&#34;/post/python-distribute-executable-program/images/say_hello_hu82643e790da69e32a4d5fe4610a8c33a_22445_0ee573afe5e9003e8b736c53f06823a3.webp&#34;
+               width=&#34;760&#34;
+               height=&#34;55&#34;
+               loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+  &lt;/div&gt;&lt;/figure&gt;
+&lt;/p&gt;
+&lt;h2 id=&#34;参考文章--拓展阅读&#34;&gt;参考文章 &amp;amp;&amp;amp; 拓展阅读&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://docs.fileformat.com/zh/programming/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;FileFormat&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://py2exe.org/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;py2exe&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://zhuanlan.zhihu.com/p/54296517&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;如何保护你的 Python 代码 （一）—— 现有加密方案&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
     
     <item>
       <title>Python实现钉钉通报和邮件通知</title>
@@ -536,6 +1149,194 @@
 &lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        &lt;span class=&#34;k&#34;&gt;if&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;hdlr&lt;/span&gt; &lt;span class=&#34;ow&#34;&gt;in&lt;/span&gt; &lt;span class=&#34;bp&#34;&gt;self&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;handlers&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;            &lt;span class=&#34;bp&#34;&gt;self&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;handlers&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;remove&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;hdlr&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</description>
+    </item>
+    
+    <item>
+      <title>Python内置日志模块源码分析和进阶用法</title>
+      <link>/post/python-logging-usage-and-extend/</link>
+      <pubDate>Sun, 18 Jun 2023 09:02:27 +0800</pubDate>
+      <guid>/post/python-logging-usage-and-extend/</guid>
+      <description>&lt;h2 id=&#34;概述&#34;&gt;概述&lt;/h2&gt;
+&lt;p&gt;日志是在程序运行过程中进行事件追踪的方式，通过向程序引入日志模块可以使开发者方便地了解到特定的事件是否发生，以及事件发生时相关的信息。&lt;/p&gt;
+&lt;p&gt;本文假定你已经了解日志模块的基本使用（如通常博客、教材所介绍），想要定制化拓展你的日志功能（如定制化的日志持久化，在日志中记录特定属性（区分于message）等），或许本文的部分内容会对你有帮助。&lt;/p&gt;
+&lt;p&gt;本文介绍以下内容：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;python中内置的logging模块中关于日志记录的关键类设计（如日志事件对象LogRecord，日志处理类/接口Handler）&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;如何将日志记录到数据库中（以MySQL为例）&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;如何拓展日志事件记录字段&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;如何优雅地使用logging模块&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2 id=&#34;源码分析&#34;&gt;源码分析&lt;/h2&gt;
+&lt;h3 id=&#34;logging模块设计&#34;&gt;logging模块设计&lt;/h3&gt;
+&lt;p&gt;从__all__这一特殊变量即可窥见logging模块有哪些主要的类与变量: Logger、Handler、Filter、Formatter、LogRecord等。&lt;/p&gt;
+&lt;p&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure  &gt;
+  &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img alt=&#34;&#34; srcset=&#34;
+               /post/python-logging-usage-and-extend/images/logging_hubc6be535caacc45bc8718786526cd277_157377_f69308afae4bf6fe8eed3b928dfd089f.webp 400w,
+               /post/python-logging-usage-and-extend/images/logging_hubc6be535caacc45bc8718786526cd277_157377_1c0f211c5e03b599f4f79c33263f4493.webp 760w,
+               /post/python-logging-usage-and-extend/images/logging_hubc6be535caacc45bc8718786526cd277_157377_1200x1200_fit_q75_h2_lanczos_3.webp 1200w&#34;
+               src=&#34;/post/python-logging-usage-and-extend/images/logging_hubc6be535caacc45bc8718786526cd277_157377_f69308afae4bf6fe8eed3b928dfd089f.webp&#34;
+               width=&#34;760&#34;
+               height=&#34;387&#34;
+               loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+  &lt;/div&gt;&lt;/figure&gt;
+&lt;/p&gt;
+&lt;h3 id=&#34;重要常量及其相关操作&#34;&gt;重要常量及其相关操作&lt;/h3&gt;
+&lt;h4 id=&#34;日志级别&#34;&gt;日志级别&lt;/h4&gt;
+&lt;p&gt;若干个正整数集合定义了我们在程序中常用的日志级别&lt;/p&gt;
+&lt;p&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure  &gt;
+  &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img alt=&#34;&#34; srcset=&#34;
+               /post/python-logging-usage-and-extend/images/log_level_hu9bef11106bc193a0cd590e92650ac977_135766_4c2f52ea62661693ee95d4994592b58a.webp 400w,
+               /post/python-logging-usage-and-extend/images/log_level_hu9bef11106bc193a0cd590e92650ac977_135766_fee3dbb37c1fb45d51d52e6c0e87e70f.webp 760w,
+               /post/python-logging-usage-and-extend/images/log_level_hu9bef11106bc193a0cd590e92650ac977_135766_1200x1200_fit_q75_h2_lanczos_3.webp 1200w&#34;
+               src=&#34;/post/python-logging-usage-and-extend/images/log_level_hu9bef11106bc193a0cd590e92650ac977_135766_4c2f52ea62661693ee95d4994592b58a.webp&#34;
+               width=&#34;760&#34;
+               height=&#34;431&#34;
+               loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+  &lt;/div&gt;&lt;/figure&gt;
+&lt;/p&gt;
+&lt;p&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure  &gt;
+  &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img alt=&#34;&#34; srcset=&#34;
+               /post/python-logging-usage-and-extend/images/log_level_name_hu667f4dbf1ec23e6cfdec5f7e343ca129_96914_2754a2e48e65986ba563668aea4905bb.webp 400w,
+               /post/python-logging-usage-and-extend/images/log_level_name_hu667f4dbf1ec23e6cfdec5f7e343ca129_96914_6b7d4d3c41d11a6bfb2705456e7e0ae4.webp 760w,
+               /post/python-logging-usage-and-extend/images/log_level_name_hu667f4dbf1ec23e6cfdec5f7e343ca129_96914_1200x1200_fit_q75_h2_lanczos_3.webp 1200w&#34;
+               src=&#34;/post/python-logging-usage-and-extend/images/log_level_name_hu667f4dbf1ec23e6cfdec5f7e343ca129_96914_2754a2e48e65986ba563668aea4905bb.webp&#34;
+               width=&#34;760&#34;
+               height=&#34;732&#34;
+               loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+  &lt;/div&gt;&lt;/figure&gt;
+&lt;/p&gt;
+&lt;h3 id=&#34;模块架构图&#34;&gt;模块架构图&lt;/h3&gt;
+&lt;p&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure  &gt;
+  &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img alt=&#34;&#34; srcset=&#34;
+               /post/python-logging-usage-and-extend/images/log_data_flow_hu6274e8f9f952444ad4e548d4de5bbeca_260241_a82725665d1d23059475521047c93d10.webp 400w,
+               /post/python-logging-usage-and-extend/images/log_data_flow_hu6274e8f9f952444ad4e548d4de5bbeca_260241_76b0e1c8cb6b1b290fdcc3fec47cdcfb.webp 760w,
+               /post/python-logging-usage-and-extend/images/log_data_flow_hu6274e8f9f952444ad4e548d4de5bbeca_260241_1200x1200_fit_q75_h2_lanczos_3.webp 1200w&#34;
+               src=&#34;/post/python-logging-usage-and-extend/images/log_data_flow_hu6274e8f9f952444ad4e548d4de5bbeca_260241_a82725665d1d23059475521047c93d10.webp&#34;
+               width=&#34;760&#34;
+               height=&#34;589&#34;
+               loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+  &lt;/div&gt;&lt;/figure&gt;
+&lt;/p&gt;
+&lt;h3 id=&#34;logrecord日志事件对象&#34;&gt;LogRecord:日志事件对象&lt;/h3&gt;
+&lt;p&gt;LogRecord类表示一个被记录的事件&lt;br&gt;
+LogRecord实例会在需要记录某些东西时被创建，包含需要记录事件的所有相关信息。日志的主要信息在于msg和args,LogRecord实例也包括了实例被创建的时间、创建过程被调用 的源代码模块、文件名、行数等信息。 &lt;br&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure  &gt;
+  &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img alt=&#34;&#34; srcset=&#34;
+               /post/python-logging-usage-and-extend/images/logrecord_hu8674e2f76785f016a54448c27384beaa_213741_e588c56d01720de6d75abd12478ceb36.webp 400w,
+               /post/python-logging-usage-and-extend/images/logrecord_hu8674e2f76785f016a54448c27384beaa_213741_6dc2b70a6490bf6b8274f784f40777f4.webp 760w,
+               /post/python-logging-usage-and-extend/images/logrecord_hu8674e2f76785f016a54448c27384beaa_213741_1200x1200_fit_q75_h2_lanczos_3.webp 1200w&#34;
+               src=&#34;/post/python-logging-usage-and-extend/images/logrecord_hu8674e2f76785f016a54448c27384beaa_213741_e588c56d01720de6d75abd12478ceb36.webp&#34;
+               width=&#34;760&#34;
+               height=&#34;555&#34;
+               loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+  &lt;/div&gt;&lt;/figure&gt;
+&lt;/p&gt;
+&lt;h3 id=&#34;handler-日志处理类&#34;&gt;Handler: 日志处理类&lt;/h3&gt;
+&lt;p&gt;Handler类的实例负责把日志时间分发到特定的目的地&lt;/p&gt;
+&lt;p&gt;Handler类 作为一个接口，其应该实现的功能为：把日志时间分发到特定的目的地。Handler可以选择性地使用格式器（Formatter）实例将日志记录格式化为期望的样式，默认情况下只记录原始记录信息（record.message）&lt;/p&gt;
+&lt;h3 id=&#34;并发安全性设计&#34;&gt;并发安全性设计&lt;/h3&gt;
+&lt;h2 id=&#34;数据库持久化拓展&#34;&gt;数据库持久化拓展&lt;/h2&gt;
+&lt;h2 id=&#34;设计模式推荐&#34;&gt;设计模式推荐&lt;/h2&gt;
+&lt;h2 id=&#34;参考资料&#34;&gt;参考资料&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://realpython.com/python-logging-source-code/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Python Logging: A Stroll Through the Source Code&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://docs.python.org/3/howto/logging.html&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Logging HOWTO&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://github.com/python/cpython/tree/d730719b094cb006711b1cd546927b863c173b31/Lib/logging&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;CPython source code of logging module&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</description>
     </item>
     
     <item>
@@ -1987,6 +2788,569 @@ sonar.python.coverage.reportPaths=coverage.xml
 &lt;h3 id=&#34;参考资料&#34;&gt;参考资料&lt;/h3&gt;
 &lt;p&gt;&lt;a href=&#34;https://docs.sonarqube.org/latest/user-guide/concepts/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;SonarQube User-Guide&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;[Coverage &amp;amp; Test Data](Generate Reports for Apex, C/C++, Objective-C, Go, JS/TS and Python](&lt;a href=&#34;https://community.sonarsource.com/t/coverage-test-data-generate-reports-for-apex-c-c-objective-c-go-js-ts-and-python/9687&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;https://community.sonarsource.com/t/coverage-test-data-generate-reports-for-apex-c-c-objective-c-go-js-ts-and-python/9687&lt;/a&gt;)&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>SQL语句是如何执行的？（MySQL篇）</title>
+      <link>/post/how-does-sql-statement-work/</link>
+      <pubDate>Sat, 03 Jun 2023 21:16:07 +0800</pubDate>
+      <guid>/post/how-does-sql-statement-work/</guid>
+      <description>&lt;h3 id=&#34;mysql体系架构&#34;&gt;MySQL体系架构&lt;/h3&gt;
+&lt;p&gt;MySQL是典型的C/S架构数据库管理系统，数据库服务器和客户端分别运行在服务器和终端计算机上，通过网络进行通信和数据交换。默认情况下，MySQL服务通过3306端口开放。&lt;/p&gt;
+&lt;p&gt;类似采用C/S架构的数据库系统还包括：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;Oracle&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;PostgreSQL&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;MongoDB&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;SQL Server&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;MySQL服务器端使用mysqld程序，其职责范围可总结为三个方面：连接层、SQL层、存储层。其中连接层主要是负责与客户端建立连接，接收来自客户端的SQL；SQL层负责对SQL语句进行处理；存储层负责数据的读取和存储。&lt;/p&gt;
+&lt;p&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure  &gt;
+  &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img alt=&#34;&#34; srcset=&#34;
+               /post/how-does-sql-statement-work/images/mysql_engine_hubf2fb3a167bd2aa68890d6db82267cb0_84852_ac81b4da71b35c718504cb433ac88922.webp 400w,
+               /post/how-does-sql-statement-work/images/mysql_engine_hubf2fb3a167bd2aa68890d6db82267cb0_84852_0a49cc70e6debdcea084ada2a9d0e02c.webp 760w,
+               /post/how-does-sql-statement-work/images/mysql_engine_hubf2fb3a167bd2aa68890d6db82267cb0_84852_1200x1200_fit_q75_h2_lanczos.webp 1200w&#34;
+               src=&#34;/post/how-does-sql-statement-work/images/mysql_engine_hubf2fb3a167bd2aa68890d6db82267cb0_84852_ac81b4da71b35c718504cb433ac88922.webp&#34;
+               width=&#34;671&#34;
+               height=&#34;695&#34;
+               loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+  &lt;/div&gt;&lt;/figure&gt;
+&lt;/p&gt;
+&lt;h4 id=&#34;mysql-sql处理层&#34;&gt;MySQL SQL处理层&lt;/h4&gt;
+&lt;p&gt;SQL处理层包括缓存查询、解析器、优化器、执行器等 。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;解析器&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;        解析器负责验证和 解析传入的命令 ，包括语法和语义上的分析。如果语法不正确或语义不合理，则直接报错，若符合语法且语义合理则将命令（解析出的中间结果，如SQL语法分析树）交由优化器进行优化。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;优化器&lt;/p&gt;
+&lt;p&gt;优化器负责把关系表达式转换为查询执行计划。常用优化策略：无用条件去除。&lt;/p&gt;
+&lt;p&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure  &gt;
+  &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img alt=&#34;&#34; srcset=&#34;
+               /post/how-does-sql-statement-work/images/sql_optim_hu1776a829128543b3b3a9cc20ea958387_50252_ea387b72e686594daf4cce03511a6570.webp 400w,
+               /post/how-does-sql-statement-work/images/sql_optim_hu1776a829128543b3b3a9cc20ea958387_50252_a4e6f91c7179ed5cc148116bc27ade78.webp 760w,
+               /post/how-does-sql-statement-work/images/sql_optim_hu1776a829128543b3b3a9cc20ea958387_50252_1200x1200_fit_q75_h2_lanczos.webp 1200w&#34;
+               src=&#34;/post/how-does-sql-statement-work/images/sql_optim_hu1776a829128543b3b3a9cc20ea958387_50252_ea387b72e686594daf4cce03511a6570.webp&#34;
+               width=&#34;760&#34;
+               height=&#34;364&#34;
+               loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+  &lt;/div&gt;&lt;/figure&gt;
+&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;执行器&lt;/p&gt;
+&lt;p&gt;执行器负责对查询执行计划进行执行，涉及与存储引擎的交互。执行器模块拆解开包括表维护模块(Table Maintainence)、表修改模块(TableModification)、状态报告模块（StatusReport）等等。&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure  &gt;
+  &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img alt=&#34;&#34; srcset=&#34;
+               /post/how-does-sql-statement-work/images/mysql_process_hu5ef01ed714d677b01d44eb4bd85a8499_15432_aaa1ffef0768b48e4b76efa33f0ced54.webp 400w,
+               /post/how-does-sql-statement-work/images/mysql_process_hu5ef01ed714d677b01d44eb4bd85a8499_15432_9dda60d7730ee0498df2dfe64dec52d8.webp 760w,
+               /post/how-does-sql-statement-work/images/mysql_process_hu5ef01ed714d677b01d44eb4bd85a8499_15432_1200x1200_fit_q75_h2_lanczos.webp 1200w&#34;
+               src=&#34;/post/how-does-sql-statement-work/images/mysql_process_hu5ef01ed714d677b01d44eb4bd85a8499_15432_aaa1ffef0768b48e4b76efa33f0ced54.webp&#34;
+               width=&#34;466&#34;
+               height=&#34;598&#34;
+               loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+  &lt;/div&gt;&lt;/figure&gt;
+&lt;/p&gt;
+&lt;h4 id=&#34;mysql存储引擎&#34;&gt;MySQL存储引擎&lt;/h4&gt;
+&lt;p&gt;InnoDB&lt;/p&gt;
+&lt;p&gt;MyISAM&lt;/p&gt;
+&lt;p&gt;NDA Cluster&lt;/p&gt;
+&lt;p&gt;Memory&lt;/p&gt;
+&lt;h3 id=&#34;sql执行原理&#34;&gt;SQL执行原理&lt;/h3&gt;
+&lt;p&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure  &gt;
+  &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img alt=&#34;&#34; srcset=&#34;
+               /post/how-does-sql-statement-work/images/mysql_architecture_hu6a40de6c395e0e4c7baa0b624c91fa8d_1029849_187db0a9a2bd51e4e3c4ec189dadec7c.webp 400w,
+               /post/how-does-sql-statement-work/images/mysql_architecture_hu6a40de6c395e0e4c7baa0b624c91fa8d_1029849_7fce79ec48862e2235725a4ee83fd6ce.webp 760w,
+               /post/how-does-sql-statement-work/images/mysql_architecture_hu6a40de6c395e0e4c7baa0b624c91fa8d_1029849_1200x1200_fit_q75_h2_lanczos_3.webp 1200w&#34;
+               src=&#34;/post/how-does-sql-statement-work/images/mysql_architecture_hu6a40de6c395e0e4c7baa0b624c91fa8d_1029849_187db0a9a2bd51e4e3c4ec189dadec7c.webp&#34;
+               width=&#34;760&#34;
+               height=&#34;495&#34;
+               loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+  &lt;/div&gt;&lt;/figure&gt;
+&lt;/p&gt;
+&lt;h3 id=&#34;如何分sql性能以mysql为例&#34;&gt;如何分SQL性能:以MySQL为例&lt;/h3&gt;
+&lt;p&gt;从数据库优化层面，了解现有SQL语句性能是优化的重要基础，MySQL提供了profiling参数进行SQL剖析。至少截止到MySQL8.0.32（我目前使用过的最新版本MySQL），还可以通过以下语句查询剖析模式是否开启：&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-sql&#34; data-lang=&#34;sql&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;k&#34;&gt;select&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;o&#34;&gt;@@&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;profiling&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure  &gt;
+  &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img alt=&#34;&#34; srcset=&#34;
+               /post/how-does-sql-statement-work/images/select_profiling_hu9a055d1d19dbf6d2efc32d973bb244f5_10637_9f2aa2023f35fd7a86d8f073bd872ab1.webp 400w,
+               /post/how-does-sql-statement-work/images/select_profiling_hu9a055d1d19dbf6d2efc32d973bb244f5_10637_937329159d4e6d7e37afe7475ffba784.webp 760w,
+               /post/how-does-sql-statement-work/images/select_profiling_hu9a055d1d19dbf6d2efc32d973bb244f5_10637_1200x1200_fit_q75_h2_lanczos.webp 1200w&#34;
+               src=&#34;/post/how-does-sql-statement-work/images/select_profiling_hu9a055d1d19dbf6d2efc32d973bb244f5_10637_9f2aa2023f35fd7a86d8f073bd872ab1.webp&#34;
+               width=&#34;344&#34;
+               height=&#34;94&#34;
+               loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+  &lt;/div&gt;&lt;/figure&gt;
+&lt;/p&gt;
+&lt;p&gt;通过以下语句设定开启剖析模式（若profiling为0则是关闭剖析模式）：&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-sql&#34; data-lang=&#34;sql&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;k&#34;&gt;set&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;n&#34;&gt;profiling&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;1&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure  &gt;
+  &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img alt=&#34;&#34; srcset=&#34;
+               /post/how-does-sql-statement-work/images/set_profiling_hu00392c761b0cb75dd1196c791155e803_35669_0ab833e5899484144e8da202faeb923d.webp 400w,
+               /post/how-does-sql-statement-work/images/set_profiling_hu00392c761b0cb75dd1196c791155e803_35669_90f62b1613bd248309d84a9fee541e38.webp 760w,
+               /post/how-does-sql-statement-work/images/set_profiling_hu00392c761b0cb75dd1196c791155e803_35669_1200x1200_fit_q75_h2_lanczos.webp 1200w&#34;
+               src=&#34;/post/how-does-sql-statement-work/images/set_profiling_hu00392c761b0cb75dd1196c791155e803_35669_0ab833e5899484144e8da202faeb923d.webp&#34;
+               width=&#34;760&#34;
+               height=&#34;371&#34;
+               loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+  &lt;/div&gt;&lt;/figure&gt;
+&lt;/p&gt;
+&lt;p&gt;开启剖析模式之后，当你执行了一条SQL语句，就可以通过show profile语句查询（最近一条）语句的性能剖析数据：&lt;/p&gt;
+&lt;p&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure  &gt;
+  &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img alt=&#34;&#34; srcset=&#34;
+               /post/how-does-sql-statement-work/images/show_profile_hu820461c542f386df85a26bee874e9ae4_63711_4b955c16cb232a2c50eea61d6f0e5985.webp 400w,
+               /post/how-does-sql-statement-work/images/show_profile_hu820461c542f386df85a26bee874e9ae4_63711_795187e28a6c239daa3771c4e44fe3b7.webp 760w,
+               /post/how-does-sql-statement-work/images/show_profile_hu820461c542f386df85a26bee874e9ae4_63711_1200x1200_fit_q75_h2_lanczos.webp 1200w&#34;
+               src=&#34;/post/how-does-sql-statement-work/images/show_profile_hu820461c542f386df85a26bee874e9ae4_63711_4b955c16cb232a2c50eea61d6f0e5985.webp&#34;
+               width=&#34;760&#34;
+               height=&#34;344&#34;
+               loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+  &lt;/div&gt;&lt;/figure&gt;
+&lt;/p&gt;
+&lt;h4 id=&#34;profiling之后-基于performance-schema进行性能剖析&#34;&gt;profiling之后: 基于performance schema进行性能剖析&lt;/h4&gt;
+&lt;p&gt;需要注意，当你执行show profile或select @@profiling语句，会收到DBMS的友情提示：@@profiling和show profile已被废弃，在未来的MySQL发行版中将被移除。&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;&amp;#39;@@profiling&amp;#39; is deprecated and will be removed in a future release.
+
+&amp;#39;SHOW PROFILE&amp;#39; is deprecated and will be removed in a future release. Please use Performance Schema instead
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;替代的性能剖析方案是通过performance schema来达成通用的目的，详情可参考&lt;a href=&#34;https://dev.mysql.com/doc/refman/8.0/en/performance-schema-query-profiling.html&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;MySQL :: MySQL 8.0 Reference Manual :: 27.19.1 Query Profiling Using Performance Schema&lt;/a&gt;。&lt;/p&gt;
+&lt;p&gt;按照官方文档的介绍，性能剖析主要涉及几个表：setup_actors表、&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;setup_actors表可用于限制主机、用户或帐户对历史事件的收集，以减少运行时开销和在历史表中收集的数据量。以下例子展示了如何限制特定用户收集SQL历史事件。
+先查询用户对历史事件的收集权限&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;SELECT * FROM performance_schema.setup_actors;
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure  &gt;
+  &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img alt=&#34;&#34; srcset=&#34;
+               /post/how-does-sql-statement-work/images/setup_actor_huf62f6b2cfd14d64589ee753c58f4f678_27717_8fc5d2113a1c5b4daffb7cc4e54dd4a7.webp 400w,
+               /post/how-does-sql-statement-work/images/setup_actor_huf62f6b2cfd14d64589ee753c58f4f678_27717_0df04d3e6b54588c3556a7d6d9edff34.webp 760w,
+               /post/how-does-sql-statement-work/images/setup_actor_huf62f6b2cfd14d64589ee753c58f4f678_27717_1200x1200_fit_q75_h2_lanczos.webp 1200w&#34;
+               src=&#34;/post/how-does-sql-statement-work/images/setup_actor_huf62f6b2cfd14d64589ee753c58f4f678_27717_8fc5d2113a1c5b4daffb7cc4e54dd4a7.webp&#34;
+               width=&#34;726&#34;
+               height=&#34;134&#34;
+               loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+  &lt;/div&gt;&lt;/figure&gt;
+
+为了禁止所有前台操作都被监控和记录，需要通过如下语句进行限制。&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;UPDATE performance_schema.setup_actors
+    SET ENABLED = &amp;#39;NO&amp;#39;, HISTORY = &amp;#39;NO&amp;#39;
+    WHERE HOST = &amp;#39;%&amp;#39; AND USER = &amp;#39;%&amp;#39;;
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;为了使特定用户具备历史事件收集、监控的权限，通过如下语句为用户开放权限：&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;INSERT INTO performance_schema.setup_actors
+    (HOST,USER,ROLE,ENABLED,HISTORY)
+    VALUES(&amp;#39;localhost&amp;#39;,&amp;#39;YOUR_USER&amp;#39;,&amp;#39;%&amp;#39;,&amp;#39;UPDATE performance_schema.setup_instruments
+    SET ENABLED = &amp;#39;YES&amp;#39;, TIMED = &amp;#39;YES&amp;#39;
+    WHERE NAME LIKE &amp;#39;%stage/%&amp;#39;;
+YES&amp;#39;,&amp;#39;YES&amp;#39;);
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a href=&#34;https://dev.mysql.com/doc/refman/8.0/en/performance-schema-setup-instruments-table.html&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;setup_instruments表&lt;/a&gt;列出了可以收集的事件类。通过更新setup_instruments表，确保启用语句和阶段检测。有些工具可能已经默认启用。&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-sql&#34; data-lang=&#34;sql&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;k&#34;&gt;UPDATE&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;n&#34;&gt;performance_schema&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;setup_instruments&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;w&#34;&gt;    &lt;/span&gt;&lt;span class=&#34;k&#34;&gt;SET&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;n&#34;&gt;ENABLED&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;s1&#34;&gt;&amp;#39;YES&amp;#39;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;n&#34;&gt;TIMED&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;s1&#34;&gt;&amp;#39;YES&amp;#39;&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;w&#34;&gt;    &lt;/span&gt;&lt;span class=&#34;k&#34;&gt;WHERE&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;n&#34;&gt;NAME&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;k&#34;&gt;LIKE&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;s1&#34;&gt;&amp;#39;%statement/%&amp;#39;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure  &gt;
+  &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img alt=&#34;&#34; srcset=&#34;
+               /post/how-does-sql-statement-work/images/instr_statement_hu166d9c5cb3e16639b80b6aad4112e10b_52566_700309c9c3b18b49624300f93ffa5008.webp 400w,
+               /post/how-does-sql-statement-work/images/instr_statement_hu166d9c5cb3e16639b80b6aad4112e10b_52566_1c6da369862f5f1eacf600397f04b4d9.webp 760w,
+               /post/how-does-sql-statement-work/images/instr_statement_hu166d9c5cb3e16639b80b6aad4112e10b_52566_1200x1200_fit_q75_h2_lanczos.webp 1200w&#34;
+               src=&#34;/post/how-does-sql-statement-work/images/instr_statement_hu166d9c5cb3e16639b80b6aad4112e10b_52566_700309c9c3b18b49624300f93ffa5008.webp&#34;
+               width=&#34;533&#34;
+               height=&#34;469&#34;
+               loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+  &lt;/div&gt;&lt;/figure&gt;
+&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-sql&#34; data-lang=&#34;sql&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;k&#34;&gt;UPDATE&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;n&#34;&gt;performance_schema&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;setup_instruments&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;w&#34;&gt;    &lt;/span&gt;&lt;span class=&#34;k&#34;&gt;SET&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;n&#34;&gt;ENABLED&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;s1&#34;&gt;&amp;#39;YES&amp;#39;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;n&#34;&gt;TIMED&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;s1&#34;&gt;&amp;#39;YES&amp;#39;&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;w&#34;&gt;    &lt;/span&gt;&lt;span class=&#34;k&#34;&gt;WHERE&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;n&#34;&gt;NAME&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;k&#34;&gt;LIKE&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;s1&#34;&gt;&amp;#39;%stage/%&amp;#39;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure  &gt;
+  &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img alt=&#34;&#34; srcset=&#34;
+               /post/how-does-sql-statement-work/images/instr_stage_hu91f12ea4b57176cb509aae0558baeeec_50164_213401c150cc053ab33d2c55555c1d3f.webp 400w,
+               /post/how-does-sql-statement-work/images/instr_stage_hu91f12ea4b57176cb509aae0558baeeec_50164_701a25ca6acfefdc7ef67424b1923e66.webp 760w,
+               /post/how-does-sql-statement-work/images/instr_stage_hu91f12ea4b57176cb509aae0558baeeec_50164_1200x1200_fit_q75_h2_lanczos.webp 1200w&#34;
+               src=&#34;/post/how-does-sql-statement-work/images/instr_stage_hu91f12ea4b57176cb509aae0558baeeec_50164_213401c150cc053ab33d2c55555c1d3f.webp&#34;
+               width=&#34;516&#34;
+               height=&#34;382&#34;
+               loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+  &lt;/div&gt;&lt;/figure&gt;
+&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;确保启用events_statements_*和events_stages_*消费者。一些消费者可能在默认情况下已经启用。&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-sql&#34; data-lang=&#34;sql&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;k&#34;&gt;UPDATE&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;n&#34;&gt;performance_schema&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;setup_consumers&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;w&#34;&gt;    &lt;/span&gt;&lt;span class=&#34;k&#34;&gt;SET&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;n&#34;&gt;ENABLED&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;s1&#34;&gt;&amp;#39;YES&amp;#39;&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;w&#34;&gt;    &lt;/span&gt;&lt;span class=&#34;k&#34;&gt;WHERE&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;n&#34;&gt;NAME&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;k&#34;&gt;LIKE&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;s1&#34;&gt;&amp;#39;%events_statements_%&amp;#39;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure  &gt;
+  &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img alt=&#34;&#34; srcset=&#34;
+               /post/how-does-sql-statement-work/images/consumer_event_statement_huaa4c110ae965fe312b4172dc864ec0e3_49076_6ad9e858076c59b79c3857d064760065.webp 400w,
+               /post/how-does-sql-statement-work/images/consumer_event_statement_huaa4c110ae965fe312b4172dc864ec0e3_49076_503d00781b73c70ce29cb2c1dbde1304.webp 760w,
+               /post/how-does-sql-statement-work/images/consumer_event_statement_huaa4c110ae965fe312b4172dc864ec0e3_49076_1200x1200_fit_q75_h2_lanczos.webp 1200w&#34;
+               src=&#34;/post/how-does-sql-statement-work/images/consumer_event_statement_huaa4c110ae965fe312b4172dc864ec0e3_49076_6ad9e858076c59b79c3857d064760065.webp&#34;
+               width=&#34;504&#34;
+               height=&#34;325&#34;
+               loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+  &lt;/div&gt;&lt;/figure&gt;
+&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-sql&#34; data-lang=&#34;sql&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;k&#34;&gt;UPDATE&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;n&#34;&gt;performance_schema&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;setup_consumers&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;w&#34;&gt;       &lt;/span&gt;&lt;span class=&#34;k&#34;&gt;SET&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;n&#34;&gt;ENABLED&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;s1&#34;&gt;&amp;#39;YES&amp;#39;&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;w&#34;&gt;       &lt;/span&gt;&lt;span class=&#34;k&#34;&gt;WHERE&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;n&#34;&gt;NAME&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;k&#34;&gt;LIKE&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;s1&#34;&gt;&amp;#39;%events_stages_%&amp;#39;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure  &gt;
+  &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img alt=&#34;&#34; srcset=&#34;
+               /post/how-does-sql-statement-work/images/consumer_event_stage_hu628c52d04d2510d40131dcda703d11a3_46629_fae8060e96c21db021ef3b27c7062830.webp 400w,
+               /post/how-does-sql-statement-work/images/consumer_event_stage_hu628c52d04d2510d40131dcda703d11a3_46629_9799ee419827d910864f551e35770d69.webp 760w,
+               /post/how-does-sql-statement-work/images/consumer_event_stage_hu628c52d04d2510d40131dcda703d11a3_46629_1200x1200_fit_q75_h2_lanczos.webp 1200w&#34;
+               src=&#34;/post/how-does-sql-statement-work/images/consumer_event_stage_hu628c52d04d2510d40131dcda703d11a3_46629_fae8060e96c21db021ef3b27c7062830.webp&#34;
+               width=&#34;559&#34;
+               height=&#34;320&#34;
+               loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+  &lt;/div&gt;&lt;/figure&gt;
+&lt;/p&gt;
+&lt;p&gt;完成上述配置后，就可以使用performance schema进行SQL性能剖析了。
+执行需要剖析的SQL语句，如：&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-sql&#34; data-lang=&#34;sql&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;k&#34;&gt;select&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;n&#34;&gt;FK_TASK_ID&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;k&#34;&gt;as&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;n&#34;&gt;T&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;k&#34;&gt;count&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;*&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;k&#34;&gt;as&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;k&#34;&gt;count&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;k&#34;&gt;from&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;n&#34;&gt;t_image&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;n&#34;&gt;ti&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;k&#34;&gt;group&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;k&#34;&gt;by&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;n&#34;&gt;ti&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;FK_TASK_ID&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;通过查询events_statements_history_long表来确定语句的EVENT_ID。这一步类似于运行SHOW PROFILES来识别Query_ID。下面的查询产生的输出类似于SHOW PROFILES:
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure  &gt;
+  &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img alt=&#34;&#34; srcset=&#34;
+               /post/how-does-sql-statement-work/images/event_statement_demo_hu68440b191ca0c101f703639566041374_133068_a751edc162f1a0f0cf8f2dabc364280c.webp 400w,
+               /post/how-does-sql-statement-work/images/event_statement_demo_hu68440b191ca0c101f703639566041374_133068_4c35f20167be98ebc08bf6a7a6f6ef85.webp 760w,
+               /post/how-does-sql-statement-work/images/event_statement_demo_hu68440b191ca0c101f703639566041374_133068_1200x1200_fit_q75_h2_lanczos.webp 1200w&#34;
+               src=&#34;/post/how-does-sql-statement-work/images/event_statement_demo_hu68440b191ca0c101f703639566041374_133068_a751edc162f1a0f0cf8f2dabc364280c.webp&#34;
+               width=&#34;760&#34;
+               height=&#34;206&#34;
+               loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+  &lt;/div&gt;&lt;/figure&gt;
+&lt;/p&gt;
+&lt;p&gt;通过查询events_stages_history_long表以检索语句的阶段事件，得到语句的性能剖析报告&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-sql&#34; data-lang=&#34;sql&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;mysql&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;&amp;gt;&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;k&#34;&gt;SELECT&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;n&#34;&gt;EVENT_ID&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;k&#34;&gt;TRUNCATE&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;TIMER_WAIT&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;/&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;1000000000000&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;6&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;k&#34;&gt;as&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;n&#34;&gt;Duration&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;n&#34;&gt;SQL_TEXT&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;w&#34;&gt;       &lt;/span&gt;&lt;span class=&#34;k&#34;&gt;FROM&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;n&#34;&gt;performance_schema&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;events_statements_history_long&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;k&#34;&gt;WHERE&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;n&#34;&gt;SQL_TEXT&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;k&#34;&gt;like&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;s1&#34;&gt;&amp;#39;%FK_TASK_ID%&amp;#39;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure  &gt;
+  &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img alt=&#34;&#34; srcset=&#34;
+               /post/how-does-sql-statement-work/images/event_history_long_demo_huee8d0980bec8701ad8bcb272e27b6470_111631_4875c2a8887b0e6c480e8ff4b93601c6.webp 400w,
+               /post/how-does-sql-statement-work/images/event_history_long_demo_huee8d0980bec8701ad8bcb272e27b6470_111631_c30aa6e59d5604780b1a80c6f086ce79.webp 760w,
+               /post/how-does-sql-statement-work/images/event_history_long_demo_huee8d0980bec8701ad8bcb272e27b6470_111631_1200x1200_fit_q75_h2_lanczos.webp 1200w&#34;
+               src=&#34;/post/how-does-sql-statement-work/images/event_history_long_demo_huee8d0980bec8701ad8bcb272e27b6470_111631_4875c2a8887b0e6c480e8ff4b93601c6.webp&#34;
+               width=&#34;760&#34;
+               height=&#34;592&#34;
+               loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+  &lt;/div&gt;&lt;/figure&gt;
+&lt;/p&gt;
+&lt;h4 id=&#34;一条sql语句背后的操作&#34;&gt;一条SQL语句背后的操作&lt;/h4&gt;
+&lt;p&gt;从events_stages_history_long表中检索出的事件反映了一条SQL语句背后需要执行多少操作（不同版本的MySQL操作会有所不同）。MySQL8.0.32版本下，操作包含：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;starting&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;executing hook on transaction begin&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;staring&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;checking permission&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;opening tables&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;init&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;system lock&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;optimizing&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;statistics&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;preparing&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;executing&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;end&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;query end&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;waiting for handler commit&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;closing tables&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;freeing items&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;cleaning up&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;参考文档&#34;&gt;参考文档&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://dev.mysql.com/doc/refman/8.0/en/pluggable-storage-overview.html&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;MySQL :: MySQL 8.0 Reference Manual :: 16.11 Overview of MySQL Storage Engine Architecture&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://time.geekbang.org/column/article/101104&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;03丨学会用数据库的方式思考SQL是如何执行的-极客时间&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://dev.mysql.com/doc/refman/8.0/en/performance-schema-quick-start.html&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Performance Schema Quick Start&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://tech.meituan.com/2018/05/20/sql-parser-used-in-mtdp.html&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;SQL解析在美团的应用 - 美团技术团队&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Understanding MySQL Internals&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;练习数据&#34;&gt;练习数据&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://github.com/cystanford/sql_heros_data&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;GitHub - cystanford/sql_heros_data: SQL课程-王者荣耀heros数据表&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
 </description>
     </item>
     

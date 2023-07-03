@@ -1,0 +1,1843 @@
+<!DOCTYPE html><html lang="en-us" >
+
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  
+  
+  
+    <meta name="generator" content="Wowchemy 5.5.0 for Hugo" />
+  
+
+  
+  
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+  
+  
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  
+
+  
+  
+  
+    
+      
+      <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Roboto+Mono&family=Roboto:wght@400;700&display=swap">
+      <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Roboto+Mono&family=Roboto:wght@400;700&display=swap" media="print" onload="this.media='all'">
+    
+  
+
+  
+  
+  
+  
+  
+    
+    
+    
+  
+  
+
+  <meta name="author" content="CoolCats" />
+
+  
+  
+  
+    
+  
+  <meta name="description" content="程序编写完成后需要打包，对于打包我们可能有以下一个或多个需求：
+  打包成开源/闭源程序
+  打包成可执行程序，系统无需安装python环境也能使用
+  对源码进行加密混淆，不能被轻易破解
+  本文总结将Python程序打包成可执行程序的几种方法和一些工具。
+0x00 前置知识 文件 pyc文件 PYC文件是Python的字节码文件（Bytecode File）的扩展名，它是经过Python解释器编译后生成的二进制文件。当Python脚本（.py文件）被解释器执行时，解释器会将其编译为字节码，并将字节码保存到PYC文件中。下次再次执行相同的脚本时，解释器会直接加载对应的PYC文件，而无需再次编译源代码，从而提高执行效率。
+pyd文件 pyd 文件是用 Python 编写的动态链接库，可以在运行时由其他 Python 代码运行。它包含一个或多个 Python 模块，便于代码重用，并为编写应用程序提供模块架构。可以使用 .pyd 扩展名创建和保存 PYD 文件，例如 helloworld." />
+
+  
+  <link rel="alternate" hreflang="en-us" href="/post/python-distribute-executable-program/" />
+
+  
+  
+  
+    <meta name="theme-color" content="#1565c0" />
+  
+
+  
+  
+    
+    <script src="/js/mathjax-config.js"></script>
+  
+
+  
+
+  <link rel="stylesheet" href="/css/vendor-bundle.min.c7b8d9abd591ba2253ea42747e3ac3f5.css" media="print" onload="this.media='all'">
+
+  
+  
+  
+    
+    
+      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/academicons@1.9.1/css/academicons.min.css" integrity="sha512-W0xM4mr6dEP9nREo7Z9z+9X70wytKvMGeDsj7ps2+xg5QPrEBXC8tAW1IFnzjR6eoJ90JmCnFzerQJTLzIEHjA==" crossorigin="anonymous" media="print" onload="this.media='all'">
+    
+
+    
+    
+    
+    
+      
+      
+    
+    
+    
+
+    
+    
+    
+      
+    
+    
+      
+      
+        
+          <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@10.2.1/build/styles/github.min.css" crossorigin="anonymous" title="hl-light" media="print" onload="this.media='all'">
+          <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@10.2.1/build/styles/dracula.min.css" crossorigin="anonymous" title="hl-dark" media="print" onload="this.media='all'" disabled>
+        
+      
+    
+
+    
+    
+    
+      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.7.1/dist/leaflet.min.css" integrity="" crossorigin="anonymous" media="print" onload="this.media='all'">
+    
+
+    
+
+    
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js" integrity="" crossorigin="anonymous" async></script>
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+  
+
+  
+  
+  
+  
+  
+  <link rel="stylesheet" href="/css/wowchemy.1052fab8b7700a3dc49ee23683097d66.css" />
+
+  
+
+
+
+  
+
+
+  
+
+
+  
+
+
+  <script>
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?51ae6db546b05b91d4053193ba49123d";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+  
+  
+  
+
+  
+
+  
+
+  <link rel="icon" type="image/png" href="/media/icon_hue03491371183284312b8b116a73ae5ab_79511_32x32_fill_lanczos_center_3.png" />
+  <link rel="apple-touch-icon" type="image/png" href="/media/icon_hue03491371183284312b8b116a73ae5ab_79511_180x180_fill_lanczos_center_3.png" />
+
+  <link rel="canonical" href="/post/python-distribute-executable-program/" />
+
+  
+  
+  
+  
+  
+  
+  
+  
+    
+    
+  
+  
+
+  
+  
+    
+    
+  
+  <meta property="twitter:card" content="summary" />
+  
+    <meta property="twitter:site" content="@wowchemy" />
+    <meta property="twitter:creator" content="@wowchemy" />
+  
+  <meta property="og:site_name" content="CoolCats" />
+  <meta property="og:url" content="/post/python-distribute-executable-program/" />
+  <meta property="og:title" content="Python程序打包为可执行程序的几种方法 | CoolCats" />
+  <meta property="og:description" content="程序编写完成后需要打包，对于打包我们可能有以下一个或多个需求：
+  打包成开源/闭源程序
+  打包成可执行程序，系统无需安装python环境也能使用
+  对源码进行加密混淆，不能被轻易破解
+  本文总结将Python程序打包成可执行程序的几种方法和一些工具。
+0x00 前置知识 文件 pyc文件 PYC文件是Python的字节码文件（Bytecode File）的扩展名，它是经过Python解释器编译后生成的二进制文件。当Python脚本（.py文件）被解释器执行时，解释器会将其编译为字节码，并将字节码保存到PYC文件中。下次再次执行相同的脚本时，解释器会直接加载对应的PYC文件，而无需再次编译源代码，从而提高执行效率。
+pyd文件 pyd 文件是用 Python 编写的动态链接库，可以在运行时由其他 Python 代码运行。它包含一个或多个 Python 模块，便于代码重用，并为编写应用程序提供模块架构。可以使用 .pyd 扩展名创建和保存 PYD 文件，例如 helloworld." /><meta property="og:image" content="/media/icon_hue03491371183284312b8b116a73ae5ab_79511_512x512_fill_lanczos_center_3.png" />
+    <meta property="twitter:image" content="/media/icon_hue03491371183284312b8b116a73ae5ab_79511_512x512_fill_lanczos_center_3.png" /><meta property="og:locale" content="en-us" />
+  
+    
+      <meta
+        property="article:published_time"
+        content="2023-06-30T21:18:19&#43;08:00"
+      />
+    
+    <meta property="article:modified_time" content="2023-06-30T21:18:19&#43;08:00">
+  
+
+  
+
+
+    
+
+
+
+
+
+
+  
+
+
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "/post/python-distribute-executable-program/"
+  },
+  "headline": "Python程序打包为可执行程序的几种方法",
+  
+  "datePublished": "2023-06-30T21:18:19+08:00",
+  "dateModified": "2023-06-30T21:18:19+08:00",
+  
+  "author": {
+    "@type": "Person",
+    "name": "CoolCats"
+  },
+  
+  "publisher": {
+    "@type": "Organization",
+    "name": "CoolCats",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "/media/icon_hue03491371183284312b8b116a73ae5ab_79511_192x192_fill_lanczos_center_3.png"
+    }
+  },
+  "description": "程序编写完成后需要打包，对于打包我们可能有以下一个或多个需求：\n  打包成开源/闭源程序\n  打包成可执行程序，系统无需安装python环境也能使用\n  对源码进行加密混淆，不能被轻易破解\n  本文总结将Python程序打包成可执行程序的几种方法和一些工具。\n0x00 前置知识 文件 pyc文件 PYC文件是Python的字节码文件（Bytecode File）的扩展名，它是经过Python解释器编译后生成的二进制文件。当Python脚本（.py文件）被解释器执行时，解释器会将其编译为字节码，并将字节码保存到PYC文件中。下次再次执行相同的脚本时，解释器会直接加载对应的PYC文件，而无需再次编译源代码，从而提高执行效率。\npyd文件 pyd 文件是用 Python 编写的动态链接库，可以在运行时由其他 Python 代码运行。它包含一个或多个 Python 模块，便于代码重用，并为编写应用程序提供模块架构。可以使用 .pyd 扩展名创建和保存 PYD 文件，例如 helloworld."
+}
+</script>
+
+  
+
+  
+
+  
+
+  
+
+
+
+
+
+  <title>Python程序打包为可执行程序的几种方法 | CoolCats</title>
+</head>
+
+
+<body id="top" data-spy="scroll" data-offset="70" data-target="#TableOfContents" class="page-wrapper   " data-wc-page-id="a861b235dbb32c383d2f0de8b38f866d" >
+
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  <script src="/js/wowchemy-init.min.2ed908358299dd7ab553faae685c746c.js"></script>
+
+  
+
+
+<aside class="search-modal" id="search">
+  <div class="container">
+    <section class="search-header">
+
+      <div class="row no-gutters justify-content-between mb-3">
+        <div class="col-6">
+          <h1>Search</h1>
+        </div>
+        <div class="col-6 col-search-close">
+          <a class="js-search" href="#" aria-label="Close"><i class="fas fa-times-circle text-muted" aria-hidden="true"></i></a>
+        </div>
+      </div>
+
+      <div id="search-box">
+        
+        <input name="q" id="search-query" placeholder="Search..." autocapitalize="off"
+        autocomplete="off" autocorrect="off" spellcheck="false" type="search" class="form-control"
+        aria-label="Search...">
+        
+      </div>
+
+      
+      
+
+      
+
+    </section>
+    <section class="section-search-results">
+
+      <div id="search-hits">
+        
+      </div>
+
+    </section>
+  </div>
+</aside>
+
+
+
+  <div class="page-header">
+    
+
+
+
+
+
+
+
+
+
+
+
+
+<header class="header--fixed">
+  <nav class="navbar navbar-expand-lg navbar-light compensate-for-scrollbar" id="navbar-main">
+    <div class="container-xl">
+
+      
+      <div class="d-none d-lg-inline-flex">
+        <a class="navbar-brand" href="/">CoolCats</a>
+      </div>
+      
+
+      
+      <button type="button" class="navbar-toggler" data-toggle="collapse"
+              data-target="#navbar-content" aria-controls="navbar-content" aria-expanded="false" aria-label="Toggle navigation">
+      <span><i class="fas fa-bars"></i></span>
+      </button>
+      
+
+      
+      <div class="navbar-brand-mobile-wrapper d-inline-flex d-lg-none">
+        <a class="navbar-brand" href="/">CoolCats</a>
+      </div>
+      
+
+      
+      
+      <div class="navbar-collapse main-menu-item collapse justify-content-start" id="navbar-content">
+
+        
+        <ul class="navbar-nav d-md-inline-flex">
+          
+
+          
+
+          
+          
+          
+
+          
+
+          
+          
+          
+          
+
+          
+            
+              
+              
+            
+            
+          
+
+          <li class="nav-item">
+            <a class="nav-link  active" href="/post"><span>博客</span></a>
+          </li>
+
+          
+          
+
+          
+
+          
+          
+          
+            
+          
+
+          
+
+          
+          
+          
+          
+
+          
+            
+              
+              
+            
+            
+          
+
+          <li class="nav-item">
+            <a class="nav-link " href="/event"><span>趣事</span></a>
+          </li>
+
+          
+          
+
+          
+
+          
+          
+          
+            
+          
+
+          
+
+          
+          
+          
+          
+
+          
+            
+              
+              
+            
+            
+          
+
+          <li class="nav-item">
+            <a class="nav-link " href="/project"><span>项目</span></a>
+          </li>
+
+          
+          
+
+          
+
+          
+          
+          
+            
+          
+
+          
+
+          
+          
+          
+          
+
+          
+            
+              
+              
+            
+            
+          
+
+          <li class="nav-item">
+            <a class="nav-link " href="/publication"><span>论文</span></a>
+          </li>
+
+          
+          
+
+          
+
+          
+          
+          
+            
+          
+
+          
+
+          
+          
+          
+          
+
+          
+            
+              
+              
+            
+            
+          
+
+          <li class="nav-item">
+            <a class="nav-link " href="/contact"><span>联系</span></a>
+          </li>
+
+          
+          
+
+          
+
+          
+          
+          
+            
+          
+
+          
+
+          
+          
+          
+          
+
+          
+            
+              
+              
+            
+            
+          
+
+          <li class="nav-item">
+            <a class="nav-link " href="/media/files/cv"><span>简历</span></a>
+          </li>
+
+          
+          
+
+        
+
+          
+        </ul>
+      </div>
+
+      <ul class="nav-icons navbar-nav flex-row ml-auto d-flex pl-md-2">
+
+        
+        
+          
+        
+
+        
+        
+        <li class="nav-item">
+          <a class="nav-link js-search" href="#" aria-label="Search"><i class="fas fa-search" aria-hidden="true"></i></a>
+        </li>
+        
+
+        
+        
+        
+        <li class="nav-item dropdown theme-dropdown">
+          <a href="#" class="nav-link" data-toggle="dropdown" aria-haspopup="true" aria-label="Display preferences">
+            <i class="fas fa-moon" aria-hidden="true"></i>
+          </a>
+          <div class="dropdown-menu">
+            <a href="#" class="dropdown-item js-set-theme-light">
+              <span>Light</span>
+            </a>
+            <a href="#" class="dropdown-item js-set-theme-dark">
+              <span>Dark</span>
+            </a>
+            <a href="#" class="dropdown-item js-set-theme-auto">
+              <span>Automatic</span>
+            </a>
+          </div>
+        </li>
+        
+
+        
+        
+
+      </ul>
+
+    </div>
+  </nav>
+</header>
+
+
+  </div>
+
+  <div class="page-body">
+    
+    
+    
+
+    <article class="article">
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+  
+  
+<div class="article-container pt-3">
+  <h1>Python程序打包为可执行程序的几种方法</h1>
+
+  
+
+  
+    
+
+
+<div class="article-metadata">
+
+  
+  
+
+  
+  <span class="article-date">
+    
+    
+      
+    
+    Jun 30, 2023
+  </span>
+  
+
+  
+
+  
+  <span class="middot-divider"></span>
+  <span class="article-reading-time">
+    2 min read
+  </span>
+  
+
+  
+  
+  
+  
+
+  
+  
+
+</div>
+
+    
+
+
+
+
+
+  
+</div>
+
+
+
+  <div class="article-container">
+
+    <div class="article-style">
+      <p>程序编写完成后需要打包，对于打包我们可能有以下一个或多个需求：</p>
+<ul>
+<li>
+<p>打包成开源/闭源程序</p>
+</li>
+<li>
+<p>打包成可执行程序，系统无需安装python环境也能使用</p>
+</li>
+<li>
+<p>对源码进行加密混淆，不能被轻易破解</p>
+</li>
+</ul>
+<p>本文总结将Python程序打包成可执行程序的几种方法和一些工具。</p>
+<h2 id="0x00-前置知识">0x00 前置知识</h2>
+<h3 id="文件">文件</h3>
+<h4 id="pyc文件">pyc文件</h4>
+<p>PYC文件是Python的字节码文件（Bytecode File）的扩展名，它是经过Python解释器编译后生成的二进制文件。当Python脚本（.py文件）被解释器执行时，解释器会将其编译为字节码，并将字节码保存到PYC文件中。下次再次执行相同的脚本时，解释器会直接加载对应的PYC文件，而无需再次编译源代码，从而提高执行效率。</p>
+<h4 id="pyd文件">pyd文件</h4>
+<p>pyd 文件是用 Python 编写的动态链接库，可以在运行时由其他 Python 代码运行。它包含一个或多个 Python 模块，便于代码重用，并为编写应用程序提供模块架构。可以使用 .pyd 扩展名创建和保存 PYD 文件，例如 helloworld.pyd。应用程序开发人员可以使用 import 语句将 PYD 模块包含在他们的应用程序中。 PYD 文件可以使用适用于 Windows、Mac 和 Linux 操作系统的 Python Software Foundation Python 打开。</p>
+<h4 id="pyz文件">pyz文件</h4>
+<p>&ldquo;pyz&quot;文件通常是指一个Python Zip Archive（Python压缩归档）文件。该文件使用压缩算法将多个Python模块、库和脚本打包在一起，以便于分发和共享。</p>
+<p>Python Zip Archive文件通常具有&rdquo;.pyz&quot;扩展名，并且可以通过Python解释器直接运行。在运行时，Python解释器会解压缩该文件并执行其中的代码。这种打包方式可以用于将单个可执行文件中的所有依赖项捆绑在一起，使得应用程序更易于分发和部署。</p>
+<h4 id="whl文件">whl文件</h4>
+<p>whl文件（wheel file）是Python软件包的一种打包格式，它是一种更先进、更完整、更方便的Python软件包安装和传播方案。相比于普通的Python软件包安装方式（通过源码安装），使用whl文件进行Python软件包的安装更加方便、更高效、更不容易出错。</p>
+<p>whl包含了预编译的Python库文件、依赖配置、安装脚本等内容，因此在大部分情况下，我们可以直接通过pip命令，用whl文件进行Python包的安装。例如，可以使用以下命令安装已经下载好的whl文件：</p>
+<h3 id="包导入">包导入</h3>
+<h4 id="隐式导入hidden-import">隐式导入（hidden import）</h4>
+<p>在打包过程中，某些模块的导入可能无法被打包工具自动识别出来。这可能是因为这些模块的导入是动态的、条件的或者在运行时根据一些动态因素发生的。此时，就需要通过指定&quot;hidden import&quot;来告诉打包工具这些模块的存在，以便正确打包。</p>
+<p>例如，一些动态导入的模块、通过字符串导入的模块或者其他特殊情况下的模块，需要使用&quot;hidden import&quot;来确保打包工具能正确地识别它们的存在，并将其包含在打包后的可执行文件中。</p>
+<h2 id="0x01-pyinstaller">0x01 PyInstaller</h2>
+<h3 id="重要组件">重要组件</h3>
+<h4 id="analysis分析器">Analysis（分析器）</h4>
+<p>用于分析程序的导入和依赖。</p>
+<h4 id="pyzpython-zip">PYZ（Python Zip）</h4>
+<h4 id="exe">EXE</h4>
+<h3 id="简单示例">简单示例</h3>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="c1"># main.py</span>
+</span></span><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">sys</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">lib</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">def</span> <span class="nf">say_hello</span><span class="p">():</span>
+</span></span><span class="line"><span class="cl">    <span class="k">try</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">        <span class="n">lib</span><span class="o">.</span><span class="n">hello</span><span class="p">(</span><span class="n">sys</span><span class="o">.</span><span class="n">argv</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&#34;Exception </span><span class="si">{</span><span class="nb">repr</span><span class="p">(</span><span class="n">e</span><span class="p">)</span><span class="si">}</span><span class="s2">&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&#34;__main__&#34;</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">    <span class="nb">print</span><span class="p">(</span><span class="s2">&#34;Test PYinstaller&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="n">say_hello</span><span class="p">()</span>
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="c1"># lib.py</span>
+</span></span><span class="line"><span class="cl"><span class="k">def</span> <span class="nf">hello</span><span class="p">(</span><span class="n">msg</span><span class="o">=</span><span class="s2">&#34;deafule&#34;</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&#34;Hello From Lib, </span><span class="si">{</span><span class="n">msg</span><span class="si">}</span><span class="s2">&#34;</span><span class="p">)</span>
+</span></span></code></pre></div><p>当执行如下命令后，pyinstaller会生成main.spec文件（存储在&ndash;specpath参数指定的目录中，默认是当前目录）。</p>
+<pre tabindex="0"><code>pyinstaller main.py 
+</code></pre><pre tabindex="0"><code># -*- mode: python ; coding: utf-8 -*-
+block_cipher = None
+a = Analysis(
+    [&#39;main.py&#39;],
+    pathex=[],
+    binaries=[],
+    datas=[],
+    hiddenimports=[],
+    hookspath=[],
+    hooksconfig={},
+    runtime_hooks=[],
+    excludes=[],
+    win_no_prefer_redirects=False,
+    win_private_assemblies=False,
+    cipher=block_cipher,
+    noarchive=False,
+)
+pyz = PYZ(a.pure, a.zipped_data, cipher=block_cipher)
+
+exe = EXE(
+    pyz,
+    a.scripts,
+    [],
+    exclude_binaries=True,
+    name=&#39;main&#39;,
+    debug=False,
+    bootloader_ignore_signals=False,
+    strip=False,
+    upx=True,
+    console=True,
+    disable_windowed_traceback=False,
+    argv_emulation=False,
+    target_arch=None,
+    codesign_identity=None,
+    entitlements_file=None,
+)
+coll = COLLECT(
+    exe,
+    a.binaries,
+    a.zipfiles,
+    a.datas,
+    strip=False,
+    upx=True,
+    upx_exclude=[],
+    name=&#39;main&#39;,
+)
+</code></pre><p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<figure  >
+  <div class="d-flex justify-content-center">
+    <div class="w-100" ><img alt="" srcset="
+               /post/python-distribute-executable-program/images/pyinstaller_huba9fc3e1458d9d905bcb2ace3f130bd6_71828_7abd6f9fae7233955a13645358fb5adb.webp 400w,
+               /post/python-distribute-executable-program/images/pyinstaller_huba9fc3e1458d9d905bcb2ace3f130bd6_71828_ffbaa7ce55298f14f612508260a89d50.webp 760w,
+               /post/python-distribute-executable-program/images/pyinstaller_huba9fc3e1458d9d905bcb2ace3f130bd6_71828_1200x1200_fit_q75_h2_lanczos.webp 1200w"
+               src="/post/python-distribute-executable-program/images/pyinstaller_huba9fc3e1458d9d905bcb2ace3f130bd6_71828_7abd6f9fae7233955a13645358fb5adb.webp"
+               width="760"
+               height="241"
+               loading="lazy" data-zoomable /></div>
+  </div></figure>
+</p>
+<p>.spec文件告知pyinstaller如何处理脚本,其编码了脚本的名称和大多数打包选项，pyinstaller根据spec文件的内容来构建可执行程序。
+大多数情况下无需修改spec文件，通常已经给出了足够的信息作为pyinstaller的打包选项。然而，以下情形你需要修改spec文件：</p>
+<ul>
+<li>你希望将数据文件捆绑到可执行程序中</li>
+<li>你希望将动态依赖库(.dll, .so)包含在可执行程序中</li>
+<li>你希望将Python的运行时选项添加到可执行程序中</li>
+<li>你希望将多个程序捆绑成一个公共模块</li>
+</ul>
+<p>可以通过pyi-makespec options name.py [other scripts&hellip;]命令创建spec文件，该命令仅创建spec文件但不会构建可执行程序。当你将name.spec文件修改到符合要求时，可通过pyinstaller命令进行打包.</p>
+<pre tabindex="0"><code>pyinstaller options name.spec
+</code></pre><p>注: pyi-makespec和pyinstaller的options具有相同的选项，部分参数选项如下:
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<figure  >
+  <div class="d-flex justify-content-center">
+    <div class="w-100" ><img alt="" srcset="
+               /post/python-distribute-executable-program/images/pyinstaller-params_hu50683fdf87199a823f683b4372c8a6b6_238883_d274abf5cbea4f65d02ab2cd82084063.webp 400w,
+               /post/python-distribute-executable-program/images/pyinstaller-params_hu50683fdf87199a823f683b4372c8a6b6_238883_051a333b0cfbbb872e6d5583a3d6f7ea.webp 760w,
+               /post/python-distribute-executable-program/images/pyinstaller-params_hu50683fdf87199a823f683b4372c8a6b6_238883_1200x1200_fit_q75_h2_lanczos.webp 1200w"
+               src="/post/python-distribute-executable-program/images/pyinstaller-params_hu50683fdf87199a823f683b4372c8a6b6_238883_d274abf5cbea4f65d02ab2cd82084063.webp"
+               width="760"
+               height="360"
+               loading="lazy" data-zoomable /></div>
+  </div></figure>
+</p>
+<h3 id="捆绑数据文件的程序打包">捆绑数据文件的程序打包</h3>
+<h4 id="对照实验">对照实验</h4>
+<p>pyinstaller默认不会将数据文件捆绑到打包的文件夹中</p>
+<p>创建一个文本文件config.txt，将lib.py的代码修改为读取config.txt文件的内容在进行打印</p>
+<p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<figure  >
+  <div class="d-flex justify-content-center">
+    <div class="w-100" ><img alt="" srcset="
+               /post/python-distribute-executable-program/images/config_txt_huffc4e70ada228a967ecbadec80ec2b6f_12741_f17e9b16cfd0c55c9e63b18afe4c23ae.webp 400w,
+               /post/python-distribute-executable-program/images/config_txt_huffc4e70ada228a967ecbadec80ec2b6f_12741_be4dc8d70b931706102b9e342cc283a2.webp 760w,
+               /post/python-distribute-executable-program/images/config_txt_huffc4e70ada228a967ecbadec80ec2b6f_12741_1200x1200_fit_q75_h2_lanczos.webp 1200w"
+               src="/post/python-distribute-executable-program/images/config_txt_huffc4e70ada228a967ecbadec80ec2b6f_12741_f17e9b16cfd0c55c9e63b18afe4c23ae.webp"
+               width="694"
+               height="224"
+               loading="lazy" data-zoomable /></div>
+  </div></figure>
+</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="c1"># lib.py</span>
+</span></span><span class="line"><span class="cl"><span class="k">def</span> <span class="nf">hello</span><span class="p">(</span><span class="n">msg</span><span class="o">=</span><span class="s2">&#34;deafule&#34;</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">    <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s2">&#34;config.txt&#34;</span><span class="p">,</span> <span class="s2">&#34;r&#34;</span><span class="p">)</span> <span class="k">as</span> <span class="n">fr</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&#34;</span><span class="si">{</span><span class="n">fr</span><span class="o">.</span><span class="n">read</span><span class="p">()</span><span class="si">}</span><span class="s2">, </span><span class="si">{</span><span class="n">msg</span><span class="si">}</span><span class="s2">&#34;</span><span class="p">)</span>
+</span></span></code></pre></div><p>然后使用默认spec文件的参数对程序进行打包，你会发现config.txt文件没有被打包到dist目录下，运行main.exe自然也是以失败告终。
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<figure  >
+  <div class="d-flex justify-content-center">
+    <div class="w-100" ><img alt="" srcset="
+               /post/python-distribute-executable-program/images/file_not_found_exception_hu7663361d4b7823ef71c74a04d0cc687a_37299_a6485bb19e60bc2d0534acdd637e29f1.webp 400w,
+               /post/python-distribute-executable-program/images/file_not_found_exception_hu7663361d4b7823ef71c74a04d0cc687a_37299_1710872234f5580be6542582e1665a50.webp 760w,
+               /post/python-distribute-executable-program/images/file_not_found_exception_hu7663361d4b7823ef71c74a04d0cc687a_37299_1200x1200_fit_q75_h2_lanczos.webp 1200w"
+               src="/post/python-distribute-executable-program/images/file_not_found_exception_hu7663361d4b7823ef71c74a04d0cc687a_37299_a6485bb19e60bc2d0534acdd637e29f1.webp"
+               width="760"
+               height="180"
+               loading="lazy" data-zoomable /></div>
+  </div></figure>
+</p>
+<p>要将数据文件（此例的config.txt）打包，需在spec文件的Analysis.datas属性 进行 配置，如以下语句意味着你希望将当前目录下的config.txt文件打包到打包文件的根目录下。</p>
+<pre tabindex="0"><code>datas = [(&#39;config.txt&#39;, &#39;.&#39;)]
+</code></pre><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="c1"># main.spec</span>
+</span></span><span class="line"><span class="cl"><span class="c1"># ...</span>
+</span></span><span class="line"><span class="cl"><span class="n">a</span> <span class="o">=</span> <span class="n">Analysis</span><span class="p">(</span>
+</span></span><span class="line"><span class="cl">    <span class="p">[</span><span class="s1">&#39;main.py&#39;</span><span class="p">],</span>
+</span></span><span class="line"><span class="cl">    <span class="n">pathex</span><span class="o">=</span><span class="p">[],</span>
+</span></span><span class="line"><span class="cl">    <span class="n">binaries</span><span class="o">=</span><span class="p">[],</span>
+</span></span><span class="line"><span class="cl">    <span class="n">datas</span><span class="o">=</span><span class="p">[(</span><span class="s1">&#39;config.txt&#39;</span><span class="p">,</span><span class="s1">&#39;.&#39;</span><span class="p">)],</span>
+</span></span><span class="line"><span class="cl">    <span class="n">hiddenimports</span><span class="o">=</span><span class="p">[],</span>
+</span></span><span class="line"><span class="cl">    <span class="n">hookspath</span><span class="o">=</span><span class="p">[],</span>
+</span></span><span class="line"><span class="cl">    <span class="n">hooksconfig</span><span class="o">=</span><span class="p">{},</span>
+</span></span><span class="line"><span class="cl">    <span class="n">runtime_hooks</span><span class="o">=</span><span class="p">[],</span>
+</span></span><span class="line"><span class="cl">    <span class="n">excludes</span><span class="o">=</span><span class="p">[],</span>
+</span></span><span class="line"><span class="cl">    <span class="n">win_no_prefer_redirects</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="n">win_private_assemblies</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="n">cipher</span><span class="o">=</span><span class="n">block_cipher</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="n">noarchive</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl"><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="c1"># ...</span>
+</span></span></code></pre></div><p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<figure  >
+  <div class="d-flex justify-content-center">
+    <div class="w-100" ><img alt="" srcset="
+               /post/python-distribute-executable-program/images/pyinstaller_main_spec_hubb7b4118c26cac5ebf28e446a255c64d_203455_d35fd67430c280450e1404db9d4ce961.webp 400w,
+               /post/python-distribute-executable-program/images/pyinstaller_main_spec_hubb7b4118c26cac5ebf28e446a255c64d_203455_09edc85e3bd5f693b84050392370faa9.webp 760w,
+               /post/python-distribute-executable-program/images/pyinstaller_main_spec_hubb7b4118c26cac5ebf28e446a255c64d_203455_1200x1200_fit_q75_h2_lanczos.webp 1200w"
+               src="/post/python-distribute-executable-program/images/pyinstaller_main_spec_hubb7b4118c26cac5ebf28e446a255c64d_203455_d35fd67430c280450e1404db9d4ce961.webp"
+               width="760"
+               height="400"
+               loading="lazy" data-zoomable /></div>
+  </div></figure>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<figure  >
+  <div class="d-flex justify-content-center">
+    <div class="w-100" ><img alt="" srcset="
+               /post/python-distribute-executable-program/images/pyinstaller_main_spec1_hud50bda192d599b72cb10c5a763e1fc8c_181907_47487e2eb1b9df8e19f1a393dc0580ac.webp 400w,
+               /post/python-distribute-executable-program/images/pyinstaller_main_spec1_hud50bda192d599b72cb10c5a763e1fc8c_181907_7afd7b17b7c366cc8d0ae14fac635460.webp 760w,
+               /post/python-distribute-executable-program/images/pyinstaller_main_spec1_hud50bda192d599b72cb10c5a763e1fc8c_181907_1200x1200_fit_q75_h2_lanczos.webp 1200w"
+               src="/post/python-distribute-executable-program/images/pyinstaller_main_spec1_hud50bda192d599b72cb10c5a763e1fc8c_181907_47487e2eb1b9df8e19f1a393dc0580ac.webp"
+               width="760"
+               height="329"
+               loading="lazy" data-zoomable /></div>
+  </div></figure>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<figure  >
+  <div class="d-flex justify-content-center">
+    <div class="w-100" ><img alt="" srcset="
+               /post/python-distribute-executable-program/images/hello_from_config_huc13e8ffb00a9852a13d7c3115944c7ea_48714_80cf5d70e97ffd266cf52b5b00a015bd.webp 400w,
+               /post/python-distribute-executable-program/images/hello_from_config_huc13e8ffb00a9852a13d7c3115944c7ea_48714_e870018a7e264400aea6910f016351ea.webp 760w,
+               /post/python-distribute-executable-program/images/hello_from_config_huc13e8ffb00a9852a13d7c3115944c7ea_48714_1200x1200_fit_q75_h2_lanczos.webp 1200w"
+               src="/post/python-distribute-executable-program/images/hello_from_config_huc13e8ffb00a9852a13d7c3115944c7ea_48714_80cf5d70e97ffd266cf52b5b00a015bd.webp"
+               width="760"
+               height="219"
+               loading="lazy" data-zoomable /></div>
+  </div></figure>
+</p>
+<p>当然，也可以在命令行中通过&ndash;add-data参数指定捆绑打包数据文件，参数的官方说明如下：</p>
+<pre tabindex="0"><code>--add-data &lt;SRC;DEST or SRC:DEST&gt;
+Additional non-binary files or folders to be added to the executable. The path separator is platform specific, os.pathsep (which is ; on Windows and : on most unix systems) is used. This option can be used multiple times.
+</code></pre><p>还可以打包整个文件夹，或使用通配符来指定多个待打包的数据文件，如：</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="n">added_files</span> <span class="o">=</span> <span class="p">[</span>
+</span></span><span class="line"><span class="cl">         <span class="p">(</span> <span class="s1">&#39;src/README.txt&#39;</span><span class="p">,</span> <span class="s1">&#39;.&#39;</span> <span class="p">),</span>
+</span></span><span class="line"><span class="cl">         <span class="p">(</span> <span class="s1">&#39;/mygame/data&#39;</span><span class="p">,</span> <span class="s1">&#39;data&#39;</span> <span class="p">),</span>
+</span></span><span class="line"><span class="cl">         <span class="p">(</span> <span class="s1">&#39;/mygame/sfx/*.mp3&#39;</span><span class="p">,</span> <span class="s1">&#39;sfx&#39;</span> <span class="p">)</span>
+</span></span><span class="line"><span class="cl">         <span class="p">]</span>
+</span></span><span class="line"><span class="cl"><span class="n">a</span> <span class="o">=</span> <span class="n">Analysis</span><span class="p">(</span><span class="o">...</span>
+</span></span><span class="line"><span class="cl">         <span class="n">datas</span> <span class="o">=</span> <span class="n">added_files</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">         <span class="o">...</span>
+</span></span><span class="line"><span class="cl">         <span class="p">)</span>
+</span></span></code></pre></div><h3 id="pyinstaller打包的程序安全吗">pyinstaller打包的程序安全吗？</h3>
+<p>源代码是否会泄漏，能否加密打包？</p>
+<h4 id="使用开源工具pyinstxtractor测试">使用开源工具pyinstxtractor测试</h4>
+<p>工具下载<a href="https://sourceforge.net/projects/pyinstallerextractor/" target="_blank" rel="noopener">地址</a></p>
+<p>尝试对pyinstaller打包生成的main.exe文件进行解包，可以发现，解包完成后多了一个main.exe_extracted目录，其中一个子目录 中全是pyc文件</p>
+<p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<figure  >
+  <div class="d-flex justify-content-center">
+    <div class="w-100" ><img alt="" srcset="
+               /post/python-distribute-executable-program/images/pyinstxtractor_demo_hu9aaf52b131952ca6dba31c29a16dbb21_100529_c78da36daa6eba655478d50baf6009e7.webp 400w,
+               /post/python-distribute-executable-program/images/pyinstxtractor_demo_hu9aaf52b131952ca6dba31c29a16dbb21_100529_6d7654599dc20d96df1e8c4340b5737c.webp 760w,
+               /post/python-distribute-executable-program/images/pyinstxtractor_demo_hu9aaf52b131952ca6dba31c29a16dbb21_100529_1200x1200_fit_q75_h2_lanczos.webp 1200w"
+               src="/post/python-distribute-executable-program/images/pyinstxtractor_demo_hu9aaf52b131952ca6dba31c29a16dbb21_100529_c78da36daa6eba655478d50baf6009e7.webp"
+               width="760"
+               height="217"
+               loading="lazy" data-zoomable /></div>
+  </div></figure>
+</p>
+<p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<figure  >
+  <div class="d-flex justify-content-center">
+    <div class="w-100" ><img alt="" srcset="
+               /post/python-distribute-executable-program/images/main_exe_extracted_hu5c77d1acaf220f067ef38a4078507ad2_26718_bffa5cd1d6df4ea9369061c2e1949a9c.webp 400w,
+               /post/python-distribute-executable-program/images/main_exe_extracted_hu5c77d1acaf220f067ef38a4078507ad2_26718_bdeb15f8c61c89a0fde8c37a39dfbf70.webp 760w,
+               /post/python-distribute-executable-program/images/main_exe_extracted_hu5c77d1acaf220f067ef38a4078507ad2_26718_1200x1200_fit_q75_h2_lanczos.webp 1200w"
+               src="/post/python-distribute-executable-program/images/main_exe_extracted_hu5c77d1acaf220f067ef38a4078507ad2_26718_bffa5cd1d6df4ea9369061c2e1949a9c.webp"
+               width="393"
+               height="342"
+               loading="lazy" data-zoomable /></div>
+  </div></figure>
+</p>
+<p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<figure  >
+  <div class="d-flex justify-content-center">
+    <div class="w-100" ><img alt="" srcset="
+               /post/python-distribute-executable-program/images/extracted_pyc_demo_hu0167bb048a85daead74289553992dd1d_133713_f00b08a3f220d993cbcdc4cb5c2d8702.webp 400w,
+               /post/python-distribute-executable-program/images/extracted_pyc_demo_hu0167bb048a85daead74289553992dd1d_133713_78b0803b42f0d30d3092710b20f5e569.webp 760w,
+               /post/python-distribute-executable-program/images/extracted_pyc_demo_hu0167bb048a85daead74289553992dd1d_133713_1200x1200_fit_q75_h2_lanczos.webp 1200w"
+               src="/post/python-distribute-executable-program/images/extracted_pyc_demo_hu0167bb048a85daead74289553992dd1d_133713_f00b08a3f220d993cbcdc4cb5c2d8702.webp"
+               width="760"
+               height="537"
+               loading="lazy" data-zoomable /></div>
+  </div></figure>
+</p>
+<p>尝试使用<a href="https://github.com/rocky/python-uncompyle6/" target="_blank" rel="noopener">uncompyle6</a>对上面过程得到的pyc文件进行反编译。</p>
+<pre tabindex="0"><code>pip install uncompyle6
+</code></pre><p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<figure  >
+  <div class="d-flex justify-content-center">
+    <div class="w-100" ><img alt="" srcset="
+               /post/python-distribute-executable-program/images/err_pyc_decom_hu57fede16314ad7fa6555c754e2422012_130644_8e2d7f116c3352779c85dc72a08cfca9.webp 400w,
+               /post/python-distribute-executable-program/images/err_pyc_decom_hu57fede16314ad7fa6555c754e2422012_130644_6a3c68411bcc60ee81dffaa3622f430b.webp 760w,
+               /post/python-distribute-executable-program/images/err_pyc_decom_hu57fede16314ad7fa6555c754e2422012_130644_1200x1200_fit_q75_h2_lanczos.webp 1200w"
+               src="/post/python-distribute-executable-program/images/err_pyc_decom_hu57fede16314ad7fa6555c754e2422012_130644_8e2d7f116c3352779c85dc72a08cfca9.webp"
+               width="760"
+               height="256"
+               loading="lazy" data-zoomable /></div>
+  </div></figure>
+
+报错，查看issue区，有人在python3.7版本也遇到的类似的错误，但问题未解决</p>
+<pre tabindex="0"><code>https://github.com/rocky/python-uncompyle6/issues/320
+https://github.com/rocky/python-uncompyle6/issues/216
+</code></pre><p>有人反映可能是由于<a href="https://www.cnblogs.com/jzking121/p/15312628.html" target="_blank" rel="noopener">pyc文件首部“损坏”导致无法反编译</a>，对此未进行测试，但侧面反映了pyc文件对于源代码具有一定保护作用。</p>
+<h4 id="windows平台下执行打包程序遇到的一些问题">Windows平台下执行打包程序遇到的一些问题</h4>
+<ul>
+<li>
+<p>中文字符乱码导致无法正常执行程序</p>
+<p>将cmd字符集设置为utf-8</p>
+<pre tabindex="0"><code>chcp 65001
+</code></pre></li>
+</ul>
+<h3 id="参考文档">参考文档</h3>
+<ul>
+<li><a href="https://pyinstaller.org/en/stable/spec-files.html" target="_blank" rel="noopener">Using Spec Files</a></li>
+</ul>
+<h2 id="0x02-nuitka">0x02 Nuitka</h2>
+<p><a href="https://github.com/Nuitka/Nuitka" target="_blank" rel="noopener">Github地址</a></p>
+<p>有网友推荐Nuitka，反馈其效率比pyinstaller更高。
+nuitka安装方法</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">pip install nuitka
+</span></span></code></pre></div><p>基本使用方法：</p>
+<pre tabindex="0"><code>python -m nuitka main.py
+</code></pre><p>打包后生成一个main.build文件夹，其中可发现nuitka已经将python模块及扩展转换成了c层次的代码。
+Nuitka使用C编译器将转换后的代码编译为可执行文件。生成的目标文件通常具有&quot;.o&quot;或&quot;.obj&quot;的扩展名（取决于使用的操作系统和编译器。）</p>
+<p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<figure  >
+  <div class="d-flex justify-content-center">
+    <div class="w-100" ><img alt="" srcset="
+               /post/python-distribute-executable-program/images/nuitka_main_build_hu7aa8b9192db792976fef566706ef965b_101841_ed6a1e70ee0590e39c84e5877f52c1f9.webp 400w,
+               /post/python-distribute-executable-program/images/nuitka_main_build_hu7aa8b9192db792976fef566706ef965b_101841_8210736745d09feb4dcb3198569f2ebc.webp 760w,
+               /post/python-distribute-executable-program/images/nuitka_main_build_hu7aa8b9192db792976fef566706ef965b_101841_1200x1200_fit_q75_h2_lanczos.webp 1200w"
+               src="/post/python-distribute-executable-program/images/nuitka_main_build_hu7aa8b9192db792976fef566706ef965b_101841_ed6a1e70ee0590e39c84e5877f52c1f9.webp"
+               width="760"
+               height="510"
+               loading="lazy" data-zoomable /></div>
+  </div></figure>
+
+可执行程序执行效果：
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<figure  >
+  <div class="d-flex justify-content-center">
+    <div class="w-100" ><img alt="" srcset="
+               /post/python-distribute-executable-program/images/nuitka_demo_hu0335e56bf0db024b40e14b71c63960ae_66322_9b1afbd8ca409aea664be0ea22e4cfab.webp 400w,
+               /post/python-distribute-executable-program/images/nuitka_demo_hu0335e56bf0db024b40e14b71c63960ae_66322_42aca851c219885ba05342f2a570d39a.webp 760w,
+               /post/python-distribute-executable-program/images/nuitka_demo_hu0335e56bf0db024b40e14b71c63960ae_66322_1200x1200_fit_q75_h2_lanczos.webp 1200w"
+               src="/post/python-distribute-executable-program/images/nuitka_demo_hu0335e56bf0db024b40e14b71c63960ae_66322_9b1afbd8ca409aea664be0ea22e4cfab.webp"
+               width="698"
+               height="390"
+               loading="lazy" data-zoomable /></div>
+  </div></figure>
+</p>
+<h2 id="0x03-cython">0x03 Cython</h2>
+<pre tabindex="0"><code>pip install Cython
+</code></pre><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">sys</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">def</span> <span class="nf">say_hello</span><span class="p">():</span>
+</span></span><span class="line"><span class="cl">    <span class="nb">print</span><span class="p">(</span><span class="s2">&#34;Hello&#34;</span><span class="p">,</span> <span class="n">sys</span><span class="o">.</span><span class="n">argv</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&#34;__main__&#34;</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">    <span class="k">pass</span>
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="c1"># setup.py</span>
+</span></span><span class="line"><span class="cl"><span class="kn">from</span> <span class="nn">distutils.core</span> <span class="kn">import</span> <span class="n">setup</span>
+</span></span><span class="line"><span class="cl"><span class="kn">from</span> <span class="nn">Cython.Build</span> <span class="kn">import</span> <span class="n">cythonize</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">setup</span><span class="p">(</span>
+</span></span><span class="line"><span class="cl">    <span class="n">name</span><span class="o">=</span><span class="s2">&#34;Python Core&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="n">ext_modules</span><span class="o">=</span><span class="n">cythonize</span><span class="p">(</span><span class="s2">&#34;main.py&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="p">)</span>
+</span></span></code></pre></div><p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<figure  >
+  <div class="d-flex justify-content-center">
+    <div class="w-100" ><img alt="" srcset="
+               /post/python-distribute-executable-program/images/say_hello_hu82643e790da69e32a4d5fe4610a8c33a_22445_0ee573afe5e9003e8b736c53f06823a3.webp 400w,
+               /post/python-distribute-executable-program/images/say_hello_hu82643e790da69e32a4d5fe4610a8c33a_22445_a1bf87e8cd9a13b5b1fb96b912df3b8c.webp 760w,
+               /post/python-distribute-executable-program/images/say_hello_hu82643e790da69e32a4d5fe4610a8c33a_22445_1200x1200_fit_q75_h2_lanczos.webp 1200w"
+               src="/post/python-distribute-executable-program/images/say_hello_hu82643e790da69e32a4d5fe4610a8c33a_22445_0ee573afe5e9003e8b736c53f06823a3.webp"
+               width="760"
+               height="55"
+               loading="lazy" data-zoomable /></div>
+  </div></figure>
+</p>
+<h2 id="参考文章--拓展阅读">参考文章 &amp;&amp; 拓展阅读</h2>
+<ul>
+<li><a href="https://docs.fileformat.com/zh/programming/" target="_blank" rel="noopener">FileFormat</a></li>
+<li><a href="http://py2exe.org/" target="_blank" rel="noopener">py2exe</a></li>
+<li><a href="https://zhuanlan.zhihu.com/p/54296517" target="_blank" rel="noopener">如何保护你的 Python 代码 （一）—— 现有加密方案</a></li>
+</ul>
+
+    </div>
+
+    
+
+
+
+
+
+
+<div class="share-box">
+  <ul class="share">
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="https://twitter.com/intent/tweet?url=/post/python-distribute-executable-program/&amp;text=Python%e7%a8%8b%e5%ba%8f%e6%89%93%e5%8c%85%e4%b8%ba%e5%8f%af%e6%89%a7%e8%a1%8c%e7%a8%8b%e5%ba%8f%e7%9a%84%e5%87%a0%e7%a7%8d%e6%96%b9%e6%b3%95" target="_blank" rel="noopener" class="share-btn-twitter" aria-label="twitter">
+          <i class="fab fa-twitter"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="https://www.facebook.com/sharer.php?u=/post/python-distribute-executable-program/&amp;t=Python%e7%a8%8b%e5%ba%8f%e6%89%93%e5%8c%85%e4%b8%ba%e5%8f%af%e6%89%a7%e8%a1%8c%e7%a8%8b%e5%ba%8f%e7%9a%84%e5%87%a0%e7%a7%8d%e6%96%b9%e6%b3%95" target="_blank" rel="noopener" class="share-btn-facebook" aria-label="facebook">
+          <i class="fab fa-facebook"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="mailto:?subject=Python%e7%a8%8b%e5%ba%8f%e6%89%93%e5%8c%85%e4%b8%ba%e5%8f%af%e6%89%a7%e8%a1%8c%e7%a8%8b%e5%ba%8f%e7%9a%84%e5%87%a0%e7%a7%8d%e6%96%b9%e6%b3%95&amp;body=/post/python-distribute-executable-program/" target="_blank" rel="noopener" class="share-btn-email" aria-label="envelope">
+          <i class="fas fa-envelope"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="https://www.linkedin.com/shareArticle?url=/post/python-distribute-executable-program/&amp;title=Python%e7%a8%8b%e5%ba%8f%e6%89%93%e5%8c%85%e4%b8%ba%e5%8f%af%e6%89%a7%e8%a1%8c%e7%a8%8b%e5%ba%8f%e7%9a%84%e5%87%a0%e7%a7%8d%e6%96%b9%e6%b3%95" target="_blank" rel="noopener" class="share-btn-linkedin" aria-label="linkedin-in">
+          <i class="fab fa-linkedin-in"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="whatsapp://send?text=Python%e7%a8%8b%e5%ba%8f%e6%89%93%e5%8c%85%e4%b8%ba%e5%8f%af%e6%89%a7%e8%a1%8c%e7%a8%8b%e5%ba%8f%e7%9a%84%e5%87%a0%e7%a7%8d%e6%96%b9%e6%b3%95%20/post/python-distribute-executable-program/" target="_blank" rel="noopener" class="share-btn-whatsapp" aria-label="whatsapp">
+          <i class="fab fa-whatsapp"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="https://service.weibo.com/share/share.php?url=/post/python-distribute-executable-program/&amp;title=Python%e7%a8%8b%e5%ba%8f%e6%89%93%e5%8c%85%e4%b8%ba%e5%8f%af%e6%89%a7%e8%a1%8c%e7%a8%8b%e5%ba%8f%e7%9a%84%e5%87%a0%e7%a7%8d%e6%96%b9%e6%b3%95" target="_blank" rel="noopener" class="share-btn-weibo" aria-label="weibo">
+          <i class="fab fa-weibo"></i>
+        </a>
+      </li>
+    
+  </ul>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+
+
+
+  
+  
+  
+  
+  
+  <div class="media author-card content-widget-hr">
+    
+      
+      <a href="/authors/admin/"><img class="avatar mr-3 avatar-circle" src="/authors/admin/avatar_hu55194f19033f85038196a23353ffe543_580100_270x270_fill_q75_lanczos_center.jpg" alt="CoolCats"></a>
+    
+
+    <div class="media-body">
+      <h5 class="card-title"><a href="/authors/admin/">CoolCats</a></h5>
+      <h6 class="card-subtitle">理学学士</h6>
+      <p class="card-text">我的研究兴趣是时空数据分析、自然语言处理、服务端开发</p>
+      <ul class="network-icon" aria-hidden="true">
+  
+    
+    
+    
+      
+    
+    
+    
+    
+    
+    <li>
+      <a href="mailto:2811159909@qq.com" >
+        <i class="fas fa-envelope"></i>
+      </a>
+    </li>
+  
+    
+    
+    
+      
+    
+    
+    
+    
+    
+      
+    
+    <li>
+      <a href="https://github.com/Coolgiserz" target="_blank" rel="noopener">
+        <i class="fab fa-github"></i>
+      </a>
+    </li>
+  
+</ul>
+
+    </div>
+  </div>
+
+
+
+
+
+
+
+
+
+  
+  
+  
+
+  
+
+  
+
+
+
+
+
+
+
+
+
+
+  </div>
+</article>
+  </div>
+
+  <div class="page-footer">
+    
+    
+    <div class="container">
+      <footer class="site-footer">
+
+  
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+
+
+
+
+
+  
+  
+  
+
+  
+  
+    
+  
+  
+    
+  
+
+  
+
+  
+  <p class="powered-by copyright-license-text">
+    © 2023 CoolCats. This work is licensed under <a href="https://creativecommons.org/licenses/by-nc-nd/4.0" rel="noopener noreferrer" target="_blank">CC BY NC ND 4.0</a>
+  </p>
+  
+
+  <p class="powered-by footer-license-icons">
+    <a href="https://creativecommons.org/licenses/by-nc-nd/4.0" rel="noopener noreferrer" target="_blank" aria-label="Creative Commons">
+      <i class="fab fa-creative-commons fa-2x" aria-hidden="true"></i>
+      <i class="fab fa-creative-commons-by fa-2x" aria-hidden="true"></i>
+      
+        <i class="fab fa-creative-commons-nc fa-2x" aria-hidden="true"></i>
+      
+      
+        <i class="fab fa-creative-commons-nd fa-2x" aria-hidden="true"></i>
+      
+    </a>
+  </p>
+
+
+
+
+  <p class="powered-by">
+    
+    
+    
+      
+      
+      
+      
+      
+      
+      Published with <a href="https://wowchemy.com/?utm_campaign=poweredby" target="_blank" rel="noopener">Wowchemy</a> — the free, <a href="https://github.com/wowchemy/wowchemy-hugo-themes" target="_blank" rel="noopener">open source</a> website builder that empowers creators.
+    
+  </p>
+</footer>
+
+    </div>
+    
+  </div>
+
+      
+
+    
+    <script src="/js/vendor-bundle.min.fab8b449b814cc9f95b22fcf2e45f05b.js"></script>
+
+    
+    
+    
+      
+
+      
+      
+
+      
+
+      
+        
+        <script src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@10.2.1/build/highlight.min.js" integrity="sha512-Ypjm0o7jOxAd4hpdoppSEN0TQOC19UtPAqD+4s5AlXmUvbmmS/YMxYqAqarQYyxTnB6/rqip9qcxlNB/3U9Wdg==" crossorigin="anonymous"></script>
+        
+        
+        <script src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@10.2.1/build/languages/r.min.js" crossorigin="anonymous"></script>
+        
+        <script src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@10.2.1/build/languages/latex.min.js" crossorigin="anonymous"></script>
+        
+      
+
+    
+
+    
+    
+    
+      <script src="https://cdn.jsdelivr.net/npm/leaflet@1.7.1/dist/leaflet.min.js" integrity="" crossorigin="anonymous"></script>
+    
+
+    
+    
+
+    
+    
+    
+      
+      <script id="search-hit-fuse-template" type="text/x-template">
+        <div class="search-hit" id="summary-{{key}}">
+          <div class="search-hit-content">
+            <div class="search-hit-name">
+              <a href="{{relpermalink}}">{{title}}</a>
+              <div class="article-metadata search-hit-type">{{type}}</div>
+              <p class="search-hit-description">{{snippet}}</p>
+            </div>
+          </div>
+        </div>
+      </script>
+      
+        <script src="https://cdn.jsdelivr.net/gh/krisk/Fuse@v3.2.1/dist/fuse.min.js" integrity="sha512-o38bmzBGX+hD3JHWUFCDA09btWaqrNmoJ3RXLlrysA7PP01Kgs4UlE4MhelE1v5dJR3+cxlR4qQlotsW7jKsnw==" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/gh/julmot/mark.js@8.11.1/dist/jquery.mark.min.js" integrity="sha512-mhbv5DqBMgrWL+32MmsDOt/OAvqr/cHimk6B8y/bx/xS88MVkYGPiVv2ixKVrkywF2qHplNRUvFsAHUdxZ3Krg==" crossorigin="anonymous"></script>
+      
+    
+
+    
+    
+
+    
+    
+    
+    
+      <script id="dsq-count-scr" src="https://coolgiserz.disqus.com/count.js" async></script>
+    
+
+    
+    
+      
+      
+      
+      
+      
+      
+      
+    
+
+    
+
+    
+    
+    
+    <script id="page-data" type="application/json">{"use_headroom":true}</script>
+
+    
+    
+      <script src="/js/wowchemy-headroom.c251366b4128fd5e6b046d4c97a62a51.js" type="module"></script>
+    
+    
+    
+    
+    
+    
+    
+      
+      
+    
+    
+    <script src="/en/js/wowchemy.min.ab2f2890dbe3e2e83579366d3d6e8fd9.js"></script>
+
+    
+    
+      <script src="/js/wowchemy-map.a26e9d2f7238ba5b868384f1c5bc6477.js" type="module"></script>
+    
+    
+    
+    
+      
+<div id="modal" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Cite</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <pre><code class="tex hljs"></code></pre>
+      </div>
+      <div class="modal-footer">
+        <a class="btn btn-outline-primary my-1 js-copy-cite" href="#" target="_blank">
+          <i class="fas fa-copy"></i> Copy
+        </a>
+        <a class="btn btn-outline-primary my-1 js-download-cite" href="#" target="_blank">
+          <i class="fas fa-download"></i> Download
+        </a>
+        <div id="modal-error"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+      <script src="/js/wowchemy-publication.68f8d7090562ca65fc6d3cb3f8f2d2cb.js" type="module"></script>
+
+
+
+
+
+
+</body>
+</html>

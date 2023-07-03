@@ -1,0 +1,204 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>日志 | CoolCats</title>
+    <link>/tag/%E6%97%A5%E5%BF%97/</link>
+      <atom:link href="/tag/%E6%97%A5%E5%BF%97/index.xml" rel="self" type="application/rss+xml" />
+    <description>日志</description>
+    <generator>Wowchemy (https://wowchemy.com)</generator><language>en-us</language><lastBuildDate>Sun, 18 Jun 2023 09:02:27 +0800</lastBuildDate>
+    <image>
+      <url>/media/icon_hue03491371183284312b8b116a73ae5ab_79511_512x512_fill_lanczos_center_3.png</url>
+      <title>日志</title>
+      <link>/tag/%E6%97%A5%E5%BF%97/</link>
+    </image>
+    
+    <item>
+      <title>Python内置日志模块源码分析和进阶用法</title>
+      <link>/post/python-logging-usage-and-extend/</link>
+      <pubDate>Sun, 18 Jun 2023 09:02:27 +0800</pubDate>
+      <guid>/post/python-logging-usage-and-extend/</guid>
+      <description>&lt;h2 id=&#34;概述&#34;&gt;概述&lt;/h2&gt;
+&lt;p&gt;日志是在程序运行过程中进行事件追踪的方式，通过向程序引入日志模块可以使开发者方便地了解到特定的事件是否发生，以及事件发生时相关的信息。&lt;/p&gt;
+&lt;p&gt;本文假定你已经了解日志模块的基本使用（如通常博客、教材所介绍），想要定制化拓展你的日志功能（如定制化的日志持久化，在日志中记录特定属性（区分于message）等），或许本文的部分内容会对你有帮助。&lt;/p&gt;
+&lt;p&gt;本文介绍以下内容：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;python中内置的logging模块中关于日志记录的关键类设计（如日志事件对象LogRecord，日志处理类/接口Handler）&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;如何将日志记录到数据库中（以MySQL为例）&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;如何拓展日志事件记录字段&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;如何优雅地使用logging模块&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2 id=&#34;源码分析&#34;&gt;源码分析&lt;/h2&gt;
+&lt;h3 id=&#34;logging模块设计&#34;&gt;logging模块设计&lt;/h3&gt;
+&lt;p&gt;从__all__这一特殊变量即可窥见logging模块有哪些主要的类与变量: Logger、Handler、Filter、Formatter、LogRecord等。&lt;/p&gt;
+&lt;p&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure  &gt;
+  &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img alt=&#34;&#34; srcset=&#34;
+               /post/python-logging-usage-and-extend/images/logging_hubc6be535caacc45bc8718786526cd277_157377_f69308afae4bf6fe8eed3b928dfd089f.webp 400w,
+               /post/python-logging-usage-and-extend/images/logging_hubc6be535caacc45bc8718786526cd277_157377_1c0f211c5e03b599f4f79c33263f4493.webp 760w,
+               /post/python-logging-usage-and-extend/images/logging_hubc6be535caacc45bc8718786526cd277_157377_1200x1200_fit_q75_h2_lanczos_3.webp 1200w&#34;
+               src=&#34;/post/python-logging-usage-and-extend/images/logging_hubc6be535caacc45bc8718786526cd277_157377_f69308afae4bf6fe8eed3b928dfd089f.webp&#34;
+               width=&#34;760&#34;
+               height=&#34;387&#34;
+               loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+  &lt;/div&gt;&lt;/figure&gt;
+&lt;/p&gt;
+&lt;h3 id=&#34;重要常量及其相关操作&#34;&gt;重要常量及其相关操作&lt;/h3&gt;
+&lt;h4 id=&#34;日志级别&#34;&gt;日志级别&lt;/h4&gt;
+&lt;p&gt;若干个正整数集合定义了我们在程序中常用的日志级别&lt;/p&gt;
+&lt;p&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure  &gt;
+  &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img alt=&#34;&#34; srcset=&#34;
+               /post/python-logging-usage-and-extend/images/log_level_hu9bef11106bc193a0cd590e92650ac977_135766_4c2f52ea62661693ee95d4994592b58a.webp 400w,
+               /post/python-logging-usage-and-extend/images/log_level_hu9bef11106bc193a0cd590e92650ac977_135766_fee3dbb37c1fb45d51d52e6c0e87e70f.webp 760w,
+               /post/python-logging-usage-and-extend/images/log_level_hu9bef11106bc193a0cd590e92650ac977_135766_1200x1200_fit_q75_h2_lanczos_3.webp 1200w&#34;
+               src=&#34;/post/python-logging-usage-and-extend/images/log_level_hu9bef11106bc193a0cd590e92650ac977_135766_4c2f52ea62661693ee95d4994592b58a.webp&#34;
+               width=&#34;760&#34;
+               height=&#34;431&#34;
+               loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+  &lt;/div&gt;&lt;/figure&gt;
+&lt;/p&gt;
+&lt;p&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure  &gt;
+  &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img alt=&#34;&#34; srcset=&#34;
+               /post/python-logging-usage-and-extend/images/log_level_name_hu667f4dbf1ec23e6cfdec5f7e343ca129_96914_2754a2e48e65986ba563668aea4905bb.webp 400w,
+               /post/python-logging-usage-and-extend/images/log_level_name_hu667f4dbf1ec23e6cfdec5f7e343ca129_96914_6b7d4d3c41d11a6bfb2705456e7e0ae4.webp 760w,
+               /post/python-logging-usage-and-extend/images/log_level_name_hu667f4dbf1ec23e6cfdec5f7e343ca129_96914_1200x1200_fit_q75_h2_lanczos_3.webp 1200w&#34;
+               src=&#34;/post/python-logging-usage-and-extend/images/log_level_name_hu667f4dbf1ec23e6cfdec5f7e343ca129_96914_2754a2e48e65986ba563668aea4905bb.webp&#34;
+               width=&#34;760&#34;
+               height=&#34;732&#34;
+               loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+  &lt;/div&gt;&lt;/figure&gt;
+&lt;/p&gt;
+&lt;h3 id=&#34;模块架构图&#34;&gt;模块架构图&lt;/h3&gt;
+&lt;p&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure  &gt;
+  &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img alt=&#34;&#34; srcset=&#34;
+               /post/python-logging-usage-and-extend/images/log_data_flow_hu6274e8f9f952444ad4e548d4de5bbeca_260241_a82725665d1d23059475521047c93d10.webp 400w,
+               /post/python-logging-usage-and-extend/images/log_data_flow_hu6274e8f9f952444ad4e548d4de5bbeca_260241_76b0e1c8cb6b1b290fdcc3fec47cdcfb.webp 760w,
+               /post/python-logging-usage-and-extend/images/log_data_flow_hu6274e8f9f952444ad4e548d4de5bbeca_260241_1200x1200_fit_q75_h2_lanczos_3.webp 1200w&#34;
+               src=&#34;/post/python-logging-usage-and-extend/images/log_data_flow_hu6274e8f9f952444ad4e548d4de5bbeca_260241_a82725665d1d23059475521047c93d10.webp&#34;
+               width=&#34;760&#34;
+               height=&#34;589&#34;
+               loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+  &lt;/div&gt;&lt;/figure&gt;
+&lt;/p&gt;
+&lt;h3 id=&#34;logrecord日志事件对象&#34;&gt;LogRecord:日志事件对象&lt;/h3&gt;
+&lt;p&gt;LogRecord类表示一个被记录的事件&lt;br&gt;
+LogRecord实例会在需要记录某些东西时被创建，包含需要记录事件的所有相关信息。日志的主要信息在于msg和args,LogRecord实例也包括了实例被创建的时间、创建过程被调用 的源代码模块、文件名、行数等信息。 &lt;br&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure  &gt;
+  &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img alt=&#34;&#34; srcset=&#34;
+               /post/python-logging-usage-and-extend/images/logrecord_hu8674e2f76785f016a54448c27384beaa_213741_e588c56d01720de6d75abd12478ceb36.webp 400w,
+               /post/python-logging-usage-and-extend/images/logrecord_hu8674e2f76785f016a54448c27384beaa_213741_6dc2b70a6490bf6b8274f784f40777f4.webp 760w,
+               /post/python-logging-usage-and-extend/images/logrecord_hu8674e2f76785f016a54448c27384beaa_213741_1200x1200_fit_q75_h2_lanczos_3.webp 1200w&#34;
+               src=&#34;/post/python-logging-usage-and-extend/images/logrecord_hu8674e2f76785f016a54448c27384beaa_213741_e588c56d01720de6d75abd12478ceb36.webp&#34;
+               width=&#34;760&#34;
+               height=&#34;555&#34;
+               loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+  &lt;/div&gt;&lt;/figure&gt;
+&lt;/p&gt;
+&lt;h3 id=&#34;handler-日志处理类&#34;&gt;Handler: 日志处理类&lt;/h3&gt;
+&lt;p&gt;Handler类的实例负责把日志时间分发到特定的目的地&lt;/p&gt;
+&lt;p&gt;Handler类 作为一个接口，其应该实现的功能为：把日志时间分发到特定的目的地。Handler可以选择性地使用格式器（Formatter）实例将日志记录格式化为期望的样式，默认情况下只记录原始记录信息（record.message）&lt;/p&gt;
+&lt;h3 id=&#34;并发安全性设计&#34;&gt;并发安全性设计&lt;/h3&gt;
+&lt;h2 id=&#34;数据库持久化拓展&#34;&gt;数据库持久化拓展&lt;/h2&gt;
+&lt;h2 id=&#34;设计模式推荐&#34;&gt;设计模式推荐&lt;/h2&gt;
+&lt;h2 id=&#34;参考资料&#34;&gt;参考资料&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://realpython.com/python-logging-source-code/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Python Logging: A Stroll Through the Source Code&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://docs.python.org/3/howto/logging.html&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Logging HOWTO&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://github.com/python/cpython/tree/d730719b094cb006711b1cd546927b863c173b31/Lib/logging&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;CPython source code of logging module&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>
