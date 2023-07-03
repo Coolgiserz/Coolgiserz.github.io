@@ -347,7 +347,7 @@
     <meta property="twitter:image" content="/media/icon_hue03491371183284312b8b116a73ae5ab_79511_512x512_fill_lanczos_center_3.png" /><meta property="og:locale" content="en-us" />
   
     
-      <meta property="og:updated_time" content="2023-06-30T21:18:19&#43;08:00" />
+      <meta property="og:updated_time" content="2023-07-02T21:27:06&#43;08:00" />
     
   
 
@@ -1003,7 +1003,7 @@
         
         
         
-        <a href="/tag/covid-19/" style="font-size:1.0913389943631755rem">COVID-19</a>
+        <a href="/tag/covid-19/" style="font-size:1.0757842742132542rem">COVID-19</a>
       
         
         
@@ -1013,7 +1013,7 @@
         
         
         
-        <a href="/tag/gis/" style="font-size:1.320257631135561rem">GIS</a>
+        <a href="/tag/gis/" style="font-size:1.295603982988724rem">GIS</a>
       
         
         
@@ -1038,57 +1038,57 @@
         
         
         
-        <a href="/tag/python/" style="font-size:1.9405152622711224rem">Python</a>
+        <a href="/tag/python/" style="font-size:1.9483283381258658rem">Python</a>
       
         
         
         
-        <a href="/tag/%E4%B9%A6%E7%AD%BE/" style="font-size:1.320257631135561rem">书签</a>
+        <a href="/tag/%E4%B9%A6%E7%AD%BE/" style="font-size:1.295603982988724rem">书签</a>
       
         
         
         
-        <a href="/tag/%E5%A4%8D%E6%9D%82%E7%BD%91%E7%BB%9C/" style="font-size:1.0913389943631755rem">复杂网络</a>
+        <a href="/tag/%E5%A4%8D%E6%9D%82%E7%BD%91%E7%BB%9C/" style="font-size:1.0757842742132542rem">复杂网络</a>
       
         
         
         
-        <a href="/tag/%E6%80%9D%E7%BB%B4/" style="font-size:1.4826779887263508rem">思维</a>
+        <a href="/tag/%E6%80%9D%E7%BB%B4/" style="font-size:1.4515685484265082rem">思维</a>
       
         
         
         
-        <a href="/tag/%E6%95%B0%E5%AD%A6%E5%BB%BA%E6%A8%A1/" style="font-size:1.0913389943631755rem">数学建模</a>
+        <a href="/tag/%E6%95%B0%E5%AD%A6%E5%BB%BA%E6%A8%A1/" style="font-size:1.0757842742132542rem">数学建模</a>
       
         
         
         
-        <a href="/tag/%E6%99%BA%E6%85%A7%E4%BA%A4%E9%80%9A/" style="font-size:1.7986274520185337rem">智慧交通</a>
+        <a href="/tag/%E6%99%BA%E6%85%A7%E4%BA%A4%E9%80%9A/" style="font-size:1.7549598318444235rem">智慧交通</a>
       
         
         
         
-        <a href="/tag/%E6%9C%80%E4%BC%98%E4%BC%A0%E8%BE%93/" style="font-size:1.320257631135561rem">最优传输</a>
+        <a href="/tag/%E6%9C%80%E4%BC%98%E4%BC%A0%E8%BE%93/" style="font-size:1.295603982988724rem">最优传输</a>
       
         
         
         
-        <a href="/tag/%E6%B5%8B%E8%AF%95/" style="font-size:1.0913389943631755rem">测试</a>
+        <a href="/tag/%E6%B5%8B%E8%AF%95/" style="font-size:1.0757842742132542rem">测试</a>
       
         
         
         
-        <a href="/tag/%E7%AE%97%E6%B3%95/" style="font-size:1.320257631135561rem">算法</a>
+        <a href="/tag/%E7%AE%97%E6%B3%95/" style="font-size:1.295603982988724rem">算法</a>
       
         
         
         
-        <a href="/tag/%E8%87%AA%E7%84%B6%E8%AF%AD%E8%A8%80%E5%A4%84%E7%90%86/" style="font-size:1.4826779887263508rem">自然语言处理</a>
+        <a href="/tag/%E8%87%AA%E7%84%B6%E8%AF%AD%E8%A8%80%E5%A4%84%E7%90%86/" style="font-size:1.4515685484265082rem">自然语言处理</a>
       
         
         
         
-        <a href="/tag/%E8%B7%AF%E5%BE%84%E8%A7%84%E5%88%92/" style="font-size:1.0913389943631755rem">路径规划</a>
+        <a href="/tag/%E8%B7%AF%E5%BE%84%E8%A7%84%E5%88%92/" style="font-size:1.0757842742132542rem">路径规划</a>
       
     </div>
   
@@ -1292,13 +1292,7 @@
   
   <a href="/post/python-distribute-executable-program/"  class="summary-link">
     <div class="article-style">
-      <p>程序编写完成后需要打包，对于打包我们可能有以下一个或多个需求：
-  打包成开源/闭源程序
-  打包成可执行程序，系统无需安装python环境也能使用
-  对源码进行加密混淆，不能被轻易破解
-  本文总结将Python程序打包成可执行程序的几种方法和一些工具。
-0x00 前置知识 文件 pyc文件 PYC文件是Python的字节码文件（Bytecode File）的扩展名，它是经过Python解释器编译后生成的二进制文件。当Python脚本（.py文件）被解释器执行时，解释器会将其编译为字节码，并将字节码保存到PYC文件中。下次再次执行相同的脚本时，解释器会直接加载对应的PYC文件，而无需再次编译源代码，从而提高执行效率。
-pyd文件 pyd 文件是用 Python 编写的动态链接库，可以在运行时由其他 Python 代码运行。它包含一个或多个 Python 模块，便于代码重用，并为编写应用程序提供模块架构。可以使用 .pyd 扩展名创建和保存 PYD 文件，例如 helloworld.</p>
+      <p>程序打包、加密、压缩</p>
     </div>
   </a>
   
@@ -2485,6 +2479,57 @@ pyd文件 pyd 文件是用 Python 编写的动态链接库，可以在运行时�
   <div class="article-metadata">
     
     <span>
+      Jul 2, 2023 9:27 PM &mdash; 9:27 PM
+    </span>
+    
+    <span class="middot-divider"></span>
+    <span>深圳</span>
+    
+  </div>
+  
+
+  
+  
+  
+  
+  <a href="/talk/%E5%8D%97%E6%96%B9%E7%A7%91%E6%8A%80%E5%A4%A7%E5%AD%A6%E5%8F%82%E8%A7%82%E4%B9%8B%E8%A1%8C/" >
+    <div class="img-hover-zoom">
+      <img src="/talk/%E5%8D%97%E6%96%B9%E7%A7%91%E6%8A%80%E5%A4%A7%E5%AD%A6%E5%8F%82%E8%A7%82%E4%B9%8B%E8%A1%8C/featured_hu7eae0557eb09eccd26afdefe05f72ca6_898814_808x455_fill_q75_h2_lanczos_smart1.webp" height="455" width="808"
+           class="article-banner" alt="南方科技大学参观之行" loading="lazy">
+    </div>
+  </a>
+  
+
+  <div class="section-subheading article-title mb-1 mt-3">
+    <a href="/talk/%E5%8D%97%E6%96%B9%E7%A7%91%E6%8A%80%E5%A4%A7%E5%AD%A6%E5%8F%82%E8%A7%82%E4%B9%8B%E8%A1%8C/" >南方科技大学参观之行</a>
+  </div>
+
+  
+
+  
+
+</div>
+
+  
+    
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="card-simple view-card">
+
+  
+  <div class="article-metadata">
+    
+    <span>
       Apr 29, 2023 9:44 PM &mdash; May 1, 2023 9:44 PM
     </span>
     
@@ -2659,57 +2704,6 @@ pyd文件 pyd 文件是用 Python 编写的动态链接库，可以在运行时�
   <a href="/talk/%E4%B8%83%E5%BD%A9%E4%BA%91%E5%8D%97%E4%B9%8B%E8%A1%8C-%E5%AF%BB%E8%AE%BF%E8%87%AA%E7%84%B6/"  class="summary-link">
     <div class="article-style">
       <p> 昆明 楚雄 大理 丽江    香格里拉 普洱 西双版纳   </p>
-    </div>
-  </a>
-  
-
-  
-
-</div>
-
-  
-    
-
-
-
-
-
-
-
-
-
-
-
-  
-
-
-<div class="card-simple view-card">
-
-  
-  <div class="article-metadata">
-    
-    <span>
-      May 16, 2020 1:13 PM &mdash; May 28, 2020 1:13 PM
-    </span>
-    
-    <span class="middot-divider"></span>
-    <span>深圳市</span>
-    
-  </div>
-  
-
-  
-  
-  
-
-  <div class="section-subheading article-title mb-1 mt-3">
-    <a href="/talk/%E6%B7%B1%E5%9C%B3%E4%BA%BA%E6%89%8D%E5%85%AC%E5%9B%AD%E6%95%A3%E6%AD%A5%E8%88%AA%E6%8B%8D/" >深圳人才公园：散步航拍</a>
-  </div>
-
-  
-  <a href="/talk/%E6%B7%B1%E5%9C%B3%E4%BA%BA%E6%89%8D%E5%85%AC%E5%9B%AD%E6%95%A3%E6%AD%A5%E8%88%AA%E6%8B%8D/"  class="summary-link">
-    <div class="article-style">
-      <p> </p>
     </div>
   </a>
   

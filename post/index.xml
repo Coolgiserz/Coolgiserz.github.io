@@ -6423,6 +6423,17 @@ RAII技巧性太强，隐藏了意图
     </item>
     
     <item>
+      <title>Hugo Toc Issue</title>
+      <link>/post/hugo-toc-issue/</link>
+      <pubDate>Sat, 03 Jul 2021 21:45:45 +0800</pubDate>
+      <guid>/post/hugo-toc-issue/</guid>
+      <description>&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;hugo mod clean
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;hugo mod get -u ./...
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;hugo mod tidy
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</description>
+    </item>
+    
+    <item>
       <title>如何写一本好的Proposal？</title>
       <link>/post/project-proposal-writing-skills/</link>
       <pubDate>Wed, 13 Jan 2021 20:14:53 +0800</pubDate>
