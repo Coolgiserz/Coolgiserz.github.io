@@ -577,6 +577,66 @@ Nuitka使用C编译器将转换后的代码编译为可执行文件。生成的�
                loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
   &lt;/div&gt;&lt;/figure&gt;
 &lt;/p&gt;
+&lt;h3 id=&#34;编译库&#34;&gt;编译库&lt;/h3&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;nuitka --module lib.py
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;在windows系统中，执行如上命令对lib.py打包，会得到一个动态依赖库（pyd文件）和python接口文件（pyi文件）。&lt;/p&gt;
+&lt;p&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure  &gt;
+  &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img alt=&#34;&#34; srcset=&#34;
+               /post/python-distribute-executable-program/images/nuitka-extension-pyd_hu4ce9a2aef4767626cdccc930725a7303_34336_426040ac7132825d9df318b75a5b7beb.webp 400w,
+               /post/python-distribute-executable-program/images/nuitka-extension-pyd_hu4ce9a2aef4767626cdccc930725a7303_34336_121d9fcfa5f21774483f45fca98110f9.webp 760w,
+               /post/python-distribute-executable-program/images/nuitka-extension-pyd_hu4ce9a2aef4767626cdccc930725a7303_34336_1200x1200_fit_q75_h2_lanczos_3.webp 1200w&#34;
+               src=&#34;/post/python-distribute-executable-program/images/nuitka-extension-pyd_hu4ce9a2aef4767626cdccc930725a7303_34336_426040ac7132825d9df318b75a5b7beb.webp&#34;
+               width=&#34;760&#34;
+               height=&#34;307&#34;
+               loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+  &lt;/div&gt;&lt;/figure&gt;
+&lt;/p&gt;
+&lt;p&gt;为测试lib.cp38-win_amd64.pyd的可用性，将lib.py重命名为lib.py.bak，执行main.py方法，结果如下：&lt;/p&gt;
+&lt;p&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure  &gt;
+  &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img alt=&#34;&#34; srcset=&#34;
+               /post/python-distribute-executable-program/images/nuitka-extension-demo_hucbdef39c4cb37ad3c8627c1d6d7412f5_36892_8a5f0614ff936eb2f2a6324303ecc81a.webp 400w,
+               /post/python-distribute-executable-program/images/nuitka-extension-demo_hucbdef39c4cb37ad3c8627c1d6d7412f5_36892_f0fffe3a993fcf49286c370f95775b19.webp 760w,
+               /post/python-distribute-executable-program/images/nuitka-extension-demo_hucbdef39c4cb37ad3c8627c1d6d7412f5_36892_1200x1200_fit_q75_h2_lanczos.webp 1200w&#34;
+               src=&#34;/post/python-distribute-executable-program/images/nuitka-extension-demo_hucbdef39c4cb37ad3c8627c1d6d7412f5_36892_8a5f0614ff936eb2f2a6324303ecc81a.webp&#34;
+               width=&#34;760&#34;
+               height=&#34;102&#34;
+               loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+  &lt;/div&gt;&lt;/figure&gt;
+&lt;/p&gt;
 &lt;h2 id=&#34;0x03-cython&#34;&gt;0x03 Cython&lt;/h2&gt;
 &lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;pip install Cython
 &lt;/code&gt;&lt;/pre&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-python&#34; data-lang=&#34;python&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;kn&#34;&gt;import&lt;/span&gt; &lt;span class=&#34;nn&#34;&gt;sys&lt;/span&gt;

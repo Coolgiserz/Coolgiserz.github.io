@@ -5,12 +5,685 @@
     <link>/category/python/</link>
       <atom:link href="/category/python/index.xml" rel="self" type="application/rss+xml" />
     <description>Python</description>
-    <generator>Wowchemy (https://wowchemy.com)</generator><language>en-us</language><lastBuildDate>Sun, 18 Jun 2023 09:02:27 +0800</lastBuildDate>
+    <generator>Wowchemy (https://wowchemy.com)</generator><language>en-us</language><lastBuildDate>Fri, 30 Jun 2023 21:18:19 +0800</lastBuildDate>
     <image>
       <url>/media/icon_hue03491371183284312b8b116a73ae5ab_79511_512x512_fill_lanczos_center_3.png</url>
       <title>Python</title>
       <link>/category/python/</link>
     </image>
+    
+    <item>
+      <title>Python程序打包为可执行程序的几种方法</title>
+      <link>/post/python-distribute-executable-program/</link>
+      <pubDate>Fri, 30 Jun 2023 21:18:19 +0800</pubDate>
+      <guid>/post/python-distribute-executable-program/</guid>
+      <description>&lt;p&gt;程序编写完成后需要打包，对于打包我们可能有以下一个或多个需求：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;打包成开源/闭源程序&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;打包成可执行程序，系统无需安装python环境也能使用&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;对源码进行加密混淆，不能被轻易破解&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;本文总结将Python程序打包成可执行程序的几种方法和一些工具。&lt;/p&gt;
+&lt;h2 id=&#34;0x00-前置知识&#34;&gt;0x00 前置知识&lt;/h2&gt;
+&lt;h3 id=&#34;文件&#34;&gt;文件&lt;/h3&gt;
+&lt;h4 id=&#34;pyc文件&#34;&gt;pyc文件&lt;/h4&gt;
+&lt;p&gt;PYC文件是Python的字节码文件（Bytecode File）的扩展名，它是经过Python解释器编译后生成的二进制文件。当Python脚本（.py文件）被解释器执行时，解释器会将其编译为字节码，并将字节码保存到PYC文件中。下次再次执行相同的脚本时，解释器会直接加载对应的PYC文件，而无需再次编译源代码，从而提高执行效率。&lt;/p&gt;
+&lt;h4 id=&#34;pyd文件&#34;&gt;pyd文件&lt;/h4&gt;
+&lt;p&gt;pyd 文件是用 Python 编写的动态链接库，可以在运行时由其他 Python 代码运行。它包含一个或多个 Python 模块，便于代码重用，并为编写应用程序提供模块架构。可以使用 .pyd 扩展名创建和保存 PYD 文件，例如 helloworld.pyd。应用程序开发人员可以使用 import 语句将 PYD 模块包含在他们的应用程序中。 PYD 文件可以使用适用于 Windows、Mac 和 Linux 操作系统的 Python Software Foundation Python 打开。&lt;/p&gt;
+&lt;h4 id=&#34;pyz文件&#34;&gt;pyz文件&lt;/h4&gt;
+&lt;p&gt;&amp;ldquo;pyz&amp;quot;文件通常是指一个Python Zip Archive（Python压缩归档）文件。该文件使用压缩算法将多个Python模块、库和脚本打包在一起，以便于分发和共享。&lt;/p&gt;
+&lt;p&gt;Python Zip Archive文件通常具有&amp;rdquo;.pyz&amp;quot;扩展名，并且可以通过Python解释器直接运行。在运行时，Python解释器会解压缩该文件并执行其中的代码。这种打包方式可以用于将单个可执行文件中的所有依赖项捆绑在一起，使得应用程序更易于分发和部署。&lt;/p&gt;
+&lt;h4 id=&#34;whl文件&#34;&gt;whl文件&lt;/h4&gt;
+&lt;p&gt;whl文件（wheel file）是Python软件包的一种打包格式，它是一种更先进、更完整、更方便的Python软件包安装和传播方案。相比于普通的Python软件包安装方式（通过源码安装），使用whl文件进行Python软件包的安装更加方便、更高效、更不容易出错。&lt;/p&gt;
+&lt;p&gt;whl包含了预编译的Python库文件、依赖配置、安装脚本等内容，因此在大部分情况下，我们可以直接通过pip命令，用whl文件进行Python包的安装。例如，可以使用以下命令安装已经下载好的whl文件：&lt;/p&gt;
+&lt;h3 id=&#34;包导入&#34;&gt;包导入&lt;/h3&gt;
+&lt;h4 id=&#34;隐式导入hidden-import&#34;&gt;隐式导入（hidden import）&lt;/h4&gt;
+&lt;p&gt;在打包过程中，某些模块的导入可能无法被打包工具自动识别出来。这可能是因为这些模块的导入是动态的、条件的或者在运行时根据一些动态因素发生的。此时，就需要通过指定&amp;quot;hidden import&amp;quot;来告诉打包工具这些模块的存在，以便正确打包。&lt;/p&gt;
+&lt;p&gt;例如，一些动态导入的模块、通过字符串导入的模块或者其他特殊情况下的模块，需要使用&amp;quot;hidden import&amp;quot;来确保打包工具能正确地识别它们的存在，并将其包含在打包后的可执行文件中。&lt;/p&gt;
+&lt;h2 id=&#34;0x01-pyinstaller&#34;&gt;0x01 PyInstaller&lt;/h2&gt;
+&lt;h3 id=&#34;重要组件&#34;&gt;重要组件&lt;/h3&gt;
+&lt;h4 id=&#34;analysis分析器&#34;&gt;Analysis（分析器）&lt;/h4&gt;
+&lt;p&gt;用于分析程序的导入和依赖。&lt;/p&gt;
+&lt;h4 id=&#34;pyzpython-zip&#34;&gt;PYZ（Python Zip）&lt;/h4&gt;
+&lt;h4 id=&#34;exe&#34;&gt;EXE&lt;/h4&gt;
+&lt;h3 id=&#34;简单示例&#34;&gt;简单示例&lt;/h3&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-python&#34; data-lang=&#34;python&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;# main.py&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;kn&#34;&gt;import&lt;/span&gt; &lt;span class=&#34;nn&#34;&gt;sys&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;kn&#34;&gt;import&lt;/span&gt; &lt;span class=&#34;nn&#34;&gt;lib&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;k&#34;&gt;def&lt;/span&gt; &lt;span class=&#34;nf&#34;&gt;say_hello&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;():&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;k&#34;&gt;try&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        &lt;span class=&#34;n&#34;&gt;lib&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;hello&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;sys&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;argv&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;k&#34;&gt;except&lt;/span&gt; &lt;span class=&#34;ne&#34;&gt;Exception&lt;/span&gt; &lt;span class=&#34;k&#34;&gt;as&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;e&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        &lt;span class=&#34;nb&#34;&gt;print&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;sa&#34;&gt;f&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;Exception &lt;/span&gt;&lt;span class=&#34;si&#34;&gt;{&lt;/span&gt;&lt;span class=&#34;nb&#34;&gt;repr&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;e&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;&lt;span class=&#34;si&#34;&gt;}&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;k&#34;&gt;if&lt;/span&gt; &lt;span class=&#34;vm&#34;&gt;__name__&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;==&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;__main__&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;nb&#34;&gt;print&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;Test PYinstaller&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;n&#34;&gt;say_hello&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;()&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-python&#34; data-lang=&#34;python&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;# lib.py&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;k&#34;&gt;def&lt;/span&gt; &lt;span class=&#34;nf&#34;&gt;hello&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;msg&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;deafule&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;):&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;nb&#34;&gt;print&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;sa&#34;&gt;f&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;Hello From Lib, &lt;/span&gt;&lt;span class=&#34;si&#34;&gt;{&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;msg&lt;/span&gt;&lt;span class=&#34;si&#34;&gt;}&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;当执行如下命令后，pyinstaller会生成main.spec文件（存储在&amp;ndash;specpath参数指定的目录中，默认是当前目录）。&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;pyinstaller main.py 
+&lt;/code&gt;&lt;/pre&gt;&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;# -*- mode: python ; coding: utf-8 -*-
+block_cipher = None
+a = Analysis(
+    [&amp;#39;main.py&amp;#39;],
+    pathex=[],
+    binaries=[],
+    datas=[],
+    hiddenimports=[],
+    hookspath=[],
+    hooksconfig={},
+    runtime_hooks=[],
+    excludes=[],
+    win_no_prefer_redirects=False,
+    win_private_assemblies=False,
+    cipher=block_cipher,
+    noarchive=False,
+)
+pyz = PYZ(a.pure, a.zipped_data, cipher=block_cipher)
+
+exe = EXE(
+    pyz,
+    a.scripts,
+    [],
+    exclude_binaries=True,
+    name=&amp;#39;main&amp;#39;,
+    debug=False,
+    bootloader_ignore_signals=False,
+    strip=False,
+    upx=True,
+    console=True,
+    disable_windowed_traceback=False,
+    argv_emulation=False,
+    target_arch=None,
+    codesign_identity=None,
+    entitlements_file=None,
+)
+coll = COLLECT(
+    exe,
+    a.binaries,
+    a.zipfiles,
+    a.datas,
+    strip=False,
+    upx=True,
+    upx_exclude=[],
+    name=&amp;#39;main&amp;#39;,
+)
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure  &gt;
+  &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img alt=&#34;&#34; srcset=&#34;
+               /post/python-distribute-executable-program/images/pyinstaller_huba9fc3e1458d9d905bcb2ace3f130bd6_71828_7abd6f9fae7233955a13645358fb5adb.webp 400w,
+               /post/python-distribute-executable-program/images/pyinstaller_huba9fc3e1458d9d905bcb2ace3f130bd6_71828_ffbaa7ce55298f14f612508260a89d50.webp 760w,
+               /post/python-distribute-executable-program/images/pyinstaller_huba9fc3e1458d9d905bcb2ace3f130bd6_71828_1200x1200_fit_q75_h2_lanczos.webp 1200w&#34;
+               src=&#34;/post/python-distribute-executable-program/images/pyinstaller_huba9fc3e1458d9d905bcb2ace3f130bd6_71828_7abd6f9fae7233955a13645358fb5adb.webp&#34;
+               width=&#34;760&#34;
+               height=&#34;241&#34;
+               loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+  &lt;/div&gt;&lt;/figure&gt;
+&lt;/p&gt;
+&lt;p&gt;.spec文件告知pyinstaller如何处理脚本,其编码了脚本的名称和大多数打包选项，pyinstaller根据spec文件的内容来构建可执行程序。
+大多数情况下无需修改spec文件，通常已经给出了足够的信息作为pyinstaller的打包选项。然而，以下情形你需要修改spec文件：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;你希望将数据文件捆绑到可执行程序中&lt;/li&gt;
+&lt;li&gt;你希望将动态依赖库(.dll, .so)包含在可执行程序中&lt;/li&gt;
+&lt;li&gt;你希望将Python的运行时选项添加到可执行程序中&lt;/li&gt;
+&lt;li&gt;你希望将多个程序捆绑成一个公共模块&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;可以通过pyi-makespec options name.py [other scripts&amp;hellip;]命令创建spec文件，该命令仅创建spec文件但不会构建可执行程序。当你将name.spec文件修改到符合要求时，可通过pyinstaller命令进行打包.&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;pyinstaller options name.spec
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;注: pyi-makespec和pyinstaller的options具有相同的选项，部分参数选项如下:
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure  &gt;
+  &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img alt=&#34;&#34; srcset=&#34;
+               /post/python-distribute-executable-program/images/pyinstaller-params_hu50683fdf87199a823f683b4372c8a6b6_238883_d274abf5cbea4f65d02ab2cd82084063.webp 400w,
+               /post/python-distribute-executable-program/images/pyinstaller-params_hu50683fdf87199a823f683b4372c8a6b6_238883_051a333b0cfbbb872e6d5583a3d6f7ea.webp 760w,
+               /post/python-distribute-executable-program/images/pyinstaller-params_hu50683fdf87199a823f683b4372c8a6b6_238883_1200x1200_fit_q75_h2_lanczos.webp 1200w&#34;
+               src=&#34;/post/python-distribute-executable-program/images/pyinstaller-params_hu50683fdf87199a823f683b4372c8a6b6_238883_d274abf5cbea4f65d02ab2cd82084063.webp&#34;
+               width=&#34;760&#34;
+               height=&#34;360&#34;
+               loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+  &lt;/div&gt;&lt;/figure&gt;
+&lt;/p&gt;
+&lt;h3 id=&#34;捆绑数据文件的程序打包&#34;&gt;捆绑数据文件的程序打包&lt;/h3&gt;
+&lt;h4 id=&#34;对照实验&#34;&gt;对照实验&lt;/h4&gt;
+&lt;p&gt;pyinstaller默认不会将数据文件捆绑到打包的文件夹中&lt;/p&gt;
+&lt;p&gt;创建一个文本文件config.txt，将lib.py的代码修改为读取config.txt文件的内容在进行打印&lt;/p&gt;
+&lt;p&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure  &gt;
+  &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img alt=&#34;&#34; srcset=&#34;
+               /post/python-distribute-executable-program/images/config_txt_huffc4e70ada228a967ecbadec80ec2b6f_12741_f17e9b16cfd0c55c9e63b18afe4c23ae.webp 400w,
+               /post/python-distribute-executable-program/images/config_txt_huffc4e70ada228a967ecbadec80ec2b6f_12741_be4dc8d70b931706102b9e342cc283a2.webp 760w,
+               /post/python-distribute-executable-program/images/config_txt_huffc4e70ada228a967ecbadec80ec2b6f_12741_1200x1200_fit_q75_h2_lanczos.webp 1200w&#34;
+               src=&#34;/post/python-distribute-executable-program/images/config_txt_huffc4e70ada228a967ecbadec80ec2b6f_12741_f17e9b16cfd0c55c9e63b18afe4c23ae.webp&#34;
+               width=&#34;694&#34;
+               height=&#34;224&#34;
+               loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+  &lt;/div&gt;&lt;/figure&gt;
+&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-python&#34; data-lang=&#34;python&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;# lib.py&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;k&#34;&gt;def&lt;/span&gt; &lt;span class=&#34;nf&#34;&gt;hello&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;msg&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;deafule&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;):&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;k&#34;&gt;with&lt;/span&gt; &lt;span class=&#34;nb&#34;&gt;open&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;config.txt&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;r&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;k&#34;&gt;as&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;fr&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        &lt;span class=&#34;nb&#34;&gt;print&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;sa&#34;&gt;f&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;&lt;/span&gt;&lt;span class=&#34;si&#34;&gt;{&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;fr&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;read&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;()&lt;/span&gt;&lt;span class=&#34;si&#34;&gt;}&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;, &lt;/span&gt;&lt;span class=&#34;si&#34;&gt;{&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;msg&lt;/span&gt;&lt;span class=&#34;si&#34;&gt;}&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;然后使用默认spec文件的参数对程序进行打包，你会发现config.txt文件没有被打包到dist目录下，运行main.exe自然也是以失败告终。
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure  &gt;
+  &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img alt=&#34;&#34; srcset=&#34;
+               /post/python-distribute-executable-program/images/file_not_found_exception_hu7663361d4b7823ef71c74a04d0cc687a_37299_a6485bb19e60bc2d0534acdd637e29f1.webp 400w,
+               /post/python-distribute-executable-program/images/file_not_found_exception_hu7663361d4b7823ef71c74a04d0cc687a_37299_1710872234f5580be6542582e1665a50.webp 760w,
+               /post/python-distribute-executable-program/images/file_not_found_exception_hu7663361d4b7823ef71c74a04d0cc687a_37299_1200x1200_fit_q75_h2_lanczos.webp 1200w&#34;
+               src=&#34;/post/python-distribute-executable-program/images/file_not_found_exception_hu7663361d4b7823ef71c74a04d0cc687a_37299_a6485bb19e60bc2d0534acdd637e29f1.webp&#34;
+               width=&#34;760&#34;
+               height=&#34;180&#34;
+               loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+  &lt;/div&gt;&lt;/figure&gt;
+&lt;/p&gt;
+&lt;p&gt;要将数据文件（此例的config.txt）打包，需在spec文件的Analysis.datas属性 进行 配置，如以下语句意味着你希望将当前目录下的config.txt文件打包到打包文件的根目录下。&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;datas = [(&amp;#39;config.txt&amp;#39;, &amp;#39;.&amp;#39;)]
+&lt;/code&gt;&lt;/pre&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-python&#34; data-lang=&#34;python&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;# main.spec&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;# ...&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;a&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;Analysis&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;s1&#34;&gt;&amp;#39;main.py&amp;#39;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;],&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;n&#34;&gt;pathex&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;[],&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;n&#34;&gt;binaries&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;[],&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;n&#34;&gt;datas&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;[(&lt;/span&gt;&lt;span class=&#34;s1&#34;&gt;&amp;#39;config.txt&amp;#39;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;&lt;span class=&#34;s1&#34;&gt;&amp;#39;.&amp;#39;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)],&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;n&#34;&gt;hiddenimports&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;[],&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;n&#34;&gt;hookspath&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;[],&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;n&#34;&gt;hooksconfig&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;{},&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;n&#34;&gt;runtime_hooks&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;[],&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;n&#34;&gt;excludes&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;[],&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;n&#34;&gt;win_no_prefer_redirects&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;kc&#34;&gt;False&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;n&#34;&gt;win_private_assemblies&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;kc&#34;&gt;False&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;n&#34;&gt;cipher&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;block_cipher&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;n&#34;&gt;noarchive&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;kc&#34;&gt;False&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;# ...&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure  &gt;
+  &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img alt=&#34;&#34; srcset=&#34;
+               /post/python-distribute-executable-program/images/pyinstaller_main_spec_hubb7b4118c26cac5ebf28e446a255c64d_203455_d35fd67430c280450e1404db9d4ce961.webp 400w,
+               /post/python-distribute-executable-program/images/pyinstaller_main_spec_hubb7b4118c26cac5ebf28e446a255c64d_203455_09edc85e3bd5f693b84050392370faa9.webp 760w,
+               /post/python-distribute-executable-program/images/pyinstaller_main_spec_hubb7b4118c26cac5ebf28e446a255c64d_203455_1200x1200_fit_q75_h2_lanczos.webp 1200w&#34;
+               src=&#34;/post/python-distribute-executable-program/images/pyinstaller_main_spec_hubb7b4118c26cac5ebf28e446a255c64d_203455_d35fd67430c280450e1404db9d4ce961.webp&#34;
+               width=&#34;760&#34;
+               height=&#34;400&#34;
+               loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+  &lt;/div&gt;&lt;/figure&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure  &gt;
+  &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img alt=&#34;&#34; srcset=&#34;
+               /post/python-distribute-executable-program/images/pyinstaller_main_spec1_hud50bda192d599b72cb10c5a763e1fc8c_181907_47487e2eb1b9df8e19f1a393dc0580ac.webp 400w,
+               /post/python-distribute-executable-program/images/pyinstaller_main_spec1_hud50bda192d599b72cb10c5a763e1fc8c_181907_7afd7b17b7c366cc8d0ae14fac635460.webp 760w,
+               /post/python-distribute-executable-program/images/pyinstaller_main_spec1_hud50bda192d599b72cb10c5a763e1fc8c_181907_1200x1200_fit_q75_h2_lanczos.webp 1200w&#34;
+               src=&#34;/post/python-distribute-executable-program/images/pyinstaller_main_spec1_hud50bda192d599b72cb10c5a763e1fc8c_181907_47487e2eb1b9df8e19f1a393dc0580ac.webp&#34;
+               width=&#34;760&#34;
+               height=&#34;329&#34;
+               loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+  &lt;/div&gt;&lt;/figure&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure  &gt;
+  &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img alt=&#34;&#34; srcset=&#34;
+               /post/python-distribute-executable-program/images/hello_from_config_huc13e8ffb00a9852a13d7c3115944c7ea_48714_80cf5d70e97ffd266cf52b5b00a015bd.webp 400w,
+               /post/python-distribute-executable-program/images/hello_from_config_huc13e8ffb00a9852a13d7c3115944c7ea_48714_e870018a7e264400aea6910f016351ea.webp 760w,
+               /post/python-distribute-executable-program/images/hello_from_config_huc13e8ffb00a9852a13d7c3115944c7ea_48714_1200x1200_fit_q75_h2_lanczos.webp 1200w&#34;
+               src=&#34;/post/python-distribute-executable-program/images/hello_from_config_huc13e8ffb00a9852a13d7c3115944c7ea_48714_80cf5d70e97ffd266cf52b5b00a015bd.webp&#34;
+               width=&#34;760&#34;
+               height=&#34;219&#34;
+               loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+  &lt;/div&gt;&lt;/figure&gt;
+&lt;/p&gt;
+&lt;p&gt;当然，也可以在命令行中通过&amp;ndash;add-data参数指定捆绑打包数据文件，参数的官方说明如下：&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;--add-data &amp;lt;SRC;DEST or SRC:DEST&amp;gt;
+Additional non-binary files or folders to be added to the executable. The path separator is platform specific, os.pathsep (which is ; on Windows and : on most unix systems) is used. This option can be used multiple times.
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;还可以打包整个文件夹，或使用通配符来指定多个待打包的数据文件，如：&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-python&#34; data-lang=&#34;python&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;added_files&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;         &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt; &lt;span class=&#34;s1&#34;&gt;&amp;#39;src/README.txt&amp;#39;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;s1&#34;&gt;&amp;#39;.&amp;#39;&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;),&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;         &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt; &lt;span class=&#34;s1&#34;&gt;&amp;#39;/mygame/data&amp;#39;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;s1&#34;&gt;&amp;#39;data&amp;#39;&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;),&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;         &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt; &lt;span class=&#34;s1&#34;&gt;&amp;#39;/mygame/sfx/*.mp3&amp;#39;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;s1&#34;&gt;&amp;#39;sfx&amp;#39;&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;         &lt;span class=&#34;p&#34;&gt;]&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;a&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;Analysis&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;...&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;         &lt;span class=&#34;n&#34;&gt;datas&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;added_files&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;         &lt;span class=&#34;o&#34;&gt;...&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;         &lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;pyinstaller打包的程序安全吗&#34;&gt;pyinstaller打包的程序安全吗？&lt;/h3&gt;
+&lt;p&gt;源代码是否会泄漏，能否加密打包？&lt;/p&gt;
+&lt;h4 id=&#34;使用开源工具pyinstxtractor测试&#34;&gt;使用开源工具pyinstxtractor测试&lt;/h4&gt;
+&lt;p&gt;工具下载&lt;a href=&#34;https://sourceforge.net/projects/pyinstallerextractor/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;地址&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;尝试对pyinstaller打包生成的main.exe文件进行解包，可以发现，解包完成后多了一个main.exe_extracted目录，其中一个子目录 中全是pyc文件&lt;/p&gt;
+&lt;p&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure  &gt;
+  &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img alt=&#34;&#34; srcset=&#34;
+               /post/python-distribute-executable-program/images/pyinstxtractor_demo_hu9aaf52b131952ca6dba31c29a16dbb21_100529_c78da36daa6eba655478d50baf6009e7.webp 400w,
+               /post/python-distribute-executable-program/images/pyinstxtractor_demo_hu9aaf52b131952ca6dba31c29a16dbb21_100529_6d7654599dc20d96df1e8c4340b5737c.webp 760w,
+               /post/python-distribute-executable-program/images/pyinstxtractor_demo_hu9aaf52b131952ca6dba31c29a16dbb21_100529_1200x1200_fit_q75_h2_lanczos.webp 1200w&#34;
+               src=&#34;/post/python-distribute-executable-program/images/pyinstxtractor_demo_hu9aaf52b131952ca6dba31c29a16dbb21_100529_c78da36daa6eba655478d50baf6009e7.webp&#34;
+               width=&#34;760&#34;
+               height=&#34;217&#34;
+               loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+  &lt;/div&gt;&lt;/figure&gt;
+&lt;/p&gt;
+&lt;p&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure  &gt;
+  &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img alt=&#34;&#34; srcset=&#34;
+               /post/python-distribute-executable-program/images/main_exe_extracted_hu5c77d1acaf220f067ef38a4078507ad2_26718_bffa5cd1d6df4ea9369061c2e1949a9c.webp 400w,
+               /post/python-distribute-executable-program/images/main_exe_extracted_hu5c77d1acaf220f067ef38a4078507ad2_26718_bdeb15f8c61c89a0fde8c37a39dfbf70.webp 760w,
+               /post/python-distribute-executable-program/images/main_exe_extracted_hu5c77d1acaf220f067ef38a4078507ad2_26718_1200x1200_fit_q75_h2_lanczos.webp 1200w&#34;
+               src=&#34;/post/python-distribute-executable-program/images/main_exe_extracted_hu5c77d1acaf220f067ef38a4078507ad2_26718_bffa5cd1d6df4ea9369061c2e1949a9c.webp&#34;
+               width=&#34;393&#34;
+               height=&#34;342&#34;
+               loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+  &lt;/div&gt;&lt;/figure&gt;
+&lt;/p&gt;
+&lt;p&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure  &gt;
+  &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img alt=&#34;&#34; srcset=&#34;
+               /post/python-distribute-executable-program/images/extracted_pyc_demo_hu0167bb048a85daead74289553992dd1d_133713_f00b08a3f220d993cbcdc4cb5c2d8702.webp 400w,
+               /post/python-distribute-executable-program/images/extracted_pyc_demo_hu0167bb048a85daead74289553992dd1d_133713_78b0803b42f0d30d3092710b20f5e569.webp 760w,
+               /post/python-distribute-executable-program/images/extracted_pyc_demo_hu0167bb048a85daead74289553992dd1d_133713_1200x1200_fit_q75_h2_lanczos.webp 1200w&#34;
+               src=&#34;/post/python-distribute-executable-program/images/extracted_pyc_demo_hu0167bb048a85daead74289553992dd1d_133713_f00b08a3f220d993cbcdc4cb5c2d8702.webp&#34;
+               width=&#34;760&#34;
+               height=&#34;537&#34;
+               loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+  &lt;/div&gt;&lt;/figure&gt;
+&lt;/p&gt;
+&lt;p&gt;尝试使用&lt;a href=&#34;https://github.com/rocky/python-uncompyle6/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;uncompyle6&lt;/a&gt;对上面过程得到的pyc文件进行反编译。&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;pip install uncompyle6
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure  &gt;
+  &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img alt=&#34;&#34; srcset=&#34;
+               /post/python-distribute-executable-program/images/err_pyc_decom_hu57fede16314ad7fa6555c754e2422012_130644_8e2d7f116c3352779c85dc72a08cfca9.webp 400w,
+               /post/python-distribute-executable-program/images/err_pyc_decom_hu57fede16314ad7fa6555c754e2422012_130644_6a3c68411bcc60ee81dffaa3622f430b.webp 760w,
+               /post/python-distribute-executable-program/images/err_pyc_decom_hu57fede16314ad7fa6555c754e2422012_130644_1200x1200_fit_q75_h2_lanczos.webp 1200w&#34;
+               src=&#34;/post/python-distribute-executable-program/images/err_pyc_decom_hu57fede16314ad7fa6555c754e2422012_130644_8e2d7f116c3352779c85dc72a08cfca9.webp&#34;
+               width=&#34;760&#34;
+               height=&#34;256&#34;
+               loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+  &lt;/div&gt;&lt;/figure&gt;
+
+报错，查看issue区，有人在python3.7版本也遇到的类似的错误，但问题未解决&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;https://github.com/rocky/python-uncompyle6/issues/320
+https://github.com/rocky/python-uncompyle6/issues/216
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;有人反映可能是由于&lt;a href=&#34;https://www.cnblogs.com/jzking121/p/15312628.html&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;pyc文件首部“损坏”导致无法反编译&lt;/a&gt;，对此未进行测试，但侧面反映了pyc文件对于源代码具有一定保护作用。&lt;/p&gt;
+&lt;h4 id=&#34;windows平台下执行打包程序遇到的一些问题&#34;&gt;Windows平台下执行打包程序遇到的一些问题&lt;/h4&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;中文字符乱码导致无法正常执行程序&lt;/p&gt;
+&lt;p&gt;将cmd字符集设置为utf-8&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;chcp 65001
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;参考文档&#34;&gt;参考文档&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://pyinstaller.org/en/stable/spec-files.html&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Using Spec Files&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;0x02-nuitka&#34;&gt;0x02 Nuitka&lt;/h2&gt;
+&lt;p&gt;&lt;a href=&#34;https://github.com/Nuitka/Nuitka&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Github地址&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;有网友推荐Nuitka，反馈其效率比pyinstaller更高。
+nuitka安装方法&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;pip install nuitka
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;基本使用方法：&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;python -m nuitka main.py
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;打包后生成一个main.build文件夹，其中可发现nuitka已经将python模块及扩展转换成了c层次的代码。
+Nuitka使用C编译器将转换后的代码编译为可执行文件。生成的目标文件通常具有&amp;quot;.o&amp;quot;或&amp;quot;.obj&amp;quot;的扩展名（取决于使用的操作系统和编译器。）&lt;/p&gt;
+&lt;p&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure  &gt;
+  &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img alt=&#34;&#34; srcset=&#34;
+               /post/python-distribute-executable-program/images/nuitka_main_build_hu7aa8b9192db792976fef566706ef965b_101841_ed6a1e70ee0590e39c84e5877f52c1f9.webp 400w,
+               /post/python-distribute-executable-program/images/nuitka_main_build_hu7aa8b9192db792976fef566706ef965b_101841_8210736745d09feb4dcb3198569f2ebc.webp 760w,
+               /post/python-distribute-executable-program/images/nuitka_main_build_hu7aa8b9192db792976fef566706ef965b_101841_1200x1200_fit_q75_h2_lanczos.webp 1200w&#34;
+               src=&#34;/post/python-distribute-executable-program/images/nuitka_main_build_hu7aa8b9192db792976fef566706ef965b_101841_ed6a1e70ee0590e39c84e5877f52c1f9.webp&#34;
+               width=&#34;760&#34;
+               height=&#34;510&#34;
+               loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+  &lt;/div&gt;&lt;/figure&gt;
+
+可执行程序执行效果：
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure  &gt;
+  &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img alt=&#34;&#34; srcset=&#34;
+               /post/python-distribute-executable-program/images/nuitka_demo_hu0335e56bf0db024b40e14b71c63960ae_66322_9b1afbd8ca409aea664be0ea22e4cfab.webp 400w,
+               /post/python-distribute-executable-program/images/nuitka_demo_hu0335e56bf0db024b40e14b71c63960ae_66322_42aca851c219885ba05342f2a570d39a.webp 760w,
+               /post/python-distribute-executable-program/images/nuitka_demo_hu0335e56bf0db024b40e14b71c63960ae_66322_1200x1200_fit_q75_h2_lanczos.webp 1200w&#34;
+               src=&#34;/post/python-distribute-executable-program/images/nuitka_demo_hu0335e56bf0db024b40e14b71c63960ae_66322_9b1afbd8ca409aea664be0ea22e4cfab.webp&#34;
+               width=&#34;698&#34;
+               height=&#34;390&#34;
+               loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+  &lt;/div&gt;&lt;/figure&gt;
+&lt;/p&gt;
+&lt;h3 id=&#34;编译库&#34;&gt;编译库&lt;/h3&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;nuitka --module lib.py
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;在windows系统中，执行如上命令对lib.py打包，会得到一个动态依赖库（pyd文件）和python接口文件（pyi文件）。&lt;/p&gt;
+&lt;p&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure  &gt;
+  &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img alt=&#34;&#34; srcset=&#34;
+               /post/python-distribute-executable-program/images/nuitka-extension-pyd_hu4ce9a2aef4767626cdccc930725a7303_34336_426040ac7132825d9df318b75a5b7beb.webp 400w,
+               /post/python-distribute-executable-program/images/nuitka-extension-pyd_hu4ce9a2aef4767626cdccc930725a7303_34336_121d9fcfa5f21774483f45fca98110f9.webp 760w,
+               /post/python-distribute-executable-program/images/nuitka-extension-pyd_hu4ce9a2aef4767626cdccc930725a7303_34336_1200x1200_fit_q75_h2_lanczos_3.webp 1200w&#34;
+               src=&#34;/post/python-distribute-executable-program/images/nuitka-extension-pyd_hu4ce9a2aef4767626cdccc930725a7303_34336_426040ac7132825d9df318b75a5b7beb.webp&#34;
+               width=&#34;760&#34;
+               height=&#34;307&#34;
+               loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+  &lt;/div&gt;&lt;/figure&gt;
+&lt;/p&gt;
+&lt;p&gt;为测试lib.cp38-win_amd64.pyd的可用性，将lib.py重命名为lib.py.bak，执行main.py方法，结果如下：&lt;/p&gt;
+&lt;p&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure  &gt;
+  &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img alt=&#34;&#34; srcset=&#34;
+               /post/python-distribute-executable-program/images/nuitka-extension-demo_hucbdef39c4cb37ad3c8627c1d6d7412f5_36892_8a5f0614ff936eb2f2a6324303ecc81a.webp 400w,
+               /post/python-distribute-executable-program/images/nuitka-extension-demo_hucbdef39c4cb37ad3c8627c1d6d7412f5_36892_f0fffe3a993fcf49286c370f95775b19.webp 760w,
+               /post/python-distribute-executable-program/images/nuitka-extension-demo_hucbdef39c4cb37ad3c8627c1d6d7412f5_36892_1200x1200_fit_q75_h2_lanczos.webp 1200w&#34;
+               src=&#34;/post/python-distribute-executable-program/images/nuitka-extension-demo_hucbdef39c4cb37ad3c8627c1d6d7412f5_36892_8a5f0614ff936eb2f2a6324303ecc81a.webp&#34;
+               width=&#34;760&#34;
+               height=&#34;102&#34;
+               loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+  &lt;/div&gt;&lt;/figure&gt;
+&lt;/p&gt;
+&lt;h2 id=&#34;0x03-cython&#34;&gt;0x03 Cython&lt;/h2&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;pip install Cython
+&lt;/code&gt;&lt;/pre&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-python&#34; data-lang=&#34;python&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;kn&#34;&gt;import&lt;/span&gt; &lt;span class=&#34;nn&#34;&gt;sys&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;k&#34;&gt;def&lt;/span&gt; &lt;span class=&#34;nf&#34;&gt;say_hello&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;():&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;nb&#34;&gt;print&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;Hello&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;sys&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;argv&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;k&#34;&gt;if&lt;/span&gt; &lt;span class=&#34;vm&#34;&gt;__name__&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;==&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;__main__&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;k&#34;&gt;pass&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-python&#34; data-lang=&#34;python&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;# setup.py&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;kn&#34;&gt;from&lt;/span&gt; &lt;span class=&#34;nn&#34;&gt;distutils.core&lt;/span&gt; &lt;span class=&#34;kn&#34;&gt;import&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;setup&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;kn&#34;&gt;from&lt;/span&gt; &lt;span class=&#34;nn&#34;&gt;Cython.Build&lt;/span&gt; &lt;span class=&#34;kn&#34;&gt;import&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;cythonize&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;setup&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;n&#34;&gt;name&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;Python Core&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;n&#34;&gt;ext_modules&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;cythonize&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;main.py&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure  &gt;
+  &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img alt=&#34;&#34; srcset=&#34;
+               /post/python-distribute-executable-program/images/say_hello_hu82643e790da69e32a4d5fe4610a8c33a_22445_0ee573afe5e9003e8b736c53f06823a3.webp 400w,
+               /post/python-distribute-executable-program/images/say_hello_hu82643e790da69e32a4d5fe4610a8c33a_22445_a1bf87e8cd9a13b5b1fb96b912df3b8c.webp 760w,
+               /post/python-distribute-executable-program/images/say_hello_hu82643e790da69e32a4d5fe4610a8c33a_22445_1200x1200_fit_q75_h2_lanczos.webp 1200w&#34;
+               src=&#34;/post/python-distribute-executable-program/images/say_hello_hu82643e790da69e32a4d5fe4610a8c33a_22445_0ee573afe5e9003e8b736c53f06823a3.webp&#34;
+               width=&#34;760&#34;
+               height=&#34;55&#34;
+               loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+  &lt;/div&gt;&lt;/figure&gt;
+&lt;/p&gt;
+&lt;h2 id=&#34;参考文章--拓展阅读&#34;&gt;参考文章 &amp;amp;&amp;amp; 拓展阅读&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://docs.fileformat.com/zh/programming/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;FileFormat&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://py2exe.org/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;py2exe&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://zhuanlan.zhihu.com/p/54296517&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;如何保护你的 Python 代码 （一）—— 现有加密方案&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
     
     <item>
       <title>Python内置日志模块源码分析和进阶用法</title>

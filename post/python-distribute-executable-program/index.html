@@ -792,6 +792,10 @@
 
   
   
+  <span class="middot-divider"></span>
+  <span class="article-categories">
+    <i class="fas fa-folder mr-1"></i><a href="/category/python/">Python</a></span>
+  
 
 </div>
 
@@ -1358,6 +1362,66 @@ Nuitka使用C编译器将转换后的代码编译为可执行文件。生成的�
                src="/post/python-distribute-executable-program/images/nuitka_demo_hu0335e56bf0db024b40e14b71c63960ae_66322_9b1afbd8ca409aea664be0ea22e4cfab.webp"
                width="698"
                height="390"
+               loading="lazy" data-zoomable /></div>
+  </div></figure>
+</p>
+<h3 id="编译库">编译库</h3>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">nuitka --module lib.py
+</span></span></code></pre></div><p>在windows系统中，执行如上命令对lib.py打包，会得到一个动态依赖库（pyd文件）和python接口文件（pyi文件）。</p>
+<p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<figure  >
+  <div class="d-flex justify-content-center">
+    <div class="w-100" ><img alt="" srcset="
+               /post/python-distribute-executable-program/images/nuitka-extension-pyd_hu4ce9a2aef4767626cdccc930725a7303_34336_426040ac7132825d9df318b75a5b7beb.webp 400w,
+               /post/python-distribute-executable-program/images/nuitka-extension-pyd_hu4ce9a2aef4767626cdccc930725a7303_34336_121d9fcfa5f21774483f45fca98110f9.webp 760w,
+               /post/python-distribute-executable-program/images/nuitka-extension-pyd_hu4ce9a2aef4767626cdccc930725a7303_34336_1200x1200_fit_q75_h2_lanczos_3.webp 1200w"
+               src="/post/python-distribute-executable-program/images/nuitka-extension-pyd_hu4ce9a2aef4767626cdccc930725a7303_34336_426040ac7132825d9df318b75a5b7beb.webp"
+               width="760"
+               height="307"
+               loading="lazy" data-zoomable /></div>
+  </div></figure>
+</p>
+<p>为测试lib.cp38-win_amd64.pyd的可用性，将lib.py重命名为lib.py.bak，执行main.py方法，结果如下：</p>
+<p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<figure  >
+  <div class="d-flex justify-content-center">
+    <div class="w-100" ><img alt="" srcset="
+               /post/python-distribute-executable-program/images/nuitka-extension-demo_hucbdef39c4cb37ad3c8627c1d6d7412f5_36892_8a5f0614ff936eb2f2a6324303ecc81a.webp 400w,
+               /post/python-distribute-executable-program/images/nuitka-extension-demo_hucbdef39c4cb37ad3c8627c1d6d7412f5_36892_f0fffe3a993fcf49286c370f95775b19.webp 760w,
+               /post/python-distribute-executable-program/images/nuitka-extension-demo_hucbdef39c4cb37ad3c8627c1d6d7412f5_36892_1200x1200_fit_q75_h2_lanczos.webp 1200w"
+               src="/post/python-distribute-executable-program/images/nuitka-extension-demo_hucbdef39c4cb37ad3c8627c1d6d7412f5_36892_8a5f0614ff936eb2f2a6324303ecc81a.webp"
+               width="760"
+               height="102"
                loading="lazy" data-zoomable /></div>
   </div></figure>
 </p>
