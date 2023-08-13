@@ -813,24 +813,7 @@
   <div class="article-container">
 
     <div class="article-style">
-      <details class="toc-inpage d-print-none  " open>
-  <summary class="font-weight-bold">Table of Contents</summary>
-  <nav id="TableOfContents">
-  <ul>
-    <li><a href="#0x00-api分类文档">0x00 API分类文档</a></li>
-    <li><a href="#0x01-分类示例">0x01 分类示例</a></li>
-    <li><a href="#0x02-常用python解析文件库">0x02 常用python解析文件库</a></li>
-    <li><a href="#0x03-部分代码">0x03 部分代码</a>
-      <ul>
-        <li><a href="#上海市poi">上海市POI</a></li>
-      </ul>
-    </li>
-    <li><a href="#0x04-别人的文章">0x04 别人的文章</a></li>
-  </ul>
-</nav>
-</details>
-
-<h2 id="0x00-api分类文档">0x00 API分类文档</h2>
+      <h2 id="0x00-api分类文档">0x00 API分类文档</h2>
 <p><a href="https://lbs.amap.com/api/webservice/guide/api/search" target="_blank" rel="noopener">https://lbs.amap.com/api/webservice/guide/api/search</a>
 <a href="https://lbs.amap.com/api/webservice/guide/api/search#polygon" target="_blank" rel="noopener">https://lbs.amap.com/api/webservice/guide/api/search#polygon</a>
 <a href="https://lbs.amap.com/api/webservice/guide/api/convert/" target="_blank" rel="noopener">https://lbs.amap.com/api/webservice/guide/api/convert/</a></p>
@@ -944,7 +927,7 @@
 </span></span><span class="line"><span class="cl">        <span class="n">poi</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">text2json</span><span class="p">(</span><span class="n">text</span><span class="p">)</span>
 </span></span><span class="line"><span class="cl">        <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="n">poi</span><span class="p">:</span>
 </span></span><span class="line"><span class="cl">            <span class="bp">self</span><span class="o">.</span><span class="n">file</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">json2plain</span><span class="p">(</span><span class="n">p</span><span class="p">))</span>
-</span></span><span class="line"><span class="cl">            
+</span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl">    <span class="k">def</span> <span class="nf">poi2txtplus</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">pages</span><span class="p">,</span> <span class="n">poitype</span><span class="p">,</span><span class="n">fname</span><span class="p">):</span>
 </span></span><span class="line"><span class="cl">        <span class="bp">self</span><span class="o">.</span><span class="n">file</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="n">fname</span><span class="p">,</span> <span class="s1">&#39;a+&#39;</span><span class="p">)</span>
 </span></span><span class="line"><span class="cl">        <span class="k">if</span> <span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">pages</span><span class="p">)</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">):</span>
