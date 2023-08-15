@@ -5,12 +5,179 @@
     <link>/tag/%E6%B5%8B%E8%AF%95/</link>
       <atom:link href="/tag/%E6%B5%8B%E8%AF%95/index.xml" rel="self" type="application/rss+xml" />
     <description>测试</description>
-    <generator>Wowchemy (https://wowchemy.com)</generator><language>en-us</language><lastBuildDate>Mon, 09 Mar 2020 20:20:57 +0800</lastBuildDate>
+    <generator>Wowchemy (https://wowchemy.com)</generator><language>en-us</language><lastBuildDate>Mon, 31 Jul 2023 23:15:54 +0800</lastBuildDate>
     <image>
       <url>/media/icon_hue03491371183284312b8b116a73ae5ab_79511_512x512_fill_lanczos_center_3.png</url>
       <title>测试</title>
       <link>/tag/%E6%B5%8B%E8%AF%95/</link>
     </image>
+    
+    <item>
+      <title>思考：如何测试一个游戏？</title>
+      <link>/post/game-testing-thinking/</link>
+      <pubDate>Mon, 31 Jul 2023 23:15:54 +0800</pubDate>
+      <guid>/post/game-testing-thinking/</guid>
+      <description>&lt;h2 id=&#34;概述&#34;&gt;概述&lt;/h2&gt;
+&lt;p&gt;测试的目的是寻找产品缺陷，最终提高产品的质量。对于游戏而言，与一般软件不同的是，当用户在使用游戏软件时时，往往会在一段时间内沉浸式地与软件进行细致地交互（假设游戏对用户有吸引力），因此需要测试游戏的流畅度、控制的灵敏度，各种硬件配置环境测试游戏，如果是多人对战游戏还需要关注游戏角色、能力的平衡性。总的来说，游戏测试包括但不限于如下方面：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;性能，游戏响应时间如何？游戏服务延时率是否不可接受？网络延迟时玩家会面临什么？服务器最高可容纳什么样的并发量（负载）？&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;安全问题，玩家的账号是否安全？充值的点券、购买的装备、英雄是否会按时到账会丢失？不同玩家之间是否可能越权操作？玩家在wifi环境下登录游戏是否可能泄露隐私信息（数据传输过程是否加密，加密程度如何）？&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;功能方面，是否所有设计的按钮、操作、技能、社交都能按预期执行？&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;兼容性方面，游戏在所有目标平台上是否可以正常运行，包括不同的操作系统、设备型号、硬件配置以及不同的网络环境等。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;用户交互测试，用户界面。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;合规性方面，游戏各方面元素是否符合相关法规要求，如隐私、年龄、版权等&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;可玩性方面，较为主观，但需要有人试玩并对游戏剧情、战斗等维度的可玩性做出评价，至少能从目标用户群体的采样测试人员得到普遍较高的评价（可设计一套评分体系）才能认为游戏可玩性较高。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;本地化方面，假如游戏支持多语言或者有国际化版本，需考虑对应国家、语言的版本的本地化支持是否正常（文本是否被正确翻译、界面是否符合当地习俗、输入输出是否与目标地区的习惯一致、时间货币的数值显示是否符合目标地区的习惯等）。需要考虑不同地区的用户连接游戏服务时能否得到及时的响应和正确的回复。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&amp;hellip;&amp;hellip;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;如果从流程化的角度考虑游戏测试，还需要注意对游戏质量总体情况进行定量化度量，如测试覆盖率、错误数量、功能不达标率等，也要注意对用户反馈的正面与否进行统计。&lt;/p&gt;
+&lt;h2 id=&#34;非技术层面&#34;&gt;非技术层面&lt;/h2&gt;
+&lt;h3 id=&#34;如何测试游戏可玩性&#34;&gt;如何测试游戏可玩性&lt;/h3&gt;
+&lt;p&gt;定义测试目标、选择测试用户、观察和记录、量化和分析。这部分的测试可能略微主观，对于完全不喜欢某一游戏类型的玩家而言，让ta来测试这类游戏，得到的反馈可能是极差的，也不一定具有参考意义。&lt;/p&gt;
+&lt;h3 id=&#34;如何测试游戏平衡性&#34;&gt;如何测试游戏平衡性&lt;/h3&gt;
+&lt;p&gt;测试平衡性的前提是明确“平衡”的标准，所有的阵营或角色有相等的机会获胜？所有同职业角色的技能及属性强度在一个合适的统一量化标准中相差不能很大；&lt;/p&gt;
+&lt;p&gt;收集和分析数据进行统计分析以评估游戏的平衡性：死亡次数、胜利次数、得分等。&lt;/p&gt;
+&lt;p&gt;数据从何而来？以《王者荣耀》为例，假如要测试一个新上线的英雄是否会强度适当，可以进行如下测试（平衡性测试）：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;内部测试，如让设计师、开发者、测试员使用新英雄与已存在的英雄进行对战&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;玩家反馈：在测试服引入新英雄，收集和分析玩家的反馈&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;迭代调整：根据测试结果和玩家反馈进行新英雄的数值迭代调整（如何合理地调整？）&lt;/p&gt;
+&lt;p&gt;以老英雄，公认为强度适中（不过弱也不超标）的老英雄的数值统计结果作为参考，调整新英雄的初始属性和成长速度、成长属性&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;另外，平衡性有时不只看单个英雄的数值，还要看其与其他特定英雄搭配后的强度（多种玩法组合下的强度）。&lt;/p&gt;
+&lt;h3 id=&#34;对合对游戏内容合规性和准确性进行测试&#34;&gt;对合对游戏内容合规性和准确性进行测试&lt;/h3&gt;
+&lt;p&gt;人工审查&lt;/p&gt;
+&lt;h3 id=&#34;如何对国际化和本地化进行测试&#34;&gt;如何对国际化和本地化进行测试&lt;/h3&gt;
+&lt;p&gt;人工审查、自动化测试&lt;/p&gt;
+&lt;h3 id=&#34;如何对视觉效果和音乐效果进行测试&#34;&gt;如何对视觉效果和音乐效果进行测试&lt;/h3&gt;
+&lt;p&gt;能否自动化测试？如果实现自动化的话，投入产出比是怎样的？&lt;/p&gt;
+&lt;h2 id=&#34;技术层面&#34;&gt;技术层面&lt;/h2&gt;
+&lt;h3 id=&#34;如何测试网络性能&#34;&gt;如何测试网络性能&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;通过负载测试工具，模拟大数量级的并发用户执行游戏操作接口。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;模拟弱网环境、各种网络环境(4G/5G/Wifi)及网络环境切换时的游戏表现&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;如何测试兼容性&#34;&gt;如何测试兼容性&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;设备型号&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;操作系统（Android/IOS）&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&amp;hellip;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;如何测试安全性&#34;&gt;如何测试安全性&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;用户账号安全性&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;用户交易安全性&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;网络协议安全性&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;网络接口安全性&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;权限安全性&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;外挂检测&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;……&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;对玩过的一些游戏进行评价&#34;&gt;对玩过的一些游戏进行评价&lt;/h2&gt;
+&lt;h3 id=&#34;塞尔达传说旷野之息&#34;&gt;《塞尔达传说：旷野之息》&lt;/h3&gt;
+&lt;h4 id=&#34;整体评价&#34;&gt;整体评价&lt;/h4&gt;
+&lt;p&gt;&lt;strong&gt;开放世界&lt;/strong&gt;角色扮演游戏，剧情丰富、3D建模、现实环境模拟细致、动作设计富含细节，神庙（&lt;strong&gt;解谜、迷宫&lt;/strong&gt;）具有趣味性和挑战性。&lt;/p&gt;
+&lt;p&gt;道具的丰富性结合&lt;strong&gt;物理和化学原理&lt;/strong&gt;可以衍生出很多玩法，比如要战胜怪物可以靠肉搏技巧，也可以靠策略（陷阱），还可以靠吃药升级装备增强作战能力。&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;火、电、冰元素的装备、怪物、料理等；游戏世界中丰富的材料、生物等；
+&lt;/code&gt;&lt;/pre&gt;&lt;h4 id=&#34;不足之处&#34;&gt;不足之处&lt;/h4&gt;
+&lt;p&gt;游戏的战斗技巧单一，长时间玩下去可能会觉得单调，如各种人马的战斗模式基本是固定的，熟悉以后就可预测，并可以相对固定的套路应对。（虽然大师模式的怪物加入回复机制，对玩家而言也有不少挑战）&lt;/p&gt;
+&lt;p&gt;物理、化学原理的可利用方式还是较少。林克的滑翔伞无法被打破或燃烧&lt;/p&gt;
+&lt;p&gt;战斗反应时间较多，更换武器或弓箭时可以暂停战斗。&lt;/p&gt;
+&lt;h3 id=&#34;王者荣耀&#34;&gt;《王者荣耀》&lt;/h3&gt;
+&lt;h4 id=&#34;整体评价-1&#34;&gt;整体评价&lt;/h4&gt;
+&lt;p&gt;多人在线团队竞技游戏&lt;/p&gt;
+&lt;h4 id=&#34;不足之处-1&#34;&gt;不足之处&lt;/h4&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;匹配机制无语&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;地图复杂度不够&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;测试工具&#34;&gt;测试工具&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a href=&#34;http://appium.io&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Appium&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a href=&#34;https://www.selenium.dev&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Selenium&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;LoadRunner&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;JMeter&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;游戏测试案例及问题思考&#34;&gt;游戏测试案例及问题思考&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a href=&#34;https://toutiao.io/posts/h14lscl/preview&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;## 王者荣耀是怎么测试的？——『上海站议题』游戏质量篇&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;假如让你测试《王者荣耀》中一个新英雄，你会从哪些方面进行思考和设计测试方案？&lt;/p&gt;
+&lt;p&gt;1、界面：人物模型及动作、特效是否符合设计原型&lt;/p&gt;
+&lt;p&gt;2、功能：各项技能及组合技、被动属性及特性是否符合设计规格&lt;/p&gt;
+&lt;p&gt;3、平衡：数值是否明显偏弱或过强&lt;/p&gt;
+&lt;p&gt;4、活动：产出手段、途径（商城直售、活动领取）是否符合预期&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&amp;hellip;&amp;hellip;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;总结&#34;&gt;总结&lt;/h2&gt;
+&lt;p&gt;不管是技术层面测试还是非技术层面的测试，明确测试目标（方案）、定义测试场景，以量化的形式表示游戏质量是很重要的。考虑软件架构层面，还要尤其考虑用户体验，一点缺陷可能就会带来用户流失和利益亏损。&lt;/p&gt;
+</description>
+    </item>
     
     <item>
       <title>认识数据驱动的测试</title>

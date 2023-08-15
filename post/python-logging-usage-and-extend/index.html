@@ -781,7 +781,7 @@
   
   <span class="middot-divider"></span>
   <span class="article-reading-time">
-    1 min read
+    2 min read
   </span>
   
 
@@ -921,7 +921,8 @@
                loading="lazy" data-zoomable /></div>
   </div></figure>
 </p>
-<h3 id="模块架构图">模块架构图</h3>
+<h3 id="模块架构图及日志数据流">模块架构图及日志数据流</h3>
+<p>当开发者调用logger.info、logger.warning之类的日志记录方法时，日志模块会根据已启用的日志级别（Level）判定如何处理日志事件，如果启用的日志级别低于当前记录的事件级别（如DEBUG低于ERROR），则日志模块会对当前事件进行记录：创建日志记录对象LogRecord，将logger关联的日志过滤器应用到LogRecord对象中，如果该日志应该被过滤，则不作后续处理，如果该日志被被过滤，则交给logger对象的日志处理类（Handler）处理。</p>
 <p>
 
 
@@ -982,11 +983,105 @@ LogRecord实例会在需要记录某些东西时被创建，包含需要记录�
   </div></figure>
 </p>
 <h3 id="handler-日志处理类">Handler: 日志处理类</h3>
-<p>Handler类的实例负责把日志时间分发到特定的目的地</p>
-<p>Handler类 作为一个接口，其应该实现的功能为：把日志时间分发到特定的目的地。Handler可以选择性地使用格式器（Formatter）实例将日志记录格式化为期望的样式，默认情况下只记录原始记录信息（record.message）</p>
-<h3 id="并发安全性设计">并发安全性设计</h3>
-<h2 id="数据库持久化拓展">数据库持久化拓展</h2>
-<h2 id="设计模式推荐">设计模式推荐</h2>
+<p>Handler类的实例负责把日志时间分发到特定的目的地  .</p>
+<p>Handler类 作为一个接口，其应该实现的功能为：把日志时间分发到特定的目的地。内置的Handler主要包括StreamHandler、FileHandler，前者可将日志记录以流的形式输出（如输出到控制台）；后者可将日志记录持久化到文件中。</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="k">class</span> <span class="nc">StreamHandler</span><span class="p">(</span><span class="n">Handler</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">    <span class="s2">&#34;&#34;&#34;
+</span></span></span><span class="line"><span class="cl"><span class="s2">    A handler class which writes logging records, appropriately formatted,
+</span></span></span><span class="line"><span class="cl"><span class="s2">    to a stream. Note that this class does not close the stream, as
+</span></span></span><span class="line"><span class="cl"><span class="s2">    sys.stdout or sys.stderr may be used.
+</span></span></span><span class="line"><span class="cl"><span class="s2">    &#34;&#34;&#34;</span>
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="k">class</span> <span class="nc">FileHandler</span><span class="p">(</span><span class="n">StreamHandler</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">    <span class="s2">&#34;&#34;&#34;
+</span></span></span><span class="line"><span class="cl"><span class="s2">    A handler class which writes formatted logging records to disk files.
+</span></span></span><span class="line"><span class="cl"><span class="s2">    &#34;&#34;&#34;</span>
+</span></span></code></pre></div><p>Handler可以选择性地使用格式器（Formatter）实例将日志记录格式化为期望的样式，默认情况下只记录原始记录信息（record.message）</p>
+<p>默认情况下，logging模块没有将日志持久化到数据库的Handler子类，如果需要实现将日志持久化到数据库中，可以实现一个DBHandler类（继承Handler），重写其emit(record)方法:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl">    <span class="k">def</span> <span class="nf">emit</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">record</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">        <span class="s2">&#34;&#34;&#34;
+</span></span></span><span class="line"><span class="cl"><span class="s2">        Do whatever it takes to actually log the specified logging record.
+</span></span></span><span class="line"><span class="cl"><span class="s2">
+</span></span></span><span class="line"><span class="cl"><span class="s2">        This version is intended to be implemented by subclasses and so
+</span></span></span><span class="line"><span class="cl"><span class="s2">        raises a NotImplementedError.
+</span></span></span><span class="line"><span class="cl"><span class="s2">        &#34;&#34;&#34;</span>
+</span></span><span class="line"><span class="cl">        <span class="k">raise</span> <span class="ne">NotImplementedError</span><span class="p">(</span><span class="s1">&#39;emit must be implemented &#39;</span>
+</span></span><span class="line"><span class="cl">                                  <span class="s1">&#39;by Handler subclasses&#39;</span><span class="p">)</span>
+</span></span></code></pre></div><h3 id="并发安全性设计">并发安全性设计</h3>
+<p>由于一个程序中可能有多个线程都会进行日志记录，因此如何保证日志并发写入的安全性是日志模块面临的一个重要问题。logging模块使用threading类的对象实现多线程及线程同步安全机制。如使用RLock作为模块层级的同步安全基础对象，在访问或修改全局变量时会调用_acquireLock()，并在变量修改完成后调用_releaseLock()。</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">#---------------------------------------------------------------------------</span>
+</span></span><span class="line"><span class="cl"><span class="c1">#   Thread-related stuff</span>
+</span></span><span class="line"><span class="cl"><span class="c1">#---------------------------------------------------------------------------</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">#</span>
+</span></span><span class="line"><span class="cl"><span class="c1">#_lock is used to serialize access to shared data structures in this module.</span>
+</span></span><span class="line"><span class="cl"><span class="c1">#This needs to be an RLock because fileConfig() creates and configures</span>
+</span></span><span class="line"><span class="cl"><span class="c1">#Handlers, and so might arbitrary user threads. Since Handler code updates the</span>
+</span></span><span class="line"><span class="cl"><span class="c1">#shared dictionary _handlers, it needs to acquire the lock. But if configuring,</span>
+</span></span><span class="line"><span class="cl"><span class="c1">#the lock would already have been acquired - so we need an RLock.</span>
+</span></span><span class="line"><span class="cl"><span class="c1">#The same argument applies to Loggers and Manager.loggerDict.</span>
+</span></span><span class="line"><span class="cl"><span class="c1">#</span>
+</span></span><span class="line"><span class="cl"><span class="n">_lock</span> <span class="o">=</span> <span class="n">threading</span><span class="o">.</span><span class="n">RLock</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">def</span> <span class="nf">_acquireLock</span><span class="p">():</span>
+</span></span><span class="line"><span class="cl">    <span class="s2">&#34;&#34;&#34;
+</span></span></span><span class="line"><span class="cl"><span class="s2">    Acquire the module-level lock for serializing access to shared data.
+</span></span></span><span class="line"><span class="cl"><span class="s2">
+</span></span></span><span class="line"><span class="cl"><span class="s2">    This should be released with _releaseLock().
+</span></span></span><span class="line"><span class="cl"><span class="s2">    &#34;&#34;&#34;</span>
+</span></span><span class="line"><span class="cl">    <span class="k">if</span> <span class="n">_lock</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">        <span class="n">_lock</span><span class="o">.</span><span class="n">acquire</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">def</span> <span class="nf">_releaseLock</span><span class="p">():</span>
+</span></span><span class="line"><span class="cl">    <span class="s2">&#34;&#34;&#34;
+</span></span></span><span class="line"><span class="cl"><span class="s2">    Release the module-level lock acquired by calling _acquireLock().
+</span></span></span><span class="line"><span class="cl"><span class="s2">    &#34;&#34;&#34;</span>
+</span></span><span class="line"><span class="cl">    <span class="k">if</span> <span class="n">_lock</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">        <span class="n">_lock</span><span class="o">.</span><span class="n">release</span><span class="p">()</span>
+</span></span></code></pre></div><h2 id="数据库持久化拓展代码">数据库持久化拓展（代码）</h2>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="n">PROPERTY_EXTRA_ID</span> <span class="o">=</span> <span class="s2">&#34;extra_id&#34;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">class</span> <span class="nc">DBHandler</span><span class="p">(</span><span class="n">logging</span><span class="o">.</span><span class="n">Handler</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">    <span class="s2">&#34;&#34;&#34;将日志内容写入到数据库中&#34;&#34;&#34;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">level</span><span class="o">=</span><span class="n">logging</span><span class="o">.</span><span class="n">NOTSET</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">        <span class="s2">&#34;&#34;&#34;
+</span></span></span><span class="line"><span class="cl"><span class="s2">        初始化数据库
+</span></span></span><span class="line"><span class="cl"><span class="s2">        &#34;&#34;&#34;</span>
+</span></span><span class="line"><span class="cl">        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">level</span><span class="o">=</span><span class="n">level</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="bp">self</span><span class="o">.</span><span class="n">logdao</span> <span class="o">=</span> <span class="n">BusinessDAO</span><span class="p">(</span><span class="n">db_config</span><span class="o">=</span><span class="n">config</span><span class="o">.</span><span class="n">DB_CONFIG_PATH</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="bp">self</span><span class="o">.</span><span class="n">logdb</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">logdao</span><span class="o">.</span><span class="n">connect_db</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">        <span class="bp">self</span><span class="o">.</span><span class="n">session</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">logdb</span><span class="o">.</span><span class="n">get_session</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="k">def</span> <span class="nf">emit</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">record</span><span class="p">:</span> <span class="n">logging</span><span class="o">.</span><span class="n">LogRecord</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">        <span class="s2">&#34;&#34;&#34;
+</span></span></span><span class="line"><span class="cl"><span class="s2">        重写emit方法，将record记录到数据库中
+</span></span></span><span class="line"><span class="cl"><span class="s2">        :param record:
+</span></span></span><span class="line"><span class="cl"><span class="s2">        :return:
+</span></span></span><span class="line"><span class="cl"><span class="s2">        &#34;&#34;&#34;</span>
+</span></span><span class="line"><span class="cl">        <span class="k">try</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">            <span class="bp">self</span><span class="o">.</span><span class="n">session</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">Log</span><span class="p">(</span><span class="n">level_name</span><span class="o">=</span><span class="n">record</span><span class="o">.</span><span class="n">levelname</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">                                 <span class="n">module</span><span class="o">=</span><span class="n">record</span><span class="o">.</span><span class="n">module</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">                                 <span class="n">thread_name</span><span class="o">=</span><span class="n">record</span><span class="o">.</span><span class="n">threadName</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">                                 <span class="n">file_name</span><span class="o">=</span><span class="n">record</span><span class="o">.</span><span class="n">filename</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">                                 <span class="n">func_name</span><span class="o">=</span><span class="n">record</span><span class="o">.</span><span class="n">funcName</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">                                 <span class="n">line_no</span><span class="o">=</span><span class="n">record</span><span class="o">.</span><span class="n">lineno</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">                                 <span class="n">process</span><span class="o">=</span><span class="n">record</span><span class="o">.</span><span class="n">process</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">                                 <span class="n">process_name</span><span class="o">=</span><span class="n">record</span><span class="o">.</span><span class="n">processName</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">                                 <span class="n">content</span><span class="o">=</span><span class="n">record</span><span class="o">.</span><span class="n">message</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">                                 <span class="n">extra_id</span><span class="o">=</span><span class="nb">getattr</span><span class="p">(</span><span class="n">record</span><span class="p">,</span> <span class="n">PROPERTY_EXTRA_ID</span><span class="p">,</span> <span class="kc">None</span><span class="p">),</span>
+</span></span><span class="line"><span class="cl">                                 <span class="n">created_time</span><span class="o">=</span><span class="n">datetime</span><span class="o">.</span><span class="n">datetime</span><span class="o">.</span><span class="n">strptime</span><span class="p">(</span><span class="n">record</span><span class="o">.</span><span class="n">asctime</span><span class="p">,</span> <span class="n">DATE_FORMAT</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">                                 <span class="p">))</span>
+</span></span><span class="line"><span class="cl">            <span class="bp">self</span><span class="o">.</span><span class="n">session</span><span class="o">.</span><span class="n">commit</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">        <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">            <span class="nb">print</span><span class="p">(</span><span class="s2">&#34;Log to DB failed...&#34;</span><span class="p">,</span> <span class="nb">repr</span><span class="p">(</span><span class="n">e</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="k">def</span> <span class="fm">__del__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">        <span class="bp">self</span><span class="o">.</span><span class="n">session</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+</span></span></code></pre></div><h2 id="设计模式推荐">设计模式推荐</h2>
+<p>todo</p>
 <h2 id="参考资料">参考资料</h2>
 <ul>
 <li><a href="https://realpython.com/python-logging-source-code/" target="_blank" rel="noopener">Python Logging: A Stroll Through the Source Code</a></li>
