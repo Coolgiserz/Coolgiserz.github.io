@@ -332,7 +332,7 @@
         content="2023-06-18T09:02:27&#43;08:00"
       />
     
-    <meta property="article:modified_time" content="2023-06-18T09:02:27&#43;08:00">
+    <meta property="article:modified_time" content="2023-06-19T09:02:27&#43;08:00">
   
 
   
@@ -361,7 +361,7 @@
   "headline": "Python内置日志模块源码分析和进阶用法",
   
   "datePublished": "2023-06-18T09:02:27+08:00",
-  "dateModified": "2023-06-18T09:02:27+08:00",
+  "dateModified": "2023-06-19T09:02:27+08:00",
   
   "author": {
     "@type": "Person",
@@ -771,8 +771,10 @@
     
     
       
+          Last updated on
+      
     
-    Jun 18, 2023
+    Jun 19, 2023
   </span>
   
 
@@ -781,7 +783,7 @@
   
   <span class="middot-divider"></span>
   <span class="article-reading-time">
-    2 min read
+    3 min read
   </span>
   
 
@@ -1081,7 +1083,57 @@ LogRecord实例会在需要记录某些东西时被创建，包含需要记录�
 </span></span><span class="line"><span class="cl">    <span class="k">def</span> <span class="fm">__del__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
 </span></span><span class="line"><span class="cl">        <span class="bp">self</span><span class="o">.</span><span class="n">session</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
 </span></span></code></pre></div><h2 id="设计模式推荐">设计模式推荐</h2>
-<p>todo</p>
+<ul>
+<li>
+<p>单例模式</p>
+<p>getLogger(name)针对唯一的name只会返回唯一的对象，如果name对象的Logger未创建，则会返回默认的对象（提前创建好的），若已创建则会返回已有对象</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="k">def</span> <span class="nf">getLogger</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">    <span class="s2">&#34;&#34;&#34;
+</span></span></span><span class="line"><span class="cl"><span class="s2">    Return a logger with the specified name, creating it if necessary.
+</span></span></span><span class="line"><span class="cl"><span class="s2">
+</span></span></span><span class="line"><span class="cl"><span class="s2">    If no name is specified, return the root logger.
+</span></span></span><span class="line"><span class="cl"><span class="s2">    &#34;&#34;&#34;</span>
+</span></span><span class="line"><span class="cl">    <span class="k">if</span> <span class="n">name</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="n">Logger</span><span class="o">.</span><span class="n">manager</span><span class="o">.</span><span class="n">getLogger</span><span class="p">(</span><span class="n">name</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="k">else</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="n">root</span>
+</span></span></code></pre></div></li>
+<li>
+<p>组合模式</p>
+<p>一个日志记录器（Logger）有多个日志处理类（Handler），多个Handler组合起来作为Logger的一个成员对象（handlers）</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="k">class</span> <span class="nc">Logger</span><span class="p">(</span><span class="n">Filterer</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">    <span class="s2">&#34;&#34;&#34;
+</span></span></span><span class="line"><span class="cl"><span class="s2">    Instances of the Logger class represent a single logging channel. A
+</span></span></span><span class="line"><span class="cl"><span class="s2">    &#34;logging channel&#34; indicates an area of an application. Exactly how an
+</span></span></span><span class="line"><span class="cl"><span class="s2">    &#34;area&#34; is defined is up to the application developer. Since an
+</span></span></span><span class="line"><span class="cl"><span class="s2">    application can have any number of areas, logging channels are identified
+</span></span></span><span class="line"><span class="cl"><span class="s2">    by a unique string. Application areas can be nested (e.g. an area
+</span></span></span><span class="line"><span class="cl"><span class="s2">    of &#34;input processing&#34; might include sub-areas &#34;read CSV files&#34;, &#34;read
+</span></span></span><span class="line"><span class="cl"><span class="s2">    XLS files&#34; and &#34;read Gnumeric files&#34;). To cater for this natural nesting,
+</span></span></span><span class="line"><span class="cl"><span class="s2">    channel names are organized into a namespace hierarchy where levels are
+</span></span></span><span class="line"><span class="cl"><span class="s2">    separated by periods, much like the Java or Python package namespace. So
+</span></span></span><span class="line"><span class="cl"><span class="s2">    in the instance given above, channel names might be &#34;input&#34; for the upper
+</span></span></span><span class="line"><span class="cl"><span class="s2">    level, and &#34;input.csv&#34;, &#34;input.xls&#34; and &#34;input.gnu&#34; for the sub-levels.
+</span></span></span><span class="line"><span class="cl"><span class="s2">    There is no arbitrary limit to the depth of nesting.
+</span></span></span><span class="line"><span class="cl"><span class="s2">    &#34;&#34;&#34;</span>
+</span></span><span class="line"><span class="cl">    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">level</span><span class="o">=</span><span class="n">NOTSET</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">        <span class="s2">&#34;&#34;&#34;
+</span></span></span><span class="line"><span class="cl"><span class="s2">        Initialize the logger with a name and an optional level.
+</span></span></span><span class="line"><span class="cl"><span class="s2">        &#34;&#34;&#34;</span>
+</span></span><span class="line"><span class="cl">        <span class="n">Filterer</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="bp">self</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="n">name</span>
+</span></span><span class="line"><span class="cl">        <span class="bp">self</span><span class="o">.</span><span class="n">level</span> <span class="o">=</span> <span class="n">_checkLevel</span><span class="p">(</span><span class="n">level</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="bp">self</span><span class="o">.</span><span class="n">parent</span> <span class="o">=</span> <span class="kc">None</span>
+</span></span><span class="line"><span class="cl">        <span class="bp">self</span><span class="o">.</span><span class="n">propagate</span> <span class="o">=</span> <span class="kc">True</span>
+</span></span><span class="line"><span class="cl">        <span class="bp">self</span><span class="o">.</span><span class="n">handlers</span> <span class="o">=</span> <span class="p">[]</span>
+</span></span><span class="line"><span class="cl">        <span class="bp">self</span><span class="o">.</span><span class="n">disabled</span> <span class="o">=</span> <span class="kc">False</span>
+</span></span><span class="line"><span class="cl">        <span class="bp">self</span><span class="o">.</span><span class="n">_cache</span> <span class="o">=</span> <span class="p">{}</span>
+</span></span></code></pre></div></li>
+<li>
+<p>装饰器模式</p>
+<p>Formatter用于对日志消息的格式进行改变</p>
+</li>
+</ul>
 <h2 id="参考资料">参考资料</h2>
 <ul>
 <li><a href="https://realpython.com/python-logging-source-code/" target="_blank" rel="noopener">Python Logging: A Stroll Through the Source Code</a></li>
