@@ -5,12 +5,39 @@
     <link>/post/</link>
       <atom:link href="/post/index.xml" rel="self" type="application/rss+xml" />
     <description>博客</description>
-    <generator>Wowchemy (https://wowchemy.com)</generator><language>en-us</language><lastBuildDate>Mon, 31 Jul 2023 23:15:54 +0800</lastBuildDate>
+    <generator>Wowchemy (https://wowchemy.com)</generator><language>en-us</language><lastBuildDate>Tue, 15 Aug 2023 22:30:36 +0800</lastBuildDate>
     <image>
       <url>/media/icon_hue03491371183284312b8b116a73ae5ab_79511_512x512_fill_lanczos_center_3.png</url>
       <title>博客</title>
       <link>/post/</link>
     </image>
+    
+    <item>
+      <title>Python Backend Developing Django</title>
+      <link>/post/python-backend-developing-django/</link>
+      <pubDate>Tue, 15 Aug 2023 22:30:36 +0800</pubDate>
+      <guid>/post/python-backend-developing-django/</guid>
+      <description>&lt;p&gt;问答网站&lt;/p&gt;
+&lt;p&gt;技术栈&lt;/p&gt;
+&lt;p&gt;Django高级用户：&lt;/p&gt;
+&lt;p&gt;多表间复杂的关联关系&lt;/p&gt;
+&lt;p&gt;CHannels实时消息推送&lt;/p&gt;
+&lt;p&gt;TestCase测试用例&lt;/p&gt;
+&lt;p&gt;数据库设计及网站优化（静态文件压缩）&lt;/p&gt;
+&lt;p&gt;算法/设计模式+融合项目&lt;/p&gt;
+&lt;p&gt;云计算服务&lt;/p&gt;
+&lt;p&gt;16w数据量的搜索，性能有什么优化&lt;/p&gt;
+&lt;p&gt;cookiecutter&lt;/p&gt;
+&lt;p&gt;营销引擎&lt;/p&gt;
+&lt;p&gt;策略模块&lt;/p&gt;
+&lt;p&gt;活动&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;Event:
+  
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;用户行为Action&lt;/p&gt;
+&lt;p&gt;奖励：返现、红包券&lt;/p&gt;
+&lt;p&gt;ActionProxy&lt;/p&gt;
+</description>
+    </item>
     
     <item>
       <title>思考：如何测试一个游戏？</title>
