@@ -5,12 +5,356 @@
     <link>/</link>
       <atom:link href="/index.xml" rel="self" type="application/rss+xml" />
     <description>CoolCats</description>
-    <generator>Wowchemy (https://wowchemy.com)</generator><language>en-us</language><lastBuildDate>Mon, 31 Jul 2023 23:15:54 +0800</lastBuildDate>
+    <generator>Wowchemy (https://wowchemy.com)</generator><language>en-us</language><lastBuildDate>Wed, 01 Nov 2023 01:19:37 +0800</lastBuildDate>
     <image>
       <url>/media/icon_hue03491371183284312b8b116a73ae5ab_79511_512x512_fill_lanczos_center_3.png</url>
       <title>CoolCats</title>
       <link>/</link>
     </image>
+    
+    <item>
+      <title>搜索联想算法后端接口服务</title>
+      <link>/project/search_association_algorithms/</link>
+      <pubDate>Wed, 01 Nov 2023 01:19:37 +0800</pubDate>
+      <guid>/project/search_association_algorithms/</guid>
+      <description>&lt;h2 id=&#34;搜索联想&#34;&gt;搜索联想&lt;/h2&gt;
+&lt;p&gt;当我们使用搜素引擎时,键入少数关键字后搜索引擎就会给出多个基于你输入的词作为前缀的待选词列表，这就是搜索联想。如今，搜索联想功能几乎已成为各大内容平台（如电商、抖音等）的必备功能之一，实现良好的搜索联想功能能够大幅提高产品的用户体验。&lt;/p&gt;
+&lt;p&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure  &gt;
+  &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img alt=&#34;&#34; srcset=&#34;
+               /project/search_association_algorithms/images/search_engine_a1_hudfd4f4103befaca2c06300a7e4b12714_249811_96d93a8229149cdce9f3c161b60398e1.webp 400w,
+               /project/search_association_algorithms/images/search_engine_a1_hudfd4f4103befaca2c06300a7e4b12714_249811_91f075f2b9b1e9d644b8a082e360ac45.webp 760w,
+               /project/search_association_algorithms/images/search_engine_a1_hudfd4f4103befaca2c06300a7e4b12714_249811_1200x1200_fit_q75_h2_lanczos_3.webp 1200w&#34;
+               src=&#34;/project/search_association_algorithms/images/search_engine_a1_hudfd4f4103befaca2c06300a7e4b12714_249811_96d93a8229149cdce9f3c161b60398e1.webp&#34;
+               width=&#34;760&#34;
+               height=&#34;347&#34;
+               loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+  &lt;/div&gt;&lt;/figure&gt;
+&lt;/p&gt;
+&lt;h3 id=&#34;搜索联想算法实现思路&#34;&gt;搜索联想算法实现思路&lt;/h3&gt;
+&lt;ol&gt;
+&lt;li&gt;最简单、经典的思路，是当用户输入关键词xx后，返回所有（或者按某种顺序返回topK）以xx为前缀的候选词。这种方法可以通过字典树/Trie树实现。目前绝大多数搜素引擎、电商平台的搜索栏目所提供的搜索词联想功能均基于字典树实现。当然，如果数据集合较小，基于SQL语句的like语法也可以实现相同的效果。&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure  &gt;
+  &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img alt=&#34;&#34; srcset=&#34;
+               /project/search_association_algorithms/images/asso_taobao_hu39ab1f6d3053e942f458903be001dcb2_188912_b7dede952961b44960f35a4ada5e1544.webp 400w,
+               /project/search_association_algorithms/images/asso_taobao_hu39ab1f6d3053e942f458903be001dcb2_188912_018b45e60ab9cc5da6274c3962a8b316.webp 760w,
+               /project/search_association_algorithms/images/asso_taobao_hu39ab1f6d3053e942f458903be001dcb2_188912_1200x1200_fit_q75_h2_lanczos_3.webp 1200w&#34;
+               src=&#34;/project/search_association_algorithms/images/asso_taobao_hu39ab1f6d3053e942f458903be001dcb2_188912_b7dede952961b44960f35a4ada5e1544.webp&#34;
+               width=&#34;443&#34;
+               height=&#34;760&#34;
+               loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+  &lt;/div&gt;&lt;/figure&gt;
+&lt;/p&gt;
+&lt;p&gt;得到具有公共前缀的候选词基础上，可以参考一定的指标对候选词排序再返回，如参考搜索词搜索热度/频次等。&lt;/p&gt;
+&lt;ol start=&#34;2&#34;&gt;
+&lt;li&gt;
+&lt;p&gt;基于用户意图识别模型的搜索联想&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&amp;hellip;&amp;hellip;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h3 id=&#34;基于字典树的搜索联想算法&#34;&gt;基于字典树的搜索联想算法&lt;/h3&gt;
+&lt;p&gt;&lt;a href=&#34;https://github.com/Coolgiserz/SearchAssociation/tree/master/search_association/utils/trie&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Trie树-代码地址&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure  &gt;
+  &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img alt=&#34;&#34; srcset=&#34;
+               /project/search_association_algorithms/images/asso_test_hud7429dd10ca3bb3e0782657a551123e2_289353_7a457bc8e9ddfad1ef6ecb6e7be97ac4.webp 400w,
+               /project/search_association_algorithms/images/asso_test_hud7429dd10ca3bb3e0782657a551123e2_289353_f624965db863644408a28be5ccf53b71.webp 760w,
+               /project/search_association_algorithms/images/asso_test_hud7429dd10ca3bb3e0782657a551123e2_289353_1200x1200_fit_q75_h2_lanczos_3.webp 1200w&#34;
+               src=&#34;/project/search_association_algorithms/images/asso_test_hud7429dd10ca3bb3e0782657a551123e2_289353_7a457bc8e9ddfad1ef6ecb6e7be97ac4.webp&#34;
+               width=&#34;760&#34;
+               height=&#34;359&#34;
+               loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+  &lt;/div&gt;&lt;/figure&gt;
+&lt;/p&gt;
+&lt;h2 id=&#34;heading&#34;&gt;&lt;/h2&gt;
+&lt;h2 id=&#34;基于django的搜索联想接口服务示例&#34;&gt;基于Django的搜索联想接口服务示例&lt;/h2&gt;
+&lt;p&gt;项目启动后即构建Trie树，当用户请求接口时，指定关键词参数，接口即返回以关键词为前缀的游戏名称列表。（数据来自本地的源于NGA游戏论坛的数据库）&lt;/p&gt;
+&lt;p&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure  &gt;
+  &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img alt=&#34;&#34; srcset=&#34;
+               /project/search_association_algorithms/images/db_game_hubaf60215eedc7fac2aee6817067d31c8_1374244_861ca8755810fb9318e4bccbc12f4494.webp 400w,
+               /project/search_association_algorithms/images/db_game_hubaf60215eedc7fac2aee6817067d31c8_1374244_7b3a094f74a8f0d81fce33665cfac0ac.webp 760w,
+               /project/search_association_algorithms/images/db_game_hubaf60215eedc7fac2aee6817067d31c8_1374244_1200x1200_fit_q75_h2_lanczos_3.webp 1200w&#34;
+               src=&#34;/project/search_association_algorithms/images/db_game_hubaf60215eedc7fac2aee6817067d31c8_1374244_861ca8755810fb9318e4bccbc12f4494.webp&#34;
+               width=&#34;760&#34;
+               height=&#34;486&#34;
+               loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+  &lt;/div&gt;&lt;/figure&gt;
+&lt;/p&gt;
+&lt;p&gt;接口请求示例：&lt;/p&gt;
+&lt;p&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure  &gt;
+  &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img alt=&#34;&#34; srcset=&#34;
+               /project/search_association_algorithms/images/asso1_hue7585576c11b02b3cdc4e82eb543375a_196397_9d27eecc4d7978dd5d1f074cf4c823d6.webp 400w,
+               /project/search_association_algorithms/images/asso1_hue7585576c11b02b3cdc4e82eb543375a_196397_2efa71f70875693dd917cd1764f0f7f0.webp 760w,
+               /project/search_association_algorithms/images/asso1_hue7585576c11b02b3cdc4e82eb543375a_196397_1200x1200_fit_q75_h2_lanczos_3.webp 1200w&#34;
+               src=&#34;/project/search_association_algorithms/images/asso1_hue7585576c11b02b3cdc4e82eb543375a_196397_9d27eecc4d7978dd5d1f074cf4c823d6.webp&#34;
+               width=&#34;760&#34;
+               height=&#34;685&#34;
+               loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+  &lt;/div&gt;&lt;/figure&gt;
+&lt;/p&gt;
+&lt;p&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure  &gt;
+  &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img alt=&#34;&#34; srcset=&#34;
+               /project/search_association_algorithms/images/asso2_huc8b528fa7e72ed40b53a4f5d6efd2063_129183_3d8fd371c9315d335c539e4557f8ff8c.webp 400w,
+               /project/search_association_algorithms/images/asso2_huc8b528fa7e72ed40b53a4f5d6efd2063_129183_1525f3275371c95d0a10530592f52341.webp 760w,
+               /project/search_association_algorithms/images/asso2_huc8b528fa7e72ed40b53a4f5d6efd2063_129183_1200x1200_fit_q75_h2_lanczos_3.webp 1200w&#34;
+               src=&#34;/project/search_association_algorithms/images/asso2_huc8b528fa7e72ed40b53a4f5d6efd2063_129183_3d8fd371c9315d335c539e4557f8ff8c.webp&#34;
+               width=&#34;760&#34;
+               height=&#34;493&#34;
+               loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+  &lt;/div&gt;&lt;/figure&gt;
+&lt;/p&gt;
+&lt;h2 id=&#34;参考文档&#34;&gt;参考文档&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a href=&#34;https://wmathor.com/index.php/archives/1185/#menu_index_2&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Trie 树实现搜索引擎自动联想&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a href=&#34;https://cloud.tencent.com/developer/article/1502065&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;万字长文解读电商搜索——如何让你买得又快又好-腾讯云开发者社区-腾讯云&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Neo4j基本使用</title>
+      <link>/post/neo4j-basic-usage/</link>
+      <pubDate>Wed, 20 Sep 2023 21:57:38 +0800</pubDate>
+      <guid>/post/neo4j-basic-usage/</guid>
+      <description>&lt;h2 id=&#34;cypher语言&#34;&gt;Cypher语言&lt;/h2&gt;
+&lt;h3 id=&#34;基本关键字&#34;&gt;基本关键字&lt;/h3&gt;
+&lt;p&gt;Cypher是对节点、节点间的关系及属性进行增删改查的类SQL语言。主要有如下关键字：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;MATCH&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;MERGE&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;CREATE&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;SET&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;DELETE&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;DETACH DELETE&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;RETURN&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;查询节点&lt;/p&gt;
+&lt;p&gt;查询关系&lt;/p&gt;
+&lt;h3 id=&#34;聚合查询&#34;&gt;聚合查询&lt;/h3&gt;
+&lt;p&gt;COUNT&lt;/p&gt;
+&lt;p&gt;SUM&lt;/p&gt;
+&lt;p&gt;&amp;hellip;&amp;hellip;&lt;/p&gt;
+&lt;h3 id=&#34;模糊查询&#34;&gt;模糊查询&lt;/h3&gt;
+&lt;p&gt;CONTAINS&lt;/p&gt;
+&lt;h3 id=&#34;多跳查询&#34;&gt;多跳查询&lt;/h3&gt;
+&lt;p&gt;模式查询&lt;/p&gt;
+&lt;h2 id=&#34;python操作neo4j数据库&#34;&gt;Python操作Neo4j数据库&lt;/h2&gt;
+&lt;p&gt;py2neo&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Compare Several Database</title>
+      <link>/post/compare-several-database/</link>
+      <pubDate>Wed, 13 Sep 2023 22:06:00 +0800</pubDate>
+      <guid>/post/compare-several-database/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Django后端开发笔记</title>
+      <link>/post/django-core-techs-notes/</link>
+      <pubDate>Sat, 02 Sep 2023 22:57:15 +0800</pubDate>
+      <guid>/post/django-core-techs-notes/</guid>
+      <description>&lt;h2 id=&#34;0x00-django核心技术栈&#34;&gt;0x00 Django核心技术栈&lt;/h2&gt;
+&lt;p&gt;Url配置和管理&lt;/p&gt;
+&lt;p&gt;Form和ModelForm表单验证&lt;/p&gt;
+&lt;p&gt;Model数据库设计和操作&lt;/p&gt;
+&lt;p&gt;cookie和session的登录原理&lt;/p&gt;
+&lt;p&gt;template模版&lt;/p&gt;
+&lt;p&gt;表结构设计&lt;/p&gt;
+&lt;p&gt;外键和一对多关系设计&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;https://stackoverflow.com/questions/49470367/install-virtualenv-and-virtualenvwrapper-on-macos&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;https://stackoverflow.com/questions/49470367/install-virtualenv-and-virtualenvwrapper-on-macos&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;django目录结构&lt;/p&gt;
+&lt;p&gt;settings&lt;/p&gt;
+&lt;p&gt;models设计数据表&lt;/p&gt;
+&lt;p&gt;url设计&lt;/p&gt;
+&lt;p&gt;views业务逻辑代码&lt;/p&gt;
+&lt;p&gt;template html生成&lt;/p&gt;
+&lt;h2 id=&#34;0x01-django项目实战&#34;&gt;0x01 Django项目实战&lt;/h2&gt;
+&lt;h3 id=&#34;创建django项目&#34;&gt;创建Django项目&lt;/h3&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;django-admin startproject Message
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nb&#34;&gt;cd&lt;/span&gt; Message
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;django-admin startapp message_form 
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;参考文档&#34;&gt;参考文档&lt;/h3&gt;
+&lt;h2 id=&#34;0x02-django源码分析&#34;&gt;0x02 Django源码分析&lt;/h2&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Expert Python Programming Notes</title>
+      <link>/post/expert-python-programming-notes/</link>
+      <pubDate>Sat, 02 Sep 2023 22:05:14 +0800</pubDate>
+      <guid>/post/expert-python-programming-notes/</guid>
+      <description>&lt;h2 id=&#34;0x00-订阅&#34;&gt;0x00 订阅&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a href=&#34;https://pycoders.com&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Python Week&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a href=&#34;https://www.awesomepython.org/?c=gis&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Awesome Python: find the best Python libraries&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;0x01-目录&#34;&gt;0x01 目录&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;语法最佳实践&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;命名最佳实践&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;包管理&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;代码部署&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;使用其他语言扩展Python&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;代码管理&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;文档构建&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;测试驱动开发&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;并发编程&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;设计模式&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;0x01-类级别以下的语法最佳实践&#34;&gt;0x01 类级别以下的语法最佳实践&lt;/h2&gt;
+&lt;p&gt;TODO&lt;/p&gt;
+&lt;h2 id=&#34;0x02-类级别以上的语法最佳实践&#34;&gt;0x02 类级别以上的语法最佳实践&lt;/h2&gt;
+&lt;p&gt;TODO&lt;/p&gt;
+</description>
+    </item>
     
     <item>
       <title>思考：如何测试一个游戏？</title>
@@ -6816,7 +7160,7 @@ waiting for server to start.... done
     </item>
     
     <item>
-      <title>《重构-改善既有代码设计》阅读笔记1</title>
+      <title>《重构-改善既有代码设计》（第二版）阅读笔记1</title>
       <link>/post/refactor-note1/</link>
       <pubDate>Tue, 09 May 2023 23:45:03 +0800</pubDate>
       <guid>/post/refactor-note1/</guid>
@@ -6824,6 +7168,7 @@ waiting for server to start.... done
 &lt;p&gt;重构是什么？&lt;/p&gt;
 &lt;p&gt;为什么应该重构？&lt;/p&gt;
 &lt;p&gt;应该在什么地方重构？&lt;/p&gt;
+&lt;p&gt;如何进行重构？？&lt;/p&gt;
 &lt;p&gt;有哪些重构名录经典案例？&lt;/p&gt;
 &lt;h2 id=&#34;资源清单&#34;&gt;资源清单&lt;/h2&gt;
 &lt;ul&gt;
@@ -6832,6 +7177,31 @@ waiting for server to start.... done
 &lt;/li&gt;
 &lt;li&gt;
 &lt;p&gt;中文电子书地址: &lt;a href=&#34;https://github.com/rabbit2002/Refactoring_2nd_ebook&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;https://github.com/rabbit2002/Refactoring_2nd_ebook&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;重构原则&#34;&gt;重构原则&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;如果你要给程序添加一个特性，但发现代码因缺乏良好的结构而不易于进行修改，那就先重构那个程序，使其比较容易添加该特性，然后再添加该特性。（P4）&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;重构前，先检查自己是否有一套可靠的测试集，这些测试集必须有自我检验能力。（P5）&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;重构技术就是以微小的步伐修改程序，如果你犯下错误，很容易便可发现它。（P8）&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;重构手法&#34;&gt;重构手法&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;提炼函数（Extract Function）：将一块代码抽取成一个函数。（P7）&lt;/p&gt;
+&lt;p&gt;提炼时，考虑哪些变量会离开原来的作用域，哪些变量在函数中只是被使用而不会被修改，哪些变量会被修改。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;以查询取代临时变量（P11）&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;……&lt;/p&gt;
 &lt;/li&gt;
 &lt;/ul&gt;
 </description>
@@ -14746,6 +15116,12 @@ source ~/.bashrc
 &lt;li&gt;&lt;a href=&#34;https://www.sitepoint.com/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;sitepoint&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;Leetcode&lt;/li&gt;
 &lt;/ul&gt;
+&lt;h3 id=&#34;编程语言&#34;&gt;编程语言&lt;/h3&gt;
+&lt;h4 id=&#34;python&#34;&gt;Python&lt;/h4&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://www.awesomepython.org/?c=gis&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Awesome-Python&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://www.pythonweekly.com&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Python Weekly&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
 &lt;h3 id=&#34;工具&#34;&gt;工具&lt;/h3&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;a href=&#34;https://tortoisegit.org/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;tortoisegit&lt;/a&gt;&lt;/li&gt;
@@ -15034,7 +15410,7 @@ Mac用草图软件&lt;/p&gt;
 &lt;li&gt;&lt;a href=&#34;http://www-math.mit.edu/~gs/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;MIT Gibert-Strang&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 &lt;h2 id=&#34;gis二次开发&#34;&gt;GIS二次开发&lt;/h2&gt;
-&lt;h3 id=&#34;python&#34;&gt;Python&lt;/h3&gt;
+&lt;h3 id=&#34;python-1&#34;&gt;Python&lt;/h3&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;a href=&#34;https://github.com/mhammond/pywin32&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;pywin32&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
