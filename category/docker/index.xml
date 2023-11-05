@@ -130,7 +130,7 @@
 &lt;/li&gt;
 &lt;li&gt;
 &lt;p&gt;restart&lt;/p&gt;
-&lt;p&gt;容器重启后&lt;/p&gt;
+&lt;p&gt;容器重启策略，always表示容器在停止或崩溃后自动重启。&lt;/p&gt;
 &lt;/li&gt;
 &lt;li&gt;
 &lt;p&gt;build&lt;/p&gt;
@@ -255,6 +255,9 @@
 &lt;ul&gt;
 &lt;li&gt;
 &lt;p&gt;&lt;a href=&#34;https://www.dusaiphoto.com/article/45/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Django-Docker容器化部署：Django-Docker部署&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a href=&#34;https://yeasy.gitbook.io/docker_practice/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Docker 从入门到实践&lt;/a&gt;&lt;/p&gt;
 &lt;/li&gt;
 &lt;li&gt;
 &lt;p&gt;……&lt;/p&gt;

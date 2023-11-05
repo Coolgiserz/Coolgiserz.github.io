@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>事件抽取 | CoolCats</title>
+    <link>/tag/%E4%BA%8B%E4%BB%B6%E6%8A%BD%E5%8F%96/</link>
+      <atom:link href="/tag/%E4%BA%8B%E4%BB%B6%E6%8A%BD%E5%8F%96/index.xml" rel="self" type="application/rss+xml" />
+    <description>事件抽取</description>
+    <generator>Wowchemy (https://wowchemy.com)</generator><language>en-us</language><lastBuildDate>Sun, 05 Nov 2023 20:26:20 +0800</lastBuildDate>
+    <image>
+      <url>/media/icon_hue03491371183284312b8b116a73ae5ab_79511_512x512_fill_lanczos_center_3.png</url>
+      <title>事件抽取</title>
+      <link>/tag/%E4%BA%8B%E4%BB%B6%E6%8A%BD%E5%8F%96/</link>
+    </image>
+    
+    <item>
+      <title>NLP任务——事件抽取</title>
+      <link>/post/event-extraction-algorithms-summary/</link>
+      <pubDate>Sun, 05 Nov 2023 20:26:20 +0800</pubDate>
+      <guid>/post/event-extraction-algorithms-summary/</guid>
+      <description>&lt;h2 id=&#34;概述&#34;&gt;概述&lt;/h2&gt;
+&lt;p&gt;事件抽取关注如何从非结构化的文本中自动抽取结构化信息的问题，如用户之间的偏爱、项目投资关系等。&lt;/p&gt;
+&lt;h3 id=&#34;什么是事件event&#34;&gt;什么是事件（event）&lt;/h3&gt;
+&lt;p&gt;事件具有什么要素？如何定义一个事件？当我们描述一个事件时，需要描述那些要素才足够充分？&lt;/p&gt;
+&lt;p&gt;触发词识别、事件类型分类、论元识别、角色分类&lt;/p&gt;
+&lt;h3 id=&#34;相关数据&#34;&gt;相关数据&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a href=&#34;https://tianchi.aliyun.com/dataset/110901&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;CCKS2021金融领域事件因果关系抽取数据集_数据集-阿里云天池&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a href=&#34;https://tianchi.aliyun.com/dataset/136800&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;CCKS2022金融领域FEW-SHOT事件抽取数据集_数据集-阿里云天池&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a href=&#34;http://cail.cipsc.org.cn/task1.html?raceID=1&amp;amp;cail_tag=2022&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;CAIL 2022 事件检测&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;相关工具包&#34;&gt;相关工具包&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a href=&#34;https://nlp.csai.tsinghua.edu.cn/news/omnievent&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;https://nlp.csai.tsinghua.edu.cn/news/omnievent&lt;/a&gt;事件抽取开源工具包/&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a href=&#34;https://nlp.csai.tsinghua.edu.cn/project/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;https://nlp.csai.tsinghua.edu.cn/project/&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;相关博客&#34;&gt;相关博客&lt;/h3&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>
