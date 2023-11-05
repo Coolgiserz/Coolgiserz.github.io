@@ -1044,7 +1044,7 @@
 </p>
 <p>如果需要更新项目代码重新部署，只需要更新代码后重启docker容器即可。(docker restart)</p>
 <h2 id="注意事项">注意事项</h2>
-<p>如果希望容器内启动的Django项目访问宿主机的数据库（如MySQL），需要确保连接用户具有远程连接权限，如MySQL8.0+使用下面命令授予用户DEV远程连接数据库的权限</p>
+<p>如果希望容器内启动的Django项目访问宿主机的数据库（如MySQL），需要确保连接用户具有远程连接权限，如MySQL8.0+使用下面命令授予用户DEV远程连接数据库的权限。</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="k">GRANT</span><span class="w"> </span><span class="k">ALL</span><span class="w"> </span><span class="k">PRIVILEGES</span><span class="w"> </span><span class="k">ON</span><span class="w"> </span><span class="o">*</span><span class="p">.</span><span class="o">*</span><span class="w"> </span><span class="k">TO</span><span class="w"> </span><span class="s1">&#39;DEV&#39;</span><span class="o">@</span><span class="s1">&#39;%&#39;</span><span class="w"> </span><span class="k">WITH</span><span class="w"> </span><span class="k">GRANT</span><span class="w"> </span><span class="k">OPTION</span><span class="p">;</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">FLUSH</span><span class="w"> </span><span class="k">PRIVILEGES</span><span class="p">;</span><span class="w">
 </span></span></span></code></pre></div><h2 id="参考文档">参考文档</h2>

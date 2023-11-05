@@ -248,7 +248,7 @@
 &lt;/p&gt;
 &lt;p&gt;如果需要更新项目代码重新部署，只需要更新代码后重启docker容器即可。(docker restart)&lt;/p&gt;
 &lt;h2 id=&#34;注意事项&#34;&gt;注意事项&lt;/h2&gt;
-&lt;p&gt;如果希望容器内启动的Django项目访问宿主机的数据库（如MySQL），需要确保连接用户具有远程连接权限，如MySQL8.0+使用下面命令授予用户DEV远程连接数据库的权限&lt;/p&gt;
+&lt;p&gt;如果希望容器内启动的Django项目访问宿主机的数据库（如MySQL），需要确保连接用户具有远程连接权限，如MySQL8.0+使用下面命令授予用户DEV远程连接数据库的权限。&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-sql&#34; data-lang=&#34;sql&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;k&#34;&gt;GRANT&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;k&#34;&gt;ALL&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;k&#34;&gt;PRIVILEGES&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;k&#34;&gt;ON&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;o&#34;&gt;*&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;*&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;k&#34;&gt;TO&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;s1&#34;&gt;&amp;#39;DEV&amp;#39;&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;@&lt;/span&gt;&lt;span class=&#34;s1&#34;&gt;&amp;#39;%&amp;#39;&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;k&#34;&gt;WITH&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;k&#34;&gt;GRANT&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;k&#34;&gt;OPTION&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;w&#34;&gt;&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;FLUSH&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;k&#34;&gt;PRIVILEGES&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id=&#34;参考文档&#34;&gt;参考文档&lt;/h2&gt;
@@ -306,44 +306,6 @@
 &lt;p&gt;模式查询&lt;/p&gt;
 &lt;h2 id=&#34;python操作neo4j数据库&#34;&gt;Python操作Neo4j数据库&lt;/h2&gt;
 &lt;p&gt;py2neo&lt;/p&gt;
-</description>
-    </item>
-    
-    <item>
-      <title>Compare Several Database</title>
-      <link>/post/compare-several-database/</link>
-      <pubDate>Wed, 13 Sep 2023 22:06:00 +0800</pubDate>
-      <guid>/post/compare-several-database/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Django后端开发笔记</title>
-      <link>/post/django-core-techs-notes/</link>
-      <pubDate>Sat, 02 Sep 2023 22:57:15 +0800</pubDate>
-      <guid>/post/django-core-techs-notes/</guid>
-      <description>&lt;h2 id=&#34;0x00-django核心技术栈&#34;&gt;0x00 Django核心技术栈&lt;/h2&gt;
-&lt;p&gt;Url配置和管理&lt;/p&gt;
-&lt;p&gt;Form和ModelForm表单验证&lt;/p&gt;
-&lt;p&gt;Model数据库设计和操作&lt;/p&gt;
-&lt;p&gt;cookie和session的登录原理&lt;/p&gt;
-&lt;p&gt;template模版&lt;/p&gt;
-&lt;p&gt;表结构设计&lt;/p&gt;
-&lt;p&gt;外键和一对多关系设计&lt;/p&gt;
-&lt;p&gt;&lt;a href=&#34;https://stackoverflow.com/questions/49470367/install-virtualenv-and-virtualenvwrapper-on-macos&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;https://stackoverflow.com/questions/49470367/install-virtualenv-and-virtualenvwrapper-on-macos&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;django目录结构&lt;/p&gt;
-&lt;p&gt;settings&lt;/p&gt;
-&lt;p&gt;models设计数据表&lt;/p&gt;
-&lt;p&gt;url设计&lt;/p&gt;
-&lt;p&gt;views业务逻辑代码&lt;/p&gt;
-&lt;p&gt;template html生成&lt;/p&gt;
-&lt;h2 id=&#34;0x01-django项目实战&#34;&gt;0x01 Django项目实战&lt;/h2&gt;
-&lt;h3 id=&#34;创建django项目&#34;&gt;创建Django项目&lt;/h3&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;django-admin startproject Message
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nb&#34;&gt;cd&lt;/span&gt; Message
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;django-admin startapp message_form 
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;参考文档&#34;&gt;参考文档&lt;/h3&gt;
-&lt;h2 id=&#34;0x02-django源码分析&#34;&gt;0x02 Django源码分析&lt;/h2&gt;
 </description>
     </item>
     
