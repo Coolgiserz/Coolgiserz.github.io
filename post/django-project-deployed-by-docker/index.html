@@ -883,6 +883,9 @@
                loading="lazy" data-zoomable /></div>
   </div></figure>
 </p>
+<h4 id="容器构建">容器构建</h4>
+<pre tabindex="0"><code>docker build -t NAME:TAG .
+</code></pre><p>可以使用docker ps -a查看已有容器</p>
 <h3 id="容器编排">容器编排</h3>
 <p>举个例子，我要将一个后端项目通过容器的形式部署，其中可能涉及到django、mysql、nginx等多个服务，这些服务可能都需要容器化，那么如何统一管理一个应用的多个容器呢？这就是容器编排需要解决的问题。</p>
 <p>docker-compose用于定义和运行具有多个Docker容器的应用程序工具，通过yaml文件配置应用的服务。详见官网<a href="https://docs.docker.com/compose/" target="_blank" rel="noopener">Docker Compose overview | Docker Docs</a></p>
@@ -930,7 +933,7 @@
 </li>
 <li>
 <p>build</p>
-<p>指定需要编排的docker容器的Dockerfile所在目录</p>
+<p>指定需要构建的docker容器的Dockerfile所在目录。也可以不指定该参数，提前构建好容器</p>
 </li>
 <li>
 <p>command</p>
@@ -938,7 +941,7 @@
 </li>
 <li>
 <p>volumes</p>
-<p>数据挂载，宿主机的当前目录与容器内/root/code目录建立映射</p>
+<p>数据挂载，宿主机的当前目录与容器内/root/code目录建立映射。如果希望多个项目部署时共用宿主机的开发环境或者数据，可以选择使用该配置挂载某些目录，无需将数据或环境复制到容器内</p>
 </li>
 <li>
 <p>ports</p>
@@ -980,12 +983,12 @@
 </span></span></span><span class="line"><span class="cl"><span class="err"></span>    restart: always<span class="err">
 </span></span></span><span class="line"><span class="cl"><span class="err"></span>    build: .<span class="err">
 </span></span></span><span class="line"><span class="cl"><span class="err"></span>    command: <span class="s2">&#34;python3 manage.py runserver 0.0.0.0:8000 --noreload&#34;</span><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="err"></span>    volumes:<span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="err"></span>      - .:/root/code<span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span>    <span class="c1"># volumes:</span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span>    <span class="c1">#  - .:/root/code</span><span class="err">
 </span></span></span><span class="line"><span class="cl"><span class="err"></span>    ports:<span class="err">
 </span></span></span><span class="line"><span class="cl"><span class="err"></span>      - <span class="s2">&#34;127.0.0.1:22999:8000&#34;</span><span class="err">
 </span></span></span><span class="line"><span class="cl"><span class="err"></span>      - <span class="s2">&#34;192.168.1.2:22999:8000&#34;</span><span class="err">
-</span></span></span></code></pre></div><p>所以，按照上面的配置，运行docker-compose up命令后，即可启动容器，如果容器内项目正常启动，就可以通过宿主机使用127.0.0.1:22999地址访问到容器内的django服务。</p>
+</span></span></span></code></pre></div><p>所以，按照上面的配置，运行docker-compose up -d命令后，即可启动容器，如果容器内项目正常启动，就可以通过宿主机使用127.0.0.1:22999地址访问到容器内的django服务。</p>
 <p>
 
 
