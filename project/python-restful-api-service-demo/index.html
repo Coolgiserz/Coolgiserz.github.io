@@ -1,0 +1,1886 @@
+<!DOCTYPE html><html lang="en-us" >
+
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  
+  
+  
+    <meta name="generator" content="Wowchemy 5.5.0 for Hugo" />
+  
+
+  
+  
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+  
+  
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  
+
+  
+  
+  
+    
+      
+      <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Roboto+Mono&family=Roboto:wght@400;700&display=swap">
+      <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Roboto+Mono&family=Roboto:wght@400;700&display=swap" media="print" onload="this.media='all'">
+    
+  
+
+  
+  
+  
+  
+  
+    
+    
+    
+  
+  
+
+  <meta name="author" content="CoolCats" />
+
+  
+  
+  
+    
+  
+  <meta name="description" content="之前爬取了部分游戏数据存储在数据库中，现需要开放给前端朋友进行可视化，考虑以Restful api形式提供服务，写此文记录之。" />
+
+  
+  <link rel="alternate" hreflang="en-us" href="/project/python-restful-api-service-demo/" />
+
+  
+  
+  
+    <meta name="theme-color" content="#1565c0" />
+  
+
+  
+  
+    
+    <script src="/js/mathjax-config.js"></script>
+  
+
+  
+
+  <link rel="stylesheet" href="/css/vendor-bundle.min.c7b8d9abd591ba2253ea42747e3ac3f5.css" media="print" onload="this.media='all'">
+
+  
+  
+  
+    
+    
+      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/academicons@1.9.1/css/academicons.min.css" integrity="sha512-W0xM4mr6dEP9nREo7Z9z+9X70wytKvMGeDsj7ps2+xg5QPrEBXC8tAW1IFnzjR6eoJ90JmCnFzerQJTLzIEHjA==" crossorigin="anonymous" media="print" onload="this.media='all'">
+    
+
+    
+    
+    
+    
+      
+      
+    
+    
+    
+
+    
+    
+    
+      
+    
+    
+      
+      
+        
+          <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@10.2.1/build/styles/github.min.css" crossorigin="anonymous" title="hl-light" media="print" onload="this.media='all'">
+          <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@10.2.1/build/styles/dracula.min.css" crossorigin="anonymous" title="hl-dark" media="print" onload="this.media='all'" disabled>
+        
+      
+    
+
+    
+    
+    
+      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.7.1/dist/leaflet.min.css" integrity="" crossorigin="anonymous" media="print" onload="this.media='all'">
+    
+
+    
+
+    
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js" integrity="" crossorigin="anonymous" async></script>
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+  
+
+  
+  
+  
+  
+  
+  <link rel="stylesheet" href="/css/wowchemy.1052fab8b7700a3dc49ee23683097d66.css" />
+
+  
+
+
+
+  
+
+
+  
+
+
+  
+
+
+  <script>
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?51ae6db546b05b91d4053193ba49123d";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+  
+  
+  
+
+  
+
+  
+
+  <link rel="icon" type="image/png" href="/media/icon_hue03491371183284312b8b116a73ae5ab_79511_32x32_fill_lanczos_center_3.png" />
+  <link rel="apple-touch-icon" type="image/png" href="/media/icon_hue03491371183284312b8b116a73ae5ab_79511_180x180_fill_lanczos_center_3.png" />
+
+  <link rel="canonical" href="/project/python-restful-api-service-demo/" />
+
+  
+  
+  
+  
+  
+  
+  
+  
+    
+    
+  
+  
+
+  
+  
+    
+    
+  
+  <meta property="twitter:card" content="summary" />
+  
+    <meta property="twitter:site" content="@wowchemy" />
+    <meta property="twitter:creator" content="@wowchemy" />
+  
+  <meta property="og:site_name" content="CoolCats" />
+  <meta property="og:url" content="/project/python-restful-api-service-demo/" />
+  <meta property="og:title" content="Python Restful API 接口服务示例项目 | CoolCats" />
+  <meta property="og:description" content="之前爬取了部分游戏数据存储在数据库中，现需要开放给前端朋友进行可视化，考虑以Restful api形式提供服务，写此文记录之。" /><meta property="og:image" content="/media/icon_hue03491371183284312b8b116a73ae5ab_79511_512x512_fill_lanczos_center_3.png" />
+    <meta property="twitter:image" content="/media/icon_hue03491371183284312b8b116a73ae5ab_79511_512x512_fill_lanczos_center_3.png" /><meta property="og:locale" content="en-us" />
+  
+    
+      <meta
+        property="article:published_time"
+        content="2023-05-28T01:02:08&#43;08:00"
+      />
+    
+    <meta property="article:modified_time" content="2023-05-28T01:02:08&#43;08:00">
+  
+
+  
+
+
+    
+
+
+
+
+
+
+
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "/project/python-restful-api-service-demo/"
+  },
+  "headline": "Python Restful API 接口服务示例项目",
+  
+  "datePublished": "2023-05-28T01:02:08+08:00",
+  "dateModified": "2023-05-28T01:02:08+08:00",
+  
+  "author": {
+    "@type": "Person",
+    "name": "CoolCats"
+  },
+  
+  "publisher": {
+    "@type": "Organization",
+    "name": "CoolCats",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "/media/icon_hue03491371183284312b8b116a73ae5ab_79511_192x192_fill_lanczos_center_3.png"
+    }
+  },
+  "description": "之前爬取了部分游戏数据存储在数据库中，现需要开放给前端朋友进行可视化，考虑以Restful api形式提供服务，写此文记录之。"
+}
+</script>
+
+  
+
+  
+
+  
+
+  
+
+
+
+
+
+  <title>Python Restful API 接口服务示例项目 | CoolCats</title>
+</head>
+
+
+<body id="top" data-spy="scroll" data-offset="70" data-target="#TableOfContents" class="page-wrapper   " data-wc-page-id="07c425725994a394910156be1b763c3f" >
+
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  <script src="/js/wowchemy-init.min.2ed908358299dd7ab553faae685c746c.js"></script>
+
+  
+
+
+<aside class="search-modal" id="search">
+  <div class="container">
+    <section class="search-header">
+
+      <div class="row no-gutters justify-content-between mb-3">
+        <div class="col-6">
+          <h1>Search</h1>
+        </div>
+        <div class="col-6 col-search-close">
+          <a class="js-search" href="#" aria-label="Close"><i class="fas fa-times-circle text-muted" aria-hidden="true"></i></a>
+        </div>
+      </div>
+
+      <div id="search-box">
+        
+        <input name="q" id="search-query" placeholder="Search..." autocapitalize="off"
+        autocomplete="off" autocorrect="off" spellcheck="false" type="search" class="form-control"
+        aria-label="Search...">
+        
+      </div>
+
+      
+      
+
+      
+
+    </section>
+    <section class="section-search-results">
+
+      <div id="search-hits">
+        
+      </div>
+
+    </section>
+  </div>
+</aside>
+
+
+
+  <div class="page-header">
+    
+
+
+
+
+
+
+
+
+
+
+
+
+<header class="header--fixed">
+  <nav class="navbar navbar-expand-lg navbar-light compensate-for-scrollbar" id="navbar-main">
+    <div class="container-xl">
+
+      
+      <div class="d-none d-lg-inline-flex">
+        <a class="navbar-brand" href="/">CoolCats</a>
+      </div>
+      
+
+      
+      <button type="button" class="navbar-toggler" data-toggle="collapse"
+              data-target="#navbar-content" aria-controls="navbar-content" aria-expanded="false" aria-label="Toggle navigation">
+      <span><i class="fas fa-bars"></i></span>
+      </button>
+      
+
+      
+      <div class="navbar-brand-mobile-wrapper d-inline-flex d-lg-none">
+        <a class="navbar-brand" href="/">CoolCats</a>
+      </div>
+      
+
+      
+      
+      <div class="navbar-collapse main-menu-item collapse justify-content-start" id="navbar-content">
+
+        
+        <ul class="navbar-nav d-md-inline-flex">
+          
+
+          
+
+          
+          
+          
+
+          
+
+          
+          
+          
+          
+
+          
+            
+              
+              
+            
+            
+          
+
+          <li class="nav-item">
+            <a class="nav-link " href="/post"><span>博客</span></a>
+          </li>
+
+          
+          
+
+          
+
+          
+          
+          
+            
+          
+
+          
+
+          
+          
+          
+          
+
+          
+            
+              
+              
+            
+            
+          
+
+          <li class="nav-item">
+            <a class="nav-link " href="/event"><span>趣事</span></a>
+          </li>
+
+          
+          
+
+          
+
+          
+          
+          
+            
+          
+
+          
+
+          
+          
+          
+          
+
+          
+            
+              
+              
+            
+            
+          
+
+          <li class="nav-item">
+            <a class="nav-link  active" href="/project"><span>项目</span></a>
+          </li>
+
+          
+          
+
+          
+
+          
+          
+          
+            
+          
+
+          
+
+          
+          
+          
+          
+
+          
+            
+              
+              
+            
+            
+          
+
+          <li class="nav-item">
+            <a class="nav-link " href="/publication"><span>论文</span></a>
+          </li>
+
+          
+          
+
+          
+
+          
+          
+          
+            
+          
+
+          
+
+          
+          
+          
+          
+
+          
+            
+              
+              
+            
+            
+          
+
+          <li class="nav-item">
+            <a class="nav-link " href="/contact"><span>联系</span></a>
+          </li>
+
+          
+          
+
+          
+
+          
+          
+          
+            
+          
+
+          
+
+          
+          
+          
+          
+
+          
+            
+              
+              
+            
+            
+          
+
+          <li class="nav-item">
+            <a class="nav-link " href="/media/files/cv"><span>简历</span></a>
+          </li>
+
+          
+          
+
+        
+
+          
+        </ul>
+      </div>
+
+      <ul class="nav-icons navbar-nav flex-row ml-auto d-flex pl-md-2">
+
+        
+        
+          
+        
+
+        
+        
+        <li class="nav-item">
+          <a class="nav-link js-search" href="#" aria-label="Search"><i class="fas fa-search" aria-hidden="true"></i></a>
+        </li>
+        
+
+        
+        
+        
+        <li class="nav-item dropdown theme-dropdown">
+          <a href="#" class="nav-link" data-toggle="dropdown" aria-haspopup="true" aria-label="Display preferences">
+            <i class="fas fa-moon" aria-hidden="true"></i>
+          </a>
+          <div class="dropdown-menu">
+            <a href="#" class="dropdown-item js-set-theme-light">
+              <span>Light</span>
+            </a>
+            <a href="#" class="dropdown-item js-set-theme-dark">
+              <span>Dark</span>
+            </a>
+            <a href="#" class="dropdown-item js-set-theme-auto">
+              <span>Automatic</span>
+            </a>
+          </div>
+        </li>
+        
+
+        
+        
+
+      </ul>
+
+    </div>
+  </nav>
+</header>
+
+
+  </div>
+
+  <div class="page-body">
+    
+    
+    
+
+    <article class="article article-project">
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+  
+  
+<div class="article-container pt-3">
+  <h1>Python Restful API 接口服务示例项目</h1>
+
+  
+
+  
+    
+
+
+<div class="article-metadata">
+
+  
+  
+
+  
+  <span class="article-date">
+    
+    
+      
+    
+    May 28, 2023
+  </span>
+  
+
+  
+
+  
+
+  
+  
+  
+  
+
+  
+  
+
+</div>
+
+    
+
+
+
+
+
+  
+</div>
+
+
+
+  <div class="article-container">
+
+    <div class="article-style">
+      <!-- START doctoc generated TOC please keep comment here to allow auto update -->
+<!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
+<p><strong>Table of Contents</strong></p>
+<ul>
+<li><a href="#%E6%A6%82%E8%A7%88">概览</a></li>
+<li><a href="#%E7%A4%BA%E4%BE%8B%E9%A1%B9%E7%9B%AE%E6%AD%A5%E9%AA%A4">示例项目步骤</a>
+<ul>
+<li><a href="#%E5%AE%89%E8%A3%85flask">安装Flask</a></li>
+<li><a href="#%E5%88%9B%E5%BB%BAflask%E7%BD%91%E9%A1%B5%E5%BA%94%E7%94%A8">创建Flask网页应用</a></li>
+<li><a href="#%E9%80%9A%E8%BF%87flask%E5%AE%9E%E7%8E%B0restful%E6%9C%8D%E5%8A%A1">通过Flask实现Restful服务</a></li>
+<li><a href="#%E4%BD%BF%E7%94%A8curl%E6%B5%8B%E8%AF%95web%E6%9C%8D%E5%8A%A1">使用curl测试web服务</a></li>
+<li><a href="#%E6%9B%B4%E5%A4%9A%E6%8E%A5%E5%8F%A3">更多接口</a>
+<ul>
+<li><a href="#get-%E6%9F%A5%E8%AF%A2%E6%9F%90%E4%B8%80%E6%9D%A1%E8%AE%B0%E5%BD%95%E5%8D%95%E7%8B%AC%E8%BF%94%E5%9B%9E%E4%B8%80%E4%B8%AA%E9%9F%B3%E4%B9%90">GET: 查询某一条记录（单独返回一个音乐）</a></li>
+<li><a href="#post%E6%96%B0%E5%A2%9E%E6%95%B0%E6%8D%AE">POST新增数据</a></li>
+<li><a href="#put%E6%9B%B4%E6%96%B0%E6%95%B0%E6%8D%AE">PUT更新数据</a></li>
+<li><a href="#delete%E5%88%A0%E9%99%A4%E6%95%B0%E6%8D%AE">DELETE删除数据</a></li>
+</ul>
+</li>
+<li><a href="#%E4%BC%98%E5%8C%96web-service%E6%8E%A5%E5%8F%A3">优化Web Service接口</a></li>
+<li><a href="#%E5%8A%A0%E5%BC%BArestful-web-service%E7%9A%84%E5%AE%89%E5%85%A8%E6%80%A7">加强RESTful web service的安全性</a>
+<ul>
+<li><a href="#%E5%B0%8F%E7%BB%93">小结</a></li>
+</ul>
+</li>
+<li><a href="#put%E5%92%8Cpost%E7%9A%84%E5%8C%BA%E5%88%AB">PUT和POST的区别</a></li>
+<li><a href="#http%E5%8D%8F%E8%AE%AE%E8%AE%A4%E8%AF%81%E6%9C%BA%E5%88%B6">HTTP协议认证机制</a></li>
+</ul>
+</li>
+<li><a href="#%E5%9F%BA%E4%BA%8Eflask-restful-%E8%AE%BE%E8%AE%A1restful-api">基于Flask-RESTful 设计Restful API</a></li>
+<li><a href="#%E9%A1%B9%E7%9B%AE%E5%9C%B0%E5%9D%80">项目地址</a></li>
+<li><a href="#%E5%8F%82%E8%80%83%E6%96%87%E6%A1%A3">参考文档</a></li>
+</ul>
+<!-- END doctoc generated TOC please keep comment here to allow auto update -->
+<h2 id="概览">概览</h2>
+<p>本项目参考Flask官方文档(但部分细节有变化)，实现如下事项：</p>
+<ul>
+<li>
+<p>使用Flask实现Restful服务器</p>
+<p>基于官方文档微调的Restful api Demo</p>
+</li>
+<li>
+<p>使用Flask-RESTful设计Restful API</p>
+<p>为数据库中的部分游戏数据开放RESTful接口</p>
+</li>
+</ul>
+<h2 id="示例项目步骤">示例项目步骤</h2>
+<h4 id="安装flask">安装Flask</h4>
+<p>创建虚拟环境，我通过conda创建，flask官方文档通过virtualenv创建虚拟环境，你可以选择任意方式创建。</p>
+<pre tabindex="0"><code>conda create -n flask python=3.8
+</code></pre><p>激活flask虚拟环境</p>
+<pre tabindex="0"><code>conda activate flask
+</code></pre><h4 id="创建flask网页应用">创建Flask网页应用</h4>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="kn">from</span> <span class="nn">flask</span> <span class="kn">import</span> <span class="n">Flask</span>
+</span></span><span class="line"><span class="cl"><span class="n">app</span> <span class="o">=</span> <span class="n">Flask</span><span class="p">(</span><span class="vm">__name__</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nd">@app</span><span class="o">.</span><span class="n">route</span><span class="p">(</span><span class="s2">&#34;/&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="k">def</span> <span class="nf">index</span><span class="p">():</span>
+</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="s2">&#34;Hello, world!&#34;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&#34;__main__&#34;</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">    <span class="n">app</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">debug</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</span></span></code></pre></div><p>运行程序后提示如下信息即可通过访问 <a href="http://localhost:5000/" target="_blank" rel="noopener">http://localhost:5000</a>查看flask程序的效果。</p>
+<p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<figure  >
+  <div class="d-flex justify-content-center">
+    <div class="w-100" ><img alt="" srcset="
+               /project/python-restful-api-service-demo/images/run_app_hu1f524188dbcf00ecbaba42dcb5efe996_88822_2b64bfaec4fdf7136cb70c937798b8b9.webp 400w,
+               /project/python-restful-api-service-demo/images/run_app_hu1f524188dbcf00ecbaba42dcb5efe996_88822_40400254e6c04369942eaa1be036e413.webp 760w,
+               /project/python-restful-api-service-demo/images/run_app_hu1f524188dbcf00ecbaba42dcb5efe996_88822_1200x1200_fit_q75_h2_lanczos_3.webp 1200w"
+               src="/project/python-restful-api-service-demo/images/run_app_hu1f524188dbcf00ecbaba42dcb5efe996_88822_2b64bfaec4fdf7136cb70c937798b8b9.webp"
+               width="760"
+               height="171"
+               loading="lazy" data-zoomable /></div>
+  </div></figure>
+</p>
+<p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<figure  >
+  <div class="d-flex justify-content-center">
+    <div class="w-100" ><img alt="" srcset="
+               /project/python-restful-api-service-demo/images/flask_app_hub5bb0eee8940bb2f9956be661c58bfb2_41436_588faa349eca4a6c3844be4be0effef1.webp 400w,
+               /project/python-restful-api-service-demo/images/flask_app_hub5bb0eee8940bb2f9956be661c58bfb2_41436_06111961a511ad11144bf3323ec79823.webp 760w,
+               /project/python-restful-api-service-demo/images/flask_app_hub5bb0eee8940bb2f9956be661c58bfb2_41436_1200x1200_fit_q75_h2_lanczos_3.webp 1200w"
+               src="/project/python-restful-api-service-demo/images/flask_app_hub5bb0eee8940bb2f9956be661c58bfb2_41436_588faa349eca4a6c3844be4be0effef1.webp"
+               width="760"
+               height="252"
+               loading="lazy" data-zoomable /></div>
+  </div></figure>
+</p>
+<h4 id="通过flask实现restful服务">通过Flask实现Restful服务</h4>
+<p>通过@app.route函数指定服务入口（接口），通过接口返回数据（示例中数据存放在内存中，web服务结束后就失效）</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="kn">from</span> <span class="nn">flask</span> <span class="kn">import</span> <span class="n">Flask</span><span class="p">,</span> <span class="n">jsonify</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">app</span> <span class="o">=</span> <span class="n">Flask</span><span class="p">(</span><span class="vm">__name__</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">musics</span> <span class="o">=</span> <span class="p">[</span>
+</span></span><span class="line"><span class="cl">    <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="s1">&#39;id&#39;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">        <span class="s1">&#39;title&#39;</span><span class="p">:</span> <span class="sa">u</span><span class="s1">&#39;南海姑娘&#39;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">        <span class="s1">&#39;singer&#39;</span><span class="p">:</span> <span class="sa">u</span><span class="s1">&#39;王菲&#39;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">        <span class="s1">&#39;lyric&#39;</span><span class="p">:</span> <span class="s1">&#39;椰风挑动银浪，夕阳躲云偷看&#39;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">},</span>
+</span></span><span class="line"><span class="cl">    <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="s1">&#39;id&#39;</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">        <span class="s1">&#39;title&#39;</span><span class="p">:</span> <span class="sa">u</span><span class="s1">&#39;Heart Of Glass&#39;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">        <span class="s1">&#39;singer&#39;</span><span class="p">:</span> <span class="sa">u</span><span class="s1">&#39;王菲&#39;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">        <span class="s1">&#39;lyric&#39;</span><span class="p">:</span> <span class="s1">&#39;in between what i found is ...&#39;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">},</span>
+</span></span><span class="line"><span class="cl">    <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="s1">&#39;id&#39;</span><span class="p">:</span> <span class="mi">3</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">        <span class="s1">&#39;title&#39;</span><span class="p">:</span> <span class="sa">u</span><span class="s1">&#39;Dreams&#39;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">        <span class="s1">&#39;singer&#39;</span><span class="p">:</span> <span class="sa">u</span><span class="s1">&#39;卡百利&#39;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">        <span class="s1">&#39;lyric&#39;</span><span class="p">:</span> <span class="s1">&#39;Oh my dream...&#39;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">]</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nd">@app</span><span class="o">.</span><span class="n">route</span><span class="p">(</span><span class="s2">&#34;/&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="k">def</span> <span class="nf">index</span><span class="p">():</span>
+</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="s2">&#34;Hello, world!&#34;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nd">@app</span><span class="o">.</span><span class="n">route</span><span class="p">(</span><span class="s1">&#39;/music/api/v1.0/musics&#39;</span><span class="p">,</span> <span class="n">methods</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;GET&#39;</span><span class="p">])</span>
+</span></span><span class="line"><span class="cl"><span class="k">def</span> <span class="nf">get_musics</span><span class="p">():</span>
+</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="n">jsonify</span><span class="p">({</span>
+</span></span><span class="line"><span class="cl">        <span class="s1">&#39;musics&#39;</span><span class="p">:</span> <span class="n">musics</span>
+</span></span><span class="line"><span class="cl">    <span class="p">})</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&#34;__main__&#34;</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">    <span class="n">app</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">debug</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</span></span></code></pre></div><p>执行app.py启动web服务，打开http://127.0.0.1:5000/music/api/v1.0/musics</p>
+<p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<figure  >
+  <div class="d-flex justify-content-center">
+    <div class="w-100" ><img alt="" srcset="
+               /project/python-restful-api-service-demo/images/music_mess_chinese_hu75918b58229437c9922fa5ffadef0eaa_100509_a8ca0f1fbe81fb59ba8a2660b1c195a1.webp 400w,
+               /project/python-restful-api-service-demo/images/music_mess_chinese_hu75918b58229437c9922fa5ffadef0eaa_100509_715a9ae30a52db982caf27c0dd7bb500.webp 760w,
+               /project/python-restful-api-service-demo/images/music_mess_chinese_hu75918b58229437c9922fa5ffadef0eaa_100509_1200x1200_fit_q75_h2_lanczos_3.webp 1200w"
+               src="/project/python-restful-api-service-demo/images/music_mess_chinese_hu75918b58229437c9922fa5ffadef0eaa_100509_a8ca0f1fbe81fb59ba8a2660b1c195a1.webp"
+               width="760"
+               height="338"
+               loading="lazy" data-zoomable /></div>
+  </div></figure>
+</p>
+<p>注意到返回的数据里中文并没有正常显示，这是因为jsonify默认以ASCII码返回，不能正常显示中文。对于此问题网上大多数“解决方法“是更改Flask app的编码配置，通过如下代码完成</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="n">app</span><span class="o">.</span><span class="n">config</span><span class="p">[</span><span class="s2">&#34;JSON_AS_ASCII&#34;</span><span class="p">]</span> <span class="o">=</span> <span class="kc">False</span>
+</span></span></code></pre></div><p>但在我本机测试无法解决(Python 3.8.16，Flask 2.3.2，Werkzeug 2.3.4)</p>
+<p>最终通过json.dumps方式实现中文正常显示效果。</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="nd">@app</span><span class="o">.</span><span class="n">route</span><span class="p">(</span><span class="s1">&#39;/music/api/v1.0/musics&#39;</span><span class="p">,</span> <span class="n">methods</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;GET&#39;</span><span class="p">])</span>
+</span></span><span class="line"><span class="cl"><span class="k">def</span> <span class="nf">get_musics</span><span class="p">():</span>
+</span></span><span class="line"><span class="cl">     <span class="n">json_string</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">dumps</span><span class="p">({</span><span class="s2">&#34;musics&#34;</span><span class="p">:</span><span class="n">musics</span> <span class="p">},</span> <span class="n">ensure_ascii</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">     <span class="n">response</span> <span class="o">=</span> <span class="n">Response</span><span class="p">(</span><span class="n">json_string</span><span class="p">,</span> <span class="n">content_type</span><span class="o">=</span><span class="s2">&#34;application/json; charset=utf-8&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">     <span class="k">return</span> <span class="n">response</span>
+</span></span></code></pre></div><p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<figure  >
+  <div class="d-flex justify-content-center">
+    <div class="w-100" ><img alt="" srcset="
+               /project/python-restful-api-service-demo/images/music_normal_chinese_hu971ad0967f47a0a4d7add34f1ca192fa_54697_b60d1211490d961c34481803d097f758.webp 400w,
+               /project/python-restful-api-service-demo/images/music_normal_chinese_hu971ad0967f47a0a4d7add34f1ca192fa_54697_5abfa789b211f750f9b1b330e40a7b51.webp 760w,
+               /project/python-restful-api-service-demo/images/music_normal_chinese_hu971ad0967f47a0a4d7add34f1ca192fa_54697_1200x1200_fit_q75_h2_lanczos_3.webp 1200w"
+               src="/project/python-restful-api-service-demo/images/music_normal_chinese_hu971ad0967f47a0a4d7add34f1ca192fa_54697_b60d1211490d961c34481803d097f758.webp"
+               width="760"
+               height="66"
+               loading="lazy" data-zoomable /></div>
+  </div></figure>
+</p>
+<p>小结：get_musics函数允许通过GET方法访问/music/api/v1.0/musics获取资源，资源响应通过JSON格式返回。</p>
+<h4 id="使用curl测试web服务">使用curl测试web服务</h4>
+<p>为了模拟更多的HTTP请求，建议通过curl而非浏览器发送请求，curl简单用法如下：</p>
+<p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<figure  >
+  <div class="d-flex justify-content-center">
+    <div class="w-100" ><img alt="" srcset="
+               /project/python-restful-api-service-demo/images/curl_hucadb60a10b9ddb01c25decf8c0406062_163802_a4f50e2a8cb8238e5daf7c86a10ba68d.webp 400w,
+               /project/python-restful-api-service-demo/images/curl_hucadb60a10b9ddb01c25decf8c0406062_163802_cb4b0080f8a4fd78e2ac5f990104868a.webp 760w,
+               /project/python-restful-api-service-demo/images/curl_hucadb60a10b9ddb01c25decf8c0406062_163802_1200x1200_fit_q75_h2_lanczos_3.webp 1200w"
+               src="/project/python-restful-api-service-demo/images/curl_hucadb60a10b9ddb01c25decf8c0406062_163802_a4f50e2a8cb8238e5daf7c86a10ba68d.webp"
+               width="760"
+               height="440"
+               loading="lazy" data-zoomable /></div>
+  </div></figure>
+</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">curl -i http://127.0.0.1:5000/music/api/v1.0/musics
+</span></span></code></pre></div><pre tabindex="0"><code>HTTP/1.1 200 OK
+Server: Werkzeug/2.3.4 Python/3.8.16
+Date: Wed, 31 May 2023 17:09:22 GMT
+Content-Type: application/json; charset=utf-8
+Content-Length: 301
+Connection: close
+
+{&#34;musics&#34;: [{&#34;id&#34;: 1, &#34;lyric&#34;: &#34;椰风挑动银浪，夕阳躲云偷看&#34;, &#34;singer&#34;: &#34;王菲&#34;, &#34;title&#34;: &#34;南海姑娘&#34;}, {&#34;id&#34;: 2, &#34;lyric&#34;: &#34;in between what i found is ...&#34;, &#34;singer&#34;: &#34;王菲&#34;, &#34;title&#34;: &#34;Heart Of Glass&#34;}, {&#34;id&#34;: 3, &#34;lyric&#34;: &#34;Oh my dream...&#34;, &#34;singer&#34;: &#34;卡百利&#34;, &#34;title&#34;: &#34;Dreams&#34;}]}%
+</code></pre><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">curl -i http://127.0.0.1:5000
+</span></span></code></pre></div><pre tabindex="0"><code>HTTP/1.1 200 OK
+Server: Werkzeug/2.3.4 Python/3.8.16
+Date: Wed, 31 May 2023 17:10:04 GMT
+Content-Type: text/html; charset=utf-8
+Content-Length: 29
+Connection: close
+
+Hello, world! 你好世界！%
+</code></pre><h4 id="更多接口">更多接口</h4>
+<h5 id="get-查询某一条记录单独返回一个音乐">GET: 查询某一条记录（单独返回一个音乐）</h5>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="nd">@app</span><span class="o">.</span><span class="n">route</span><span class="p">(</span><span class="s1">&#39;/music/api/v1.0/music/&lt;int:music_id&gt;&#39;</span><span class="p">,</span> <span class="n">methods</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;GET&#39;</span><span class="p">])</span>
+</span></span><span class="line"><span class="cl"><span class="k">def</span> <span class="nf">get_music</span><span class="p">(</span><span class="n">music_id</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">    <span class="n">music</span> <span class="o">=</span> <span class="nb">filter</span><span class="p">(</span><span class="k">lambda</span> <span class="n">t</span><span class="p">:</span><span class="n">t</span><span class="p">[</span><span class="s1">&#39;id&#39;</span><span class="p">]</span><span class="o">==</span><span class="n">music_id</span><span class="p">,</span> <span class="n">musics</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="n">music</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">music</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="k">if</span> <span class="n">music</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">        <span class="n">json_string</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">dumps</span><span class="p">({</span><span class="s2">&#34;music&#34;</span><span class="p">:</span><span class="n">music</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="p">},</span> <span class="n">ensure_ascii</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="n">response</span> <span class="o">=</span> <span class="n">Response</span><span class="p">(</span><span class="n">json_string</span><span class="p">,</span> <span class="n">content_type</span><span class="o">=</span><span class="s2">&#34;application/json; charset=utf-8&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="n">response</span>
+</span></span><span class="line"><span class="cl">    <span class="k">else</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">        <span class="n">abort</span><span class="p">(</span><span class="mi">404</span><span class="p">)</span>
+</span></span></code></pre></div><p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<figure  >
+  <div class="d-flex justify-content-center">
+    <div class="w-100" ><img alt="" srcset="
+               /project/python-restful-api-service-demo/images/music_id_hu76346032493d6459a83a568ebd479f25_322029_e75bd43e97050189acab8f8329b5cb4b.webp 400w,
+               /project/python-restful-api-service-demo/images/music_id_hu76346032493d6459a83a568ebd479f25_322029_1e37bc2b156f03001b775ef872d0c3e7.webp 760w,
+               /project/python-restful-api-service-demo/images/music_id_hu76346032493d6459a83a568ebd479f25_322029_1200x1200_fit_q75_h2_lanczos_3.webp 1200w"
+               src="/project/python-restful-api-service-demo/images/music_id_hu76346032493d6459a83a568ebd479f25_322029_e75bd43e97050189acab8f8329b5cb4b.webp"
+               width="760"
+               height="495"
+               loading="lazy" data-zoomable /></div>
+  </div></figure>
+</p>
+<p>如果希望以json格式响应返回404的提示信息，而非使用默认的html响应，可重写404错误码处理函数如下：</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="nd">@app</span><span class="o">.</span><span class="n">errorhandler</span><span class="p">(</span><span class="mi">404</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="k">def</span> <span class="nf">not_found</span><span class="p">(</span><span class="n">error</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="n">make_response</span><span class="p">(</span><span class="n">jsonify</span><span class="p">({</span><span class="s2">&#34;error&#34;</span><span class="p">:</span> <span class="s2">&#34;Not Found&#34;</span><span class="p">}),</span> <span class="mi">404</span><span class="p">)</span>
+</span></span></code></pre></div><p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<figure  >
+  <div class="d-flex justify-content-center">
+    <div class="w-100" ><img alt="" srcset="
+               /project/python-restful-api-service-demo/images/404_hu22a2f261ef4791a5d80f49b47f8a2be3_98918_39a01cbf65236e31b4fb0f98bccec62a.webp 400w,
+               /project/python-restful-api-service-demo/images/404_hu22a2f261ef4791a5d80f49b47f8a2be3_98918_ab7c9603ace441e460b4f7055f1a3994.webp 760w,
+               /project/python-restful-api-service-demo/images/404_hu22a2f261ef4791a5d80f49b47f8a2be3_98918_1200x1200_fit_q75_h2_lanczos_3.webp 1200w"
+               src="/project/python-restful-api-service-demo/images/404_hu22a2f261ef4791a5d80f49b47f8a2be3_98918_39a01cbf65236e31b4fb0f98bccec62a.webp"
+               width="760"
+               height="224"
+               loading="lazy" data-zoomable /></div>
+  </div></figure>
+</p>
+<h5 id="post新增数据">POST新增数据</h5>
+<pre tabindex="0"><code>curl -i -H &#34;Content-Type: application/json&#34; -X POST -d &#39;{&#34;title&#34;:&#34;Crazy&#34;}&#39; http://localhost:5000/music/api/v1.0/musics
+</code></pre><p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<figure  >
+  <div class="d-flex justify-content-center">
+    <div class="w-100" ><img alt="" srcset="
+               /project/python-restful-api-service-demo/images/crazy_hu688836ce1190e1c9c66a8da6a0e47ba2_152400_e44ce7f55f894a8955907d9806201f07.webp 400w,
+               /project/python-restful-api-service-demo/images/crazy_hu688836ce1190e1c9c66a8da6a0e47ba2_152400_c44d47efdb8cb2af10d1a4960b1044d5.webp 760w,
+               /project/python-restful-api-service-demo/images/crazy_hu688836ce1190e1c9c66a8da6a0e47ba2_152400_1200x1200_fit_q75_h2_lanczos_3.webp 1200w"
+               src="/project/python-restful-api-service-demo/images/crazy_hu688836ce1190e1c9c66a8da6a0e47ba2_152400_e44ce7f55f894a8955907d9806201f07.webp"
+               width="760"
+               height="322"
+               loading="lazy" data-zoomable /></div>
+  </div></figure>
+</p>
+<h5 id="put更新数据">PUT更新数据</h5>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="nd">@app</span><span class="o">.</span><span class="n">route</span><span class="p">(</span><span class="s2">&#34;/music/api/v1.0/music/&lt;int:music_id&gt;&#34;</span><span class="p">,</span> <span class="n">methods</span><span class="o">=</span><span class="p">[</span><span class="s2">&#34;PUT&#34;</span><span class="p">])</span>
+</span></span><span class="line"><span class="cl"><span class="k">def</span> <span class="nf">update_music</span><span class="p">(</span><span class="n">music_id</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">    <span class="n">music</span> <span class="o">=</span> <span class="nb">filter</span><span class="p">(</span><span class="k">lambda</span> <span class="n">m</span><span class="p">:</span><span class="n">m</span><span class="p">[</span><span class="s2">&#34;id&#34;</span><span class="p">]</span><span class="o">==</span><span class="n">music_id</span><span class="p">,</span> <span class="n">musics</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="n">music</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">music</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">music</span><span class="p">)</span><span class="o">==</span><span class="mi">0</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">        <span class="c1"># data not exist</span>
+</span></span><span class="line"><span class="cl">        <span class="n">abort</span><span class="p">(</span><span class="mi">404</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="k">if</span> <span class="ow">not</span> <span class="n">request</span><span class="o">.</span><span class="n">json</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">        <span class="c1"># illegal request</span>
+</span></span><span class="line"><span class="cl">        <span class="n">abort</span><span class="p">(</span><span class="mi">400</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="c1"># input check</span>
+</span></span><span class="line"><span class="cl">    <span class="k">if</span> <span class="s1">&#39;title&#39;</span> <span class="ow">in</span> <span class="n">request</span><span class="o">.</span><span class="n">json</span> <span class="ow">and</span> <span class="nb">type</span><span class="p">(</span><span class="n">request</span><span class="o">.</span><span class="n">json</span><span class="p">[</span><span class="s1">&#39;title&#39;</span><span class="p">])</span> <span class="o">!=</span> <span class="nb">str</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">        <span class="n">abort</span><span class="p">(</span><span class="mi">400</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="k">if</span> <span class="s1">&#39;singer&#39;</span> <span class="ow">in</span> <span class="n">request</span><span class="o">.</span><span class="n">json</span> <span class="ow">and</span> <span class="nb">type</span><span class="p">(</span><span class="n">request</span><span class="o">.</span><span class="n">json</span><span class="p">[</span><span class="s1">&#39;singer&#39;</span><span class="p">])</span> <span class="ow">is</span> <span class="ow">not</span> <span class="nb">str</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">        <span class="n">abort</span><span class="p">(</span><span class="mi">400</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="k">if</span> <span class="s1">&#39;lyric&#39;</span> <span class="ow">in</span> <span class="n">request</span><span class="o">.</span><span class="n">json</span> <span class="ow">and</span> <span class="nb">type</span><span class="p">(</span><span class="n">request</span><span class="o">.</span><span class="n">json</span><span class="p">[</span><span class="s1">&#39;lyric&#39;</span><span class="p">])</span> <span class="ow">is</span> <span class="ow">not</span> <span class="nb">str</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">        <span class="n">abort</span><span class="p">(</span><span class="mi">400</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="n">music</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="s2">&#34;title&#34;</span><span class="p">]</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="n">json</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&#34;title&#34;</span><span class="p">,</span> <span class="n">music</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="s2">&#34;title&#34;</span><span class="p">])</span>
+</span></span><span class="line"><span class="cl">    <span class="n">music</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="s2">&#34;singer&#34;</span><span class="p">]</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="n">json</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&#34;singer&#34;</span><span class="p">,</span> <span class="n">music</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="s2">&#34;singer&#34;</span><span class="p">])</span>
+</span></span><span class="line"><span class="cl">    <span class="n">music</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="s2">&#34;lyric&#34;</span><span class="p">]</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="n">json</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&#34;lyric&#34;</span><span class="p">,</span> <span class="n">music</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="s2">&#34;lyric&#34;</span><span class="p">])</span>
+</span></span><span class="line"><span class="cl">    <span class="n">json_string</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">dumps</span><span class="p">({</span><span class="s2">&#34;music&#34;</span><span class="p">:</span> <span class="n">music</span><span class="p">[</span><span class="mi">0</span><span class="p">]},</span> <span class="n">ensure_ascii</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="n">response</span> <span class="o">=</span> <span class="n">Response</span><span class="p">(</span><span class="n">json_string</span><span class="p">,</span> <span class="n">content_type</span><span class="o">=</span><span class="s2">&#34;application/json; charset=utf-8&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="n">response</span>
+</span></span></code></pre></div><pre tabindex="0"><code>curl -i -H &#34;Content-Type: application/json&#34; -X PUT -d &#34;{\&#34;lyric\&#34;:\&#34;love is so confusing and I&#39;m feeling fine..\&#34;}&#34; http://localhost:5000/music/api/v1.0/music/2
+</code></pre><p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<figure  >
+  <div class="d-flex justify-content-center">
+    <div class="w-100" ><img alt="" srcset="
+               /project/python-restful-api-service-demo/images/put_hu227a4d7267fd882800b9b7dd576d1bcb_144364_2ada1fc6561592a27c658574c82edf36.webp 400w,
+               /project/python-restful-api-service-demo/images/put_hu227a4d7267fd882800b9b7dd576d1bcb_144364_48242ef2f242aa29a7eab392f713a239.webp 760w,
+               /project/python-restful-api-service-demo/images/put_hu227a4d7267fd882800b9b7dd576d1bcb_144364_1200x1200_fit_q75_h2_lanczos_3.webp 1200w"
+               src="/project/python-restful-api-service-demo/images/put_hu227a4d7267fd882800b9b7dd576d1bcb_144364_2ada1fc6561592a27c658574c82edf36.webp"
+               width="760"
+               height="157"
+               loading="lazy" data-zoomable /></div>
+  </div></figure>
+</p>
+<p>注意curl命令指定json数据时，在单双引号共存的情况下需要对json中的双引号进行转义，否则curl会报错。错误示范如下：</p>
+<pre tabindex="0"><code>curl -i -H &#34;Content-Type: application/json&#34; -X PUT -d &#39;{&#34;lyric&#34;:&#34;love is so confusing and I&#39;m feeling fine..&#34;}&#39; http://localhost:5000/music/api/v1.0/music/2
+</code></pre><h5 id="delete删除数据">DELETE删除数据</h5>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="nd">@app</span><span class="o">.</span><span class="n">route</span><span class="p">(</span><span class="s1">&#39;/music/api/v1.0/musics/&lt;int:music_id&gt;&#39;</span><span class="p">,</span> <span class="n">methods</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;DELETE&#39;</span><span class="p">])</span>
+</span></span><span class="line"><span class="cl"><span class="k">def</span> <span class="nf">delete_music</span><span class="p">(</span><span class="n">music_id</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">    <span class="n">music</span> <span class="o">=</span> <span class="nb">filter</span><span class="p">(</span><span class="k">lambda</span> <span class="n">t</span><span class="p">:</span> <span class="n">t</span><span class="p">[</span><span class="s1">&#39;id&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="n">music_id</span><span class="p">,</span> <span class="n">musics</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="n">music</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">music</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">music</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">        <span class="n">abort</span><span class="p">(</span><span class="mi">404</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="n">musics</span><span class="o">.</span><span class="n">remove</span><span class="p">(</span><span class="n">music</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="n">jsonify</span><span class="p">({</span><span class="s1">&#39;result&#39;</span><span class="p">:</span> <span class="kc">True</span><span class="p">})</span>
+</span></span></code></pre></div><p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<figure  >
+  <div class="d-flex justify-content-center">
+    <div class="w-100" ><img alt="" srcset="
+               /project/python-restful-api-service-demo/images/delete_hu1416b024d89398d962e0dfea7c6ae27c_96767_5f1ca0a070bcddf5aafcd982c9f8d3fb.webp 400w,
+               /project/python-restful-api-service-demo/images/delete_hu1416b024d89398d962e0dfea7c6ae27c_96767_2c1b2056fdf8ccc99c74de0ef69481ae.webp 760w,
+               /project/python-restful-api-service-demo/images/delete_hu1416b024d89398d962e0dfea7c6ae27c_96767_1200x1200_fit_q75_h2_lanczos_3.webp 1200w"
+               src="/project/python-restful-api-service-demo/images/delete_hu1416b024d89398d962e0dfea7c6ae27c_96767_5f1ca0a070bcddf5aafcd982c9f8d3fb.webp"
+               width="760"
+               height="192"
+               loading="lazy" data-zoomable /></div>
+  </div></figure>
+</p>
+<h4 id="优化web-service接口">优化Web Service接口</h4>
+<p>直接返回id让客户端构造URI不便与用户使用，也不利于资源发布方对URI进行变更。以上述Restful接口为例，不建议直接返回音乐的id，而是直接返回其uri。</p>
+<p>flask提供了uri_for方法用于构造url。</p>
+<p><a href="https://stackoverflow.com/questions/7478366/create-dynamic-urls-in-flask-with-url-for" target="_blank" rel="noopener">Create dynamic URLs in Flask with url_for()</a></p>
+<h4 id="加强restful-web-service的安全性">加强RESTful web service的安全性</h4>
+<p>有时候我们不希望接口对所有人公开，因此需要为接口提供认证功能，要求只有通过认证的客户端方能访问RESTful接口。一种简单认证方式是遵循HTTP协议的认证机制，这一功能可通过flask-httpauth扩展方便地实现。</p>
+<p>Flask-HTTPAuth</p>
+<pre tabindex="0"><code>pip install flask-httpauth
+</code></pre><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="kn">from</span> <span class="nn">flask_httpauth</span> <span class="kn">import</span> <span class="n">HTTPBasicAuth</span>
+</span></span><span class="line"><span class="cl"><span class="n">auth</span> <span class="o">=</span> <span class="n">HTTPBasicAuth</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nd">@auth</span><span class="o">.</span><span class="n">get_password</span>
+</span></span><span class="line"><span class="cl"><span class="k">def</span> <span class="nf">authenticate</span><span class="p">(</span><span class="n">username</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">    <span class="k">if</span> <span class="n">username</span> <span class="o">==</span> <span class="s2">&#34;coolcats&#34;</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="s2">&#34;restful&#34;</span>
+</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="kc">None</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nd">@auth</span><span class="o">.</span><span class="n">error_handler</span>
+</span></span><span class="line"><span class="cl"><span class="k">def</span> <span class="nf">unauthorized</span><span class="p">():</span>
+</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="n">make_response</span><span class="p">(</span><span class="n">jsonify</span><span class="p">({</span><span class="s2">&#34;error&#34;</span><span class="p">:</span> <span class="s2">&#34;unauthorized access&#34;</span><span class="p">}),</span> <span class="mi">401</span><span class="p">)</span>
+</span></span></code></pre></div><p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<figure  >
+  <div class="d-flex justify-content-center">
+    <div class="w-100" ><img alt="" srcset="
+               /project/python-restful-api-service-demo/images/auth_hud839a269878409379b23cccd610a1bf3_303978_a94d17b680888d825ec29ae707a5214c.webp 400w,
+               /project/python-restful-api-service-demo/images/auth_hud839a269878409379b23cccd610a1bf3_303978_30e588c44ae4da7630fd359ac4ed1b44.webp 760w,
+               /project/python-restful-api-service-demo/images/auth_hud839a269878409379b23cccd610a1bf3_303978_1200x1200_fit_q75_h2_lanczos_3.webp 1200w"
+               src="/project/python-restful-api-service-demo/images/auth_hud839a269878409379b23cccd610a1bf3_303978_a94d17b680888d825ec29ae707a5214c.webp"
+               width="760"
+               height="445"
+               loading="lazy" data-zoomable /></div>
+  </div></figure>
+</p>
+<h3 id="小结">小结</h3>
+<h4 id="put和post的区别">PUT和POST的区别</h4>
+<p><strong>HTTP <code>PUT</code> 请求方法</strong>创建一个新的资源或用请求的有效载荷替换目标资源的表示。</p>
+<p><code>PUT</code> 与 <a href="https://developer.mozilla.org/zh-CN/docs/Web/HTTP/Methods/POST" target="_blank" rel="noopener"><code>POST</code></a> 方法的区别是，<code>PUT</code> 方法是幂等的：调用一次与连续调用多次效果是相同的（即没有<em>副</em>作用），而连续调用多次相同的 <a href="https://developer.mozilla.org/zh-CN/docs/Web/HTTP/Methods/POST" target="_blank" rel="noopener"><code>POST</code></a> 方法可能会有副作用，比如多次提交同一订单。</p>
+<h4 id="http协议认证机制">HTTP协议认证机制</h4>
+<p>Basic和Digest</p>
+<h2 id="基于flask-restful-设计restful-api">基于Flask-RESTful 设计Restful API</h2>
+<p>Flask-RESTful 是一个可以简化 APIs 的构建的 Flask 扩展。</p>
+<p>以游戏数据为例，假定我们有两个数据表T_GAME, T_REVIEW，需要针对这些数据设计一些接口供外部查询，并设计修改和提交新数据的接口供经过权限认证的用户使用。主要需要的接口如下</p>
+<table>
+<thead>
+<tr>
+<th>HTTP方法</th>
+<th>URL</th>
+<th>动作</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>GET</td>
+<td>http://[hostname]/game/api/v1/games?limit=&lt;limit:int&gt;</td>
+<td>检索所有游戏</td>
+</tr>
+<tr>
+<td>GET</td>
+<td>http://[hostname]/game/api/v1/games/&lt;game_id:int&gt;</td>
+<td>检索某个游戏</td>
+</tr>
+<tr>
+<td>GET</td>
+<td>http://[hostname]/game/api/v1/reviews?limit=&lt;limit:int&gt;</td>
+<td>检索所有评论</td>
+</tr>
+<tr>
+<td>GET</td>
+<td>http://[hostname]/game/api/v1/games/&lt;game_id:int&gt;/reviews/</td>
+<td>检索某个游戏的评论</td>
+</tr>
+<tr>
+<td>GET</td>
+<td>http://[hostname]/game/api/v1/reviews/&lt;review_id:int&gt;</td>
+<td>检索某个评论</td>
+</tr>
+<tr>
+<td>POST</td>
+<td>http://[hostname]/game/api/v1/reviews/&lt;review_id:int&gt;</td>
+<td>新增评论</td>
+</tr>
+<tr>
+<td>PUT</td>
+<td>http://[hostname]/game/api/v1/reviews/&lt;review_id:int&gt;</td>
+<td>更新评论</td>
+</tr>
+<tr>
+<td>delete</td>
+<td>http://[hostname]/game/api/v1/reviews/&lt;review_id:int&gt;</td>
+<td>删除评论</td>
+</tr>
+</tbody>
+</table>
+<p>还可以在URL参数指定接口返回数据的数量（limit）；对数据进行分页，按指定每页的数据量返回；按一定的属性进行排序等；</p>
+<p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<figure  >
+  <div class="d-flex justify-content-center">
+    <div class="w-100" ><img alt="" srcset="
+               /project/python-restful-api-service-demo/images/game_sample_hudb468e99866cd5680217d37586de98dd_780194_9861d4a17d127845c5bd8297fe2f3b04.webp 400w,
+               /project/python-restful-api-service-demo/images/game_sample_hudb468e99866cd5680217d37586de98dd_780194_7eddd1d405777340cd66d18a6104ba3b.webp 760w,
+               /project/python-restful-api-service-demo/images/game_sample_hudb468e99866cd5680217d37586de98dd_780194_1200x1200_fit_q75_h2_lanczos_3.webp 1200w"
+               src="/project/python-restful-api-service-demo/images/game_sample_hudb468e99866cd5680217d37586de98dd_780194_9861d4a17d127845c5bd8297fe2f3b04.webp"
+               width="760"
+               height="352"
+               loading="lazy" data-zoomable /></div>
+  </div></figure>
+</p>
+<h3 id="准备工作">准备工作</h3>
+<p>安装flask-restful</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">pip install flask-restful
+</span></span></code></pre></div><p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<figure  >
+  <div class="d-flex justify-content-center">
+    <div class="w-100" ><img alt="" srcset="
+               /project/python-restful-api-service-demo/images/reqparse_addarg_hua884517bf22ae4cc31f55768c9ce9b3e_161913_2975f43f7cbe3d28e57a0202eea6fb0e.webp 400w,
+               /project/python-restful-api-service-demo/images/reqparse_addarg_hua884517bf22ae4cc31f55768c9ce9b3e_161913_796798c49ca058b6187e56acc19a2aeb.webp 760w,
+               /project/python-restful-api-service-demo/images/reqparse_addarg_hua884517bf22ae4cc31f55768c9ce9b3e_161913_1200x1200_fit_q75_h2_lanczos_3.webp 1200w"
+               src="/project/python-restful-api-service-demo/images/reqparse_addarg_hua884517bf22ae4cc31f55768c9ce9b3e_161913_2975f43f7cbe3d28e57a0202eea6fb0e.webp"
+               width="760"
+               height="519"
+               loading="lazy" data-zoomable /></div>
+  </div></figure>
+</p>
+<h2 id="heading"></h2>
+<p>pass</p>
+<h2 id="参考文档">参考文档</h2>
+<p><a href="http://www.pythondoc.com/flask-restful/first.html" target="_blank" rel="noopener">使用 Python 和 Flask 设计 RESTful API — Designing a RESTful API with Python and Flask 1.0 documentation</a></p>
+<p><a href="https://www.ietf.org/rfc/rfc2617.txt" target="_blank" rel="noopener">HTTP Authentication: Basic and Digest Access Authentication</a></p>
+
+    </div>
+
+    
+
+
+
+
+<div class="article-tags">
+  
+  <a class="badge badge-light" href="/tag/python/">Python</a>
+  
+  <a class="badge badge-light" href="/tag/restapi/">RestAPI</a>
+  
+</div>
+
+
+
+<div class="share-box">
+  <ul class="share">
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="https://twitter.com/intent/tweet?url=/project/python-restful-api-service-demo/&amp;text=Python%20Restful%20API%20%e6%8e%a5%e5%8f%a3%e6%9c%8d%e5%8a%a1%e7%a4%ba%e4%be%8b%e9%a1%b9%e7%9b%ae" target="_blank" rel="noopener" class="share-btn-twitter" aria-label="twitter">
+          <i class="fab fa-twitter"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="https://www.facebook.com/sharer.php?u=/project/python-restful-api-service-demo/&amp;t=Python%20Restful%20API%20%e6%8e%a5%e5%8f%a3%e6%9c%8d%e5%8a%a1%e7%a4%ba%e4%be%8b%e9%a1%b9%e7%9b%ae" target="_blank" rel="noopener" class="share-btn-facebook" aria-label="facebook">
+          <i class="fab fa-facebook"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="mailto:?subject=Python%20Restful%20API%20%e6%8e%a5%e5%8f%a3%e6%9c%8d%e5%8a%a1%e7%a4%ba%e4%be%8b%e9%a1%b9%e7%9b%ae&amp;body=/project/python-restful-api-service-demo/" target="_blank" rel="noopener" class="share-btn-email" aria-label="envelope">
+          <i class="fas fa-envelope"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="https://www.linkedin.com/shareArticle?url=/project/python-restful-api-service-demo/&amp;title=Python%20Restful%20API%20%e6%8e%a5%e5%8f%a3%e6%9c%8d%e5%8a%a1%e7%a4%ba%e4%be%8b%e9%a1%b9%e7%9b%ae" target="_blank" rel="noopener" class="share-btn-linkedin" aria-label="linkedin-in">
+          <i class="fab fa-linkedin-in"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="whatsapp://send?text=Python%20Restful%20API%20%e6%8e%a5%e5%8f%a3%e6%9c%8d%e5%8a%a1%e7%a4%ba%e4%be%8b%e9%a1%b9%e7%9b%ae%20/project/python-restful-api-service-demo/" target="_blank" rel="noopener" class="share-btn-whatsapp" aria-label="whatsapp">
+          <i class="fab fa-whatsapp"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="https://service.weibo.com/share/share.php?url=/project/python-restful-api-service-demo/&amp;title=Python%20Restful%20API%20%e6%8e%a5%e5%8f%a3%e6%9c%8d%e5%8a%a1%e7%a4%ba%e4%be%8b%e9%a1%b9%e7%9b%ae" target="_blank" rel="noopener" class="share-btn-weibo" aria-label="weibo">
+          <i class="fab fa-weibo"></i>
+        </a>
+      </li>
+    
+  </ul>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+
+
+
+  
+  
+  
+  
+  
+  <div class="media author-card content-widget-hr">
+    
+      
+      <a href="/authors/admin/"><img class="avatar mr-3 avatar-circle" src="/authors/admin/avatar_hu55194f19033f85038196a23353ffe543_580100_270x270_fill_q75_lanczos_center.jpg" alt="CoolCats"></a>
+    
+
+    <div class="media-body">
+      <h5 class="card-title"><a href="/authors/admin/">CoolCats</a></h5>
+      <h6 class="card-subtitle">理学学士</h6>
+      <p class="card-text">我的研究兴趣是时空数据分析、自然语言处理、服务端开发</p>
+      <ul class="network-icon" aria-hidden="true">
+  
+    
+    
+    
+      
+    
+    
+    
+    
+    
+    <li>
+      <a href="mailto:2811159909@qq.com" >
+        <i class="fas fa-envelope"></i>
+      </a>
+    </li>
+  
+    
+    
+    
+      
+    
+    
+    
+    
+    
+      
+    
+    <li>
+      <a href="https://github.com/Coolgiserz" target="_blank" rel="noopener">
+        <i class="fab fa-github"></i>
+      </a>
+    </li>
+  
+</ul>
+
+    </div>
+  </div>
+
+
+
+
+
+
+
+
+
+  
+  
+  
+
+  
+
+  
+
+
+
+
+
+
+
+
+
+
+    <div class="project-related-pages content-widget-hr">
+      
+      
+
+      
+      
+      
+
+      
+      
+      
+
+      
+      
+      
+    </div>
+  </div>
+</article>
+  </div>
+
+  <div class="page-footer">
+    
+    
+    <div class="container">
+      <footer class="site-footer">
+
+  
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+
+
+
+
+
+  
+  
+  
+
+  
+  
+    
+  
+  
+    
+  
+
+  
+
+  
+  <p class="powered-by copyright-license-text">
+    © 2023 CoolCats. This work is licensed under <a href="https://creativecommons.org/licenses/by-nc-nd/4.0" rel="noopener noreferrer" target="_blank">CC BY NC ND 4.0</a>
+  </p>
+  
+
+  <p class="powered-by footer-license-icons">
+    <a href="https://creativecommons.org/licenses/by-nc-nd/4.0" rel="noopener noreferrer" target="_blank" aria-label="Creative Commons">
+      <i class="fab fa-creative-commons fa-2x" aria-hidden="true"></i>
+      <i class="fab fa-creative-commons-by fa-2x" aria-hidden="true"></i>
+      
+        <i class="fab fa-creative-commons-nc fa-2x" aria-hidden="true"></i>
+      
+      
+        <i class="fab fa-creative-commons-nd fa-2x" aria-hidden="true"></i>
+      
+    </a>
+  </p>
+
+
+
+
+  <p class="powered-by">
+    
+    
+    
+      
+      
+      
+      
+      
+      
+      Published with <a href="https://wowchemy.com/?utm_campaign=poweredby" target="_blank" rel="noopener">Wowchemy</a> — the free, <a href="https://github.com/wowchemy/wowchemy-hugo-themes" target="_blank" rel="noopener">open source</a> website builder that empowers creators.
+    
+  </p>
+</footer>
+
+    </div>
+    
+  </div>
+
+      
+
+    
+    <script src="/js/vendor-bundle.min.fab8b449b814cc9f95b22fcf2e45f05b.js"></script>
+
+    
+    
+    
+      
+
+      
+      
+
+      
+
+      
+        
+        <script src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@10.2.1/build/highlight.min.js" integrity="sha512-Ypjm0o7jOxAd4hpdoppSEN0TQOC19UtPAqD+4s5AlXmUvbmmS/YMxYqAqarQYyxTnB6/rqip9qcxlNB/3U9Wdg==" crossorigin="anonymous"></script>
+        
+        
+        <script src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@10.2.1/build/languages/r.min.js" crossorigin="anonymous"></script>
+        
+        <script src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@10.2.1/build/languages/latex.min.js" crossorigin="anonymous"></script>
+        
+      
+
+    
+
+    
+    
+    
+      <script src="https://cdn.jsdelivr.net/npm/leaflet@1.7.1/dist/leaflet.min.js" integrity="" crossorigin="anonymous"></script>
+    
+
+    
+    
+
+    
+    
+    
+      
+      <script id="search-hit-fuse-template" type="text/x-template">
+        <div class="search-hit" id="summary-{{key}}">
+          <div class="search-hit-content">
+            <div class="search-hit-name">
+              <a href="{{relpermalink}}">{{title}}</a>
+              <div class="article-metadata search-hit-type">{{type}}</div>
+              <p class="search-hit-description">{{snippet}}</p>
+            </div>
+          </div>
+        </div>
+      </script>
+      
+        <script src="https://cdn.jsdelivr.net/gh/krisk/Fuse@v3.2.1/dist/fuse.min.js" integrity="sha512-o38bmzBGX+hD3JHWUFCDA09btWaqrNmoJ3RXLlrysA7PP01Kgs4UlE4MhelE1v5dJR3+cxlR4qQlotsW7jKsnw==" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/gh/julmot/mark.js@8.11.1/dist/jquery.mark.min.js" integrity="sha512-mhbv5DqBMgrWL+32MmsDOt/OAvqr/cHimk6B8y/bx/xS88MVkYGPiVv2ixKVrkywF2qHplNRUvFsAHUdxZ3Krg==" crossorigin="anonymous"></script>
+      
+    
+
+    
+    
+
+    
+    
+    
+    
+      <script id="dsq-count-scr" src="https://coolgiserz.disqus.com/count.js" async></script>
+    
+
+    
+    
+      
+      
+      
+      
+      
+      
+      
+    
+
+    
+
+    
+    
+    
+    <script id="page-data" type="application/json">{"use_headroom":true}</script>
+
+    
+    
+      <script src="/js/wowchemy-headroom.c251366b4128fd5e6b046d4c97a62a51.js" type="module"></script>
+    
+    
+    
+    
+    
+    
+    
+      
+      
+    
+    
+    <script src="/en/js/wowchemy.min.ab2f2890dbe3e2e83579366d3d6e8fd9.js"></script>
+
+    
+    
+      <script src="/js/wowchemy-map.a26e9d2f7238ba5b868384f1c5bc6477.js" type="module"></script>
+    
+    
+    
+    
+      
+<div id="modal" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Cite</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <pre><code class="tex hljs"></code></pre>
+      </div>
+      <div class="modal-footer">
+        <a class="btn btn-outline-primary my-1 js-copy-cite" href="#" target="_blank">
+          <i class="fas fa-copy"></i> Copy
+        </a>
+        <a class="btn btn-outline-primary my-1 js-download-cite" href="#" target="_blank">
+          <i class="fas fa-download"></i> Download
+        </a>
+        <div id="modal-error"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+      <script src="/js/wowchemy-publication.68f8d7090562ca65fc6d3cb3f8f2d2cb.js" type="module"></script>
+
+
+
+
+
+
+</body>
+</html>

@@ -1,0 +1,1782 @@
+<!DOCTYPE html><html lang="en-us" >
+
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  
+  
+  
+    <meta name="generator" content="Wowchemy 5.5.0 for Hugo" />
+  
+
+  
+  
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+  
+  
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  
+
+  
+  
+  
+    
+      
+      <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Roboto+Mono&family=Roboto:wght@400;700&display=swap">
+      <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Roboto+Mono&family=Roboto:wght@400;700&display=swap" media="print" onload="this.media='all'">
+    
+  
+
+  
+  
+  
+  
+  
+    
+    
+    
+  
+  
+
+  <meta name="author" content="CoolCats" />
+
+  
+  
+  
+    
+  
+  <meta name="description" content="How Does Sql Statement Work" />
+
+  
+  <link rel="alternate" hreflang="en-us" href="/post/how-does-sql-statement-work/" />
+
+  
+  
+  
+    <meta name="theme-color" content="#1565c0" />
+  
+
+  
+  
+    
+    <script src="/js/mathjax-config.js"></script>
+  
+
+  
+
+  <link rel="stylesheet" href="/css/vendor-bundle.min.c7b8d9abd591ba2253ea42747e3ac3f5.css" media="print" onload="this.media='all'">
+
+  
+  
+  
+    
+    
+      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/academicons@1.9.1/css/academicons.min.css" integrity="sha512-W0xM4mr6dEP9nREo7Z9z+9X70wytKvMGeDsj7ps2+xg5QPrEBXC8tAW1IFnzjR6eoJ90JmCnFzerQJTLzIEHjA==" crossorigin="anonymous" media="print" onload="this.media='all'">
+    
+
+    
+    
+    
+    
+      
+      
+    
+    
+    
+
+    
+    
+    
+      
+    
+    
+      
+      
+        
+          <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@10.2.1/build/styles/github.min.css" crossorigin="anonymous" title="hl-light" media="print" onload="this.media='all'">
+          <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@10.2.1/build/styles/dracula.min.css" crossorigin="anonymous" title="hl-dark" media="print" onload="this.media='all'" disabled>
+        
+      
+    
+
+    
+    
+    
+      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.7.1/dist/leaflet.min.css" integrity="" crossorigin="anonymous" media="print" onload="this.media='all'">
+    
+
+    
+
+    
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js" integrity="" crossorigin="anonymous" async></script>
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+  
+
+  
+  
+  
+  
+  
+  <link rel="stylesheet" href="/css/wowchemy.1052fab8b7700a3dc49ee23683097d66.css" />
+
+  
+
+
+
+  
+
+
+  
+
+
+  
+
+
+  <script>
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?51ae6db546b05b91d4053193ba49123d";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+  
+  
+  
+
+  
+
+  
+
+  <link rel="icon" type="image/png" href="/media/icon_hue03491371183284312b8b116a73ae5ab_79511_32x32_fill_lanczos_center_3.png" />
+  <link rel="apple-touch-icon" type="image/png" href="/media/icon_hue03491371183284312b8b116a73ae5ab_79511_180x180_fill_lanczos_center_3.png" />
+
+  <link rel="canonical" href="/post/how-does-sql-statement-work/" />
+
+  
+  
+  
+  
+  
+  
+  
+  
+    
+    
+  
+  
+
+  
+  
+    
+    
+  
+  <meta property="twitter:card" content="summary" />
+  
+    <meta property="twitter:site" content="@wowchemy" />
+    <meta property="twitter:creator" content="@wowchemy" />
+  
+  <meta property="og:site_name" content="CoolCats" />
+  <meta property="og:url" content="/post/how-does-sql-statement-work/" />
+  <meta property="og:title" content="SQL语句是如何执行的？（MySQL篇） | CoolCats" />
+  <meta property="og:description" content="How Does Sql Statement Work" /><meta property="og:image" content="/media/icon_hue03491371183284312b8b116a73ae5ab_79511_512x512_fill_lanczos_center_3.png" />
+    <meta property="twitter:image" content="/media/icon_hue03491371183284312b8b116a73ae5ab_79511_512x512_fill_lanczos_center_3.png" /><meta property="og:locale" content="en-us" />
+  
+    
+      <meta
+        property="article:published_time"
+        content="2023-06-03T21:16:07&#43;08:00"
+      />
+    
+    <meta property="article:modified_time" content="2023-06-03T21:16:07&#43;08:00">
+  
+
+  
+
+
+    
+
+
+
+
+
+
+  
+
+
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "/post/how-does-sql-statement-work/"
+  },
+  "headline": "SQL语句是如何执行的？（MySQL篇）",
+  
+  "datePublished": "2023-06-03T21:16:07+08:00",
+  "dateModified": "2023-06-03T21:16:07+08:00",
+  
+  "author": {
+    "@type": "Person",
+    "name": "CoolCats"
+  },
+  
+  "publisher": {
+    "@type": "Organization",
+    "name": "CoolCats",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "/media/icon_hue03491371183284312b8b116a73ae5ab_79511_192x192_fill_lanczos_center_3.png"
+    }
+  },
+  "description": "How Does Sql Statement Work"
+}
+</script>
+
+  
+
+  
+
+  
+
+  
+
+
+
+
+
+  <title>SQL语句是如何执行的？（MySQL篇） | CoolCats</title>
+</head>
+
+
+<body id="top" data-spy="scroll" data-offset="70" data-target="#TableOfContents" class="page-wrapper   " data-wc-page-id="20dd3bebf40ac90c0996db9d451a9888" >
+
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  <script src="/js/wowchemy-init.min.2ed908358299dd7ab553faae685c746c.js"></script>
+
+  
+
+
+<aside class="search-modal" id="search">
+  <div class="container">
+    <section class="search-header">
+
+      <div class="row no-gutters justify-content-between mb-3">
+        <div class="col-6">
+          <h1>Search</h1>
+        </div>
+        <div class="col-6 col-search-close">
+          <a class="js-search" href="#" aria-label="Close"><i class="fas fa-times-circle text-muted" aria-hidden="true"></i></a>
+        </div>
+      </div>
+
+      <div id="search-box">
+        
+        <input name="q" id="search-query" placeholder="Search..." autocapitalize="off"
+        autocomplete="off" autocorrect="off" spellcheck="false" type="search" class="form-control"
+        aria-label="Search...">
+        
+      </div>
+
+      
+      
+
+      
+
+    </section>
+    <section class="section-search-results">
+
+      <div id="search-hits">
+        
+      </div>
+
+    </section>
+  </div>
+</aside>
+
+
+
+  <div class="page-header">
+    
+
+
+
+
+
+
+
+
+
+
+
+
+<header class="header--fixed">
+  <nav class="navbar navbar-expand-lg navbar-light compensate-for-scrollbar" id="navbar-main">
+    <div class="container-xl">
+
+      
+      <div class="d-none d-lg-inline-flex">
+        <a class="navbar-brand" href="/">CoolCats</a>
+      </div>
+      
+
+      
+      <button type="button" class="navbar-toggler" data-toggle="collapse"
+              data-target="#navbar-content" aria-controls="navbar-content" aria-expanded="false" aria-label="Toggle navigation">
+      <span><i class="fas fa-bars"></i></span>
+      </button>
+      
+
+      
+      <div class="navbar-brand-mobile-wrapper d-inline-flex d-lg-none">
+        <a class="navbar-brand" href="/">CoolCats</a>
+      </div>
+      
+
+      
+      
+      <div class="navbar-collapse main-menu-item collapse justify-content-start" id="navbar-content">
+
+        
+        <ul class="navbar-nav d-md-inline-flex">
+          
+
+          
+
+          
+          
+          
+
+          
+
+          
+          
+          
+          
+
+          
+            
+              
+              
+            
+            
+          
+
+          <li class="nav-item">
+            <a class="nav-link  active" href="/post"><span>博客</span></a>
+          </li>
+
+          
+          
+
+          
+
+          
+          
+          
+            
+          
+
+          
+
+          
+          
+          
+          
+
+          
+            
+              
+              
+            
+            
+          
+
+          <li class="nav-item">
+            <a class="nav-link " href="/event"><span>趣事</span></a>
+          </li>
+
+          
+          
+
+          
+
+          
+          
+          
+            
+          
+
+          
+
+          
+          
+          
+          
+
+          
+            
+              
+              
+            
+            
+          
+
+          <li class="nav-item">
+            <a class="nav-link " href="/project"><span>项目</span></a>
+          </li>
+
+          
+          
+
+          
+
+          
+          
+          
+            
+          
+
+          
+
+          
+          
+          
+          
+
+          
+            
+              
+              
+            
+            
+          
+
+          <li class="nav-item">
+            <a class="nav-link " href="/publication"><span>论文</span></a>
+          </li>
+
+          
+          
+
+          
+
+          
+          
+          
+            
+          
+
+          
+
+          
+          
+          
+          
+
+          
+            
+              
+              
+            
+            
+          
+
+          <li class="nav-item">
+            <a class="nav-link " href="/contact"><span>联系</span></a>
+          </li>
+
+          
+          
+
+          
+
+          
+          
+          
+            
+          
+
+          
+
+          
+          
+          
+          
+
+          
+            
+              
+              
+            
+            
+          
+
+          <li class="nav-item">
+            <a class="nav-link " href="/media/files/cv"><span>简历</span></a>
+          </li>
+
+          
+          
+
+        
+
+          
+        </ul>
+      </div>
+
+      <ul class="nav-icons navbar-nav flex-row ml-auto d-flex pl-md-2">
+
+        
+        
+          
+        
+
+        
+        
+        <li class="nav-item">
+          <a class="nav-link js-search" href="#" aria-label="Search"><i class="fas fa-search" aria-hidden="true"></i></a>
+        </li>
+        
+
+        
+        
+        
+        <li class="nav-item dropdown theme-dropdown">
+          <a href="#" class="nav-link" data-toggle="dropdown" aria-haspopup="true" aria-label="Display preferences">
+            <i class="fas fa-moon" aria-hidden="true"></i>
+          </a>
+          <div class="dropdown-menu">
+            <a href="#" class="dropdown-item js-set-theme-light">
+              <span>Light</span>
+            </a>
+            <a href="#" class="dropdown-item js-set-theme-dark">
+              <span>Dark</span>
+            </a>
+            <a href="#" class="dropdown-item js-set-theme-auto">
+              <span>Automatic</span>
+            </a>
+          </div>
+        </li>
+        
+
+        
+        
+
+      </ul>
+
+    </div>
+  </nav>
+</header>
+
+
+  </div>
+
+  <div class="page-body">
+    
+    
+    
+
+    <article class="article">
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+  
+  
+<div class="article-container pt-3">
+  <h1>SQL语句是如何执行的？（MySQL篇）</h1>
+
+  
+
+  
+    
+
+
+<div class="article-metadata">
+
+  
+  
+
+  
+  <span class="article-date">
+    
+    
+      
+    
+    Jun 3, 2023
+  </span>
+  
+
+  
+
+  
+  <span class="middot-divider"></span>
+  <span class="article-reading-time">
+    1 min read
+  </span>
+  
+
+  
+  
+  
+  
+
+  
+  
+
+</div>
+
+    
+
+
+
+
+
+  
+</div>
+
+
+
+  <div class="article-container">
+
+    <div class="article-style">
+      <h3 id="mysql体系架构">MySQL体系架构</h3>
+<p>MySQL是典型的C/S架构数据库管理系统，数据库服务器和客户端分别运行在服务器和终端计算机上，通过网络进行通信和数据交换。默认情况下，MySQL服务通过3306端口开放。</p>
+<p>类似采用C/S架构的数据库系统还包括：</p>
+<ul>
+<li>
+<p>Oracle</p>
+</li>
+<li>
+<p>PostgreSQL</p>
+</li>
+<li>
+<p>MongoDB</p>
+</li>
+<li>
+<p>SQL Server</p>
+</li>
+</ul>
+<p>MySQL服务器端使用mysqld程序，其职责范围可总结为三个方面：连接层、SQL层、存储层。其中连接层主要是负责与客户端建立连接，接收来自客户端的SQL；SQL层负责对SQL语句进行处理；存储层负责数据的读取和存储。</p>
+<p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<figure  >
+  <div class="d-flex justify-content-center">
+    <div class="w-100" ><img alt="" srcset="
+               /post/how-does-sql-statement-work/images/mysql_engine_hubf2fb3a167bd2aa68890d6db82267cb0_84852_ac81b4da71b35c718504cb433ac88922.webp 400w,
+               /post/how-does-sql-statement-work/images/mysql_engine_hubf2fb3a167bd2aa68890d6db82267cb0_84852_0a49cc70e6debdcea084ada2a9d0e02c.webp 760w,
+               /post/how-does-sql-statement-work/images/mysql_engine_hubf2fb3a167bd2aa68890d6db82267cb0_84852_1200x1200_fit_q75_h2_lanczos.webp 1200w"
+               src="/post/how-does-sql-statement-work/images/mysql_engine_hubf2fb3a167bd2aa68890d6db82267cb0_84852_ac81b4da71b35c718504cb433ac88922.webp"
+               width="671"
+               height="695"
+               loading="lazy" data-zoomable /></div>
+  </div></figure>
+</p>
+<h4 id="mysql-sql处理层">MySQL SQL处理层</h4>
+<p>SQL处理层包括缓存查询、解析器、优化器、执行器等 。</p>
+<ul>
+<li>解析器</li>
+</ul>
+<p>        解析器负责验证和 解析传入的命令 ，包括语法和语义上的分析。如果语法不正确或语义不合理，则直接报错，若符合语法且语义合理则将命令（解析出的中间结果，如SQL语法分析树）交由优化器进行优化。</p>
+<ul>
+<li>
+<p>优化器</p>
+<p>优化器负责把关系表达式转换为查询执行计划。常用优化策略：无用条件去除。</p>
+<p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<figure  >
+  <div class="d-flex justify-content-center">
+    <div class="w-100" ><img alt="" srcset="
+               /post/how-does-sql-statement-work/images/sql_optim_hu1776a829128543b3b3a9cc20ea958387_50252_ea387b72e686594daf4cce03511a6570.webp 400w,
+               /post/how-does-sql-statement-work/images/sql_optim_hu1776a829128543b3b3a9cc20ea958387_50252_a4e6f91c7179ed5cc148116bc27ade78.webp 760w,
+               /post/how-does-sql-statement-work/images/sql_optim_hu1776a829128543b3b3a9cc20ea958387_50252_1200x1200_fit_q75_h2_lanczos.webp 1200w"
+               src="/post/how-does-sql-statement-work/images/sql_optim_hu1776a829128543b3b3a9cc20ea958387_50252_ea387b72e686594daf4cce03511a6570.webp"
+               width="760"
+               height="364"
+               loading="lazy" data-zoomable /></div>
+  </div></figure>
+</p>
+</li>
+<li>
+<p>执行器</p>
+<p>执行器负责对查询执行计划进行执行，涉及与存储引擎的交互。执行器模块拆解开包括表维护模块(Table Maintainence)、表修改模块(TableModification)、状态报告模块（StatusReport）等等。</p>
+</li>
+</ul>
+<p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<figure  >
+  <div class="d-flex justify-content-center">
+    <div class="w-100" ><img alt="" srcset="
+               /post/how-does-sql-statement-work/images/mysql_process_hu5ef01ed714d677b01d44eb4bd85a8499_15432_aaa1ffef0768b48e4b76efa33f0ced54.webp 400w,
+               /post/how-does-sql-statement-work/images/mysql_process_hu5ef01ed714d677b01d44eb4bd85a8499_15432_9dda60d7730ee0498df2dfe64dec52d8.webp 760w,
+               /post/how-does-sql-statement-work/images/mysql_process_hu5ef01ed714d677b01d44eb4bd85a8499_15432_1200x1200_fit_q75_h2_lanczos.webp 1200w"
+               src="/post/how-does-sql-statement-work/images/mysql_process_hu5ef01ed714d677b01d44eb4bd85a8499_15432_aaa1ffef0768b48e4b76efa33f0ced54.webp"
+               width="466"
+               height="598"
+               loading="lazy" data-zoomable /></div>
+  </div></figure>
+</p>
+<h4 id="mysql存储引擎">MySQL存储引擎</h4>
+<p>InnoDB</p>
+<p>MyISAM</p>
+<p>NDA Cluster</p>
+<p>Memory</p>
+<h3 id="sql执行原理">SQL执行原理</h3>
+<p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<figure  >
+  <div class="d-flex justify-content-center">
+    <div class="w-100" ><img alt="" srcset="
+               /post/how-does-sql-statement-work/images/mysql_architecture_hu6a40de6c395e0e4c7baa0b624c91fa8d_1029849_187db0a9a2bd51e4e3c4ec189dadec7c.webp 400w,
+               /post/how-does-sql-statement-work/images/mysql_architecture_hu6a40de6c395e0e4c7baa0b624c91fa8d_1029849_7fce79ec48862e2235725a4ee83fd6ce.webp 760w,
+               /post/how-does-sql-statement-work/images/mysql_architecture_hu6a40de6c395e0e4c7baa0b624c91fa8d_1029849_1200x1200_fit_q75_h2_lanczos_3.webp 1200w"
+               src="/post/how-does-sql-statement-work/images/mysql_architecture_hu6a40de6c395e0e4c7baa0b624c91fa8d_1029849_187db0a9a2bd51e4e3c4ec189dadec7c.webp"
+               width="760"
+               height="495"
+               loading="lazy" data-zoomable /></div>
+  </div></figure>
+</p>
+<h3 id="如何分sql性能以mysql为例">如何分SQL性能:以MySQL为例</h3>
+<p>从数据库优化层面，了解现有SQL语句性能是优化的重要基础，MySQL提供了profiling参数进行SQL剖析。至少截止到MySQL8.0.32（我目前使用过的最新版本MySQL），还可以通过以下语句查询剖析模式是否开启：</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="k">select</span><span class="w"> </span><span class="o">@@</span><span class="n">profiling</span><span class="p">;</span><span class="w">
+</span></span></span></code></pre></div><p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<figure  >
+  <div class="d-flex justify-content-center">
+    <div class="w-100" ><img alt="" srcset="
+               /post/how-does-sql-statement-work/images/select_profiling_hu9a055d1d19dbf6d2efc32d973bb244f5_10637_9f2aa2023f35fd7a86d8f073bd872ab1.webp 400w,
+               /post/how-does-sql-statement-work/images/select_profiling_hu9a055d1d19dbf6d2efc32d973bb244f5_10637_937329159d4e6d7e37afe7475ffba784.webp 760w,
+               /post/how-does-sql-statement-work/images/select_profiling_hu9a055d1d19dbf6d2efc32d973bb244f5_10637_1200x1200_fit_q75_h2_lanczos.webp 1200w"
+               src="/post/how-does-sql-statement-work/images/select_profiling_hu9a055d1d19dbf6d2efc32d973bb244f5_10637_9f2aa2023f35fd7a86d8f073bd872ab1.webp"
+               width="344"
+               height="94"
+               loading="lazy" data-zoomable /></div>
+  </div></figure>
+</p>
+<p>通过以下语句设定开启剖析模式（若profiling为0则是关闭剖析模式）：</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="k">set</span><span class="w"> </span><span class="n">profiling</span><span class="o">=</span><span class="mi">1</span><span class="w">
+</span></span></span></code></pre></div><p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<figure  >
+  <div class="d-flex justify-content-center">
+    <div class="w-100" ><img alt="" srcset="
+               /post/how-does-sql-statement-work/images/set_profiling_hu00392c761b0cb75dd1196c791155e803_35669_0ab833e5899484144e8da202faeb923d.webp 400w,
+               /post/how-does-sql-statement-work/images/set_profiling_hu00392c761b0cb75dd1196c791155e803_35669_90f62b1613bd248309d84a9fee541e38.webp 760w,
+               /post/how-does-sql-statement-work/images/set_profiling_hu00392c761b0cb75dd1196c791155e803_35669_1200x1200_fit_q75_h2_lanczos.webp 1200w"
+               src="/post/how-does-sql-statement-work/images/set_profiling_hu00392c761b0cb75dd1196c791155e803_35669_0ab833e5899484144e8da202faeb923d.webp"
+               width="760"
+               height="371"
+               loading="lazy" data-zoomable /></div>
+  </div></figure>
+</p>
+<p>开启剖析模式之后，当你执行了一条SQL语句，就可以通过show profile语句查询（最近一条）语句的性能剖析数据：</p>
+<p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<figure  >
+  <div class="d-flex justify-content-center">
+    <div class="w-100" ><img alt="" srcset="
+               /post/how-does-sql-statement-work/images/show_profile_hu820461c542f386df85a26bee874e9ae4_63711_4b955c16cb232a2c50eea61d6f0e5985.webp 400w,
+               /post/how-does-sql-statement-work/images/show_profile_hu820461c542f386df85a26bee874e9ae4_63711_795187e28a6c239daa3771c4e44fe3b7.webp 760w,
+               /post/how-does-sql-statement-work/images/show_profile_hu820461c542f386df85a26bee874e9ae4_63711_1200x1200_fit_q75_h2_lanczos.webp 1200w"
+               src="/post/how-does-sql-statement-work/images/show_profile_hu820461c542f386df85a26bee874e9ae4_63711_4b955c16cb232a2c50eea61d6f0e5985.webp"
+               width="760"
+               height="344"
+               loading="lazy" data-zoomable /></div>
+  </div></figure>
+</p>
+<h4 id="profiling之后-基于performance-schema进行性能剖析">profiling之后: 基于performance schema进行性能剖析</h4>
+<p>需要注意，当你执行show profile或select @@profiling语句，会收到DBMS的友情提示：@@profiling和show profile已被废弃，在未来的MySQL发行版中将被移除。</p>
+<pre tabindex="0"><code>&#39;@@profiling&#39; is deprecated and will be removed in a future release.
+
+&#39;SHOW PROFILE&#39; is deprecated and will be removed in a future release. Please use Performance Schema instead
+</code></pre><p>替代的性能剖析方案是通过performance schema来达成通用的目的，详情可参考<a href="https://dev.mysql.com/doc/refman/8.0/en/performance-schema-query-profiling.html" target="_blank" rel="noopener">MySQL :: MySQL 8.0 Reference Manual :: 27.19.1 Query Profiling Using Performance Schema</a>。</p>
+<p>按照官方文档的介绍，性能剖析主要涉及几个表：setup_actors表、</p>
+<ol>
+<li>
+<p>setup_actors表可用于限制主机、用户或帐户对历史事件的收集，以减少运行时开销和在历史表中收集的数据量。以下例子展示了如何限制特定用户收集SQL历史事件。
+先查询用户对历史事件的收集权限</p>
+<pre tabindex="0"><code>SELECT * FROM performance_schema.setup_actors;
+</code></pre><p>  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<figure  >
+  <div class="d-flex justify-content-center">
+    <div class="w-100" ><img alt="" srcset="
+               /post/how-does-sql-statement-work/images/setup_actor_huf62f6b2cfd14d64589ee753c58f4f678_27717_8fc5d2113a1c5b4daffb7cc4e54dd4a7.webp 400w,
+               /post/how-does-sql-statement-work/images/setup_actor_huf62f6b2cfd14d64589ee753c58f4f678_27717_0df04d3e6b54588c3556a7d6d9edff34.webp 760w,
+               /post/how-does-sql-statement-work/images/setup_actor_huf62f6b2cfd14d64589ee753c58f4f678_27717_1200x1200_fit_q75_h2_lanczos.webp 1200w"
+               src="/post/how-does-sql-statement-work/images/setup_actor_huf62f6b2cfd14d64589ee753c58f4f678_27717_8fc5d2113a1c5b4daffb7cc4e54dd4a7.webp"
+               width="726"
+               height="134"
+               loading="lazy" data-zoomable /></div>
+  </div></figure>
+
+为了禁止所有前台操作都被监控和记录，需要通过如下语句进行限制。</p>
+<pre tabindex="0"><code>UPDATE performance_schema.setup_actors
+    SET ENABLED = &#39;NO&#39;, HISTORY = &#39;NO&#39;
+    WHERE HOST = &#39;%&#39; AND USER = &#39;%&#39;;
+</code></pre><p>为了使特定用户具备历史事件收集、监控的权限，通过如下语句为用户开放权限：</p>
+<pre tabindex="0"><code>INSERT INTO performance_schema.setup_actors
+    (HOST,USER,ROLE,ENABLED,HISTORY)
+    VALUES(&#39;localhost&#39;,&#39;YOUR_USER&#39;,&#39;%&#39;,&#39;UPDATE performance_schema.setup_instruments
+    SET ENABLED = &#39;YES&#39;, TIMED = &#39;YES&#39;
+    WHERE NAME LIKE &#39;%stage/%&#39;;
+YES&#39;,&#39;YES&#39;);
+</code></pre></li>
+<li>
+<p><a href="https://dev.mysql.com/doc/refman/8.0/en/performance-schema-setup-instruments-table.html" target="_blank" rel="noopener">setup_instruments表</a>列出了可以收集的事件类。通过更新setup_instruments表，确保启用语句和阶段检测。有些工具可能已经默认启用。</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="k">UPDATE</span><span class="w"> </span><span class="n">performance_schema</span><span class="p">.</span><span class="n">setup_instruments</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="k">SET</span><span class="w"> </span><span class="n">ENABLED</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;YES&#39;</span><span class="p">,</span><span class="w"> </span><span class="n">TIMED</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;YES&#39;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="k">WHERE</span><span class="w"> </span><span class="n">NAME</span><span class="w"> </span><span class="k">LIKE</span><span class="w"> </span><span class="s1">&#39;%statement/%&#39;</span><span class="p">;</span><span class="w">
+</span></span></span></code></pre></div><p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<figure  >
+  <div class="d-flex justify-content-center">
+    <div class="w-100" ><img alt="" srcset="
+               /post/how-does-sql-statement-work/images/instr_statement_hu166d9c5cb3e16639b80b6aad4112e10b_52566_700309c9c3b18b49624300f93ffa5008.webp 400w,
+               /post/how-does-sql-statement-work/images/instr_statement_hu166d9c5cb3e16639b80b6aad4112e10b_52566_1c6da369862f5f1eacf600397f04b4d9.webp 760w,
+               /post/how-does-sql-statement-work/images/instr_statement_hu166d9c5cb3e16639b80b6aad4112e10b_52566_1200x1200_fit_q75_h2_lanczos.webp 1200w"
+               src="/post/how-does-sql-statement-work/images/instr_statement_hu166d9c5cb3e16639b80b6aad4112e10b_52566_700309c9c3b18b49624300f93ffa5008.webp"
+               width="533"
+               height="469"
+               loading="lazy" data-zoomable /></div>
+  </div></figure>
+</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="k">UPDATE</span><span class="w"> </span><span class="n">performance_schema</span><span class="p">.</span><span class="n">setup_instruments</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="k">SET</span><span class="w"> </span><span class="n">ENABLED</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;YES&#39;</span><span class="p">,</span><span class="w"> </span><span class="n">TIMED</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;YES&#39;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="k">WHERE</span><span class="w"> </span><span class="n">NAME</span><span class="w"> </span><span class="k">LIKE</span><span class="w"> </span><span class="s1">&#39;%stage/%&#39;</span><span class="p">;</span><span class="w">
+</span></span></span></code></pre></div><p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<figure  >
+  <div class="d-flex justify-content-center">
+    <div class="w-100" ><img alt="" srcset="
+               /post/how-does-sql-statement-work/images/instr_stage_hu91f12ea4b57176cb509aae0558baeeec_50164_213401c150cc053ab33d2c55555c1d3f.webp 400w,
+               /post/how-does-sql-statement-work/images/instr_stage_hu91f12ea4b57176cb509aae0558baeeec_50164_701a25ca6acfefdc7ef67424b1923e66.webp 760w,
+               /post/how-does-sql-statement-work/images/instr_stage_hu91f12ea4b57176cb509aae0558baeeec_50164_1200x1200_fit_q75_h2_lanczos.webp 1200w"
+               src="/post/how-does-sql-statement-work/images/instr_stage_hu91f12ea4b57176cb509aae0558baeeec_50164_213401c150cc053ab33d2c55555c1d3f.webp"
+               width="516"
+               height="382"
+               loading="lazy" data-zoomable /></div>
+  </div></figure>
+</p>
+</li>
+<li>
+<p>确保启用events_statements_*和events_stages_*消费者。一些消费者可能在默认情况下已经启用。</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="k">UPDATE</span><span class="w"> </span><span class="n">performance_schema</span><span class="p">.</span><span class="n">setup_consumers</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="k">SET</span><span class="w"> </span><span class="n">ENABLED</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;YES&#39;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="k">WHERE</span><span class="w"> </span><span class="n">NAME</span><span class="w"> </span><span class="k">LIKE</span><span class="w"> </span><span class="s1">&#39;%events_statements_%&#39;</span><span class="p">;</span><span class="w">
+</span></span></span></code></pre></div><p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<figure  >
+  <div class="d-flex justify-content-center">
+    <div class="w-100" ><img alt="" srcset="
+               /post/how-does-sql-statement-work/images/consumer_event_statement_huaa4c110ae965fe312b4172dc864ec0e3_49076_6ad9e858076c59b79c3857d064760065.webp 400w,
+               /post/how-does-sql-statement-work/images/consumer_event_statement_huaa4c110ae965fe312b4172dc864ec0e3_49076_503d00781b73c70ce29cb2c1dbde1304.webp 760w,
+               /post/how-does-sql-statement-work/images/consumer_event_statement_huaa4c110ae965fe312b4172dc864ec0e3_49076_1200x1200_fit_q75_h2_lanczos.webp 1200w"
+               src="/post/how-does-sql-statement-work/images/consumer_event_statement_huaa4c110ae965fe312b4172dc864ec0e3_49076_6ad9e858076c59b79c3857d064760065.webp"
+               width="504"
+               height="325"
+               loading="lazy" data-zoomable /></div>
+  </div></figure>
+</p>
+</li>
+</ol>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="k">UPDATE</span><span class="w"> </span><span class="n">performance_schema</span><span class="p">.</span><span class="n">setup_consumers</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">       </span><span class="k">SET</span><span class="w"> </span><span class="n">ENABLED</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;YES&#39;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">       </span><span class="k">WHERE</span><span class="w"> </span><span class="n">NAME</span><span class="w"> </span><span class="k">LIKE</span><span class="w"> </span><span class="s1">&#39;%events_stages_%&#39;</span><span class="p">;</span><span class="w">
+</span></span></span></code></pre></div><p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<figure  >
+  <div class="d-flex justify-content-center">
+    <div class="w-100" ><img alt="" srcset="
+               /post/how-does-sql-statement-work/images/consumer_event_stage_hu628c52d04d2510d40131dcda703d11a3_46629_fae8060e96c21db021ef3b27c7062830.webp 400w,
+               /post/how-does-sql-statement-work/images/consumer_event_stage_hu628c52d04d2510d40131dcda703d11a3_46629_9799ee419827d910864f551e35770d69.webp 760w,
+               /post/how-does-sql-statement-work/images/consumer_event_stage_hu628c52d04d2510d40131dcda703d11a3_46629_1200x1200_fit_q75_h2_lanczos.webp 1200w"
+               src="/post/how-does-sql-statement-work/images/consumer_event_stage_hu628c52d04d2510d40131dcda703d11a3_46629_fae8060e96c21db021ef3b27c7062830.webp"
+               width="559"
+               height="320"
+               loading="lazy" data-zoomable /></div>
+  </div></figure>
+</p>
+<p>完成上述配置后，就可以使用performance schema进行SQL性能剖析了。
+执行需要剖析的SQL语句，如：</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="k">select</span><span class="w"> </span><span class="n">FK_TASK_ID</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="n">T</span><span class="p">,</span><span class="w"> </span><span class="k">count</span><span class="p">(</span><span class="o">*</span><span class="p">)</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="k">count</span><span class="w"> </span><span class="k">from</span><span class="w"> </span><span class="n">t_image</span><span class="w"> </span><span class="n">ti</span><span class="w"> </span><span class="k">group</span><span class="w"> </span><span class="k">by</span><span class="w"> </span><span class="n">ti</span><span class="p">.</span><span class="n">FK_TASK_ID</span><span class="w"> </span><span class="p">;</span><span class="w">
+</span></span></span></code></pre></div><p>通过查询events_statements_history_long表来确定语句的EVENT_ID。这一步类似于运行SHOW PROFILES来识别Query_ID。下面的查询产生的输出类似于SHOW PROFILES:
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<figure  >
+  <div class="d-flex justify-content-center">
+    <div class="w-100" ><img alt="" srcset="
+               /post/how-does-sql-statement-work/images/event_statement_demo_hu68440b191ca0c101f703639566041374_133068_a751edc162f1a0f0cf8f2dabc364280c.webp 400w,
+               /post/how-does-sql-statement-work/images/event_statement_demo_hu68440b191ca0c101f703639566041374_133068_4c35f20167be98ebc08bf6a7a6f6ef85.webp 760w,
+               /post/how-does-sql-statement-work/images/event_statement_demo_hu68440b191ca0c101f703639566041374_133068_1200x1200_fit_q75_h2_lanczos.webp 1200w"
+               src="/post/how-does-sql-statement-work/images/event_statement_demo_hu68440b191ca0c101f703639566041374_133068_a751edc162f1a0f0cf8f2dabc364280c.webp"
+               width="760"
+               height="206"
+               loading="lazy" data-zoomable /></div>
+  </div></figure>
+</p>
+<p>通过查询events_stages_history_long表以检索语句的阶段事件，得到语句的性能剖析报告</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="n">mysql</span><span class="o">&gt;</span><span class="w"> </span><span class="k">SELECT</span><span class="w"> </span><span class="n">EVENT_ID</span><span class="p">,</span><span class="w"> </span><span class="k">TRUNCATE</span><span class="p">(</span><span class="n">TIMER_WAIT</span><span class="o">/</span><span class="mi">1000000000000</span><span class="p">,</span><span class="mi">6</span><span class="p">)</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="n">Duration</span><span class="p">,</span><span class="w"> </span><span class="n">SQL_TEXT</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">       </span><span class="k">FROM</span><span class="w"> </span><span class="n">performance_schema</span><span class="p">.</span><span class="n">events_statements_history_long</span><span class="w"> </span><span class="k">WHERE</span><span class="w"> </span><span class="n">SQL_TEXT</span><span class="w"> </span><span class="k">like</span><span class="w"> </span><span class="s1">&#39;%FK_TASK_ID%&#39;</span><span class="p">;</span><span class="w">
+</span></span></span></code></pre></div><p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<figure  >
+  <div class="d-flex justify-content-center">
+    <div class="w-100" ><img alt="" srcset="
+               /post/how-does-sql-statement-work/images/event_history_long_demo_huee8d0980bec8701ad8bcb272e27b6470_111631_4875c2a8887b0e6c480e8ff4b93601c6.webp 400w,
+               /post/how-does-sql-statement-work/images/event_history_long_demo_huee8d0980bec8701ad8bcb272e27b6470_111631_c30aa6e59d5604780b1a80c6f086ce79.webp 760w,
+               /post/how-does-sql-statement-work/images/event_history_long_demo_huee8d0980bec8701ad8bcb272e27b6470_111631_1200x1200_fit_q75_h2_lanczos.webp 1200w"
+               src="/post/how-does-sql-statement-work/images/event_history_long_demo_huee8d0980bec8701ad8bcb272e27b6470_111631_4875c2a8887b0e6c480e8ff4b93601c6.webp"
+               width="760"
+               height="592"
+               loading="lazy" data-zoomable /></div>
+  </div></figure>
+</p>
+<h4 id="一条sql语句背后的操作">一条SQL语句背后的操作</h4>
+<p>从events_stages_history_long表中检索出的事件反映了一条SQL语句背后需要执行多少操作（不同版本的MySQL操作会有所不同）。MySQL8.0.32版本下，操作包含：</p>
+<ul>
+<li>
+<p>starting</p>
+</li>
+<li>
+<p>executing hook on transaction begin</p>
+</li>
+<li>
+<p>staring</p>
+</li>
+<li>
+<p>checking permission</p>
+</li>
+<li>
+<p>opening tables</p>
+</li>
+<li>
+<p>init</p>
+</li>
+<li>
+<p>system lock</p>
+</li>
+<li>
+<p>optimizing</p>
+</li>
+<li>
+<p>statistics</p>
+</li>
+<li>
+<p>preparing</p>
+</li>
+<li>
+<p>executing</p>
+</li>
+<li>
+<p>end</p>
+</li>
+<li>
+<p>query end</p>
+</li>
+<li>
+<p>waiting for handler commit</p>
+</li>
+<li>
+<p>closing tables</p>
+</li>
+<li>
+<p>freeing items</p>
+</li>
+<li>
+<p>cleaning up</p>
+</li>
+</ul>
+<h1 id="heading"></h1>
+<h2 id="参考文档">参考文档</h2>
+<ul>
+<li><a href="https://dev.mysql.com/doc/refman/8.0/en/pluggable-storage-overview.html" target="_blank" rel="noopener">MySQL :: MySQL 8.0 Reference Manual :: 16.11 Overview of MySQL Storage Engine Architecture</a></li>
+<li><a href="https://time.geekbang.org/column/article/101104" target="_blank" rel="noopener">03丨学会用数据库的方式思考SQL是如何执行的-极客时间</a></li>
+<li><a href="https://dev.mysql.com/doc/refman/8.0/en/performance-schema-quick-start.html" target="_blank" rel="noopener">Performance Schema Quick Start</a></li>
+<li><a href="https://tech.meituan.com/2018/05/20/sql-parser-used-in-mtdp.html" target="_blank" rel="noopener">SQL解析在美团的应用 - 美团技术团队</a></li>
+<li>Understanding MySQL Internals</li>
+</ul>
+<h3 id="练习数据">练习数据</h3>
+<ul>
+<li><a href="https://github.com/cystanford/sql_heros_data" target="_blank" rel="noopener">GitHub - cystanford/sql_heros_data: SQL课程-王者荣耀heros数据表</a></li>
+</ul>
+
+    </div>
+
+    
+
+
+
+
+
+
+<div class="share-box">
+  <ul class="share">
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="https://twitter.com/intent/tweet?url=/post/how-does-sql-statement-work/&amp;text=SQL%e8%af%ad%e5%8f%a5%e6%98%af%e5%a6%82%e4%bd%95%e6%89%a7%e8%a1%8c%e7%9a%84%ef%bc%9f%ef%bc%88MySQL%e7%af%87%ef%bc%89" target="_blank" rel="noopener" class="share-btn-twitter" aria-label="twitter">
+          <i class="fab fa-twitter"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="https://www.facebook.com/sharer.php?u=/post/how-does-sql-statement-work/&amp;t=SQL%e8%af%ad%e5%8f%a5%e6%98%af%e5%a6%82%e4%bd%95%e6%89%a7%e8%a1%8c%e7%9a%84%ef%bc%9f%ef%bc%88MySQL%e7%af%87%ef%bc%89" target="_blank" rel="noopener" class="share-btn-facebook" aria-label="facebook">
+          <i class="fab fa-facebook"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="mailto:?subject=SQL%e8%af%ad%e5%8f%a5%e6%98%af%e5%a6%82%e4%bd%95%e6%89%a7%e8%a1%8c%e7%9a%84%ef%bc%9f%ef%bc%88MySQL%e7%af%87%ef%bc%89&amp;body=/post/how-does-sql-statement-work/" target="_blank" rel="noopener" class="share-btn-email" aria-label="envelope">
+          <i class="fas fa-envelope"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="https://www.linkedin.com/shareArticle?url=/post/how-does-sql-statement-work/&amp;title=SQL%e8%af%ad%e5%8f%a5%e6%98%af%e5%a6%82%e4%bd%95%e6%89%a7%e8%a1%8c%e7%9a%84%ef%bc%9f%ef%bc%88MySQL%e7%af%87%ef%bc%89" target="_blank" rel="noopener" class="share-btn-linkedin" aria-label="linkedin-in">
+          <i class="fab fa-linkedin-in"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="whatsapp://send?text=SQL%e8%af%ad%e5%8f%a5%e6%98%af%e5%a6%82%e4%bd%95%e6%89%a7%e8%a1%8c%e7%9a%84%ef%bc%9f%ef%bc%88MySQL%e7%af%87%ef%bc%89%20/post/how-does-sql-statement-work/" target="_blank" rel="noopener" class="share-btn-whatsapp" aria-label="whatsapp">
+          <i class="fab fa-whatsapp"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="https://service.weibo.com/share/share.php?url=/post/how-does-sql-statement-work/&amp;title=SQL%e8%af%ad%e5%8f%a5%e6%98%af%e5%a6%82%e4%bd%95%e6%89%a7%e8%a1%8c%e7%9a%84%ef%bc%9f%ef%bc%88MySQL%e7%af%87%ef%bc%89" target="_blank" rel="noopener" class="share-btn-weibo" aria-label="weibo">
+          <i class="fab fa-weibo"></i>
+        </a>
+      </li>
+    
+  </ul>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+
+
+
+  
+  
+  
+  
+  
+  <div class="media author-card content-widget-hr">
+    
+      
+      <a href="/authors/admin/"><img class="avatar mr-3 avatar-circle" src="/authors/admin/avatar_hu55194f19033f85038196a23353ffe543_580100_270x270_fill_q75_lanczos_center.jpg" alt="CoolCats"></a>
+    
+
+    <div class="media-body">
+      <h5 class="card-title"><a href="/authors/admin/">CoolCats</a></h5>
+      <h6 class="card-subtitle">理学学士</h6>
+      <p class="card-text">我的研究兴趣是时空数据分析、自然语言处理、服务端开发</p>
+      <ul class="network-icon" aria-hidden="true">
+  
+    
+    
+    
+      
+    
+    
+    
+    
+    
+    <li>
+      <a href="mailto:2811159909@qq.com" >
+        <i class="fas fa-envelope"></i>
+      </a>
+    </li>
+  
+    
+    
+    
+      
+    
+    
+    
+    
+    
+      
+    
+    <li>
+      <a href="https://github.com/Coolgiserz" target="_blank" rel="noopener">
+        <i class="fab fa-github"></i>
+      </a>
+    </li>
+  
+</ul>
+
+    </div>
+  </div>
+
+
+
+
+
+
+
+
+
+  
+  
+  
+
+  
+
+  
+
+
+
+
+
+
+
+
+
+
+  </div>
+</article>
+  </div>
+
+  <div class="page-footer">
+    
+    
+    <div class="container">
+      <footer class="site-footer">
+
+  
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+
+
+
+
+
+  
+  
+  
+
+  
+  
+    
+  
+  
+    
+  
+
+  
+
+  
+  <p class="powered-by copyright-license-text">
+    © 2023 CoolCats. This work is licensed under <a href="https://creativecommons.org/licenses/by-nc-nd/4.0" rel="noopener noreferrer" target="_blank">CC BY NC ND 4.0</a>
+  </p>
+  
+
+  <p class="powered-by footer-license-icons">
+    <a href="https://creativecommons.org/licenses/by-nc-nd/4.0" rel="noopener noreferrer" target="_blank" aria-label="Creative Commons">
+      <i class="fab fa-creative-commons fa-2x" aria-hidden="true"></i>
+      <i class="fab fa-creative-commons-by fa-2x" aria-hidden="true"></i>
+      
+        <i class="fab fa-creative-commons-nc fa-2x" aria-hidden="true"></i>
+      
+      
+        <i class="fab fa-creative-commons-nd fa-2x" aria-hidden="true"></i>
+      
+    </a>
+  </p>
+
+
+
+
+  <p class="powered-by">
+    
+    
+    
+      
+      
+      
+      
+      
+      
+      Published with <a href="https://wowchemy.com/?utm_campaign=poweredby" target="_blank" rel="noopener">Wowchemy</a> — the free, <a href="https://github.com/wowchemy/wowchemy-hugo-themes" target="_blank" rel="noopener">open source</a> website builder that empowers creators.
+    
+  </p>
+</footer>
+
+    </div>
+    
+  </div>
+
+      
+
+    
+    <script src="/js/vendor-bundle.min.fab8b449b814cc9f95b22fcf2e45f05b.js"></script>
+
+    
+    
+    
+      
+
+      
+      
+
+      
+
+      
+        
+        <script src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@10.2.1/build/highlight.min.js" integrity="sha512-Ypjm0o7jOxAd4hpdoppSEN0TQOC19UtPAqD+4s5AlXmUvbmmS/YMxYqAqarQYyxTnB6/rqip9qcxlNB/3U9Wdg==" crossorigin="anonymous"></script>
+        
+        
+        <script src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@10.2.1/build/languages/r.min.js" crossorigin="anonymous"></script>
+        
+        <script src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@10.2.1/build/languages/latex.min.js" crossorigin="anonymous"></script>
+        
+      
+
+    
+
+    
+    
+    
+      <script src="https://cdn.jsdelivr.net/npm/leaflet@1.7.1/dist/leaflet.min.js" integrity="" crossorigin="anonymous"></script>
+    
+
+    
+    
+
+    
+    
+    
+      
+      <script id="search-hit-fuse-template" type="text/x-template">
+        <div class="search-hit" id="summary-{{key}}">
+          <div class="search-hit-content">
+            <div class="search-hit-name">
+              <a href="{{relpermalink}}">{{title}}</a>
+              <div class="article-metadata search-hit-type">{{type}}</div>
+              <p class="search-hit-description">{{snippet}}</p>
+            </div>
+          </div>
+        </div>
+      </script>
+      
+        <script src="https://cdn.jsdelivr.net/gh/krisk/Fuse@v3.2.1/dist/fuse.min.js" integrity="sha512-o38bmzBGX+hD3JHWUFCDA09btWaqrNmoJ3RXLlrysA7PP01Kgs4UlE4MhelE1v5dJR3+cxlR4qQlotsW7jKsnw==" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/gh/julmot/mark.js@8.11.1/dist/jquery.mark.min.js" integrity="sha512-mhbv5DqBMgrWL+32MmsDOt/OAvqr/cHimk6B8y/bx/xS88MVkYGPiVv2ixKVrkywF2qHplNRUvFsAHUdxZ3Krg==" crossorigin="anonymous"></script>
+      
+    
+
+    
+    
+
+    
+    
+    
+    
+      <script id="dsq-count-scr" src="https://coolgiserz.disqus.com/count.js" async></script>
+    
+
+    
+    
+      
+      
+      
+      
+      
+      
+      
+    
+
+    
+
+    
+    
+    
+    <script id="page-data" type="application/json">{"use_headroom":true}</script>
+
+    
+    
+      <script src="/js/wowchemy-headroom.c251366b4128fd5e6b046d4c97a62a51.js" type="module"></script>
+    
+    
+    
+    
+    
+    
+    
+      
+      
+    
+    
+    <script src="/en/js/wowchemy.min.ab2f2890dbe3e2e83579366d3d6e8fd9.js"></script>
+
+    
+    
+      <script src="/js/wowchemy-map.a26e9d2f7238ba5b868384f1c5bc6477.js" type="module"></script>
+    
+    
+    
+    
+      
+<div id="modal" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Cite</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <pre><code class="tex hljs"></code></pre>
+      </div>
+      <div class="modal-footer">
+        <a class="btn btn-outline-primary my-1 js-copy-cite" href="#" target="_blank">
+          <i class="fas fa-copy"></i> Copy
+        </a>
+        <a class="btn btn-outline-primary my-1 js-download-cite" href="#" target="_blank">
+          <i class="fas fa-download"></i> Download
+        </a>
+        <div id="modal-error"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+      <script src="/js/wowchemy-publication.68f8d7090562ca65fc6d3cb3f8f2d2cb.js" type="module"></script>
+
+
+
+
+
+
+</body>
+</html>

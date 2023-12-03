@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>单元测试 | CoolCats</title>
+    <link>/tag/%E5%8D%95%E5%85%83%E6%B5%8B%E8%AF%95/</link>
+      <atom:link href="/tag/%E5%8D%95%E5%85%83%E6%B5%8B%E8%AF%95/index.xml" rel="self" type="application/rss+xml" />
+    <description>单元测试</description>
+    <generator>Wowchemy (https://wowchemy.com)</generator><language>en-us</language><lastBuildDate>Thu, 23 Mar 2023 23:02:52 +0800</lastBuildDate>
+    <image>
+      <url>/media/icon_hue03491371183284312b8b116a73ae5ab_79511_512x512_fill_lanczos_center_3.png</url>
+      <title>单元测试</title>
+      <link>/tag/%E5%8D%95%E5%85%83%E6%B5%8B%E8%AF%95/</link>
+    </image>
+    
+    <item>
+      <title>Python单元测试技巧小结</title>
+      <link>/post/python-unittest-tricks-summary/</link>
+      <pubDate>Thu, 23 Mar 2023 23:02:52 +0800</pubDate>
+      <guid>/post/python-unittest-tricks-summary/</guid>
+      <description>&lt;p&gt;单元测试&lt;/p&gt;
+&lt;h2 id=&#34;参考资料&#34;&gt;参考资料&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;可测试性&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a href=&#34;https://time.geekbang.org/column/article/107929&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;30 | 真的有必要写单元测试吗？-极客时间&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

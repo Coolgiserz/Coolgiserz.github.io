@@ -1,0 +1,1397 @@
+<!DOCTYPE html><html lang="en-us" >
+
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  
+  
+  
+    <meta name="generator" content="Wowchemy 5.5.0 for Hugo" />
+  
+
+  
+  
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+  
+  
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  
+
+  
+  
+  
+    
+      
+      <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Roboto+Mono&family=Roboto:wght@400;700&display=swap">
+      <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Roboto+Mono&family=Roboto:wght@400;700&display=swap" media="print" onload="this.media='all'">
+    
+  
+
+  
+  
+  
+  
+  
+    
+    
+    
+  
+  
+
+  <meta name="author" content="CoolCats" />
+
+  
+  
+  
+    
+  
+  <meta name="description" content="How to test a game software?" />
+
+  
+  <link rel="alternate" hreflang="en-us" href="/post/game-testing-thinking/" />
+
+  
+  
+  
+    <meta name="theme-color" content="#1565c0" />
+  
+
+  
+  
+    
+    <script src="/js/mathjax-config.js"></script>
+  
+
+  
+
+  <link rel="stylesheet" href="/css/vendor-bundle.min.c7b8d9abd591ba2253ea42747e3ac3f5.css" media="print" onload="this.media='all'">
+
+  
+  
+  
+    
+    
+      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/academicons@1.9.1/css/academicons.min.css" integrity="sha512-W0xM4mr6dEP9nREo7Z9z+9X70wytKvMGeDsj7ps2+xg5QPrEBXC8tAW1IFnzjR6eoJ90JmCnFzerQJTLzIEHjA==" crossorigin="anonymous" media="print" onload="this.media='all'">
+    
+
+    
+    
+    
+    
+      
+      
+    
+    
+    
+
+    
+    
+    
+      
+    
+    
+      
+      
+        
+          <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@10.2.1/build/styles/github.min.css" crossorigin="anonymous" title="hl-light" media="print" onload="this.media='all'">
+          <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@10.2.1/build/styles/dracula.min.css" crossorigin="anonymous" title="hl-dark" media="print" onload="this.media='all'" disabled>
+        
+      
+    
+
+    
+    
+    
+      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.7.1/dist/leaflet.min.css" integrity="" crossorigin="anonymous" media="print" onload="this.media='all'">
+    
+
+    
+
+    
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js" integrity="" crossorigin="anonymous" async></script>
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+  
+
+  
+  
+  
+  
+  
+  <link rel="stylesheet" href="/css/wowchemy.1052fab8b7700a3dc49ee23683097d66.css" />
+
+  
+
+
+
+  
+
+
+  
+
+
+  
+
+
+  <script>
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?51ae6db546b05b91d4053193ba49123d";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+  
+  
+  
+
+  
+
+  
+
+  <link rel="icon" type="image/png" href="/media/icon_hue03491371183284312b8b116a73ae5ab_79511_32x32_fill_lanczos_center_3.png" />
+  <link rel="apple-touch-icon" type="image/png" href="/media/icon_hue03491371183284312b8b116a73ae5ab_79511_180x180_fill_lanczos_center_3.png" />
+
+  <link rel="canonical" href="/post/game-testing-thinking/" />
+
+  
+  
+  
+  
+  
+  
+  
+  
+    
+    
+  
+  
+
+  
+  
+    
+    
+  
+  <meta property="twitter:card" content="summary" />
+  
+    <meta property="twitter:site" content="@wowchemy" />
+    <meta property="twitter:creator" content="@wowchemy" />
+  
+  <meta property="og:site_name" content="CoolCats" />
+  <meta property="og:url" content="/post/game-testing-thinking/" />
+  <meta property="og:title" content="思考：如何测试一个游戏？ | CoolCats" />
+  <meta property="og:description" content="How to test a game software?" /><meta property="og:image" content="/media/icon_hue03491371183284312b8b116a73ae5ab_79511_512x512_fill_lanczos_center_3.png" />
+    <meta property="twitter:image" content="/media/icon_hue03491371183284312b8b116a73ae5ab_79511_512x512_fill_lanczos_center_3.png" /><meta property="og:locale" content="en-us" />
+  
+    
+      <meta
+        property="article:published_time"
+        content="2023-07-31T23:15:54&#43;08:00"
+      />
+    
+    <meta property="article:modified_time" content="2023-07-31T23:15:54&#43;08:00">
+  
+
+  
+
+
+    
+
+
+
+
+
+
+  
+
+
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "/post/game-testing-thinking/"
+  },
+  "headline": "思考：如何测试一个游戏？",
+  
+  "datePublished": "2023-07-31T23:15:54+08:00",
+  "dateModified": "2023-07-31T23:15:54+08:00",
+  
+  "author": {
+    "@type": "Person",
+    "name": "CoolCats"
+  },
+  
+  "publisher": {
+    "@type": "Organization",
+    "name": "CoolCats",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "/media/icon_hue03491371183284312b8b116a73ae5ab_79511_192x192_fill_lanczos_center_3.png"
+    }
+  },
+  "description": "How to test a game software?"
+}
+</script>
+
+  
+
+  
+
+  
+
+  
+
+
+
+
+
+  <title>思考：如何测试一个游戏？ | CoolCats</title>
+</head>
+
+
+<body id="top" data-spy="scroll" data-offset="70" data-target="#TableOfContents" class="page-wrapper   " data-wc-page-id="d32b905dae353f855bce748a3ecd0e43" >
+
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  <script src="/js/wowchemy-init.min.2ed908358299dd7ab553faae685c746c.js"></script>
+
+  
+
+
+<aside class="search-modal" id="search">
+  <div class="container">
+    <section class="search-header">
+
+      <div class="row no-gutters justify-content-between mb-3">
+        <div class="col-6">
+          <h1>Search</h1>
+        </div>
+        <div class="col-6 col-search-close">
+          <a class="js-search" href="#" aria-label="Close"><i class="fas fa-times-circle text-muted" aria-hidden="true"></i></a>
+        </div>
+      </div>
+
+      <div id="search-box">
+        
+        <input name="q" id="search-query" placeholder="Search..." autocapitalize="off"
+        autocomplete="off" autocorrect="off" spellcheck="false" type="search" class="form-control"
+        aria-label="Search...">
+        
+      </div>
+
+      
+      
+
+      
+
+    </section>
+    <section class="section-search-results">
+
+      <div id="search-hits">
+        
+      </div>
+
+    </section>
+  </div>
+</aside>
+
+
+
+  <div class="page-header">
+    
+
+
+
+
+
+
+
+
+
+
+
+
+<header class="header--fixed">
+  <nav class="navbar navbar-expand-lg navbar-light compensate-for-scrollbar" id="navbar-main">
+    <div class="container-xl">
+
+      
+      <div class="d-none d-lg-inline-flex">
+        <a class="navbar-brand" href="/">CoolCats</a>
+      </div>
+      
+
+      
+      <button type="button" class="navbar-toggler" data-toggle="collapse"
+              data-target="#navbar-content" aria-controls="navbar-content" aria-expanded="false" aria-label="Toggle navigation">
+      <span><i class="fas fa-bars"></i></span>
+      </button>
+      
+
+      
+      <div class="navbar-brand-mobile-wrapper d-inline-flex d-lg-none">
+        <a class="navbar-brand" href="/">CoolCats</a>
+      </div>
+      
+
+      
+      
+      <div class="navbar-collapse main-menu-item collapse justify-content-start" id="navbar-content">
+
+        
+        <ul class="navbar-nav d-md-inline-flex">
+          
+
+          
+
+          
+          
+          
+
+          
+
+          
+          
+          
+          
+
+          
+            
+              
+              
+            
+            
+          
+
+          <li class="nav-item">
+            <a class="nav-link  active" href="/post"><span>博客</span></a>
+          </li>
+
+          
+          
+
+          
+
+          
+          
+          
+            
+          
+
+          
+
+          
+          
+          
+          
+
+          
+            
+              
+              
+            
+            
+          
+
+          <li class="nav-item">
+            <a class="nav-link " href="/event"><span>趣事</span></a>
+          </li>
+
+          
+          
+
+          
+
+          
+          
+          
+            
+          
+
+          
+
+          
+          
+          
+          
+
+          
+            
+              
+              
+            
+            
+          
+
+          <li class="nav-item">
+            <a class="nav-link " href="/project"><span>项目</span></a>
+          </li>
+
+          
+          
+
+          
+
+          
+          
+          
+            
+          
+
+          
+
+          
+          
+          
+          
+
+          
+            
+              
+              
+            
+            
+          
+
+          <li class="nav-item">
+            <a class="nav-link " href="/publication"><span>论文</span></a>
+          </li>
+
+          
+          
+
+          
+
+          
+          
+          
+            
+          
+
+          
+
+          
+          
+          
+          
+
+          
+            
+              
+              
+            
+            
+          
+
+          <li class="nav-item">
+            <a class="nav-link " href="/contact"><span>联系</span></a>
+          </li>
+
+          
+          
+
+          
+
+          
+          
+          
+            
+          
+
+          
+
+          
+          
+          
+          
+
+          
+            
+              
+              
+            
+            
+          
+
+          <li class="nav-item">
+            <a class="nav-link " href="/media/files/cv"><span>简历</span></a>
+          </li>
+
+          
+          
+
+        
+
+          
+        </ul>
+      </div>
+
+      <ul class="nav-icons navbar-nav flex-row ml-auto d-flex pl-md-2">
+
+        
+        
+          
+        
+
+        
+        
+        <li class="nav-item">
+          <a class="nav-link js-search" href="#" aria-label="Search"><i class="fas fa-search" aria-hidden="true"></i></a>
+        </li>
+        
+
+        
+        
+        
+        <li class="nav-item dropdown theme-dropdown">
+          <a href="#" class="nav-link" data-toggle="dropdown" aria-haspopup="true" aria-label="Display preferences">
+            <i class="fas fa-moon" aria-hidden="true"></i>
+          </a>
+          <div class="dropdown-menu">
+            <a href="#" class="dropdown-item js-set-theme-light">
+              <span>Light</span>
+            </a>
+            <a href="#" class="dropdown-item js-set-theme-dark">
+              <span>Dark</span>
+            </a>
+            <a href="#" class="dropdown-item js-set-theme-auto">
+              <span>Automatic</span>
+            </a>
+          </div>
+        </li>
+        
+
+        
+        
+
+      </ul>
+
+    </div>
+  </nav>
+</header>
+
+
+  </div>
+
+  <div class="page-body">
+    
+    
+    
+
+    <article class="article">
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+  
+  
+<div class="article-container pt-3">
+  <h1>思考：如何测试一个游戏？</h1>
+
+  
+
+  
+    
+
+
+<div class="article-metadata">
+
+  
+  
+
+  
+  <span class="article-date">
+    
+    
+      
+    
+    Jul 31, 2023
+  </span>
+  
+
+  
+
+  
+  <span class="middot-divider"></span>
+  <span class="article-reading-time">
+    1 min read
+  </span>
+  
+
+  
+  
+  
+  
+
+  
+  
+  <span class="middot-divider"></span>
+  <span class="article-categories">
+    <i class="fas fa-folder mr-1"></i><a href="/category/%E6%B8%B8%E6%88%8F/">游戏</a>, <a href="/category/%E6%B5%8B%E8%AF%95/">测试</a></span>
+  
+
+</div>
+
+    
+
+
+
+
+
+  
+</div>
+
+
+
+  <div class="article-container">
+
+    <div class="article-style">
+      <h2 id="概述">概述</h2>
+<p>测试的目的是寻找产品缺陷，最终提高产品的质量。对于游戏而言，与一般软件不同的是，当用户在使用游戏软件时时，往往会在一段时间内沉浸式地与软件进行细致地交互（假设游戏对用户有吸引力），因此需要测试游戏的流畅度、控制的灵敏度，各种硬件配置环境测试游戏，如果是多人对战游戏还需要关注游戏角色、能力的平衡性。总的来说，游戏测试包括但不限于如下方面：</p>
+<ul>
+<li>
+<p>性能，游戏响应时间如何？游戏服务延时率是否不可接受？网络延迟时玩家会面临什么？服务器最高可容纳什么样的并发量（负载）？</p>
+</li>
+<li>
+<p>安全问题，玩家的账号是否安全？充值的点券、购买的装备、英雄是否会按时到账会丢失？不同玩家之间是否可能越权操作？玩家在wifi环境下登录游戏是否可能泄露隐私信息（数据传输过程是否加密，加密程度如何）？</p>
+</li>
+<li>
+<p>功能方面，是否所有设计的按钮、操作、技能、社交都能按预期执行？</p>
+</li>
+<li>
+<p>兼容性方面，游戏在所有目标平台上是否可以正常运行，包括不同的操作系统、设备型号、硬件配置以及不同的网络环境等。</p>
+</li>
+<li>
+<p>用户交互测试，用户界面。</p>
+</li>
+<li>
+<p>合规性方面，游戏各方面元素是否符合相关法规要求，如隐私、年龄、版权等</p>
+</li>
+<li>
+<p>可玩性方面，较为主观，但需要有人试玩并对游戏剧情、战斗等维度的可玩性做出评价，至少能从目标用户群体的采样测试人员得到普遍较高的评价（可设计一套评分体系）才能认为游戏可玩性较高。</p>
+</li>
+<li>
+<p>本地化方面，假如游戏支持多语言或者有国际化版本，需考虑对应国家、语言的版本的本地化支持是否正常（文本是否被正确翻译、界面是否符合当地习俗、输入输出是否与目标地区的习惯一致、时间货币的数值显示是否符合目标地区的习惯等）。需要考虑不同地区的用户连接游戏服务时能否得到及时的响应和正确的回复。</p>
+</li>
+<li>
+<p>&hellip;&hellip;</p>
+</li>
+</ul>
+<p>如果从流程化的角度考虑游戏测试，还需要注意对游戏质量总体情况进行定量化度量，如测试覆盖率、错误数量、功能不达标率等，也要注意对用户反馈的正面与否进行统计。</p>
+<h2 id="非技术层面">非技术层面</h2>
+<h3 id="如何测试游戏可玩性">如何测试游戏可玩性</h3>
+<p>定义测试目标、选择测试用户、观察和记录、量化和分析。这部分的测试可能略微主观，对于完全不喜欢某一游戏类型的玩家而言，让ta来测试这类游戏，得到的反馈可能是极差的，也不一定具有参考意义。</p>
+<h3 id="如何测试游戏平衡性">如何测试游戏平衡性</h3>
+<p>测试平衡性的前提是明确“平衡”的标准，所有的阵营或角色有相等的机会获胜？所有同职业角色的技能及属性强度在一个合适的统一量化标准中相差不能很大；</p>
+<p>收集和分析数据进行统计分析以评估游戏的平衡性：死亡次数、胜利次数、得分等。</p>
+<p>数据从何而来？以《王者荣耀》为例，假如要测试一个新上线的英雄是否会强度适当，可以进行如下测试（平衡性测试）：</p>
+<ul>
+<li>
+<p>内部测试，如让设计师、开发者、测试员使用新英雄与已存在的英雄进行对战</p>
+</li>
+<li>
+<p>玩家反馈：在测试服引入新英雄，收集和分析玩家的反馈</p>
+</li>
+<li>
+<p>迭代调整：根据测试结果和玩家反馈进行新英雄的数值迭代调整（如何合理地调整？）</p>
+<p>以老英雄，公认为强度适中（不过弱也不超标）的老英雄的数值统计结果作为参考，调整新英雄的初始属性和成长速度、成长属性</p>
+</li>
+</ul>
+<p>另外，平衡性有时不只看单个英雄的数值，还要看其与其他特定英雄搭配后的强度（多种玩法组合下的强度）。</p>
+<h3 id="对合对游戏内容合规性和准确性进行测试">对合对游戏内容合规性和准确性进行测试</h3>
+<p>人工审查</p>
+<h3 id="如何对国际化和本地化进行测试">如何对国际化和本地化进行测试</h3>
+<p>人工审查、自动化测试</p>
+<h3 id="如何对视觉效果和音乐效果进行测试">如何对视觉效果和音乐效果进行测试</h3>
+<p>能否自动化测试？如果实现自动化的话，投入产出比是怎样的？</p>
+<h2 id="技术层面">技术层面</h2>
+<h3 id="如何测试网络性能">如何测试网络性能</h3>
+<ul>
+<li>
+<p>通过负载测试工具，模拟大数量级的并发用户执行游戏操作接口。</p>
+</li>
+<li>
+<p>模拟弱网环境、各种网络环境(4G/5G/Wifi)及网络环境切换时的游戏表现</p>
+</li>
+</ul>
+<h3 id="如何测试兼容性">如何测试兼容性</h3>
+<ul>
+<li>
+<p>设备型号</p>
+</li>
+<li>
+<p>操作系统（Android/IOS）</p>
+</li>
+<li>
+<p>&hellip;</p>
+</li>
+</ul>
+<h3 id="如何测试安全性">如何测试安全性</h3>
+<ul>
+<li>
+<p>用户账号安全性</p>
+</li>
+<li>
+<p>用户交易安全性</p>
+</li>
+<li>
+<p>网络协议安全性</p>
+</li>
+<li>
+<p>网络接口安全性</p>
+</li>
+<li>
+<p>权限安全性</p>
+</li>
+<li>
+<p>外挂检测</p>
+</li>
+<li>
+<p>……</p>
+</li>
+</ul>
+<h2 id="对玩过的一些游戏进行评价">对玩过的一些游戏进行评价</h2>
+<h3 id="塞尔达传说旷野之息">《塞尔达传说：旷野之息》</h3>
+<h4 id="整体评价">整体评价</h4>
+<p><strong>开放世界</strong>角色扮演游戏，剧情丰富、3D建模、现实环境模拟细致、动作设计富含细节，神庙（<strong>解谜、迷宫</strong>）具有趣味性和挑战性。</p>
+<p>道具的丰富性结合<strong>物理和化学原理</strong>可以衍生出很多玩法，比如要战胜怪物可以靠肉搏技巧，也可以靠策略（陷阱），还可以靠吃药升级装备增强作战能力。</p>
+<pre tabindex="0"><code>火、电、冰元素的装备、怪物、料理等；游戏世界中丰富的材料、生物等；
+</code></pre><h4 id="不足之处">不足之处</h4>
+<p>游戏的战斗技巧单一，长时间玩下去可能会觉得单调，如各种人马的战斗模式基本是固定的，熟悉以后就可预测，并可以相对固定的套路应对。（虽然大师模式的怪物加入回复机制，对玩家而言也有不少挑战）</p>
+<p>物理、化学原理的可利用方式还是较少。林克的滑翔伞无法被打破或燃烧</p>
+<p>战斗反应时间较多，更换武器或弓箭时可以暂停战斗。</p>
+<h3 id="王者荣耀">《王者荣耀》</h3>
+<h4 id="整体评价-1">整体评价</h4>
+<p>多人在线团队竞技游戏</p>
+<h4 id="不足之处-1">不足之处</h4>
+<ul>
+<li>
+<p>匹配机制无语</p>
+</li>
+<li>
+<p>地图复杂度不够</p>
+</li>
+</ul>
+<h2 id="测试工具">测试工具</h2>
+<ul>
+<li>
+<p><a href="http://appium.io" target="_blank" rel="noopener">Appium</a></p>
+</li>
+<li>
+<p><a href="https://www.selenium.dev" target="_blank" rel="noopener">Selenium</a></p>
+</li>
+<li>
+<p>LoadRunner</p>
+</li>
+<li>
+<p>JMeter</p>
+</li>
+</ul>
+<h2 id="游戏测试案例及问题思考">游戏测试案例及问题思考</h2>
+<ul>
+<li>
+<p><a href="https://toutiao.io/posts/h14lscl/preview" target="_blank" rel="noopener">## 王者荣耀是怎么测试的？——『上海站议题』游戏质量篇</a></p>
+</li>
+<li>
+<p>假如让你测试《王者荣耀》中一个新英雄，你会从哪些方面进行思考和设计测试方案？</p>
+<p>1、界面：人物模型及动作、特效是否符合设计原型</p>
+<p>2、功能：各项技能及组合技、被动属性及特性是否符合设计规格</p>
+<p>3、平衡：数值是否明显偏弱或过强</p>
+<p>4、活动：产出手段、途径（商城直售、活动领取）是否符合预期</p>
+</li>
+<li>
+<p>&hellip;&hellip;</p>
+</li>
+</ul>
+<h2 id="总结">总结</h2>
+<p>不管是技术层面测试还是非技术层面的测试，明确测试目标（方案）、定义测试场景，以量化的形式表示游戏质量是很重要的。考虑软件架构层面，还要尤其考虑用户体验，一点缺陷可能就会带来用户流失和利益亏损。</p>
+
+    </div>
+
+    
+
+
+
+
+<div class="article-tags">
+  
+  <a class="badge badge-light" href="/tag/%E6%B8%B8%E6%88%8F/">游戏</a>
+  
+  <a class="badge badge-light" href="/tag/%E6%B5%8B%E8%AF%95/">测试</a>
+  
+</div>
+
+
+
+<div class="share-box">
+  <ul class="share">
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="https://twitter.com/intent/tweet?url=/post/game-testing-thinking/&amp;text=%e6%80%9d%e8%80%83%ef%bc%9a%e5%a6%82%e4%bd%95%e6%b5%8b%e8%af%95%e4%b8%80%e4%b8%aa%e6%b8%b8%e6%88%8f%ef%bc%9f" target="_blank" rel="noopener" class="share-btn-twitter" aria-label="twitter">
+          <i class="fab fa-twitter"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="https://www.facebook.com/sharer.php?u=/post/game-testing-thinking/&amp;t=%e6%80%9d%e8%80%83%ef%bc%9a%e5%a6%82%e4%bd%95%e6%b5%8b%e8%af%95%e4%b8%80%e4%b8%aa%e6%b8%b8%e6%88%8f%ef%bc%9f" target="_blank" rel="noopener" class="share-btn-facebook" aria-label="facebook">
+          <i class="fab fa-facebook"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="mailto:?subject=%e6%80%9d%e8%80%83%ef%bc%9a%e5%a6%82%e4%bd%95%e6%b5%8b%e8%af%95%e4%b8%80%e4%b8%aa%e6%b8%b8%e6%88%8f%ef%bc%9f&amp;body=/post/game-testing-thinking/" target="_blank" rel="noopener" class="share-btn-email" aria-label="envelope">
+          <i class="fas fa-envelope"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="https://www.linkedin.com/shareArticle?url=/post/game-testing-thinking/&amp;title=%e6%80%9d%e8%80%83%ef%bc%9a%e5%a6%82%e4%bd%95%e6%b5%8b%e8%af%95%e4%b8%80%e4%b8%aa%e6%b8%b8%e6%88%8f%ef%bc%9f" target="_blank" rel="noopener" class="share-btn-linkedin" aria-label="linkedin-in">
+          <i class="fab fa-linkedin-in"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="whatsapp://send?text=%e6%80%9d%e8%80%83%ef%bc%9a%e5%a6%82%e4%bd%95%e6%b5%8b%e8%af%95%e4%b8%80%e4%b8%aa%e6%b8%b8%e6%88%8f%ef%bc%9f%20/post/game-testing-thinking/" target="_blank" rel="noopener" class="share-btn-whatsapp" aria-label="whatsapp">
+          <i class="fab fa-whatsapp"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="https://service.weibo.com/share/share.php?url=/post/game-testing-thinking/&amp;title=%e6%80%9d%e8%80%83%ef%bc%9a%e5%a6%82%e4%bd%95%e6%b5%8b%e8%af%95%e4%b8%80%e4%b8%aa%e6%b8%b8%e6%88%8f%ef%bc%9f" target="_blank" rel="noopener" class="share-btn-weibo" aria-label="weibo">
+          <i class="fab fa-weibo"></i>
+        </a>
+      </li>
+    
+  </ul>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+
+
+
+  
+  
+  
+  
+  
+  <div class="media author-card content-widget-hr">
+    
+      
+      <a href="/authors/admin/"><img class="avatar mr-3 avatar-circle" src="/authors/admin/avatar_hu55194f19033f85038196a23353ffe543_580100_270x270_fill_q75_lanczos_center.jpg" alt="CoolCats"></a>
+    
+
+    <div class="media-body">
+      <h5 class="card-title"><a href="/authors/admin/">CoolCats</a></h5>
+      <h6 class="card-subtitle">理学学士</h6>
+      <p class="card-text">我的研究兴趣是时空数据分析、自然语言处理、服务端开发</p>
+      <ul class="network-icon" aria-hidden="true">
+  
+    
+    
+    
+      
+    
+    
+    
+    
+    
+    <li>
+      <a href="mailto:2811159909@qq.com" >
+        <i class="fas fa-envelope"></i>
+      </a>
+    </li>
+  
+    
+    
+    
+      
+    
+    
+    
+    
+    
+      
+    
+    <li>
+      <a href="https://github.com/Coolgiserz" target="_blank" rel="noopener">
+        <i class="fab fa-github"></i>
+      </a>
+    </li>
+  
+</ul>
+
+    </div>
+  </div>
+
+
+
+
+
+
+
+
+
+  
+  
+  
+
+  
+
+  
+
+
+
+
+
+
+
+
+
+
+  </div>
+</article>
+  </div>
+
+  <div class="page-footer">
+    
+    
+    <div class="container">
+      <footer class="site-footer">
+
+  
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+
+
+
+
+
+  
+  
+  
+
+  
+  
+    
+  
+  
+    
+  
+
+  
+
+  
+  <p class="powered-by copyright-license-text">
+    © 2023 CoolCats. This work is licensed under <a href="https://creativecommons.org/licenses/by-nc-nd/4.0" rel="noopener noreferrer" target="_blank">CC BY NC ND 4.0</a>
+  </p>
+  
+
+  <p class="powered-by footer-license-icons">
+    <a href="https://creativecommons.org/licenses/by-nc-nd/4.0" rel="noopener noreferrer" target="_blank" aria-label="Creative Commons">
+      <i class="fab fa-creative-commons fa-2x" aria-hidden="true"></i>
+      <i class="fab fa-creative-commons-by fa-2x" aria-hidden="true"></i>
+      
+        <i class="fab fa-creative-commons-nc fa-2x" aria-hidden="true"></i>
+      
+      
+        <i class="fab fa-creative-commons-nd fa-2x" aria-hidden="true"></i>
+      
+    </a>
+  </p>
+
+
+
+
+  <p class="powered-by">
+    
+    
+    
+      
+      
+      
+      
+      
+      
+      Published with <a href="https://wowchemy.com/?utm_campaign=poweredby" target="_blank" rel="noopener">Wowchemy</a> — the free, <a href="https://github.com/wowchemy/wowchemy-hugo-themes" target="_blank" rel="noopener">open source</a> website builder that empowers creators.
+    
+  </p>
+</footer>
+
+    </div>
+    
+  </div>
+
+      
+
+    
+    <script src="/js/vendor-bundle.min.fab8b449b814cc9f95b22fcf2e45f05b.js"></script>
+
+    
+    
+    
+      
+
+      
+      
+
+      
+
+      
+        
+        <script src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@10.2.1/build/highlight.min.js" integrity="sha512-Ypjm0o7jOxAd4hpdoppSEN0TQOC19UtPAqD+4s5AlXmUvbmmS/YMxYqAqarQYyxTnB6/rqip9qcxlNB/3U9Wdg==" crossorigin="anonymous"></script>
+        
+        
+        <script src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@10.2.1/build/languages/r.min.js" crossorigin="anonymous"></script>
+        
+        <script src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@10.2.1/build/languages/latex.min.js" crossorigin="anonymous"></script>
+        
+      
+
+    
+
+    
+    
+    
+      <script src="https://cdn.jsdelivr.net/npm/leaflet@1.7.1/dist/leaflet.min.js" integrity="" crossorigin="anonymous"></script>
+    
+
+    
+    
+
+    
+    
+    
+      
+      <script id="search-hit-fuse-template" type="text/x-template">
+        <div class="search-hit" id="summary-{{key}}">
+          <div class="search-hit-content">
+            <div class="search-hit-name">
+              <a href="{{relpermalink}}">{{title}}</a>
+              <div class="article-metadata search-hit-type">{{type}}</div>
+              <p class="search-hit-description">{{snippet}}</p>
+            </div>
+          </div>
+        </div>
+      </script>
+      
+        <script src="https://cdn.jsdelivr.net/gh/krisk/Fuse@v3.2.1/dist/fuse.min.js" integrity="sha512-o38bmzBGX+hD3JHWUFCDA09btWaqrNmoJ3RXLlrysA7PP01Kgs4UlE4MhelE1v5dJR3+cxlR4qQlotsW7jKsnw==" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/gh/julmot/mark.js@8.11.1/dist/jquery.mark.min.js" integrity="sha512-mhbv5DqBMgrWL+32MmsDOt/OAvqr/cHimk6B8y/bx/xS88MVkYGPiVv2ixKVrkywF2qHplNRUvFsAHUdxZ3Krg==" crossorigin="anonymous"></script>
+      
+    
+
+    
+    
+
+    
+    
+    
+    
+      <script id="dsq-count-scr" src="https://coolgiserz.disqus.com/count.js" async></script>
+    
+
+    
+    
+      
+      
+      
+      
+      
+      
+      
+    
+
+    
+
+    
+    
+    
+    <script id="page-data" type="application/json">{"use_headroom":true}</script>
+
+    
+    
+      <script src="/js/wowchemy-headroom.c251366b4128fd5e6b046d4c97a62a51.js" type="module"></script>
+    
+    
+    
+    
+    
+    
+    
+      
+      
+    
+    
+    <script src="/en/js/wowchemy.min.ab2f2890dbe3e2e83579366d3d6e8fd9.js"></script>
+
+    
+    
+      <script src="/js/wowchemy-map.a26e9d2f7238ba5b868384f1c5bc6477.js" type="module"></script>
+    
+    
+    
+    
+      
+<div id="modal" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Cite</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <pre><code class="tex hljs"></code></pre>
+      </div>
+      <div class="modal-footer">
+        <a class="btn btn-outline-primary my-1 js-copy-cite" href="#" target="_blank">
+          <i class="fas fa-copy"></i> Copy
+        </a>
+        <a class="btn btn-outline-primary my-1 js-download-cite" href="#" target="_blank">
+          <i class="fas fa-download"></i> Download
+        </a>
+        <div id="modal-error"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+      <script src="/js/wowchemy-publication.68f8d7090562ca65fc6d3cb3f8f2d2cb.js" type="module"></script>
+
+
+
+
+
+
+</body>
+</html>

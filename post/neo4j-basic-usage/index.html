@@ -1,0 +1,1530 @@
+<!DOCTYPE html><html lang="en-us" >
+
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  
+  
+  
+    <meta name="generator" content="Wowchemy 5.5.0 for Hugo" />
+  
+
+  
+  
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+  
+  
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  
+
+  
+  
+  
+    
+      
+      <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Roboto+Mono&family=Roboto:wght@400;700&display=swap">
+      <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Roboto+Mono&family=Roboto:wght@400;700&display=swap" media="print" onload="this.media='all'">
+    
+  
+
+  
+  
+  
+  
+  
+    
+    
+    
+  
+  
+
+  <meta name="author" content="CoolCats" />
+
+  
+  
+  
+    
+  
+  <meta name="description" content="图数据库查询语言、面向对象编程" />
+
+  
+  <link rel="alternate" hreflang="en-us" href="/post/neo4j-basic-usage/" />
+
+  
+  
+  
+    <meta name="theme-color" content="#1565c0" />
+  
+
+  
+  
+    
+    <script src="/js/mathjax-config.js"></script>
+  
+
+  
+
+  <link rel="stylesheet" href="/css/vendor-bundle.min.c7b8d9abd591ba2253ea42747e3ac3f5.css" media="print" onload="this.media='all'">
+
+  
+  
+  
+    
+    
+      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/academicons@1.9.1/css/academicons.min.css" integrity="sha512-W0xM4mr6dEP9nREo7Z9z+9X70wytKvMGeDsj7ps2+xg5QPrEBXC8tAW1IFnzjR6eoJ90JmCnFzerQJTLzIEHjA==" crossorigin="anonymous" media="print" onload="this.media='all'">
+    
+
+    
+    
+    
+    
+      
+      
+    
+    
+    
+
+    
+    
+    
+      
+    
+    
+      
+      
+        
+          <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@10.2.1/build/styles/github.min.css" crossorigin="anonymous" title="hl-light" media="print" onload="this.media='all'">
+          <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@10.2.1/build/styles/dracula.min.css" crossorigin="anonymous" title="hl-dark" media="print" onload="this.media='all'" disabled>
+        
+      
+    
+
+    
+    
+    
+      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.7.1/dist/leaflet.min.css" integrity="" crossorigin="anonymous" media="print" onload="this.media='all'">
+    
+
+    
+
+    
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js" integrity="" crossorigin="anonymous" async></script>
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+  
+
+  
+  
+  
+  
+  
+  <link rel="stylesheet" href="/css/wowchemy.1052fab8b7700a3dc49ee23683097d66.css" />
+
+  
+
+
+
+  
+
+
+  
+
+
+  
+
+
+  <script>
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?51ae6db546b05b91d4053193ba49123d";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+  
+  
+  
+
+  
+
+  
+
+  <link rel="icon" type="image/png" href="/media/icon_hue03491371183284312b8b116a73ae5ab_79511_32x32_fill_lanczos_center_3.png" />
+  <link rel="apple-touch-icon" type="image/png" href="/media/icon_hue03491371183284312b8b116a73ae5ab_79511_180x180_fill_lanczos_center_3.png" />
+
+  <link rel="canonical" href="/post/neo4j-basic-usage/" />
+
+  
+  
+  
+  
+  
+  
+  
+  
+    
+    
+  
+  
+
+  
+  
+    
+    
+  
+  <meta property="twitter:card" content="summary" />
+  
+    <meta property="twitter:site" content="@wowchemy" />
+    <meta property="twitter:creator" content="@wowchemy" />
+  
+  <meta property="og:site_name" content="CoolCats" />
+  <meta property="og:url" content="/post/neo4j-basic-usage/" />
+  <meta property="og:title" content="Neo4j基本使用与Cypher语言基础 | CoolCats" />
+  <meta property="og:description" content="图数据库查询语言、面向对象编程" /><meta property="og:image" content="/media/icon_hue03491371183284312b8b116a73ae5ab_79511_512x512_fill_lanczos_center_3.png" />
+    <meta property="twitter:image" content="/media/icon_hue03491371183284312b8b116a73ae5ab_79511_512x512_fill_lanczos_center_3.png" /><meta property="og:locale" content="en-us" />
+  
+    
+      <meta
+        property="article:published_time"
+        content="2023-09-20T21:57:38&#43;08:00"
+      />
+    
+    <meta property="article:modified_time" content="2023-09-20T21:57:38&#43;08:00">
+  
+
+  
+
+
+    
+
+
+
+
+
+
+  
+
+
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "/post/neo4j-basic-usage/"
+  },
+  "headline": "Neo4j基本使用与Cypher语言基础",
+  
+  "datePublished": "2023-09-20T21:57:38+08:00",
+  "dateModified": "2023-09-20T21:57:38+08:00",
+  
+  "author": {
+    "@type": "Person",
+    "name": "CoolCats"
+  },
+  
+  "publisher": {
+    "@type": "Organization",
+    "name": "CoolCats",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "/media/icon_hue03491371183284312b8b116a73ae5ab_79511_192x192_fill_lanczos_center_3.png"
+    }
+  },
+  "description": "图数据库查询语言、面向对象编程"
+}
+</script>
+
+  
+
+  
+
+  
+
+  
+
+
+
+
+
+  <title>Neo4j基本使用与Cypher语言基础 | CoolCats</title>
+</head>
+
+
+<body id="top" data-spy="scroll" data-offset="70" data-target="#TableOfContents" class="page-wrapper   " data-wc-page-id="ed202cc36a3dc4361eec8ae331f76a5c" >
+
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  <script src="/js/wowchemy-init.min.2ed908358299dd7ab553faae685c746c.js"></script>
+
+  
+
+
+<aside class="search-modal" id="search">
+  <div class="container">
+    <section class="search-header">
+
+      <div class="row no-gutters justify-content-between mb-3">
+        <div class="col-6">
+          <h1>Search</h1>
+        </div>
+        <div class="col-6 col-search-close">
+          <a class="js-search" href="#" aria-label="Close"><i class="fas fa-times-circle text-muted" aria-hidden="true"></i></a>
+        </div>
+      </div>
+
+      <div id="search-box">
+        
+        <input name="q" id="search-query" placeholder="Search..." autocapitalize="off"
+        autocomplete="off" autocorrect="off" spellcheck="false" type="search" class="form-control"
+        aria-label="Search...">
+        
+      </div>
+
+      
+      
+
+      
+
+    </section>
+    <section class="section-search-results">
+
+      <div id="search-hits">
+        
+      </div>
+
+    </section>
+  </div>
+</aside>
+
+
+
+  <div class="page-header">
+    
+
+
+
+
+
+
+
+
+
+
+
+
+<header class="header--fixed">
+  <nav class="navbar navbar-expand-lg navbar-light compensate-for-scrollbar" id="navbar-main">
+    <div class="container-xl">
+
+      
+      <div class="d-none d-lg-inline-flex">
+        <a class="navbar-brand" href="/">CoolCats</a>
+      </div>
+      
+
+      
+      <button type="button" class="navbar-toggler" data-toggle="collapse"
+              data-target="#navbar-content" aria-controls="navbar-content" aria-expanded="false" aria-label="Toggle navigation">
+      <span><i class="fas fa-bars"></i></span>
+      </button>
+      
+
+      
+      <div class="navbar-brand-mobile-wrapper d-inline-flex d-lg-none">
+        <a class="navbar-brand" href="/">CoolCats</a>
+      </div>
+      
+
+      
+      
+      <div class="navbar-collapse main-menu-item collapse justify-content-start" id="navbar-content">
+
+        
+        <ul class="navbar-nav d-md-inline-flex">
+          
+
+          
+
+          
+          
+          
+
+          
+
+          
+          
+          
+          
+
+          
+            
+              
+              
+            
+            
+          
+
+          <li class="nav-item">
+            <a class="nav-link  active" href="/post"><span>博客</span></a>
+          </li>
+
+          
+          
+
+          
+
+          
+          
+          
+            
+          
+
+          
+
+          
+          
+          
+          
+
+          
+            
+              
+              
+            
+            
+          
+
+          <li class="nav-item">
+            <a class="nav-link " href="/event"><span>趣事</span></a>
+          </li>
+
+          
+          
+
+          
+
+          
+          
+          
+            
+          
+
+          
+
+          
+          
+          
+          
+
+          
+            
+              
+              
+            
+            
+          
+
+          <li class="nav-item">
+            <a class="nav-link " href="/project"><span>项目</span></a>
+          </li>
+
+          
+          
+
+          
+
+          
+          
+          
+            
+          
+
+          
+
+          
+          
+          
+          
+
+          
+            
+              
+              
+            
+            
+          
+
+          <li class="nav-item">
+            <a class="nav-link " href="/publication"><span>论文</span></a>
+          </li>
+
+          
+          
+
+          
+
+          
+          
+          
+            
+          
+
+          
+
+          
+          
+          
+          
+
+          
+            
+              
+              
+            
+            
+          
+
+          <li class="nav-item">
+            <a class="nav-link " href="/contact"><span>联系</span></a>
+          </li>
+
+          
+          
+
+          
+
+          
+          
+          
+            
+          
+
+          
+
+          
+          
+          
+          
+
+          
+            
+              
+              
+            
+            
+          
+
+          <li class="nav-item">
+            <a class="nav-link " href="/media/files/cv"><span>简历</span></a>
+          </li>
+
+          
+          
+
+        
+
+          
+        </ul>
+      </div>
+
+      <ul class="nav-icons navbar-nav flex-row ml-auto d-flex pl-md-2">
+
+        
+        
+          
+        
+
+        
+        
+        <li class="nav-item">
+          <a class="nav-link js-search" href="#" aria-label="Search"><i class="fas fa-search" aria-hidden="true"></i></a>
+        </li>
+        
+
+        
+        
+        
+        <li class="nav-item dropdown theme-dropdown">
+          <a href="#" class="nav-link" data-toggle="dropdown" aria-haspopup="true" aria-label="Display preferences">
+            <i class="fas fa-moon" aria-hidden="true"></i>
+          </a>
+          <div class="dropdown-menu">
+            <a href="#" class="dropdown-item js-set-theme-light">
+              <span>Light</span>
+            </a>
+            <a href="#" class="dropdown-item js-set-theme-dark">
+              <span>Dark</span>
+            </a>
+            <a href="#" class="dropdown-item js-set-theme-auto">
+              <span>Automatic</span>
+            </a>
+          </div>
+        </li>
+        
+
+        
+        
+
+      </ul>
+
+    </div>
+  </nav>
+</header>
+
+
+  </div>
+
+  <div class="page-body">
+    
+    
+    
+
+    <article class="article">
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+  
+  
+<div class="article-container pt-3">
+  <h1>Neo4j基本使用与Cypher语言基础</h1>
+
+  
+
+  
+    
+
+
+<div class="article-metadata">
+
+  
+  
+
+  
+  <span class="article-date">
+    
+    
+      
+    
+    Sep 20, 2023
+  </span>
+  
+
+  
+
+  
+  <span class="middot-divider"></span>
+  <span class="article-reading-time">
+    1 min read
+  </span>
+  
+
+  
+  
+  
+  
+
+  
+  
+  <span class="middot-divider"></span>
+  <span class="article-categories">
+    <i class="fas fa-folder mr-1"></i><a href="/category/%E6%95%B0%E6%8D%AE%E5%BA%93/">数据库</a></span>
+  
+
+</div>
+
+    
+
+
+
+
+
+  
+</div>
+
+
+
+  <div class="article-container">
+
+    <div class="article-style">
+      <h2 id="图数据库简介">图数据库简介</h2>
+<h3 id="什么是图">什么是图？</h3>
+<p>图是由实体以及实体间的关系组成的结构，这种结构可以抽象表示现实世界中的事物及事物间的关系。我们可以用节点/Node/Vertex表示实体、用节点间的连边/Ralationship/Edge/表示节点间的关系。</p>
+<p>举例来说，我们的朋友圈可以通过图结构进行抽象，每个人作为一个节点，若两个人之间存在关系则认为两个节点具有连边，由此构造出社交网络。</p>
+<p>更多关于图的介绍或相关研究可以查阅图论、复杂网络科学，前者为侧重抽象数学层面的领域，后者更侧重对使用图结构对复杂系统的性质进行建模分析。</p>
+<h3 id="为什么需要图数据库">为什么需要图数据库？</h3>
+<p>众所周知，关系型数据库也可以存储“图‘结构的数据，我们可以通过设计一张MySQL表存储某一个实体（节点）的信息，每个实体所具有的属性对应着MySQL表的字段（列）。通过关联表或者外键关联关系等方式存储节点间的关系，这样的设计可以支持对图数据的存储和检索。那么，为什么需要在一般的关系型数据库之外，专门设计一种叫“图数据库”的东西呢？</p>
+<p>这里提一句奥卡姆剃刀原则：“如无必要，勿增实体。“</p>
+<p>那么，图数据库的必要性是？</p>
+<h4 id="主流关系型数据库的缺陷">主流关系型数据库的缺陷</h4>
+<p>所谓缺陷，其实不是绝对的缺陷，而是特定需求、场景下的缺陷。假设我们要对复杂网络相关的数据进行分析，其中可能会经常需要对节点的特征进行深度优先的搜索。在一般关系型数据库中，我们查询具有一阶关联关系的节点对信息需要使用JOIN关联两个表（一个节点吧，一个节点关系表）进行查询，如果涉及到多阶关系的查询（如查询节点的多阶邻居，甚至更复杂的多种关系），那么关系型数据库就需要同时JOIN多个表乃至使用子查询，而针对我们的关系查询需求而言，关系数据库的查询会变得非常复杂且效率不高。</p>
+<p>假设你已经认同了关系数据库在涉及高阶关系查询上的困境，再进一步考虑一个场景：我们可能会需要经常对关系数据（包括关系的属性）进行更新！比如金融、商业领域的数据变化频率很高，关系型数据库既然在处理高阶关系查询时效率就低，那数据更新就更加不用期待了。</p>
+<p>因此，我们需要一种专用的数据库，用于存储和处理图数据并能够在处理复杂关系查询/更新时有较高的效率，这就是图数据库，其中最具有代表性的一种实现就是Neo4j。</p>
+<p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<figure  >
+  <div class="d-flex justify-content-center">
+    <div class="w-100" ><img alt="" srcset="
+               /post/neo4j-basic-usage/images/neo4j_ecosystem_hu60432bf84967ed0b8bc72bc38614ce2e_465492_69e450de2e08243edc4db98be7ddd319.webp 400w,
+               /post/neo4j-basic-usage/images/neo4j_ecosystem_hu60432bf84967ed0b8bc72bc38614ce2e_465492_2e854e3b29a3e14524e85a5919be44fe.webp 760w,
+               /post/neo4j-basic-usage/images/neo4j_ecosystem_hu60432bf84967ed0b8bc72bc38614ce2e_465492_1200x1200_fit_q75_h2_lanczos_3.webp 1200w"
+               src="/post/neo4j-basic-usage/images/neo4j_ecosystem_hu60432bf84967ed0b8bc72bc38614ce2e_465492_69e450de2e08243edc4db98be7ddd319.webp"
+               width="760"
+               height="418"
+               loading="lazy" data-zoomable /></div>
+  </div></figure>
+</p>
+<ul>
+<li>
+<p><a href="https://www.oxfordsemantic.tech/faqs/why-use-a-graph-database" target="_blank" rel="noopener">Why use a graph database</a></p>
+</li>
+<li>
+<p><a href="https://medium.com/the-andela-way/graph-databases-why-are-they-important-c438e1a224ae" target="_blank" rel="noopener">Graph databases, Why are they important</a></p>
+</li>
+</ul>
+<h4 id="权衡trade-off">权衡（Trade Off）</h4>
+<p>当然，使用图数据库能够进行高效率复杂关系查询，但是在存储空间和内存需求上要求更高了。所以，如果你对数据库的需求不在于显式存储数据关系，那可以使用关系型数据库节省内存空间。</p>
+<h3 id="neo4j生态工具">Neo4J生态工具</h3>
+<p>Neo4J Browser：Neo4J的在线浏览器接口，可以查询管理数据库中的数据，提供使用Cypher语言对图数据进行基本可视化的功能。</p>
+<h2 id="cypher语言">Cypher语言</h2>
+<h3 id="基本介绍">基本介绍</h3>
+<p>类似SQL在MySQL、PostgreSQL等数据库中的作用，Cypher就是图数据库的一种查询语言。但Cypher的使用与SQL却有很多不同。总结起来，Cypher查询语句的特征可以总结为“模式”查询，即通过描述实体-关系的“模式”，并为模式各组成部分进行变量命名，将需要的变量返回即可得到查询结果，或者修改、删除对应变量即可完成对指定条件的数据进行变更。</p>
+<p>Cypher CheetSheet：<a href="https://neo4j.com/docs/cypher-cheat-sheet/5/auradb-enterprise" target="_blank" rel="noopener">Cypher Cheat Sheet - Neo4j Documentation Cheat Sheet</a></p>
+<p>Cypher文档：<a href="https://neo4j.com/docs/cypher-manual/current/introduction/" target="_blank" rel="noopener">Introduction - Cypher Manual</a></p>
+<p>一些工具：cypher-shell、neo4j-admin</p>
+<p>关于Cypher的系统性学习可以注册Neo4j官网中的课程，完成后可以获得证书：</p>
+<p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<figure  >
+  <div class="d-flex justify-content-center">
+    <div class="w-100" ><img alt="" srcset="
+               /post/neo4j-basic-usage/images/cypher-cert_hud9b63beb5e416256a44650f8ad9e09d7_310319_67a1eeca4eef4c353d0ddeeab6b84b45.webp 400w,
+               /post/neo4j-basic-usage/images/cypher-cert_hud9b63beb5e416256a44650f8ad9e09d7_310319_7e7c47c9d2a95499b0038d1e2948274a.webp 760w,
+               /post/neo4j-basic-usage/images/cypher-cert_hud9b63beb5e416256a44650f8ad9e09d7_310319_1200x1200_fit_q75_h2_lanczos_3.webp 1200w"
+               src="/post/neo4j-basic-usage/images/cypher-cert_hud9b63beb5e416256a44650f8ad9e09d7_310319_67a1eeca4eef4c353d0ddeeab6b84b45.webp"
+               width="760"
+               height="505"
+               loading="lazy" data-zoomable /></div>
+  </div></figure>
+</p>
+<p>下面仅为个人笔记，便于查阅：</p>
+<h3 id="基本关键字">基本关键字</h3>
+<p>Cypher是对节点、节点间的关系及属性进行增删改查的类SQL语言。主要有如下关键字：</p>
+<ul>
+<li>
+<p>MATCH</p>
+</li>
+<li>
+<p>MERGE</p>
+</li>
+<li>
+<p>CREATE</p>
+</li>
+<li>
+<p>SET</p>
+</li>
+<li>
+<p>DELETE</p>
+</li>
+<li>
+<p>DETACH DELETE</p>
+</li>
+<li>
+<p>RETURN</p>
+</li>
+</ul>
+<h4 id="查询节点">查询节点</h4>
+<h5 id="查询某种关系类型的根节点">查询某种关系类型的根节点</h5>
+<pre tabindex="0"><code class="language-cypher" data-lang="cypher">MATCH (n:NodeType)
+WHERE NOT EXISTS(()&lt;-[:RelationType]-(n:NodeType))
+RETURN n
+</code></pre><h4 id="查询关系">查询关系</h4>
+<h3 id="聚合查询">聚合查询</h3>
+<p>Cypher语言中的聚合函数与SQL中的命名类似，计算总数的函数为COUNT，计算总和的函数为SUM。</p>
+<h4 id="聚合函数及使用示例">聚合函数及使用示例</h4>
+<ul>
+<li>
+<p>COUNT</p>
+</li>
+<li>
+<p>SUM</p>
+</li>
+</ul>
+<h5 id="查询数据库中存在的节点和关系总数">查询数据库中存在的节点和关系总数</h5>
+<pre tabindex="0"><code class="language-cypher" data-lang="cypher">MATCH ()-[r]-&gt;() RETURN count(r)
+</code></pre><pre tabindex="0"><code class="language-cypher" data-lang="cypher">MATCH (n) RETURN count(n)
+</code></pre><p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<figure  >
+  <div class="d-flex justify-content-center">
+    <div class="w-100" ><img alt="" srcset="
+               /post/neo4j-basic-usage/images/count_ral_hu609c892ccf74617c00f8b505aa58e031_101564_19962bff97cd06bf300eabbff370409a.webp 400w,
+               /post/neo4j-basic-usage/images/count_ral_hu609c892ccf74617c00f8b505aa58e031_101564_c3419146c0ff3605e17b1ebc6369898a.webp 760w,
+               /post/neo4j-basic-usage/images/count_ral_hu609c892ccf74617c00f8b505aa58e031_101564_1200x1200_fit_q75_h2_lanczos_3.webp 1200w"
+               src="/post/neo4j-basic-usage/images/count_ral_hu609c892ccf74617c00f8b505aa58e031_101564_19962bff97cd06bf300eabbff370409a.webp"
+               width="760"
+               height="374"
+               loading="lazy" data-zoomable /></div>
+  </div></figure>
+</p>
+<h5 id="查询各类节点的数量">查询各类节点的数量</h5>
+<pre tabindex="0"><code class="language-cypher" data-lang="cypher">MATCH (n) RETURN labels(n), count(*)
+</code></pre><h5 id="查看各类关系的数量">查看各类关系的数量</h5>
+<pre tabindex="0"><code class="language-cypher" data-lang="cypher">MATCH ()-[r]-&gt;()
+RETURN type(r), count(*)
+</code></pre><h3 id="模糊查询">模糊查询</h3>
+<p>模糊查询并非使用LIKE关键字，而是使用CONTAINS，如：</p>
+<pre tabindex="0"><code class="language-cypher" data-lang="cypher">
+MATCH p=(n:NodeType)--&gt;() WHERE n.name CONTAINS &#39;需要模糊查询的关键字&#39; RETURN p
+</code></pre><h3 id="批量变更关系类型">批量变更关系类型</h3>
+<pre tabindex="0"><code class="language-cypher" data-lang="cypher">MATCH (a)-[r:OLD_RELATION]-&gt;(b)
+CREATE (a)-[rNew:NEW_RELATION]-&gt;(b)
+SET rNew = r
+WITH r
+DELETE r
+</code></pre><p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<figure  >
+  <div class="d-flex justify-content-center">
+    <div class="w-100" ><img alt="" srcset="
+               /post/neo4j-basic-usage/images/batch_update_rel_huaabd8c5baab7d86789d0ce36e469c880_95562_d7e635ff99b0feace3f1a586539e285e.webp 400w,
+               /post/neo4j-basic-usage/images/batch_update_rel_huaabd8c5baab7d86789d0ce36e469c880_95562_75fc55384486186b0b0fbfc7aa1b63a5.webp 760w,
+               /post/neo4j-basic-usage/images/batch_update_rel_huaabd8c5baab7d86789d0ce36e469c880_95562_1200x1200_fit_q75_h2_lanczos_3.webp 1200w"
+               src="/post/neo4j-basic-usage/images/batch_update_rel_huaabd8c5baab7d86789d0ce36e469c880_95562_d7e635ff99b0feace3f1a586539e285e.webp"
+               width="760"
+               height="190"
+               loading="lazy" data-zoomable /></div>
+  </div></figure>
+</p>
+<h3 id="删除数据">删除数据</h3>
+<h4 id="删除关系">删除关系</h4>
+<pre tabindex="0"><code class="language-cypher" data-lang="cypher">MATCH (n)-[r:TEST_TYPE]-&gt;()
+DELETE r, n
+</code></pre><p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<figure  >
+  <div class="d-flex justify-content-center">
+    <div class="w-100" ><img alt="" srcset="
+               /post/neo4j-basic-usage/images/delete_rel_hub79c3adfcc56562c273d6dfb0e8ce7fe_63069_f1e8b85e09246c59824b162b6950b2a9.webp 400w,
+               /post/neo4j-basic-usage/images/delete_rel_hub79c3adfcc56562c273d6dfb0e8ce7fe_63069_3fff2ab5bbedaa921009aca72e2157ae.webp 760w,
+               /post/neo4j-basic-usage/images/delete_rel_hub79c3adfcc56562c273d6dfb0e8ce7fe_63069_1200x1200_fit_q75_h2_lanczos_3.webp 1200w"
+               src="/post/neo4j-basic-usage/images/delete_rel_hub79c3adfcc56562c273d6dfb0e8ce7fe_63069_f1e8b85e09246c59824b162b6950b2a9.webp"
+               width="760"
+               height="210"
+               loading="lazy" data-zoomable /></div>
+  </div></figure>
+</p>
+<h4 id="heading"></h4>
+<h4 id="删除孤立节点">删除孤立节点</h4>
+<pre tabindex="0"><code class="language-cypher" data-lang="cypher">MATCH (n:NodeType) WHERE NOT (n)--() DELETE n
+</code></pre><p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<figure  >
+  <div class="d-flex justify-content-center">
+    <div class="w-100" ><img alt="" srcset="
+               /post/neo4j-basic-usage/images/delete_isolation_hu9340a42477fa1348724df4603e3685d9_74873_f0276fb3e8c0e7bb7ce6e75d424e2538.webp 400w,
+               /post/neo4j-basic-usage/images/delete_isolation_hu9340a42477fa1348724df4603e3685d9_74873_8b85c9bbd674fb15038f6d3c0892df4c.webp 760w,
+               /post/neo4j-basic-usage/images/delete_isolation_hu9340a42477fa1348724df4603e3685d9_74873_1200x1200_fit_q75_h2_lanczos_3.webp 1200w"
+               src="/post/neo4j-basic-usage/images/delete_isolation_hu9340a42477fa1348724df4603e3685d9_74873_f0276fb3e8c0e7bb7ce6e75d424e2538.webp"
+               width="760"
+               height="353"
+               loading="lazy" data-zoomable /></div>
+  </div></figure>
+</p>
+<h3 id="多跳查询">多跳查询</h3>
+<p>以二跳查询为例：</p>
+<pre tabindex="0"><code class="language-cypher" data-lang="cypher">MATCH p=(n:NodeType{name:&#39;NodeName&#39;})-[r:Rel1]-&gt;()-[:Rel2]-&gt;(re)  RETURN re.name,re.id
+</code></pre><h2 id="图数据库示例数据集">图数据库示例数据集</h2>
+<ul>
+<li><a href="https://offshoreleaks.icij.org/pages/database" target="_blank" rel="noopener">https://offshoreleaks.icij.org/pages/database</a></li>
+</ul>
+<h2 id="图数据库图算法支持">图数据库图算法支持</h2>
+<ul>
+<li><a href="https://neo4j.com/docs/graph-data-science/current/" target="_blank" rel="noopener">https://neo4j.com/docs/graph-data-science/current/</a></li>
+</ul>
+<h2 id="python操作neo4j数据库">Python操作Neo4j数据库</h2>
+<ul>
+<li>
+<p><a href="https://github.com/py2neo-org/py2neo" target="_blank" rel="noopener">py2neo</a> github 1.2 star</p>
+</li>
+<li>
+<p>neo4j github 800+ star</p>
+</li>
+</ul>
+
+    </div>
+
+    
+
+
+
+
+<div class="article-tags">
+  
+  <a class="badge badge-light" href="/tag/neo4j/">Neo4j</a>
+  
+  <a class="badge badge-light" href="/tag/%E6%95%B0%E6%8D%AE%E5%BA%93/">数据库</a>
+  
+  <a class="badge badge-light" href="/tag/cypher/">Cypher</a>
+  
+  <a class="badge badge-light" href="/tag/%E5%A4%8D%E6%9D%82%E7%BD%91%E7%BB%9C/">复杂网络</a>
+  
+</div>
+
+
+
+<div class="share-box">
+  <ul class="share">
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="https://twitter.com/intent/tweet?url=/post/neo4j-basic-usage/&amp;text=Neo4j%e5%9f%ba%e6%9c%ac%e4%bd%bf%e7%94%a8%e4%b8%8eCypher%e8%af%ad%e8%a8%80%e5%9f%ba%e7%a1%80" target="_blank" rel="noopener" class="share-btn-twitter" aria-label="twitter">
+          <i class="fab fa-twitter"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="https://www.facebook.com/sharer.php?u=/post/neo4j-basic-usage/&amp;t=Neo4j%e5%9f%ba%e6%9c%ac%e4%bd%bf%e7%94%a8%e4%b8%8eCypher%e8%af%ad%e8%a8%80%e5%9f%ba%e7%a1%80" target="_blank" rel="noopener" class="share-btn-facebook" aria-label="facebook">
+          <i class="fab fa-facebook"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="mailto:?subject=Neo4j%e5%9f%ba%e6%9c%ac%e4%bd%bf%e7%94%a8%e4%b8%8eCypher%e8%af%ad%e8%a8%80%e5%9f%ba%e7%a1%80&amp;body=/post/neo4j-basic-usage/" target="_blank" rel="noopener" class="share-btn-email" aria-label="envelope">
+          <i class="fas fa-envelope"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="https://www.linkedin.com/shareArticle?url=/post/neo4j-basic-usage/&amp;title=Neo4j%e5%9f%ba%e6%9c%ac%e4%bd%bf%e7%94%a8%e4%b8%8eCypher%e8%af%ad%e8%a8%80%e5%9f%ba%e7%a1%80" target="_blank" rel="noopener" class="share-btn-linkedin" aria-label="linkedin-in">
+          <i class="fab fa-linkedin-in"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="whatsapp://send?text=Neo4j%e5%9f%ba%e6%9c%ac%e4%bd%bf%e7%94%a8%e4%b8%8eCypher%e8%af%ad%e8%a8%80%e5%9f%ba%e7%a1%80%20/post/neo4j-basic-usage/" target="_blank" rel="noopener" class="share-btn-whatsapp" aria-label="whatsapp">
+          <i class="fab fa-whatsapp"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="https://service.weibo.com/share/share.php?url=/post/neo4j-basic-usage/&amp;title=Neo4j%e5%9f%ba%e6%9c%ac%e4%bd%bf%e7%94%a8%e4%b8%8eCypher%e8%af%ad%e8%a8%80%e5%9f%ba%e7%a1%80" target="_blank" rel="noopener" class="share-btn-weibo" aria-label="weibo">
+          <i class="fab fa-weibo"></i>
+        </a>
+      </li>
+    
+  </ul>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+
+
+
+  
+  
+  
+  
+  
+  <div class="media author-card content-widget-hr">
+    
+      
+      <a href="/authors/admin/"><img class="avatar mr-3 avatar-circle" src="/authors/admin/avatar_hu55194f19033f85038196a23353ffe543_580100_270x270_fill_q75_lanczos_center.jpg" alt="CoolCats"></a>
+    
+
+    <div class="media-body">
+      <h5 class="card-title"><a href="/authors/admin/">CoolCats</a></h5>
+      <h6 class="card-subtitle">理学学士</h6>
+      <p class="card-text">我的研究兴趣是时空数据分析、自然语言处理、服务端开发</p>
+      <ul class="network-icon" aria-hidden="true">
+  
+    
+    
+    
+      
+    
+    
+    
+    
+    
+    <li>
+      <a href="mailto:2811159909@qq.com" >
+        <i class="fas fa-envelope"></i>
+      </a>
+    </li>
+  
+    
+    
+    
+      
+    
+    
+    
+    
+    
+      
+    
+    <li>
+      <a href="https://github.com/Coolgiserz" target="_blank" rel="noopener">
+        <i class="fab fa-github"></i>
+      </a>
+    </li>
+  
+</ul>
+
+    </div>
+  </div>
+
+
+
+
+
+
+
+
+
+  
+  
+  
+
+  
+
+  
+
+
+
+
+
+
+
+
+
+
+  </div>
+</article>
+  </div>
+
+  <div class="page-footer">
+    
+    
+    <div class="container">
+      <footer class="site-footer">
+
+  
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+
+
+
+
+
+  
+  
+  
+
+  
+  
+    
+  
+  
+    
+  
+
+  
+
+  
+  <p class="powered-by copyright-license-text">
+    © 2023 CoolCats. This work is licensed under <a href="https://creativecommons.org/licenses/by-nc-nd/4.0" rel="noopener noreferrer" target="_blank">CC BY NC ND 4.0</a>
+  </p>
+  
+
+  <p class="powered-by footer-license-icons">
+    <a href="https://creativecommons.org/licenses/by-nc-nd/4.0" rel="noopener noreferrer" target="_blank" aria-label="Creative Commons">
+      <i class="fab fa-creative-commons fa-2x" aria-hidden="true"></i>
+      <i class="fab fa-creative-commons-by fa-2x" aria-hidden="true"></i>
+      
+        <i class="fab fa-creative-commons-nc fa-2x" aria-hidden="true"></i>
+      
+      
+        <i class="fab fa-creative-commons-nd fa-2x" aria-hidden="true"></i>
+      
+    </a>
+  </p>
+
+
+
+
+  <p class="powered-by">
+    
+    
+    
+      
+      
+      
+      
+      
+      
+      Published with <a href="https://wowchemy.com/?utm_campaign=poweredby" target="_blank" rel="noopener">Wowchemy</a> — the free, <a href="https://github.com/wowchemy/wowchemy-hugo-themes" target="_blank" rel="noopener">open source</a> website builder that empowers creators.
+    
+  </p>
+</footer>
+
+    </div>
+    
+  </div>
+
+      
+
+    
+    <script src="/js/vendor-bundle.min.fab8b449b814cc9f95b22fcf2e45f05b.js"></script>
+
+    
+    
+    
+      
+
+      
+      
+
+      
+
+      
+        
+        <script src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@10.2.1/build/highlight.min.js" integrity="sha512-Ypjm0o7jOxAd4hpdoppSEN0TQOC19UtPAqD+4s5AlXmUvbmmS/YMxYqAqarQYyxTnB6/rqip9qcxlNB/3U9Wdg==" crossorigin="anonymous"></script>
+        
+        
+        <script src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@10.2.1/build/languages/r.min.js" crossorigin="anonymous"></script>
+        
+        <script src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@10.2.1/build/languages/latex.min.js" crossorigin="anonymous"></script>
+        
+      
+
+    
+
+    
+    
+    
+      <script src="https://cdn.jsdelivr.net/npm/leaflet@1.7.1/dist/leaflet.min.js" integrity="" crossorigin="anonymous"></script>
+    
+
+    
+    
+
+    
+    
+    
+      
+      <script id="search-hit-fuse-template" type="text/x-template">
+        <div class="search-hit" id="summary-{{key}}">
+          <div class="search-hit-content">
+            <div class="search-hit-name">
+              <a href="{{relpermalink}}">{{title}}</a>
+              <div class="article-metadata search-hit-type">{{type}}</div>
+              <p class="search-hit-description">{{snippet}}</p>
+            </div>
+          </div>
+        </div>
+      </script>
+      
+        <script src="https://cdn.jsdelivr.net/gh/krisk/Fuse@v3.2.1/dist/fuse.min.js" integrity="sha512-o38bmzBGX+hD3JHWUFCDA09btWaqrNmoJ3RXLlrysA7PP01Kgs4UlE4MhelE1v5dJR3+cxlR4qQlotsW7jKsnw==" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/gh/julmot/mark.js@8.11.1/dist/jquery.mark.min.js" integrity="sha512-mhbv5DqBMgrWL+32MmsDOt/OAvqr/cHimk6B8y/bx/xS88MVkYGPiVv2ixKVrkywF2qHplNRUvFsAHUdxZ3Krg==" crossorigin="anonymous"></script>
+      
+    
+
+    
+    
+
+    
+    
+    
+    
+      <script id="dsq-count-scr" src="https://coolgiserz.disqus.com/count.js" async></script>
+    
+
+    
+    
+      
+      
+      
+      
+      
+      
+      
+    
+
+    
+
+    
+    
+    
+    <script id="page-data" type="application/json">{"use_headroom":true}</script>
+
+    
+    
+      <script src="/js/wowchemy-headroom.c251366b4128fd5e6b046d4c97a62a51.js" type="module"></script>
+    
+    
+    
+    
+    
+    
+    
+      
+      
+    
+    
+    <script src="/en/js/wowchemy.min.ab2f2890dbe3e2e83579366d3d6e8fd9.js"></script>
+
+    
+    
+      <script src="/js/wowchemy-map.a26e9d2f7238ba5b868384f1c5bc6477.js" type="module"></script>
+    
+    
+    
+    
+      
+<div id="modal" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Cite</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <pre><code class="tex hljs"></code></pre>
+      </div>
+      <div class="modal-footer">
+        <a class="btn btn-outline-primary my-1 js-copy-cite" href="#" target="_blank">
+          <i class="fas fa-copy"></i> Copy
+        </a>
+        <a class="btn btn-outline-primary my-1 js-download-cite" href="#" target="_blank">
+          <i class="fas fa-download"></i> Download
+        </a>
+        <div id="modal-error"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+      <script src="/js/wowchemy-publication.68f8d7090562ca65fc6d3cb3f8f2d2cb.js" type="module"></script>
+
+
+
+
+
+
+</body>
+</html>

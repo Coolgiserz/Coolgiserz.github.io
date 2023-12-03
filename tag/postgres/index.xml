@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Postgres | CoolCats</title>
+    <link>/tag/postgres/</link>
+      <atom:link href="/tag/postgres/index.xml" rel="self" type="application/rss+xml" />
+    <description>Postgres</description>
+    <generator>Wowchemy (https://wowchemy.com)</generator><language>en-us</language><lastBuildDate>Wed, 10 May 2023 01:16:22 +0800</lastBuildDate>
+    <image>
+      <url>/media/icon_hue03491371183284312b8b116a73ae5ab_79511_512x512_fill_lanczos_center_3.png</url>
+      <title>Postgres</title>
+      <link>/tag/postgres/</link>
+    </image>
+    
+    <item>
+      <title>Mac13编译安装Postgres15.2及初始化配置笔记</title>
+      <link>/post/mac13-postgres15-startup/</link>
+      <pubDate>Wed, 10 May 2023 01:16:22 +0800</pubDate>
+      <guid>/post/mac13-postgres15-startup/</guid>
+      <description>&lt;p&gt;Postgres官网下载postgresql-15.2源代码。&lt;/p&gt;
+&lt;p&gt;参考源码文件INSTALL文件进行安装及初始化：&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-text&#34; data-lang=&#34;text&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;Short Version
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    ./configure
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    make
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    su
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    make install
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    adduser postgres
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    mkdir -p /usr/local/pgsql/data
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    chown postgres /usr/local/pgsql/data
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    su - postgres
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    /usr/local/pgsql/bin/initdb -D /usr/local/pgsql/data
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    /usr/local/pgsql/bin/pg_ctl -D /usr/local/pgsql/data -l logfile start
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    /usr/local/pgsql/bin/createdb test
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    /usr/local/pgsql/bin/psql test
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;The long version is the rest of this document.
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;部分过程记录&#34;&gt;部分过程记录&lt;/h3&gt;
+&lt;p&gt;(按默认命令）安装pgsql后，部分命令安装位置：&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;/bin/sh ../../../config/install-sh -c -d &amp;#39;/usr/local/pgsql/bin&amp;#39;
+/usr/bin/install -c  createdb   &amp;#39;/usr/local/pgsql/bin&amp;#39;/createdb
+/usr/bin/install -c  dropdb     &amp;#39;/usr/local/pgsql/bin&amp;#39;/dropdb
+/usr/bin/install -c  createuser &amp;#39;/usr/local/pgsql/bin&amp;#39;/createuser
+/usr/bin/install -c  dropuser   &amp;#39;/usr/local/pgsql/bin&amp;#39;/dropuser
+/usr/bin/install -c  clusterdb  &amp;#39;/usr/local/pgsql/bin&amp;#39;/clusterdb
+/usr/bin/install -c  vacuumdb   &amp;#39;/usr/local/pgsql/bin&amp;#39;/vacuumdb
+/usr/bin/install -c  reindexdb  &amp;#39;/usr/local/pgsql/bin&amp;#39;/reindexdb
+/usr/bin/install -c  pg_isready &amp;#39;/usr/local/pgsql/bin&amp;#39;/pg_isready
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;若需要指定安装目录，如下命令：&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;./configure --prefix=/Users/weirdgiser/Documents/Softwares/installed/pgsql
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;启动pgsql服务：&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;/usr/local/pgsql/bin/pg_ctl -D /Users/weirdgiser/Data/pgsql15/data -l logfile start
+waiting for server to start.... done
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;创建测试数据库&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;/usr/local/pgsql/bin/createdb test
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;连接测试数据库&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;/usr/local/pgsql/bin/psql test
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;通过DBeaver连接:
+若有多个数据库版本，注意选择合适的客户端
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure  &gt;
+  &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img alt=&#34;&#34; srcset=&#34;
+               /post/mac13-postgres15-startup/images/multi_version_hu0ade19df3b0ca7b9b51dbaa7ee3980c9_266057_d710a1248a6b7bf781890a7ec83e2314.webp 400w,
+               /post/mac13-postgres15-startup/images/multi_version_hu0ade19df3b0ca7b9b51dbaa7ee3980c9_266057_0ec573ccc97c0d27d3678514af6afb45.webp 760w,
+               /post/mac13-postgres15-startup/images/multi_version_hu0ade19df3b0ca7b9b51dbaa7ee3980c9_266057_1200x1200_fit_q75_h2_lanczos_3.webp 1200w&#34;
+               src=&#34;/post/mac13-postgres15-startup/images/multi_version_hu0ade19df3b0ca7b9b51dbaa7ee3980c9_266057_d710a1248a6b7bf781890a7ec83e2314.webp&#34;
+               width=&#34;760&#34;
+               height=&#34;651&#34;
+               loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+  &lt;/div&gt;&lt;/figure&gt;
+&lt;/p&gt;
+&lt;img src=&#34;images/2023-05-21-11-41-12-image.png&#34; title=&#34;&#34; alt=&#34;&#34; data-align=&#34;inline&#34;&gt;
+&lt;p&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure  &gt;
+  &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img alt=&#34;&#34; srcset=&#34;
+               /post/mac13-postgres15-startup/images/2023-05-21-11-44-15-image_hu9efb4eb19564ac2c721336d4e45203ea_319986_19ec1a98f213032a97ed873ccb480c32.webp 400w,
+               /post/mac13-postgres15-startup/images/2023-05-21-11-44-15-image_hu9efb4eb19564ac2c721336d4e45203ea_319986_d4bbf5f77b13a1cb76f27c48f1dc7c79.webp 760w,
+               /post/mac13-postgres15-startup/images/2023-05-21-11-44-15-image_hu9efb4eb19564ac2c721336d4e45203ea_319986_1200x1200_fit_q75_h2_lanczos_3.webp 1200w&#34;
+               src=&#34;/post/mac13-postgres15-startup/images/2023-05-21-11-44-15-image_hu9efb4eb19564ac2c721336d4e45203ea_319986_19ec1a98f213032a97ed873ccb480c32.webp&#34;
+               width=&#34;582&#34;
+               height=&#34;760&#34;
+               loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+  &lt;/div&gt;&lt;/figure&gt;
+&lt;/p&gt;
+&lt;h2 id=&#34;常用命令&#34;&gt;常用命令&lt;/h2&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;\l 列举数据库
+\c DB 连接数据库
+\d 列举数据表
+\q 退出
+&lt;/code&gt;&lt;/pre&gt;</description>
+    </item>
+    
+  </channel>
+</rss>
