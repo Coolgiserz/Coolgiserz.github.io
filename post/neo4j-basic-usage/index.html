@@ -809,7 +809,65 @@
   <div class="article-container">
 
     <div class="article-style">
-      <h2 id="cypher语言">Cypher语言</h2>
+      <h2 id="图数据库简介">图数据库简介</h2>
+<h3 id="什么是图">什么是图？</h3>
+<p>图是由实体以及实体间的关系组成的结构，这种结构可以抽象表示现实世界中的事物及事物间的关系。我们可以用节点/Node/Vertex表示实体、用节点间的连边/Ralationship/Edge/表示节点间的关系。</p>
+<p>举例来说，我们的朋友圈可以通过图结构进行抽象，每个人作为一个节点，若两个人之间存在关系则认为两个节点具有连边，由此构造出社交网络。</p>
+<p>更多关于图的介绍或相关研究可以查阅图论、复杂网络科学，前者为侧重抽象数学层面的领域，后者更侧重对使用图结构对复杂系统的性质进行建模分析。</p>
+<h3 id="为什么需要图数据库">为什么需要图数据库？</h3>
+<p>众所周知，关系型数据库也可以存储“图‘结构的数据，我们可以通过设计一张MySQL表存储某一个实体（节点）的信息，每个实体所具有的属性对应着MySQL表的字段（列）。通过关联表或者外键关联关系等方式存储节点间的关系，这样的设计可以支持对图数据的存储和检索。那么，为什么需要在一般的关系型数据库之外，专门设计一种叫“图数据库”的东西呢？</p>
+<p>这里提一句奥卡姆剃刀原则：“如无必要，勿增实体。“</p>
+<p>那么，图数据库的必要性是？</p>
+<h4 id="主流关系型数据库的缺陷">主流关系型数据库的缺陷</h4>
+<p>所谓缺陷，其实不是绝对的缺陷，而是特定需求、场景下的缺陷。假设我们要对复杂网络相关的数据进行分析，其中可能会经常需要对节点的特征进行深度优先的搜索。在一般关系型数据库中，我们查询具有一阶关联关系的节点对信息需要使用JOIN关联两个表（一个节点吧，一个节点关系表）进行查询，如果涉及到多阶关系的查询（如查询节点的多阶邻居，甚至更复杂的多种关系），那么关系型数据库就需要同时JOIN多个表乃至使用子查询，而针对我们的关系查询需求而言，关系数据库的查询会变得非常复杂且效率不高。</p>
+<p>假设你已经认同了关系数据库在涉及高阶关系查询上的困境，再进一步考虑一个场景：我们可能会需要经常对关系数据（包括关系的属性）进行更新！比如金融、商业领域的数据变化频率很高，关系型数据库既然在处理高阶关系查询时效率就低，那数据更新就更加不用期待了。</p>
+<p>因此，我们需要一种专用的数据库，用于存储和处理图数据并能够在处理复杂关系查询/更新时有较高的效率，这就是图数据库，其中最具有代表性的一种实现就是Neo4j。</p>
+<p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<figure  >
+  <div class="d-flex justify-content-center">
+    <div class="w-100" ><img alt="" srcset="
+               /post/neo4j-basic-usage/images/neo4j_ecosystem_hu60432bf84967ed0b8bc72bc38614ce2e_465492_69e450de2e08243edc4db98be7ddd319.webp 400w,
+               /post/neo4j-basic-usage/images/neo4j_ecosystem_hu60432bf84967ed0b8bc72bc38614ce2e_465492_2e854e3b29a3e14524e85a5919be44fe.webp 760w,
+               /post/neo4j-basic-usage/images/neo4j_ecosystem_hu60432bf84967ed0b8bc72bc38614ce2e_465492_1200x1200_fit_q75_h2_lanczos_3.webp 1200w"
+               src="/post/neo4j-basic-usage/images/neo4j_ecosystem_hu60432bf84967ed0b8bc72bc38614ce2e_465492_69e450de2e08243edc4db98be7ddd319.webp"
+               width="760"
+               height="418"
+               loading="lazy" data-zoomable /></div>
+  </div></figure>
+</p>
+<ul>
+<li>
+<p><a href="https://www.oxfordsemantic.tech/faqs/why-use-a-graph-database" target="_blank" rel="noopener">Why use a graph database</a></p>
+</li>
+<li>
+<p><a href="https://medium.com/the-andela-way/graph-databases-why-are-they-important-c438e1a224ae" target="_blank" rel="noopener">Graph databases, Why are they important</a></p>
+</li>
+</ul>
+<h4 id="权衡trade-off">权衡（Trade Off）</h4>
+<p>当然，使用图数据库能够进行高效率复杂关系查询，但是在存储空间和内存需求上要求更高了。所以，如果你对数据库的需求不在于显式存储数据关系，那可以使用关系型数据库节省内存空间。</p>
+<h3 id="neo4j生态工具">Neo4J生态工具</h3>
+<p>Neo4J Browser：Neo4J的在线浏览器接口，可以查询管理数据库中的数据，提供使用Cypher语言对图数据进行基本可视化的功能。</p>
+<h2 id="cypher语言">Cypher语言</h2>
+<h3 id="基本介绍">基本介绍</h3>
+<p>类似SQL在MySQL、PostgreSQL等数据库中的作用，Cypher就是图数据库的一种查询语言。但Cypher的使用与SQL却有很多不同。总结起来，Cypher查询语句的特征可以总结为“模式”查询，即通过描述实体-关系的“模式”，并为模式各组成部分进行变量命名，将需要的变量返回即可得到查询结果，或者修改、删除对应变量即可完成对指定条件的数据进行变更。</p>
+<p>Cypher CheetSheet：<a href="https://neo4j.com/docs/cypher-cheat-sheet/5/auradb-enterprise" target="_blank" rel="noopener">Cypher Cheat Sheet - Neo4j Documentation Cheat Sheet</a></p>
+<p>Cypher文档：<a href="https://neo4j.com/docs/cypher-manual/current/introduction/" target="_blank" rel="noopener">Introduction - Cypher Manual</a></p>
+<p>一些工具：cypher-shell、neo4j-admin</p>
 <h3 id="基本关键字">基本关键字</h3>
 <p>Cypher是对节点、节点间的关系及属性进行增删改查的类SQL语言。主要有如下关键字：</p>
 <ul>
@@ -835,18 +893,180 @@
 <p>RETURN</p>
 </li>
 </ul>
-<p>查询节点</p>
-<p>查询关系</p>
+<h4 id="查询节点">查询节点</h4>
+<h5 id="查询某种关系类型的根节点">查询某种关系类型的根节点</h5>
+<pre tabindex="0"><code class="language-cypher" data-lang="cypher">MATCH (n:NodeType)
+WHERE NOT EXISTS(()&lt;-[:RelationType]-(n:NodeType))
+RETURN n
+</code></pre><h4 id="查询关系">查询关系</h4>
 <h3 id="聚合查询">聚合查询</h3>
+<p>Cypher语言中的聚合函数与SQL中的命名类似，计算总数的函数为COUNT，计算总和的函数为SUM。</p>
+<h4 id="聚合函数及使用示例">聚合函数及使用示例</h4>
+<ul>
+<li>
 <p>COUNT</p>
+</li>
+<li>
 <p>SUM</p>
-<p>&hellip;&hellip;</p>
-<h3 id="模糊查询">模糊查询</h3>
-<p>CONTAINS</p>
+</li>
+</ul>
+<h5 id="查询数据库中存在的节点和关系总数">查询数据库中存在的节点和关系总数</h5>
+<pre tabindex="0"><code class="language-cypher" data-lang="cypher">MATCH ()-[r]-&gt;() RETURN count(r)
+</code></pre><pre tabindex="0"><code class="language-cypher" data-lang="cypher">MATCH (n) RETURN count(n)
+</code></pre><p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<figure  >
+  <div class="d-flex justify-content-center">
+    <div class="w-100" ><img alt="" srcset="
+               /post/neo4j-basic-usage/images/count_ral_hu609c892ccf74617c00f8b505aa58e031_101564_19962bff97cd06bf300eabbff370409a.webp 400w,
+               /post/neo4j-basic-usage/images/count_ral_hu609c892ccf74617c00f8b505aa58e031_101564_c3419146c0ff3605e17b1ebc6369898a.webp 760w,
+               /post/neo4j-basic-usage/images/count_ral_hu609c892ccf74617c00f8b505aa58e031_101564_1200x1200_fit_q75_h2_lanczos_3.webp 1200w"
+               src="/post/neo4j-basic-usage/images/count_ral_hu609c892ccf74617c00f8b505aa58e031_101564_19962bff97cd06bf300eabbff370409a.webp"
+               width="760"
+               height="374"
+               loading="lazy" data-zoomable /></div>
+  </div></figure>
+</p>
+<h5 id="查询各类节点的数量">查询各类节点的数量</h5>
+<pre tabindex="0"><code class="language-cypher" data-lang="cypher">MATCH (n) RETURN labels(n), count(*)
+</code></pre><h5 id="查看各类关系的数量">查看各类关系的数量</h5>
+<pre tabindex="0"><code class="language-cypher" data-lang="cypher">MATCH ()-[r]-&gt;()
+RETURN type(r), count(*)
+</code></pre><h3 id="模糊查询">模糊查询</h3>
+<p>模糊查询并非使用LIKE关键字，而是使用CONTAINS，如：</p>
+<pre tabindex="0"><code class="language-cypher" data-lang="cypher">
+MATCH p=(n:NodeType)--&gt;() WHERE n.name CONTAINS &#39;需要模糊查询的关键字&#39; RETURN p
+</code></pre><h3 id="批量变更关系类型">批量变更关系类型</h3>
+<pre tabindex="0"><code class="language-cypher" data-lang="cypher">MATCH (a)-[r:OLD_RELATION]-&gt;(b)
+CREATE (a)-[rNew:NEW_RELATION]-&gt;(b)
+SET rNew = r
+WITH r
+DELETE r
+</code></pre><p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<figure  >
+  <div class="d-flex justify-content-center">
+    <div class="w-100" ><img alt="" srcset="
+               /post/neo4j-basic-usage/images/batch_update_rel_huaabd8c5baab7d86789d0ce36e469c880_95562_d7e635ff99b0feace3f1a586539e285e.webp 400w,
+               /post/neo4j-basic-usage/images/batch_update_rel_huaabd8c5baab7d86789d0ce36e469c880_95562_75fc55384486186b0b0fbfc7aa1b63a5.webp 760w,
+               /post/neo4j-basic-usage/images/batch_update_rel_huaabd8c5baab7d86789d0ce36e469c880_95562_1200x1200_fit_q75_h2_lanczos_3.webp 1200w"
+               src="/post/neo4j-basic-usage/images/batch_update_rel_huaabd8c5baab7d86789d0ce36e469c880_95562_d7e635ff99b0feace3f1a586539e285e.webp"
+               width="760"
+               height="190"
+               loading="lazy" data-zoomable /></div>
+  </div></figure>
+</p>
+<h3 id="删除数据">删除数据</h3>
+<h4 id="删除关系">删除关系</h4>
+<pre tabindex="0"><code class="language-cypher" data-lang="cypher">MATCH (n)-[r:TEST_TYPE]-&gt;()
+DELETE r, n
+</code></pre><p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<figure  >
+  <div class="d-flex justify-content-center">
+    <div class="w-100" ><img alt="" srcset="
+               /post/neo4j-basic-usage/images/delete_rel_hub79c3adfcc56562c273d6dfb0e8ce7fe_63069_f1e8b85e09246c59824b162b6950b2a9.webp 400w,
+               /post/neo4j-basic-usage/images/delete_rel_hub79c3adfcc56562c273d6dfb0e8ce7fe_63069_3fff2ab5bbedaa921009aca72e2157ae.webp 760w,
+               /post/neo4j-basic-usage/images/delete_rel_hub79c3adfcc56562c273d6dfb0e8ce7fe_63069_1200x1200_fit_q75_h2_lanczos_3.webp 1200w"
+               src="/post/neo4j-basic-usage/images/delete_rel_hub79c3adfcc56562c273d6dfb0e8ce7fe_63069_f1e8b85e09246c59824b162b6950b2a9.webp"
+               width="760"
+               height="210"
+               loading="lazy" data-zoomable /></div>
+  </div></figure>
+</p>
+<h4 id="heading"></h4>
+<h4 id="删除孤立节点">删除孤立节点</h4>
+<pre tabindex="0"><code class="language-cypher" data-lang="cypher">MATCH (n:NodeType) WHERE NOT (n)--() DELETE n
+</code></pre><p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<figure  >
+  <div class="d-flex justify-content-center">
+    <div class="w-100" ><img alt="" srcset="
+               /post/neo4j-basic-usage/images/delete_isolation_hu9340a42477fa1348724df4603e3685d9_74873_f0276fb3e8c0e7bb7ce6e75d424e2538.webp 400w,
+               /post/neo4j-basic-usage/images/delete_isolation_hu9340a42477fa1348724df4603e3685d9_74873_8b85c9bbd674fb15038f6d3c0892df4c.webp 760w,
+               /post/neo4j-basic-usage/images/delete_isolation_hu9340a42477fa1348724df4603e3685d9_74873_1200x1200_fit_q75_h2_lanczos_3.webp 1200w"
+               src="/post/neo4j-basic-usage/images/delete_isolation_hu9340a42477fa1348724df4603e3685d9_74873_f0276fb3e8c0e7bb7ce6e75d424e2538.webp"
+               width="760"
+               height="353"
+               loading="lazy" data-zoomable /></div>
+  </div></figure>
+</p>
 <h3 id="多跳查询">多跳查询</h3>
-<p>模式查询</p>
+<p>以二跳查询为例：</p>
+<pre tabindex="0"><code class="language-cypher" data-lang="cypher">MATCH p=(n:NodeType{name:&#39;NodeName&#39;})-[r:Rel1]-&gt;()-[:Rel2]-&gt;(re)  RETURN re.name,re.id
+</code></pre><h2 id="图数据库示例数据集">图数据库示例数据集</h2>
+<ul>
+<li><a href="https://offshoreleaks.icij.org/pages/database" target="_blank" rel="noopener">https://offshoreleaks.icij.org/pages/database</a></li>
+</ul>
+<h2 id="图数据库图算法支持">图数据库图算法支持</h2>
+<ul>
+<li><a href="https://neo4j.com/docs/graph-data-science/current/" target="_blank" rel="noopener">https://neo4j.com/docs/graph-data-science/current/</a></li>
+</ul>
 <h2 id="python操作neo4j数据库">Python操作Neo4j数据库</h2>
-<p>py2neo</p>
+<ul>
+<li>
+<p><a href="https://github.com/py2neo-org/py2neo" target="_blank" rel="noopener">py2neo</a> github 1.2 star</p>
+</li>
+<li>
+<p>neo4j github 800+ star</p>
+</li>
+</ul>
 
     </div>
 
