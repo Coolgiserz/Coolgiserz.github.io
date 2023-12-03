@@ -512,7 +512,7 @@
     </item>
     
     <item>
-      <title>Neo4j基本使用</title>
+      <title>Neo4j基本使用与Cypher语言基础</title>
       <link>/post/neo4j-basic-usage/</link>
       <pubDate>Wed, 20 Sep 2023 21:57:38 +0800</pubDate>
       <guid>/post/neo4j-basic-usage/</guid>
@@ -575,6 +575,36 @@
 &lt;p&gt;Cypher CheetSheet：&lt;a href=&#34;https://neo4j.com/docs/cypher-cheat-sheet/5/auradb-enterprise&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Cypher Cheat Sheet - Neo4j Documentation Cheat Sheet&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;Cypher文档：&lt;a href=&#34;https://neo4j.com/docs/cypher-manual/current/introduction/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Introduction - Cypher Manual&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;一些工具：cypher-shell、neo4j-admin&lt;/p&gt;
+&lt;p&gt;关于Cypher的系统性学习可以注册Neo4j官网中的课程，完成后可以获得证书：&lt;/p&gt;
+&lt;p&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure  &gt;
+  &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img alt=&#34;&#34; srcset=&#34;
+               /post/neo4j-basic-usage/images/cypher-cert_hud9b63beb5e416256a44650f8ad9e09d7_310319_67a1eeca4eef4c353d0ddeeab6b84b45.webp 400w,
+               /post/neo4j-basic-usage/images/cypher-cert_hud9b63beb5e416256a44650f8ad9e09d7_310319_7e7c47c9d2a95499b0038d1e2948274a.webp 760w,
+               /post/neo4j-basic-usage/images/cypher-cert_hud9b63beb5e416256a44650f8ad9e09d7_310319_1200x1200_fit_q75_h2_lanczos_3.webp 1200w&#34;
+               src=&#34;/post/neo4j-basic-usage/images/cypher-cert_hud9b63beb5e416256a44650f8ad9e09d7_310319_67a1eeca4eef4c353d0ddeeab6b84b45.webp&#34;
+               width=&#34;760&#34;
+               height=&#34;505&#34;
+               loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+  &lt;/div&gt;&lt;/figure&gt;
+&lt;/p&gt;
+&lt;p&gt;下面仅为个人笔记，便于查阅：&lt;/p&gt;
 &lt;h3 id=&#34;基本关键字&#34;&gt;基本关键字&lt;/h3&gt;
 &lt;p&gt;Cypher是对节点、节点间的关系及属性进行增删改查的类SQL语言。主要有如下关键字：&lt;/p&gt;
 &lt;ul&gt;

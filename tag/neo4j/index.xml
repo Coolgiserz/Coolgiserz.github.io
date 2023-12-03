@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>复杂网络 | CoolCats</title>
-    <link>/tag/%E5%A4%8D%E6%9D%82%E7%BD%91%E7%BB%9C/</link>
-      <atom:link href="/tag/%E5%A4%8D%E6%9D%82%E7%BD%91%E7%BB%9C/index.xml" rel="self" type="application/rss+xml" />
-    <description>复杂网络</description>
+    <title>Neo4j | CoolCats</title>
+    <link>/tag/neo4j/</link>
+      <atom:link href="/tag/neo4j/index.xml" rel="self" type="application/rss+xml" />
+    <description>Neo4j</description>
     <generator>Wowchemy (https://wowchemy.com)</generator><language>en-us</language><lastBuildDate>Wed, 20 Sep 2023 21:57:38 +0800</lastBuildDate>
     <image>
       <url>/media/icon_hue03491371183284312b8b116a73ae5ab_79511_512x512_fill_lanczos_center_3.png</url>
-      <title>复杂网络</title>
-      <link>/tag/%E5%A4%8D%E6%9D%82%E7%BD%91%E7%BB%9C/</link>
+      <title>Neo4j</title>
+      <link>/tag/neo4j/</link>
     </image>
     
     <item>
@@ -306,22 +306,6 @@ DELETE r, n
 &lt;/li&gt;
 &lt;/ul&gt;
 </description>
-    </item>
-    
-    <item>
-      <title>「论文阅读」-基于Ricci流的网络社区检测</title>
-      <link>/publication/community-detection-on-networks-with-ricci-flow/</link>
-      <pubDate>Wed, 25 May 2022 14:55:05 +0800</pubDate>
-      <guid>/publication/community-detection-on-networks-with-ricci-flow/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>「论文阅读」-针对复杂网络上两种离散Ricci曲率的对比分析</title>
-      <link>/publication/comparative-analysis-of-two-discretizations-of-ricci-curvature-for-complex-networks/</link>
-      <pubDate>Thu, 19 May 2022 15:31:51 +0800</pubDate>
-      <guid>/publication/comparative-analysis-of-two-discretizations-of-ricci-curvature-for-complex-networks/</guid>
-      <description></description>
     </item>
     
   </channel>

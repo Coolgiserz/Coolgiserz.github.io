@@ -322,7 +322,7 @@
   
   <meta property="og:site_name" content="CoolCats" />
   <meta property="og:url" content="/post/neo4j-basic-usage/" />
-  <meta property="og:title" content="Neo4j基本使用 | CoolCats" />
+  <meta property="og:title" content="Neo4j基本使用与Cypher语言基础 | CoolCats" />
   <meta property="og:description" content="图数据库查询语言、面向对象编程" /><meta property="og:image" content="/media/icon_hue03491371183284312b8b116a73ae5ab_79511_512x512_fill_lanczos_center_3.png" />
     <meta property="twitter:image" content="/media/icon_hue03491371183284312b8b116a73ae5ab_79511_512x512_fill_lanczos_center_3.png" /><meta property="og:locale" content="en-us" />
   
@@ -358,7 +358,7 @@
     "@type": "WebPage",
     "@id": "/post/neo4j-basic-usage/"
   },
-  "headline": "Neo4j基本使用",
+  "headline": "Neo4j基本使用与Cypher语言基础",
   
   "datePublished": "2023-09-20T21:57:38+08:00",
   "dateModified": "2023-09-20T21:57:38+08:00",
@@ -392,7 +392,7 @@
 
 
 
-  <title>Neo4j基本使用 | CoolCats</title>
+  <title>Neo4j基本使用与Cypher语言基础 | CoolCats</title>
 </head>
 
 
@@ -753,7 +753,7 @@
   
   
 <div class="article-container pt-3">
-  <h1>Neo4j基本使用</h1>
+  <h1>Neo4j基本使用与Cypher语言基础</h1>
 
   
 
@@ -791,6 +791,10 @@
   
 
   
+  
+  <span class="middot-divider"></span>
+  <span class="article-categories">
+    <i class="fas fa-folder mr-1"></i><a href="/category/%E6%95%B0%E6%8D%AE%E5%BA%93/">数据库</a></span>
   
 
 </div>
@@ -868,6 +872,36 @@
 <p>Cypher CheetSheet：<a href="https://neo4j.com/docs/cypher-cheat-sheet/5/auradb-enterprise" target="_blank" rel="noopener">Cypher Cheat Sheet - Neo4j Documentation Cheat Sheet</a></p>
 <p>Cypher文档：<a href="https://neo4j.com/docs/cypher-manual/current/introduction/" target="_blank" rel="noopener">Introduction - Cypher Manual</a></p>
 <p>一些工具：cypher-shell、neo4j-admin</p>
+<p>关于Cypher的系统性学习可以注册Neo4j官网中的课程，完成后可以获得证书：</p>
+<p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<figure  >
+  <div class="d-flex justify-content-center">
+    <div class="w-100" ><img alt="" srcset="
+               /post/neo4j-basic-usage/images/cypher-cert_hud9b63beb5e416256a44650f8ad9e09d7_310319_67a1eeca4eef4c353d0ddeeab6b84b45.webp 400w,
+               /post/neo4j-basic-usage/images/cypher-cert_hud9b63beb5e416256a44650f8ad9e09d7_310319_7e7c47c9d2a95499b0038d1e2948274a.webp 760w,
+               /post/neo4j-basic-usage/images/cypher-cert_hud9b63beb5e416256a44650f8ad9e09d7_310319_1200x1200_fit_q75_h2_lanczos_3.webp 1200w"
+               src="/post/neo4j-basic-usage/images/cypher-cert_hud9b63beb5e416256a44650f8ad9e09d7_310319_67a1eeca4eef4c353d0ddeeab6b84b45.webp"
+               width="760"
+               height="505"
+               loading="lazy" data-zoomable /></div>
+  </div></figure>
+</p>
+<p>下面仅为个人笔记，便于查阅：</p>
 <h3 id="基本关键字">基本关键字</h3>
 <p>Cypher是对节点、节点间的关系及属性进行增删改查的类SQL语言。主要有如下关键字：</p>
 <ul>
@@ -1075,6 +1109,18 @@ DELETE r, n
 
 
 
+<div class="article-tags">
+  
+  <a class="badge badge-light" href="/tag/neo4j/">Neo4j</a>
+  
+  <a class="badge badge-light" href="/tag/%E6%95%B0%E6%8D%AE%E5%BA%93/">数据库</a>
+  
+  <a class="badge badge-light" href="/tag/cypher/">Cypher</a>
+  
+  <a class="badge badge-light" href="/tag/%E5%A4%8D%E6%9D%82%E7%BD%91%E7%BB%9C/">复杂网络</a>
+  
+</div>
+
 
 
 <div class="share-box">
@@ -1088,7 +1134,7 @@ DELETE r, n
       
       
       <li>
-        <a href="https://twitter.com/intent/tweet?url=/post/neo4j-basic-usage/&amp;text=Neo4j%e5%9f%ba%e6%9c%ac%e4%bd%bf%e7%94%a8" target="_blank" rel="noopener" class="share-btn-twitter" aria-label="twitter">
+        <a href="https://twitter.com/intent/tweet?url=/post/neo4j-basic-usage/&amp;text=Neo4j%e5%9f%ba%e6%9c%ac%e4%bd%bf%e7%94%a8%e4%b8%8eCypher%e8%af%ad%e8%a8%80%e5%9f%ba%e7%a1%80" target="_blank" rel="noopener" class="share-btn-twitter" aria-label="twitter">
           <i class="fab fa-twitter"></i>
         </a>
       </li>
@@ -1101,7 +1147,7 @@ DELETE r, n
       
       
       <li>
-        <a href="https://www.facebook.com/sharer.php?u=/post/neo4j-basic-usage/&amp;t=Neo4j%e5%9f%ba%e6%9c%ac%e4%bd%bf%e7%94%a8" target="_blank" rel="noopener" class="share-btn-facebook" aria-label="facebook">
+        <a href="https://www.facebook.com/sharer.php?u=/post/neo4j-basic-usage/&amp;t=Neo4j%e5%9f%ba%e6%9c%ac%e4%bd%bf%e7%94%a8%e4%b8%8eCypher%e8%af%ad%e8%a8%80%e5%9f%ba%e7%a1%80" target="_blank" rel="noopener" class="share-btn-facebook" aria-label="facebook">
           <i class="fab fa-facebook"></i>
         </a>
       </li>
@@ -1114,7 +1160,7 @@ DELETE r, n
       
       
       <li>
-        <a href="mailto:?subject=Neo4j%e5%9f%ba%e6%9c%ac%e4%bd%bf%e7%94%a8&amp;body=/post/neo4j-basic-usage/" target="_blank" rel="noopener" class="share-btn-email" aria-label="envelope">
+        <a href="mailto:?subject=Neo4j%e5%9f%ba%e6%9c%ac%e4%bd%bf%e7%94%a8%e4%b8%8eCypher%e8%af%ad%e8%a8%80%e5%9f%ba%e7%a1%80&amp;body=/post/neo4j-basic-usage/" target="_blank" rel="noopener" class="share-btn-email" aria-label="envelope">
           <i class="fas fa-envelope"></i>
         </a>
       </li>
@@ -1127,7 +1173,7 @@ DELETE r, n
       
       
       <li>
-        <a href="https://www.linkedin.com/shareArticle?url=/post/neo4j-basic-usage/&amp;title=Neo4j%e5%9f%ba%e6%9c%ac%e4%bd%bf%e7%94%a8" target="_blank" rel="noopener" class="share-btn-linkedin" aria-label="linkedin-in">
+        <a href="https://www.linkedin.com/shareArticle?url=/post/neo4j-basic-usage/&amp;title=Neo4j%e5%9f%ba%e6%9c%ac%e4%bd%bf%e7%94%a8%e4%b8%8eCypher%e8%af%ad%e8%a8%80%e5%9f%ba%e7%a1%80" target="_blank" rel="noopener" class="share-btn-linkedin" aria-label="linkedin-in">
           <i class="fab fa-linkedin-in"></i>
         </a>
       </li>
@@ -1140,7 +1186,7 @@ DELETE r, n
       
       
       <li>
-        <a href="whatsapp://send?text=Neo4j%e5%9f%ba%e6%9c%ac%e4%bd%bf%e7%94%a8%20/post/neo4j-basic-usage/" target="_blank" rel="noopener" class="share-btn-whatsapp" aria-label="whatsapp">
+        <a href="whatsapp://send?text=Neo4j%e5%9f%ba%e6%9c%ac%e4%bd%bf%e7%94%a8%e4%b8%8eCypher%e8%af%ad%e8%a8%80%e5%9f%ba%e7%a1%80%20/post/neo4j-basic-usage/" target="_blank" rel="noopener" class="share-btn-whatsapp" aria-label="whatsapp">
           <i class="fab fa-whatsapp"></i>
         </a>
       </li>
@@ -1153,7 +1199,7 @@ DELETE r, n
       
       
       <li>
-        <a href="https://service.weibo.com/share/share.php?url=/post/neo4j-basic-usage/&amp;title=Neo4j%e5%9f%ba%e6%9c%ac%e4%bd%bf%e7%94%a8" target="_blank" rel="noopener" class="share-btn-weibo" aria-label="weibo">
+        <a href="https://service.weibo.com/share/share.php?url=/post/neo4j-basic-usage/&amp;title=Neo4j%e5%9f%ba%e6%9c%ac%e4%bd%bf%e7%94%a8%e4%b8%8eCypher%e8%af%ad%e8%a8%80%e5%9f%ba%e7%a1%80" target="_blank" rel="noopener" class="share-btn-weibo" aria-label="weibo">
           <i class="fab fa-weibo"></i>
         </a>
       </li>
