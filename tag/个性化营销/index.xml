@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>个性化营销 | CoolCats</title>
+    <link>/tag/%E4%B8%AA%E6%80%A7%E5%8C%96%E8%90%A5%E9%94%80/</link>
+      <atom:link href="/tag/%E4%B8%AA%E6%80%A7%E5%8C%96%E8%90%A5%E9%94%80/index.xml" rel="self" type="application/rss+xml" />
+    <description>个性化营销</description>
+    <generator>Wowchemy (https://wowchemy.com)</generator><language>en-us</language><lastBuildDate>Wed, 19 Feb 2020 10:40:17 +0800</lastBuildDate>
+    <image>
+      <url>/media/icon_hue03491371183284312b8b116a73ae5ab_79511_512x512_fill_lanczos_center_3.png</url>
+      <title>个性化营销</title>
+      <link>/tag/%E4%B8%AA%E6%80%A7%E5%8C%96%E8%90%A5%E9%94%80/</link>
+    </image>
+    
+    <item>
+      <title>基于RFM和Kmeans的用户分群</title>
+      <link>/project/rfm-and-kmeans-based-personalizing-marketing/</link>
+      <pubDate>Wed, 19 Feb 2020 10:40:17 +0800</pubDate>
+      <guid>/project/rfm-and-kmeans-based-personalizing-marketing/</guid>
+      <description>&lt;h2 id=&#34;前言&#34;&gt;前言&lt;/h2&gt;
+&lt;p&gt;营销业务中比较重要的环节就是用户分群，其目的是做针对性、个性化的营销，而不是对每个用户都采用同样的营销。那么如何对用户进行分群就是一门值得研究的学问。&lt;/p&gt;
+&lt;p&gt;本项目实现经典的RFM用户分群模型，并用Kmeans对RFM特征进行聚类，作为探索个性化营销的初步尝试。&lt;/p&gt;
+&lt;h3 id=&#34;rfm模型&#34;&gt;RFM模型&lt;/h3&gt;
+&lt;p&gt;RFM模型是经典的用户分群模型，从3个维度对用户进行分层。&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;R: Recency, 表示用户最近一次购买的时间&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;blockquote&gt;
+&lt;p&gt;F: Frequency, 表示用户过去一段时间的购买次数&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;blockquote&gt;
+&lt;p&gt;M: Monetary, 表示用户过去一段时间内所花费的总金额&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h2 id=&#34;项目思路&#34;&gt;项目思路&lt;/h2&gt;
+&lt;h3 id=&#34;步骤一数据预处理&#34;&gt;步骤一：数据预处理&lt;/h3&gt;
+&lt;h3 id=&#34;步骤二特征提取&#34;&gt;步骤二：特征提取&lt;/h3&gt;
+&lt;p&gt;得到用户的R、F、M维度特征。&lt;/p&gt;
+&lt;h3 id=&#34;步骤三用户分群&#34;&gt;步骤三：用户分群&lt;/h3&gt;
+&lt;h4 id=&#34;法一对rfm设置阈值对用户分群&#34;&gt;法一：对RFM设置阈值对用户分群&lt;/h4&gt;
+&lt;p&gt;对R、F、M三个维度的特征各自按照一定的阈值进行分组，分组有一定的原则。具体的阈值设置可以按照均值来分，也可以按照分位数，众数等作为划分的阈值。选择阈值之前可以先通过可视化探索用户各维度特征的分布特征。&lt;/p&gt;
+&lt;p&gt;分完组之后可以将每个组映射到一个类别，标明用户的“等级”或“价值”。通常认为：对于R而言，R越小用户价值越大；对于F而言，F越大用户价值越大；对于M而言，M越大用户价值越大。&lt;/p&gt;
+&lt;p&gt;将每个维度的等级进行综合可以对用户有一个综合评价，综合的方式有很多，最简单的可以是三个维度的加和。&lt;/p&gt;
+&lt;h4 id=&#34;法二基于聚类的用户分群&#34;&gt;法二：基于聚类的用户分群&lt;/h4&gt;
+&lt;p&gt;前面基于阈值的分群方法虽然简单容易操作，但是也过于一刀切，且对经验依赖较大。这里考虑对用户按照等级特征进行聚类实现用户分群。但该方法的缺点是对于每一个类簇需要人为地去解释，且如何确定类簇的个数也是一个问题。&lt;/p&gt;
+&lt;h2 id=&#34;资源小结&#34;&gt;资源小结&lt;/h2&gt;
+&lt;p&gt;用户分群还可以基于很多特征进行，如活跃度、内容贡献、注册时间等.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://mta.qq.com/docs/ctr_user_group.html&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;腾讯移动分析-用户分群&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://www.woshipm.com/operate/598103.html&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;读懂用户运营体系：用户分层和分群&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

@@ -1,0 +1,1439 @@
+<!DOCTYPE html><html lang="en-us" >
+
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  
+  
+  
+    <meta name="generator" content="Wowchemy 5.5.0 for Hugo" />
+  
+
+  
+  
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+  
+  
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  
+
+  
+  
+  
+    
+      
+      <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Roboto+Mono&family=Roboto:wght@400;700&display=swap">
+      <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Roboto+Mono&family=Roboto:wght@400;700&display=swap" media="print" onload="this.media='all'">
+    
+  
+
+  
+  
+  
+  
+  
+    
+    
+    
+  
+  
+
+  <meta name="author" content="CoolCats" />
+
+  
+  
+  
+    
+  
+  <meta name="description" content="简答关于回归模型及其评价方法的一些疑问" />
+
+  
+  <link rel="alternate" hreflang="en-us" href="/post/rethinking-regression-model-and-its-evaluations/" />
+
+  
+  
+  
+    <meta name="theme-color" content="#1565c0" />
+  
+
+  
+  
+    
+    <script src="/js/mathjax-config.js"></script>
+  
+
+  
+
+  <link rel="stylesheet" href="/css/vendor-bundle.min.c7b8d9abd591ba2253ea42747e3ac3f5.css" media="print" onload="this.media='all'">
+
+  
+  
+  
+    
+    
+      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/academicons@1.9.1/css/academicons.min.css" integrity="sha512-W0xM4mr6dEP9nREo7Z9z+9X70wytKvMGeDsj7ps2+xg5QPrEBXC8tAW1IFnzjR6eoJ90JmCnFzerQJTLzIEHjA==" crossorigin="anonymous" media="print" onload="this.media='all'">
+    
+
+    
+    
+    
+    
+      
+      
+    
+    
+    
+
+    
+    
+    
+      
+    
+    
+      
+      
+        
+          <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@10.2.1/build/styles/github.min.css" crossorigin="anonymous" title="hl-light" media="print" onload="this.media='all'">
+          <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@10.2.1/build/styles/dracula.min.css" crossorigin="anonymous" title="hl-dark" media="print" onload="this.media='all'" disabled>
+        
+      
+    
+
+    
+    
+    
+      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.7.1/dist/leaflet.min.css" integrity="" crossorigin="anonymous" media="print" onload="this.media='all'">
+    
+
+    
+
+    
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js" integrity="" crossorigin="anonymous" async></script>
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+  
+
+  
+  
+  
+  
+  
+  <link rel="stylesheet" href="/css/wowchemy.1052fab8b7700a3dc49ee23683097d66.css" />
+
+  
+
+
+
+  
+
+
+  
+
+
+  
+
+
+  <script>
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?51ae6db546b05b91d4053193ba49123d";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+  
+  
+  
+
+  
+
+  
+
+  <link rel="icon" type="image/png" href="/media/icon_hue03491371183284312b8b116a73ae5ab_79511_32x32_fill_lanczos_center_3.png" />
+  <link rel="apple-touch-icon" type="image/png" href="/media/icon_hue03491371183284312b8b116a73ae5ab_79511_180x180_fill_lanczos_center_3.png" />
+
+  <link rel="canonical" href="/post/rethinking-regression-model-and-its-evaluations/" />
+
+  
+  
+  
+  
+  
+  
+  
+  
+    
+    
+  
+  
+
+  
+  
+    
+    
+  
+  <meta property="twitter:card" content="summary" />
+  
+    <meta property="twitter:site" content="@wowchemy" />
+    <meta property="twitter:creator" content="@wowchemy" />
+  
+  <meta property="og:site_name" content="CoolCats" />
+  <meta property="og:url" content="/post/rethinking-regression-model-and-its-evaluations/" />
+  <meta property="og:title" content="关于回归模型及其评价方法的一些问题 | CoolCats" />
+  <meta property="og:description" content="简答关于回归模型及其评价方法的一些疑问" /><meta property="og:image" content="/media/icon_hue03491371183284312b8b116a73ae5ab_79511_512x512_fill_lanczos_center_3.png" />
+    <meta property="twitter:image" content="/media/icon_hue03491371183284312b8b116a73ae5ab_79511_512x512_fill_lanczos_center_3.png" /><meta property="og:locale" content="en-us" />
+  
+    
+      <meta
+        property="article:published_time"
+        content="2022-05-16T20:31:34&#43;08:00"
+      />
+    
+    <meta property="article:modified_time" content="2022-05-16T20:31:34&#43;08:00">
+  
+
+  
+
+
+    
+
+
+
+
+
+
+  
+
+
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "/post/rethinking-regression-model-and-its-evaluations/"
+  },
+  "headline": "关于回归模型及其评价方法的一些问题",
+  
+  "datePublished": "2022-05-16T20:31:34+08:00",
+  "dateModified": "2022-05-16T20:31:34+08:00",
+  
+  "author": {
+    "@type": "Person",
+    "name": "CoolCats"
+  },
+  
+  "publisher": {
+    "@type": "Organization",
+    "name": "CoolCats",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "/media/icon_hue03491371183284312b8b116a73ae5ab_79511_192x192_fill_lanczos_center_3.png"
+    }
+  },
+  "description": "简答关于回归模型及其评价方法的一些疑问"
+}
+</script>
+
+  
+
+  
+
+  
+
+  
+
+
+
+
+
+  <title>关于回归模型及其评价方法的一些问题 | CoolCats</title>
+</head>
+
+
+<body id="top" data-spy="scroll" data-offset="70" data-target="#TableOfContents" class="page-wrapper   " data-wc-page-id="e79787cce2d366daed88bc6a8dfda550" >
+
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  <script src="/js/wowchemy-init.min.2ed908358299dd7ab553faae685c746c.js"></script>
+
+  
+
+
+<aside class="search-modal" id="search">
+  <div class="container">
+    <section class="search-header">
+
+      <div class="row no-gutters justify-content-between mb-3">
+        <div class="col-6">
+          <h1>Search</h1>
+        </div>
+        <div class="col-6 col-search-close">
+          <a class="js-search" href="#" aria-label="Close"><i class="fas fa-times-circle text-muted" aria-hidden="true"></i></a>
+        </div>
+      </div>
+
+      <div id="search-box">
+        
+        <input name="q" id="search-query" placeholder="Search..." autocapitalize="off"
+        autocomplete="off" autocorrect="off" spellcheck="false" type="search" class="form-control"
+        aria-label="Search...">
+        
+      </div>
+
+      
+      
+
+      
+
+    </section>
+    <section class="section-search-results">
+
+      <div id="search-hits">
+        
+      </div>
+
+    </section>
+  </div>
+</aside>
+
+
+
+  <div class="page-header">
+    
+
+
+
+
+
+
+
+
+
+
+
+
+<header class="header--fixed">
+  <nav class="navbar navbar-expand-lg navbar-light compensate-for-scrollbar" id="navbar-main">
+    <div class="container-xl">
+
+      
+      <div class="d-none d-lg-inline-flex">
+        <a class="navbar-brand" href="/">CoolCats</a>
+      </div>
+      
+
+      
+      <button type="button" class="navbar-toggler" data-toggle="collapse"
+              data-target="#navbar-content" aria-controls="navbar-content" aria-expanded="false" aria-label="Toggle navigation">
+      <span><i class="fas fa-bars"></i></span>
+      </button>
+      
+
+      
+      <div class="navbar-brand-mobile-wrapper d-inline-flex d-lg-none">
+        <a class="navbar-brand" href="/">CoolCats</a>
+      </div>
+      
+
+      
+      
+      <div class="navbar-collapse main-menu-item collapse justify-content-start" id="navbar-content">
+
+        
+        <ul class="navbar-nav d-md-inline-flex">
+          
+
+          
+
+          
+          
+          
+
+          
+
+          
+          
+          
+          
+
+          
+            
+              
+              
+            
+            
+          
+
+          <li class="nav-item">
+            <a class="nav-link  active" href="/post"><span>博客</span></a>
+          </li>
+
+          
+          
+
+          
+
+          
+          
+          
+            
+          
+
+          
+
+          
+          
+          
+          
+
+          
+            
+              
+              
+            
+            
+          
+
+          <li class="nav-item">
+            <a class="nav-link " href="/event"><span>趣事</span></a>
+          </li>
+
+          
+          
+
+          
+
+          
+          
+          
+            
+          
+
+          
+
+          
+          
+          
+          
+
+          
+            
+              
+              
+            
+            
+          
+
+          <li class="nav-item">
+            <a class="nav-link " href="/project"><span>项目</span></a>
+          </li>
+
+          
+          
+
+          
+
+          
+          
+          
+            
+          
+
+          
+
+          
+          
+          
+          
+
+          
+            
+              
+              
+            
+            
+          
+
+          <li class="nav-item">
+            <a class="nav-link " href="/publication"><span>论文</span></a>
+          </li>
+
+          
+          
+
+          
+
+          
+          
+          
+            
+          
+
+          
+
+          
+          
+          
+          
+
+          
+            
+              
+              
+            
+            
+          
+
+          <li class="nav-item">
+            <a class="nav-link " href="/contact"><span>联系</span></a>
+          </li>
+
+          
+          
+
+          
+
+          
+          
+          
+            
+          
+
+          
+
+          
+          
+          
+          
+
+          
+            
+              
+              
+            
+            
+          
+
+          <li class="nav-item">
+            <a class="nav-link " href="/media/files/cv"><span>简历</span></a>
+          </li>
+
+          
+          
+
+        
+
+          
+        </ul>
+      </div>
+
+      <ul class="nav-icons navbar-nav flex-row ml-auto d-flex pl-md-2">
+
+        
+        
+          
+        
+
+        
+        
+        <li class="nav-item">
+          <a class="nav-link js-search" href="#" aria-label="Search"><i class="fas fa-search" aria-hidden="true"></i></a>
+        </li>
+        
+
+        
+        
+        
+        <li class="nav-item dropdown theme-dropdown">
+          <a href="#" class="nav-link" data-toggle="dropdown" aria-haspopup="true" aria-label="Display preferences">
+            <i class="fas fa-moon" aria-hidden="true"></i>
+          </a>
+          <div class="dropdown-menu">
+            <a href="#" class="dropdown-item js-set-theme-light">
+              <span>Light</span>
+            </a>
+            <a href="#" class="dropdown-item js-set-theme-dark">
+              <span>Dark</span>
+            </a>
+            <a href="#" class="dropdown-item js-set-theme-auto">
+              <span>Automatic</span>
+            </a>
+          </div>
+        </li>
+        
+
+        
+        
+
+      </ul>
+
+    </div>
+  </nav>
+</header>
+
+
+  </div>
+
+  <div class="page-body">
+    
+    
+    
+
+    <article class="article">
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+  
+  
+<div class="article-container pt-3">
+  <h1>关于回归模型及其评价方法的一些问题</h1>
+
+  
+
+  
+    
+
+
+<div class="article-metadata">
+
+  
+  
+
+  
+  <span class="article-date">
+    
+    
+      
+    
+    May 16, 2022
+  </span>
+  
+
+  
+
+  
+  <span class="middot-divider"></span>
+  <span class="article-reading-time">
+    2 min read
+  </span>
+  
+
+  
+  
+  
+  
+    <span class="middot-divider"></span>
+    <a href="/post/rethinking-regression-model-and-its-evaluations/#disqus_thread"></a>
+  
+
+  
+  
+  <span class="middot-divider"></span>
+  <span class="article-categories">
+    <i class="fas fa-folder mr-1"></i><a href="/category/%E6%95%B0%E5%AD%A6/">数学</a></span>
+  
+
+</div>
+
+    
+
+
+
+
+
+  
+</div>
+
+
+
+  <div class="article-container">
+
+    <div class="article-style">
+      <p>促使我写这篇文章的原因是某项实验中发现一些先进的预测模型尽管在MAE、MAPE、RMSE指标上的表现远超其他模型，但却具有非常低的R2和EVAR值，再加上对实际数据与预测数据的观察，让我对「什么是”好“的回归模型」以及「各项回归评价指标具体能告诉你什么信息」蒙上了一层疑问。所以写这篇文章整理一下思路。</p>
+<h2 id="0x00-回归分析溯源">0x00 回归分析溯源</h2>
+<h3 id="何时应该使用回归分析回归分析可以做什么">何时应该使用回归分析？回归分析可以做什么？</h3>
+<p>在统计机器学习中，除了回归分析以外还有聚类、分类等分析方法。那么何时应该使用回归分析？可以从回归分析的能力角度回答这个问题。
+回归分析评估响应变量（因变量）与解释变量（自变量、特征）的关系，从而让你能够在指定解释变量取值的时候预测响应变量的取值（期望）（获得对未观测到的数据的预测能力），便于决策或者增加对某复杂问题的认识。
+回归系数也可以表示响应变量与各个维度解释变量的关系。</p>
+<p>以具体问题为例，回归分析可以用于回答如下问题：</p>
+<ul>
+<li>教育背景与智商是否对收入有影响？</li>
+<li>社会经济地位是否影响教育上的成就？</li>
+<li>锻炼身体和节食是否会影响体重？</li>
+<li>喝咖啡和吸烟是否影响寿命？</li>
+</ul>
+<p>一言以蔽之，就是要回答“某些变量是否与另一个变量是否有关系”。实际进行分析的时候，如果希望回归分析的结果更能说明问题，还需要进行控制变量，排除除了回归模型所考虑的解释变量以外还能够对响应变量产生影响的变量（混淆变量）的干扰，从而避免得到“伪相关”的结论。比如你想探讨“瑶辅助（技能机制以及强度）是否与队伍陷入逆风是否有关系”这个问题，那你要尽量排除有玩家明演的对局，并基于双方队伍除辅助位置外的其他位置强度尽量一致的对局去进行分析。</p>
+<h3 id="回归模型有什么分类如何选择正确的回归分析类型">回归模型有什么分类？如何选择正确的回归分析类型？</h3>
+<p>回归模型有多种类别，如何选择取决于你的数据（数据的类型、复杂程度）。
+通常我们说的回归是在响应变量为连续取值的情况下评估响应变量与解释变量的关系，当响应变量为离散值时的回归即为分类。</p>
+<h4 id="线性回归vs非线性回归">线性回归vs非线性回归</h4>
+<h5 id="线性回归">线性回归</h5>
+<p>线性回归通过线性函数对响应变量与解释变量的关系进行建模。“线性”是针对待估计参数而言的，线性回归函数是一个或多个参数（回归系数）的线性组合。</p>
+<p>这里可能容易被误解，认为线性回归是关于解释变量X的线性函数，可以这么想：通常我们进行回归分析的时候，解释变量的取值我们是知道的，待估参数才是未知数，我们是通过已观测到的解释变量和响应变量取值去估计未知的参数/回归系数，考虑解释变量的线性与否意义不大，因为总可以通过一种变换把“线性”形式的解释变量转换成“非线性”形式，反之亦可，但不管怎样转换我们都是能够确定解释变量取值的（从样本中取）。再引用Jim的统计学博客中一段话，体会体会：</p>
+<pre tabindex="0"><code>Statisticians say that this type of regression equation is linear in the 
+parameters.However, it is possible to model curvature with this type of 
+model. While the function must be linear in the parameters, you can raise 
+an independent variable by an exponent to fit a curve. For example, if 
+you square an independent variable, the model can follow a U-shaped curve.
+
+While the independent variable is squared, the model is still linear in 
+the parameters. Linear models can also contain log terms and inverse terms
+ to follow different kinds of curves and yet continue to be linear in the
+ parameters.
+</code></pre><p>线性回归通常通过“最小化经验误差（如SSE）”的策略来估计参数。通过求解方程解得模型参数。</p>
+<p>线性回归也有多种类别，比如：</p>
+<ul>
+<li>岭回归（*）
+多变量线性回归中，变量间可能存在高度相关关系（多重共线性，一个解释变量的变化引起另一个解释变量的变化）导致回归估计不准确。岭回归尝试解决如上问题。</li>
+<li>Lasso回归</li>
+<li>……</li>
+</ul>
+<h5 id="非线性回归">非线性回归</h5>
+<p>不符合线性回归规则的回归即为非线性回归，即待估参数是“非线性”的回归即为非线性回归。</p>
+<p>非线性回归的求解通常也通过最小化经验误差的思想来估计参数，但往往使用迭代算法来求解优化问题。因此求解非线性回归问题时，会涉及到优化算法选择，初始值选择，收敛性（是否不收敛或收敛到局部最小值）等问题。</p>
+<h4 id="何时选择线性回归何时选择非线性回归">何时选择线性回归？何时选择非线性回归？</h4>
+<p>对于任何一份数据，你都可以用线性回归或者非线性回归进行拟合，但是应该如何选择呢？从实践的角度来说，你可以先使用线性回归看看能否很好地拟合观测数据，如果无法使用线性回归无法获得足够的拟合程度，这时候就可以考虑使用非线性回归。但这又需要我们思考，什么是好的回归模型，我们拟合数据的目的是什么？这个问题在<a href="#0x01-%e5%a6%82%e4%bd%95%e8%8e%b7%e5%be%97%e5%a5%bd%e7%9a%84%e5%9b%9e%e5%bd%92%e6%a8%a1%e5%9e%8b">下一节</a>进行讨论。</p>
+<h3 id="参考文献">参考文献</h3>
+<ul>
+<li><a href="https://statisticsbyjim.com/regression/when-use-regression-analysis/" target="_blank" rel="noopener">When Should I Use Regression Analysis?</a></li>
+<li><a href="https://statisticsbyjim.com/regression/choosing-regression-analysis/" target="_blank" rel="noopener">Choosing the Correct Type of Regression Analysis</a></li>
+<li><a href="https://statisticsbyjim.com/regression/difference-between-linear-nonlinear-regression-models/" target="_blank" rel="noopener">The Difference between Linear and Nonlinear Regression Models</a></li>
+<li><a href="https://www.zhihu.com/question/271558319" target="_blank" rel="noopener">线性回归中的&quot;线性&quot;是什么意思呢？</a></li>
+<li><a href="https://statisticsbyjim.com/regression/choose-linear-nonlinear-regression/" target="_blank" rel="noopener">How to Choose Between Linear and Nonlinear Regression</a></li>
+<li><a href="https://statisticsbyjim.com/regression/regression-tutorial-analysis-examples/" target="_blank" rel="noopener">Regression Tutorial with Analysis Examples</a></li>
+</ul>
+<h2 id="0x01-如何获得好的回归模型">0x01 如何获得“好”的回归模型？</h2>
+<h3 id="什么是好的回归模型">什么是好的回归模型？</h3>
+<p>从我们建立回归模型的动机出发，我们一般希望建立的模型能够帮助我们预测未来的数据，如此则需要模型从历史数据中捕捉到数据的变化规律，这至少要求模型能较好地拟合历史数据，最好要在历史数据存在噪声的情况下仍然对未来数据有较高的预测参考性。因此评价回归模型好坏的基本指导思想就确定了：</p>
+<ol>
+<li>对历史数据的拟合优度（模型预测值与实际观测值的差异尽量小）；</li>
+<li>对噪声/异常值的敏感程度小。（*）</li>
+</ol>
+<p>我们先从拟合优度的视角来看看如何具体评估模型优劣。</p>
+<h4 id="如何拟合出一个好的回归模型">如何拟合出一个好的回归模型？</h4>
+<p>一个直观的想法是考虑基于回归模型所得到的响应变量（因变量）的拟合值与实际值的误差的总和，使得总误差最小的模型应该对数据具有较好的拟合。我们在中学学线性回归时所接触的“最小二乘法”（普通）（最小化所有样本预测值与实际值之差的平方和）就是基于这么一种思想的一种具体实践。实际上“最小一乘”（最小化所有样本预测值与实际值之差的绝对值的总和）也是有被考虑过的，甚至&quot;最小三乘&quot;，但从求解难度来看，求解“最小一乘”要比“最小二乘”更难（最小一乘在数值上难以求解），所以我们才转而考虑“最小二乘”。最早选择最小二乘的原因只是因为其相对容易优化且解唯一，后来，数学家高斯提出“高斯-马尔可夫定理”，更严谨地证明了“最小二乘”相比其他“乘”的所优势，明确解释了最小二乘估计是最佳无偏线性估计。</p>
+<p>简单理解，使用“最小二乘法”来拟合线性回归模型的直觉在于：每一个样本的误差平方都能度量对于该样本实际值与模型拟合值的差距，“平方”保证了度量出的差距是非负、有意义的，因此误差平方和可以作为评估模型优劣的一个依据。在求解上，我们可以使用微积分或者线性代数的工具求解“使得预测值与实际值误差平方和最小”的回归系数，并且确保只会找到唯一的“最佳拟合线”。</p>
+<p>当然，也要注意：最小二乘并不一定是最优的选择，因为“二乘”实际上对误差具有一个放大效应，所以“普通最小二乘法”对于异常值比较敏感，可能数据中一到2个与均值偏差较大异常值就会对最小二乘分析的结果造成很大影响；在外推的时候，效果可能也不理想；了解更多最小二乘的信息（直觉、潜在假设、求解方法、局限性），可阅读<a href="#%e5%85%b3%e4%ba%8e%e6%9c%80%e5%b0%8f%e4%ba%8c%e4%b9%98%e6%b3%95">参考资料</a>。</p>
+<h4 id="如何评价已有回归模型的优劣">如何评价已有回归模型的优劣</h4>
+<p>要获得“好”的回归模型，我们除了在构建回归模型的过程中考虑“如何提高模型质量”，还要考虑如何评价现有模型的优劣。</p>
+<h5 id="回归标准误差和r2">回归标准误差和R2</h5>
+<p>回归标准误差和R2是两个常见的指标。</p>
+<p>回归标准误差表示观测值与回归模型拟合值的平均距离，<strong>以响应变量的单位</strong>告诉你模型有多大的“错误”；回归标准差越小表示模型越好，拟合值与实际观测值越接近。</p>
+<p>R2表示响应变量的偏差能被，衡量你的模型对响应变量的拟合值与实际值的关系强度，是一个表示百分比的量（0-1范围内）。</p>
+<!-- ##### 为什么R2可以用于评价线性回归模型的优劣？
+SST = SSR + SSE成立意味着什么？ -->
+<h5 id="r2不能用于评价非线性模型的优劣会产生什么问题">R2不能用于评价非线性模型的优劣？会产生什么问题？</h5>
+<p>首先，对于非线性模型，由于SST=SSR+SSE这个关系不一定成立，所以不能保证R2的取值范围在0-100%, 一些统计学家认为，由于有可能出现负数的百分比取值，R2不太能解释成其在评价线性模型时所表示的含义（模型对响应变量所能解释的偏差占响应变量的总偏差的百分比）。</p>
+<p>其次，R2有时候难以提供有效的信息。高的R2不一定意味着模型很好，低的R2不一定意味着模型很差。
+盲目追求高的R2可能会导致我们选择出一个具有误导性的模型，比如过拟合的模型。实际上对于任何一份数据，只要我们的非线性模型足够复杂，不断添加变量总能对数据进行很好的拟合，从而导致较高的R2值，但添加的变量可能与事实无关或者说不可解释。因此也产生了一些Adjusted R2的指标通过惩罚多余的非显著解释变量来防止过拟合，可参考<a href="#%e5%85%b3%e4%ba%8er2">资料</a>。</p>
+<!-- 如果建立回归模型的目的是为了理解解释变量和响应变量的关系，R2的高低此毫不相关，回归系数决定了解释变量与响应变量的关系，R2的改变不会影响对回归系数的解释。 -->
+<p>但如果建立回归模型的目的是为了预测响应变量，R2就相当于指示着误差（对同一份数据而言，SST是常数，SSE越小R2就越大），但其物理意义并不能直接表示对响应变量预测的精度。希望获得更直接的对误差的表示，可以考虑回归标准差这样的指标：直接在响应变量的量纲上告诉你模型预测的精确性，这样也便于你按照根据精度要求去获取模型。</p>
+<h5 id="常见指标意义及区别maemapemsermser2evar">常见指标意义及区别（MAE、MAPE、MSE、RMSE、R2、EVAR）</h5>
+<p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<figure  >
+  <div class="d-flex justify-content-center">
+    <div class="w-100" ><img src="./images/regression-metric.png" alt="" loading="lazy" data-zoomable /></div>
+  </div></figure>
+</p>
+<p>(1)MAE</p>
+<p>平均绝对误差。
+MAE对所有误差项一视同仁。对异常值不那么敏感。</p>
+<p>(2)MAPE</p>
+<p>平均绝对百分比误差，[0,+oo)。</p>
+<p>真实值有数据为0时，MAPE无意义。</p>
+<p>(3)MSE</p>
+<p>均方误差
+与MAE相比，MSE对较大的预测误差有更大的惩罚项。这会导致对异常值更敏感.</p>
+<p>(4)RMSE</p>
+<p>均方根误差。
+与MSE相比，RMSE多了一个开根号操作，使得其与响应变量处于同一个量纲，物理意义上更容易解释。</p>
+<p>(5)R2</p>
+<p>与MSE、RMSE、MAE相比，R2是相对性的评价指标，不能从绝对水平告诉你预测的精度。</p>
+<p>(6)EVAR</p>
+<p>（暂略）</p>
+<p>(7)Huber Loss</p>
+<h5 id="heading"></h5>
+<h5 id="思考">思考</h5>
+<ul>
+<li>我们在评价模型时，应该对所有误差项一视同仁吗？</li>
+<li>什么情况下我们无法容忍“明显较大”的误差，从而更偏向用MSE这种评价指标？</li>
+<li>什么情况下我们更需要“百分比”的误差表示？（如MAPE）</li>
+<li>实际计算误差时，我们需要进行“异常值”的检测并对其特殊处理吗？</li>
+</ul>
+<h3 id="参考资料">参考资料</h3>
+<h4 id="关于最小二乘法">关于最小二乘法</h4>
+<ul>
+<li><a href="https://www.bradthiessen.com/html5/docs/ols.pdf" target="_blank" rel="noopener">Why we use “least squares” regression instead of “least absolute deviations” regression.</a></li>
+<li><a href="https://www.itl.nist.gov/div898/handbook/pmd/section1/pmd141.htm" target="_blank" rel="noopener">Linear Least Squares Regression</a></li>
+<li><a href="https://math.stackexchange.com/questions/63238/why-do-we-use-a-least-squares-fit" target="_blank" rel="noopener">Why do we use a Least Squares fit?</a></li>
+</ul>
+<h4 id="关于回归标准误差">关于回归标准误差</h4>
+<ul>
+<li><a href="https://www.statology.org/standard-error-regression/" target="_blank" rel="noopener">Understanding the Standard Error of the Regression</a></li>
+<li><a href="https://statisticsbyjim.com/glossary/standard-error-regression/" target="_blank" rel="noopener">Standard error of the regression</a></li>
+</ul>
+<h4 id="关于r2">关于R2</h4>
+<ul>
+<li>
+<p><a href="https://statisticsbyjim.com/regression/standard-error-regression-vs-r-squared/" target="_blank" rel="noopener">Standard Error of the Regression vs. R-squared</a></p>
+</li>
+<li>
+<p><a href="https://statisticsbyjim.com/regression/interpret-r-squared-regression/" target="_blank" rel="noopener">How To Interpret R-squared in Regression Analysis</a></p>
+</li>
+<li>
+<p><a href="https://statisticsbyjim.com/regression/regression-tutorial-analysis-examples/" target="_blank" rel="noopener">Regression Tutorial with Analysis Examples</a></p>
+</li>
+<li>
+<p><a href="https://statisticsbyjim.com/regression/how-high-r-squared/" target="_blank" rel="noopener">How High Does R-squared Need to Be?</a></p>
+</li>
+<li>
+<p><a href="https://statisticsbyjim.com/regression/r-squared-invalid-nonlinear-regression/" target="_blank" rel="noopener">R-squared Is Not Valid for Nonlinear Regression</a></p>
+</li>
+<li>
+<p><a href="https://pubmed.ncbi.nlm.nih.gov/20529254/" target="_blank" rel="noopener">An evaluation of R2 as an inadequate measure for nonlinear models in pharmacological and biochemical research: a Monte Carlo approach</a></p>
+</li>
+<li>
+<p><a href="https://www.ibm.com/docs/en/cognos-analytics/11.1.0?topic=terms-adjusted-r-squared" target="_blank" rel="noopener">Adjusted R squared</a></p>
+</li>
+<li>
+<p><a href="https://www.statisticshowto.com/probability-and-statistics/statistics-definitions/adjusted-r2/" target="_blank" rel="noopener">Adjusted R2 / Adjusted R-Squared: What is it used for?</a></p>
+<h4 id="评估回归模型">评估回归模型</h4>
+</li>
+<li>
+<p><a href="https://towardsdatascience.com/what-are-the-best-metrics-to-evaluate-your-regression-model-418ca481755b" target="_blank" rel="noopener">3 Best metrics to evaluate Regression Model?</a></p>
+</li>
+<li>
+<p><a href="https://www.dataquest.io/blog/understanding-regression-error-metrics/" target="_blank" rel="noopener">Tutorial: Understanding Regression Error Metrics in Python</a></p>
+</li>
+</ul>
+
+    </div>
+
+    
+
+
+
+
+<div class="article-tags">
+  
+  <a class="badge badge-light" href="/tag/%E6%80%9D%E7%BB%B4/">思维</a>
+  
+  <a class="badge badge-light" href="/tag/%E7%BB%9F%E8%AE%A1%E5%AD%A6/">统计学</a>
+  
+</div>
+
+
+
+<div class="share-box">
+  <ul class="share">
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="https://twitter.com/intent/tweet?url=/post/rethinking-regression-model-and-its-evaluations/&amp;text=%e5%85%b3%e4%ba%8e%e5%9b%9e%e5%bd%92%e6%a8%a1%e5%9e%8b%e5%8f%8a%e5%85%b6%e8%af%84%e4%bb%b7%e6%96%b9%e6%b3%95%e7%9a%84%e4%b8%80%e4%ba%9b%e9%97%ae%e9%a2%98" target="_blank" rel="noopener" class="share-btn-twitter" aria-label="twitter">
+          <i class="fab fa-twitter"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="https://www.facebook.com/sharer.php?u=/post/rethinking-regression-model-and-its-evaluations/&amp;t=%e5%85%b3%e4%ba%8e%e5%9b%9e%e5%bd%92%e6%a8%a1%e5%9e%8b%e5%8f%8a%e5%85%b6%e8%af%84%e4%bb%b7%e6%96%b9%e6%b3%95%e7%9a%84%e4%b8%80%e4%ba%9b%e9%97%ae%e9%a2%98" target="_blank" rel="noopener" class="share-btn-facebook" aria-label="facebook">
+          <i class="fab fa-facebook"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="mailto:?subject=%e5%85%b3%e4%ba%8e%e5%9b%9e%e5%bd%92%e6%a8%a1%e5%9e%8b%e5%8f%8a%e5%85%b6%e8%af%84%e4%bb%b7%e6%96%b9%e6%b3%95%e7%9a%84%e4%b8%80%e4%ba%9b%e9%97%ae%e9%a2%98&amp;body=/post/rethinking-regression-model-and-its-evaluations/" target="_blank" rel="noopener" class="share-btn-email" aria-label="envelope">
+          <i class="fas fa-envelope"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="https://www.linkedin.com/shareArticle?url=/post/rethinking-regression-model-and-its-evaluations/&amp;title=%e5%85%b3%e4%ba%8e%e5%9b%9e%e5%bd%92%e6%a8%a1%e5%9e%8b%e5%8f%8a%e5%85%b6%e8%af%84%e4%bb%b7%e6%96%b9%e6%b3%95%e7%9a%84%e4%b8%80%e4%ba%9b%e9%97%ae%e9%a2%98" target="_blank" rel="noopener" class="share-btn-linkedin" aria-label="linkedin-in">
+          <i class="fab fa-linkedin-in"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="whatsapp://send?text=%e5%85%b3%e4%ba%8e%e5%9b%9e%e5%bd%92%e6%a8%a1%e5%9e%8b%e5%8f%8a%e5%85%b6%e8%af%84%e4%bb%b7%e6%96%b9%e6%b3%95%e7%9a%84%e4%b8%80%e4%ba%9b%e9%97%ae%e9%a2%98%20/post/rethinking-regression-model-and-its-evaluations/" target="_blank" rel="noopener" class="share-btn-whatsapp" aria-label="whatsapp">
+          <i class="fab fa-whatsapp"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="https://service.weibo.com/share/share.php?url=/post/rethinking-regression-model-and-its-evaluations/&amp;title=%e5%85%b3%e4%ba%8e%e5%9b%9e%e5%bd%92%e6%a8%a1%e5%9e%8b%e5%8f%8a%e5%85%b6%e8%af%84%e4%bb%b7%e6%96%b9%e6%b3%95%e7%9a%84%e4%b8%80%e4%ba%9b%e9%97%ae%e9%a2%98" target="_blank" rel="noopener" class="share-btn-weibo" aria-label="weibo">
+          <i class="fab fa-weibo"></i>
+        </a>
+      </li>
+    
+  </ul>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+
+
+
+  
+  
+  
+  
+  
+  <div class="media author-card content-widget-hr">
+    
+      
+      <a href="/authors/admin/"><img class="avatar mr-3 avatar-circle" src="/authors/admin/avatar_hu55194f19033f85038196a23353ffe543_580100_270x270_fill_q75_lanczos_center.jpg" alt="CoolCats"></a>
+    
+
+    <div class="media-body">
+      <h5 class="card-title"><a href="/authors/admin/">CoolCats</a></h5>
+      <h6 class="card-subtitle">理学学士</h6>
+      <p class="card-text">我的研究兴趣是时空数据分析、自然语言处理、服务端开发</p>
+      <ul class="network-icon" aria-hidden="true">
+  
+    
+    
+    
+      
+    
+    
+    
+    
+    
+    <li>
+      <a href="mailto:2811159909@qq.com" >
+        <i class="fas fa-envelope"></i>
+      </a>
+    </li>
+  
+    
+    
+    
+      
+    
+    
+    
+    
+    
+      
+    
+    <li>
+      <a href="https://github.com/Coolgiserz" target="_blank" rel="noopener">
+        <i class="fab fa-github"></i>
+      </a>
+    </li>
+  
+</ul>
+
+    </div>
+  </div>
+
+
+
+
+
+
+
+
+
+  
+  
+  
+
+  
+
+  
+  <section id="comments">
+    
+<div id="disqus_thread"></div>
+<script>
+  var disqus_config = function () {
+    
+    
+    
+  };
+  (function() {
+    if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+      document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+      return;
+    }
+    var d = document, s = d.createElement('script'); s.async = true;
+    s.src = 'https://' + "coolgiserz" + '.disqus.com/embed.js';
+    s.setAttribute('data-timestamp', +new Date());
+    (d.head || d.body).appendChild(s);
+  })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+
+
+  </section>
+  
+
+
+
+
+
+
+
+
+
+
+  </div>
+</article>
+  </div>
+
+  <div class="page-footer">
+    
+    
+    <div class="container">
+      <footer class="site-footer">
+
+  
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+
+
+
+
+
+  
+  
+  
+
+  
+  
+    
+  
+  
+    
+  
+
+  
+
+  
+  <p class="powered-by copyright-license-text">
+    © 2023 CoolCats. This work is licensed under <a href="https://creativecommons.org/licenses/by-nc-nd/4.0" rel="noopener noreferrer" target="_blank">CC BY NC ND 4.0</a>
+  </p>
+  
+
+  <p class="powered-by footer-license-icons">
+    <a href="https://creativecommons.org/licenses/by-nc-nd/4.0" rel="noopener noreferrer" target="_blank" aria-label="Creative Commons">
+      <i class="fab fa-creative-commons fa-2x" aria-hidden="true"></i>
+      <i class="fab fa-creative-commons-by fa-2x" aria-hidden="true"></i>
+      
+        <i class="fab fa-creative-commons-nc fa-2x" aria-hidden="true"></i>
+      
+      
+        <i class="fab fa-creative-commons-nd fa-2x" aria-hidden="true"></i>
+      
+    </a>
+  </p>
+
+
+
+
+  <p class="powered-by">
+    
+    
+    
+      
+      
+      
+      
+      
+      
+      Published with <a href="https://wowchemy.com/?utm_campaign=poweredby" target="_blank" rel="noopener">Wowchemy</a> — the free, <a href="https://github.com/wowchemy/wowchemy-hugo-themes" target="_blank" rel="noopener">open source</a> website builder that empowers creators.
+    
+  </p>
+</footer>
+
+    </div>
+    
+  </div>
+
+      
+
+    
+    <script src="/js/vendor-bundle.min.fab8b449b814cc9f95b22fcf2e45f05b.js"></script>
+
+    
+    
+    
+      
+
+      
+      
+
+      
+
+      
+        
+        <script src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@10.2.1/build/highlight.min.js" integrity="sha512-Ypjm0o7jOxAd4hpdoppSEN0TQOC19UtPAqD+4s5AlXmUvbmmS/YMxYqAqarQYyxTnB6/rqip9qcxlNB/3U9Wdg==" crossorigin="anonymous"></script>
+        
+        
+        <script src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@10.2.1/build/languages/r.min.js" crossorigin="anonymous"></script>
+        
+        <script src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@10.2.1/build/languages/latex.min.js" crossorigin="anonymous"></script>
+        
+      
+
+    
+
+    
+    
+    
+      <script src="https://cdn.jsdelivr.net/npm/leaflet@1.7.1/dist/leaflet.min.js" integrity="" crossorigin="anonymous"></script>
+    
+
+    
+    
+
+    
+    
+    
+      
+      <script id="search-hit-fuse-template" type="text/x-template">
+        <div class="search-hit" id="summary-{{key}}">
+          <div class="search-hit-content">
+            <div class="search-hit-name">
+              <a href="{{relpermalink}}">{{title}}</a>
+              <div class="article-metadata search-hit-type">{{type}}</div>
+              <p class="search-hit-description">{{snippet}}</p>
+            </div>
+          </div>
+        </div>
+      </script>
+      
+        <script src="https://cdn.jsdelivr.net/gh/krisk/Fuse@v3.2.1/dist/fuse.min.js" integrity="sha512-o38bmzBGX+hD3JHWUFCDA09btWaqrNmoJ3RXLlrysA7PP01Kgs4UlE4MhelE1v5dJR3+cxlR4qQlotsW7jKsnw==" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/gh/julmot/mark.js@8.11.1/dist/jquery.mark.min.js" integrity="sha512-mhbv5DqBMgrWL+32MmsDOt/OAvqr/cHimk6B8y/bx/xS88MVkYGPiVv2ixKVrkywF2qHplNRUvFsAHUdxZ3Krg==" crossorigin="anonymous"></script>
+      
+    
+
+    
+    
+
+    
+    
+    
+    
+      <script id="dsq-count-scr" src="https://coolgiserz.disqus.com/count.js" async></script>
+    
+
+    
+    
+      
+      
+      
+      
+      
+      
+      
+    
+
+    
+
+    
+    
+    
+    <script id="page-data" type="application/json">{"use_headroom":true}</script>
+
+    
+    
+      <script src="/js/wowchemy-headroom.c251366b4128fd5e6b046d4c97a62a51.js" type="module"></script>
+    
+    
+    
+    
+    
+    
+    
+      
+      
+    
+    
+    <script src="/en/js/wowchemy.min.ab2f2890dbe3e2e83579366d3d6e8fd9.js"></script>
+
+    
+    
+      <script src="/js/wowchemy-map.a26e9d2f7238ba5b868384f1c5bc6477.js" type="module"></script>
+    
+    
+    
+    
+      
+<div id="modal" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Cite</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <pre><code class="tex hljs"></code></pre>
+      </div>
+      <div class="modal-footer">
+        <a class="btn btn-outline-primary my-1 js-copy-cite" href="#" target="_blank">
+          <i class="fas fa-copy"></i> Copy
+        </a>
+        <a class="btn btn-outline-primary my-1 js-download-cite" href="#" target="_blank">
+          <i class="fas fa-download"></i> Download
+        </a>
+        <div id="modal-error"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+      <script src="/js/wowchemy-publication.68f8d7090562ca65fc6d3cb3f8f2d2cb.js" type="module"></script>
+
+
+
+
+
+
+</body>
+</html>

@@ -1,0 +1,204 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>写作 | CoolCats</title>
+    <link>/category/%E5%86%99%E4%BD%9C/</link>
+      <atom:link href="/category/%E5%86%99%E4%BD%9C/index.xml" rel="self" type="application/rss+xml" />
+    <description>写作</description>
+    <generator>Wowchemy (https://wowchemy.com)</generator><language>en-us</language><lastBuildDate>Mon, 16 May 2022 20:38:07 +0800</lastBuildDate>
+    <image>
+      <url>/media/icon_hue03491371183284312b8b116a73ae5ab_79511_512x512_fill_lanczos_center_3.png</url>
+      <title>写作</title>
+      <link>/category/%E5%86%99%E4%BD%9C/</link>
+    </image>
+    
+    <item>
+      <title>关于方法类科技论文写作的思考</title>
+      <link>/post/how-to-write-an-academic-paper/</link>
+      <pubDate>Mon, 16 May 2022 20:38:07 +0800</pubDate>
+      <guid>/post/how-to-write-an-academic-paper/</guid>
+      <description>&lt;h3 id=&#34;科技论文的类型&#34;&gt;科技论文的类型&lt;/h3&gt;
+&lt;p&gt;根据Springer出版社对于期刊论文类型的分类。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;原创型研究论文(Original Research)&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;短篇报告(Short reports or Letters)&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;综述文章(Review Articles)&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;案例研究(Case Studies)&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;方法类论文(Methodologies or Methods)&lt;/p&gt;
+&lt;p&gt;提出新的实验性方法、测试或工作流程。提出的方法可以说全新的也可以是已有方法的优化版本。文章应该论证提出的方法在已有基础上的进步水平。&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;科技论文评价方法&#34;&gt;科技论文评价方法&lt;/h3&gt;
+&lt;p&gt;如何评判一篇论文的好坏？该由谁来评价？有何评价标准？&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;如何评价？&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;个人觉得可从内容内在价值、传播价值角度来判断。内容内在价值可以分为理论价值和应用价值，其中理论价值指文章可以弥补学界现有理论认识不足，通常需要有新颖的概念或者对已有概念的内涵进行重新阐释；应用价值主要看文章是否有助于提高人们在某一产业、领域的实践水平。由于文章发表的一大目的是向学界传达新观点、方法，所以除内在价值外，还应考虑文章的传播价值：是否清晰易读，文章要点是否可复现等等。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;谁来评价？&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;广大读者。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;评价标准？&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;通过时间检验。已有一些指标（引用数、影响因子、自引率等）可以一定程度上反映论文的价值。或许可以参考PageRank的思想，被越多“权威”论文引用，说明论文具有更高的价值。&lt;/p&gt;
+&lt;h2 id=&#34;方法类科技论文的写作原则&#34;&gt;方法类科技论文的写作原则&lt;/h2&gt;
+&lt;p&gt;可以从结构、写作风格、可读性三个层面看&lt;/p&gt;
+&lt;h3 id=&#34;论文结构&#34;&gt;论文结构&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;摘要&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;引言&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;方法&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;结果&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;讨论&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;写作风格&#34;&gt;写作风格&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;有Big Picture&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;对于关键性概念/断言、使用到的第三方工具包、方法需引用文献&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;提供关于方法足够多的细节以便其他研究者复现&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;精确表述，避免模糊&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;讨论方法适用性、局限性&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;方法类科技论文写作常见错误&#34;&gt;方法类科技论文写作常见错误&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;文章结构混乱&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;描述过多而缺少理论分析&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;表述不当&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;语法错误&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;参考文献格式&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;APA Style&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;https://blog.apastyle.org/apastyle/2012/05/missing-pieces.html&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;APA Style 6th Edition Blog: Missing Pieces: How to Write an APA Style Reference Even Without All the Information&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;MLP&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;阅读材料&#34;&gt;阅读材料&lt;/h3&gt;
+&lt;h4 id=&#34;如何能有创意&#34;&gt;如何能有创意？&lt;/h4&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a href=&#34;https://dantownsend.co.uk/blog/an-idea-is-a-network/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;An idea is a network&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a href=&#34;https://www.ted.com/talks/steven_johnson_how_the_ghost_map_helped_end_a_killer_disease&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;TED: Where good ideas come from?&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&#34;科技论文的定义&#34;&gt;科技论文的定义&lt;/h4&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://researchguides.library.vanderbilt.edu/c.php?g=69346&amp;amp;p=831584&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Literature and Stats Guide: 1 What is a scientific paper?&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&#34;科技论文的类型-1&#34;&gt;科技论文的类型&lt;/h4&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a href=&#34;https://www.editage.com/insights/6-article-types-that-journals-publish-a-guide-for-early-career-researchers&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;6 Article types that journals publish: A guide for early career researchers&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a href=&#34;https://www.springer.com/gp/authors-editors/authorandreviewertutorials/writing-a-journal-manuscript/types-of-journal-articles/10285504&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Springer# Types of journal articles&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a href=&#34;https://libguides.unf.edu/originalresearch&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;## What is Original Research?&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&#34;什么是好的论文&#34;&gt;什么是好的论文？&lt;/h4&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://centaur.reading.ac.uk/4306/1/ARCOM_Newsletter_-_What_makes_a_good_research_paper.pdf&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;What makes a good research paper?&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://canvas.hull.ac.uk/courses/370/pages/scientific-writing-style&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Scientific Writing Style&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://aslopubs.onlinelibrary.wiley.com/doi/full/10.1002/lol2.10165&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Simple rules for concise scientific writing&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://www.bates.edu/biology/files/2010/06/How-to-Write-Guide-v10-2014.pdf&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;How to Write a Paper in Scientific Journal Style and Format&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://pdf.hanspub.org/ML20190400000_94160049.pdf&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Text Readability and Teaching of Academic Paper Writing&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://www.nature.com/articles/d41586-019-01431-z&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Nature# How small changes to a paper can help to smooth the review process&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&#34;如何写论文&#34;&gt;如何写论文？&lt;/h4&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://www.unl.edu/gradstudies/connections/twenty-steps-writing-research-article&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Twenty Steps to Writing a Research Article&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://academic.oup.com/intqhc/article/16/3/191/1814554?login=false&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Writing a research article: advice to beginners&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://www.wlc.edu/uploadedFiles/Content/Academics/Student_Success_Center/ResearchPaper.pdf&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;How to Write and Publish an Academic Research Paper: 101 Tips from JournalPrep.com&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://link.springer.com/article/10.1007/s00238-018-1418-z&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;# How to avoid common errors in writing scientific manuscripts&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h5 id=&#34;论文图表颜色方案&#34;&gt;论文图表颜色方案&lt;/h5&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a href=&#34;https://colorbrewer2.org/#type=sequential&amp;amp;scheme=BuPu&amp;amp;n=3&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Colorbrewer&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a href=&#34;https://www.giss.nasa.gov/tools/panoply/colorbars/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;## Panoply netCDF, HDF and GRIB Data Viewer&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a href=&#34;https://betterfigures.org/2015/06/23/picking-a-colour-scale-for-scientific-graphics/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;# PICKING A COLOUR SCALE FOR SCIENTIFIC GRAPHICS&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&#34;如何确认研究问题&#34;&gt;如何确认研究问题？&lt;/h4&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://www.springer.com/gp/authors-editors/authorandreviewertutorials/writing-a-journal-manuscript/identifying-you-research-question/10285494&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Identifying your research question&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://www.monash.edu/library/help/assignments-research/developing-research-questions&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Developing research questions&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&#34;如何写摘要&#34;&gt;如何写摘要？&lt;/h4&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://users.ece.cmu.edu/~koopman/essays/abstract.html&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;How to Write an Abstract&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&#34;如何写方法&#34;&gt;如何写方法？&lt;/h4&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a href=&#34;https://www.indeed.com/career-advice/career-development/how-to-write-a-methodology&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;How To Write a Methodology (With Tips and FAQs)&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a href=&#34;https://guides.library.oregonstate.edu/c.php?g=285842&amp;amp;p=1906824&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Scholarly Articles: How can I tell?&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&#34;常见错误&#34;&gt;常见错误&lt;/h4&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a href=&#34;https://learn.solent.ac.uk/mod/book/view.php?id=116226&amp;amp;chapterid=15165&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Successful Academic Writing&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a href=&#34;https://besteditproof.com/en/academy/10-common-grammar-mistakes-in-academic-writing&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;10 Common Grammar Mistakes in Academic Writing&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

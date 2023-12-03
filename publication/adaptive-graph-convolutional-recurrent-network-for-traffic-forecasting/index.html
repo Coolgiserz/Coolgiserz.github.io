@@ -1,0 +1,1426 @@
+<!DOCTYPE html><html lang="en-us" >
+
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  
+  
+  
+    <meta name="generator" content="Wowchemy 5.5.0 for Hugo" />
+  
+
+  
+  
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+  
+  
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  
+
+  
+  
+  
+    
+      
+      <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Roboto+Mono&family=Roboto:wght@400;700&display=swap">
+      <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Roboto+Mono&family=Roboto:wght@400;700&display=swap" media="print" onload="this.media='all'">
+    
+  
+
+  
+  
+  
+  
+  
+    
+    
+    
+  
+  
+
+  <meta name="author" content="CoolCats" />
+
+  
+  
+  
+    
+  
+  <meta name="description" content="在相关的时间序列数据中建立复杂的空间和时间相关性的模型，对于理解交通动态和预测一个不断发展的交通系统的未来状态是不可或缺的。最近的工作主要集中在设计复杂的图神经网络架构，借助于预先定义的图来捕捉共享模式。在本文中，我们认为学习节点特定的模式对于交通预测是必不可少的，而预先定义的图是可以避免的。为此，我们提出了两个自适应模块，以增强图形卷积网络（GCN）的新功能。1)节点自适应参数学习(NAPL)模块，用于捕捉节点的特定模式；2)数据自适应图形生成(DAGG)模块，用于自动推断不同流量序列之间的相互依赖关系。我们进一步提出了自适应图卷积循环网络（AGCRN），基于这两个模块和循环网络自动捕捉交通序列中细粒度的空间和时间相关性。我们在两个真实世界的交通数据集上的实验表明，AGCRN在没有预先定义的空间连接图的情况下，以显著的优势优于最先进的技术。" />
+
+  
+  <link rel="alternate" hreflang="en-us" href="/publication/adaptive-graph-convolutional-recurrent-network-for-traffic-forecasting/" />
+
+  
+  
+  
+    <meta name="theme-color" content="#1565c0" />
+  
+
+  
+  
+    
+    <script src="/js/mathjax-config.js"></script>
+  
+
+  
+
+  <link rel="stylesheet" href="/css/vendor-bundle.min.c7b8d9abd591ba2253ea42747e3ac3f5.css" media="print" onload="this.media='all'">
+
+  
+  
+  
+    
+    
+      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/academicons@1.9.1/css/academicons.min.css" integrity="sha512-W0xM4mr6dEP9nREo7Z9z+9X70wytKvMGeDsj7ps2+xg5QPrEBXC8tAW1IFnzjR6eoJ90JmCnFzerQJTLzIEHjA==" crossorigin="anonymous" media="print" onload="this.media='all'">
+    
+
+    
+    
+    
+    
+      
+      
+    
+    
+    
+
+    
+    
+    
+      
+    
+    
+      
+      
+        
+          <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@10.2.1/build/styles/github.min.css" crossorigin="anonymous" title="hl-light" media="print" onload="this.media='all'">
+          <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@10.2.1/build/styles/dracula.min.css" crossorigin="anonymous" title="hl-dark" media="print" onload="this.media='all'" disabled>
+        
+      
+    
+
+    
+    
+    
+      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.7.1/dist/leaflet.min.css" integrity="" crossorigin="anonymous" media="print" onload="this.media='all'">
+    
+
+    
+
+    
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js" integrity="" crossorigin="anonymous" async></script>
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+  
+
+  
+  
+  
+  
+  
+  <link rel="stylesheet" href="/css/wowchemy.1052fab8b7700a3dc49ee23683097d66.css" />
+
+  
+
+
+
+  
+
+
+  
+
+
+  
+
+
+  <script>
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?51ae6db546b05b91d4053193ba49123d";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+  
+  
+  
+
+  
+
+  
+
+  <link rel="icon" type="image/png" href="/media/icon_hue03491371183284312b8b116a73ae5ab_79511_32x32_fill_lanczos_center_3.png" />
+  <link rel="apple-touch-icon" type="image/png" href="/media/icon_hue03491371183284312b8b116a73ae5ab_79511_180x180_fill_lanczos_center_3.png" />
+
+  <link rel="canonical" href="/publication/adaptive-graph-convolutional-recurrent-network-for-traffic-forecasting/" />
+
+  
+  
+  
+  
+  
+  
+  
+  
+    
+    
+  
+  
+
+  
+  
+    
+    
+  
+  <meta property="twitter:card" content="summary" />
+  
+    <meta property="twitter:site" content="@wowchemy" />
+    <meta property="twitter:creator" content="@wowchemy" />
+  
+  <meta property="og:site_name" content="CoolCats" />
+  <meta property="og:url" content="/publication/adaptive-graph-convolutional-recurrent-network-for-traffic-forecasting/" />
+  <meta property="og:title" content="「论文阅读」- 用于交通流预测的自适应图卷积循环网络 | CoolCats" />
+  <meta property="og:description" content="在相关的时间序列数据中建立复杂的空间和时间相关性的模型，对于理解交通动态和预测一个不断发展的交通系统的未来状态是不可或缺的。最近的工作主要集中在设计复杂的图神经网络架构，借助于预先定义的图来捕捉共享模式。在本文中，我们认为学习节点特定的模式对于交通预测是必不可少的，而预先定义的图是可以避免的。为此，我们提出了两个自适应模块，以增强图形卷积网络（GCN）的新功能。1)节点自适应参数学习(NAPL)模块，用于捕捉节点的特定模式；2)数据自适应图形生成(DAGG)模块，用于自动推断不同流量序列之间的相互依赖关系。我们进一步提出了自适应图卷积循环网络（AGCRN），基于这两个模块和循环网络自动捕捉交通序列中细粒度的空间和时间相关性。我们在两个真实世界的交通数据集上的实验表明，AGCRN在没有预先定义的空间连接图的情况下，以显著的优势优于最先进的技术。" /><meta property="og:image" content="/media/icon_hue03491371183284312b8b116a73ae5ab_79511_512x512_fill_lanczos_center_3.png" />
+    <meta property="twitter:image" content="/media/icon_hue03491371183284312b8b116a73ae5ab_79511_512x512_fill_lanczos_center_3.png" /><meta property="og:locale" content="en-us" />
+  
+    
+      <meta
+        property="article:published_time"
+        content="2021-01-15T09:58:49&#43;08:00"
+      />
+    
+    <meta property="article:modified_time" content="2021-01-15T09:58:49&#43;08:00">
+  
+
+  
+
+
+    
+
+
+
+
+
+
+
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "/publication/adaptive-graph-convolutional-recurrent-network-for-traffic-forecasting/"
+  },
+  "headline": "「论文阅读」- 用于交通流预测的自适应图卷积循环网络",
+  
+  "datePublished": "2021-01-15T09:58:49+08:00",
+  "dateModified": "2021-01-15T09:58:49+08:00",
+  
+  "author": {
+    "@type": "Person",
+    "name": "CoolCats"
+  },
+  
+  "publisher": {
+    "@type": "Organization",
+    "name": "CoolCats",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "/media/icon_hue03491371183284312b8b116a73ae5ab_79511_192x192_fill_lanczos_center_3.png"
+    }
+  },
+  "description": "在相关的时间序列数据中建立复杂的空间和时间相关性的模型，对于理解交通动态和预测一个不断发展的交通系统的未来状态是不可或缺的。最近的工作主要集中在设计复杂的图神经网络架构，借助于预先定义的图来捕捉共享模式。在本文中，我们认为学习节点特定的模式对于交通预测是必不可少的，而预先定义的图是可以避免的。为此，我们提出了两个自适应模块，以增强图形卷积网络（GCN）的新功能。1)节点自适应参数学习(NAPL)模块，用于捕捉节点的特定模式；2)数据自适应图形生成(DAGG)模块，用于自动推断不同流量序列之间的相互依赖关系。我们进一步提出了自适应图卷积循环网络（AGCRN），基于这两个模块和循环网络自动捕捉交通序列中细粒度的空间和时间相关性。我们在两个真实世界的交通数据集上的实验表明，AGCRN在没有预先定义的空间连接图的情况下，以显著的优势优于最先进的技术。"
+}
+</script>
+
+  
+
+  
+
+  
+
+  
+
+
+
+
+
+  <title>「论文阅读」- 用于交通流预测的自适应图卷积循环网络 | CoolCats</title>
+</head>
+
+
+<body id="top" data-spy="scroll" data-offset="70" data-target="#TableOfContents" class="page-wrapper   " data-wc-page-id="941aa2e313def133bd3248be1cf2f9e5" >
+
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  <script src="/js/wowchemy-init.min.2ed908358299dd7ab553faae685c746c.js"></script>
+
+  
+
+
+<aside class="search-modal" id="search">
+  <div class="container">
+    <section class="search-header">
+
+      <div class="row no-gutters justify-content-between mb-3">
+        <div class="col-6">
+          <h1>Search</h1>
+        </div>
+        <div class="col-6 col-search-close">
+          <a class="js-search" href="#" aria-label="Close"><i class="fas fa-times-circle text-muted" aria-hidden="true"></i></a>
+        </div>
+      </div>
+
+      <div id="search-box">
+        
+        <input name="q" id="search-query" placeholder="Search..." autocapitalize="off"
+        autocomplete="off" autocorrect="off" spellcheck="false" type="search" class="form-control"
+        aria-label="Search...">
+        
+      </div>
+
+      
+      
+
+      
+
+    </section>
+    <section class="section-search-results">
+
+      <div id="search-hits">
+        
+      </div>
+
+    </section>
+  </div>
+</aside>
+
+
+
+  <div class="page-header">
+    
+
+
+
+
+
+
+
+
+
+
+
+
+<header class="header--fixed">
+  <nav class="navbar navbar-expand-lg navbar-light compensate-for-scrollbar" id="navbar-main">
+    <div class="container-xl">
+
+      
+      <div class="d-none d-lg-inline-flex">
+        <a class="navbar-brand" href="/">CoolCats</a>
+      </div>
+      
+
+      
+      <button type="button" class="navbar-toggler" data-toggle="collapse"
+              data-target="#navbar-content" aria-controls="navbar-content" aria-expanded="false" aria-label="Toggle navigation">
+      <span><i class="fas fa-bars"></i></span>
+      </button>
+      
+
+      
+      <div class="navbar-brand-mobile-wrapper d-inline-flex d-lg-none">
+        <a class="navbar-brand" href="/">CoolCats</a>
+      </div>
+      
+
+      
+      
+      <div class="navbar-collapse main-menu-item collapse justify-content-start" id="navbar-content">
+
+        
+        <ul class="navbar-nav d-md-inline-flex">
+          
+
+          
+
+          
+          
+          
+
+          
+
+          
+          
+          
+          
+
+          
+            
+              
+              
+            
+            
+          
+
+          <li class="nav-item">
+            <a class="nav-link " href="/post"><span>博客</span></a>
+          </li>
+
+          
+          
+
+          
+
+          
+          
+          
+            
+          
+
+          
+
+          
+          
+          
+          
+
+          
+            
+              
+              
+            
+            
+          
+
+          <li class="nav-item">
+            <a class="nav-link " href="/event"><span>趣事</span></a>
+          </li>
+
+          
+          
+
+          
+
+          
+          
+          
+            
+          
+
+          
+
+          
+          
+          
+          
+
+          
+            
+              
+              
+            
+            
+          
+
+          <li class="nav-item">
+            <a class="nav-link " href="/project"><span>项目</span></a>
+          </li>
+
+          
+          
+
+          
+
+          
+          
+          
+            
+          
+
+          
+
+          
+          
+          
+          
+
+          
+            
+              
+              
+            
+            
+          
+
+          <li class="nav-item">
+            <a class="nav-link  active" href="/publication"><span>论文</span></a>
+          </li>
+
+          
+          
+
+          
+
+          
+          
+          
+            
+          
+
+          
+
+          
+          
+          
+          
+
+          
+            
+              
+              
+            
+            
+          
+
+          <li class="nav-item">
+            <a class="nav-link " href="/contact"><span>联系</span></a>
+          </li>
+
+          
+          
+
+          
+
+          
+          
+          
+            
+          
+
+          
+
+          
+          
+          
+          
+
+          
+            
+              
+              
+            
+            
+          
+
+          <li class="nav-item">
+            <a class="nav-link " href="/media/files/cv"><span>简历</span></a>
+          </li>
+
+          
+          
+
+        
+
+          
+        </ul>
+      </div>
+
+      <ul class="nav-icons navbar-nav flex-row ml-auto d-flex pl-md-2">
+
+        
+        
+          
+        
+
+        
+        
+        <li class="nav-item">
+          <a class="nav-link js-search" href="#" aria-label="Search"><i class="fas fa-search" aria-hidden="true"></i></a>
+        </li>
+        
+
+        
+        
+        
+        <li class="nav-item dropdown theme-dropdown">
+          <a href="#" class="nav-link" data-toggle="dropdown" aria-haspopup="true" aria-label="Display preferences">
+            <i class="fas fa-moon" aria-hidden="true"></i>
+          </a>
+          <div class="dropdown-menu">
+            <a href="#" class="dropdown-item js-set-theme-light">
+              <span>Light</span>
+            </a>
+            <a href="#" class="dropdown-item js-set-theme-dark">
+              <span>Dark</span>
+            </a>
+            <a href="#" class="dropdown-item js-set-theme-auto">
+              <span>Automatic</span>
+            </a>
+          </div>
+        </li>
+        
+
+        
+        
+
+      </ul>
+
+    </div>
+  </nav>
+</header>
+
+
+  </div>
+
+  <div class="page-body">
+    
+    
+    
+
+    
+
+
+
+
+
+
+
+
+<div class="pub">
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+  
+  
+<div class="article-container pt-3">
+  <h1>「论文阅读」- 用于交通流预测的自适应图卷积循环网络</h1>
+
+  
+
+  
+    
+
+
+<div class="article-metadata">
+
+  
+  
+
+  
+  <span class="article-date">
+    
+    
+      
+    
+    January, 2021
+  </span>
+  
+
+  
+
+  
+
+  
+  
+  
+  
+
+  
+  
+  <span class="middot-divider"></span>
+  <span class="article-categories">
+    <i class="fas fa-folder mr-1"></i><a href="/category/%E4%BA%A4%E9%80%9A%E6%B5%81%E9%A2%84%E6%B5%8B/">交通流预测</a></span>
+  
+
+</div>
+
+    
+
+
+
+
+<div class="btn-links mb-3">
+  
+  
+
+
+
+
+
+
+
+
+  
+
+
+
+<a class="btn btn-outline-primary btn-page-header" href="/publication/adaptive-graph-convolutional-recurrent-network-for-traffic-forecasting/adaptive-graph-convolutional-recurrent-network-for-traffic-forecasting.pdf" target="_blank" rel="noopener">
+  PDF
+</a>
+
+
+
+
+  
+  
+    
+  
+<a class="btn btn-outline-primary btn-page-header" href="/https:/github.com/LeiBAI/AGCRN" target="_blank" rel="noopener">
+  Code
+</a>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</div>
+
+
+  
+</div>
+
+
+
+  <div class="article-container">
+
+    
+    <h3>Abstract</h3>
+    <p class="pub-abstract">Modeling complex spatial and temporal correlations in the correlated time series data is indispensable for understanding the traffic dynamics and predicting the future status of an evolving traffic system. Recent works focus on designing complicated graph neural network architectures to capture shared patterns with the help of pre-defined graphs. In this paper, we argue that learning node-specific patterns is essential for traffic forecasting while the pre-defined graph is avoidable. To this end, we propose two adaptive modules for enhancing Graph Convolutional Network (GCN) with new capabilities: 1) a Node Adaptive Parameter Learning (NAPL) module to capture node-specific patterns; 2) a Data Adaptive Graph Gen- eration (DAGG) module to infer the inter-dependencies among different traffic series automatically. We further propose an Adaptive Graph Convolutional Recur- rent Network (AGCRN) to capture fine-grained spatial and temporal correlations in traffic series automatically based on the two modules and recurrent networks. Our experiments on two real-world traffic datasets show AGCRN outperforms state-of-the-art by a significant margin without pre-defined graphs about spatial connections.</p>
+    
+
+    
+    
+    <div class="row">
+      <div class="col-md-1"></div>
+      <div class="col-md-10">
+        <div class="row">
+          <div class="col-12 col-md-3 pub-row-heading">Type</div>
+          <div class="col-12 col-md-9">
+            <a href="/publication/#1">
+              Conference paper
+            </a>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-1"></div>
+    </div>
+    <div class="d-md-none space-below"></div>
+    
+
+    
+
+    <div class="space-below"></div>
+
+    <div class="article-style"><p>快速的城市化使城市人口不断增加，并为人口流动性和发展可持续性带来了巨大挑战。在这些挑战中，智能交通系统(ITS)已经成为一个活跃的研究领域[1]，因为它具有促进系统效率和决策的潜力。作为智能交通系统的重要步骤，交通预测旨在预测城市交通系统的未来状态（如交通流量和速度，以及乘客需求）。它在交通调度和管理中起着至关重要的作用，近年来引起了机器学习研究界的极大关注[2，3，4，5，6]。</p>
+<p>由于不同来源的交通流量和交通速度预测的不同环形检测器/交叉口，以及乘客需求预测的不同车站/地区，产生了复杂的内部依赖关系(一个交通序列中的时间相关性)和相互依赖关系(即多个相关交通序列之间的空间相关性)[3]，因此交通预测具有挑战性。传统的方法只是简单地部署时间序列模型，如将自回归综合移动平均(ARIMA)和向量自回归(VAR)用于交通预测。这些方法无法捕捉大规模交通数据中的非线性关联性和复杂的时空模式。最近，研究人员转向基于深度学习的方法，并专注于设计新的神经网络架构，以捕获所有交通序列共有的突出时空模式。他们通常用循环神经网络[7，8，9，10]（如长短时记忆和门控循环单元）或时空卷积模块[3，4]来模拟时空相关性。关于空间相关性，他们通常使用基于GCN的方法[2，4，3，6，11，5，12]来模拟非结构化的交通序列及其相互依赖性。</p>
+<p>虽然最近基于深度学习的方法取得了可喜的成果，但它们偏重于所有交通序列中突出的和共有的模式&ndash;共<strong>享的参数空间使得目前的方法在准确捕捉细粒度的数据源特定模式方面存在不足</strong>。事实上，交通序列呈现出多样化的模式(如图 1 所示)，它们在不同的数据源中可能出现相似、不同甚至矛盾的属性[7, 13]。此外，<strong>现有的基于 GCN 的方法需要通过相似度或距离度量[14]来预先定义一个互连图</strong>，以捕获空间相关性。这进一步要求大量的领域知识，并且对图的质量很敏感。这种方式生成的图通常是基于直观、不完备且没有直接针对预测任务，在没有相应知识的情况下，可能会存在偏差，不能适应领域。
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<figure  >
+  <div class="d-flex justify-content-center">
+    <div class="w-100" ><img src="./images/fig1.png" alt="" loading="lazy" data-zoomable /></div>
+  </div></figure>
+</p>
+<p><strong>与其设计更复杂的网络架构，我们提出了两种简洁而有效的机制，通过修改当前方法的基本构件（即GCN）来分别解决上述问题</strong>。具体来说，我们提出在GCN中加入两个自适应模块来增强流量预测任务。1）节点自适应参数学习（NAPL）模块，用于学习每个交通系列的节点特定模式&ndash;NAPL将传统GCN中的参数进行因子化，并根据节点嵌入情况从所有节点共享的权重池和偏置池中生成节点特定参数；2）数据自适应图形生成（DAGG）模块，用于从数据中推断节点嵌入（属性），并在训练时生成图形。NAPL和DAGG是独立的，可以单独或联合适应现有的基于GCN的交通预测模型。模块中的所有参数都可以很容易地以端到端的方式进行学习。此外，我们将NAPL和DAGG与循环网络相结合，提出了一个统一的交通预测模型&ndash;自适应图卷积循环网络（AGCRN）。AGCRN可以捕捉交通序列中细粒度的节点特异性空间和时间相关性，并将修正后的GCNs中的节点嵌入与DAGG中的嵌入统一起来。因此，训练AGCRN可以为每个交通序列源（例如，交通速度/流量的道路，乘客需求的车站/区域）提供有意义的节点表示向量。学习到的节点表示包含了关于道路/区域的有价值的信息，并有可能应用于其他任务[15]。</p>
+<p>我们在两个真实世界的数据集上对AGCRN进行了多步骤交通预测任务的评估，并与几个有代表性的交通预测模型进行了比较。实验结果表明，AGCRN以显著的优势优于最先进的技术。我们还进行了消融研究，并证明了NAPL和DAGG的有效性。</p>
+<h3 id="方法">方法</h3>
+<h4 id="节点自适应参数学习">节点自适应参数学习</h4>
+<h4 id="自适应图结构生成">自适应图结构生成</h4>
+<h4 id="自适应图卷积循环网络">自适应图卷积循环网络</h4>
+<h4 id="多步交通预测">多步交通预测</h4>
+<h3 id="实验">实验</h3>
+<h4 id="数据集">数据集</h4>
+<ul>
+<li>PEMSD4</li>
+</ul>
+<p>PeMSD4数据集指的是旧金山湾区的交通流量数据。包括307个环形探测器在2018年1月1日至2018年2月28日期间记录的数据</p>
+<ul>
+<li>PEMSD8</li>
+</ul>
+<p>PeMSD8数据集包含了从2016年7月1日至2016年8月31日圣贝纳迪诺地区的170个环形探测器收集的交通流信息。</p>
+<ul>
+<li>
+<p>数据预处理</p>
+<ul>
+<li>
+<p>通过线性插值填补缺失数据</p>
+</li>
+<li>
+<p>将数据聚合成5分钟的样本间隔</p>
+</li>
+<li>
+<p>标准归一化-&gt;使训练更稳定</p>
+</li>
+<li>
+<p>用历史前一个小时的数据预测未来一个小时的数据</p>
+</li>
+<li>
+<p>数据划分：训练（6）/验证（2）/测试（2）</p>
+</li>
+</ul>
+</li>
+</ul>
+<h4 id="实验设置">实验设置</h4>
+<p>验证本文提出方法的有效性，对比广泛使用的baseline和SOTA：</p>
+<p>(1). 历史平均(HA)</p>
+<p>(2). 向量自回归(VAR)</p>
+<p>(3). GRU-ED</p>
+<p>(4). DSANet</p>
+<p>(5). DCRNN</p>
+<p>(6). STGCN</p>
+<p>(7). ASTGCN</p>
+<p>(8). STSGCN</p>
+<h4 id="评价方法">评价方法</h4>
+<p>对12个时间步的预测结果取平均</p>
+<ul>
+<li>
+<p>RMSE</p>
+</li>
+<li>
+<p>MAPE</p>
+</li>
+<li>
+<p>MAE</p>
+</li>
+</ul>
+<p><img src="images/fig2.png"
+alt="performance comparision"
+style="float: left; margin-right: 10px;" /></p>
+<h4 id="消融实验">消融实验</h4>
+<p>验证NAPL和DGAA的表现。
+<img src="images/fig3.png"
+alt="ablation study"
+style="float: left; margin-right: 10px;" /></p>
+<h4 id="模型分析">模型分析</h4>
+<h5 id="图生成">图生成</h5>
+<p><img src="images/table2.png"
+alt="graph generation"
+style="float: middle; margin-right: 10px;" /></p>
+<h5 id="嵌入维度">嵌入维度</h5>
+<p><img src="images/fig4.png"
+alt="embedding dimension"
+style="float: middle; margin-right: 10px;" /></p>
+<h5 id="计算成本">计算成本</h5>
+<p>评估模型的参数数量和训练时间开销</p>
+<p><img src="images/table3.png"
+alt="computation cost"
+style="float: middle; margin-right: 10px;" /></p>
+<h3 id="讨论">讨论</h3>
+<p>多变量/相关时间序列预测是许多应用的基本任务，如流行病传播预测[42]、气象学（如空气质量、降雨量）预测[43]、股票预测[44]和销售预测[45]。虽然我们的工作是以交通预测任务为动机，但所提出的两个自适应模块和我们的AGCRN模型也可以单独或联合适应各种多变量/相关时间序列预测任务。</p>
+<p>从数据中自动发现不同相关序列之间的相互依赖关系是可能的，这一发现弥补了基于图的预测模型与一般相关时间序列预测问题难以预定义图关系的鸿沟。我们未来的工作将着重从两个角度研究我们工作的可扩展性。1）数据角度&ndash;在更多的时间序列预测任务上验证AGCRN的性能；2）模型角度&ndash;将NAPL和DAGG适配到更多基于GCN的交通预测模型上。</p>
+<h3 id="结论">结论</h3>
+<p>本文提出在传统图卷积网络的基础上，分别加入节点自适应参数学习和数据自适应图生成模块，用于学习节点特定模式和从数据中发现空间相关性。在这两个模块的基础上，我们进一步提出了自适应图卷积循环网络，该网络可以在没有预设图的情况下，自动捕捉时间序列数据中节点特定的空间和时间相关性。在多步骤交通预测任务上的大量实验证明了AGCRN和所提出的自适应模块的有效性。该工作揭示了将基于GCN的模型应用于相关时间序列预测中，通过推断数据的相互依赖性，并揭示了学习节点特定模式对于理解相关时间序列数据至关重要。</p>
+<h3 id="影响">影响</h3>
+<p>总的来说，这项工作可以实现更准确的交通预测，为出租车调度和路线规划等更高层次的交通调度提供便利。通过这种方式，我们的工作可以帮助旅客节省时间，为交通运营商提高效率和收入，并节省能源消耗。从广义上讲，在大数据时代的社会和商业广泛应用的相关时间序列分析中，自适应性是可取的。所提出的自适应模块可以使基于动态的、相互依赖的、时间序列数据的数据分析和相关应用的鲁棒性得到提升。该研究总体上支持对基于复杂的显性和隐性关联的图结构的多通道数据进行更好的建模和分析。它对解决许多依赖复杂时间序列数据的世界范围的经济和社会问题，如流感爆发、经济增长和气候变化的预测，具有影响，并有可能加快研究进度。这项工作可能带来的负面影响是打车平台的公平问题。在出租车供给不能保证需求的情况下，平台可能会过于强调预测的高需求区域，这将增加低需求区域旅客的等待时间。</p>
+</div>
+
+    
+
+
+
+
+<div class="article-tags">
+  
+  <a class="badge badge-light" href="/tag/%E8%87%AA%E9%80%82%E5%BA%94%E5%9B%BE%E7%BB%93%E6%9E%84/">自适应图结构</a>
+  
+  <a class="badge badge-light" href="/tag/%E6%99%BA%E6%85%A7%E4%BA%A4%E9%80%9A/">智慧交通</a>
+  
+</div>
+
+
+
+<div class="share-box">
+  <ul class="share">
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="https://twitter.com/intent/tweet?url=/publication/adaptive-graph-convolutional-recurrent-network-for-traffic-forecasting/&amp;text=%e3%80%8c%e8%ae%ba%e6%96%87%e9%98%85%e8%af%bb%e3%80%8d-%20%e7%94%a8%e4%ba%8e%e4%ba%a4%e9%80%9a%e6%b5%81%e9%a2%84%e6%b5%8b%e7%9a%84%e8%87%aa%e9%80%82%e5%ba%94%e5%9b%be%e5%8d%b7%e7%a7%af%e5%be%aa%e7%8e%af%e7%bd%91%e7%bb%9c" target="_blank" rel="noopener" class="share-btn-twitter" aria-label="twitter">
+          <i class="fab fa-twitter"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="https://www.facebook.com/sharer.php?u=/publication/adaptive-graph-convolutional-recurrent-network-for-traffic-forecasting/&amp;t=%e3%80%8c%e8%ae%ba%e6%96%87%e9%98%85%e8%af%bb%e3%80%8d-%20%e7%94%a8%e4%ba%8e%e4%ba%a4%e9%80%9a%e6%b5%81%e9%a2%84%e6%b5%8b%e7%9a%84%e8%87%aa%e9%80%82%e5%ba%94%e5%9b%be%e5%8d%b7%e7%a7%af%e5%be%aa%e7%8e%af%e7%bd%91%e7%bb%9c" target="_blank" rel="noopener" class="share-btn-facebook" aria-label="facebook">
+          <i class="fab fa-facebook"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="mailto:?subject=%e3%80%8c%e8%ae%ba%e6%96%87%e9%98%85%e8%af%bb%e3%80%8d-%20%e7%94%a8%e4%ba%8e%e4%ba%a4%e9%80%9a%e6%b5%81%e9%a2%84%e6%b5%8b%e7%9a%84%e8%87%aa%e9%80%82%e5%ba%94%e5%9b%be%e5%8d%b7%e7%a7%af%e5%be%aa%e7%8e%af%e7%bd%91%e7%bb%9c&amp;body=/publication/adaptive-graph-convolutional-recurrent-network-for-traffic-forecasting/" target="_blank" rel="noopener" class="share-btn-email" aria-label="envelope">
+          <i class="fas fa-envelope"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="https://www.linkedin.com/shareArticle?url=/publication/adaptive-graph-convolutional-recurrent-network-for-traffic-forecasting/&amp;title=%e3%80%8c%e8%ae%ba%e6%96%87%e9%98%85%e8%af%bb%e3%80%8d-%20%e7%94%a8%e4%ba%8e%e4%ba%a4%e9%80%9a%e6%b5%81%e9%a2%84%e6%b5%8b%e7%9a%84%e8%87%aa%e9%80%82%e5%ba%94%e5%9b%be%e5%8d%b7%e7%a7%af%e5%be%aa%e7%8e%af%e7%bd%91%e7%bb%9c" target="_blank" rel="noopener" class="share-btn-linkedin" aria-label="linkedin-in">
+          <i class="fab fa-linkedin-in"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="whatsapp://send?text=%e3%80%8c%e8%ae%ba%e6%96%87%e9%98%85%e8%af%bb%e3%80%8d-%20%e7%94%a8%e4%ba%8e%e4%ba%a4%e9%80%9a%e6%b5%81%e9%a2%84%e6%b5%8b%e7%9a%84%e8%87%aa%e9%80%82%e5%ba%94%e5%9b%be%e5%8d%b7%e7%a7%af%e5%be%aa%e7%8e%af%e7%bd%91%e7%bb%9c%20/publication/adaptive-graph-convolutional-recurrent-network-for-traffic-forecasting/" target="_blank" rel="noopener" class="share-btn-whatsapp" aria-label="whatsapp">
+          <i class="fab fa-whatsapp"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="https://service.weibo.com/share/share.php?url=/publication/adaptive-graph-convolutional-recurrent-network-for-traffic-forecasting/&amp;title=%e3%80%8c%e8%ae%ba%e6%96%87%e9%98%85%e8%af%bb%e3%80%8d-%20%e7%94%a8%e4%ba%8e%e4%ba%a4%e9%80%9a%e6%b5%81%e9%a2%84%e6%b5%8b%e7%9a%84%e8%87%aa%e9%80%82%e5%ba%94%e5%9b%be%e5%8d%b7%e7%a7%af%e5%be%aa%e7%8e%af%e7%bd%91%e7%bb%9c" target="_blank" rel="noopener" class="share-btn-weibo" aria-label="weibo">
+          <i class="fab fa-weibo"></i>
+        </a>
+      </li>
+    
+  </ul>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+
+
+
+  
+  
+  
+  
+  
+  <div class="media author-card content-widget-hr">
+    
+      
+      <a href="/authors/admin/"><img class="avatar mr-3 avatar-circle" src="/authors/admin/avatar_hu55194f19033f85038196a23353ffe543_580100_270x270_fill_q75_lanczos_center.jpg" alt="CoolCats"></a>
+    
+
+    <div class="media-body">
+      <h5 class="card-title"><a href="/authors/admin/">CoolCats</a></h5>
+      <h6 class="card-subtitle">理学学士</h6>
+      <p class="card-text">我的研究兴趣是时空数据分析、自然语言处理、服务端开发</p>
+      <ul class="network-icon" aria-hidden="true">
+  
+    
+    
+    
+      
+    
+    
+    
+    
+    
+    <li>
+      <a href="mailto:2811159909@qq.com" >
+        <i class="fas fa-envelope"></i>
+      </a>
+    </li>
+  
+    
+    
+    
+      
+    
+    
+    
+    
+    
+      
+    
+    <li>
+      <a href="https://github.com/Coolgiserz" target="_blank" rel="noopener">
+        <i class="fab fa-github"></i>
+      </a>
+    </li>
+  
+</ul>
+
+    </div>
+  </div>
+
+
+
+
+
+
+
+
+
+  
+  
+  
+
+  
+
+  
+
+
+
+
+
+
+
+
+
+
+  </div>
+</div>
+  </div>
+
+  <div class="page-footer">
+    
+    
+    <div class="container">
+      <footer class="site-footer">
+
+  
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+
+
+
+
+
+  
+  
+  
+
+  
+  
+    
+  
+  
+    
+  
+
+  
+
+  
+  <p class="powered-by copyright-license-text">
+    © 2023 CoolCats. This work is licensed under <a href="https://creativecommons.org/licenses/by-nc-nd/4.0" rel="noopener noreferrer" target="_blank">CC BY NC ND 4.0</a>
+  </p>
+  
+
+  <p class="powered-by footer-license-icons">
+    <a href="https://creativecommons.org/licenses/by-nc-nd/4.0" rel="noopener noreferrer" target="_blank" aria-label="Creative Commons">
+      <i class="fab fa-creative-commons fa-2x" aria-hidden="true"></i>
+      <i class="fab fa-creative-commons-by fa-2x" aria-hidden="true"></i>
+      
+        <i class="fab fa-creative-commons-nc fa-2x" aria-hidden="true"></i>
+      
+      
+        <i class="fab fa-creative-commons-nd fa-2x" aria-hidden="true"></i>
+      
+    </a>
+  </p>
+
+
+
+
+  <p class="powered-by">
+    
+    
+    
+      
+      
+      
+      
+      
+      
+      Published with <a href="https://wowchemy.com/?utm_campaign=poweredby" target="_blank" rel="noopener">Wowchemy</a> — the free, <a href="https://github.com/wowchemy/wowchemy-hugo-themes" target="_blank" rel="noopener">open source</a> website builder that empowers creators.
+    
+  </p>
+</footer>
+
+    </div>
+    
+  </div>
+
+      
+
+    
+    <script src="/js/vendor-bundle.min.fab8b449b814cc9f95b22fcf2e45f05b.js"></script>
+
+    
+    
+    
+      
+
+      
+      
+
+      
+
+      
+        
+        <script src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@10.2.1/build/highlight.min.js" integrity="sha512-Ypjm0o7jOxAd4hpdoppSEN0TQOC19UtPAqD+4s5AlXmUvbmmS/YMxYqAqarQYyxTnB6/rqip9qcxlNB/3U9Wdg==" crossorigin="anonymous"></script>
+        
+        
+        <script src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@10.2.1/build/languages/r.min.js" crossorigin="anonymous"></script>
+        
+        <script src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@10.2.1/build/languages/latex.min.js" crossorigin="anonymous"></script>
+        
+      
+
+    
+
+    
+    
+    
+      <script src="https://cdn.jsdelivr.net/npm/leaflet@1.7.1/dist/leaflet.min.js" integrity="" crossorigin="anonymous"></script>
+    
+
+    
+    
+
+    
+    
+    
+      
+      <script id="search-hit-fuse-template" type="text/x-template">
+        <div class="search-hit" id="summary-{{key}}">
+          <div class="search-hit-content">
+            <div class="search-hit-name">
+              <a href="{{relpermalink}}">{{title}}</a>
+              <div class="article-metadata search-hit-type">{{type}}</div>
+              <p class="search-hit-description">{{snippet}}</p>
+            </div>
+          </div>
+        </div>
+      </script>
+      
+        <script src="https://cdn.jsdelivr.net/gh/krisk/Fuse@v3.2.1/dist/fuse.min.js" integrity="sha512-o38bmzBGX+hD3JHWUFCDA09btWaqrNmoJ3RXLlrysA7PP01Kgs4UlE4MhelE1v5dJR3+cxlR4qQlotsW7jKsnw==" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/gh/julmot/mark.js@8.11.1/dist/jquery.mark.min.js" integrity="sha512-mhbv5DqBMgrWL+32MmsDOt/OAvqr/cHimk6B8y/bx/xS88MVkYGPiVv2ixKVrkywF2qHplNRUvFsAHUdxZ3Krg==" crossorigin="anonymous"></script>
+      
+    
+
+    
+    
+
+    
+    
+    
+    
+      <script id="dsq-count-scr" src="https://coolgiserz.disqus.com/count.js" async></script>
+    
+
+    
+    
+      
+      
+      
+      
+      
+      
+      
+    
+
+    
+
+    
+    
+    
+    <script id="page-data" type="application/json">{"use_headroom":true}</script>
+
+    
+    
+      <script src="/js/wowchemy-headroom.c251366b4128fd5e6b046d4c97a62a51.js" type="module"></script>
+    
+    
+    
+    
+    
+    
+    
+      
+      
+    
+    
+    <script src="/en/js/wowchemy.min.ab2f2890dbe3e2e83579366d3d6e8fd9.js"></script>
+
+    
+    
+      <script src="/js/wowchemy-map.a26e9d2f7238ba5b868384f1c5bc6477.js" type="module"></script>
+    
+    
+    
+    
+      
+<div id="modal" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Cite</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <pre><code class="tex hljs"></code></pre>
+      </div>
+      <div class="modal-footer">
+        <a class="btn btn-outline-primary my-1 js-copy-cite" href="#" target="_blank">
+          <i class="fas fa-copy"></i> Copy
+        </a>
+        <a class="btn btn-outline-primary my-1 js-download-cite" href="#" target="_blank">
+          <i class="fas fa-download"></i> Download
+        </a>
+        <div id="modal-error"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+      <script src="/js/wowchemy-publication.68f8d7090562ca65fc6d3cb3f8f2d2cb.js" type="module"></script>
+
+
+
+
+
+
+</body>
+</html>

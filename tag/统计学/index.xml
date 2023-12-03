@@ -1,0 +1,196 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>统计学 | CoolCats</title>
+    <link>/tag/%E7%BB%9F%E8%AE%A1%E5%AD%A6/</link>
+      <atom:link href="/tag/%E7%BB%9F%E8%AE%A1%E5%AD%A6/index.xml" rel="self" type="application/rss+xml" />
+    <description>统计学</description>
+    <generator>Wowchemy (https://wowchemy.com)</generator><language>en-us</language><lastBuildDate>Mon, 16 May 2022 20:31:34 +0800</lastBuildDate>
+    <image>
+      <url>/media/icon_hue03491371183284312b8b116a73ae5ab_79511_512x512_fill_lanczos_center_3.png</url>
+      <title>统计学</title>
+      <link>/tag/%E7%BB%9F%E8%AE%A1%E5%AD%A6/</link>
+    </image>
+    
+    <item>
+      <title>关于回归模型及其评价方法的一些问题</title>
+      <link>/post/rethinking-regression-model-and-its-evaluations/</link>
+      <pubDate>Mon, 16 May 2022 20:31:34 +0800</pubDate>
+      <guid>/post/rethinking-regression-model-and-its-evaluations/</guid>
+      <description>&lt;p&gt;促使我写这篇文章的原因是某项实验中发现一些先进的预测模型尽管在MAE、MAPE、RMSE指标上的表现远超其他模型，但却具有非常低的R2和EVAR值，再加上对实际数据与预测数据的观察，让我对「什么是”好“的回归模型」以及「各项回归评价指标具体能告诉你什么信息」蒙上了一层疑问。所以写这篇文章整理一下思路。&lt;/p&gt;
+&lt;h2 id=&#34;0x00-回归分析溯源&#34;&gt;0x00 回归分析溯源&lt;/h2&gt;
+&lt;h3 id=&#34;何时应该使用回归分析回归分析可以做什么&#34;&gt;何时应该使用回归分析？回归分析可以做什么？&lt;/h3&gt;
+&lt;p&gt;在统计机器学习中，除了回归分析以外还有聚类、分类等分析方法。那么何时应该使用回归分析？可以从回归分析的能力角度回答这个问题。
+回归分析评估响应变量（因变量）与解释变量（自变量、特征）的关系，从而让你能够在指定解释变量取值的时候预测响应变量的取值（期望）（获得对未观测到的数据的预测能力），便于决策或者增加对某复杂问题的认识。
+回归系数也可以表示响应变量与各个维度解释变量的关系。&lt;/p&gt;
+&lt;p&gt;以具体问题为例，回归分析可以用于回答如下问题：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;教育背景与智商是否对收入有影响？&lt;/li&gt;
+&lt;li&gt;社会经济地位是否影响教育上的成就？&lt;/li&gt;
+&lt;li&gt;锻炼身体和节食是否会影响体重？&lt;/li&gt;
+&lt;li&gt;喝咖啡和吸烟是否影响寿命？&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;一言以蔽之，就是要回答“某些变量是否与另一个变量是否有关系”。实际进行分析的时候，如果希望回归分析的结果更能说明问题，还需要进行控制变量，排除除了回归模型所考虑的解释变量以外还能够对响应变量产生影响的变量（混淆变量）的干扰，从而避免得到“伪相关”的结论。比如你想探讨“瑶辅助（技能机制以及强度）是否与队伍陷入逆风是否有关系”这个问题，那你要尽量排除有玩家明演的对局，并基于双方队伍除辅助位置外的其他位置强度尽量一致的对局去进行分析。&lt;/p&gt;
+&lt;h3 id=&#34;回归模型有什么分类如何选择正确的回归分析类型&#34;&gt;回归模型有什么分类？如何选择正确的回归分析类型？&lt;/h3&gt;
+&lt;p&gt;回归模型有多种类别，如何选择取决于你的数据（数据的类型、复杂程度）。
+通常我们说的回归是在响应变量为连续取值的情况下评估响应变量与解释变量的关系，当响应变量为离散值时的回归即为分类。&lt;/p&gt;
+&lt;h4 id=&#34;线性回归vs非线性回归&#34;&gt;线性回归vs非线性回归&lt;/h4&gt;
+&lt;h5 id=&#34;线性回归&#34;&gt;线性回归&lt;/h5&gt;
+&lt;p&gt;线性回归通过线性函数对响应变量与解释变量的关系进行建模。“线性”是针对待估计参数而言的，线性回归函数是一个或多个参数（回归系数）的线性组合。&lt;/p&gt;
+&lt;p&gt;这里可能容易被误解，认为线性回归是关于解释变量X的线性函数，可以这么想：通常我们进行回归分析的时候，解释变量的取值我们是知道的，待估参数才是未知数，我们是通过已观测到的解释变量和响应变量取值去估计未知的参数/回归系数，考虑解释变量的线性与否意义不大，因为总可以通过一种变换把“线性”形式的解释变量转换成“非线性”形式，反之亦可，但不管怎样转换我们都是能够确定解释变量取值的（从样本中取）。再引用Jim的统计学博客中一段话，体会体会：&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;Statisticians say that this type of regression equation is linear in the 
+parameters.However, it is possible to model curvature with this type of 
+model. While the function must be linear in the parameters, you can raise 
+an independent variable by an exponent to fit a curve. For example, if 
+you square an independent variable, the model can follow a U-shaped curve.
+
+While the independent variable is squared, the model is still linear in 
+the parameters. Linear models can also contain log terms and inverse terms
+ to follow different kinds of curves and yet continue to be linear in the
+ parameters.
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;线性回归通常通过“最小化经验误差（如SSE）”的策略来估计参数。通过求解方程解得模型参数。&lt;/p&gt;
+&lt;p&gt;线性回归也有多种类别，比如：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;岭回归（*）
+多变量线性回归中，变量间可能存在高度相关关系（多重共线性，一个解释变量的变化引起另一个解释变量的变化）导致回归估计不准确。岭回归尝试解决如上问题。&lt;/li&gt;
+&lt;li&gt;Lasso回归&lt;/li&gt;
+&lt;li&gt;……&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h5 id=&#34;非线性回归&#34;&gt;非线性回归&lt;/h5&gt;
+&lt;p&gt;不符合线性回归规则的回归即为非线性回归，即待估参数是“非线性”的回归即为非线性回归。&lt;/p&gt;
+&lt;p&gt;非线性回归的求解通常也通过最小化经验误差的思想来估计参数，但往往使用迭代算法来求解优化问题。因此求解非线性回归问题时，会涉及到优化算法选择，初始值选择，收敛性（是否不收敛或收敛到局部最小值）等问题。&lt;/p&gt;
+&lt;h4 id=&#34;何时选择线性回归何时选择非线性回归&#34;&gt;何时选择线性回归？何时选择非线性回归？&lt;/h4&gt;
+&lt;p&gt;对于任何一份数据，你都可以用线性回归或者非线性回归进行拟合，但是应该如何选择呢？从实践的角度来说，你可以先使用线性回归看看能否很好地拟合观测数据，如果无法使用线性回归无法获得足够的拟合程度，这时候就可以考虑使用非线性回归。但这又需要我们思考，什么是好的回归模型，我们拟合数据的目的是什么？这个问题在&lt;a href=&#34;#0x01-%e5%a6%82%e4%bd%95%e8%8e%b7%e5%be%97%e5%a5%bd%e7%9a%84%e5%9b%9e%e5%bd%92%e6%a8%a1%e5%9e%8b&#34;&gt;下一节&lt;/a&gt;进行讨论。&lt;/p&gt;
+&lt;h3 id=&#34;参考文献&#34;&gt;参考文献&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://statisticsbyjim.com/regression/when-use-regression-analysis/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;When Should I Use Regression Analysis?&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://statisticsbyjim.com/regression/choosing-regression-analysis/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Choosing the Correct Type of Regression Analysis&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://statisticsbyjim.com/regression/difference-between-linear-nonlinear-regression-models/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;The Difference between Linear and Nonlinear Regression Models&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://www.zhihu.com/question/271558319&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;线性回归中的&amp;quot;线性&amp;quot;是什么意思呢？&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://statisticsbyjim.com/regression/choose-linear-nonlinear-regression/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;How to Choose Between Linear and Nonlinear Regression&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://statisticsbyjim.com/regression/regression-tutorial-analysis-examples/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Regression Tutorial with Analysis Examples&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;0x01-如何获得好的回归模型&#34;&gt;0x01 如何获得“好”的回归模型？&lt;/h2&gt;
+&lt;h3 id=&#34;什么是好的回归模型&#34;&gt;什么是好的回归模型？&lt;/h3&gt;
+&lt;p&gt;从我们建立回归模型的动机出发，我们一般希望建立的模型能够帮助我们预测未来的数据，如此则需要模型从历史数据中捕捉到数据的变化规律，这至少要求模型能较好地拟合历史数据，最好要在历史数据存在噪声的情况下仍然对未来数据有较高的预测参考性。因此评价回归模型好坏的基本指导思想就确定了：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;对历史数据的拟合优度（模型预测值与实际观测值的差异尽量小）；&lt;/li&gt;
+&lt;li&gt;对噪声/异常值的敏感程度小。（*）&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;我们先从拟合优度的视角来看看如何具体评估模型优劣。&lt;/p&gt;
+&lt;h4 id=&#34;如何拟合出一个好的回归模型&#34;&gt;如何拟合出一个好的回归模型？&lt;/h4&gt;
+&lt;p&gt;一个直观的想法是考虑基于回归模型所得到的响应变量（因变量）的拟合值与实际值的误差的总和，使得总误差最小的模型应该对数据具有较好的拟合。我们在中学学线性回归时所接触的“最小二乘法”（普通）（最小化所有样本预测值与实际值之差的平方和）就是基于这么一种思想的一种具体实践。实际上“最小一乘”（最小化所有样本预测值与实际值之差的绝对值的总和）也是有被考虑过的，甚至&amp;quot;最小三乘&amp;quot;，但从求解难度来看，求解“最小一乘”要比“最小二乘”更难（最小一乘在数值上难以求解），所以我们才转而考虑“最小二乘”。最早选择最小二乘的原因只是因为其相对容易优化且解唯一，后来，数学家高斯提出“高斯-马尔可夫定理”，更严谨地证明了“最小二乘”相比其他“乘”的所优势，明确解释了最小二乘估计是最佳无偏线性估计。&lt;/p&gt;
+&lt;p&gt;简单理解，使用“最小二乘法”来拟合线性回归模型的直觉在于：每一个样本的误差平方都能度量对于该样本实际值与模型拟合值的差距，“平方”保证了度量出的差距是非负、有意义的，因此误差平方和可以作为评估模型优劣的一个依据。在求解上，我们可以使用微积分或者线性代数的工具求解“使得预测值与实际值误差平方和最小”的回归系数，并且确保只会找到唯一的“最佳拟合线”。&lt;/p&gt;
+&lt;p&gt;当然，也要注意：最小二乘并不一定是最优的选择，因为“二乘”实际上对误差具有一个放大效应，所以“普通最小二乘法”对于异常值比较敏感，可能数据中一到2个与均值偏差较大异常值就会对最小二乘分析的结果造成很大影响；在外推的时候，效果可能也不理想；了解更多最小二乘的信息（直觉、潜在假设、求解方法、局限性），可阅读&lt;a href=&#34;#%e5%85%b3%e4%ba%8e%e6%9c%80%e5%b0%8f%e4%ba%8c%e4%b9%98%e6%b3%95&#34;&gt;参考资料&lt;/a&gt;。&lt;/p&gt;
+&lt;h4 id=&#34;如何评价已有回归模型的优劣&#34;&gt;如何评价已有回归模型的优劣&lt;/h4&gt;
+&lt;p&gt;要获得“好”的回归模型，我们除了在构建回归模型的过程中考虑“如何提高模型质量”，还要考虑如何评价现有模型的优劣。&lt;/p&gt;
+&lt;h5 id=&#34;回归标准误差和r2&#34;&gt;回归标准误差和R2&lt;/h5&gt;
+&lt;p&gt;回归标准误差和R2是两个常见的指标。&lt;/p&gt;
+&lt;p&gt;回归标准误差表示观测值与回归模型拟合值的平均距离，&lt;strong&gt;以响应变量的单位&lt;/strong&gt;告诉你模型有多大的“错误”；回归标准差越小表示模型越好，拟合值与实际观测值越接近。&lt;/p&gt;
+&lt;p&gt;R2表示响应变量的偏差能被，衡量你的模型对响应变量的拟合值与实际值的关系强度，是一个表示百分比的量（0-1范围内）。&lt;/p&gt;
+&lt;!-- ##### 为什么R2可以用于评价线性回归模型的优劣？
+SST = SSR + SSE成立意味着什么？ --&gt;
+&lt;h5 id=&#34;r2不能用于评价非线性模型的优劣会产生什么问题&#34;&gt;R2不能用于评价非线性模型的优劣？会产生什么问题？&lt;/h5&gt;
+&lt;p&gt;首先，对于非线性模型，由于SST=SSR+SSE这个关系不一定成立，所以不能保证R2的取值范围在0-100%, 一些统计学家认为，由于有可能出现负数的百分比取值，R2不太能解释成其在评价线性模型时所表示的含义（模型对响应变量所能解释的偏差占响应变量的总偏差的百分比）。&lt;/p&gt;
+&lt;p&gt;其次，R2有时候难以提供有效的信息。高的R2不一定意味着模型很好，低的R2不一定意味着模型很差。
+盲目追求高的R2可能会导致我们选择出一个具有误导性的模型，比如过拟合的模型。实际上对于任何一份数据，只要我们的非线性模型足够复杂，不断添加变量总能对数据进行很好的拟合，从而导致较高的R2值，但添加的变量可能与事实无关或者说不可解释。因此也产生了一些Adjusted R2的指标通过惩罚多余的非显著解释变量来防止过拟合，可参考&lt;a href=&#34;#%e5%85%b3%e4%ba%8er2&#34;&gt;资料&lt;/a&gt;。&lt;/p&gt;
+&lt;!-- 如果建立回归模型的目的是为了理解解释变量和响应变量的关系，R2的高低此毫不相关，回归系数决定了解释变量与响应变量的关系，R2的改变不会影响对回归系数的解释。 --&gt;
+&lt;p&gt;但如果建立回归模型的目的是为了预测响应变量，R2就相当于指示着误差（对同一份数据而言，SST是常数，SSE越小R2就越大），但其物理意义并不能直接表示对响应变量预测的精度。希望获得更直接的对误差的表示，可以考虑回归标准差这样的指标：直接在响应变量的量纲上告诉你模型预测的精确性，这样也便于你按照根据精度要求去获取模型。&lt;/p&gt;
+&lt;h5 id=&#34;常见指标意义及区别maemapemsermser2evar&#34;&gt;常见指标意义及区别（MAE、MAPE、MSE、RMSE、R2、EVAR）&lt;/h5&gt;
+&lt;p&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure  &gt;
+  &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img src=&#34;./images/regression-metric.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+  &lt;/div&gt;&lt;/figure&gt;
+&lt;/p&gt;
+&lt;p&gt;(1)MAE&lt;/p&gt;
+&lt;p&gt;平均绝对误差。
+MAE对所有误差项一视同仁。对异常值不那么敏感。&lt;/p&gt;
+&lt;p&gt;(2)MAPE&lt;/p&gt;
+&lt;p&gt;平均绝对百分比误差，[0,+oo)。&lt;/p&gt;
+&lt;p&gt;真实值有数据为0时，MAPE无意义。&lt;/p&gt;
+&lt;p&gt;(3)MSE&lt;/p&gt;
+&lt;p&gt;均方误差
+与MAE相比，MSE对较大的预测误差有更大的惩罚项。这会导致对异常值更敏感.&lt;/p&gt;
+&lt;p&gt;(4)RMSE&lt;/p&gt;
+&lt;p&gt;均方根误差。
+与MSE相比，RMSE多了一个开根号操作，使得其与响应变量处于同一个量纲，物理意义上更容易解释。&lt;/p&gt;
+&lt;p&gt;(5)R2&lt;/p&gt;
+&lt;p&gt;与MSE、RMSE、MAE相比，R2是相对性的评价指标，不能从绝对水平告诉你预测的精度。&lt;/p&gt;
+&lt;p&gt;(6)EVAR&lt;/p&gt;
+&lt;p&gt;（暂略）&lt;/p&gt;
+&lt;p&gt;(7)Huber Loss&lt;/p&gt;
+&lt;h5 id=&#34;heading&#34;&gt;&lt;/h5&gt;
+&lt;h5 id=&#34;思考&#34;&gt;思考&lt;/h5&gt;
+&lt;ul&gt;
+&lt;li&gt;我们在评价模型时，应该对所有误差项一视同仁吗？&lt;/li&gt;
+&lt;li&gt;什么情况下我们无法容忍“明显较大”的误差，从而更偏向用MSE这种评价指标？&lt;/li&gt;
+&lt;li&gt;什么情况下我们更需要“百分比”的误差表示？（如MAPE）&lt;/li&gt;
+&lt;li&gt;实际计算误差时，我们需要进行“异常值”的检测并对其特殊处理吗？&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;参考资料&#34;&gt;参考资料&lt;/h3&gt;
+&lt;h4 id=&#34;关于最小二乘法&#34;&gt;关于最小二乘法&lt;/h4&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://www.bradthiessen.com/html5/docs/ols.pdf&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Why we use “least squares” regression instead of “least absolute deviations” regression.&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://www.itl.nist.gov/div898/handbook/pmd/section1/pmd141.htm&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Linear Least Squares Regression&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://math.stackexchange.com/questions/63238/why-do-we-use-a-least-squares-fit&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Why do we use a Least Squares fit?&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&#34;关于回归标准误差&#34;&gt;关于回归标准误差&lt;/h4&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://www.statology.org/standard-error-regression/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Understanding the Standard Error of the Regression&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://statisticsbyjim.com/glossary/standard-error-regression/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Standard error of the regression&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&#34;关于r2&#34;&gt;关于R2&lt;/h4&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a href=&#34;https://statisticsbyjim.com/regression/standard-error-regression-vs-r-squared/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Standard Error of the Regression vs. R-squared&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a href=&#34;https://statisticsbyjim.com/regression/interpret-r-squared-regression/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;How To Interpret R-squared in Regression Analysis&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a href=&#34;https://statisticsbyjim.com/regression/regression-tutorial-analysis-examples/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Regression Tutorial with Analysis Examples&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a href=&#34;https://statisticsbyjim.com/regression/how-high-r-squared/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;How High Does R-squared Need to Be?&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a href=&#34;https://statisticsbyjim.com/regression/r-squared-invalid-nonlinear-regression/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;R-squared Is Not Valid for Nonlinear Regression&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a href=&#34;https://pubmed.ncbi.nlm.nih.gov/20529254/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;An evaluation of R2 as an inadequate measure for nonlinear models in pharmacological and biochemical research: a Monte Carlo approach&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a href=&#34;https://www.ibm.com/docs/en/cognos-analytics/11.1.0?topic=terms-adjusted-r-squared&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Adjusted R squared&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a href=&#34;https://www.statisticshowto.com/probability-and-statistics/statistics-definitions/adjusted-r2/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Adjusted R2 / Adjusted R-Squared: What is it used for?&lt;/a&gt;&lt;/p&gt;
+&lt;h4 id=&#34;评估回归模型&#34;&gt;评估回归模型&lt;/h4&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a href=&#34;https://towardsdatascience.com/what-are-the-best-metrics-to-evaluate-your-regression-model-418ca481755b&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;3 Best metrics to evaluate Regression Model?&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a href=&#34;https://www.dataquest.io/blog/understanding-regression-error-metrics/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Tutorial: Understanding Regression Error Metrics in Python&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>
