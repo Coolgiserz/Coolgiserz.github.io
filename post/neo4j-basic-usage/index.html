@@ -892,10 +892,10 @@
 <figure  >
   <div class="d-flex justify-content-center">
     <div class="w-100" ><img alt="" srcset="
-               /post/neo4j-basic-usage/images/cypher-cert_hud9b63beb5e416256a44650f8ad9e09d7_310319_67a1eeca4eef4c353d0ddeeab6b84b45.webp 400w,
-               /post/neo4j-basic-usage/images/cypher-cert_hud9b63beb5e416256a44650f8ad9e09d7_310319_7e7c47c9d2a95499b0038d1e2948274a.webp 760w,
+               /post/neo4j-basic-usage/images/cypher-cert_hud9b63beb5e416256a44650f8ad9e09d7_310319_0820588f2fd752b62e680ad0ebe27ba7.webp 400w,
+               /post/neo4j-basic-usage/images/cypher-cert_hud9b63beb5e416256a44650f8ad9e09d7_310319_7235bde26f7f204a1126e2ea040f5f4d.webp 760w,
                /post/neo4j-basic-usage/images/cypher-cert_hud9b63beb5e416256a44650f8ad9e09d7_310319_1200x1200_fit_q75_h2_lanczos_3.webp 1200w"
-               src="/post/neo4j-basic-usage/images/cypher-cert_hud9b63beb5e416256a44650f8ad9e09d7_310319_67a1eeca4eef4c353d0ddeeab6b84b45.webp"
+               src="/post/neo4j-basic-usage/images/cypher-cert_hud9b63beb5e416256a44650f8ad9e09d7_310319_0820588f2fd752b62e680ad0ebe27ba7.webp"
                width="760"
                height="505"
                loading="lazy" data-zoomable /></div>
@@ -982,8 +982,7 @@ RETURN n
 RETURN type(r), count(*)
 </code></pre><h3 id="模糊查询">模糊查询</h3>
 <p>模糊查询并非使用LIKE关键字，而是使用CONTAINS，如：</p>
-<pre tabindex="0"><code class="language-cypher" data-lang="cypher">
-MATCH p=(n:NodeType)--&gt;() WHERE n.name CONTAINS &#39;需要模糊查询的关键字&#39; RETURN p
+<pre tabindex="0"><code class="language-cypher" data-lang="cypher">MATCH p=(n:NodeType)--&gt;() WHERE n.name CONTAINS &#39;需要模糊查询的关键字&#39; RETURN p
 </code></pre><h3 id="批量变更关系类型">批量变更关系类型</h3>
 <pre tabindex="0"><code class="language-cypher" data-lang="cypher">MATCH (a)-[r:OLD_RELATION]-&gt;(b)
 CREATE (a)-[rNew:NEW_RELATION]-&gt;(b)

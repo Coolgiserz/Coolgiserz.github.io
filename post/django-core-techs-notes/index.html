@@ -329,10 +329,10 @@
     
       <meta
         property="article:published_time"
-        content="2023-09-02T22:57:15&#43;08:00"
+        content="2023-08-02T22:57:15&#43;08:00"
       />
     
-    <meta property="article:modified_time" content="2023-09-02T22:57:15&#43;08:00">
+    <meta property="article:modified_time" content="2023-12-02T22:57:15&#43;08:00">
   
 
   
@@ -360,8 +360,8 @@
   },
   "headline": "Django后端开发笔记",
   
-  "datePublished": "2023-09-02T22:57:15+08:00",
-  "dateModified": "2023-09-02T22:57:15+08:00",
+  "datePublished": "2023-08-02T22:57:15+08:00",
+  "dateModified": "2023-12-02T22:57:15+08:00",
   
   "author": {
     "@type": "Person",
@@ -771,8 +771,10 @@
     
     
       
+          Last updated on
+      
     
-    Sep 2, 2023
+    Dec 2, 2023
   </span>
   
 
@@ -781,7 +783,7 @@
   
   <span class="middot-divider"></span>
   <span class="article-reading-time">
-    1 min read
+    4 min read
   </span>
   
 
@@ -791,6 +793,10 @@
   
 
   
+  
+  <span class="middot-divider"></span>
+  <span class="article-categories">
+    <i class="fas fa-folder mr-1"></i><a href="/category/python/">Python</a></span>
   
 
 </div>
@@ -810,27 +816,1206 @@
 
     <div class="article-style">
       <h2 id="0x00-django核心技术栈">0x00 Django核心技术栈</h2>
-<p>Url配置和管理</p>
-<p>Form和ModelForm表单验证</p>
-<p>Model数据库设计和操作</p>
-<p>cookie和session的登录原理</p>
-<p>template模版</p>
-<p>表结构设计</p>
-<p>外键和一对多关系设计</p>
+<h3 id="django的能力">Django的能力</h3>
+<h4 id="url路由配置和管理">Url路由配置和管理</h4>
+<p><a href="https://docs.djangoproject.com/en/4.2/topics/http/urls/" target="_blank" rel="noopener">https://docs.djangoproject.com/en/4.2/topics/http/urls/</a></p>
+<h4 id="数据库迁移migrations">数据库迁移（Migrations）</h4>
+<p><a href="https://docs.djangoproject.com/en/4.2/topics/migrations/" target="_blank" rel="noopener">https://docs.djangoproject.com/en/4.2/topics/migrations/</a></p>
+<p>Django提供了一种数据库状态迁移的功能，即通过migrate命令将models.py文件中定义数据库模型状态（包括变更）同步到数据库中。</p>
+<ul>
+<li>
+<p>makemigrations</p>
+</li>
+<li>
+<p>sqlmigrate</p>
+</li>
+<li>
+<p>showmigrations</p>
+<p>显示数据库模型变更情况，如下图，由于django项目刚创建，默认的管理员后台相关数据模型并未同步到数据库中，所以下图显示存在若干变更待迁移。</p>
+<p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<figure  >
+  <div class="d-flex justify-content-center">
+    <div class="w-100" ><img alt="" srcset="
+               /post/django-core-techs-notes/images/showmigrations_hu563f4287b8d634b1cf2e2c9816b865d6_155293_b81760779e2e089d6aa67f248b98d528.webp 400w,
+               /post/django-core-techs-notes/images/showmigrations_hu563f4287b8d634b1cf2e2c9816b865d6_155293_26c77a183d148697c3ab0ed8ac2d558a.webp 760w,
+               /post/django-core-techs-notes/images/showmigrations_hu563f4287b8d634b1cf2e2c9816b865d6_155293_1200x1200_fit_q75_h2_lanczos_3.webp 1200w"
+               src="/post/django-core-techs-notes/images/showmigrations_hu563f4287b8d634b1cf2e2c9816b865d6_155293_b81760779e2e089d6aa67f248b98d528.webp"
+               width="760"
+               height="445"
+               loading="lazy" data-zoomable /></div>
+  </div></figure>
+</p>
+</li>
+<li>
+<p>migrate</p>
+</li>
+</ul>
+<pre tabindex="0"><code>python manage.py migrate
+</code></pre><p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<figure  >
+  <div class="d-flex justify-content-center">
+    <div class="w-100" ><img alt="" srcset="
+               /post/django-core-techs-notes/images/django_migrate_hua6adb94c601d9a0d092832091430aa76_130280_45b5b24782fc64e023cf2882c5862e2e.webp 400w,
+               /post/django-core-techs-notes/images/django_migrate_hua6adb94c601d9a0d092832091430aa76_130280_5371c24257416e0499c319d5254fe272.webp 760w,
+               /post/django-core-techs-notes/images/django_migrate_hua6adb94c601d9a0d092832091430aa76_130280_1200x1200_fit_q75_h2_lanczos_3.webp 1200w"
+               src="/post/django-core-techs-notes/images/django_migrate_hua6adb94c601d9a0d092832091430aa76_130280_45b5b24782fc64e023cf2882c5862e2e.webp"
+               width="760"
+               height="281"
+               loading="lazy" data-zoomable /></div>
+  </div></figure>
+</p>
+<p>执行如上所述数据库迁徙命令，再showmigrations，可见数据库迁徙记录（已完成）</p>
+<p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<figure  >
+  <div class="d-flex justify-content-center">
+    <div class="w-100" ><img alt="" srcset="
+               /post/django-core-techs-notes/images/showmigrations2_hu4a5775e306111726351d06293c97a46d_153252_e94d8952170520e816c1ff8a98f2e0fb.webp 400w,
+               /post/django-core-techs-notes/images/showmigrations2_hu4a5775e306111726351d06293c97a46d_153252_51352eb96b5795d94db2d484ac51ae0c.webp 760w,
+               /post/django-core-techs-notes/images/showmigrations2_hu4a5775e306111726351d06293c97a46d_153252_1200x1200_fit_q75_h2_lanczos_3.webp 1200w"
+               src="/post/django-core-techs-notes/images/showmigrations2_hu4a5775e306111726351d06293c97a46d_153252_e94d8952170520e816c1ff8a98f2e0fb.webp"
+               width="760"
+               height="445"
+               loading="lazy" data-zoomable /></div>
+  </div></figure>
+</p>
+<ul>
+<li>&hellip;</li>
+</ul>
+<h5 id="关于django对postgres中多模式schema的适用问题">关于django对postgres中多模式（schema）的适用问题</h5>
+<p><a href="https://www.amvtek.com/blog/posts/2014/Jun/13/accessing-multiple-postgres-schemas-from-django/" target="_blank" rel="noopener">Accessing multiple postgres schemas from Django</a></p>
+<p><a href="https://github.com/bernardopires/django-tenant-schemas" target="_blank" rel="noopener">https://github.com/bernardopires/django-tenant-schemas</a></p>
+<p><a href="https://dba.stackexchange.com/questions/208826/django-postgres-multiple-schema" target="_blank" rel="noopener">postgresql - Django postgres multiple schema - Database Administrators Stack Exchange</a></p>
+<h4 id="多数据库协作">多数据库协作</h4>
+<p>实际项目中，不同模块的数据可能存放于不同的数据库中，那么Django在对Model进行增删改查时，如何定位到Model属于哪个数据库并进行正确操作呢？</p>
+<p>我们可以通过定义以app_label为key，数据库配置为value的数据库配置映射。</p>
+<p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<figure  >
+  <div class="d-flex justify-content-center">
+    <div class="w-100" ><img alt="" srcset="
+               /post/django-core-techs-notes/images/db_router_hu546e8ea9e5d15387a4ac1909dd10746f_68967_4f6c8bac8b40d336f40ec5fc152b1112.webp 400w,
+               /post/django-core-techs-notes/images/db_router_hu546e8ea9e5d15387a4ac1909dd10746f_68967_09ff453a7a9badbe69f49bc65ad9df2e.webp 760w,
+               /post/django-core-techs-notes/images/db_router_hu546e8ea9e5d15387a4ac1909dd10746f_68967_1200x1200_fit_q75_h2_lanczos_3.webp 1200w"
+               src="/post/django-core-techs-notes/images/db_router_hu546e8ea9e5d15387a4ac1909dd10746f_68967_4f6c8bac8b40d336f40ec5fc152b1112.webp"
+               width="760"
+               height="304"
+               loading="lazy" data-zoomable /></div>
+  </div></figure>
+</p>
+<p>通过实现DATABASE_ROUTERS配置所需要的辅助类，可以自定义应用相关数据所关联的数据库相关操作行为。官方文档给出了一些示例代码，本文暂时不展开（我还没详细看其中的源码）。</p>
+<p><a href="https://docs.djangoproject.com/en/4.2/topics/db/multi-db/" target="_blank" rel="noopener">Multiple databases | Django documentation | Django</a></p>
+<h4 id="form和modelform表单验证">Form和ModelForm表单验证</h4>
+<h4 id="model数据库设计和操作">Model数据库设计和操作</h4>
+<h4 id="cookie和session的登录原理">cookie和session的登录原理</h4>
+<h4 id="template模版">template模版</h4>
+<h4 id="表结构设计">表结构设计</h4>
+<h4 id="外键和一对多关系设计">外键和一对多关系设计</h4>
 <p><a href="https://stackoverflow.com/questions/49470367/install-virtualenv-and-virtualenvwrapper-on-macos" target="_blank" rel="noopener">https://stackoverflow.com/questions/49470367/install-virtualenv-and-virtualenvwrapper-on-macos</a></p>
-<p>django目录结构</p>
-<p>settings</p>
-<p>models设计数据表</p>
-<p>url设计</p>
-<p>views业务逻辑代码</p>
-<p>template html生成</p>
+<h4 id="settings">settings</h4>
+<h4 id="models设计数据表">models设计数据表</h4>
+<h4 id="url设计">url设计</h4>
+<h4 id="视图views业务逻辑代码">视图（views）业务逻辑代码</h4>
+<p>当用户发起的请求匹配上某条url路由规则，用户请求就会被转发到对应的视图函数中处理。</p>
+<p>我们可以在视图函数中对请求参数进行处理，按照业务逻辑完成相关操作（如数据查询、变更等），最后返回响应。</p>
+<h5 id="数据查询">数据查询</h5>
+<p>http://127.0.0.1:8000/map_basic/provinces/</p>
+<ul>
+<li>以列表形式返回结果集</li>
+</ul>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl">  <span class="n">province_objs</span> <span class="o">=</span> <span class="n">Province</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">values_list</span><span class="p">(</span><span class="s1">&#39;name&#39;</span><span class="p">,</span> <span class="s1">&#39;code&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">order_by</span><span class="p">(</span><span class="s1">&#39;code&#39;</span><span class="p">)</span>
+</span></span></code></pre></div><p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<figure  >
+  <div class="d-flex justify-content-center">
+    <div class="w-100" ><img alt="" srcset="
+               /post/django-core-techs-notes/images/interface/values_list_hue66480ad92d1634b2ede582b4f625477_205511_2de7ead24731aa521b720349eed6bc55.webp 400w,
+               /post/django-core-techs-notes/images/interface/values_list_hue66480ad92d1634b2ede582b4f625477_205511_0b89ec4d8ed2e15c42b8e3cc4047b5b7.webp 760w,
+               /post/django-core-techs-notes/images/interface/values_list_hue66480ad92d1634b2ede582b4f625477_205511_1200x1200_fit_q75_h2_lanczos_3.webp 1200w"
+               src="/post/django-core-techs-notes/images/interface/values_list_hue66480ad92d1634b2ede582b4f625477_205511_2de7ead24731aa521b720349eed6bc55.webp"
+               width="547"
+               height="760"
+               loading="lazy" data-zoomable /></div>
+  </div></figure>
+</p>
+<ul>
+<li>以字典方式返回结果集</li>
+</ul>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl">  <span class="n">province_objs</span> <span class="o">=</span> <span class="n">Province</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">values</span><span class="p">(</span><span class="s1">&#39;name&#39;</span><span class="p">,</span> <span class="s1">&#39;code&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">order_by</span><span class="p">(</span><span class="s1">&#39;code&#39;</span><span class="p">)</span>
+</span></span></code></pre></div><p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<figure  >
+  <div class="d-flex justify-content-center">
+    <div class="w-100" ><img alt="" srcset="
+               /post/django-core-techs-notes/images/interface/values_origin_hu479134e91543edc6d7cd94a33cb8219f_242204_b2742ed4ce4ec7e06564eb6c1daa23a6.webp 400w,
+               /post/django-core-techs-notes/images/interface/values_origin_hu479134e91543edc6d7cd94a33cb8219f_242204_0b65cd831f967afe9efe7205c318c32b.webp 760w,
+               /post/django-core-techs-notes/images/interface/values_origin_hu479134e91543edc6d7cd94a33cb8219f_242204_1200x1200_fit_q75_h2_lanczos_3.webp 1200w"
+               src="/post/django-core-techs-notes/images/interface/values_origin_hu479134e91543edc6d7cd94a33cb8219f_242204_b2742ed4ce4ec7e06564eb6c1daa23a6.webp"
+               width="494"
+               height="760"
+               loading="lazy" data-zoomable /></div>
+  </div></figure>
+</p>
+<h4 id="template-html生成">template html生成</h4>
+<p>pass</p>
 <h2 id="0x01-django项目实战">0x01 Django项目实战</h2>
 <h3 id="创建django项目">创建Django项目</h3>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">django-admin startproject Message
 </span></span><span class="line"><span class="cl"><span class="nb">cd</span> Message
 </span></span><span class="line"><span class="cl">django-admin startapp message_form 
-</span></span></code></pre></div><h3 id="参考文档">参考文档</h3>
+</span></span></code></pre></div><h3 id="配置后台管理站点">配置后台管理站点</h3>
+<h4 id="后台管理站点的地址">后台管理站点的地址</h4>
+<p>默认来说，后台管理系统的地址为：http://127.0.0.1:8000/admin,这是在主应用的urls.py配置的路由，当然我们也可以进行改动：</p>
+<p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<figure  >
+  <div class="d-flex justify-content-center">
+    <div class="w-100" ><img alt="" srcset="
+               /post/django-core-techs-notes/images/admin_urls_default_hu7453c03dbe49a5f8f83de50182a6dfae_163883_c7e1a76d74cee24c7c800662ac3cb25e.webp 400w,
+               /post/django-core-techs-notes/images/admin_urls_default_hu7453c03dbe49a5f8f83de50182a6dfae_163883_28e559ec3878a11d16f417310ce5a4c5.webp 760w,
+               /post/django-core-techs-notes/images/admin_urls_default_hu7453c03dbe49a5f8f83de50182a6dfae_163883_1200x1200_fit_q75_h2_lanczos_3.webp 1200w"
+               src="/post/django-core-techs-notes/images/admin_urls_default_hu7453c03dbe49a5f8f83de50182a6dfae_163883_c7e1a76d74cee24c7c800662ac3cb25e.webp"
+               width="760"
+               height="638"
+               loading="lazy" data-zoomable /></div>
+  </div></figure>
+</p>
+<h4 id="中间件">中间件</h4>
+<p>Django的中间件是对Django请求/响应处理的一种框架，是一种轻量级的“插件”系统，用于全局处理Django的输入或输出。比如默认Django项目注册了如下中间件：</p>
+<p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<figure  >
+  <div class="d-flex justify-content-center">
+    <div class="w-100" ><img alt="" srcset="
+               /post/django-core-techs-notes/images/middlewares/setting_middle_hu2f310da0ffa3f3a90ba7f0f2fbf3e6d8_104771_c5d964edb2f6ca82e61719106de3c2c7.webp 400w,
+               /post/django-core-techs-notes/images/middlewares/setting_middle_hu2f310da0ffa3f3a90ba7f0f2fbf3e6d8_104771_21493e4edc94381d4dd309e71ae37ce4.webp 760w,
+               /post/django-core-techs-notes/images/middlewares/setting_middle_hu2f310da0ffa3f3a90ba7f0f2fbf3e6d8_104771_1200x1200_fit_q75_h2_lanczos_3.webp 1200w"
+               src="/post/django-core-techs-notes/images/middlewares/setting_middle_hu2f310da0ffa3f3a90ba7f0f2fbf3e6d8_104771_c5d964edb2f6ca82e61719106de3c2c7.webp"
+               width="760"
+               height="344"
+               loading="lazy" data-zoomable /></div>
+  </div></figure>
+</p>
+<h5 id="securitymiddleware">SecurityMiddleware</h5>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="k">def</span> <span class="nf">process_request</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">request</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">        <span class="n">path</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">lstrip</span><span class="p">(</span><span class="s2">&#34;/&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="k">if</span> <span class="p">(</span>
+</span></span><span class="line"><span class="cl">            <span class="bp">self</span><span class="o">.</span><span class="n">redirect</span>
+</span></span><span class="line"><span class="cl">            <span class="ow">and</span> <span class="ow">not</span> <span class="n">request</span><span class="o">.</span><span class="n">is_secure</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">            <span class="ow">and</span> <span class="ow">not</span> <span class="nb">any</span><span class="p">(</span><span class="n">pattern</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="n">path</span><span class="p">)</span> <span class="k">for</span> <span class="n">pattern</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">redirect_exempt</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="p">):</span>
+</span></span><span class="line"><span class="cl">            <span class="n">host</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">redirect_host</span> <span class="ow">or</span> <span class="n">request</span><span class="o">.</span><span class="n">get_host</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">            <span class="k">return</span> <span class="n">HttpResponsePermanentRedirect</span><span class="p">(</span>
+</span></span><span class="line"><span class="cl">                <span class="s2">&#34;https://</span><span class="si">%s%s</span><span class="s2">&#34;</span> <span class="o">%</span> <span class="p">(</span><span class="n">host</span><span class="p">,</span> <span class="n">request</span><span class="o">.</span><span class="n">get_full_path</span><span class="p">())</span>
+</span></span><span class="line"><span class="cl">            <span class="p">)</span>
+</span></span></code></pre></div><h5 id="heading"></h5>
+<h5 id="commonmiddlewarehttpsdocsdjangoprojectcomen42refmiddlewaredjangomiddlewarecommoncommonmiddleware"><a href="https://docs.djangoproject.com/en/4.2/ref/middleware/#django.middleware.common.CommonMiddleware" target="_blank" rel="noopener">CommonMiddleware</a></h5>
+<p>启用该中间件后，每一个请求经过中间件时，会经如下函数进行处理:比如检查用户的USER_AGENT是否在黑名单，是否应该进行重定向等。</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="k">def</span> <span class="nf">process_request</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">request</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">        <span class="s2">&#34;&#34;&#34;
+</span></span></span><span class="line"><span class="cl"><span class="s2">        Check for denied User-Agents and rewrite the URL based on
+</span></span></span><span class="line"><span class="cl"><span class="s2">        settings.APPEND_SLASH and settings.PREPEND_WWW
+</span></span></span><span class="line"><span class="cl"><span class="s2">        &#34;&#34;&#34;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">        <span class="c1"># Check for denied User-Agents</span>
+</span></span><span class="line"><span class="cl">        <span class="n">user_agent</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="n">META</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&#34;HTTP_USER_AGENT&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="k">if</span> <span class="n">user_agent</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">            <span class="k">for</span> <span class="n">user_agent_regex</span> <span class="ow">in</span> <span class="n">settings</span><span class="o">.</span><span class="n">DISALLOWED_USER_AGENTS</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">                <span class="k">if</span> <span class="n">user_agent_regex</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="n">user_agent</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">                    <span class="k">raise</span> <span class="n">PermissionDenied</span><span class="p">(</span><span class="s2">&#34;Forbidden user agent&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">        <span class="c1"># Check for a redirect based on settings.PREPEND_WWW</span>
+</span></span><span class="line"><span class="cl">        <span class="n">host</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="n">get_host</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">        <span class="k">if</span> <span class="n">settings</span><span class="o">.</span><span class="n">PREPEND_WWW</span> <span class="ow">and</span> <span class="n">host</span> <span class="ow">and</span> <span class="ow">not</span> <span class="n">host</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s2">&#34;www.&#34;</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">            <span class="c1"># Check if we also need to append a slash so we can do it all</span>
+</span></span><span class="line"><span class="cl">            <span class="c1"># with a single redirect. (This check may be somewhat expensive,</span>
+</span></span><span class="line"><span class="cl">            <span class="c1"># so we only do it if we already know we&#39;re sending a redirect,</span>
+</span></span><span class="line"><span class="cl">            <span class="c1"># or in process_response if we get a 404.)</span>
+</span></span><span class="line"><span class="cl">            <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">should_redirect_with_slash</span><span class="p">(</span><span class="n">request</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">                <span class="n">path</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_full_path_with_slash</span><span class="p">(</span><span class="n">request</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">            <span class="k">else</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">                <span class="n">path</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="n">get_full_path</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">            <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">response_redirect_class</span><span class="p">(</span><span class="sa">f</span><span class="s2">&#34;</span><span class="si">{</span><span class="n">request</span><span class="o">.</span><span class="n">scheme</span><span class="si">}</span><span class="s2">://www.</span><span class="si">{</span><span class="n">host</span><span class="si">}{</span><span class="n">path</span><span class="si">}</span><span class="s2">&#34;</span><span class="p">)</span>
+</span></span></code></pre></div><p>以USER_AGENT检查为例，默认情况下Django的配置文件没有设置user-agent黑名单，此时使用curl或者python发起请求接口均可正常返回数据。</p>
+<ul>
+<li>curl请求接口</li>
+</ul>
+<p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<figure  >
+  <div class="d-flex justify-content-center">
+    <div class="w-100" ><img alt="" srcset="
+               /post/django-core-techs-notes/images/middlewares/curl_useragent_hu3300d9ae70baa4a072c693425a81da03_225080_0326ec16c82ed4cdaf89fc50777db4f2.webp 400w,
+               /post/django-core-techs-notes/images/middlewares/curl_useragent_hu3300d9ae70baa4a072c693425a81da03_225080_f9cf76fb8f5db81264161850d99faffa.webp 760w,
+               /post/django-core-techs-notes/images/middlewares/curl_useragent_hu3300d9ae70baa4a072c693425a81da03_225080_1200x1200_fit_q75_h2_lanczos_3.webp 1200w"
+               src="/post/django-core-techs-notes/images/middlewares/curl_useragent_hu3300d9ae70baa4a072c693425a81da03_225080_0326ec16c82ed4cdaf89fc50777db4f2.webp"
+               width="760"
+               height="296"
+               loading="lazy" data-zoomable /></div>
+  </div></figure>
+</p>
+<p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<figure  >
+  <div class="d-flex justify-content-center">
+    <div class="w-100" ><img alt="" srcset="
+               /post/django-core-techs-notes/images/middlewares/common_useragent_hu2d512a70c99618df80daeec9792a009a_304260_43258436859f072f585a89e2ff223cec.webp 400w,
+               /post/django-core-techs-notes/images/middlewares/common_useragent_hu2d512a70c99618df80daeec9792a009a_304260_67bcc37305398abb99620e765da8ef1a.webp 760w,
+               /post/django-core-techs-notes/images/middlewares/common_useragent_hu2d512a70c99618df80daeec9792a009a_304260_1200x1200_fit_q75_h2_lanczos_3.webp 1200w"
+               src="/post/django-core-techs-notes/images/middlewares/common_useragent_hu2d512a70c99618df80daeec9792a009a_304260_43258436859f072f585a89e2ff223cec.webp"
+               width="760"
+               height="376"
+               loading="lazy" data-zoomable /></div>
+  </div></figure>
+</p>
+<ul>
+<li>python requests</li>
+</ul>
+<p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<figure  >
+  <div class="d-flex justify-content-center">
+    <div class="w-100" ><img alt="" srcset="
+               /post/django-core-techs-notes/images/middlewares/python-req_hu48f3f8fa315ebb2a311768442e07ae9c_164804_f7cf0f1a4ae5a73d38814a60be64a244.webp 400w,
+               /post/django-core-techs-notes/images/middlewares/python-req_hu48f3f8fa315ebb2a311768442e07ae9c_164804_96fe84bb13c1b211c7029133ac222260.webp 760w,
+               /post/django-core-techs-notes/images/middlewares/python-req_hu48f3f8fa315ebb2a311768442e07ae9c_164804_1200x1200_fit_q75_h2_lanczos_3.webp 1200w"
+               src="/post/django-core-techs-notes/images/middlewares/python-req_hu48f3f8fa315ebb2a311768442e07ae9c_164804_f7cf0f1a4ae5a73d38814a60be64a244.webp"
+               width="760"
+               height="234"
+               loading="lazy" data-zoomable /></div>
+  </div></figure>
+</p>
+<p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<figure  >
+  <div class="d-flex justify-content-center">
+    <div class="w-100" ><img alt="" srcset="
+               /post/django-core-techs-notes/images/middlewares/python-requests-useragent_hu912ae8fda024c168b110ac59157a187c_124833_678cd6c6596e99687db848d4390d542a.webp 400w,
+               /post/django-core-techs-notes/images/middlewares/python-requests-useragent_hu912ae8fda024c168b110ac59157a187c_124833_0b599d6746e72b07cafe2c39720e81b5.webp 760w,
+               /post/django-core-techs-notes/images/middlewares/python-requests-useragent_hu912ae8fda024c168b110ac59157a187c_124833_1200x1200_fit_q75_h2_lanczos_3.webp 1200w"
+               src="/post/django-core-techs-notes/images/middlewares/python-requests-useragent_hu912ae8fda024c168b110ac59157a187c_124833_678cd6c6596e99687db848d4390d542a.webp"
+               width="760"
+               height="290"
+               loading="lazy" data-zoomable /></div>
+  </div></figure>
+</p>
+<p>如果想要禁止具有特定USERAGENT的请求访问接口，可以在SETTINGS文件中配置黑名单settings.DISALLOWED_USER_AGENTS</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="n">DISALLOWED_USER_AGENTS</span> <span class="o">=</span> <span class="p">[</span>
+</span></span><span class="line"><span class="cl">    <span class="n">re</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="s2">&#34;curl&#34;</span><span class="p">),</span>
+</span></span><span class="line"><span class="cl">    <span class="n">re</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="s2">&#34;python&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="p">]</span>
+</span></span></code></pre></div><p>配置成功后，当请求的user-agent匹配上黑名单的其中一项，请求就会被拒绝，如下图所示：</p>
+<p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<figure  >
+  <div class="d-flex justify-content-center">
+    <div class="w-100" ><img alt="" srcset="
+               /post/django-core-techs-notes/images/middlewares/python-req-forbidden_hu39be39548a57ff5129497e598936dafc_26724_e24969936607c0986e9b7d06148fe888.webp 400w,
+               /post/django-core-techs-notes/images/middlewares/python-req-forbidden_hu39be39548a57ff5129497e598936dafc_26724_9104a0de201daf7477a20978a3e6ad27.webp 760w,
+               /post/django-core-techs-notes/images/middlewares/python-req-forbidden_hu39be39548a57ff5129497e598936dafc_26724_1200x1200_fit_q75_h2_lanczos_3.webp 1200w"
+               src="/post/django-core-techs-notes/images/middlewares/python-req-forbidden_hu39be39548a57ff5129497e598936dafc_26724_e24969936607c0986e9b7d06148fe888.webp"
+               width="760"
+               height="36"
+               loading="lazy" data-zoomable /></div>
+  </div></figure>
+</p>
+<p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<figure  >
+  <div class="d-flex justify-content-center">
+    <div class="w-100" ><img alt="" srcset="
+               /post/django-core-techs-notes/images/middlewares/curl-forbidden_hu0d97dfd8af0ca5f97caddf5c7c49bc80_116612_795c92a17c7a2504674ca2cea5e1303b.webp 400w,
+               /post/django-core-techs-notes/images/middlewares/curl-forbidden_hu0d97dfd8af0ca5f97caddf5c7c49bc80_116612_a1937fdd042c304f4e6981970f2fedc8.webp 760w,
+               /post/django-core-techs-notes/images/middlewares/curl-forbidden_hu0d97dfd8af0ca5f97caddf5c7c49bc80_116612_1200x1200_fit_q75_h2_lanczos_3.webp 1200w"
+               src="/post/django-core-techs-notes/images/middlewares/curl-forbidden_hu0d97dfd8af0ca5f97caddf5c7c49bc80_116612_795c92a17c7a2504674ca2cea5e1303b.webp"
+               width="760"
+               height="305"
+               loading="lazy" data-zoomable /></div>
+  </div></figure>
+</p>
+<p>当然，默认情况下，编译的正则表达式不区分大小写，如果需要区分，可以在编译正则表达式时加上re.IGNORECASE参数。</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="c1"># User-Agent黑名单，编译过的正则表达式, 同时配置不区分大小写</span>
+</span></span><span class="line"><span class="cl"><span class="n">DISALLOWED_USER_AGENTS</span> <span class="o">=</span> <span class="p">[</span>
+</span></span><span class="line"><span class="cl">    <span class="n">re</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="s2">&#34;curl&#34;</span><span class="p">,</span> <span class="n">re</span><span class="o">.</span><span class="n">IGNORECASE</span><span class="p">),</span>
+</span></span><span class="line"><span class="cl">    <span class="n">re</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="s2">&#34;python&#34;</span><span class="p">,</span> <span class="n">re</span><span class="o">.</span><span class="n">IGNORECASE</span><span class="p">),</span>
+</span></span><span class="line"><span class="cl">    <span class="n">re</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="s2">&#34;PhantomJS&#34;</span><span class="p">,</span> <span class="n">re</span><span class="o">.</span><span class="n">IGNORECASE</span><span class="p">),</span>
+</span></span><span class="line"><span class="cl">    <span class="n">re</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="s2">&#34;selenium&#34;</span><span class="p">,</span> <span class="n">re</span><span class="o">.</span><span class="n">IGNORECASE</span><span class="p">),</span>
+</span></span><span class="line"><span class="cl">    <span class="n">re</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="s2">&#34;java&#34;</span><span class="p">,</span> <span class="n">re</span><span class="o">.</span><span class="n">IGNORECASE</span><span class="p">),</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="p">]</span>
+</span></span></code></pre></div><h5 id="csrfviewmiddlewarehttpsdocsdjangoprojectcomen42refmiddlewarecsrf-protection-middleware"><a href="https://docs.djangoproject.com/en/4.2/ref/middleware/#csrf-protection-middleware" target="_blank" rel="noopener">CsrfViewMiddleware</a></h5>
+<h5 id="authenticationmiddlewarehttpsdocsdjangoprojectcomen42refmiddlewaredjangocontribauthmiddlewareauthenticationmiddleware"><a href="https://docs.djangoproject.com/en/4.2/ref/middleware/#django.contrib.auth.middleware.AuthenticationMiddleware" target="_blank" rel="noopener">AuthenticationMiddleware</a></h5>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl">    <span class="k">def</span> <span class="nf">process_request</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">request</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">        <span class="n">path</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">lstrip</span><span class="p">(</span><span class="s2">&#34;/&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="k">if</span> <span class="p">(</span>
+</span></span><span class="line"><span class="cl">            <span class="bp">self</span><span class="o">.</span><span class="n">redirect</span>
+</span></span><span class="line"><span class="cl">            <span class="ow">and</span> <span class="ow">not</span> <span class="n">request</span><span class="o">.</span><span class="n">is_secure</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">            <span class="ow">and</span> <span class="ow">not</span> <span class="nb">any</span><span class="p">(</span><span class="n">pattern</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="n">path</span><span class="p">)</span> <span class="k">for</span> <span class="n">pattern</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">redirect_exempt</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="p">):</span>
+</span></span><span class="line"><span class="cl">            <span class="n">host</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">redirect_host</span> <span class="ow">or</span> <span class="n">request</span><span class="o">.</span><span class="n">get_host</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">            <span class="k">return</span> <span class="n">HttpResponsePermanentRedirect</span><span class="p">(</span>
+</span></span><span class="line"><span class="cl">                <span class="s2">&#34;https://</span><span class="si">%s%s</span><span class="s2">&#34;</span> <span class="o">%</span> <span class="p">(</span><span class="n">host</span><span class="p">,</span> <span class="n">request</span><span class="o">.</span><span class="n">get_full_path</span><span class="p">())</span>
+</span></span><span class="line"><span class="cl">            <span class="p">)</span>
+</span></span></code></pre></div><ul>
+<li>&hellip;</li>
+</ul>
+<p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<figure  >
+  <div class="d-flex justify-content-center">
+    <div class="w-100" ><img alt="" srcset="
+               /post/django-core-techs-notes/images/middlewares/order_hu44b8e08f1af7e7cc23d41f8cf0f5dc72_609823_5b0342032ad5bd222dec998c75275ae3.webp 400w,
+               /post/django-core-techs-notes/images/middlewares/order_hu44b8e08f1af7e7cc23d41f8cf0f5dc72_609823_6f5738a544e3021e51de492306cb4293.webp 760w,
+               /post/django-core-techs-notes/images/middlewares/order_hu44b8e08f1af7e7cc23d41f8cf0f5dc72_609823_1200x1200_fit_q75_h2_lanczos_3.webp 1200w"
+               src="/post/django-core-techs-notes/images/middlewares/order_hu44b8e08f1af7e7cc23d41f8cf0f5dc72_609823_5b0342032ad5bd222dec998c75275ae3.webp"
+               width="361"
+               height="760"
+               loading="lazy" data-zoomable /></div>
+  </div></figure>
+</p>
+<h4 id="后台管理用户">后台管理用户</h4>
+<p>创建管理用户，并配置密码（不可为空）</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">python manage.py createsuperuser
+</span></span></code></pre></div><p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<figure  >
+  <div class="d-flex justify-content-center">
+    <div class="w-100" ><img alt="" srcset="
+               /post/django-core-techs-notes/images/createsuperuser_hue8e0f180e3232b68693c41e9421621fd_65583_d828d1ddde200027205d4f65cca92b95.webp 400w,
+               /post/django-core-techs-notes/images/createsuperuser_hue8e0f180e3232b68693c41e9421621fd_65583_aa8c3d5194fe210166b5e5687e898d14.webp 760w,
+               /post/django-core-techs-notes/images/createsuperuser_hue8e0f180e3232b68693c41e9421621fd_65583_1200x1200_fit_q75_h2_lanczos_3.webp 1200w"
+               src="/post/django-core-techs-notes/images/createsuperuser_hue8e0f180e3232b68693c41e9421621fd_65583_d828d1ddde200027205d4f65cca92b95.webp"
+               width="760"
+               height="193"
+               loading="lazy" data-zoomable /></div>
+  </div></figure>
+</p>
+<p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<figure  >
+  <div class="d-flex justify-content-center">
+    <div class="w-100" ><img alt="" srcset="
+               /post/django-core-techs-notes/images/django_admin_hub987700d99b42fd00a0820bfd3651666_182428_96feca9d77f84ccc63d83e8e12ab1799.webp 400w,
+               /post/django-core-techs-notes/images/django_admin_hub987700d99b42fd00a0820bfd3651666_182428_41175c1c809d386086567bbe933a4ff7.webp 760w,
+               /post/django-core-techs-notes/images/django_admin_hub987700d99b42fd00a0820bfd3651666_182428_1200x1200_fit_q75_h2_lanczos_3.webp 1200w"
+               src="/post/django-core-techs-notes/images/django_admin_hub987700d99b42fd00a0820bfd3651666_182428_96feca9d77f84ccc63d83e8e12ab1799.webp"
+               width="760"
+               height="464"
+               loading="lazy" data-zoomable /></div>
+  </div></figure>
+</p>
+<p>默认django后台使用英文，只需要在settings.py文件修改语言配置即可实现中文的后台管理系统。</p>
+<p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<figure  >
+  <div class="d-flex justify-content-center">
+    <div class="w-100" ><img alt="" srcset="
+               /post/django-core-techs-notes/images/django_lang_huf5131db57544c0388101564186c19430_152441_867ca7fa8b632d87d1d3237d16ec31be.webp 400w,
+               /post/django-core-techs-notes/images/django_lang_huf5131db57544c0388101564186c19430_152441_dfaa12c25e20c606b7533f67d4cac4f0.webp 760w,
+               /post/django-core-techs-notes/images/django_lang_huf5131db57544c0388101564186c19430_152441_1200x1200_fit_q75_h2_lanczos_3.webp 1200w"
+               src="/post/django-core-techs-notes/images/django_lang_huf5131db57544c0388101564186c19430_152441_867ca7fa8b632d87d1d3237d16ec31be.webp"
+               width="760"
+               height="414"
+               loading="lazy" data-zoomable /></div>
+  </div></figure>
+</p>
+<p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<figure  >
+  <div class="d-flex justify-content-center">
+    <div class="w-100" ><img alt="" srcset="
+               /post/django-core-techs-notes/images/django_admin_zh_hu1b107e55c6f87777de10cb072245fc97_168119_2ba608304ad87b834886e772ed330d25.webp 400w,
+               /post/django-core-techs-notes/images/django_admin_zh_hu1b107e55c6f87777de10cb072245fc97_168119_78a6773323b6d2097c42aee4aba0b826.webp 760w,
+               /post/django-core-techs-notes/images/django_admin_zh_hu1b107e55c6f87777de10cb072245fc97_168119_1200x1200_fit_q75_h2_lanczos_3.webp 1200w"
+               src="/post/django-core-techs-notes/images/django_admin_zh_hu1b107e55c6f87777de10cb072245fc97_168119_2ba608304ad87b834886e772ed330d25.webp"
+               width="760"
+               height="409"
+               loading="lazy" data-zoomable /></div>
+  </div></figure>
+</p>
+<p>对于开发者自定义的app，只要加入settings.py文件中的INSTALLED_APP列表，django就会自动搜索这些app的admin模块，将app纳入后台管理系统</p>
+<p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<figure  >
+  <div class="d-flex justify-content-center">
+    <div class="w-100" ><img alt="" srcset="
+               /post/django-core-techs-notes/images/settings_installed_app_hu513d120415cb580237dc98c9ee60602e_65261_6f6f831d4ed0b140f15c41734f99c6be.webp 400w,
+               /post/django-core-techs-notes/images/settings_installed_app_hu513d120415cb580237dc98c9ee60602e_65261_6a09cadd77bdcbdab1f9562b2e834316.webp 760w,
+               /post/django-core-techs-notes/images/settings_installed_app_hu513d120415cb580237dc98c9ee60602e_65261_1200x1200_fit_q75_h2_lanczos_3.webp 1200w"
+               src="/post/django-core-techs-notes/images/settings_installed_app_hu513d120415cb580237dc98c9ee60602e_65261_6f6f831d4ed0b140f15c41734f99c6be.webp"
+               width="760"
+               height="502"
+               loading="lazy" data-zoomable /></div>
+  </div></figure>
+</p>
+<p>在admin.py中注册Model</p>
+<p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<figure  >
+  <div class="d-flex justify-content-center">
+    <div class="w-100" ><img alt="" srcset="
+               /post/django-core-techs-notes/images/admin_reg_hu3f162b52c4c6609c7f81d29b89ab8895_26273_395514c101d8e2db7338bd0d85985faf.webp 400w,
+               /post/django-core-techs-notes/images/admin_reg_hu3f162b52c4c6609c7f81d29b89ab8895_26273_64caabb6b25bb31d1ee133fddbdb1f96.webp 760w,
+               /post/django-core-techs-notes/images/admin_reg_hu3f162b52c4c6609c7f81d29b89ab8895_26273_1200x1200_fit_q75_h2_lanczos_3.webp 1200w"
+               src="/post/django-core-techs-notes/images/admin_reg_hu3f162b52c4c6609c7f81d29b89ab8895_26273_395514c101d8e2db7338bd0d85985faf.webp"
+               width="760"
+               height="174"
+               loading="lazy" data-zoomable /></div>
+  </div></figure>
+</p>
+<p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<figure  >
+  <div class="d-flex justify-content-center">
+    <div class="w-100" ><img alt="" srcset="
+               /post/django-core-techs-notes/images/django_admin_app_hu7dff627c43a63abb2996cf9cb5432ef6_73926_47c4efb4d033542bf993492441d94cbe.webp 400w,
+               /post/django-core-techs-notes/images/django_admin_app_hu7dff627c43a63abb2996cf9cb5432ef6_73926_0c9df8a4288685f3ef3e1808c5ee2091.webp 760w,
+               /post/django-core-techs-notes/images/django_admin_app_hu7dff627c43a63abb2996cf9cb5432ef6_73926_1200x1200_fit_q75_h2_lanczos_3.webp 1200w"
+               src="/post/django-core-techs-notes/images/django_admin_app_hu7dff627c43a63abb2996cf9cb5432ef6_73926_47c4efb4d033542bf993492441d94cbe.webp"
+               width="760"
+               height="426"
+               loading="lazy" data-zoomable /></div>
+  </div></figure>
+</p>
+<h4 id="后台管理配置项">后台管理配置项</h4>
+<h5 id="表名字段名可读性配置">表名、字段名可读性配置</h5>
+<p>默认来说，后台会以英文（复数形式）展示Model，如果需要自定义配置，可以在Model类的Meta类中修改单数形式和复数形式的昵称。</p>
+<p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<figure  >
+  <div class="d-flex justify-content-center">
+    <div class="w-100" ><img alt="" srcset="
+               /post/django-core-techs-notes/images/model_verbose_hu7ccadebd52a1b7252600a3242b1d0f49_162226_15ac646b27220962dedf14f3a015e944.webp 400w,
+               /post/django-core-techs-notes/images/model_verbose_hu7ccadebd52a1b7252600a3242b1d0f49_162226_24c4ec266cf49d0b314be0272d746592.webp 760w,
+               /post/django-core-techs-notes/images/model_verbose_hu7ccadebd52a1b7252600a3242b1d0f49_162226_1200x1200_fit_q75_h2_lanczos_3.webp 1200w"
+               src="/post/django-core-techs-notes/images/model_verbose_hu7ccadebd52a1b7252600a3242b1d0f49_162226_15ac646b27220962dedf14f3a015e944.webp"
+               width="760"
+               height="308"
+               loading="lazy" data-zoomable /></div>
+  </div></figure>
+</p>
+<p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<figure  >
+  <div class="d-flex justify-content-center">
+    <div class="w-100" ><img alt="" srcset="
+               /post/django-core-techs-notes/images/model_field_verbose_hu646f63462a6ec58ddffc51a7e6b71e98_135769_1f6d888d4fd88734fc0dcfe5ae026d07.webp 400w,
+               /post/django-core-techs-notes/images/model_field_verbose_hu646f63462a6ec58ddffc51a7e6b71e98_135769_26d19bc0d548b11f663be0b8b55ea4a7.webp 760w,
+               /post/django-core-techs-notes/images/model_field_verbose_hu646f63462a6ec58ddffc51a7e6b71e98_135769_1200x1200_fit_q75_h2_lanczos_3.webp 1200w"
+               src="/post/django-core-techs-notes/images/model_field_verbose_hu646f63462a6ec58ddffc51a7e6b71e98_135769_1f6d888d4fd88734fc0dcfe5ae026d07.webp"
+               width="760"
+               height="148"
+               loading="lazy" data-zoomable /></div>
+  </div></figure>
+</p>
+<p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<figure  >
+  <div class="d-flex justify-content-center">
+    <div class="w-100" ><img alt="" srcset="
+               /post/django-core-techs-notes/images/admin_verbose_hu5730be0e4ef6a2505e6c28aca9d6793e_23412_7277dd3ff3d1101597fafaf995504068.webp 400w,
+               /post/django-core-techs-notes/images/admin_verbose_hu5730be0e4ef6a2505e6c28aca9d6793e_23412_08798d0191f6f0e7d9c036ce9403fbc2.webp 760w,
+               /post/django-core-techs-notes/images/admin_verbose_hu5730be0e4ef6a2505e6c28aca9d6793e_23412_1200x1200_fit_q75_h2_lanczos_3.webp 1200w"
+               src="/post/django-core-techs-notes/images/admin_verbose_hu5730be0e4ef6a2505e6c28aca9d6793e_23412_7277dd3ff3d1101597fafaf995504068.webp"
+               width="626"
+               height="356"
+               loading="lazy" data-zoomable /></div>
+  </div></figure>
+</p>
+<h5 id="支持按字段搜索">支持按字段搜索</h5>
+<p>需要自定义admin.ModelAdmin的子类，配置search_fields（搜索字段）</p>
+<p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<figure  >
+  <div class="d-flex justify-content-center">
+    <div class="w-100" ><img alt="" srcset="
+               /post/django-core-techs-notes/images/admin_search_config_hu60cbb60562289e5f558cbc8c2e9f45bd_44999_7d358f51801a3cbd243de4e2dd4c83e6.webp 400w,
+               /post/django-core-techs-notes/images/admin_search_config_hu60cbb60562289e5f558cbc8c2e9f45bd_44999_9ae272dfe87606211e097cb9e75fb901.webp 760w,
+               /post/django-core-techs-notes/images/admin_search_config_hu60cbb60562289e5f558cbc8c2e9f45bd_44999_1200x1200_fit_q75_h2_lanczos_3.webp 1200w"
+               src="/post/django-core-techs-notes/images/admin_search_config_hu60cbb60562289e5f558cbc8c2e9f45bd_44999_7d358f51801a3cbd243de4e2dd4c83e6.webp"
+               width="760"
+               height="150"
+               loading="lazy" data-zoomable /></div>
+  </div></figure>
+</p>
+<p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<figure  >
+  <div class="d-flex justify-content-center">
+    <div class="w-100" ><img alt="" srcset="
+               /post/django-core-techs-notes/images/admin_search_field_hu7c71c88d0ecd934746b7aeb48c48cb33_76844_3023ff42ed7fd3c2615d734cd4ae1219.webp 400w,
+               /post/django-core-techs-notes/images/admin_search_field_hu7c71c88d0ecd934746b7aeb48c48cb33_76844_63e54302a16a45ca0a50b1fabeadb8bd.webp 760w,
+               /post/django-core-techs-notes/images/admin_search_field_hu7c71c88d0ecd934746b7aeb48c48cb33_76844_1200x1200_fit_q75_h2_lanczos_3.webp 1200w"
+               src="/post/django-core-techs-notes/images/admin_search_field_hu7c71c88d0ecd934746b7aeb48c48cb33_76844_3023ff42ed7fd3c2615d734cd4ae1219.webp"
+               width="760"
+               height="429"
+               loading="lazy" data-zoomable /></div>
+  </div></figure>
+</p>
+<h5 id="更多配置">更多配置</h5>
+<p>配置展示的字段、是否以列表形式展示、列表过滤器、排序字段等。</p>
+<p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<figure  >
+  <div class="d-flex justify-content-center">
+    <div class="w-100" ><img alt="" srcset="
+               /post/django-core-techs-notes/images/admin_config/model_admin_config_hu4f96c369cd0049552a1a93b7414ac6d5_123582_7da7038e0865c7f4cdd17b5213798bd0.webp 400w,
+               /post/django-core-techs-notes/images/admin_config/model_admin_config_hu4f96c369cd0049552a1a93b7414ac6d5_123582_de491bfcf2eeb1096daba99ae2eefafb.webp 760w,
+               /post/django-core-techs-notes/images/admin_config/model_admin_config_hu4f96c369cd0049552a1a93b7414ac6d5_123582_1200x1200_fit_q75_h2_lanczos_3.webp 1200w"
+               src="/post/django-core-techs-notes/images/admin_config/model_admin_config_hu4f96c369cd0049552a1a93b7414ac6d5_123582_7da7038e0865c7f4cdd17b5213798bd0.webp"
+               width="760"
+               height="291"
+               loading="lazy" data-zoomable /></div>
+  </div></figure>
+</p>
+<p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<figure  >
+  <div class="d-flex justify-content-center">
+    <div class="w-100" ><img alt="" srcset="
+               /post/django-core-techs-notes/images/admin_config/admin_config_hu4f53d45506b51596b673426f0e395a4d_401304_ada66d852ec5075742a4a1464f9495ef.webp 400w,
+               /post/django-core-techs-notes/images/admin_config/admin_config_hu4f53d45506b51596b673426f0e395a4d_401304_96fbd699f23a4c538146b798533f4cf9.webp 760w,
+               /post/django-core-techs-notes/images/admin_config/admin_config_hu4f53d45506b51596b673426f0e395a4d_401304_1200x1200_fit_q75_h2_lanczos_3.webp 1200w"
+               src="/post/django-core-techs-notes/images/admin_config/admin_config_hu4f53d45506b51596b673426f0e395a4d_401304_ada66d852ec5075742a4a1464f9495ef.webp"
+               width="587"
+               height="760"
+               loading="lazy" data-zoomable /></div>
+  </div></figure>
+</p>
+<p>如果对过滤器样式有更多要求，可以参考: <a href="https://stackoverflow.com/questions/5429276/how-to-change-the-django-admin-filter-to-use-a-dropdown-instead-of-list" target="_blank" rel="noopener">How to change the Django admin filter to use a dropdown instead of list? - Stack Overflow</a></p>
+<p>比如，需要下拉式过滤器,可安装扩展django_admin_listfilter_dropdown，在配置文件中配置APP，即可导入相关过滤器使用</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="kn">from</span> <span class="nn">django_admin_listfilter_dropdown.filters</span> <span class="kn">import</span> <span class="p">(</span><span class="n">DropdownFilter</span><span class="p">,</span> <span class="n">ChoiceDropdownFilter</span><span class="p">,</span> <span class="n">RelatedDropdownFilter</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="k">class</span> <span class="nc">CountyAdmin</span><span class="p">(</span><span class="n">admin</span><span class="o">.</span><span class="n">ModelAdmin</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">    <span class="c1"># 配置展示什么字段</span>
+</span></span><span class="line"><span class="cl">    <span class="n">fields</span> <span class="o">=</span> <span class="p">(</span><span class="s1">&#39;provincena&#39;</span><span class="p">,</span> <span class="s1">&#39;city_name&#39;</span><span class="p">,</span> <span class="s1">&#39;name&#39;</span><span class="p">,</span> <span class="s1">&#39;code&#39;</span><span class="p">,</span> <span class="s1">&#39;shape_leng&#39;</span><span class="p">,</span> <span class="s1">&#39;shape_area&#39;</span><span class="p">,</span> <span class="s1">&#39;geo&#39;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="c1"># 以列表的形式展示表数据</span>
+</span></span><span class="line"><span class="cl">    <span class="n">list_display</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;city_name&#39;</span><span class="p">,</span> <span class="s1">&#39;provincena&#39;</span><span class="p">,</span> <span class="s1">&#39;name&#39;</span><span class="p">,</span> <span class="s1">&#39;code&#39;</span><span class="p">,</span> <span class="s1">&#39;shape_area&#39;</span><span class="p">]</span>
+</span></span><span class="line"><span class="cl">    <span class="c1"># 可搜索的字段</span>
+</span></span><span class="line"><span class="cl">    <span class="n">search_fields</span> <span class="o">=</span> <span class="p">(</span><span class="s1">&#39;name&#39;</span><span class="p">,</span> <span class="s1">&#39;provincena&#39;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="c1"># 过滤字段: https://docs.djangoproject.com/en/4.2/ref/contrib/admin/filters/</span>
+</span></span><span class="line"><span class="cl">    <span class="c1"># list_filter = (&#39;provincena&#39;, &#39;city_name&#39;)</span>
+</span></span><span class="line"><span class="cl">    <span class="n">list_filter</span> <span class="o">=</span> <span class="p">(</span>
+</span></span><span class="line"><span class="cl">        <span class="p">(</span><span class="s1">&#39;provincena&#39;</span><span class="p">,</span> <span class="n">DropdownFilter</span><span class="p">),</span>
+</span></span><span class="line"><span class="cl">        <span class="p">(</span><span class="s1">&#39;city_name&#39;</span><span class="p">,</span> <span class="n">DropdownFilter</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="c1"># 排序字段</span>
+</span></span><span class="line"><span class="cl">    <span class="n">ordering</span> <span class="o">=</span> <span class="p">(</span><span class="s2">&#34;-shape_area&#34;</span><span class="p">,)</span>
+</span></span></code></pre></div><p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<figure  >
+  <div class="d-flex justify-content-center">
+    <div class="w-100" ><img alt="" srcset="
+               /post/django-core-techs-notes/images/admin_config/dropdown_filter_hu6f3462bd84b02df2b2c66b8ffba8c14d_189950_73c89e75829b1146a9a7adb99f042e22.webp 400w,
+               /post/django-core-techs-notes/images/admin_config/dropdown_filter_hu6f3462bd84b02df2b2c66b8ffba8c14d_189950_b094112da98ab0b645e0a00f58958a4b.webp 760w,
+               /post/django-core-techs-notes/images/admin_config/dropdown_filter_hu6f3462bd84b02df2b2c66b8ffba8c14d_189950_1200x1200_fit_q75_h2_lanczos_3.webp 1200w"
+               src="/post/django-core-techs-notes/images/admin_config/dropdown_filter_hu6f3462bd84b02df2b2c66b8ffba8c14d_189950_73c89e75829b1146a9a7adb99f042e22.webp"
+               width="760"
+               height="697"
+               loading="lazy" data-zoomable /></div>
+  </div></figure>
+</p>
+<p>models.py中的Model字段属性定义会影响数据在后台管理系统的显示，如verbose_name，浮点类型的显示小数位数等。</p>
+<h5 id="禁用删除权限">禁用删除权限</h5>
+<p>默认django admin表管理界面可以删除数据.</p>
+<p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<figure  >
+  <div class="d-flex justify-content-center">
+    <div class="w-100" ><img alt="" srcset="
+               /post/django-core-techs-notes/images/admin_config/default_delete_hua9e1ad6d7abdcd1b9e485319d686465e_36084_54eb633605c599cd8b5637df83ff42cc.webp 400w,
+               /post/django-core-techs-notes/images/admin_config/default_delete_hua9e1ad6d7abdcd1b9e485319d686465e_36084_f401d3c4d2abe23df2fb23c84d1d6f68.webp 760w,
+               /post/django-core-techs-notes/images/admin_config/default_delete_hua9e1ad6d7abdcd1b9e485319d686465e_36084_1200x1200_fit_q75_h2_lanczos_3.webp 1200w"
+               src="/post/django-core-techs-notes/images/admin_config/default_delete_hua9e1ad6d7abdcd1b9e485319d686465e_36084_54eb633605c599cd8b5637df83ff42cc.webp"
+               width="760"
+               height="150"
+               loading="lazy" data-zoomable /></div>
+  </div></figure>
+</p>
+<p>可以通过重写对应的Admin子类的has_delete_permission方法禁用删除权限。</p>
+<p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<figure  >
+  <div class="d-flex justify-content-center">
+    <div class="w-100" ><img alt="" srcset="
+               /post/django-core-techs-notes/images/admin_config/disable_delete_hu7cef8b37358fc9e140ec8c4f5ffbd469_94071_26f573c8f62e70811a3a529772d46557.webp 400w,
+               /post/django-core-techs-notes/images/admin_config/disable_delete_hu7cef8b37358fc9e140ec8c4f5ffbd469_94071_099459e8c30fe239b6242756226f3218.webp 760w,
+               /post/django-core-techs-notes/images/admin_config/disable_delete_hu7cef8b37358fc9e140ec8c4f5ffbd469_94071_1200x1200_fit_q75_h2_lanczos_3.webp 1200w"
+               src="/post/django-core-techs-notes/images/admin_config/disable_delete_hu7cef8b37358fc9e140ec8c4f5ffbd469_94071_26f573c8f62e70811a3a529772d46557.webp"
+               width="760"
+               height="538"
+               loading="lazy" data-zoomable /></div>
+  </div></figure>
+</p>
+<h5 id="地理空间要素模型配置地图底图图层">地理空间要素模型配置地图底图图层</h5>
+<p>以下为django.contrib.gis.admin提供的默认地理要素管理类，也可以参照其中配置自定义图层服务，如使用高德地图、百度地图。</p>
+<ul>
+<li>
+<p>GeoModelAdmin</p>
+<p>默认使用openlayer在线地图服务</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="c1"># RemovedInDjango50Warning.</span>
+</span></span><span class="line"><span class="cl"><span class="k">class</span> <span class="nc">GeoModelAdmin</span><span class="p">(</span><span class="n">ModelAdmin</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">    <span class="s2">&#34;&#34;&#34;
+</span></span></span><span class="line"><span class="cl"><span class="s2">    The administration options class for Geographic models. Map settings
+</span></span></span><span class="line"><span class="cl"><span class="s2">    may be overloaded from their defaults to create custom maps.
+</span></span></span><span class="line"><span class="cl"><span class="s2">    &#34;&#34;&#34;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="c1"># The default map settings that may be overloaded -- still subject</span>
+</span></span><span class="line"><span class="cl">    <span class="c1"># to API changes.</span>
+</span></span><span class="line"><span class="cl">    <span class="n">default_lon</span> <span class="o">=</span> <span class="mi">0</span>
+</span></span><span class="line"><span class="cl">    <span class="n">default_lat</span> <span class="o">=</span> <span class="mi">0</span>
+</span></span><span class="line"><span class="cl">    <span class="n">default_zoom</span> <span class="o">=</span> <span class="mi">4</span>
+</span></span><span class="line"><span class="cl">    <span class="n">display_wkt</span> <span class="o">=</span> <span class="kc">False</span>
+</span></span><span class="line"><span class="cl">    <span class="n">display_srid</span> <span class="o">=</span> <span class="kc">False</span>
+</span></span><span class="line"><span class="cl">    <span class="n">extra_js</span> <span class="o">=</span> <span class="p">[]</span>
+</span></span><span class="line"><span class="cl">    <span class="n">num_zoom</span> <span class="o">=</span> <span class="mi">18</span>
+</span></span><span class="line"><span class="cl">    <span class="n">max_zoom</span> <span class="o">=</span> <span class="kc">False</span>
+</span></span><span class="line"><span class="cl">    <span class="n">min_zoom</span> <span class="o">=</span> <span class="kc">False</span>
+</span></span><span class="line"><span class="cl">    <span class="n">units</span> <span class="o">=</span> <span class="kc">False</span>
+</span></span><span class="line"><span class="cl">    <span class="n">max_resolution</span> <span class="o">=</span> <span class="kc">False</span>
+</span></span><span class="line"><span class="cl">    <span class="n">max_extent</span> <span class="o">=</span> <span class="kc">False</span>
+</span></span><span class="line"><span class="cl">    <span class="n">modifiable</span> <span class="o">=</span> <span class="kc">True</span>
+</span></span><span class="line"><span class="cl">    <span class="n">mouse_position</span> <span class="o">=</span> <span class="kc">True</span>
+</span></span><span class="line"><span class="cl">    <span class="n">scale_text</span> <span class="o">=</span> <span class="kc">True</span>
+</span></span><span class="line"><span class="cl">    <span class="n">layerswitcher</span> <span class="o">=</span> <span class="kc">True</span>
+</span></span><span class="line"><span class="cl">    <span class="n">scrollable</span> <span class="o">=</span> <span class="kc">True</span>
+</span></span><span class="line"><span class="cl">    <span class="n">map_width</span> <span class="o">=</span> <span class="mi">600</span>
+</span></span><span class="line"><span class="cl">    <span class="n">map_height</span> <span class="o">=</span> <span class="mi">400</span>
+</span></span><span class="line"><span class="cl">    <span class="n">map_srid</span> <span class="o">=</span> <span class="mi">4326</span>
+</span></span><span class="line"><span class="cl">    <span class="n">map_template</span> <span class="o">=</span> <span class="s2">&#34;gis/admin/openlayers.html&#34;</span>
+</span></span><span class="line"><span class="cl">    <span class="n">openlayers_url</span> <span class="o">=</span> <span class="p">(</span>
+</span></span><span class="line"><span class="cl">        <span class="s2">&#34;https://cdnjs.cloudflare.com/ajax/libs/openlayers/2.13.1/OpenLayers.js&#34;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="n">point_zoom</span> <span class="o">=</span> <span class="n">num_zoom</span> <span class="o">-</span> <span class="mi">6</span>
+</span></span><span class="line"><span class="cl">    <span class="n">wms_url</span> <span class="o">=</span> <span class="s2">&#34;http://vmap0.tiles.osgeo.org/wms/vmap0&#34;</span>
+</span></span><span class="line"><span class="cl">    <span class="n">wms_layer</span> <span class="o">=</span> <span class="s2">&#34;basic&#34;</span>
+</span></span><span class="line"><span class="cl">    <span class="n">wms_name</span> <span class="o">=</span> <span class="s2">&#34;OpenLayers WMS&#34;</span>
+</span></span><span class="line"><span class="cl">    <span class="n">wms_options</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&#34;format&#34;</span><span class="p">:</span> <span class="s2">&#34;image/jpeg&#34;</span><span class="p">}</span>
+</span></span><span class="line"><span class="cl">    <span class="n">debug</span> <span class="o">=</span> <span class="kc">False</span>
+</span></span><span class="line"><span class="cl">    <span class="n">widget</span> <span class="o">=</span> <span class="n">OpenLayersWidget</span>
+</span></span></code></pre></div></li>
+<li>
+<p>OSMModelAdmin</p>
+<p>默认使用OSM在线地图服务</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="c1"># RemovedInDjango50Warning.</span>
+</span></span><span class="line"><span class="cl"><span class="k">class</span> <span class="nc">OSMGeoAdmin</span><span class="p">(</span><span class="n">GeoModelAdmin</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">    <span class="n">map_template</span> <span class="o">=</span> <span class="s2">&#34;gis/admin/osm.html&#34;</span>
+</span></span><span class="line"><span class="cl">    <span class="n">num_zoom</span> <span class="o">=</span> <span class="mi">20</span>
+</span></span><span class="line"><span class="cl">    <span class="n">map_srid</span> <span class="o">=</span> <span class="n">spherical_mercator_srid</span>
+</span></span><span class="line"><span class="cl">    <span class="n">max_extent</span> <span class="o">=</span> <span class="s2">&#34;-20037508,-20037508,20037508,20037508&#34;</span>
+</span></span><span class="line"><span class="cl">    <span class="n">max_resolution</span> <span class="o">=</span> <span class="s2">&#34;156543.0339&#34;</span>
+</span></span><span class="line"><span class="cl">    <span class="n">point_zoom</span> <span class="o">=</span> <span class="n">num_zoom</span> <span class="o">-</span> <span class="mi">6</span>
+</span></span><span class="line"><span class="cl">    <span class="n">units</span> <span class="o">=</span> <span class="s2">&#34;m&#34;</span>
+</span></span></code></pre></div></li>
+<li>
+<p>GISModelAdmin</p>
+</li>
+<li>
+<p>&hellip;</p>
+</li>
+</ul>
+<h5 id="地理空间要素数据多图层叠加管理">地理空间要素数据多图层叠加管理</h5>
+<p>尚未查阅，不知是否有相关现成工具。</p>
+<h4 id="后台管理界面主题">后台管理界面主题</h4>
+<p><a href="https://djangopackages.org/grids/g/admin-styling/" target="_blank" rel="noopener">https://djangopackages.org/grids/g/admin-styling/</a></p>
+<h5 id="simpleui">simpleui</h5>
+<p><a href="https://gitee.com/tompeppa/simpleui#https://gitee.com/link?target=https%3A%2F%2Fwww.mldoo.com%2Fdemo%2Fsimplepro" target="_blank" rel="noopener">simpleui: django admin 的一个主题</a></p>
+<p>只需要安装并且在settings文件的INSTALLED_APPS配置即可。</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">pip install django-simpleui
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl">  <span class="c1"># Application definition</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">  <span class="n">INSTALLED_APPS</span> <span class="o">=</span> <span class="p">[</span>
+</span></span><span class="line"><span class="cl">      <span class="s1">&#39;simpleui&#39;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">      <span class="s1">&#39;django.contrib.admin&#39;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">      <span class="s1">&#39;django.contrib.auth&#39;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">      <span class="s1">&#39;django.contrib.contenttypes&#39;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">      <span class="s1">&#39;django.contrib.sessions&#39;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">      <span class="s1">&#39;django.contrib.messages&#39;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">      <span class="s1">&#39;django.contrib.staticfiles&#39;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">      <span class="o">...</span>
+</span></span><span class="line"><span class="cl">  <span class="p">]</span>
+</span></span></code></pre></div><h3 id="restful-api服务">RESTFUL API服务</h3>
+<p><a href="https://www.django-rest-framework.org" target="_blank" rel="noopener">https://www.django-rest-framework.org</a></p>
+<p><a href="https://apifox.com/blog/a-cup-of-tea-time-to-understand-restful-api/?utm_source=google_dsa&amp;utm_medium=g&amp;utm_campaign=20543997484&amp;utm_content=152746906545&amp;utm_term=&amp;gad_source=1&amp;gclid=CjwKCAiA1MCrBhAoEiwAC2d64WeGeyUGbav_t8ao2QT5EVu-dLZHzv297H82yYuq2wxa1-2xrSstEhoCE7QQAvD_BwE" target="_blank" rel="noopener">一杯茶的时间，搞懂 RESTful API</a></p>
+<p>Django中可以通过一些扩展库便利地实现RESTful风格的API，比如：</p>
+<pre tabindex="0"><code>djangorestframework
+</code></pre><p>只需要安装该库并且在配置文件中配置该APP，即可进行RESTful风格的API开发</p>
+<pre tabindex="0"><code>pip install djangorestframework
+</code></pre><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="n">INSTALLED_APPS</span> <span class="o">=</span> <span class="p">[</span>
+</span></span><span class="line"><span class="cl">    <span class="o">...</span>
+</span></span><span class="line"><span class="cl">    <span class="s1">&#39;rest_framework&#39;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl"><span class="p">]</span>
+</span></span></code></pre></div><h4 id="参考文章">参考文章</h4>
+<ul>
+<li><a href="https://www.atatus.com/blog/rest-api-best-practices-for-parameter-and-query-string-usage/" target="_blank" rel="noopener">REST API Best Practices for Parameter and Query String Usage</a></li>
+</ul>
 <h2 id="0x02-django源码分析">0x02 Django源码分析</h2>
+<p>TODO</p>
+<h2 id="0x03-django开源项目">0x03 Django开源项目</h2>
+<h3 id="django-tenants">django-tenants</h3>
+<h3 id="djangorestframework">djangorestframework</h3>
+<h3 id="geodjango">GeoDjango</h3>
+<ul>
+<li>
+<p>获取多边形的中心点：<a href="https://stackoverflow.com/questions/40083521/django-get-centroid-of-polygon-in-geojson-format" target="_blank" rel="noopener">python - Django - Get centroid of polygon in geoJSON format - Stack Overflow</a></p>
+</li>
+<li>
+<p>&hellip;&hellip;</p>
+</li>
+</ul>
 
     </div>
 
@@ -838,6 +2023,16 @@
 
 
 
+
+<div class="article-tags">
+  
+  <a class="badge badge-light" href="/tag/django/">Django</a>
+  
+  <a class="badge badge-light" href="/tag/python/">Python</a>
+  
+  <a class="badge badge-light" href="/tag/%E6%9C%8D%E5%8A%A1%E7%AB%AF%E5%BC%80%E5%8F%91/">服务端开发</a>
+  
+</div>
 
 
 

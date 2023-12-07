@@ -96,10 +96,10 @@
 &lt;figure  &gt;
   &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
     &lt;div class=&#34;w-100&#34; &gt;&lt;img alt=&#34;&#34; srcset=&#34;
-               /post/neo4j-basic-usage/images/cypher-cert_hud9b63beb5e416256a44650f8ad9e09d7_310319_67a1eeca4eef4c353d0ddeeab6b84b45.webp 400w,
-               /post/neo4j-basic-usage/images/cypher-cert_hud9b63beb5e416256a44650f8ad9e09d7_310319_7e7c47c9d2a95499b0038d1e2948274a.webp 760w,
+               /post/neo4j-basic-usage/images/cypher-cert_hud9b63beb5e416256a44650f8ad9e09d7_310319_0820588f2fd752b62e680ad0ebe27ba7.webp 400w,
+               /post/neo4j-basic-usage/images/cypher-cert_hud9b63beb5e416256a44650f8ad9e09d7_310319_7235bde26f7f204a1126e2ea040f5f4d.webp 760w,
                /post/neo4j-basic-usage/images/cypher-cert_hud9b63beb5e416256a44650f8ad9e09d7_310319_1200x1200_fit_q75_h2_lanczos_3.webp 1200w&#34;
-               src=&#34;/post/neo4j-basic-usage/images/cypher-cert_hud9b63beb5e416256a44650f8ad9e09d7_310319_67a1eeca4eef4c353d0ddeeab6b84b45.webp&#34;
+               src=&#34;/post/neo4j-basic-usage/images/cypher-cert_hud9b63beb5e416256a44650f8ad9e09d7_310319_0820588f2fd752b62e680ad0ebe27ba7.webp&#34;
                width=&#34;760&#34;
                height=&#34;505&#34;
                loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
@@ -186,8 +186,7 @@ RETURN n
 RETURN type(r), count(*)
 &lt;/code&gt;&lt;/pre&gt;&lt;h3 id=&#34;模糊查询&#34;&gt;模糊查询&lt;/h3&gt;
 &lt;p&gt;模糊查询并非使用LIKE关键字，而是使用CONTAINS，如：&lt;/p&gt;
-&lt;pre tabindex=&#34;0&#34;&gt;&lt;code class=&#34;language-cypher&#34; data-lang=&#34;cypher&#34;&gt;
-MATCH p=(n:NodeType)--&amp;gt;() WHERE n.name CONTAINS &amp;#39;需要模糊查询的关键字&amp;#39; RETURN p
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code class=&#34;language-cypher&#34; data-lang=&#34;cypher&#34;&gt;MATCH p=(n:NodeType)--&amp;gt;() WHERE n.name CONTAINS &amp;#39;需要模糊查询的关键字&amp;#39; RETURN p
 &lt;/code&gt;&lt;/pre&gt;&lt;h3 id=&#34;批量变更关系类型&#34;&gt;批量变更关系类型&lt;/h3&gt;
 &lt;pre tabindex=&#34;0&#34;&gt;&lt;code class=&#34;language-cypher&#34; data-lang=&#34;cypher&#34;&gt;MATCH (a)-[r:OLD_RELATION]-&amp;gt;(b)
 CREATE (a)-[rNew:NEW_RELATION]-&amp;gt;(b)
