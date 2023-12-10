@@ -203,10 +203,10 @@
 &lt;figure  &gt;
   &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
     &lt;div class=&#34;w-100&#34; &gt;&lt;img alt=&#34;&#34; srcset=&#34;
-               /post/django-core-techs-notes/images/interface/values_list_hue66480ad92d1634b2ede582b4f625477_205511_2de7ead24731aa521b720349eed6bc55.webp 400w,
-               /post/django-core-techs-notes/images/interface/values_list_hue66480ad92d1634b2ede582b4f625477_205511_0b89ec4d8ed2e15c42b8e3cc4047b5b7.webp 760w,
+               /post/django-core-techs-notes/images/interface/values_list_hue66480ad92d1634b2ede582b4f625477_205511_eaaf5c1328789eeea70ef7efd5c090c2.webp 400w,
+               /post/django-core-techs-notes/images/interface/values_list_hue66480ad92d1634b2ede582b4f625477_205511_b06a553d951f713012512e1fdc9d8fee.webp 760w,
                /post/django-core-techs-notes/images/interface/values_list_hue66480ad92d1634b2ede582b4f625477_205511_1200x1200_fit_q75_h2_lanczos_3.webp 1200w&#34;
-               src=&#34;/post/django-core-techs-notes/images/interface/values_list_hue66480ad92d1634b2ede582b4f625477_205511_2de7ead24731aa521b720349eed6bc55.webp&#34;
+               src=&#34;/post/django-core-techs-notes/images/interface/values_list_hue66480ad92d1634b2ede582b4f625477_205511_eaaf5c1328789eeea70ef7efd5c090c2.webp&#34;
                width=&#34;547&#34;
                height=&#34;760&#34;
                loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
@@ -235,16 +235,34 @@
 &lt;figure  &gt;
   &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
     &lt;div class=&#34;w-100&#34; &gt;&lt;img alt=&#34;&#34; srcset=&#34;
-               /post/django-core-techs-notes/images/interface/values_origin_hu479134e91543edc6d7cd94a33cb8219f_242204_b2742ed4ce4ec7e06564eb6c1daa23a6.webp 400w,
-               /post/django-core-techs-notes/images/interface/values_origin_hu479134e91543edc6d7cd94a33cb8219f_242204_0b65cd831f967afe9efe7205c318c32b.webp 760w,
+               /post/django-core-techs-notes/images/interface/values_origin_hu479134e91543edc6d7cd94a33cb8219f_242204_dcc5f9fe9c7f0990c3c41d2d551cbaa6.webp 400w,
+               /post/django-core-techs-notes/images/interface/values_origin_hu479134e91543edc6d7cd94a33cb8219f_242204_66ca3558ccac02bc739fe195fe824c71.webp 760w,
                /post/django-core-techs-notes/images/interface/values_origin_hu479134e91543edc6d7cd94a33cb8219f_242204_1200x1200_fit_q75_h2_lanczos_3.webp 1200w&#34;
-               src=&#34;/post/django-core-techs-notes/images/interface/values_origin_hu479134e91543edc6d7cd94a33cb8219f_242204_b2742ed4ce4ec7e06564eb6c1daa23a6.webp&#34;
+               src=&#34;/post/django-core-techs-notes/images/interface/values_origin_hu479134e91543edc6d7cd94a33cb8219f_242204_dcc5f9fe9c7f0990c3c41d2d551cbaa6.webp&#34;
                width=&#34;494&#34;
                height=&#34;760&#34;
                loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
   &lt;/div&gt;&lt;/figure&gt;
 &lt;/p&gt;
-&lt;h4 id=&#34;template-html生成&#34;&gt;template html生成&lt;/h4&gt;
+&lt;h4 id=&#34;django应用目录结构&#34;&gt;Django应用目录结构&lt;/h4&gt;
+&lt;p&gt;默认来说，使用django-admin startapp命令新建的应用目录会在第一层，在应用数量较多的时候可能并不美观，因此需要重组应用的目录结构。&lt;/p&gt;
+&lt;p&gt;比如，新建apps目录，用于放置django应用，然后需要在settings文件中将apps目录添加到搜索路径确保django服务能找到应用代码.&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-python&#34; data-lang=&#34;python&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;BASE_DIR&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;Path&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;vm&#34;&gt;__file__&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;resolve&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;()&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;parent&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;parent&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;sys&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;path&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;insert&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;0&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;os&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;path&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;join&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;BASE_DIR&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;apps&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;))&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;对应的，settings.py中的INSTALLED_APP需要进行修改：&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-python&#34; data-lang=&#34;python&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;INSTALLED_APPS&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;s1&#34;&gt;&amp;#39;django.contrib.admin&amp;#39;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;s1&#34;&gt;&amp;#39;django.contrib.auth&amp;#39;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;s1&#34;&gt;&amp;#39;django.contrib.contenttypes&amp;#39;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;s1&#34;&gt;&amp;#39;django.contrib.sessions&amp;#39;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;s1&#34;&gt;&amp;#39;django.contrib.messages&amp;#39;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;s1&#34;&gt;&amp;#39;django.contrib.staticfiles&amp;#39;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;s2&#34;&gt;&amp;#34;django.contrib.gis&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;s1&#34;&gt;&amp;#39;django_admin_listfilter_dropdown&amp;#39;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;s1&#34;&gt;&amp;#39;rest_framework&amp;#39;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;s2&#34;&gt;&amp;#34;apps.map_basic&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;p&#34;&gt;]&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h4 id=&#34;template-html生成&#34;&gt;template html生成&lt;/h4&gt;
 &lt;p&gt;pass&lt;/p&gt;
 &lt;h2 id=&#34;0x01-django项目实战&#34;&gt;0x01 Django项目实战&lt;/h2&gt;
 &lt;h3 id=&#34;创建django项目&#34;&gt;创建Django项目&lt;/h3&gt;
@@ -303,18 +321,17 @@
 &lt;figure  &gt;
   &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
     &lt;div class=&#34;w-100&#34; &gt;&lt;img alt=&#34;&#34; srcset=&#34;
-               /post/django-core-techs-notes/images/middlewares/setting_middle_hu2f310da0ffa3f3a90ba7f0f2fbf3e6d8_104771_c5d964edb2f6ca82e61719106de3c2c7.webp 400w,
-               /post/django-core-techs-notes/images/middlewares/setting_middle_hu2f310da0ffa3f3a90ba7f0f2fbf3e6d8_104771_21493e4edc94381d4dd309e71ae37ce4.webp 760w,
+               /post/django-core-techs-notes/images/middlewares/setting_middle_hu2f310da0ffa3f3a90ba7f0f2fbf3e6d8_104771_34c77bd9479a5c1f6b759cf8642b5f91.webp 400w,
+               /post/django-core-techs-notes/images/middlewares/setting_middle_hu2f310da0ffa3f3a90ba7f0f2fbf3e6d8_104771_6bf89c3f2aa81a7df72c27aac0bbd3f7.webp 760w,
                /post/django-core-techs-notes/images/middlewares/setting_middle_hu2f310da0ffa3f3a90ba7f0f2fbf3e6d8_104771_1200x1200_fit_q75_h2_lanczos_3.webp 1200w&#34;
-               src=&#34;/post/django-core-techs-notes/images/middlewares/setting_middle_hu2f310da0ffa3f3a90ba7f0f2fbf3e6d8_104771_c5d964edb2f6ca82e61719106de3c2c7.webp&#34;
+               src=&#34;/post/django-core-techs-notes/images/middlewares/setting_middle_hu2f310da0ffa3f3a90ba7f0f2fbf3e6d8_104771_34c77bd9479a5c1f6b759cf8642b5f91.webp&#34;
                width=&#34;760&#34;
                height=&#34;344&#34;
                loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
   &lt;/div&gt;&lt;/figure&gt;
 &lt;/p&gt;
 &lt;h5 id=&#34;securitymiddleware&#34;&gt;SecurityMiddleware&lt;/h5&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-python&#34; data-lang=&#34;python&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;k&#34;&gt;def&lt;/span&gt; &lt;span class=&#34;nf&#34;&gt;process_request&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;bp&#34;&gt;self&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;request&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;):&lt;/span&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-python&#34; data-lang=&#34;python&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;k&#34;&gt;def&lt;/span&gt; &lt;span class=&#34;nf&#34;&gt;process_request&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;bp&#34;&gt;self&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;request&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;):&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        &lt;span class=&#34;n&#34;&gt;path&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;request&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;path&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;lstrip&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;/&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        &lt;span class=&#34;k&#34;&gt;if&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;            &lt;span class=&#34;bp&#34;&gt;self&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;redirect&lt;/span&gt;
@@ -328,8 +345,7 @@
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h5 id=&#34;heading&#34;&gt;&lt;/h5&gt;
 &lt;h5 id=&#34;commonmiddlewarehttpsdocsdjangoprojectcomen42refmiddlewaredjangomiddlewarecommoncommonmiddleware&#34;&gt;&lt;a href=&#34;https://docs.djangoproject.com/en/4.2/ref/middleware/#django.middleware.common.CommonMiddleware&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;CommonMiddleware&lt;/a&gt;&lt;/h5&gt;
 &lt;p&gt;启用该中间件后，每一个请求经过中间件时，会经如下函数进行处理:比如检查用户的USER_AGENT是否在黑名单，是否应该进行重定向等。&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-python&#34; data-lang=&#34;python&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;k&#34;&gt;def&lt;/span&gt; &lt;span class=&#34;nf&#34;&gt;process_request&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;bp&#34;&gt;self&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;request&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;):&lt;/span&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-python&#34; data-lang=&#34;python&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;k&#34;&gt;def&lt;/span&gt; &lt;span class=&#34;nf&#34;&gt;process_request&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;bp&#34;&gt;self&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;request&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;):&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        &lt;span class=&#34;s2&#34;&gt;&amp;#34;&amp;#34;&amp;#34;
 &lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;s2&#34;&gt;        Check for denied User-Agents and rewrite the URL based on
 &lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;s2&#34;&gt;        settings.APPEND_SLASH and settings.PREPEND_WWW
@@ -379,10 +395,10 @@
 &lt;figure  &gt;
   &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
     &lt;div class=&#34;w-100&#34; &gt;&lt;img alt=&#34;&#34; srcset=&#34;
-               /post/django-core-techs-notes/images/middlewares/curl_useragent_hu3300d9ae70baa4a072c693425a81da03_225080_0326ec16c82ed4cdaf89fc50777db4f2.webp 400w,
-               /post/django-core-techs-notes/images/middlewares/curl_useragent_hu3300d9ae70baa4a072c693425a81da03_225080_f9cf76fb8f5db81264161850d99faffa.webp 760w,
+               /post/django-core-techs-notes/images/middlewares/curl_useragent_hu3300d9ae70baa4a072c693425a81da03_225080_a3e3853a990736eef91036cb4489fa11.webp 400w,
+               /post/django-core-techs-notes/images/middlewares/curl_useragent_hu3300d9ae70baa4a072c693425a81da03_225080_8676e7be4106d7caf9872f59736a640d.webp 760w,
                /post/django-core-techs-notes/images/middlewares/curl_useragent_hu3300d9ae70baa4a072c693425a81da03_225080_1200x1200_fit_q75_h2_lanczos_3.webp 1200w&#34;
-               src=&#34;/post/django-core-techs-notes/images/middlewares/curl_useragent_hu3300d9ae70baa4a072c693425a81da03_225080_0326ec16c82ed4cdaf89fc50777db4f2.webp&#34;
+               src=&#34;/post/django-core-techs-notes/images/middlewares/curl_useragent_hu3300d9ae70baa4a072c693425a81da03_225080_a3e3853a990736eef91036cb4489fa11.webp&#34;
                width=&#34;760&#34;
                height=&#34;296&#34;
                loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
@@ -407,10 +423,10 @@
 &lt;figure  &gt;
   &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
     &lt;div class=&#34;w-100&#34; &gt;&lt;img alt=&#34;&#34; srcset=&#34;
-               /post/django-core-techs-notes/images/middlewares/common_useragent_hu2d512a70c99618df80daeec9792a009a_304260_43258436859f072f585a89e2ff223cec.webp 400w,
-               /post/django-core-techs-notes/images/middlewares/common_useragent_hu2d512a70c99618df80daeec9792a009a_304260_67bcc37305398abb99620e765da8ef1a.webp 760w,
+               /post/django-core-techs-notes/images/middlewares/common_useragent_hu2d512a70c99618df80daeec9792a009a_304260_e2ea67613b48d4393d72027110ffcab3.webp 400w,
+               /post/django-core-techs-notes/images/middlewares/common_useragent_hu2d512a70c99618df80daeec9792a009a_304260_4a12333c34f45999c51e53693a61b270.webp 760w,
                /post/django-core-techs-notes/images/middlewares/common_useragent_hu2d512a70c99618df80daeec9792a009a_304260_1200x1200_fit_q75_h2_lanczos_3.webp 1200w&#34;
-               src=&#34;/post/django-core-techs-notes/images/middlewares/common_useragent_hu2d512a70c99618df80daeec9792a009a_304260_43258436859f072f585a89e2ff223cec.webp&#34;
+               src=&#34;/post/django-core-techs-notes/images/middlewares/common_useragent_hu2d512a70c99618df80daeec9792a009a_304260_e2ea67613b48d4393d72027110ffcab3.webp&#34;
                width=&#34;760&#34;
                height=&#34;376&#34;
                loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
@@ -438,10 +454,10 @@
 &lt;figure  &gt;
   &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
     &lt;div class=&#34;w-100&#34; &gt;&lt;img alt=&#34;&#34; srcset=&#34;
-               /post/django-core-techs-notes/images/middlewares/python-req_hu48f3f8fa315ebb2a311768442e07ae9c_164804_f7cf0f1a4ae5a73d38814a60be64a244.webp 400w,
-               /post/django-core-techs-notes/images/middlewares/python-req_hu48f3f8fa315ebb2a311768442e07ae9c_164804_96fe84bb13c1b211c7029133ac222260.webp 760w,
+               /post/django-core-techs-notes/images/middlewares/python-req_hu48f3f8fa315ebb2a311768442e07ae9c_164804_977afcf0f74eb6ca04af9d2a6e2ea66b.webp 400w,
+               /post/django-core-techs-notes/images/middlewares/python-req_hu48f3f8fa315ebb2a311768442e07ae9c_164804_3db7c563055daf0b1b49741dbae1224d.webp 760w,
                /post/django-core-techs-notes/images/middlewares/python-req_hu48f3f8fa315ebb2a311768442e07ae9c_164804_1200x1200_fit_q75_h2_lanczos_3.webp 1200w&#34;
-               src=&#34;/post/django-core-techs-notes/images/middlewares/python-req_hu48f3f8fa315ebb2a311768442e07ae9c_164804_f7cf0f1a4ae5a73d38814a60be64a244.webp&#34;
+               src=&#34;/post/django-core-techs-notes/images/middlewares/python-req_hu48f3f8fa315ebb2a311768442e07ae9c_164804_977afcf0f74eb6ca04af9d2a6e2ea66b.webp&#34;
                width=&#34;760&#34;
                height=&#34;234&#34;
                loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
@@ -466,10 +482,10 @@
 &lt;figure  &gt;
   &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
     &lt;div class=&#34;w-100&#34; &gt;&lt;img alt=&#34;&#34; srcset=&#34;
-               /post/django-core-techs-notes/images/middlewares/python-requests-useragent_hu912ae8fda024c168b110ac59157a187c_124833_678cd6c6596e99687db848d4390d542a.webp 400w,
-               /post/django-core-techs-notes/images/middlewares/python-requests-useragent_hu912ae8fda024c168b110ac59157a187c_124833_0b599d6746e72b07cafe2c39720e81b5.webp 760w,
+               /post/django-core-techs-notes/images/middlewares/python-requests-useragent_hu912ae8fda024c168b110ac59157a187c_124833_5f82eabb8e149adb7f25876d6bdd4a1f.webp 400w,
+               /post/django-core-techs-notes/images/middlewares/python-requests-useragent_hu912ae8fda024c168b110ac59157a187c_124833_f18e3a6b6c689552163cfaf86b01293b.webp 760w,
                /post/django-core-techs-notes/images/middlewares/python-requests-useragent_hu912ae8fda024c168b110ac59157a187c_124833_1200x1200_fit_q75_h2_lanczos_3.webp 1200w&#34;
-               src=&#34;/post/django-core-techs-notes/images/middlewares/python-requests-useragent_hu912ae8fda024c168b110ac59157a187c_124833_678cd6c6596e99687db848d4390d542a.webp&#34;
+               src=&#34;/post/django-core-techs-notes/images/middlewares/python-requests-useragent_hu912ae8fda024c168b110ac59157a187c_124833_5f82eabb8e149adb7f25876d6bdd4a1f.webp&#34;
                width=&#34;760&#34;
                height=&#34;290&#34;
                loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
@@ -500,10 +516,10 @@
 &lt;figure  &gt;
   &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
     &lt;div class=&#34;w-100&#34; &gt;&lt;img alt=&#34;&#34; srcset=&#34;
-               /post/django-core-techs-notes/images/middlewares/python-req-forbidden_hu39be39548a57ff5129497e598936dafc_26724_e24969936607c0986e9b7d06148fe888.webp 400w,
-               /post/django-core-techs-notes/images/middlewares/python-req-forbidden_hu39be39548a57ff5129497e598936dafc_26724_9104a0de201daf7477a20978a3e6ad27.webp 760w,
+               /post/django-core-techs-notes/images/middlewares/python-req-forbidden_hu39be39548a57ff5129497e598936dafc_26724_1290313dbf48c5b2dddbff8b2e2e2713.webp 400w,
+               /post/django-core-techs-notes/images/middlewares/python-req-forbidden_hu39be39548a57ff5129497e598936dafc_26724_f06966fa9398665b9a4e6981ddc45aef.webp 760w,
                /post/django-core-techs-notes/images/middlewares/python-req-forbidden_hu39be39548a57ff5129497e598936dafc_26724_1200x1200_fit_q75_h2_lanczos_3.webp 1200w&#34;
-               src=&#34;/post/django-core-techs-notes/images/middlewares/python-req-forbidden_hu39be39548a57ff5129497e598936dafc_26724_e24969936607c0986e9b7d06148fe888.webp&#34;
+               src=&#34;/post/django-core-techs-notes/images/middlewares/python-req-forbidden_hu39be39548a57ff5129497e598936dafc_26724_1290313dbf48c5b2dddbff8b2e2e2713.webp&#34;
                width=&#34;760&#34;
                height=&#34;36&#34;
                loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
@@ -528,10 +544,10 @@
 &lt;figure  &gt;
   &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
     &lt;div class=&#34;w-100&#34; &gt;&lt;img alt=&#34;&#34; srcset=&#34;
-               /post/django-core-techs-notes/images/middlewares/curl-forbidden_hu0d97dfd8af0ca5f97caddf5c7c49bc80_116612_795c92a17c7a2504674ca2cea5e1303b.webp 400w,
-               /post/django-core-techs-notes/images/middlewares/curl-forbidden_hu0d97dfd8af0ca5f97caddf5c7c49bc80_116612_a1937fdd042c304f4e6981970f2fedc8.webp 760w,
+               /post/django-core-techs-notes/images/middlewares/curl-forbidden_hu0d97dfd8af0ca5f97caddf5c7c49bc80_116612_52b7c4c7dfbc1984f4278bb327ffa2df.webp 400w,
+               /post/django-core-techs-notes/images/middlewares/curl-forbidden_hu0d97dfd8af0ca5f97caddf5c7c49bc80_116612_d582bc143e9aede64a82f16a88a06c76.webp 760w,
                /post/django-core-techs-notes/images/middlewares/curl-forbidden_hu0d97dfd8af0ca5f97caddf5c7c49bc80_116612_1200x1200_fit_q75_h2_lanczos_3.webp 1200w&#34;
-               src=&#34;/post/django-core-techs-notes/images/middlewares/curl-forbidden_hu0d97dfd8af0ca5f97caddf5c7c49bc80_116612_795c92a17c7a2504674ca2cea5e1303b.webp&#34;
+               src=&#34;/post/django-core-techs-notes/images/middlewares/curl-forbidden_hu0d97dfd8af0ca5f97caddf5c7c49bc80_116612_52b7c4c7dfbc1984f4278bb327ffa2df.webp&#34;
                width=&#34;760&#34;
                height=&#34;305&#34;
                loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
@@ -547,7 +563,37 @@
 &lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;n&#34;&gt;re&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;compile&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;java&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;re&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;IGNORECASE&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;),&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;p&#34;&gt;]&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h5 id=&#34;csrfviewmiddlewarehttpsdocsdjangoprojectcomen42refmiddlewarecsrf-protection-middleware&#34;&gt;&lt;a href=&#34;https://docs.djangoproject.com/en/4.2/ref/middleware/#csrf-protection-middleware&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;CsrfViewMiddleware&lt;/a&gt;&lt;/h5&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;当然，如果仅按上述配置设置user agent黑名单，那么随便构造一个user-agent即可绕过该限制，如：&lt;/p&gt;
+&lt;p&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure  &gt;
+  &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img alt=&#34;&#34; srcset=&#34;
+               /post/django-core-techs-notes/images/middlewares/user-agent-random_huc90c01de2a157037419f45d72979001f_151932_b749ae8d6dbd6294ffc08d21259be062.webp 400w,
+               /post/django-core-techs-notes/images/middlewares/user-agent-random_huc90c01de2a157037419f45d72979001f_151932_6d69f17a697d819157016bc925762496.webp 760w,
+               /post/django-core-techs-notes/images/middlewares/user-agent-random_huc90c01de2a157037419f45d72979001f_151932_1200x1200_fit_q75_h2_lanczos_3.webp 1200w&#34;
+               src=&#34;/post/django-core-techs-notes/images/middlewares/user-agent-random_huc90c01de2a157037419f45d72979001f_151932_b749ae8d6dbd6294ffc08d21259be062.webp&#34;
+               width=&#34;760&#34;
+               height=&#34;132&#34;
+               loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+  &lt;/div&gt;&lt;/figure&gt;
+&lt;/p&gt;
+&lt;p&gt;如果具有反爬虫的需求，实现时可能还需要以黑名单结合白名单的方式进行才能达到好的效果。&lt;/p&gt;
+&lt;h5 id=&#34;csrfviewmiddlewarehttpsdocsdjangoprojectcomen42refmiddlewarecsrf-protection-middleware&#34;&gt;&lt;a href=&#34;https://docs.djangoproject.com/en/4.2/ref/middleware/#csrf-protection-middleware&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;CsrfViewMiddleware&lt;/a&gt;&lt;/h5&gt;
 &lt;h5 id=&#34;authenticationmiddlewarehttpsdocsdjangoprojectcomen42refmiddlewaredjangocontribauthmiddlewareauthenticationmiddleware&#34;&gt;&lt;a href=&#34;https://docs.djangoproject.com/en/4.2/ref/middleware/#django.contrib.auth.middleware.AuthenticationMiddleware&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;AuthenticationMiddleware&lt;/a&gt;&lt;/h5&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-python&#34; data-lang=&#34;python&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;k&#34;&gt;def&lt;/span&gt; &lt;span class=&#34;nf&#34;&gt;process_request&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;bp&#34;&gt;self&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;request&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;):&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        &lt;span class=&#34;n&#34;&gt;path&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;request&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;path&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;lstrip&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;/&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
@@ -582,12 +628,209 @@
 &lt;figure  &gt;
   &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
     &lt;div class=&#34;w-100&#34; &gt;&lt;img alt=&#34;&#34; srcset=&#34;
-               /post/django-core-techs-notes/images/middlewares/order_hu44b8e08f1af7e7cc23d41f8cf0f5dc72_609823_5b0342032ad5bd222dec998c75275ae3.webp 400w,
-               /post/django-core-techs-notes/images/middlewares/order_hu44b8e08f1af7e7cc23d41f8cf0f5dc72_609823_6f5738a544e3021e51de492306cb4293.webp 760w,
+               /post/django-core-techs-notes/images/middlewares/order_hu44b8e08f1af7e7cc23d41f8cf0f5dc72_609823_f59fbfb0f635cd234ed08daadd16c16a.webp 400w,
+               /post/django-core-techs-notes/images/middlewares/order_hu44b8e08f1af7e7cc23d41f8cf0f5dc72_609823_db3e3d8e278566e802a4cddb528dbb12.webp 760w,
                /post/django-core-techs-notes/images/middlewares/order_hu44b8e08f1af7e7cc23d41f8cf0f5dc72_609823_1200x1200_fit_q75_h2_lanczos_3.webp 1200w&#34;
-               src=&#34;/post/django-core-techs-notes/images/middlewares/order_hu44b8e08f1af7e7cc23d41f8cf0f5dc72_609823_5b0342032ad5bd222dec998c75275ae3.webp&#34;
+               src=&#34;/post/django-core-techs-notes/images/middlewares/order_hu44b8e08f1af7e7cc23d41f8cf0f5dc72_609823_f59fbfb0f635cd234ed08daadd16c16a.webp&#34;
                width=&#34;361&#34;
                height=&#34;760&#34;
+               loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+  &lt;/div&gt;&lt;/figure&gt;
+&lt;/p&gt;
+&lt;h5 id=&#34;自定义中间件-反爬虫&#34;&gt;自定义中间件-反爬虫&lt;/h5&gt;
+&lt;p&gt;反爬虫通常需要考虑user-agent、ip访问频率等参数。&lt;/p&gt;
+&lt;p&gt;通过新建并注册一个专门用于判断爬虫特征的中间件并适当给予拦截是接口服务的一项重要需求。&lt;/p&gt;
+&lt;p&gt;先以简单的ip访问频率限制为例，如果同一个ip前后两次的访问时间差小于某个阈值，我们直接返回响应，提示其应该降低频率，如果确定为恶意爬虫，可以将ip加入黑名单。&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-python&#34; data-lang=&#34;python&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;kn&#34;&gt;import&lt;/span&gt; &lt;span class=&#34;nn&#34;&gt;time&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;kn&#34;&gt;from&lt;/span&gt; &lt;span class=&#34;nn&#34;&gt;django.utils.deprecation&lt;/span&gt; &lt;span class=&#34;kn&#34;&gt;import&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;MiddlewareMixin&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;kn&#34;&gt;from&lt;/span&gt; &lt;span class=&#34;nn&#34;&gt;django.http&lt;/span&gt; &lt;span class=&#34;kn&#34;&gt;import&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;HttpResponse&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;k&#34;&gt;class&lt;/span&gt; &lt;span class=&#34;nc&#34;&gt;AntiCrawlMiddleware&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;MiddlewareMixin&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;):&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;n&#34;&gt;last_id&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;kc&#34;&gt;None&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;n&#34;&gt;last_time&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;0&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;k&#34;&gt;def&lt;/span&gt; &lt;span class=&#34;nf&#34;&gt;process_request&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;bp&#34;&gt;self&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;request&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;):&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        &lt;span class=&#34;nb&#34;&gt;print&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;反爬虫中间件&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        &lt;span class=&#34;c1&#34;&gt;# request META &amp;#39;HTTP_USER_AGENT&amp;#39;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        &lt;span class=&#34;c1&#34;&gt;# 针对USER_AGENT的拦截已经在common.py的CommonMiddleware有实现&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        &lt;span class=&#34;c1&#34;&gt;# IP访问频率限制&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        &lt;span class=&#34;n&#34;&gt;ip&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;request&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;META&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;get&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;REMOTE_ADDR&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        &lt;span class=&#34;n&#34;&gt;now&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;time&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;time&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;()&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        &lt;span class=&#34;nb&#34;&gt;print&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;now&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;ip&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        &lt;span class=&#34;k&#34;&gt;if&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;ip&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;==&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;AntiCrawlMiddleware&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;last_id&lt;/span&gt; &lt;span class=&#34;ow&#34;&gt;and&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;now&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;-&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;AntiCrawlMiddleware&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;last_time&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;&amp;lt;&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;1&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;            &lt;span class=&#34;k&#34;&gt;return&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;HttpResponse&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;your visit frequency is too high, please try again later.&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        &lt;span class=&#34;n&#34;&gt;AntiCrawlMiddleware&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;last_id&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;ip&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        &lt;span class=&#34;n&#34;&gt;AntiCrawlMiddleware&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;last_time&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;now&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-python&#34; data-lang=&#34;python&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;# settings.py&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;MIDDLEWARE&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;s1&#34;&gt;&amp;#39;django.middleware.security.SecurityMiddleware&amp;#39;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;s1&#34;&gt;&amp;#39;django.contrib.sessions.middleware.SessionMiddleware&amp;#39;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;s1&#34;&gt;&amp;#39;django.middleware.common.CommonMiddleware&amp;#39;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;s1&#34;&gt;&amp;#39;django.middleware.csrf.CsrfViewMiddleware&amp;#39;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;s1&#34;&gt;&amp;#39;django.contrib.auth.middleware.AuthenticationMiddleware&amp;#39;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;s1&#34;&gt;&amp;#39;django.contrib.messages.middleware.MessageMiddleware&amp;#39;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;s1&#34;&gt;&amp;#39;django.middleware.clickjacking.XFrameOptionsMiddleware&amp;#39;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;c1&#34;&gt;# 反爬虫中间件&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;s1&#34;&gt;&amp;#39;middlewares.anticrawl.AntiCrawlMiddleware&amp;#39;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;p&#34;&gt;]&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;服务启用以上中间件后，尝试用脚本对接口进行高频请求，可见确实有限制效果。&lt;/p&gt;
+&lt;p&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure  &gt;
+  &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img alt=&#34;&#34; srcset=&#34;
+               /post/django-core-techs-notes/images/middlewares/ip_visit_freq_hubebd73fa21488d8d41c78f7939c293b0_226141_6e2252ecd7fe451956cb2a19d8435db1.webp 400w,
+               /post/django-core-techs-notes/images/middlewares/ip_visit_freq_hubebd73fa21488d8d41c78f7939c293b0_226141_9eca713edc47fe5d052430fb97aa8ad1.webp 760w,
+               /post/django-core-techs-notes/images/middlewares/ip_visit_freq_hubebd73fa21488d8d41c78f7939c293b0_226141_1200x1200_fit_q75_h2_lanczos_3.webp 1200w&#34;
+               src=&#34;/post/django-core-techs-notes/images/middlewares/ip_visit_freq_hubebd73fa21488d8d41c78f7939c293b0_226141_6e2252ecd7fe451956cb2a19d8435db1.webp&#34;
+               width=&#34;760&#34;
+               height=&#34;277&#34;
+               loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+  &lt;/div&gt;&lt;/figure&gt;
+&lt;/p&gt;
+&lt;p&gt;注，以上仅为示例代码，实际工程化可以结合缓存数据库存储访问ip相关信息，而非局限于当前ip==上次访问ip的情形。&lt;/p&gt;
+&lt;p&gt;也有一些专门用于反爬虫的库&lt;a href=&#34;https://pypi.org/project/django-anti-crawler/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;django-anti-crawler · PyPI&lt;/a&gt;&lt;/p&gt;
+&lt;h6 id=&#34;校验cookie的值决定是否进行响应&#34;&gt;校验COOKIE的值决定是否进行响应&lt;/h6&gt;
+&lt;p&gt;在中间件的process_request方法中, 获取cookie值并进行校验，以下是一个简单的示例例子，只要cookie中不存在token，即认为请求非法，不予返回接口数据。&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-python&#34; data-lang=&#34;python&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;k&#34;&gt;def&lt;/span&gt; &lt;span class=&#34;nf&#34;&gt;process_request&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;request&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;):&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        &lt;span class=&#34;c1&#34;&gt;# Cookie反爬，以token为例&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        &lt;span class=&#34;nb&#34;&gt;print&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;cookies&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;request&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;COOKIES&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        &lt;span class=&#34;n&#34;&gt;token&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;request&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;COOKIES&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;get&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;token&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;&lt;span class=&#34;kc&#34;&gt;None&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        &lt;span class=&#34;nb&#34;&gt;print&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;token&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        &lt;span class=&#34;k&#34;&gt;if&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;token&lt;/span&gt; &lt;span class=&#34;ow&#34;&gt;is&lt;/span&gt; &lt;span class=&#34;kc&#34;&gt;None&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;            &lt;span class=&#34;c1&#34;&gt;# 如果token为None 可以考虑重定向到某一个页面&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;            &lt;span class=&#34;c1&#34;&gt;# return redirect(&amp;#34;https://www.baidu.com&amp;#34;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;            &lt;span class=&#34;c1&#34;&gt;# return HttpResponseRedirect(&amp;#34;your visit is illegal.&amp;#34;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;            &lt;span class=&#34;c1&#34;&gt;# 示例；直接返回错误响应&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;            &lt;span class=&#34;k&#34;&gt;return&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;HttpResponse&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;your visit is illegal.&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;使用postman发送请求（无cookie）&lt;/p&gt;
+&lt;p&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure  &gt;
+  &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img alt=&#34;&#34; srcset=&#34;
+               /post/django-core-techs-notes/images/middlewares/cookie-none_huc492b1cd9e13df4c97a41363c6b0db2d_116973_7c3327f7daea3873625eda2f27ae6ec9.webp 400w,
+               /post/django-core-techs-notes/images/middlewares/cookie-none_huc492b1cd9e13df4c97a41363c6b0db2d_116973_4520d47c4c0b73f3d8a6da07a9f844d2.webp 760w,
+               /post/django-core-techs-notes/images/middlewares/cookie-none_huc492b1cd9e13df4c97a41363c6b0db2d_116973_1200x1200_fit_q75_h2_lanczos_3.webp 1200w&#34;
+               src=&#34;/post/django-core-techs-notes/images/middlewares/cookie-none_huc492b1cd9e13df4c97a41363c6b0db2d_116973_7c3327f7daea3873625eda2f27ae6ec9.webp&#34;
+               width=&#34;760&#34;
+               height=&#34;426&#34;
+               loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+  &lt;/div&gt;&lt;/figure&gt;
+&lt;/p&gt;
+&lt;p&gt;使用postman发送请求（附带cookie)&lt;/p&gt;
+&lt;p&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure  &gt;
+  &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img alt=&#34;&#34; srcset=&#34;
+               /post/django-core-techs-notes/images/middlewares/random_token_hu81814c6c89274febc3fbb6ce9acd73ee_83770_9e00b04741b6831a024822f0080e2033.webp 400w,
+               /post/django-core-techs-notes/images/middlewares/random_token_hu81814c6c89274febc3fbb6ce9acd73ee_83770_22ba75836b57c721016b0c1596d7fe75.webp 760w,
+               /post/django-core-techs-notes/images/middlewares/random_token_hu81814c6c89274febc3fbb6ce9acd73ee_83770_1200x1200_fit_q75_h2_lanczos_3.webp 1200w&#34;
+               src=&#34;/post/django-core-techs-notes/images/middlewares/random_token_hu81814c6c89274febc3fbb6ce9acd73ee_83770_9e00b04741b6831a024822f0080e2033.webp&#34;
+               width=&#34;760&#34;
+               height=&#34;476&#34;
+               loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+  &lt;/div&gt;&lt;/figure&gt;
+&lt;/p&gt;
+&lt;p&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure  &gt;
+  &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img alt=&#34;&#34; srcset=&#34;
+               /post/django-core-techs-notes/images/middlewares/random-cookie-test_hu4589366d08f83e4f1dda47b61e10b67b_138615_933e4aaa3901d4d561af6235b9be44fd.webp 400w,
+               /post/django-core-techs-notes/images/middlewares/random-cookie-test_hu4589366d08f83e4f1dda47b61e10b67b_138615_b38613b6251313403b757e947d487c43.webp 760w,
+               /post/django-core-techs-notes/images/middlewares/random-cookie-test_hu4589366d08f83e4f1dda47b61e10b67b_138615_1200x1200_fit_q75_h2_lanczos_3.webp 1200w&#34;
+               src=&#34;/post/django-core-techs-notes/images/middlewares/random-cookie-test_hu4589366d08f83e4f1dda47b61e10b67b_138615_933e4aaa3901d4d561af6235b9be44fd.webp&#34;
+               width=&#34;760&#34;
+               height=&#34;474&#34;
+               loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+  &lt;/div&gt;&lt;/figure&gt;
+&lt;/p&gt;
+&lt;p&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure  &gt;
+  &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img alt=&#34;&#34; srcset=&#34;
+               /post/django-core-techs-notes/images/middlewares/random-cookie_huf3517e300b5061d0fc42606eeecfd7e7_147271_57e3722422e0c5128c4e903cd8bbfca8.webp 400w,
+               /post/django-core-techs-notes/images/middlewares/random-cookie_huf3517e300b5061d0fc42606eeecfd7e7_147271_fdeeb816b892b428f11f5240ddda06ce.webp 760w,
+               /post/django-core-techs-notes/images/middlewares/random-cookie_huf3517e300b5061d0fc42606eeecfd7e7_147271_1200x1200_fit_q75_h2_lanczos_3.webp 1200w&#34;
+               src=&#34;/post/django-core-techs-notes/images/middlewares/random-cookie_huf3517e300b5061d0fc42606eeecfd7e7_147271_57e3722422e0c5128c4e903cd8bbfca8.webp&#34;
+               width=&#34;760&#34;
+               height=&#34;544&#34;
                loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
   &lt;/div&gt;&lt;/figure&gt;
 &lt;/p&gt;
@@ -1204,6 +1447,229 @@
 &lt;ul&gt;
 &lt;li&gt;&lt;a href=&#34;https://www.atatus.com/blog/rest-api-best-practices-for-parameter-and-query-string-usage/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;REST API Best Practices for Parameter and Query String Usage&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
+&lt;h3 id=&#34;django项目部署&#34;&gt;Django项目部署&lt;/h3&gt;
+&lt;h4 id=&#34;参考文章-1&#34;&gt;参考文章&lt;/h4&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a href=&#34;https://docs.djangoproject.com/en/4.2/howto/deployment/wsgi/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;How to deploy with WSGI | Django documentation | Django&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a href=&#34;https://docs.djangoproject.com/en/4.2/howto/deployment/wsgi/gunicorn/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;How to use Django with Gunicorn | Django documentation | Django&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&#34;基于uwsgi服务器部署&#34;&gt;基于uwsgi服务器部署&lt;/h4&gt;
+&lt;p&gt;安装uwsgi&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;conda install -c conda-forge uwsgi
+&lt;/code&gt;&lt;/pre&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;uwsgi --http :8090 --chdir projectpath --module museum_geo_api.wsgi
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure  &gt;
+  &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img alt=&#34;&#34; srcset=&#34;
+               /post/django-core-techs-notes/images/deploy/uwsgi/uwsgi_command_hu0e86773b8981c6f040c85d5d83abe09d_169357_bcc2b53640e54979d70c389cb65dea4e.webp 400w,
+               /post/django-core-techs-notes/images/deploy/uwsgi/uwsgi_command_hu0e86773b8981c6f040c85d5d83abe09d_169357_4a4ac093da23313035b582b1fcbb9750.webp 760w,
+               /post/django-core-techs-notes/images/deploy/uwsgi/uwsgi_command_hu0e86773b8981c6f040c85d5d83abe09d_169357_1200x1200_fit_q75_h2_lanczos_3.webp 1200w&#34;
+               src=&#34;/post/django-core-techs-notes/images/deploy/uwsgi/uwsgi_command_hu0e86773b8981c6f040c85d5d83abe09d_169357_bcc2b53640e54979d70c389cb65dea4e.webp&#34;
+               width=&#34;760&#34;
+               height=&#34;222&#34;
+               loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+  &lt;/div&gt;&lt;/figure&gt;
+&lt;/p&gt;
+&lt;p&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure  &gt;
+  &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img alt=&#34;&#34; srcset=&#34;
+               /post/django-core-techs-notes/images/deploy/uwsgi/uwsgi_deploy_hudf5ae2864f84d3cc9ca5efba857438af_134764_5265383f2ec0f493c28e26e4076f52fb.webp 400w,
+               /post/django-core-techs-notes/images/deploy/uwsgi/uwsgi_deploy_hudf5ae2864f84d3cc9ca5efba857438af_134764_e090409a94e78b2b6e1409715065d064.webp 760w,
+               /post/django-core-techs-notes/images/deploy/uwsgi/uwsgi_deploy_hudf5ae2864f84d3cc9ca5efba857438af_134764_1200x1200_fit_q75_h2_lanczos_3.webp 1200w&#34;
+               src=&#34;/post/django-core-techs-notes/images/deploy/uwsgi/uwsgi_deploy_hudf5ae2864f84d3cc9ca5efba857438af_134764_5265383f2ec0f493c28e26e4076f52fb.webp&#34;
+               width=&#34;760&#34;
+               height=&#34;455&#34;
+               loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+  &lt;/div&gt;&lt;/figure&gt;
+&lt;/p&gt;
+&lt;p&gt;也可以将wsgi服务的配置写在.ini文件中&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-ini&#34; data-lang=&#34;ini&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;k&#34;&gt;[uwsgi]&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;na&#34;&gt;http&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;:8001&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;na&#34;&gt;chdir&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;/Users/weirdgiser/文稿/Projects/Cultural/musuem_geo_api_dev/museum_geo_api/museum_geo_api&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;na&#34;&gt;module&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;museum_geo_api.wsgi&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;指定.ini文件启动服务&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt; uwsgi --ini uwsgi.ini  --enable-threads 
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h4 id=&#34;基于gunicorn部署&#34;&gt;基于gunicorn部署&lt;/h4&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://gunicorn.org/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;https://gunicorn.org/&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;新建配置文件&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-python&#34; data-lang=&#34;python&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;# 指定服务器监听的IP和端口&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;bind&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;0.0.0.0:8010&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;# 指定工作进程的数量&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;workers&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;4&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;# 指定工作进程使用的协程库&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;worker_class&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;gevent&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;# ----应用程序的设置&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;# 指定为项目根目录&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;chdir&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;/Users/weirdgiser/文稿/Projects/Cultural/musuem_geo_api_dev/museum_geo_api/museum_geo_api&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;# 指定WSGI应用程序的模块和应用&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;module&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;museum_geo_api.wsgi:application&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;启动服务&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;gunicorn -c gunicorn_config.py museum_geo_api.wsgi:application
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure  &gt;
+  &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img alt=&#34;&#34; srcset=&#34;
+               /post/django-core-techs-notes/images/deploy/gunicorn/run_gunicorn_hu37258c882fd5190ebc117abf6205ea15_119888_62a4759e439661642240407488636078.webp 400w,
+               /post/django-core-techs-notes/images/deploy/gunicorn/run_gunicorn_hu37258c882fd5190ebc117abf6205ea15_119888_480a814878b7e21f2fb85be3ba3fed92.webp 760w,
+               /post/django-core-techs-notes/images/deploy/gunicorn/run_gunicorn_hu37258c882fd5190ebc117abf6205ea15_119888_1200x1200_fit_q75_h2_lanczos_3.webp 1200w&#34;
+               src=&#34;/post/django-core-techs-notes/images/deploy/gunicorn/run_gunicorn_hu37258c882fd5190ebc117abf6205ea15_119888_62a4759e439661642240407488636078.webp&#34;
+               width=&#34;760&#34;
+               height=&#34;179&#34;
+               loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+  &lt;/div&gt;&lt;/figure&gt;
+&lt;/p&gt;
+&lt;p&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure  &gt;
+  &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img alt=&#34;&#34; srcset=&#34;
+               /post/django-core-techs-notes/images/deploy/gunicorn/test_hue17ca677b8370ef105fee5ad19db4547_205426_826bf7eb37600d3a4fd5982a3107dfef.webp 400w,
+               /post/django-core-techs-notes/images/deploy/gunicorn/test_hue17ca677b8370ef105fee5ad19db4547_205426_eab60817dc0ca0d670805a019b02f6ce.webp 760w,
+               /post/django-core-techs-notes/images/deploy/gunicorn/test_hue17ca677b8370ef105fee5ad19db4547_205426_1200x1200_fit_q75_h2_lanczos_3.webp 1200w&#34;
+               src=&#34;/post/django-core-techs-notes/images/deploy/gunicorn/test_hue17ca677b8370ef105fee5ad19db4547_205426_826bf7eb37600d3a4fd5982a3107dfef.webp&#34;
+               width=&#34;760&#34;
+               height=&#34;498&#34;
+               loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+  &lt;/div&gt;&lt;/figure&gt;
+&lt;/p&gt;
+&lt;h3 id=&#34;django服务日志记录&#34;&gt;Django服务日志记录&lt;/h3&gt;
+&lt;h4 id=&#34;参考文档&#34;&gt;参考文档&lt;/h4&gt;
+&lt;p&gt;&lt;a href=&#34;https://docs.djangoproject.com/zh-hans/4.2/topics/logging/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;https://docs.djangoproject.com/zh-hans/4.2/topics/logging/&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Django默认使用logging模块进行日志记录，可以在settings.py文件中配置LOGGING变量对日志进行配置。如：&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-python&#34; data-lang=&#34;python&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;# settings.py&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;# 日志模块配置&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;LOGGING&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;s2&#34;&gt;&amp;#34;version&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;1&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;s2&#34;&gt;&amp;#34;disable_existing_loggers&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;kc&#34;&gt;False&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;s2&#34;&gt;&amp;#34;formatters&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        &lt;span class=&#34;s2&#34;&gt;&amp;#34;verbose&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;            &lt;span class=&#34;s2&#34;&gt;&amp;#34;format&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;&lt;/span&gt;&lt;span class=&#34;si&#34;&gt;{levelname}&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt; &lt;/span&gt;&lt;span class=&#34;si&#34;&gt;{asctime}&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt; &lt;/span&gt;&lt;span class=&#34;si&#34;&gt;{module}&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt; &lt;/span&gt;&lt;span class=&#34;si&#34;&gt;{process:d}&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt; &lt;/span&gt;&lt;span class=&#34;si&#34;&gt;{thread:d}&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt; &lt;/span&gt;&lt;span class=&#34;si&#34;&gt;{message}&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;            &lt;span class=&#34;s2&#34;&gt;&amp;#34;style&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;{&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        &lt;span class=&#34;p&#34;&gt;},&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        &lt;span class=&#34;s2&#34;&gt;&amp;#34;simple&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;            &lt;span class=&#34;s2&#34;&gt;&amp;#34;format&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;&lt;/span&gt;&lt;span class=&#34;si&#34;&gt;{levelname}&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt; &lt;/span&gt;&lt;span class=&#34;si&#34;&gt;{asctime}&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt; &lt;/span&gt;&lt;span class=&#34;si&#34;&gt;{module}&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt; &lt;/span&gt;&lt;span class=&#34;si&#34;&gt;{message}&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;            &lt;span class=&#34;s2&#34;&gt;&amp;#34;style&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;{&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        &lt;span class=&#34;p&#34;&gt;},&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;p&#34;&gt;},&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;s2&#34;&gt;&amp;#34;handlers&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        &lt;span class=&#34;s2&#34;&gt;&amp;#34;console&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;            &lt;span class=&#34;s2&#34;&gt;&amp;#34;class&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;logging.StreamHandler&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;            &lt;span class=&#34;s2&#34;&gt;&amp;#34;formatter&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;simple&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        &lt;span class=&#34;p&#34;&gt;},&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        &lt;span class=&#34;s2&#34;&gt;&amp;#34;file&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;            &lt;span class=&#34;s2&#34;&gt;&amp;#34;level&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;DEBUG&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;            &lt;span class=&#34;s2&#34;&gt;&amp;#34;class&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;logging.FileHandler&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;            &lt;span class=&#34;s2&#34;&gt;&amp;#34;filename&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;os&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;path&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;join&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;BASE_DIR&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;logs&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;museum_geo_api.log&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;),&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;            &lt;span class=&#34;s2&#34;&gt;&amp;#34;formatter&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;verbose&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        &lt;span class=&#34;p&#34;&gt;},&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;p&#34;&gt;},&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;s2&#34;&gt;&amp;#34;loggers&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        &lt;span class=&#34;s2&#34;&gt;&amp;#34;django&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;            &lt;span class=&#34;s2&#34;&gt;&amp;#34;handlers&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;console&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;file&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;],&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;            &lt;span class=&#34;s2&#34;&gt;&amp;#34;level&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;INFO&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;            &lt;span class=&#34;s2&#34;&gt;&amp;#34;propagate&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;kc&#34;&gt;True&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        &lt;span class=&#34;p&#34;&gt;},&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;p&#34;&gt;},&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;通过formatter可以配置日志格式器，handlers配置日志处理类（如流处理StreamHandler、文件处理FileHandler），loggers配置启用的日志记录器。关于这些模块的介绍可以参考博文&lt;a href=&#34;https://coolgiserz.github.io/post/python-logging-usage-and-extend/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Python内置日志模块源码分析和进阶用法 | CoolCats&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure  &gt;
+  &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img alt=&#34;&#34; srcset=&#34;
+               /post/django-core-techs-notes/images/logging/filelog_hubf8e2fa52f78106210518ce657fc7628_150401_b4f2f2b2d5ce1e47c654895383583e3c.webp 400w,
+               /post/django-core-techs-notes/images/logging/filelog_hubf8e2fa52f78106210518ce657fc7628_150401_589f6378186a4ab54e30261e3c2c8cd0.webp 760w,
+               /post/django-core-techs-notes/images/logging/filelog_hubf8e2fa52f78106210518ce657fc7628_150401_1200x1200_fit_q75_h2_lanczos_3.webp 1200w&#34;
+               src=&#34;/post/django-core-techs-notes/images/logging/filelog_hubf8e2fa52f78106210518ce657fc7628_150401_b4f2f2b2d5ce1e47c654895383583e3c.webp&#34;
+               width=&#34;760&#34;
+               height=&#34;140&#34;
+               loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+  &lt;/div&gt;&lt;/figure&gt;
+&lt;/p&gt;
 &lt;h2 id=&#34;0x02-django源码分析&#34;&gt;0x02 Django源码分析&lt;/h2&gt;
 &lt;p&gt;TODO&lt;/p&gt;
 &lt;h2 id=&#34;0x03-django开源项目&#34;&gt;0x03 Django开源项目&lt;/h2&gt;
@@ -1213,6 +1679,12 @@
 &lt;ul&gt;
 &lt;li&gt;
 &lt;p&gt;获取多边形的中心点：&lt;a href=&#34;https://stackoverflow.com/questions/40083521/django-get-centroid-of-polygon-in-geojson-format&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;python - Django - Get centroid of polygon in geoJSON format - Stack Overflow&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;空间数据模型相关API：https://docs.djangoproject.com/en/4.2/ref/contrib/gis/db-api/&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;空间数据u相关函数：&lt;a href=&#34;https://docs.djangoproject.com/en/1.11/ref/contrib/gis/functions/#django.contrib.gis.db.models.functions.Centroid&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Geographic Database Functions | Django documentation | Django&lt;/a&gt;&lt;/p&gt;
 &lt;/li&gt;
 &lt;li&gt;
 &lt;p&gt;&amp;hellip;&amp;hellip;&lt;/p&gt;
