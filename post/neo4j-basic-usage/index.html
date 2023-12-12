@@ -332,7 +332,7 @@
         content="2023-09-20T21:57:38&#43;08:00"
       />
     
-    <meta property="article:modified_time" content="2023-09-20T21:57:38&#43;08:00">
+    <meta property="article:modified_time" content="2023-12-12T21:57:38&#43;08:00">
   
 
   
@@ -361,7 +361,7 @@
   "headline": "Neo4j基本使用与Cypher语言基础",
   
   "datePublished": "2023-09-20T21:57:38+08:00",
-  "dateModified": "2023-09-20T21:57:38+08:00",
+  "dateModified": "2023-12-12T21:57:38+08:00",
   
   "author": {
     "@type": "Person",
@@ -771,8 +771,10 @@
     
     
       
+          Last updated on
+      
     
-    Sep 20, 2023
+    Dec 12, 2023
   </span>
   
 
@@ -865,7 +867,36 @@
 <h4 id="权衡trade-off">权衡（Trade Off）</h4>
 <p>当然，使用图数据库能够进行高效率复杂关系查询，但是在存储空间和内存需求上要求更高了。所以，如果你对数据库的需求不在于显式存储数据关系，那可以使用关系型数据库节省内存空间。</p>
 <h3 id="neo4j生态工具">Neo4J生态工具</h3>
-<p>Neo4J Browser：Neo4J的在线浏览器接口，可以查询管理数据库中的数据，提供使用Cypher语言对图数据进行基本可视化的功能。</p>
+<p>Neo4J Desktop: Neo4j的桌面端管理软件。</p>
+<p>Neo4J Browser：Neo4J的在线浏览器接口，可以查询管理数据库中的数据，提供使用Cypher语言对图数据进行基本可视化的功能。也提供了很多快捷命令（如用户添加、角色添加等）</p>
+<p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<figure  >
+  <div class="d-flex justify-content-center">
+    <div class="w-100" ><img alt="" srcset="
+               /post/neo4j-basic-usage/images/user_control_huda101d2ca49fee0bed3d71c127f275ad_397455_1f838fd24e9abe876277054e141d8c05.webp 400w,
+               /post/neo4j-basic-usage/images/user_control_huda101d2ca49fee0bed3d71c127f275ad_397455_63f808adcc3bf3620978e82980764a26.webp 760w,
+               /post/neo4j-basic-usage/images/user_control_huda101d2ca49fee0bed3d71c127f275ad_397455_1200x1200_fit_q75_h2_lanczos_3.webp 1200w"
+               src="/post/neo4j-basic-usage/images/user_control_huda101d2ca49fee0bed3d71c127f275ad_397455_1f838fd24e9abe876277054e141d8c05.webp"
+               width="760"
+               height="530"
+               loading="lazy" data-zoomable /></div>
+  </div></figure>
+</p>
 <h2 id="cypher语言">Cypher语言</h2>
 <h3 id="基本介绍">基本介绍</h3>
 <p>类似SQL在MySQL、PostgreSQL等数据库中的作用，Cypher就是图数据库的一种查询语言。但Cypher的使用与SQL却有很多不同。总结起来，Cypher查询语句的特征可以总结为“模式”查询，即通过描述实体-关系的“模式”，并为模式各组成部分进行变量命名，将需要的变量返回即可得到查询结果，或者修改、删除对应变量即可完成对指定条件的数据进行变更。</p>
@@ -892,10 +923,10 @@
 <figure  >
   <div class="d-flex justify-content-center">
     <div class="w-100" ><img alt="" srcset="
-               /post/neo4j-basic-usage/images/cypher-cert_hud9b63beb5e416256a44650f8ad9e09d7_310319_67a1eeca4eef4c353d0ddeeab6b84b45.webp 400w,
-               /post/neo4j-basic-usage/images/cypher-cert_hud9b63beb5e416256a44650f8ad9e09d7_310319_7e7c47c9d2a95499b0038d1e2948274a.webp 760w,
+               /post/neo4j-basic-usage/images/cypher-cert_hud9b63beb5e416256a44650f8ad9e09d7_310319_0820588f2fd752b62e680ad0ebe27ba7.webp 400w,
+               /post/neo4j-basic-usage/images/cypher-cert_hud9b63beb5e416256a44650f8ad9e09d7_310319_7235bde26f7f204a1126e2ea040f5f4d.webp 760w,
                /post/neo4j-basic-usage/images/cypher-cert_hud9b63beb5e416256a44650f8ad9e09d7_310319_1200x1200_fit_q75_h2_lanczos_3.webp 1200w"
-               src="/post/neo4j-basic-usage/images/cypher-cert_hud9b63beb5e416256a44650f8ad9e09d7_310319_67a1eeca4eef4c353d0ddeeab6b84b45.webp"
+               src="/post/neo4j-basic-usage/images/cypher-cert_hud9b63beb5e416256a44650f8ad9e09d7_310319_0820588f2fd752b62e680ad0ebe27ba7.webp"
                width="760"
                height="505"
                loading="lazy" data-zoomable /></div>
@@ -982,8 +1013,7 @@ RETURN n
 RETURN type(r), count(*)
 </code></pre><h3 id="模糊查询">模糊查询</h3>
 <p>模糊查询并非使用LIKE关键字，而是使用CONTAINS，如：</p>
-<pre tabindex="0"><code class="language-cypher" data-lang="cypher">
-MATCH p=(n:NodeType)--&gt;() WHERE n.name CONTAINS &#39;需要模糊查询的关键字&#39; RETURN p
+<pre tabindex="0"><code class="language-cypher" data-lang="cypher">MATCH p=(n:NodeType)--&gt;() WHERE n.name CONTAINS &#39;需要模糊查询的关键字&#39; RETURN p
 </code></pre><h3 id="批量变更关系类型">批量变更关系类型</h3>
 <pre tabindex="0"><code class="language-cypher" data-lang="cypher">MATCH (a)-[r:OLD_RELATION]-&gt;(b)
 CREATE (a)-[rNew:NEW_RELATION]-&gt;(b)
@@ -1082,9 +1112,43 @@ DELETE r, n
   </div></figure>
 </p>
 <h3 id="多跳查询">多跳查询</h3>
-<p>以二跳查询为例：</p>
+<h4 id="二跳查询">二跳查询</h4>
 <pre tabindex="0"><code class="language-cypher" data-lang="cypher">MATCH p=(n:NodeType{name:&#39;NodeName&#39;})-[r:Rel1]-&gt;()-[:Rel2]-&gt;(re)  RETURN re.name,re.id
-</code></pre><h2 id="图数据库示例数据集">图数据库示例数据集</h2>
+</code></pre><h4 id="递归多跳查询">递归多跳查询</h4>
+<p>在关系类型后加*符号即可实现递归查询</p>
+<pre tabindex="0"><code class="language-cypher" data-lang="cypher">MATCH p=(n:NodeType{name:&#39;NodeName&#39;})-[r:Rel1*]-&gt;(re)  RETURN re.name,re.id
+</code></pre><h3 id="neo4j查询结果集导出csvjson">Neo4j查询结果集导出csv/json</h3>
+<p>通过Cypher命令查出的表格数据可以使用Neo4j Browser的Export CSV/Export JSON功能导出。</p>
+<p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<figure  >
+  <div class="d-flex justify-content-center">
+    <div class="w-100" ><img alt="" srcset="
+               /post/neo4j-basic-usage/images/export_csv_or_json_hu60a27eb803964fc7a512e14ee1334b82_121379_8b78a78796b8a83584b75129861e49b7.webp 400w,
+               /post/neo4j-basic-usage/images/export_csv_or_json_hu60a27eb803964fc7a512e14ee1334b82_121379_f6fb121bde40f8a68579d8ba191b36bf.webp 760w,
+               /post/neo4j-basic-usage/images/export_csv_or_json_hu60a27eb803964fc7a512e14ee1334b82_121379_1200x1200_fit_q75_h2_lanczos_3.webp 1200w"
+               src="/post/neo4j-basic-usage/images/export_csv_or_json_hu60a27eb803964fc7a512e14ee1334b82_121379_8b78a78796b8a83584b75129861e49b7.webp"
+               width="760"
+               height="281"
+               loading="lazy" data-zoomable /></div>
+  </div></figure>
+</p>
+<h2 id="heading-1"></h2>
+<h2 id="图数据库示例数据集">图数据库示例数据集</h2>
 <ul>
 <li><a href="https://offshoreleaks.icij.org/pages/database" target="_blank" rel="noopener">https://offshoreleaks.icij.org/pages/database</a></li>
 </ul>
@@ -1101,6 +1165,16 @@ DELETE r, n
 <p>neo4j github 800+ star</p>
 </li>
 </ul>
+<h2 id="nginx代理转发neo4j服务">Nginx代理转发Neo4j服务</h2>
+<p>有时候可能希望将neo4j默认服务（neo4j browser等）开放给互联网上的用户使用，并且希望希望通过nginx进行反向代理，简单的做法可以参考如下流程：</p>
+<ol>
+<li>
+<p>配置nginx.conf文件，新建stream代理规则，用于支持neo4j采用websocket协议通信的服务</p>
+</li>
+<li>
+<p>配置xxx.conf文件，新建http server代理规则，用于支持neo4j browser（http服务）</p>
+</li>
+</ol>
 
     </div>
 
