@@ -1,0 +1,2158 @@
+<!DOCTYPE html><html lang="en-us" >
+
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  
+  
+  
+    <meta name="generator" content="Wowchemy 5.5.0 for Hugo" />
+  
+
+  
+  
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+  
+  
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  
+
+  
+  
+  
+    
+      
+      <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Roboto+Mono&family=Roboto:wght@400;700&display=swap">
+      <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Roboto+Mono&family=Roboto:wght@400;700&display=swap" media="print" onload="this.media='all'">
+    
+  
+
+  
+  
+  
+  
+  
+    
+    
+    
+  
+  
+
+  <meta name="author" content="CoolCats" />
+
+  
+  
+  
+    
+  
+  <meta name="description" content="实现后端服务时可能会需要对某些字段进行组合过滤，如何设计数据库表结构/索引和查询逻辑才能高效？本文构造了百万量级的数据库对几种思路进行了简单的对比测试。" />
+
+  
+  <link rel="alternate" hreflang="en-us" href="/post/database-design-for-combinatorial-query/" />
+
+  
+  
+  
+    <meta name="theme-color" content="#1565c0" />
+  
+
+  
+  
+    
+    <script src="/js/mathjax-config.js"></script>
+  
+
+  
+
+  <link rel="stylesheet" href="/css/vendor-bundle.min.c7b8d9abd591ba2253ea42747e3ac3f5.css" media="print" onload="this.media='all'">
+
+  
+  
+  
+    
+    
+      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/academicons@1.9.1/css/academicons.min.css" integrity="sha512-W0xM4mr6dEP9nREo7Z9z+9X70wytKvMGeDsj7ps2+xg5QPrEBXC8tAW1IFnzjR6eoJ90JmCnFzerQJTLzIEHjA==" crossorigin="anonymous" media="print" onload="this.media='all'">
+    
+
+    
+    
+    
+    
+      
+      
+    
+    
+    
+
+    
+    
+    
+      
+    
+    
+      
+      
+        
+          <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@10.2.1/build/styles/github.min.css" crossorigin="anonymous" title="hl-light" media="print" onload="this.media='all'">
+          <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@10.2.1/build/styles/dracula.min.css" crossorigin="anonymous" title="hl-dark" media="print" onload="this.media='all'" disabled>
+        
+      
+    
+
+    
+    
+    
+      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.7.1/dist/leaflet.min.css" integrity="" crossorigin="anonymous" media="print" onload="this.media='all'">
+    
+
+    
+
+    
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js" integrity="" crossorigin="anonymous" async></script>
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+  
+
+  
+  
+  
+  
+  
+  <link rel="stylesheet" href="/css/wowchemy.1052fab8b7700a3dc49ee23683097d66.css" />
+
+  
+
+
+
+  
+
+
+  
+
+
+  
+
+
+  <script>
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?51ae6db546b05b91d4053193ba49123d";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+  
+  
+  
+
+  
+
+  
+
+  <link rel="icon" type="image/png" href="/media/icon_hue03491371183284312b8b116a73ae5ab_79511_32x32_fill_lanczos_center_3.png" />
+  <link rel="apple-touch-icon" type="image/png" href="/media/icon_hue03491371183284312b8b116a73ae5ab_79511_180x180_fill_lanczos_center_3.png" />
+
+  <link rel="canonical" href="/post/database-design-for-combinatorial-query/" />
+
+  
+  
+  
+  
+  
+  
+  
+  
+    
+    
+  
+  
+
+  
+  
+    
+    
+  
+  <meta property="twitter:card" content="summary" />
+  
+    <meta property="twitter:site" content="@wowchemy" />
+    <meta property="twitter:creator" content="@wowchemy" />
+  
+  <meta property="og:site_name" content="CoolCats" />
+  <meta property="og:url" content="/post/database-design-for-combinatorial-query/" />
+  <meta property="og:title" content="对数据库表设计之组合条件筛选的思考与实验 | CoolCats" />
+  <meta property="og:description" content="实现后端服务时可能会需要对某些字段进行组合过滤，如何设计数据库表结构/索引和查询逻辑才能高效？本文构造了百万量级的数据库对几种思路进行了简单的对比测试。" /><meta property="og:image" content="/media/icon_hue03491371183284312b8b116a73ae5ab_79511_512x512_fill_lanczos_center_3.png" />
+    <meta property="twitter:image" content="/media/icon_hue03491371183284312b8b116a73ae5ab_79511_512x512_fill_lanczos_center_3.png" /><meta property="og:locale" content="en-us" />
+  
+    
+      <meta
+        property="article:published_time"
+        content="2023-12-13T20:44:47&#43;08:00"
+      />
+    
+    <meta property="article:modified_time" content="2023-12-13T20:44:47&#43;08:00">
+  
+
+  
+
+
+    
+
+
+
+
+
+
+  
+
+
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "/post/database-design-for-combinatorial-query/"
+  },
+  "headline": "对数据库表设计之组合条件筛选的思考与实验",
+  
+  "datePublished": "2023-12-13T20:44:47+08:00",
+  "dateModified": "2023-12-13T20:44:47+08:00",
+  
+  "author": {
+    "@type": "Person",
+    "name": "CoolCats"
+  },
+  
+  "publisher": {
+    "@type": "Organization",
+    "name": "CoolCats",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "/media/icon_hue03491371183284312b8b116a73ae5ab_79511_192x192_fill_lanczos_center_3.png"
+    }
+  },
+  "description": "实现后端服务时可能会需要对某些字段进行组合过滤，如何设计数据库表结构/索引和查询逻辑才能高效？本文构造了百万量级的数据库对几种思路进行了简单的对比测试。"
+}
+</script>
+
+  
+
+  
+
+  
+
+  
+
+
+
+
+
+  <title>对数据库表设计之组合条件筛选的思考与实验 | CoolCats</title>
+</head>
+
+
+<body id="top" data-spy="scroll" data-offset="70" data-target="#TableOfContents" class="page-wrapper   " data-wc-page-id="5422652bf1d0ec1a45de46cac07f7b8c" >
+
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  <script src="/js/wowchemy-init.min.2ed908358299dd7ab553faae685c746c.js"></script>
+
+  
+
+
+<aside class="search-modal" id="search">
+  <div class="container">
+    <section class="search-header">
+
+      <div class="row no-gutters justify-content-between mb-3">
+        <div class="col-6">
+          <h1>Search</h1>
+        </div>
+        <div class="col-6 col-search-close">
+          <a class="js-search" href="#" aria-label="Close"><i class="fas fa-times-circle text-muted" aria-hidden="true"></i></a>
+        </div>
+      </div>
+
+      <div id="search-box">
+        
+        <input name="q" id="search-query" placeholder="Search..." autocapitalize="off"
+        autocomplete="off" autocorrect="off" spellcheck="false" type="search" class="form-control"
+        aria-label="Search...">
+        
+      </div>
+
+      
+      
+
+      
+
+    </section>
+    <section class="section-search-results">
+
+      <div id="search-hits">
+        
+      </div>
+
+    </section>
+  </div>
+</aside>
+
+
+
+  <div class="page-header">
+    
+
+
+
+
+
+
+
+
+
+
+
+
+<header class="header--fixed">
+  <nav class="navbar navbar-expand-lg navbar-light compensate-for-scrollbar" id="navbar-main">
+    <div class="container-xl">
+
+      
+      <div class="d-none d-lg-inline-flex">
+        <a class="navbar-brand" href="/">CoolCats</a>
+      </div>
+      
+
+      
+      <button type="button" class="navbar-toggler" data-toggle="collapse"
+              data-target="#navbar-content" aria-controls="navbar-content" aria-expanded="false" aria-label="Toggle navigation">
+      <span><i class="fas fa-bars"></i></span>
+      </button>
+      
+
+      
+      <div class="navbar-brand-mobile-wrapper d-inline-flex d-lg-none">
+        <a class="navbar-brand" href="/">CoolCats</a>
+      </div>
+      
+
+      
+      
+      <div class="navbar-collapse main-menu-item collapse justify-content-start" id="navbar-content">
+
+        
+        <ul class="navbar-nav d-md-inline-flex">
+          
+
+          
+
+          
+          
+          
+
+          
+
+          
+          
+          
+          
+
+          
+            
+              
+              
+            
+            
+          
+
+          <li class="nav-item">
+            <a class="nav-link  active" href="/post"><span>博客</span></a>
+          </li>
+
+          
+          
+
+          
+
+          
+          
+          
+            
+          
+
+          
+
+          
+          
+          
+          
+
+          
+            
+              
+              
+            
+            
+          
+
+          <li class="nav-item">
+            <a class="nav-link " href="/event"><span>趣事</span></a>
+          </li>
+
+          
+          
+
+          
+
+          
+          
+          
+            
+          
+
+          
+
+          
+          
+          
+          
+
+          
+            
+              
+              
+            
+            
+          
+
+          <li class="nav-item">
+            <a class="nav-link " href="/project"><span>项目</span></a>
+          </li>
+
+          
+          
+
+          
+
+          
+          
+          
+            
+          
+
+          
+
+          
+          
+          
+          
+
+          
+            
+              
+              
+            
+            
+          
+
+          <li class="nav-item">
+            <a class="nav-link " href="/publication"><span>论文</span></a>
+          </li>
+
+          
+          
+
+          
+
+          
+          
+          
+            
+          
+
+          
+
+          
+          
+          
+          
+
+          
+            
+              
+              
+            
+            
+          
+
+          <li class="nav-item">
+            <a class="nav-link " href="/contact"><span>联系</span></a>
+          </li>
+
+          
+          
+
+          
+
+          
+          
+          
+            
+          
+
+          
+
+          
+          
+          
+          
+
+          
+            
+              
+              
+            
+            
+          
+
+          <li class="nav-item">
+            <a class="nav-link " href="/media/files/cv"><span>简历</span></a>
+          </li>
+
+          
+          
+
+        
+
+          
+        </ul>
+      </div>
+
+      <ul class="nav-icons navbar-nav flex-row ml-auto d-flex pl-md-2">
+
+        
+        
+          
+        
+
+        
+        
+        <li class="nav-item">
+          <a class="nav-link js-search" href="#" aria-label="Search"><i class="fas fa-search" aria-hidden="true"></i></a>
+        </li>
+        
+
+        
+        
+        
+        <li class="nav-item dropdown theme-dropdown">
+          <a href="#" class="nav-link" data-toggle="dropdown" aria-haspopup="true" aria-label="Display preferences">
+            <i class="fas fa-moon" aria-hidden="true"></i>
+          </a>
+          <div class="dropdown-menu">
+            <a href="#" class="dropdown-item js-set-theme-light">
+              <span>Light</span>
+            </a>
+            <a href="#" class="dropdown-item js-set-theme-dark">
+              <span>Dark</span>
+            </a>
+            <a href="#" class="dropdown-item js-set-theme-auto">
+              <span>Automatic</span>
+            </a>
+          </div>
+        </li>
+        
+
+        
+        
+
+      </ul>
+
+    </div>
+  </nav>
+</header>
+
+
+  </div>
+
+  <div class="page-body">
+    
+    
+    
+
+    <article class="article">
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+  
+  
+<div class="article-container pt-3">
+  <h1>对数据库表设计之组合条件筛选的思考与实验</h1>
+
+  
+  <p class="page-subtitle">简单数学原理，排列组合编码设计的艺术</p>
+  
+
+  
+    
+
+
+<div class="article-metadata">
+
+  
+  
+
+  
+  <span class="article-date">
+    
+    
+      
+    
+    Dec 13, 2023
+  </span>
+  
+
+  
+
+  
+  <span class="middot-divider"></span>
+  <span class="article-reading-time">
+    2 min read
+  </span>
+  
+
+  
+  
+  
+  
+
+  
+  
+  <span class="middot-divider"></span>
+  <span class="article-categories">
+    <i class="fas fa-folder mr-1"></i><a href="/category/%E6%95%B0%E6%8D%AE%E5%BA%93/">数据库</a>, <a href="/category/%E7%B4%A2%E5%BC%95%E4%BC%98%E5%8C%96/">索引优化</a></span>
+  
+
+</div>
+
+    
+
+
+
+
+
+  
+</div>
+
+
+
+  <div class="article-container">
+
+    <div class="article-style">
+      <!-- START doctoc generated TOC please keep comment here to allow auto update -->
+<!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
+<ul>
+<li><a href="#%E8%83%8C%E6%99%AF">背景</a>
+<ul>
+<li><a href="#%E7%94%9F%E6%88%90%E6%A8%A1%E6%8B%9F%E6%95%B0%E6%8D%AE">生成模拟数据</a></li>
+</ul>
+</li>
+<li><a href="#%E8%AE%BE%E8%AE%A1%E6%80%9D%E8%B7%AF%E4%B8%8E%E8%AF%84%E4%BB%B7">设计思路与评价</a>
+<ul>
+<li><a href="#%E6%80%9D%E8%B7%AF1onehot%E7%BC%96%E7%A0%81%E8%A1%A8%E7%A4%BA%E5%A4%9A%E6%A0%87%E7%AD%BE%E9%80%9A%E8%BF%87%E6%A8%A1%E7%B3%8A%E6%9F%A5%E8%AF%A2%E5%AE%9E%E7%8E%B0%E7%BB%84%E5%90%88%E7%AD%9B%E9%80%89">思路1：onehot编码表示多标签，通过模糊查询实现组合筛选</a>
+<ul>
+<li><a href="#%E7%BB%9F%E8%AE%A1%E6%BB%A1%E8%B6%B3%E6%9D%A1%E4%BB%B6%E7%9A%84%E8%AE%B0%E5%BD%95%E6%95%B0">统计满足条件的记录数</a></li>
+<li><a href="#%E8%BF%94%E5%9B%9E%E6%BB%A1%E8%B6%B3%E6%9D%A1%E4%BB%B6%E7%9A%84%E8%AE%B0%E5%BD%95">返回满足条件的记录</a></li>
+</ul>
+</li>
+<li><a href="#%E6%80%9D%E8%B7%AF2%E5%B0%86m%E4%B8%AA%E6%A0%87%E7%AD%BE%E5%88%86%E6%88%90m%E4%B8%AA%E4%BA%8C%E5%85%83%E5%AD%97%E6%AE%B5%E6%9D%A5%E5%AD%98%E5%82%A8%E5%AF%B9m%E4%B8%AA%E5%AD%97%E6%AE%B5%E5%BB%BA%E7%AB%8B%E8%81%94%E5%90%88%E7%B4%A2%E5%BC%95">思路2：将m个标签分成m个二元字段来存储，对m个字段建立联合索引</a>
+<ul>
+<li><a href="#%E6%97%A0%E7%B4%A2%E5%BC%95%E7%89%88%E6%9C%AC">无索引版本</a></li>
+<li><a href="#%E5%BB%BA%E7%AB%8B%E8%81%94%E5%90%88%E7%B4%A2%E5%BC%95%E5%90%8E%E6%9F%A5%E8%AF%A2">建立联合索引后查询</a></li>
+<li><a href="#%E5%B0%8F%E7%BB%93">小结</a></li>
+</ul>
+</li>
+<li><a href="#%E6%80%9D%E8%B7%AF3%E4%BD%BF%E7%94%A8onehot%E7%BC%96%E7%A0%81%E5%AD%98%E5%82%A8%E4%BD%86%E9%80%9A%E8%BF%87%E4%BD%8D%E8%BF%90%E7%AE%97%E8%BF%9B%E8%A1%8C%E7%AD%9B%E9%80%89">思路3：使用onehot编码存储，但通过位运算进行筛选</a>
+<ul>
+<li><a href="#%E9%92%88%E5%AF%B9varchar%E7%B1%BB%E5%9E%8B%E7%9A%84onehot%E7%BC%96%E7%A0%81%E4%BD%9C%E4%BD%8D%E8%BF%90%E7%AE%97">针对varchar类型的onehot编码作位运算</a></li>
+<li><a href="#%E9%92%88%E5%AF%B9int%E7%B1%BB%E5%9E%8B%E7%9A%84%E5%8D%81%E8%BF%9B%E5%88%B6%E7%BC%96%E7%A0%81%E4%BD%9C%E4%BD%8D%E8%BF%90%E7%AE%97">针对int类型的十进制编码作位运算</a></li>
+</ul>
+</li>
+<li><a href="#%E6%80%9D%E8%B7%AF4-%E6%8D%A2%E4%B8%80%E7%A7%8D%E8%A7%92%E5%BA%A6%E6%80%9D%E8%80%83%E7%BB%84%E5%90%88%E7%9A%84%E7%BC%96%E7%A0%81%E5%B9%B6%E6%96%B0%E5%BB%BA%E4%B8%80%E4%B8%AA%E7%BC%96%E7%A0%81%E7%BB%84%E5%90%88%E8%A1%A8">思路4: 换一种角度思考组合的编码，并新建一个编码组合表</a>
+<ul>
+<li><a href="#%E7%AE%80%E5%8D%95%E8%AE%BA%E8%AF%81%E4%B8%80%E4%B8%8B%E7%BC%96%E7%A0%81plus%E7%9A%84%E7%90%86%E8%AE%BA%E5%8F%AF%E8%A1%8C%E6%80%A7">简单论证一下“编码plus”的理论可行性</a></li>
+<li><a href="#%E6%95%B0%E6%8D%AE%E5%BA%93%E5%AE%9E%E8%B7%B5">数据库实践</a></li>
+<li><a href="#%E7%BB%9F%E8%AE%A1%E6%9F%A5%E8%AF%A2">统计查询</a></li>
+<li><a href="#%E9%9D%9E%E7%BB%9F%E8%AE%A1%E6%9F%A5%E8%AF%A2%E7%9B%B4%E6%8E%A5%E6%9F%A5%E8%AF%A2%E7%BB%93%E6%9E%9C%E9%9B%86">非统计查询，直接查询结果集</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#%E6%8B%93%E5%B1%95%E9%98%85%E8%AF%BB">拓展阅读</a>
+<ul>
+<li><a href="#linux%E6%96%87%E4%BB%B6%E6%9D%83%E9%99%90">Linux文件权限</a></li>
+<li><a href="#%E4%BD%8D%E5%9B%BE%E7%B4%A2%E5%BC%95">位图索引</a></li>
+<li><a href="#mysql%E9%AB%98%E9%98%B6%E8%B0%83%E4%BC%98">MySQL高阶调优</a></li>
+<li><a href="#%E6%95%B0%E6%8D%AE%E5%BA%93%E6%80%A7%E8%83%BD%E6%B5%8B%E8%AF%95%E5%B7%A5%E5%85%B7">数据库性能测试工具</a></li>
+</ul>
+</li>
+</ul>
+<!-- END doctoc generated TOC please keep comment here to allow auto update -->
+<h2 id="背景">背景</h2>
+<p>参与某个项目，需要实现对某个表的数据进行条件筛选，并且多个条件之间可以组合，如何设计表结构才能够高效地查询，避免用户等待过长时间？出于项目保密需求，本文将避开谈论项目过程的实际字段，基于模拟数据构造一个场景进行分析。</p>
+<h3 id="生成模拟数据">生成模拟数据</h3>
+<p>首先写个脚本，生成约一百万条记录，每条记录可能有1到m个标签。标签候选集如下：</p>
+<pre tabindex="0"><code>战士
+坦克
+辅助
+法师
+射手
+刺客
+战略士
+</code></pre><p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<figure  >
+  <div class="d-flex justify-content-center">
+    <div class="w-100" ><img alt="" srcset="
+               /post/database-design-for-combinatorial-query/images/create_dataset_script_hu0872a9b1ffaa26978db157c43465abc7_94035_1b81604a3a90f7b3879b74ac2bb0e230.webp 400w,
+               /post/database-design-for-combinatorial-query/images/create_dataset_script_hu0872a9b1ffaa26978db157c43465abc7_94035_ca7b35a83f22792579ff826d152f13a9.webp 760w,
+               /post/database-design-for-combinatorial-query/images/create_dataset_script_hu0872a9b1ffaa26978db157c43465abc7_94035_1200x1200_fit_q75_h2_lanczos_3.webp 1200w"
+               src="/post/database-design-for-combinatorial-query/images/create_dataset_script_hu0872a9b1ffaa26978db157c43465abc7_94035_1b81604a3a90f7b3879b74ac2bb0e230.webp"
+               width="760"
+               height="576"
+               loading="lazy" data-zoomable /></div>
+  </div></figure>
+</p>
+<p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<figure  >
+  <div class="d-flex justify-content-center">
+    <div class="w-100" ><img alt="" srcset="
+               /post/database-design-for-combinatorial-query/images/create_dataset_hu4e438432d161a8bf7849e946311cd4ec_47475_48e10b004032902eb9c29cc9df4f3d4d.webp 400w,
+               /post/database-design-for-combinatorial-query/images/create_dataset_hu4e438432d161a8bf7849e946311cd4ec_47475_3e6f3b57e9155b55e5b41465ba2d72b8.webp 760w,
+               /post/database-design-for-combinatorial-query/images/create_dataset_hu4e438432d161a8bf7849e946311cd4ec_47475_1200x1200_fit_q75_h2_lanczos_3.webp 1200w"
+               src="/post/database-design-for-combinatorial-query/images/create_dataset_hu4e438432d161a8bf7849e946311cd4ec_47475_48e10b004032902eb9c29cc9df4f3d4d.webp"
+               width="760"
+               height="90"
+               loading="lazy" data-zoomable /></div>
+  </div></figure>
+</p>
+<p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<figure  >
+  <div class="d-flex justify-content-center">
+    <div class="w-100" ><img alt="" srcset="
+               /post/database-design-for-combinatorial-query/images/1million_huf485181957b40aea58278418b99bb18f_121173_8df02e1fa86d04a1e87cd9f6bc94942c.webp 400w,
+               /post/database-design-for-combinatorial-query/images/1million_huf485181957b40aea58278418b99bb18f_121173_ee1da2d65c8234ee73c45ba3c7bb514c.webp 760w,
+               /post/database-design-for-combinatorial-query/images/1million_huf485181957b40aea58278418b99bb18f_121173_1200x1200_fit_q75_h2_lanczos_3.webp 1200w"
+               src="/post/database-design-for-combinatorial-query/images/1million_huf485181957b40aea58278418b99bb18f_121173_8df02e1fa86d04a1e87cd9f6bc94942c.webp"
+               width="760"
+               height="314"
+               loading="lazy" data-zoomable /></div>
+  </div></figure>
+</p>
+<p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<figure  >
+  <div class="d-flex justify-content-center">
+    <div class="w-100" ><img alt="" srcset="
+               /post/database-design-for-combinatorial-query/images/1million_data_hu639beebfb36d73428cd3b4ef8375af73_647535_09b86581e19ec659226303365bfb2b0d.webp 400w,
+               /post/database-design-for-combinatorial-query/images/1million_data_hu639beebfb36d73428cd3b4ef8375af73_647535_f3c828cf1071d2bc72b93eadd6e25c3b.webp 760w,
+               /post/database-design-for-combinatorial-query/images/1million_data_hu639beebfb36d73428cd3b4ef8375af73_647535_1200x1200_fit_q75_h2_lanczos_3.webp 1200w"
+               src="/post/database-design-for-combinatorial-query/images/1million_data_hu639beebfb36d73428cd3b4ef8375af73_647535_09b86581e19ec659226303365bfb2b0d.webp"
+               width="760"
+               height="390"
+               loading="lazy" data-zoomable /></div>
+  </div></figure>
+</p>
+<p>至此，可以开始测试不同sql查询方式的性能，查询面向的场景：根据标签过滤记录，需要注意的是，当按照“辅助、坦克、战士”来过滤记录时，需要返回包含这些标签的记录而不仅仅是精确匹配这三个标签的记录。</p>
+<h2 id="设计思路与评价">设计思路与评价</h2>
+<p>如何评价一种设计好不好，姑且从查询性能（数据量）、扩展灵活性两个指标来评判，这应该也是最基础最重要的两个指标。如果查询性能随数据量级数的增加下降趋势更缓、面对数据类别增加需求扩展更加灵活则认为设计更好。</p>
+<p>以下是几种设计思路：</p>
+<ol>
+<li>first clue：通过一个onehot编码字段存储多标签组合信息，使用模糊查询（like）实现</li>
+<li>简单暴力：分N个字段存储，每个字段分别存二元变量用于标记是否</li>
+<li>onehot编码存储，但使用位运算进行查询</li>
+<li>设计排列组合编码表。</li>
+</ol>
+<h3 id="思路1onehot编码表示多标签通过模糊查询实现组合筛选">思路1：onehot编码表示多标签，通过模糊查询实现组合筛选</h3>
+<p>模拟场景，查询标签包含辅助、刺客的记录数，筛选条件编码（0010010）</p>
+<p>示例SQL：针对onehot编码字段通过like模糊查询。</p>
+<h4 id="统计满足条件的记录数">统计满足条件的记录数</h4>
+<p>可见针对当前的数据量，在未对tags_onehot_code建立索引的情况下，统计满足条件0010010的记录数耗时236ms，共有约37w条记录满足条件。</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="c1">-- 无索引 236ms 368900
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="k">SELECT</span><span class="w"> </span><span class="k">count</span><span class="p">(</span><span class="o">*</span><span class="p">)</span><span class="w"> </span><span class="k">from</span><span class="w"> </span><span class="n">t_combination_query_test</span><span class="w"> </span><span class="n">tcqt</span><span class="w"> </span><span class="k">WHERE</span><span class="w"> </span><span class="n">tags_onehot_code</span><span class="w"> </span><span class="k">like</span><span class="w"> </span><span class="s1">&#39;__1__1_&#39;</span><span class="p">;</span><span class="w">
+</span></span></span></code></pre></div><p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<figure  >
+  <div class="d-flex justify-content-center">
+    <div class="w-100" ><img alt="" srcset="
+               /post/database-design-for-combinatorial-query/images/like/0010010-like_hu4b475cfbb5866195ab265b0e81c49903_106424_b60ec64fbdedf1fdb0dbcbb3740c513d.webp 400w,
+               /post/database-design-for-combinatorial-query/images/like/0010010-like_hu4b475cfbb5866195ab265b0e81c49903_106424_828fd667346e56576adc356eaffed3c5.webp 760w,
+               /post/database-design-for-combinatorial-query/images/like/0010010-like_hu4b475cfbb5866195ab265b0e81c49903_106424_1200x1200_fit_q75_h2_lanczos_3.webp 1200w"
+               src="/post/database-design-for-combinatorial-query/images/like/0010010-like_hu4b475cfbb5866195ab265b0e81c49903_106424_b60ec64fbdedf1fdb0dbcbb3740c513d.webp"
+               width="478"
+               height="596"
+               loading="lazy" data-zoomable /></div>
+  </div></figure>
+</p>
+<p>如果对字段tags_onehot_code建立btree索引，再执行如上语句，多次执行耗时均在160ms左右，不超过200ms</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="k">SELECT</span><span class="w"> </span><span class="k">count</span><span class="p">(</span><span class="o">*</span><span class="p">)</span><span class="w"> </span><span class="k">from</span><span class="w"> </span><span class="n">t_combination_query_test</span><span class="w"> </span><span class="n">tcqt</span><span class="w"> </span><span class="k">WHERE</span><span class="w"> </span><span class="n">tags_onehot_code</span><span class="w"> </span><span class="k">like</span><span class="w"> </span><span class="s1">&#39;__1__1_&#39;</span><span class="p">;</span><span class="w">
+</span></span></span></code></pre></div><p>通过explain查看执行计划，可见此时执行该语句命中了btree索引,因此可以理解统计效率的提升，但是实际上效率从感官上提升不明显</p>
+<pre tabindex="0"><code>explain SELECT count(*) from t_combination_query_test tcqt WHERE tags_onehot_code like &#39;__1__1_&#39;;
+</code></pre><p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<figure  >
+  <div class="d-flex justify-content-center">
+    <div class="w-100" ><img alt="" srcset="
+               /post/database-design-for-combinatorial-query/images/like/btree-index_hu521bc2593d714a9a0bd4d1ab0396836f_288769_2e532d80e791a32ceee1d59c2c9c8e0c.webp 400w,
+               /post/database-design-for-combinatorial-query/images/like/btree-index_hu521bc2593d714a9a0bd4d1ab0396836f_288769_d3377ffbf5c4f347d0c85e11af55dffa.webp 760w,
+               /post/database-design-for-combinatorial-query/images/like/btree-index_hu521bc2593d714a9a0bd4d1ab0396836f_288769_1200x1200_fit_q75_h2_lanczos_3.webp 1200w"
+               src="/post/database-design-for-combinatorial-query/images/like/btree-index_hu521bc2593d714a9a0bd4d1ab0396836f_288769_2e532d80e791a32ceee1d59c2c9c8e0c.webp"
+               width="760"
+               height="243"
+               loading="lazy" data-zoomable /></div>
+  </div></figure>
+</p>
+<h4 id="返回满足条件的记录">返回满足条件的记录</h4>
+<p>需要注意的是，如果按如上的like查询条件是直接查询并返回结果集，查询过程是没有利用索引的，从结果导向可推测查询引擎在面对这种like模糊匹配<code> like '_1__1'</code>必须进行全表扫描比对记录是否满足该模式。</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="c1">-- 495ms
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">from</span><span class="w"> </span><span class="n">t_combination_query_test</span><span class="w"> </span><span class="n">tcqt</span><span class="w"> </span><span class="k">WHERE</span><span class="w"> </span><span class="n">tags_onehot_code</span><span class="w"> </span><span class="k">like</span><span class="w"> </span><span class="s1">&#39;__1__1_&#39;</span><span class="p">;</span><span class="w">
+</span></span></span></code></pre></div><p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<figure  >
+  <div class="d-flex justify-content-center">
+    <div class="w-100" ><img alt="" srcset="
+               /post/database-design-for-combinatorial-query/images/like/select_all_0010010_hud856d50b44be4086e7ea086efdda8961_1526768_5426049820d2fc4448a72d925c54b6c2.webp 400w,
+               /post/database-design-for-combinatorial-query/images/like/select_all_0010010_hud856d50b44be4086e7ea086efdda8961_1526768_981c0cccd13759da456f052fd008bcac.webp 760w,
+               /post/database-design-for-combinatorial-query/images/like/select_all_0010010_hud856d50b44be4086e7ea086efdda8961_1526768_1200x1200_fit_q75_h2_lanczos_3.webp 1200w"
+               src="/post/database-design-for-combinatorial-query/images/like/select_all_0010010_hud856d50b44be4086e7ea086efdda8961_1526768_5426049820d2fc4448a72d925c54b6c2.webp"
+               width="760"
+               height="590"
+               loading="lazy" data-zoomable /></div>
+  </div></figure>
+</p>
+<p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<figure  >
+  <div class="d-flex justify-content-center">
+    <div class="w-100" ><img alt="" srcset="
+               /post/database-design-for-combinatorial-query/images/like/select_all_0010010_out-of-index_hu353f249785f9e7d7e01426947c007c53_281820_ebd7ab55cd1c6d925e0e3475a7760e84.webp 400w,
+               /post/database-design-for-combinatorial-query/images/like/select_all_0010010_out-of-index_hu353f249785f9e7d7e01426947c007c53_281820_9850a91c60d18a35cc811e4520bfbe22.webp 760w,
+               /post/database-design-for-combinatorial-query/images/like/select_all_0010010_out-of-index_hu353f249785f9e7d7e01426947c007c53_281820_1200x1200_fit_q75_h2_lanczos_3.webp 1200w"
+               src="/post/database-design-for-combinatorial-query/images/like/select_all_0010010_out-of-index_hu353f249785f9e7d7e01426947c007c53_281820_ebd7ab55cd1c6d925e0e3475a7760e84.webp"
+               width="760"
+               height="200"
+               loading="lazy" data-zoomable /></div>
+  </div></figure>
+</p>
+<p>当然，某些like模糊查询是有可能命中索引的（但是不保证），比如以下两种语句:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="k">explain</span><span class="w"> </span><span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">from</span><span class="w"> </span><span class="n">t_combination_query_test</span><span class="w"> </span><span class="n">tcqt</span><span class="w"> </span><span class="k">WHERE</span><span class="w"> </span><span class="n">tags_onehot_code</span><span class="w"> </span><span class="k">like</span><span class="w"> </span><span class="s1">&#39;1__1___&#39;</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="k">explain</span><span class="w"> </span><span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">from</span><span class="w"> </span><span class="n">t_combination_query_test</span><span class="w"> </span><span class="n">tcqt</span><span class="w"> </span><span class="k">WHERE</span><span class="w"> </span><span class="n">tags_onehot_code</span><span class="w"> </span><span class="k">like</span><span class="w"> </span><span class="s1">&#39;___1___&#39;</span><span class="p">;</span><span class="w">
+</span></span></span></code></pre></div><p>通过explain查看执行计划，可以发现第一条语句的possible_keys不为空，而第二条语句的possible_keys为空，意味着前缀模糊匹配可能命中索引，这种可能性来自于b-tree索引的有序性。但是整体上来看，基于like模糊查询实现组合条件筛选难以利用索引（至少是难以利用主流索引b-tree、hash）。</p>
+<p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<figure  >
+  <div class="d-flex justify-content-center">
+    <div class="w-100" ><img alt="" srcset="
+               /post/database-design-for-combinatorial-query/images/like/screenshot-20231215-possible_key_hu9e3e712e2230d07802018c1d97ef1d1b_198299_3e67db54f3f51298e25cf864cf6ab536.webp 400w,
+               /post/database-design-for-combinatorial-query/images/like/screenshot-20231215-possible_key_hu9e3e712e2230d07802018c1d97ef1d1b_198299_2f37b4be83a9c4b8e23a212c80887e65.webp 760w,
+               /post/database-design-for-combinatorial-query/images/like/screenshot-20231215-possible_key_hu9e3e712e2230d07802018c1d97ef1d1b_198299_1200x1200_fit_q75_h2_lanczos_3.webp 1200w"
+               src="/post/database-design-for-combinatorial-query/images/like/screenshot-20231215-possible_key_hu9e3e712e2230d07802018c1d97ef1d1b_198299_3e67db54f3f51298e25cf864cf6ab536.webp"
+               width="760"
+               height="302"
+               loading="lazy" data-zoomable /></div>
+  </div></figure>
+</p>
+<h3 id="思路2将m个标签分成m个二元字段来存储对m个字段建立联合索引">思路2：将m个标签分成m个二元字段来存储，对m个字段建立联合索引</h3>
+<p>先来对数据表结构进行变更,通过位运算计算出每个字段的取值并更新表数据。</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="k">ALTER</span><span class="w"> </span><span class="k">TABLE</span><span class="w"> </span><span class="n">hero_test</span><span class="p">.</span><span class="n">t_combination_query_test</span><span class="w"> </span><span class="k">ADD</span><span class="w"> </span><span class="n">condition_1</span><span class="w"> </span><span class="n">TINYINT</span><span class="w"> </span><span class="k">DEFAULT</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="k">NULL</span><span class="w"> </span><span class="k">COMMENT</span><span class="w"> </span><span class="s1">&#39;条件1&#39;</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="k">ALTER</span><span class="w"> </span><span class="k">TABLE</span><span class="w"> </span><span class="n">hero_test</span><span class="p">.</span><span class="n">t_combination_query_test</span><span class="w"> </span><span class="k">ADD</span><span class="w"> </span><span class="n">condition_2</span><span class="w"> </span><span class="n">TINYINT</span><span class="w"> </span><span class="k">DEFAULT</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="k">NULL</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="k">ALTER</span><span class="w"> </span><span class="k">TABLE</span><span class="w"> </span><span class="n">hero_test</span><span class="p">.</span><span class="n">t_combination_query_test</span><span class="w"> </span><span class="k">ADD</span><span class="w"> </span><span class="n">condition_3</span><span class="w"> </span><span class="n">TINYINT</span><span class="w"> </span><span class="k">DEFAULT</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="k">NULL</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="k">ALTER</span><span class="w"> </span><span class="k">TABLE</span><span class="w"> </span><span class="n">hero_test</span><span class="p">.</span><span class="n">t_combination_query_test</span><span class="w"> </span><span class="k">ADD</span><span class="w"> </span><span class="n">condition_4</span><span class="w"> </span><span class="n">TINYINT</span><span class="w"> </span><span class="k">DEFAULT</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="k">NULL</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="k">ALTER</span><span class="w"> </span><span class="k">TABLE</span><span class="w"> </span><span class="n">hero_test</span><span class="p">.</span><span class="n">t_combination_query_test</span><span class="w"> </span><span class="k">ADD</span><span class="w"> </span><span class="n">condition_5</span><span class="w"> </span><span class="n">TINYINT</span><span class="w"> </span><span class="k">DEFAULT</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="k">NULL</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="k">ALTER</span><span class="w"> </span><span class="k">TABLE</span><span class="w"> </span><span class="n">hero_test</span><span class="p">.</span><span class="n">t_combination_query_test</span><span class="w"> </span><span class="k">ADD</span><span class="w"> </span><span class="n">condition_6</span><span class="w"> </span><span class="n">TINYINT</span><span class="w"> </span><span class="k">DEFAULT</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="k">NULL</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="k">ALTER</span><span class="w"> </span><span class="k">TABLE</span><span class="w"> </span><span class="n">hero_test</span><span class="p">.</span><span class="n">t_combination_query_test</span><span class="w"> </span><span class="k">ADD</span><span class="w"> </span><span class="n">condition_7</span><span class="w"> </span><span class="n">TINYINT</span><span class="w"> </span><span class="k">DEFAULT</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="k">NULL</span><span class="p">;</span><span class="w">
+</span></span></span></code></pre></div><p>更新表数据：</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="k">update</span><span class="w"> </span><span class="n">hero_test</span><span class="p">.</span><span class="n">t_combination_query_test</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="k">set</span><span class="w"> </span><span class="n">condition_1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="n">CONV</span><span class="p">(</span><span class="n">tags_onehot_code</span><span class="w"> </span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">10</span><span class="p">)</span><span class="w"> </span><span class="o">&gt;&gt;</span><span class="w"> </span><span class="mi">6</span><span class="p">)</span><span class="o">&amp;</span><span class="mi">1</span><span class="p">,</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"> </span><span class="n">condition_2</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="n">CONV</span><span class="p">(</span><span class="n">tags_onehot_code</span><span class="w"> </span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">10</span><span class="p">)</span><span class="w"> </span><span class="o">&gt;&gt;</span><span class="w"> </span><span class="mi">5</span><span class="p">)</span><span class="o">&amp;</span><span class="mi">1</span><span class="p">,</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"> </span><span class="n">condition_3</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="n">CONV</span><span class="p">(</span><span class="n">tags_onehot_code</span><span class="w"> </span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">10</span><span class="p">)</span><span class="w"> </span><span class="o">&gt;&gt;</span><span class="w"> </span><span class="mi">4</span><span class="p">)</span><span class="o">&amp;</span><span class="mi">1</span><span class="p">,</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"> </span><span class="n">condition_4</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="n">CONV</span><span class="p">(</span><span class="n">tags_onehot_code</span><span class="w"> </span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">10</span><span class="p">)</span><span class="w"> </span><span class="o">&gt;&gt;</span><span class="w"> </span><span class="mi">3</span><span class="p">)</span><span class="o">&amp;</span><span class="mi">1</span><span class="p">,</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"> </span><span class="n">condition_5</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="n">CONV</span><span class="p">(</span><span class="n">tags_onehot_code</span><span class="w"> </span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">10</span><span class="p">)</span><span class="w"> </span><span class="o">&gt;&gt;</span><span class="w"> </span><span class="mi">2</span><span class="p">)</span><span class="o">&amp;</span><span class="mi">1</span><span class="p">,</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"> </span><span class="n">condition_6</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="n">CONV</span><span class="p">(</span><span class="n">tags_onehot_code</span><span class="w"> </span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">10</span><span class="p">)</span><span class="w"> </span><span class="o">&gt;&gt;</span><span class="w"> </span><span class="mi">1</span><span class="p">)</span><span class="o">&amp;</span><span class="mi">1</span><span class="p">,</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"> </span><span class="n">condition_7</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="n">CONV</span><span class="p">(</span><span class="n">tags_onehot_code</span><span class="w"> </span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">10</span><span class="p">)</span><span class="w"> </span><span class="o">&gt;&gt;</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="o">&amp;</span><span class="mi">1</span><span class="p">;</span><span class="w">
+</span></span></span></code></pre></div><p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<figure  >
+  <div class="d-flex justify-content-center">
+    <div class="w-100" ><img alt="" srcset="
+               /post/database-design-for-combinatorial-query/images/update/add_field_huc5a95117721f0dd20b52c64a394e272e_197022_dd2a7632dbf8380ec67a3416293a1e03.webp 400w,
+               /post/database-design-for-combinatorial-query/images/update/add_field_huc5a95117721f0dd20b52c64a394e272e_197022_851b46295c5c49b3c32e898a2558f53e.webp 760w,
+               /post/database-design-for-combinatorial-query/images/update/add_field_huc5a95117721f0dd20b52c64a394e272e_197022_1200x1200_fit_q75_h2_lanczos_3.webp 1200w"
+               src="/post/database-design-for-combinatorial-query/images/update/add_field_huc5a95117721f0dd20b52c64a394e272e_197022_dd2a7632dbf8380ec67a3416293a1e03.webp"
+               width="760"
+               height="350"
+               loading="lazy" data-zoomable /></div>
+  </div></figure>
+</p>
+<p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<figure  >
+  <div class="d-flex justify-content-center">
+    <div class="w-100" ><img alt="" srcset="
+               /post/database-design-for-combinatorial-query/images/multiple_field/screenshot-20231215-011255_huc7195a80e8a5e743cb3d02b0e7eb80f2_272168_402c311378d07369a09cba64334c3df6.webp 400w,
+               /post/database-design-for-combinatorial-query/images/multiple_field/screenshot-20231215-011255_huc7195a80e8a5e743cb3d02b0e7eb80f2_272168_4ea462807f4b606ef5a91f8619438495.webp 760w,
+               /post/database-design-for-combinatorial-query/images/multiple_field/screenshot-20231215-011255_huc7195a80e8a5e743cb3d02b0e7eb80f2_272168_1200x1200_fit_q75_h2_lanczos_3.webp 1200w"
+               src="/post/database-design-for-combinatorial-query/images/multiple_field/screenshot-20231215-011255_huc7195a80e8a5e743cb3d02b0e7eb80f2_272168_402c311378d07369a09cba64334c3df6.webp"
+               width="760"
+               height="248"
+               loading="lazy" data-zoomable /></div>
+  </div></figure>
+</p>
+<p>建好数据后，同样来尝试无索引版本和有索引版本的sql性能测试。</p>
+<h4 id="无索引版本">无索引版本</h4>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="c1">-- 1.4-1.760s 
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">from</span><span class="w"> </span><span class="n">t_combination_query_test</span><span class="w"> </span><span class="n">tcqt</span><span class="w"> </span><span class="k">WHERE</span><span class="w"> </span><span class="n">condition_3</span><span class="o">=</span><span class="mi">1</span><span class="w"> </span><span class="k">and</span><span class="w"> </span><span class="n">condition_6</span><span class="o">=</span><span class="mi">1</span><span class="p">;</span><span class="w">
+</span></span></span></code></pre></div><p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<figure  >
+  <div class="d-flex justify-content-center">
+    <div class="w-100" ><img alt="" srcset="
+               /post/database-design-for-combinatorial-query/images/multiple_field/0010010-no-index_huabc6240dead874de85be7726d6fc9c8f_809311_e0786fb95e4aeffcf7210c87b1da69a2.webp 400w,
+               /post/database-design-for-combinatorial-query/images/multiple_field/0010010-no-index_huabc6240dead874de85be7726d6fc9c8f_809311_891e8708f52c03e4e296becd17303fcf.webp 760w,
+               /post/database-design-for-combinatorial-query/images/multiple_field/0010010-no-index_huabc6240dead874de85be7726d6fc9c8f_809311_1200x1200_fit_q75_h2_lanczos_3.webp 1200w"
+               src="/post/database-design-for-combinatorial-query/images/multiple_field/0010010-no-index_huabc6240dead874de85be7726d6fc9c8f_809311_e0786fb95e4aeffcf7210c87b1da69a2.webp"
+               width="760"
+               height="371"
+               loading="lazy" data-zoomable /></div>
+  </div></figure>
+</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="c1">-- 900ms 276712行
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">from</span><span class="w"> </span><span class="n">t_combination_query_test</span><span class="w"> </span><span class="n">tcqt</span><span class="w"> </span><span class="k">WHERE</span><span class="w"> </span><span class="n">condition_2</span><span class="o">=</span><span class="mi">1</span><span class="w"> </span><span class="k">and</span><span class="w"> </span><span class="n">condition_3</span><span class="o">=</span><span class="mi">1</span><span class="w"> </span><span class="k">and</span><span class="w"> </span><span class="n">condition_6</span><span class="o">=</span><span class="mi">1</span><span class="p">;</span><span class="w">
+</span></span></span></code></pre></div><p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<figure  >
+  <div class="d-flex justify-content-center">
+    <div class="w-100" ><img alt="" srcset="
+               /post/database-design-for-combinatorial-query/images/multiple_field/0110010-no-index_hu5e00330cbb860c3f1248ce4814d2a63b_774802_2f6efbf9df16f7df75208dfdb75eb0bb.webp 400w,
+               /post/database-design-for-combinatorial-query/images/multiple_field/0110010-no-index_hu5e00330cbb860c3f1248ce4814d2a63b_774802_92f74e6fc4a71b76cc60393c63d6c4a9.webp 760w,
+               /post/database-design-for-combinatorial-query/images/multiple_field/0110010-no-index_hu5e00330cbb860c3f1248ce4814d2a63b_774802_1200x1200_fit_q75_h2_lanczos_3.webp 1200w"
+               src="/post/database-design-for-combinatorial-query/images/multiple_field/0110010-no-index_hu5e00330cbb860c3f1248ce4814d2a63b_774802_2f6efbf9df16f7df75208dfdb75eb0bb.webp"
+               width="760"
+               height="338"
+               loading="lazy" data-zoomable /></div>
+  </div></figure>
+</p>
+<h4 id="建立联合索引后查询">建立联合索引后查询</h4>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="k">CREATE</span><span class="w"> </span><span class="k">INDEX</span><span class="w"> </span><span class="n">t_combination_query_test_condition_1_IDX</span><span class="w"> </span><span class="k">USING</span><span class="w"> </span><span class="n">HASH</span><span class="w"> </span><span class="k">ON</span><span class="w"> </span><span class="n">hero_test</span><span class="p">.</span><span class="n">t_combination_query_test</span><span class="w"> </span><span class="p">(</span><span class="n">condition_1</span><span class="p">,</span><span class="n">condition_2</span><span class="p">,</span><span class="n">condition_3</span><span class="p">,</span><span class="n">condition_4</span><span class="p">,</span><span class="n">condition_5</span><span class="p">,</span><span class="n">condition_6</span><span class="p">,</span><span class="n">condition_7</span><span class="p">);</span><span class="w">
+</span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="c1">-- 726ms 368900
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">from</span><span class="w"> </span><span class="n">t_combination_query_test</span><span class="w"> </span><span class="n">tcqt</span><span class="w"> </span><span class="k">WHERE</span><span class="w"> </span><span class="n">condition_3</span><span class="o">=</span><span class="mi">1</span><span class="w"> </span><span class="k">and</span><span class="w"> </span><span class="n">condition_6</span><span class="o">=</span><span class="mi">1</span><span class="p">;</span><span class="w">
+</span></span></span></code></pre></div><p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<figure  >
+  <div class="d-flex justify-content-center">
+    <div class="w-100" ><img alt="" srcset="
+               /post/database-design-for-combinatorial-query/images/multiple_field/0010010-with-index_hu14958b9a160447559feb3a0992c3e16e_874153_afb36e4b6f87c5c90ef4120f87ecbbb1.webp 400w,
+               /post/database-design-for-combinatorial-query/images/multiple_field/0010010-with-index_hu14958b9a160447559feb3a0992c3e16e_874153_b293188d4612e54ce3f81ed343046134.webp 760w,
+               /post/database-design-for-combinatorial-query/images/multiple_field/0010010-with-index_hu14958b9a160447559feb3a0992c3e16e_874153_1200x1200_fit_q75_h2_lanczos_3.webp 1200w"
+               src="/post/database-design-for-combinatorial-query/images/multiple_field/0010010-with-index_hu14958b9a160447559feb3a0992c3e16e_874153_afb36e4b6f87c5c90ef4120f87ecbbb1.webp"
+               width="760"
+               height="407"
+               loading="lazy" data-zoomable /></div>
+  </div></figure>
+</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="c1">-- 800ms 276712
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">from</span><span class="w"> </span><span class="n">t_combination_query_test</span><span class="w"> </span><span class="n">tcqt</span><span class="w"> </span><span class="k">WHERE</span><span class="w"> </span><span class="n">condition_2</span><span class="o">=</span><span class="mi">1</span><span class="w"> </span><span class="k">and</span><span class="w"> </span><span class="n">condition_3</span><span class="o">=</span><span class="mi">1</span><span class="w"> </span><span class="k">and</span><span class="w"> </span><span class="n">condition_6</span><span class="o">=</span><span class="mi">1</span><span class="p">;</span><span class="w">
+</span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="c1">-- 147ms
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="k">SELECT</span><span class="w"> </span><span class="k">count</span><span class="p">(</span><span class="o">*</span><span class="p">)</span><span class="w"> </span><span class="k">from</span><span class="w"> </span><span class="n">t_combination_query_test</span><span class="w"> </span><span class="n">tcqt</span><span class="w"> </span><span class="k">WHERE</span><span class="w"> </span><span class="n">condition_3</span><span class="o">=</span><span class="mi">1</span><span class="w"> </span><span class="k">and</span><span class="w"> </span><span class="n">condition_6</span><span class="o">=</span><span class="mi">1</span><span class="p">;</span><span class="w">
+</span></span></span></code></pre></div><h4 id="小结">小结</h4>
+<p>上面的小测试，可以发现采用m个字段分别存储二元标签。联合索引加速的查询要比无索引的查询快几百毫秒，并且无论是否有索引，这种思路的查询耗时都比思路1的like查询耗时长。但是，对于统计数据量而言，思路2更快速。</p>
+<h3 id="思路3使用onehot编码存储但通过位运算进行筛选">思路3：使用onehot编码存储，但通过位运算进行筛选</h3>
+<p>MySQL中有一个CONV函数，可以对数值进行进制转换，对于以varchar类型存储的二进制数据，可以通过类似以下的语句转成数值型，并进行按位与运算实现组合条件筛选。</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="c1">-- 18
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="k">SELECT</span><span class="w"> </span><span class="n">CONV</span><span class="p">(</span><span class="s1">&#39;1010010&#39;</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="mi">10</span><span class="p">)</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">CONV</span><span class="p">(</span><span class="s1">&#39;0010010&#39;</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="mi">10</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="c1">-- 1
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="k">SELECT</span><span class="w"> </span><span class="n">CONV</span><span class="p">(</span><span class="s1">&#39;1010010&#39;</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="mi">10</span><span class="p">)</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">CONV</span><span class="p">(</span><span class="s1">&#39;0010010&#39;</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="mi">10</span><span class="p">)</span><span class="o">=</span><span class="n">CONV</span><span class="p">(</span><span class="s1">&#39;0010010&#39;</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="mi">10</span><span class="p">);</span><span class="w">
+</span></span></span></code></pre></div><p>需要注意的是，直接对字符串型（文本类型）的“二进制”进行位运算得不到你想要的结果，按位操作需要针对整数或二进制数据。</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="c1">-- 8474 wrong operation!
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="k">SELECT</span><span class="w"> </span><span class="s1">&#39;1010010&#39;</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="s1">&#39;0010010&#39;</span><span class="p">;</span><span class="w">
+</span></span></span></code></pre></div><h4 id="针对varchar类型的onehot编码作位运算">针对varchar类型的onehot编码作位运算</h4>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="c1">-- 1.300s 368900行
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">from</span><span class="w"> </span><span class="n">t_combination_query_test</span><span class="w"> </span><span class="n">tcqt</span><span class="w"> </span><span class="k">WHERE</span><span class="w"> </span><span class="n">CONV</span><span class="p">(</span><span class="n">tags_onehot_code</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="mi">10</span><span class="p">)</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">CONV</span><span class="p">(</span><span class="s1">&#39;0010010&#39;</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="mi">10</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">CONV</span><span class="p">(</span><span class="s1">&#39;0010010&#39;</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="mi">10</span><span class="p">);</span><span class="w">
+</span></span></span></code></pre></div><p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<figure  >
+  <div class="d-flex justify-content-center">
+    <div class="w-100" ><img alt="" srcset="
+               /post/database-design-for-combinatorial-query/images/bit_operation/0010010_hu7a9926561a85b602a27015987b32ee7b_821171_92c72bd63b62852977556806aeb7c5e9.webp 400w,
+               /post/database-design-for-combinatorial-query/images/bit_operation/0010010_hu7a9926561a85b602a27015987b32ee7b_821171_6ec4aaf29961bdaa71427541b35fe4a0.webp 760w,
+               /post/database-design-for-combinatorial-query/images/bit_operation/0010010_hu7a9926561a85b602a27015987b32ee7b_821171_1200x1200_fit_q75_h2_lanczos_3.webp 1200w"
+               src="/post/database-design-for-combinatorial-query/images/bit_operation/0010010_hu7a9926561a85b602a27015987b32ee7b_821171_92c72bd63b62852977556806aeb7c5e9.webp"
+               width="760"
+               height="398"
+               loading="lazy" data-zoomable /></div>
+  </div></figure>
+</p>
+<h4 id="针对int类型的十进制编码作位运算">针对int类型的十进制编码作位运算</h4>
+<p>对整型数据作位运算，实际上是会直接在内存中对二进制数据作位运算/</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="c1">-- 1.327s 368900行
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">from</span><span class="w"> </span><span class="n">t_combination_query_test</span><span class="w"> </span><span class="n">tcqt</span><span class="w"> </span><span class="k">WHERE</span><span class="w"> </span><span class="n">CONV</span><span class="p">(</span><span class="n">tags_onehot_code</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="mi">10</span><span class="p">)</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="mi">18</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">18</span><span class="p">;</span><span class="w">
+</span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="c1">-- 784ms 368900行
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">from</span><span class="w"> </span><span class="n">t_combination_query_test</span><span class="w"> </span><span class="n">tcqt</span><span class="w"> </span><span class="k">WHERE</span><span class="w"> </span><span class="n">tags_code_int</span><span class="w">  </span><span class="o">&amp;</span><span class="w"> </span><span class="mi">18</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">18</span><span class="p">;</span><span class="w">
+</span></span></span></code></pre></div><p>可见速度也较慢，不如like查询，究其原因，是因为这种位运算进行全表扫描,而like有可能走索引优化。</p>
+<p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<figure  >
+  <div class="d-flex justify-content-center">
+    <div class="w-100" ><img alt="" srcset="
+               /post/database-design-for-combinatorial-query/images/bit_operation/type_all_hu5cbaa88cb5db0103cebdff8e85364e8a_250961_6232f6d35774c3a4c0563528ef6f8190.webp 400w,
+               /post/database-design-for-combinatorial-query/images/bit_operation/type_all_hu5cbaa88cb5db0103cebdff8e85364e8a_250961_54289a50887236fde20c2fbcdcb5dc86.webp 760w,
+               /post/database-design-for-combinatorial-query/images/bit_operation/type_all_hu5cbaa88cb5db0103cebdff8e85364e8a_250961_1200x1200_fit_q75_h2_lanczos_3.webp 1200w"
+               src="/post/database-design-for-combinatorial-query/images/bit_operation/type_all_hu5cbaa88cb5db0103cebdff8e85364e8a_250961_6232f6d35774c3a4c0563528ef6f8190.webp"
+               width="760"
+               height="208"
+               loading="lazy" data-zoomable /></div>
+  </div></figure>
+</p>
+<p>值得一提的是，如果是下面的语句，是可以走索引的。</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="c1">-- 244ms
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="k">SELECT</span><span class="w"> </span><span class="k">count</span><span class="p">(</span><span class="o">*</span><span class="p">)</span><span class="w"> </span><span class="k">from</span><span class="w"> </span><span class="n">t_combination_query_test</span><span class="w"> </span><span class="n">tcqt</span><span class="w"> </span><span class="k">WHERE</span><span class="w"> </span><span class="n">tags_code_int</span><span class="w">  </span><span class="o">&amp;</span><span class="w"> </span><span class="mi">18</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">18</span><span class="p">;</span><span class="w">
+</span></span></span></code></pre></div><p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<figure  >
+  <div class="d-flex justify-content-center">
+    <div class="w-100" ><img alt="" srcset="
+               /post/database-design-for-combinatorial-query/images/bit_operation/count_index_hufb5f409b73caccc17cdb142ef2d82f9f_377054_54c87dcb62fcb8e72c64eafb3d529fda.webp 400w,
+               /post/database-design-for-combinatorial-query/images/bit_operation/count_index_hufb5f409b73caccc17cdb142ef2d82f9f_377054_eff265a8c85f003dac20b870a52de8d2.webp 760w,
+               /post/database-design-for-combinatorial-query/images/bit_operation/count_index_hufb5f409b73caccc17cdb142ef2d82f9f_377054_1200x1200_fit_q75_h2_lanczos_3.webp 1200w"
+               src="/post/database-design-for-combinatorial-query/images/bit_operation/count_index_hufb5f409b73caccc17cdb142ef2d82f9f_377054_54c87dcb62fcb8e72c64eafb3d529fda.webp"
+               width="760"
+               height="346"
+               loading="lazy" data-zoomable /></div>
+  </div></figure>
+</p>
+<p>那么这里就有一个问题：为什么位运算select *不走索引，但select count(*)却能走索引？</p>
+<h3 id="思路4-换一种角度思考组合的编码并新建一个编码组合表">思路4: 换一种角度思考组合的编码，并新建一个编码组合表</h3>
+<p>从前面的实验可以发现,能够利用索引的查询语句效率是会提高的（当然，这是一句废话），那么，如何能够让我们的多标签组合筛选能更充分地利用索引？我们发现前面的语句中位运算并没有利用b-tree索引加速查询，而是进行全表扫描</p>
+<p>思路4考虑设计一种整型编码，能够表达出不同标签的组合，为整形编码加上索引，从而避免组合筛选时进行全表扫描。</p>
+<p>参考Linux系统权限编码，对每类标签进行编码如下：</p>
+<pre tabindex="0"><code>战士 1
+坦克 2 
+辅助 4
+法师 8
+射手 16
+刺客 32
+战略士 64
+</code></pre><p>我们认为每一种组合可以通过组合包含元素的编码之和进行表达，比如说：</p>
+<table>
+<thead>
+<tr>
+<th>示例组合</th>
+<th>编码之和</th>
+<th>分解</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>战士、坦克</td>
+<td>3</td>
+<td>1+2</td>
+</tr>
+<tr>
+<td>坦克、辅助</td>
+<td>6</td>
+<td>2+4</td>
+</tr>
+<tr>
+<td>坦克、刺客、战略士</td>
+<td>98</td>
+<td>2+32+64</td>
+</tr>
+</tbody>
+</table>
+<p>你可能会提出一个问题，同一个数字能否同时表达多种类型组合？如果可以表达，那么上述做法似乎会存在歧义（类似哈希冲突），如果同一数字只能表达唯一确定的一种组合，那么上述做法就是合适的方向。</p>
+<p>上面的问题转换成不太严谨的数学语言的话，相当于：从m个编码候选集（约束每个编码为2的幂指数，且对于一种组合而言其最多出现一次）中任选k个编码（命名为组合x），这k个编码之和是否可能与候选集中某j个编码（命名为组合y）之和相同？（其中组合x不等于组合y）。当然，你也可以思考，什么样的编码设计能够满足上述要求？但是，简单起见，先考虑前一个特例性问题。</p>
+<h4 id="简单论证一下编码plus的理论可行性">简单论证一下“编码plus”的理论可行性</h4>
+<pre tabindex="0"><code>战士 1
+坦克 2 
+辅助 4
+法师 8
+射手 16
+刺客 32
+战略士 64
+</code></pre><p>观察一下，应该不难发现，$2^k$无法被拆分成$2^j+2^q+&hellip;+2^w$的形式，其中j、q、w、k均为整数且互不相等，k&gt;j、k&gt;q、k&gt;w。因为$2^j+2^q+&hellip;+2^w$最大的情况下，也只能是$\sum_0^{k-1}2^i$，而这个最大的可能性也比$2^k$小（可以通过反证法或者数学归纳法来证明，此处不演示）。基于上述条件，可以推断对于任一编码组合A:{$2^i,2^j,&hellip;,2^k$}，不存在另一个编码组合B（B!=A）满足A内元素之和等于B内元素之和，因为当我们考虑集合B中的最大元素x与集合A中的最大元素y，那么当x大于y的时候，显然B之和一定大于A之和；当x小于y的时候，显然B之和一定小于A之和；当x=y时，除非A、B剩下的元素均相等，否则A之和一定不等于B之和。</p>
+<p>也就是说：对于上述的编码，任一种组合的元素之和与这个组合本身是一一对应关系！因此这种编码可行。</p>
+<h4 id="数据库实践">数据库实践</h4>
+<p>因此，我们只需要建立每一种类型标签“组合编码表”，每个“组合编码”唯一确定一个组合，通过对组合编码建立B-tree索引（之所以选择B-tree，是因为我们的查询会涉及到范围查询），理论上就可以快速检索满足不同组合条件的记录了。</p>
+<p>让我们修改一下表结构，并新建一个组合编码字典表</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="k">ALTER</span><span class="w"> </span><span class="k">TABLE</span><span class="w"> </span><span class="n">hero_test</span><span class="p">.</span><span class="n">t_combination_query_test</span><span class="w"> </span><span class="k">ADD</span><span class="w"> </span><span class="n">combination_sum</span><span class="w"> </span><span class="nb">SMALLINT</span><span class="w"> </span><span class="k">NULL</span><span class="w"> </span><span class="k">COMMENT</span><span class="w"> </span><span class="s1">&#39;编码组合之和&#39;</span><span class="p">;</span><span class="w">
+</span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="k">CREATE</span><span class="w"> </span><span class="k">TABLE</span><span class="w"> </span><span class="n">hero_test</span><span class="p">.</span><span class="n">t_combincation_code</span><span class="w"> </span><span class="p">(</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="n">id</span><span class="w"> </span><span class="nb">SMALLINT</span><span class="w"> </span><span class="n">auto_increment</span><span class="w"> </span><span class="k">NOT</span><span class="w"> </span><span class="k">NULL</span><span class="w"> </span><span class="k">COMMENT</span><span class="w"> </span><span class="s1">&#39;组合ID&#39;</span><span class="p">,</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="n">combination_name</span><span class="w"> </span><span class="nb">varchar</span><span class="p">(</span><span class="mi">100</span><span class="p">)</span><span class="w"> </span><span class="k">NOT</span><span class="w"> </span><span class="k">NULL</span><span class="w"> </span><span class="k">COMMENT</span><span class="w"> </span><span class="s1">&#39;组合标识&#39;</span><span class="p">,</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="n">code</span><span class="w"> </span><span class="nb">SMALLINT</span><span class="w"> </span><span class="k">NULL</span><span class="w"> </span><span class="k">COMMENT</span><span class="w"> </span><span class="s1">&#39;组合编码&#39;</span><span class="p">,</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="k">CONSTRAINT</span><span class="w"> </span><span class="n">t_combincation_code_PK</span><span class="w"> </span><span class="k">PRIMARY</span><span class="w"> </span><span class="k">KEY</span><span class="w"> </span><span class="p">(</span><span class="n">id</span><span class="p">)</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="p">)</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">ENGINE</span><span class="o">=</span><span class="n">InnoDB</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="k">DEFAULT</span><span class="w"> </span><span class="n">CHARSET</span><span class="o">=</span><span class="n">utf8mb4</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="k">COLLATE</span><span class="o">=</span><span class="n">utf8mb4_0900_ai_ci</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="k">COMMENT</span><span class="o">=</span><span class="s1">&#39;组合编码字典表&#39;</span><span class="p">;</span><span class="w">
+</span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="k">CREATE</span><span class="w"> </span><span class="k">UNIQUE</span><span class="w"> </span><span class="k">INDEX</span><span class="w"> </span><span class="n">t_combincation_code_code_IDX</span><span class="w"> </span><span class="k">USING</span><span class="w"> </span><span class="n">BTREE</span><span class="w"> </span><span class="k">ON</span><span class="w"> </span><span class="n">hero_test</span><span class="p">.</span><span class="n">t_combincation_code</span><span class="w"> </span><span class="p">(</span><span class="n">code</span><span class="p">);</span><span class="w">
+</span></span></span></code></pre></div><p>插入数据</p>
+<p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<figure  >
+  <div class="d-flex justify-content-center">
+    <div class="w-100" ><img alt="" srcset="
+               /post/database-design-for-combinatorial-query/images/math_art/code_table1_hue10a4b5f7d9575c4fc86bd1c7b90ef58_727064_1296be8225973087289d40734eef9759.webp 400w,
+               /post/database-design-for-combinatorial-query/images/math_art/code_table1_hue10a4b5f7d9575c4fc86bd1c7b90ef58_727064_51e02beee5b68a6d04c60e8b6df57397.webp 760w,
+               /post/database-design-for-combinatorial-query/images/math_art/code_table1_hue10a4b5f7d9575c4fc86bd1c7b90ef58_727064_1200x1200_fit_q75_h2_lanczos_3.webp 1200w"
+               src="/post/database-design-for-combinatorial-query/images/math_art/code_table1_hue10a4b5f7d9575c4fc86bd1c7b90ef58_727064_1296be8225973087289d40734eef9759.webp"
+               width="483"
+               height="760"
+               loading="lazy" data-zoomable /></div>
+  </div></figure>
+</p>
+<p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<figure  >
+  <div class="d-flex justify-content-center">
+    <div class="w-100" ><img alt="" srcset="
+               /post/database-design-for-combinatorial-query/images/math_art/code_table2_hua603617b423a2bb6078f74022d625500_893815_dc0f60f350ff000416be1cdb207202f7.webp 400w,
+               /post/database-design-for-combinatorial-query/images/math_art/code_table2_hua603617b423a2bb6078f74022d625500_893815_4139089ea30f1e9051c71d42a096de45.webp 760w,
+               /post/database-design-for-combinatorial-query/images/math_art/code_table2_hua603617b423a2bb6078f74022d625500_893815_1200x1200_fit_q75_h2_lanczos_3.webp 1200w"
+               src="/post/database-design-for-combinatorial-query/images/math_art/code_table2_hua603617b423a2bb6078f74022d625500_893815_dc0f60f350ff000416be1cdb207202f7.webp"
+               width="516"
+               height="760"
+               loading="lazy" data-zoomable /></div>
+  </div></figure>
+</p>
+<p>接下来，我们把每种组合条件转换成编码查询即可。</p>
+<p>当然，细心如你，可能发现思路4在对标签编码存储的本质上与思路3是一样的，只是思路3从onehot编码的角度直接切入，思路4从类似linux权限的编码思路切入，并通过数学证明编码的稳定性，但是就标签编码方法上是殊途同归。但是思路4引入了一个组合编码表（这是之前的思路所没有的），接下来看这种改动是否能够加速查询。</p>
+<h4 id="统计查询">统计查询</h4>
+<p>首先尝试select count(*)的查询，可以发现下面这种查询方式速度明显比之前的所有思路快。</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="c1">-- 60ms-90ms
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="k">SELECT</span><span class="w"> </span><span class="k">count</span><span class="p">(</span><span class="o">*</span><span class="p">)</span><span class="w"> </span><span class="k">from</span><span class="w"> </span><span class="n">t_combination_query_test</span><span class="w"> </span><span class="n">tcqt</span><span class="w"> </span><span class="k">where</span><span class="w">  </span><span class="k">EXISTS</span><span class="w"> </span><span class="p">(</span><span class="k">SELECT</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="k">from</span><span class="w"> </span><span class="n">t_combincation_code</span><span class="w"> </span><span class="n">tcc</span><span class="w"> </span><span class="k">where</span><span class="w">  </span><span class="n">tcc</span><span class="p">.</span><span class="n">code</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="mi">18</span><span class="o">=</span><span class="mi">18</span><span class="w"> </span><span class="k">and</span><span class="w"> </span><span class="n">tcqt</span><span class="p">.</span><span class="n">tags_code_int</span><span class="o">=</span><span class="n">tcc</span><span class="p">.</span><span class="n">code</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="c1">-- 50-60ms
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="k">SELECT</span><span class="w"> </span><span class="k">count</span><span class="p">(</span><span class="o">*</span><span class="p">)</span><span class="w"> </span><span class="k">from</span><span class="w"> </span><span class="n">t_combination_query_test</span><span class="w"> </span><span class="n">tcqt</span><span class="w"> </span><span class="k">where</span><span class="w">  </span><span class="k">EXISTS</span><span class="w"> </span><span class="p">(</span><span class="k">SELECT</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="k">from</span><span class="w"> </span><span class="n">t_combincation_code</span><span class="w"> </span><span class="n">tcc</span><span class="w"> </span><span class="k">where</span><span class="w">  </span><span class="n">tcc</span><span class="p">.</span><span class="n">code</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="mi">50</span><span class="o">=</span><span class="mi">50</span><span class="w"> </span><span class="k">and</span><span class="w"> </span><span class="n">tcqt</span><span class="p">.</span><span class="n">tags_code_int</span><span class="o">=</span><span class="n">tcc</span><span class="p">.</span><span class="n">code</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="c1">-- 65-100ms
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="k">SELECT</span><span class="w"> </span><span class="k">count</span><span class="p">(</span><span class="o">*</span><span class="p">)</span><span class="w"> </span><span class="k">from</span><span class="w"> </span><span class="n">t_combination_query_test</span><span class="w"> </span><span class="n">tcqt</span><span class="w"> </span><span class="k">where</span><span class="w"> </span><span class="n">tags_code_int</span><span class="w">  </span><span class="k">in</span><span class="w"> </span><span class="p">(</span><span class="k">SELECT</span><span class="w"> </span><span class="n">code</span><span class="w"> </span><span class="k">from</span><span class="w"> </span><span class="n">t_combincation_code</span><span class="w"> </span><span class="n">tcc</span><span class="w"> </span><span class="k">where</span><span class="w"> </span><span class="n">code</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="mi">18</span><span class="o">=</span><span class="mi">18</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="c1">-- 50-80ms
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="k">SELECT</span><span class="w"> </span><span class="k">count</span><span class="p">(</span><span class="o">*</span><span class="p">)</span><span class="w"> </span><span class="k">from</span><span class="w"> </span><span class="n">t_combination_query_test</span><span class="w"> </span><span class="n">tcqt</span><span class="w"> </span><span class="k">where</span><span class="w"> </span><span class="n">tags_code_int</span><span class="w">  </span><span class="k">in</span><span class="w"> </span><span class="p">(</span><span class="k">SELECT</span><span class="w"> </span><span class="n">code</span><span class="w"> </span><span class="k">from</span><span class="w"> </span><span class="n">t_combincation_code</span><span class="w"> </span><span class="n">tcc</span><span class="w"> </span><span class="k">where</span><span class="w"> </span><span class="n">code</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="mi">50</span><span class="o">=</span><span class="mi">50</span><span class="p">);</span><span class="w">
+</span></span></span></code></pre></div><p>通过查看执行计划可见每个步骤均利用了索引。</p>
+<p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<figure  >
+  <div class="d-flex justify-content-center">
+    <div class="w-100" ><img alt="" srcset="
+               /post/database-design-for-combinatorial-query/images/math_art/count_exist_hu4b805f9e2520fa066fa7a12138a62297_313872_2303dc89f2efda1b7225a3727b186142.webp 400w,
+               /post/database-design-for-combinatorial-query/images/math_art/count_exist_hu4b805f9e2520fa066fa7a12138a62297_313872_e787bf28be86937b054c47418557c59a.webp 760w,
+               /post/database-design-for-combinatorial-query/images/math_art/count_exist_hu4b805f9e2520fa066fa7a12138a62297_313872_1200x1200_fit_q75_h2_lanczos_3.webp 1200w"
+               src="/post/database-design-for-combinatorial-query/images/math_art/count_exist_hu4b805f9e2520fa066fa7a12138a62297_313872_2303dc89f2efda1b7225a3727b186142.webp"
+               width="760"
+               height="149"
+               loading="lazy" data-zoomable /></div>
+  </div></figure>
+</p>
+<p>如果未对标签编码字段建索引，统计速度就会很慢, 对于测试数据集（百万量级）而言，统计速度相差十倍左右。</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="c1">-- 758ms
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="k">SELECT</span><span class="w"> </span><span class="k">count</span><span class="p">(</span><span class="o">*</span><span class="p">)</span><span class="w"> </span><span class="k">from</span><span class="w"> </span><span class="n">t_combination_query_test</span><span class="w"> </span><span class="n">tcqt</span><span class="w"> </span><span class="k">where</span><span class="w"> </span><span class="n">combination_sum</span><span class="w">  </span><span class="k">in</span><span class="w"> </span><span class="p">(</span><span class="k">SELECT</span><span class="w"> </span><span class="n">code</span><span class="w"> </span><span class="k">from</span><span class="w"> </span><span class="n">t_combincation_code</span><span class="w"> </span><span class="n">tcc</span><span class="w"> </span><span class="k">where</span><span class="w"> </span><span class="n">code</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="mi">18</span><span class="o">=</span><span class="mi">18</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="c1">-- 668ms
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="k">SELECT</span><span class="w"> </span><span class="k">count</span><span class="p">(</span><span class="o">*</span><span class="p">)</span><span class="w"> </span><span class="k">from</span><span class="w"> </span><span class="n">t_combination_query_test</span><span class="w"> </span><span class="n">tcqt</span><span class="w"> </span><span class="k">where</span><span class="w"> </span><span class="n">combination_sum</span><span class="w">  </span><span class="k">in</span><span class="w"> </span><span class="p">(</span><span class="k">SELECT</span><span class="w"> </span><span class="n">code</span><span class="w"> </span><span class="k">from</span><span class="w"> </span><span class="n">t_combincation_code</span><span class="w"> </span><span class="n">tcc</span><span class="w"> </span><span class="k">where</span><span class="w"> </span><span class="n">code</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="mi">50</span><span class="o">=</span><span class="mi">50</span><span class="p">);</span><span class="w">
+</span></span></span></code></pre></div><p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<figure  >
+  <div class="d-flex justify-content-center">
+    <div class="w-100" ><img alt="" srcset="
+               /post/database-design-for-combinatorial-query/images/math_art/count-no-index_hu8952d444db0394f670be4e80f4dd9eff_257025_37a9b4094d14b1c381caffcc166a60f8.webp 400w,
+               /post/database-design-for-combinatorial-query/images/math_art/count-no-index_hu8952d444db0394f670be4e80f4dd9eff_257025_53b39f80d2d9011f0f0037a62614d03d.webp 760w,
+               /post/database-design-for-combinatorial-query/images/math_art/count-no-index_hu8952d444db0394f670be4e80f4dd9eff_257025_1200x1200_fit_q75_h2_lanczos_3.webp 1200w"
+               src="/post/database-design-for-combinatorial-query/images/math_art/count-no-index_hu8952d444db0394f670be4e80f4dd9eff_257025_37a9b4094d14b1c381caffcc166a60f8.webp"
+               width="760"
+               height="125"
+               loading="lazy" data-zoomable /></div>
+  </div></figure>
+</p>
+<h4 id="非统计查询直接查询结果集">非统计查询，直接查询结果集</h4>
+<p>使用select where exist语法查询</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="c1">-- 2.517s
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">from</span><span class="w"> </span><span class="n">t_combination_query_test</span><span class="w"> </span><span class="n">tcqt</span><span class="w"> </span><span class="k">where</span><span class="w">  </span><span class="k">EXISTS</span><span class="w"> </span><span class="p">(</span><span class="k">SELECT</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="k">from</span><span class="w"> </span><span class="n">t_combincation_code</span><span class="w"> </span><span class="n">tcc</span><span class="w"> </span><span class="k">where</span><span class="w">  </span><span class="n">tcc</span><span class="p">.</span><span class="n">code</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="mi">18</span><span class="o">=</span><span class="mi">18</span><span class="w"> </span><span class="k">and</span><span class="w"> </span><span class="n">tcqt</span><span class="p">.</span><span class="n">tags_code_int</span><span class="o">=</span><span class="n">tcc</span><span class="p">.</span><span class="n">code</span><span class="p">);</span><span class="w">
+</span></span></span></code></pre></div><p>使用select in语法查询：</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="c1">-- 4.41s 
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">from</span><span class="w"> </span><span class="n">t_combination_query_test</span><span class="w"> </span><span class="n">tcqt</span><span class="w"> </span><span class="k">where</span><span class="w"> </span><span class="n">tags_code_int</span><span class="w">  </span><span class="k">in</span><span class="w"> </span><span class="p">(</span><span class="k">SELECT</span><span class="w"> </span><span class="n">code</span><span class="w"> </span><span class="k">from</span><span class="w"> </span><span class="n">t_combincation_code</span><span class="w"> </span><span class="n">tcc</span><span class="w"> </span><span class="k">where</span><span class="w"> </span><span class="n">code</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="mi">18</span><span class="o">=</span><span class="mi">18</span><span class="p">);</span><span class="w">
+</span></span></span></code></pre></div><p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<figure  >
+  <div class="d-flex justify-content-center">
+    <div class="w-100" ><img alt="" srcset="
+               /post/database-design-for-combinatorial-query/images/math_art/select_in_hu4549dda1601660eae8870900df5bb71e_299070_a9105476b5072250a85b21836601edbc.webp 400w,
+               /post/database-design-for-combinatorial-query/images/math_art/select_in_hu4549dda1601660eae8870900df5bb71e_299070_9e55b96d0521379e6bb916fe25cf046c.webp 760w,
+               /post/database-design-for-combinatorial-query/images/math_art/select_in_hu4549dda1601660eae8870900df5bb71e_299070_1200x1200_fit_q75_h2_lanczos_3.webp 1200w"
+               src="/post/database-design-for-combinatorial-query/images/math_art/select_in_hu4549dda1601660eae8870900df5bb71e_299070_a9105476b5072250a85b21836601edbc.webp"
+               width="760"
+               height="225"
+               loading="lazy" data-zoomable /></div>
+  </div></figure>
+
+JOIN查询：</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="k">explain</span><span class="w"> </span><span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">from</span><span class="w"> </span><span class="n">t_combination_query_test</span><span class="w"> </span><span class="n">tcqt</span><span class="w"> </span><span class="k">JOIN</span><span class="w">   </span><span class="n">t_combincation_code</span><span class="w"> </span><span class="n">tcc</span><span class="w"> </span><span class="k">ON</span><span class="w"> </span><span class="n">tcc</span><span class="p">.</span><span class="n">code</span><span class="o">=</span><span class="n">tcqt</span><span class="p">.</span><span class="n">tags_code_int</span><span class="w">  </span><span class="k">where</span><span class="w"> </span><span class="n">code</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="mi">18</span><span class="o">=</span><span class="mi">18</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="c1">-- 2.72s
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">from</span><span class="w"> </span><span class="n">t_combination_query_test</span><span class="w"> </span><span class="n">tcqt</span><span class="w"> </span><span class="k">JOIN</span><span class="w">   </span><span class="n">t_combincation_code</span><span class="w"> </span><span class="n">tcc</span><span class="w"> </span><span class="k">ON</span><span class="w"> </span><span class="n">tcc</span><span class="p">.</span><span class="n">code</span><span class="o">=</span><span class="n">tcqt</span><span class="p">.</span><span class="n">tags_code_int</span><span class="w">  </span><span class="k">where</span><span class="w"> </span><span class="n">code</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="mi">18</span><span class="o">=</span><span class="mi">18</span><span class="p">;</span><span class="w">
+</span></span></span></code></pre></div><p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<figure  >
+  <div class="d-flex justify-content-center">
+    <div class="w-100" ><img alt="" srcset="
+               /post/database-design-for-combinatorial-query/images/math_art/join_hu6d7ee48a14389dc407a13c3fc0a8f05a_480414_19ce579f82c2bf3c7894bf7e8e942690.webp 400w,
+               /post/database-design-for-combinatorial-query/images/math_art/join_hu6d7ee48a14389dc407a13c3fc0a8f05a_480414_adb050222e639d64a77e525a782a011d.webp 760w,
+               /post/database-design-for-combinatorial-query/images/math_art/join_hu6d7ee48a14389dc407a13c3fc0a8f05a_480414_1200x1200_fit_q75_h2_lanczos_3.webp 1200w"
+               src="/post/database-design-for-combinatorial-query/images/math_art/join_hu6d7ee48a14389dc407a13c3fc0a8f05a_480414_19ce579f82c2bf3c7894bf7e8e942690.webp"
+               width="760"
+               height="372"
+               loading="lazy" data-zoomable /></div>
+  </div></figure>
+</p>
+<p>可见，引入组合编码表后的查询速度更慢。</p>
+<h2 id="拓展阅读">拓展阅读</h2>
+<h3 id="linux文件权限">Linux文件权限</h3>
+<ul>
+<li><a href="https://www.warp.dev/terminus/linux-file-permissions-explained" target="_blank" rel="noopener">Linux File Permissions</a></li>
+</ul>
+<p>Linux系统对于权限的划分与组合是通过数值表示的，1代表可执行（x，execute）、2代表可写（w，write）、4代表可读（r，read），0表示没权限。我们把这些数字称为权限编码，不同权限对应的编码相加即可表示权限的组合，如6（6=2+4）表示可读可写，7（7=1+2+4）表示可读可写可执行。</p>
+<h3 id="位图索引">位图索引</h3>
+<ul>
+<li><a href="http://blog.itpub.net/29254281/viewspace-2199179/" target="_blank" rel="noopener">MySQL位图索引解决用户画像问题_ITPUB博客</a></li>
+</ul>
+<h3 id="mysql高阶调优">MySQL高阶调优</h3>
+<ul>
+<li><a href="https://www.modb.pro/db/1734824646452256768?utm_source=index_ori" target="_blank" rel="noopener">MySQL高阶调优，一文让你从入门到精通！ - 墨天轮</a></li>
+</ul>
+<h3 id="数据库性能测试工具">数据库性能测试工具</h3>
+<ul>
+<li>
+<p><a href="https://jmeter.apache.org/" target="_blank" rel="noopener">JMeter</a></p>
+</li>
+<li>
+<p>&hellip;&hellip;</p>
+</li>
+</ul>
+<p><a href="https://www.cnblogs.com/zwh-Seeking/articles/13297231.html" target="_blank" rel="noopener">5个性能测试工具哪个更好用？对比结果新鲜出炉！ - S-Gavin - 博客园</a></p>
+
+    </div>
+
+    
+
+
+
+
+<div class="article-tags">
+  
+  <a class="badge badge-light" href="/tag/%E6%95%B0%E6%8D%AE%E5%BA%93%E8%AE%BE%E8%AE%A1/">数据库设计</a>
+  
+  <a class="badge badge-light" href="/tag/%E4%BD%8D%E8%BF%90%E7%AE%97/">位运算</a>
+  
+  <a class="badge badge-light" href="/tag/sql%E6%9F%A5%E8%AF%A2%E4%BC%98%E5%8C%96/">SQL查询优化</a>
+  
+  <a class="badge badge-light" href="/tag/%E7%BB%84%E5%90%88%E7%AD%9B%E9%80%89/">组合筛选</a>
+  
+</div>
+
+
+
+<div class="share-box">
+  <ul class="share">
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="https://twitter.com/intent/tweet?url=/post/database-design-for-combinatorial-query/&amp;text=%e5%af%b9%e6%95%b0%e6%8d%ae%e5%ba%93%e8%a1%a8%e8%ae%be%e8%ae%a1%e4%b9%8b%e7%bb%84%e5%90%88%e6%9d%a1%e4%bb%b6%e7%ad%9b%e9%80%89%e7%9a%84%e6%80%9d%e8%80%83%e4%b8%8e%e5%ae%9e%e9%aa%8c" target="_blank" rel="noopener" class="share-btn-twitter" aria-label="twitter">
+          <i class="fab fa-twitter"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="https://www.facebook.com/sharer.php?u=/post/database-design-for-combinatorial-query/&amp;t=%e5%af%b9%e6%95%b0%e6%8d%ae%e5%ba%93%e8%a1%a8%e8%ae%be%e8%ae%a1%e4%b9%8b%e7%bb%84%e5%90%88%e6%9d%a1%e4%bb%b6%e7%ad%9b%e9%80%89%e7%9a%84%e6%80%9d%e8%80%83%e4%b8%8e%e5%ae%9e%e9%aa%8c" target="_blank" rel="noopener" class="share-btn-facebook" aria-label="facebook">
+          <i class="fab fa-facebook"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="mailto:?subject=%e5%af%b9%e6%95%b0%e6%8d%ae%e5%ba%93%e8%a1%a8%e8%ae%be%e8%ae%a1%e4%b9%8b%e7%bb%84%e5%90%88%e6%9d%a1%e4%bb%b6%e7%ad%9b%e9%80%89%e7%9a%84%e6%80%9d%e8%80%83%e4%b8%8e%e5%ae%9e%e9%aa%8c&amp;body=/post/database-design-for-combinatorial-query/" target="_blank" rel="noopener" class="share-btn-email" aria-label="envelope">
+          <i class="fas fa-envelope"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="https://www.linkedin.com/shareArticle?url=/post/database-design-for-combinatorial-query/&amp;title=%e5%af%b9%e6%95%b0%e6%8d%ae%e5%ba%93%e8%a1%a8%e8%ae%be%e8%ae%a1%e4%b9%8b%e7%bb%84%e5%90%88%e6%9d%a1%e4%bb%b6%e7%ad%9b%e9%80%89%e7%9a%84%e6%80%9d%e8%80%83%e4%b8%8e%e5%ae%9e%e9%aa%8c" target="_blank" rel="noopener" class="share-btn-linkedin" aria-label="linkedin-in">
+          <i class="fab fa-linkedin-in"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="whatsapp://send?text=%e5%af%b9%e6%95%b0%e6%8d%ae%e5%ba%93%e8%a1%a8%e8%ae%be%e8%ae%a1%e4%b9%8b%e7%bb%84%e5%90%88%e6%9d%a1%e4%bb%b6%e7%ad%9b%e9%80%89%e7%9a%84%e6%80%9d%e8%80%83%e4%b8%8e%e5%ae%9e%e9%aa%8c%20/post/database-design-for-combinatorial-query/" target="_blank" rel="noopener" class="share-btn-whatsapp" aria-label="whatsapp">
+          <i class="fab fa-whatsapp"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="https://service.weibo.com/share/share.php?url=/post/database-design-for-combinatorial-query/&amp;title=%e5%af%b9%e6%95%b0%e6%8d%ae%e5%ba%93%e8%a1%a8%e8%ae%be%e8%ae%a1%e4%b9%8b%e7%bb%84%e5%90%88%e6%9d%a1%e4%bb%b6%e7%ad%9b%e9%80%89%e7%9a%84%e6%80%9d%e8%80%83%e4%b8%8e%e5%ae%9e%e9%aa%8c" target="_blank" rel="noopener" class="share-btn-weibo" aria-label="weibo">
+          <i class="fab fa-weibo"></i>
+        </a>
+      </li>
+    
+  </ul>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+
+
+
+  
+  
+  
+  
+  
+  <div class="media author-card content-widget-hr">
+    
+      
+      <a href="/authors/admin/"><img class="avatar mr-3 avatar-circle" src="/authors/admin/avatar_hu55194f19033f85038196a23353ffe543_580100_270x270_fill_q75_lanczos_center.jpg" alt="CoolCats"></a>
+    
+
+    <div class="media-body">
+      <h5 class="card-title"><a href="/authors/admin/">CoolCats</a></h5>
+      <h6 class="card-subtitle">理学学士</h6>
+      <p class="card-text">我的研究兴趣是时空数据分析、自然语言处理、服务端开发</p>
+      <ul class="network-icon" aria-hidden="true">
+  
+    
+    
+    
+      
+    
+    
+    
+    
+    
+    <li>
+      <a href="mailto:2811159909@qq.com" >
+        <i class="fas fa-envelope"></i>
+      </a>
+    </li>
+  
+    
+    
+    
+      
+    
+    
+    
+    
+    
+      
+    
+    <li>
+      <a href="https://github.com/Coolgiserz" target="_blank" rel="noopener">
+        <i class="fab fa-github"></i>
+      </a>
+    </li>
+  
+</ul>
+
+    </div>
+  </div>
+
+
+
+
+
+
+
+
+
+  
+  
+  
+
+  
+
+  
+
+
+
+
+
+
+
+
+
+
+  </div>
+</article>
+  </div>
+
+  <div class="page-footer">
+    
+    
+    <div class="container">
+      <footer class="site-footer">
+
+  
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+
+
+
+
+
+  
+  
+  
+
+  
+  
+    
+  
+  
+    
+  
+
+  
+
+  
+  <p class="powered-by copyright-license-text">
+    © 2023 CoolCats. This work is licensed under <a href="https://creativecommons.org/licenses/by-nc-nd/4.0" rel="noopener noreferrer" target="_blank">CC BY NC ND 4.0</a>
+  </p>
+  
+
+  <p class="powered-by footer-license-icons">
+    <a href="https://creativecommons.org/licenses/by-nc-nd/4.0" rel="noopener noreferrer" target="_blank" aria-label="Creative Commons">
+      <i class="fab fa-creative-commons fa-2x" aria-hidden="true"></i>
+      <i class="fab fa-creative-commons-by fa-2x" aria-hidden="true"></i>
+      
+        <i class="fab fa-creative-commons-nc fa-2x" aria-hidden="true"></i>
+      
+      
+        <i class="fab fa-creative-commons-nd fa-2x" aria-hidden="true"></i>
+      
+    </a>
+  </p>
+
+
+
+
+  <p class="powered-by">
+    
+    
+    
+      
+      
+      
+      
+      
+      
+      Published with <a href="https://wowchemy.com/?utm_campaign=poweredby" target="_blank" rel="noopener">Wowchemy</a> — the free, <a href="https://github.com/wowchemy/wowchemy-hugo-themes" target="_blank" rel="noopener">open source</a> website builder that empowers creators.
+    
+  </p>
+</footer>
+
+    </div>
+    
+  </div>
+
+      
+
+    
+    <script src="/js/vendor-bundle.min.fab8b449b814cc9f95b22fcf2e45f05b.js"></script>
+
+    
+    
+    
+      
+
+      
+      
+
+      
+
+      
+        
+        <script src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@10.2.1/build/highlight.min.js" integrity="sha512-Ypjm0o7jOxAd4hpdoppSEN0TQOC19UtPAqD+4s5AlXmUvbmmS/YMxYqAqarQYyxTnB6/rqip9qcxlNB/3U9Wdg==" crossorigin="anonymous"></script>
+        
+        
+        <script src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@10.2.1/build/languages/r.min.js" crossorigin="anonymous"></script>
+        
+        <script src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@10.2.1/build/languages/latex.min.js" crossorigin="anonymous"></script>
+        
+      
+
+    
+
+    
+    
+    
+      <script src="https://cdn.jsdelivr.net/npm/leaflet@1.7.1/dist/leaflet.min.js" integrity="" crossorigin="anonymous"></script>
+    
+
+    
+    
+
+    
+    
+    
+      
+      <script id="search-hit-fuse-template" type="text/x-template">
+        <div class="search-hit" id="summary-{{key}}">
+          <div class="search-hit-content">
+            <div class="search-hit-name">
+              <a href="{{relpermalink}}">{{title}}</a>
+              <div class="article-metadata search-hit-type">{{type}}</div>
+              <p class="search-hit-description">{{snippet}}</p>
+            </div>
+          </div>
+        </div>
+      </script>
+      
+        <script src="https://cdn.jsdelivr.net/gh/krisk/Fuse@v3.2.1/dist/fuse.min.js" integrity="sha512-o38bmzBGX+hD3JHWUFCDA09btWaqrNmoJ3RXLlrysA7PP01Kgs4UlE4MhelE1v5dJR3+cxlR4qQlotsW7jKsnw==" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/gh/julmot/mark.js@8.11.1/dist/jquery.mark.min.js" integrity="sha512-mhbv5DqBMgrWL+32MmsDOt/OAvqr/cHimk6B8y/bx/xS88MVkYGPiVv2ixKVrkywF2qHplNRUvFsAHUdxZ3Krg==" crossorigin="anonymous"></script>
+      
+    
+
+    
+    
+
+    
+    
+    
+    
+      <script id="dsq-count-scr" src="https://coolgiserz.disqus.com/count.js" async></script>
+    
+
+    
+    
+      
+      
+      
+      
+      
+      
+      
+    
+
+    
+
+    
+    
+    
+    <script id="page-data" type="application/json">{"use_headroom":true}</script>
+
+    
+    
+      <script src="/js/wowchemy-headroom.c251366b4128fd5e6b046d4c97a62a51.js" type="module"></script>
+    
+    
+    
+    
+    
+    
+    
+      
+      
+    
+    
+    <script src="/en/js/wowchemy.min.ab2f2890dbe3e2e83579366d3d6e8fd9.js"></script>
+
+    
+    
+      <script src="/js/wowchemy-map.a26e9d2f7238ba5b868384f1c5bc6477.js" type="module"></script>
+    
+    
+    
+    
+      
+<div id="modal" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Cite</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <pre><code class="tex hljs"></code></pre>
+      </div>
+      <div class="modal-footer">
+        <a class="btn btn-outline-primary my-1 js-copy-cite" href="#" target="_blank">
+          <i class="fas fa-copy"></i> Copy
+        </a>
+        <a class="btn btn-outline-primary my-1 js-download-cite" href="#" target="_blank">
+          <i class="fas fa-download"></i> Download
+        </a>
+        <div id="modal-error"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+      <script src="/js/wowchemy-publication.68f8d7090562ca65fc6d3cb3f8f2d2cb.js" type="module"></script>
+
+
+
+
+
+
+</body>
+</html>

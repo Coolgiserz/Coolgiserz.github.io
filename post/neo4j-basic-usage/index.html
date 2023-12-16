@@ -783,7 +783,7 @@
   
   <span class="middot-divider"></span>
   <span class="article-reading-time">
-    1 min read
+    2 min read
   </span>
   
 
@@ -815,7 +815,70 @@
   <div class="article-container">
 
     <div class="article-style">
-      <h2 id="图数据库简介">图数据库简介</h2>
+      <!-- START doctoc generated TOC please keep comment here to allow auto update -->
+<!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
+<ul>
+<li><a href="#%E5%9B%BE%E6%95%B0%E6%8D%AE%E5%BA%93%E7%AE%80%E4%BB%8B">图数据库简介</a>
+<ul>
+<li><a href="#%E4%BB%80%E4%B9%88%E6%98%AF%E5%9B%BE">什么是图？</a></li>
+<li><a href="#%E4%B8%BA%E4%BB%80%E4%B9%88%E9%9C%80%E8%A6%81%E5%9B%BE%E6%95%B0%E6%8D%AE%E5%BA%93">为什么需要图数据库？</a>
+<ul>
+<li><a href="#%E4%B8%BB%E6%B5%81%E5%85%B3%E7%B3%BB%E5%9E%8B%E6%95%B0%E6%8D%AE%E5%BA%93%E7%9A%84%E7%BC%BA%E9%99%B7">主流关系型数据库的缺陷</a></li>
+<li><a href="#%E6%9D%83%E8%A1%A1trade-off">权衡（Trade Off）</a></li>
+</ul>
+</li>
+<li><a href="#neo4j%E7%94%9F%E6%80%81%E5%B7%A5%E5%85%B7">Neo4J生态工具</a></li>
+</ul>
+</li>
+<li><a href="#cypher%E8%AF%AD%E8%A8%80">Cypher语言</a>
+<ul>
+<li><a href="#%E5%9F%BA%E6%9C%AC%E4%BB%8B%E7%BB%8D">基本介绍</a></li>
+<li><a href="#%E5%9F%BA%E6%9C%AC%E5%85%B3%E9%94%AE%E5%AD%97">基本关键字</a>
+<ul>
+<li><a href="#%E6%9F%A5%E8%AF%A2%E8%8A%82%E7%82%B9">查询节点</a>
+<ul>
+<li><a href="#%E6%9F%A5%E8%AF%A2%E6%9F%90%E7%A7%8D%E5%85%B3%E7%B3%BB%E7%B1%BB%E5%9E%8B%E7%9A%84%E6%A0%B9%E8%8A%82%E7%82%B9">查询某种关系类型的根节点</a></li>
+</ul>
+</li>
+<li><a href="#%E6%9F%A5%E8%AF%A2%E5%85%B3%E7%B3%BB">查询关系</a></li>
+</ul>
+</li>
+<li><a href="#%E8%81%9A%E5%90%88%E6%9F%A5%E8%AF%A2">聚合查询</a>
+<ul>
+<li><a href="#%E8%81%9A%E5%90%88%E5%87%BD%E6%95%B0%E5%8F%8A%E4%BD%BF%E7%94%A8%E7%A4%BA%E4%BE%8B">聚合函数及使用示例</a>
+<ul>
+<li><a href="#%E6%9F%A5%E8%AF%A2%E6%95%B0%E6%8D%AE%E5%BA%93%E4%B8%AD%E5%AD%98%E5%9C%A8%E7%9A%84%E8%8A%82%E7%82%B9%E5%92%8C%E5%85%B3%E7%B3%BB%E6%80%BB%E6%95%B0">查询数据库中存在的节点和关系总数</a></li>
+<li><a href="#%E6%9F%A5%E8%AF%A2%E5%90%84%E7%B1%BB%E8%8A%82%E7%82%B9%E7%9A%84%E6%95%B0%E9%87%8F">查询各类节点的数量</a></li>
+<li><a href="#%E6%9F%A5%E7%9C%8B%E5%90%84%E7%B1%BB%E5%85%B3%E7%B3%BB%E7%9A%84%E6%95%B0%E9%87%8F">查看各类关系的数量</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#%E6%A8%A1%E7%B3%8A%E6%9F%A5%E8%AF%A2">模糊查询</a></li>
+<li><a href="#%E6%89%B9%E9%87%8F%E5%8F%98%E6%9B%B4%E5%85%B3%E7%B3%BB%E7%B1%BB%E5%9E%8B">批量变更关系类型</a></li>
+<li><a href="#%E5%88%A0%E9%99%A4%E6%95%B0%E6%8D%AE">删除数据</a>
+<ul>
+<li><a href="#%E5%88%A0%E9%99%A4%E5%85%B3%E7%B3%BB">删除关系</a></li>
+<li><a href="#"></a></li>
+<li><a href="#%E5%88%A0%E9%99%A4%E5%AD%A4%E7%AB%8B%E8%8A%82%E7%82%B9">删除孤立节点</a></li>
+</ul>
+</li>
+<li><a href="#%E5%A4%9A%E8%B7%B3%E6%9F%A5%E8%AF%A2">多跳查询</a>
+<ul>
+<li><a href="#%E4%BA%8C%E8%B7%B3%E6%9F%A5%E8%AF%A2">二跳查询</a></li>
+<li><a href="#%E9%80%92%E5%BD%92%E5%A4%9A%E8%B7%B3%E6%9F%A5%E8%AF%A2">递归多跳查询</a></li>
+</ul>
+</li>
+<li><a href="#neo4j%E6%9F%A5%E8%AF%A2%E7%BB%93%E6%9E%9C%E9%9B%86%E5%AF%BC%E5%87%BAcsvjson">Neo4j查询结果集导出csv/json</a></li>
+</ul>
+</li>
+<li><a href="#%E5%9B%BE%E6%95%B0%E6%8D%AE%E5%BA%93%E7%A4%BA%E4%BE%8B%E6%95%B0%E6%8D%AE%E9%9B%86">图数据库示例数据集</a></li>
+<li><a href="#%E5%9B%BE%E6%95%B0%E6%8D%AE%E5%BA%93%E5%9B%BE%E7%AE%97%E6%B3%95%E6%94%AF%E6%8C%81">图数据库图算法支持</a></li>
+<li><a href="#python%E6%93%8D%E4%BD%9Cneo4j%E6%95%B0%E6%8D%AE%E5%BA%93">Python操作Neo4j数据库</a></li>
+<li><a href="#nginx%E4%BB%A3%E7%90%86%E8%BD%AC%E5%8F%91neo4j%E6%9C%8D%E5%8A%A1">Nginx代理转发Neo4j服务</a></li>
+</ul>
+<!-- END doctoc generated TOC please keep comment here to allow auto update -->
+<h2 id="图数据库简介">图数据库简介</h2>
 <h3 id="什么是图">什么是图？</h3>
 <p>图是由实体以及实体间的关系组成的结构，这种结构可以抽象表示现实世界中的事物及事物间的关系。我们可以用节点/Node/Vertex表示实体、用节点间的连边/Ralationship/Edge/表示节点间的关系。</p>
 <p>举例来说，我们的朋友圈可以通过图结构进行抽象，每个人作为一个节点，若两个人之间存在关系则认为两个节点具有连边，由此构造出社交网络。</p>
@@ -1168,14 +1231,38 @@ DELETE r, n
 <h2 id="nginx代理转发neo4j服务">Nginx代理转发Neo4j服务</h2>
 <p>有时候可能希望将neo4j默认服务（neo4j browser等）开放给互联网上的用户使用，并且希望希望通过nginx进行反向代理，简单的做法可以参考如下流程：</p>
 <ol>
-<li>
-<p>配置nginx.conf文件，新建stream代理规则，用于支持neo4j采用websocket协议通信的服务</p>
-</li>
-<li>
-<p>配置xxx.conf文件，新建http server代理规则，用于支持neo4j browser（http服务）</p>
-</li>
+<li>配置nginx.conf文件，新建stream代理规则，用于支持neo4j采用websocket协议通信的服务.</li>
 </ol>
-
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-nginx" data-lang="nginx"><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">stream</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="kn">upstream</span> <span class="s">neo4j</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">                <span class="kn">server</span> <span class="n">127.0.0.1</span><span class="p">:</span><span class="mi">7687</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">        <span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">        <span class="kn">server</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">                 <span class="kn">listen</span>       <span class="s">YOUR_PORT</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">                 <span class="kn">proxy_pass</span>  <span class="s">neo4j</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">        <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></div><ol start="2">
+<li>配置xxx.conf文件，新建http server代理规则，用于支持neo4j browser（http服务）.</li>
+</ol>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-nginx" data-lang="nginx"><span class="line"><span class="cl"><span class="k">server</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">   <span class="kn">listen</span>      <span class="s">YOUR_PORT</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">   <span class="kn">server_name</span>  <span class="s">YOUR_HOSTNAME_OR_IP</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">   <span class="kn">location</span> <span class="s">/graph/</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">           <span class="kn">proxy_hide_header</span> <span class="s">Content-Security-Policy</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">           <span class="kn">proxy_hide_header</span> <span class="s">X-Frame-Options</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">           <span class="kn">proxy_pass</span> <span class="s">http://127.0.0.1:7474/</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">   <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></div><p><a href="http://127.0.0.1:7474/" target="_blank" rel="noopener">http://127.0.0.1:7474/</a>是neo4j Browser的默认服务地址，当然也可以在配置文件修改默认端口。</p>
+<p>这两条配置是为了让neo4j browser可以通过iframe嵌入到另一个站点，否则进行iframe嵌入会受到限制。</p>
+<pre tabindex="0"><code>           proxy_hide_header Content-Security-Policy;
+           proxy_hide_header X-Frame-Options;
+</code></pre>
     </div>
 
     
