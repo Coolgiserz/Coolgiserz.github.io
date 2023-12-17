@@ -986,7 +986,22 @@ Hello, world! 你好世界！%
       <link>/project/arcpy-based-automatic-mapping/</link>
       <pubDate>Tue, 21 Mar 2023 00:20:58 +0800</pubDate>
       <guid>/project/arcpy-based-automatic-mapping/</guid>
-      <description></description>
+      <description>&lt;h2 id=&#34;工作流&#34;&gt;工作流&lt;/h2&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;定时获取最新的经算法模型处理过的气象数据（栅格）&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;按指定区域（可通过四角坐标指定范围）进行裁剪、重采样&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;风场数据矢量化（UV风速风向转合风速风向）&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;结合预定义好的地图模板（mxd地图文档）和处理好的数据生成专题地图集，输出到指定目录&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+</description>
     </item>
     
     <item>
