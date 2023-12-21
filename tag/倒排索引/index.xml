@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>倒排索引 | CoolCats</title>
+    <link>/tag/%E5%80%92%E6%8E%92%E7%B4%A2%E5%BC%95/</link>
+      <atom:link href="/tag/%E5%80%92%E6%8E%92%E7%B4%A2%E5%BC%95/index.xml" rel="self" type="application/rss+xml" />
+    <description>倒排索引</description>
+    <generator>Wowchemy (https://wowchemy.com)</generator><language>en-us</language><lastBuildDate>Wed, 20 Dec 2023 22:46:08 +0800</lastBuildDate>
+    <image>
+      <url>/media/icon_hue03491371183284312b8b116a73ae5ab_79511_512x512_fill_lanczos_center_3.png</url>
+      <title>倒排索引</title>
+      <link>/tag/%E5%80%92%E6%8E%92%E7%B4%A2%E5%BC%95/</link>
+    </image>
+    
+    <item>
+      <title>后端实践：基于倒排索引构建搜索联想服务（总览篇）</title>
+      <link>/post/search_association_system_design_inverted_index/</link>
+      <pubDate>Wed, 20 Dec 2023 22:46:08 +0800</pubDate>
+      <guid>/post/search_association_system_design_inverted_index/</guid>
+      <description>&lt;h2 id=&#34;概念&#34;&gt;概念&lt;/h2&gt;
+&lt;h3 id=&#34;搜索联想&#34;&gt;搜索联想&lt;/h3&gt;
+&lt;p&gt;“搜索”是现代互联网用户必须要使用的功能，但互联网内容如此之多，用户不一定知道有多少内容可以查询，通过搜索什么关键字才能获得想要的信息。因此，搜索联想是改进用户搜索体验的关键功能特性，好的搜索联想可以快速补全用户不完整的输入，纠正用户不小心打出的拼写错误，让用户更容易搜索到想要的内容，有时也可以引导用户去发现从未想过的但可能会感兴趣的内容。&lt;/p&gt;
+&lt;p&gt;通常来说，联想的切入点包括：前缀联想、按拼音联想、按热度联想、按关键字联想等，其中还要针对用户的错别字或者输入个性化差异做出纠正引导。比如：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;用例1（字词纠错）&lt;/p&gt;
+&lt;p&gt;用户输入“中山工源”，实际上想搜索的是“中山公园”；&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;用例2（补全，且不只是从前缀补全）&lt;/p&gt;
+&lt;p&gt;用户输入“达梦”，实际想搜索“武汉达梦数据库有限公司”&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;用例3（意图推断）&lt;/p&gt;
+&lt;p&gt;用户输入“武汉梧桐山”，实际上想搜“深圳梧桐山”&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;倒排索引&#34;&gt;倒排索引&lt;/h3&gt;
+&lt;p&gt;对于搜索引擎系统而言，倒排索引是非常重要的组成部份。所谓倒排，是相对于正排来说的，通常说的正排指以文档为键，构建文档到关键字的映射关系；那么倒排就是以关键字为键，构建关键字到文档的映射关系，这种映射关系可以认为就是倒排索引。简单形象的示例如下：&lt;/p&gt;
+&lt;p&gt;正排索引表：&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;文档1--&amp;gt;{词1, 词2, ..., 词n}
+文档2--&amp;gt;{词1, 词2, ..., 词n}
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;倒排索引表：&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;词1--&amp;gt;{文档1, 文档2, ..., 文档m}
+词2--&amp;gt;{文档1, 文档2, ..., 文档m}
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;倒排索引的优势在于可以快速查询某字词对应的文档/包含某字词的文档；正排索引的优势在于确定单个文档中有哪些关键字词。&lt;/p&gt;
+&lt;h2 id=&#34;文档&#34;&gt;文档&lt;/h2&gt;
+&lt;h3 id=&#34;搜索联想词&#34;&gt;搜索联想词&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://www.woshipm.com/operate/4613828.html&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;搜索联想词产品实践系列之浅见（一）定位-评估和召回篇 | 人人都是产品经理&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;trie树&#34;&gt;Trie树&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://freegeektime.com/100017301/72414/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Trie树：如何实现搜索引擎的搜索关键词提示功能&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;elasticsearch&#34;&gt;Elasticsearch&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://developer.aliyun.com/article/1082220&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;ES高频面试问题：一张图带你读懂 Elasticsearch 中“正排索引（正向索引）”和“倒排索引（反向索引）”区别-阿里云开发者社区&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

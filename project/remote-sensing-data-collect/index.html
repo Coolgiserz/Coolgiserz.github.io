@@ -64,7 +64,7 @@
   
     
   
-  <meta name="description" content="定时数据采集、历史数据回补" />
+  <meta name="description" content="对多源遥感数据定时数据采集、历史数据回补" />
 
   
   <link rel="alternate" hreflang="en-us" href="/project/remote-sensing-data-collect/" />
@@ -323,16 +323,16 @@
   <meta property="og:site_name" content="CoolCats" />
   <meta property="og:url" content="/project/remote-sensing-data-collect/" />
   <meta property="og:title" content="多源遥感卫星数据采集管理系统 | CoolCats" />
-  <meta property="og:description" content="定时数据采集、历史数据回补" /><meta property="og:image" content="/media/icon_hue03491371183284312b8b116a73ae5ab_79511_512x512_fill_lanczos_center_3.png" />
+  <meta property="og:description" content="对多源遥感数据定时数据采集、历史数据回补" /><meta property="og:image" content="/media/icon_hue03491371183284312b8b116a73ae5ab_79511_512x512_fill_lanczos_center_3.png" />
     <meta property="twitter:image" content="/media/icon_hue03491371183284312b8b116a73ae5ab_79511_512x512_fill_lanczos_center_3.png" /><meta property="og:locale" content="en-us" />
   
     
       <meta
         property="article:published_time"
-        content="2023-05-10T00:24:05&#43;08:00"
+        content="2023-07-10T00:24:05&#43;08:00"
       />
     
-    <meta property="article:modified_time" content="2023-05-10T00:24:05&#43;08:00">
+    <meta property="article:modified_time" content="2023-07-10T00:24:05&#43;08:00">
   
 
   
@@ -358,8 +358,8 @@
   },
   "headline": "多源遥感卫星数据采集管理系统",
   
-  "datePublished": "2023-05-10T00:24:05+08:00",
-  "dateModified": "2023-05-10T00:24:05+08:00",
+  "datePublished": "2023-07-10T00:24:05+08:00",
+  "dateModified": "2023-07-10T00:24:05+08:00",
   
   "author": {
     "@type": "Person",
@@ -374,7 +374,7 @@
       "url": "/media/icon_hue03491371183284312b8b116a73ae5ab_79511_192x192_fill_lanczos_center_3.png"
     }
   },
-  "description": "定时数据采集、历史数据回补"
+  "description": "对多源遥感数据定时数据采集、历史数据回补"
 }
 </script>
 
@@ -770,7 +770,7 @@
     
       
     
-    May 10, 2023
+    Jul 10, 2023
   </span>
   
 
@@ -802,7 +802,57 @@
   <div class="article-container">
 
     <div class="article-style">
-      
+      <h2 id="系统功能概览">系统功能概览</h2>
+<p>设计实现多源遥感数据采集任务管理服务，支持对采集任务进行新增、管理、审计等功能。主要功能：</p>
+<ol>
+<li>
+<p>多源遥感数据采集</p>
+<p>支持对多种来源、格式的遥感数据爬取及文件下载服务。</p>
+<ul>
+<li>
+<p>哨兵2、哨兵5</p>
+</li>
+<li>
+<p>FGL/GFS</p>
+</li>
+<li>
+<p>葵花8/葵花9</p>
+</li>
+<li>
+<p>Modis</p>
+</li>
+<li>
+<p>&hellip;&hellip;</p>
+</li>
+</ul>
+</li>
+<li>
+<p>采集任务管理</p>
+<ul>
+<li>新增采集任务</li>
+</ul>
+<p>通过前端界面新增采集任务，填写采集任务相关描述，指定要采集的数据源、采集参数（时空范围、分辨率、数据产品代码、采集周期频率、是否一次性任务/定时任务、数据存储位置、并发下载量等）</p>
+<ul>
+<li>
+<p>采集任务状态管理</p>
+<p>任务启用、关停、删除、参数修改等操作可通过界面化管理。</p>
+</li>
+<li>
+<p>采集数据成果查阅</p>
+</li>
+</ul>
+</li>
+<li>
+<p>采集过程日志管理</p>
+<p>爬虫、下载器工作过程关键异常信息入库，便于审计。</p>
+</li>
+<li>
+<p>下载器调度管理</p>
+</li>
+</ol>
+<h2 id="状态">状态</h2>
+<p>已投入使用。</p>
+
     </div>
 
     

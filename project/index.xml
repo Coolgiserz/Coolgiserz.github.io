@@ -13,7 +13,7 @@
     </image>
     
     <item>
-      <title>搜索联想算法后端接口服务</title>
+      <title>搜索联想算法后端接口服务：前缀版</title>
       <link>/project/search_association_algorithms/</link>
       <pubDate>Wed, 01 Nov 2023 01:19:37 +0800</pubDate>
       <guid>/project/search_association_algorithms/</guid>
@@ -216,6 +216,64 @@
 &lt;p&gt;&lt;a href=&#34;https://cloud.tencent.com/developer/article/1502065&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;万字长文解读电商搜索——如何让你买得又快又好-腾讯云开发者社区-腾讯云&lt;/a&gt;&lt;/p&gt;
 &lt;/li&gt;
 &lt;/ul&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>多源遥感卫星数据采集管理系统</title>
+      <link>/project/remote-sensing-data-collect/</link>
+      <pubDate>Mon, 10 Jul 2023 00:24:05 +0800</pubDate>
+      <guid>/project/remote-sensing-data-collect/</guid>
+      <description>&lt;h2 id=&#34;系统功能概览&#34;&gt;系统功能概览&lt;/h2&gt;
+&lt;p&gt;设计实现多源遥感数据采集任务管理服务，支持对采集任务进行新增、管理、审计等功能。主要功能：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;多源遥感数据采集&lt;/p&gt;
+&lt;p&gt;支持对多种来源、格式的遥感数据爬取及文件下载服务。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;哨兵2、哨兵5&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;FGL/GFS&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;葵花8/葵花9&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Modis&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&amp;hellip;&amp;hellip;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;采集任务管理&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;新增采集任务&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;通过前端界面新增采集任务，填写采集任务相关描述，指定要采集的数据源、采集参数（时空范围、分辨率、数据产品代码、采集周期频率、是否一次性任务/定时任务、数据存储位置、并发下载量等）&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;采集任务状态管理&lt;/p&gt;
+&lt;p&gt;任务启用、关停、删除、参数修改等操作可通过界面化管理。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;采集数据成果查阅&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;采集过程日志管理&lt;/p&gt;
+&lt;p&gt;爬虫、下载器工作过程关键异常信息入库，便于审计。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;下载器调度管理&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2 id=&#34;状态&#34;&gt;状态&lt;/h2&gt;
+&lt;p&gt;已投入使用。&lt;/p&gt;
 </description>
     </item>
     
@@ -943,14 +1001,6 @@ Hello, world! 你好世界！%
       <guid>/project/python-software-architecture-practice/</guid>
       <description>&lt;p&gt;Python软件架构知识点练习代码&lt;/p&gt;
 </description>
-    </item>
-    
-    <item>
-      <title>多源遥感卫星数据采集管理系统</title>
-      <link>/project/remote-sensing-data-collect/</link>
-      <pubDate>Wed, 10 May 2023 00:24:05 +0800</pubDate>
-      <guid>/project/remote-sensing-data-collect/</guid>
-      <description></description>
     </item>
     
     <item>
