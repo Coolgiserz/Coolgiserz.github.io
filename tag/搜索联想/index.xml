@@ -13,14 +13,14 @@
     </image>
     
     <item>
-      <title>后端实践：基于倒排索引构建搜索联想服务（总览篇）</title>
+      <title>后端实践：基于倒排索引构建搜索联想/提示服务（总览篇）</title>
       <link>/post/search_association_system_design_inverted_index/</link>
       <pubDate>Wed, 20 Dec 2023 22:46:08 +0800</pubDate>
       <guid>/post/search_association_system_design_inverted_index/</guid>
       <description>&lt;h2 id=&#34;概念&#34;&gt;概念&lt;/h2&gt;
 &lt;h3 id=&#34;搜索联想&#34;&gt;搜索联想&lt;/h3&gt;
 &lt;p&gt;“搜索”是现代互联网用户必须要使用的功能，但互联网内容如此之多，用户不一定知道有多少内容可以查询，通过搜索什么关键字才能获得想要的信息。因此，搜索联想是改进用户搜索体验的关键功能特性，好的搜索联想可以快速补全用户不完整的输入，纠正用户不小心打出的拼写错误，让用户更容易搜索到想要的内容，有时也可以引导用户去发现从未想过的但可能会感兴趣的内容。&lt;/p&gt;
-&lt;p&gt;通常来说，联想的切入点包括：前缀联想、按拼音联想、按热度联想、按关键字联想等，其中还要针对用户的错别字或者输入个性化差异做出纠正引导。比如：&lt;/p&gt;
+&lt;p&gt;通常来说，联想的切入点包括：前缀联想、按拼音联想、按热度联想、按关键字联想、多語言/字體聯想等，其中还要针对用户的错别字或者输入个性化差异做出纠正引导。比如：&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;
 &lt;p&gt;用例1（字词纠错）&lt;/p&gt;
@@ -33,6 +33,38 @@
 &lt;li&gt;
 &lt;p&gt;用例3（意图推断）&lt;/p&gt;
 &lt;p&gt;用户输入“武汉梧桐山”，实际上想搜“深圳梧桐山”&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;多語言&lt;/p&gt;
+&lt;p&gt;用戶用一種語言/字體查詢，返回標準字體的結果。比如在QQ音樂搜索繁體中文“倒數”，應該返回簡體中文的“倒數”。&lt;/p&gt;
+&lt;p&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure  &gt;
+  &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img alt=&#34;&#34; srcset=&#34;
+               /post/search_association_system_design_inverted_index/images/search_language_hu9943bae7c934dd095cf71f913153c8f1_385212_812364b781d7398aeae0ed4fd366a605.webp 400w,
+               /post/search_association_system_design_inverted_index/images/search_language_hu9943bae7c934dd095cf71f913153c8f1_385212_d71696791685b5be6a1646f142e35386.webp 760w,
+               /post/search_association_system_design_inverted_index/images/search_language_hu9943bae7c934dd095cf71f913153c8f1_385212_1200x1200_fit_q75_h2_lanczos_3.webp 1200w&#34;
+               src=&#34;/post/search_association_system_design_inverted_index/images/search_language_hu9943bae7c934dd095cf71f913153c8f1_385212_812364b781d7398aeae0ed4fd366a605.webp&#34;
+               width=&#34;760&#34;
+               height=&#34;463&#34;
+               loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+  &lt;/div&gt;&lt;/figure&gt;
+&lt;/p&gt;
 &lt;/li&gt;
 &lt;/ul&gt;
 &lt;h3 id=&#34;倒排索引&#34;&gt;倒排索引&lt;/h3&gt;
