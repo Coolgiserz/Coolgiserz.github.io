@@ -806,17 +806,17 @@
   <div class="article-container">
 
     <div class="article-style">
-      <h2 id="项目介绍">项目介绍</h2>
+      <h2 id="0x00-项目介绍">0x00 项目介绍</h2>
 <h3 id="内容">内容</h3>
 <ul>
 <li>
 <p>解析国标行业分类2017数据，构建行业图谱</p>
 </li>
 <li>
-<p>国标行业信息存储入PostgreSQL</p>
+<p>国标行业关系信息存储PostgreSQL</p>
 </li>
 <li>
-<p>基于Neo4J存储行业图谱</p>
+<p>基于Neo4J存储国标行业图谱</p>
 </li>
 <li>
 <p>基于图数据挖掘技术对行业图谱进行探索</p>
@@ -828,7 +828,7 @@
 <p>中心性探索</p>
 </li>
 <li>
-<p>节点嵌入向量空间分析</p>
+<p>节点嵌入向量空间可视分析</p>
 </li>
 <li>
 <p>&hellip;&hellip;</p>
@@ -878,6 +878,9 @@
 <li>
 <p>Neo4J Bloom</p>
 </li>
+<li>
+<p>Python Plotly</p>
+</li>
 </ul>
 </li>
 <li>
@@ -892,7 +895,23 @@
 </ul>
 </li>
 </ul>
-<h2 id="数据演示-行业图谱">数据演示-行业图谱</h2>
+<h3 id="原理总结">原理总结</h3>
+<h4 id="图数据挖掘">图数据挖掘</h4>
+<ul>
+<li>
+<p>节点嵌入</p>
+</li>
+<li>
+<p>节点中心性</p>
+</li>
+<li>
+<p>网络社区结构</p>
+</li>
+<li>
+<p>节点邻域分析</p>
+</li>
+</ul>
+<h2 id="0x01-数据演示-行业图谱">0x01 数据演示-行业图谱</h2>
 <h3 id="关系数据展示">关系数据展示</h3>
 <p>
 
@@ -952,6 +971,7 @@
                loading="lazy" data-zoomable /></div>
   </div></figure>
 </p>
+<p>由数据可见制造业体系之庞大。</p>
 <h3 id="图数据展示">图数据展示</h3>
 <p>查询地理相关行业图谱：</p>
 <pre tabindex="0"><code class="language-cypher" data-lang="cypher">MATCH (n:IndustryGB)
@@ -1014,11 +1034,559 @@ RETURN n
                loading="lazy" data-zoomable /></div>
   </div></figure>
 </p>
-<h2 id="图挖掘示例">图挖掘示例</h2>
-<p>(暂略)</p>
-<h2 id="拓展资料">拓展资料</h2>
+<p>查询制造业相关行业图谱:</p>
+<pre tabindex="0"><code class="language-cypher" data-lang="cypher">MATCH (n {name:&#39;制造业&#39;}) RETURN n
+</code></pre><p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<figure  >
+  <div class="d-flex justify-content-center">
+    <div class="w-100" ><img alt="" srcset="
+               /project/gb_industry_knowledge_graph_starting/images/industry_graph/zhizaoye_demo_hua08975edd16d6971e3a79fb32c905f7e_589546_f3cca13924f87d4dab1bf9e35a3dd5cf.webp 400w,
+               /project/gb_industry_knowledge_graph_starting/images/industry_graph/zhizaoye_demo_hua08975edd16d6971e3a79fb32c905f7e_589546_ea3114aeb3680e8b284be3e7c8923453.webp 760w,
+               /project/gb_industry_knowledge_graph_starting/images/industry_graph/zhizaoye_demo_hua08975edd16d6971e3a79fb32c905f7e_589546_1200x1200_fit_q75_h2_lanczos_3.webp 1200w"
+               src="/project/gb_industry_knowledge_graph_starting/images/industry_graph/zhizaoye_demo_hua08975edd16d6971e3a79fb32c905f7e_589546_f3cca13924f87d4dab1bf9e35a3dd5cf.webp"
+               width="760"
+               height="707"
+               loading="lazy" data-zoomable /></div>
+  </div></figure>
+</p>
+<p>计算机相关行业</p>
+<pre tabindex="0"><code class="language-cypher" data-lang="cypher">MATCH (n)-[]-&gt;() WHERE n.name contains &#39;计算机&#39; RETURN n
+</code></pre><p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<figure  >
+  <div class="d-flex justify-content-center">
+    <div class="w-100" ><img alt="" srcset="
+               /project/gb_industry_knowledge_graph_starting/images/industry_graph/computer_relative_demo_hu35e1dd30b69933ec836a255bfda811a6_360979_f75849a8e6db2d818f06ed3c30f63db9.webp 400w,
+               /project/gb_industry_knowledge_graph_starting/images/industry_graph/computer_relative_demo_hu35e1dd30b69933ec836a255bfda811a6_360979_13f3be444471c3704ea023cf6ec764b8.webp 760w,
+               /project/gb_industry_knowledge_graph_starting/images/industry_graph/computer_relative_demo_hu35e1dd30b69933ec836a255bfda811a6_360979_1200x1200_fit_q75_h2_lanczos_3.webp 1200w"
+               src="/project/gb_industry_knowledge_graph_starting/images/industry_graph/computer_relative_demo_hu35e1dd30b69933ec836a255bfda811a6_360979_f75849a8e6db2d818f06ed3c30f63db9.webp"
+               width="578"
+               height="760"
+               loading="lazy" data-zoomable /></div>
+  </div></figure>
+</p>
+<h2 id="0x02-图挖掘示例">0x02 图挖掘示例</h2>
+<h3 id="节点嵌入">节点嵌入</h3>
+<h4 id="基于neo4j-gds的node2vec计算">基于Neo4J GDS的Node2Vec计算</h4>
+<p><a href="https://neo4j.com/docs/graph-data-science/current/machine-learning/node-embeddings/node2vec/" target="_blank" rel="noopener">Node2Vec - Neo4j Graph Data Science</a></p>
+<p>通过cypher对图谱中的节点进行node2vec嵌入学习，输出2维、3维嵌入表示便于可视化。</p>
+<p>创建和删除图：</p>
+<pre tabindex="0"><code class="language-cypher" data-lang="cypher">CALL gds.graph.project(&#39;IndustryGraph&#39;, [&#39;IndustryGB&#39;, &#39;IndustryGB&#39;], &#39;DOWNLEVEL_INDUSTRY&#39;);
+</code></pre><pre tabindex="0"><code class="language-cypher" data-lang="cypher">// 如果需要重新构造图，可以先删除，再重构
+CALL gds.graph.drop(&#39;IndustryGraph&#39;)
+</code></pre><h5 id="参数配置1-迭代1w次随机游走步长10输出2维嵌入表示">参数配置1： 迭代1w次，随机游走步长10，输出2维嵌入表示</h5>
+<pre tabindex="0"><code class="language-cypher" data-lang="cypher">CALL gds.node2vec.stream(&#39;IndustryGraph&#39;, 
+  {embeddingDimension: 2,iterations: 10000, walkLength:10})
+YIELD nodeId, embedding
+RETURN nodeId, embedding
+</code></pre><p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<figure  >
+  <div class="d-flex justify-content-center">
+    <div class="w-100" ><img alt="" srcset="
+               /project/gb_industry_knowledge_graph_starting/images/demo/node2vec/image_node2vec_10000_huda4f6c6f3a405462f4ff4f362506f157_167555_0806a2cd3c48f6f3b4bce3ab2ec4227a.webp 400w,
+               /project/gb_industry_knowledge_graph_starting/images/demo/node2vec/image_node2vec_10000_huda4f6c6f3a405462f4ff4f362506f157_167555_40d1cbe34c0fd35d1b9ab4cd5f50b0f2.webp 760w,
+               /project/gb_industry_knowledge_graph_starting/images/demo/node2vec/image_node2vec_10000_huda4f6c6f3a405462f4ff4f362506f157_167555_1200x1200_fit_q75_h2_lanczos_3.webp 1200w"
+               src="/project/gb_industry_knowledge_graph_starting/images/demo/node2vec/image_node2vec_10000_huda4f6c6f3a405462f4ff4f362506f157_167555_0806a2cd3c48f6f3b4bce3ab2ec4227a.webp"
+               width="760"
+               height="645"
+               loading="lazy" data-zoomable /></div>
+  </div></figure>
+</p>
+<h5 id="参数配置2迭代1000次随机游走步长3输出2维嵌入表示">参数配置2：迭代1000次，随机游走步长3，输出2维嵌入表示</h5>
+<pre tabindex="0"><code class="language-cypher" data-lang="cypher">CALL gds.node2vec.stream(&#39;IndustryGraph&#39;, 
+{embeddingDimension: 2,iterations: 1000, walkLength:3, windowSize:5})
+YIELD nodeId, embedding
+RETURN nodeId, embedding
+</code></pre><p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<figure  >
+  <div class="d-flex justify-content-center">
+    <div class="w-100" ><img alt="" srcset="
+               /project/gb_industry_knowledge_graph_starting/images/demo/node2vec/image_node2vec_1000_hu48620f89ad2e48dc27dc5c7f4e0ac851_169316_1805cd9f1b6344c08006361720d70743.webp 400w,
+               /project/gb_industry_knowledge_graph_starting/images/demo/node2vec/image_node2vec_1000_hu48620f89ad2e48dc27dc5c7f4e0ac851_169316_7616aa342673ddb4395bfbd530311285.webp 760w,
+               /project/gb_industry_knowledge_graph_starting/images/demo/node2vec/image_node2vec_1000_hu48620f89ad2e48dc27dc5c7f4e0ac851_169316_1200x1200_fit_q75_h2_lanczos_3.webp 1200w"
+               src="/project/gb_industry_knowledge_graph_starting/images/demo/node2vec/image_node2vec_1000_hu48620f89ad2e48dc27dc5c7f4e0ac851_169316_1805cd9f1b6344c08006361720d70743.webp"
+               width="760"
+               height="654"
+               loading="lazy" data-zoomable /></div>
+  </div></figure>
+</p>
+<h5 id="参数配置3-迭代100次随机游走步长3输出2维嵌入表示">参数配置3: 迭代100次，随机游走步长3，输出2维嵌入表示</h5>
+<pre tabindex="0"><code class="language-cypher" data-lang="cypher">CALL gds.node2vec.stream(&#39;IndustryGraph&#39;, {embeddingDimension: 2,iterations: 100, walkLength:3, windowSize:5})
+YIELD nodeId, embedding
+RETURN nodeId, embedding
+</code></pre><p>可视化</p>
+<p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<figure  >
+  <div class="d-flex justify-content-center">
+    <div class="w-100" ><img alt="" srcset="
+               /project/gb_industry_knowledge_graph_starting/images/demo/node2vec/image_node2vec_1_hu2e11be25e4456f7345159b372a1cd445_157758_d2d12cb211a7cb2e103d80c3bf329821.webp 400w,
+               /project/gb_industry_knowledge_graph_starting/images/demo/node2vec/image_node2vec_1_hu2e11be25e4456f7345159b372a1cd445_157758_563429ec4a0b2a73fb12c6210324592a.webp 760w,
+               /project/gb_industry_knowledge_graph_starting/images/demo/node2vec/image_node2vec_1_hu2e11be25e4456f7345159b372a1cd445_157758_1200x1200_fit_q75_h2_lanczos_3.webp 1200w"
+               src="/project/gb_industry_knowledge_graph_starting/images/demo/node2vec/image_node2vec_1_hu2e11be25e4456f7345159b372a1cd445_157758_d2d12cb211a7cb2e103d80c3bf329821.webp"
+               width="760"
+               height="636"
+               loading="lazy" data-zoomable /></div>
+  </div></figure>
+</p>
+<h5 id="问题">问题</h5>
+<p>不确定是否是参数未调好还是2维嵌入表达能力不足的问题，个人觉得node2vec输出的节点嵌入向量对原本图结构信息的编码能力不足：少部分节点表现出聚类趋势，基本正确，但大多数节点聚集在一起，表现出不可分的趋势。</p>
+<p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<figure  >
+  <div class="d-flex justify-content-center">
+    <div class="w-100" ><img alt="" srcset="
+               /project/gb_industry_knowledge_graph_starting/images/demo/node2vec/question_nodes_hu77028a83f790e6f36a1150debecfa811_439061_4e22dbe89ad5a744ef69cbe8b4cb9363.webp 400w,
+               /project/gb_industry_knowledge_graph_starting/images/demo/node2vec/question_nodes_hu77028a83f790e6f36a1150debecfa811_439061_4e3717bfa011c11e029f3b15cad66d7a.webp 760w,
+               /project/gb_industry_knowledge_graph_starting/images/demo/node2vec/question_nodes_hu77028a83f790e6f36a1150debecfa811_439061_1200x1200_fit_q75_h2_lanczos_3.webp 1200w"
+               src="/project/gb_industry_knowledge_graph_starting/images/demo/node2vec/question_nodes_hu77028a83f790e6f36a1150debecfa811_439061_4e22dbe89ad5a744ef69cbe8b4cb9363.webp"
+               width="760"
+               height="652"
+               loading="lazy" data-zoomable /></div>
+  </div></figure>
+</p>
+<h4 id="基于neo4j-gds的hashgnn计算">基于Neo4J GDS的HashGNN计算</h4>
+<p><a href="https://neo4j.com/docs/graph-data-science/current/machine-learning/node-embeddings/hashgnn/" target="_blank" rel="noopener">HashGNN - Neo4j Graph Data Science</a></p>
+<pre tabindex="0"><code class="language-cypher" data-lang="cypher">CALL gds.hashgnn.stream(&#39;IndustryGraph&#39;, { nodeLabels:[&#39;IndustryGB&#39;],binarizeFeatures: {dimension: 2, threshold: 32},iterations:1000, featureProperties:[&#39;root_code&#39;], embeddingDensity: 2})
+YIELD nodeId, embedding
+RETURN nodeId, embedding
+</code></pre><p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<figure  >
+  <div class="d-flex justify-content-center">
+    <div class="w-100" ><img alt="" srcset="
+               /project/gb_industry_knowledge_graph_starting/images/demo/hashgnn/issue_hucd9add213d6e5087bbf0e1cf803f6a8e_128163_c070d6714af3f5754e2298c1591208fd.webp 400w,
+               /project/gb_industry_knowledge_graph_starting/images/demo/hashgnn/issue_hucd9add213d6e5087bbf0e1cf803f6a8e_128163_53f90ec86997d79509fbf3c4b094a306.webp 760w,
+               /project/gb_industry_knowledge_graph_starting/images/demo/hashgnn/issue_hucd9add213d6e5087bbf0e1cf803f6a8e_128163_1200x1200_fit_q75_h2_lanczos_3.webp 1200w"
+               src="/project/gb_industry_knowledge_graph_starting/images/demo/hashgnn/issue_hucd9add213d6e5087bbf0e1cf803f6a8e_128163_c070d6714af3f5754e2298c1591208fd.webp"
+               width="760"
+               height="222"
+               loading="lazy" data-zoomable /></div>
+  </div></figure>
+</p>
+<p>参考官方文档执行命令未成功，提示指定属性并非所有节点都有，但实际上所有节点都有该属性且不为空。</p>
+<h4 id="fastrp">FastRP</h4>
+<pre tabindex="0"><code class="language-cypher" data-lang="cypher">CALL gds.fastRP.stream(&#39;IndustryGraph&#39;,
+  {
+    embeddingDimension: 2,
+    randomSeed: 42
+  }
+)
+YIELD nodeId, embedding
+</code></pre><p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<figure  >
+  <div class="d-flex justify-content-center">
+    <div class="w-100" ><img alt="" srcset="
+               /project/gb_industry_knowledge_graph_starting/images/demo/fastrp/gds_hu0069eeea2f8f6f65281587dc73f23a87_133100_318834e903e32da1d50ed8f01ee2dd7b.webp 400w,
+               /project/gb_industry_knowledge_graph_starting/images/demo/fastrp/gds_hu0069eeea2f8f6f65281587dc73f23a87_133100_576c1fb064b04e5fcd952ac3c0359818.webp 760w,
+               /project/gb_industry_knowledge_graph_starting/images/demo/fastrp/gds_hu0069eeea2f8f6f65281587dc73f23a87_133100_1200x1200_fit_q75_h2_lanczos_3.webp 1200w"
+               src="/project/gb_industry_knowledge_graph_starting/images/demo/fastrp/gds_hu0069eeea2f8f6f65281587dc73f23a87_133100_318834e903e32da1d50ed8f01ee2dd7b.webp"
+               width="760"
+               height="659"
+               loading="lazy" data-zoomable /></div>
+  </div></figure>
+</p>
+<p>突然想到一个问题：基于行业节点名的词嵌入经过聚类能在多大程度上还原行业分类情况？行业的分类应该基于哪些根本特征进行划分？</p>
+<h4 id="heading"></h4>
+<h3 id="节点中心性探索">节点中心性探索</h3>
+<h4 id="pagerank">PageRank</h4>
+<pre tabindex="0"><code class="language-cypher" data-lang="cypher">CALL gds.pageRank.stream(&#39;IndustryGraph&#39;)
+YIELD nodeId, score
+RETURN gds.util.asNode(nodeId).name AS name, score
+ORDER BY score DESC, name ASC
+</code></pre><p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<figure  >
+  <div class="d-flex justify-content-center">
+    <div class="w-100" ><img alt="" srcset="
+               /project/gb_industry_knowledge_graph_starting/images/demo/centrality/pagerank_desc_hua8a411f147fa5094c0b303855639c88e_185218_880553258f71d810f5b2f83eca23378f.webp 400w,
+               /project/gb_industry_knowledge_graph_starting/images/demo/centrality/pagerank_desc_hua8a411f147fa5094c0b303855639c88e_185218_0b03d0a3f90d7df888fd7984d621614f.webp 760w,
+               /project/gb_industry_knowledge_graph_starting/images/demo/centrality/pagerank_desc_hua8a411f147fa5094c0b303855639c88e_185218_1200x1200_fit_q75_h2_lanczos_3.webp 1200w"
+               src="/project/gb_industry_knowledge_graph_starting/images/demo/centrality/pagerank_desc_hua8a411f147fa5094c0b303855639c88e_185218_880553258f71d810f5b2f83eca23378f.webp"
+               width="760"
+               height="457"
+               loading="lazy" data-zoomable /></div>
+  </div></figure>
+</p>
+<pre tabindex="0"><code class="language-cypher" data-lang="cypher">CALL gds.pageRank.stream(&#39;IndustryGraph&#39;)
+YIELD nodeId, score
+RETURN gds.util.asNode(nodeId).name AS name, gds.util.asNode(nodeId).level AS level, score
+ORDER BY score ASC
+</code></pre><p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<figure  >
+  <div class="d-flex justify-content-center">
+    <div class="w-100" ><img alt="" srcset="
+               /project/gb_industry_knowledge_graph_starting/images/demo/centrality/pagerank_asc_hud9f97fe57b985f61443164e5377dea64_188211_7506c6922527a83c462bc13f973be81f.webp 400w,
+               /project/gb_industry_knowledge_graph_starting/images/demo/centrality/pagerank_asc_hud9f97fe57b985f61443164e5377dea64_188211_446bda3f5b0e82a96ed12a1679bc14d1.webp 760w,
+               /project/gb_industry_knowledge_graph_starting/images/demo/centrality/pagerank_asc_hud9f97fe57b985f61443164e5377dea64_188211_1200x1200_fit_q75_h2_lanczos_3.webp 1200w"
+               src="/project/gb_industry_knowledge_graph_starting/images/demo/centrality/pagerank_asc_hud9f97fe57b985f61443164e5377dea64_188211_7506c6922527a83c462bc13f973be81f.webp"
+               width="760"
+               height="485"
+               loading="lazy" data-zoomable /></div>
+  </div></figure>
+</p>
+<h5 id="betweeness-centrality">Betweeness Centrality</h5>
+<pre tabindex="0"><code class="language-cypher" data-lang="cypher">CALL gds.betweenness.stream(&#39;IndustryGraph&#39;)
+YIELD nodeId, score
+RETURN gds.util.asNode(nodeId).name AS name, gds.util.asNode(nodeId).level AS level, score,gds.util.asNode(nodeId).code AS code
+ORDER BY score DESC
+</code></pre><p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<figure  >
+  <div class="d-flex justify-content-center">
+    <div class="w-100" ><img alt="" srcset="
+               /project/gb_industry_knowledge_graph_starting/images/demo/centrality/betweeness_hua682c4386a829b47bb9b1ced980d02e8_223923_9267d367f04c343bfe34a62b0f2b5322.webp 400w,
+               /project/gb_industry_knowledge_graph_starting/images/demo/centrality/betweeness_hua682c4386a829b47bb9b1ced980d02e8_223923_c2491598c535687533a6db0d58186f89.webp 760w,
+               /project/gb_industry_knowledge_graph_starting/images/demo/centrality/betweeness_hua682c4386a829b47bb9b1ced980d02e8_223923_1200x1200_fit_q75_h2_lanczos_3.webp 1200w"
+               src="/project/gb_industry_knowledge_graph_starting/images/demo/centrality/betweeness_hua682c4386a829b47bb9b1ced980d02e8_223923_9267d367f04c343bfe34a62b0f2b5322.webp"
+               width="760"
+               height="479"
+               loading="lazy" data-zoomable /></div>
+  </div></figure>
+</p>
+<h4 id="closeness-centrality">Closeness Centrality</h4>
+<p><a href="https://neo4j.com/docs/graph-data-science/current/algorithms/closeness-centrality/" target="_blank" rel="noopener">Closeness Centrality - Neo4j Graph Data Science</a></p>
+<pre tabindex="0"><code class="language-cypher" data-lang="cypher">CALL gds.closeness.stream(&#39;IndustryGraph&#39;)
+YIELD nodeId, score
+RETURN gds.util.asNode(nodeId).name AS name, gds.util.asNode(nodeId).code AS code,score
+ORDER BY score DESC
+</code></pre><p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<figure  >
+  <div class="d-flex justify-content-center">
+    <div class="w-100" ><img alt="" srcset="
+               /project/gb_industry_knowledge_graph_starting/images/demo/centrality/closeness_hu0a5ad0ab9034b373c8bc9ff81d142fd9_261159_1fca0cb28551aabdb32b028fe35ec037.webp 400w,
+               /project/gb_industry_knowledge_graph_starting/images/demo/centrality/closeness_hu0a5ad0ab9034b373c8bc9ff81d142fd9_261159_6b524a1bbd241f9a006fff9aea1d0c84.webp 760w,
+               /project/gb_industry_knowledge_graph_starting/images/demo/centrality/closeness_hu0a5ad0ab9034b373c8bc9ff81d142fd9_261159_1200x1200_fit_q75_h2_lanczos_3.webp 1200w"
+               src="/project/gb_industry_knowledge_graph_starting/images/demo/centrality/closeness_hu0a5ad0ab9034b373c8bc9ff81d142fd9_261159_1fca0cb28551aabdb32b028fe35ec037.webp"
+               width="760"
+               height="550"
+               loading="lazy" data-zoomable /></div>
+  </div></figure>
+</p>
+<h4 id="hits">HITS</h4>
+<p><a href="https://neo4j.com/docs/graph-data-science/current/algorithms/hits/" target="_blank" rel="noopener">https://neo4j.com/docs/graph-data-science/current/algorithms/hits/</a></p>
+<pre tabindex="0"><code class="language-cypher" data-lang="cypher">CALL gds.hits.stream(&#39;IndustryGraph&#39;, {hitsIterations: 20})
+YIELD nodeId, values
+RETURN gds.util.asNode(nodeId).name AS Name, values.auth AS auth, values.hub as hub
+ORDER BY hub desc
+</code></pre><p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<figure  >
+  <div class="d-flex justify-content-center">
+    <div class="w-100" ><img alt="" srcset="
+               /project/gb_industry_knowledge_graph_starting/images/demo/centrality/hits_hua505c2ef4f90b64300e02a20adabb713_228411_759de08d60b7ca2b60a2c9b798eec3fe.webp 400w,
+               /project/gb_industry_knowledge_graph_starting/images/demo/centrality/hits_hua505c2ef4f90b64300e02a20adabb713_228411_cf04f3f63cd012cb499363b3da7f31f5.webp 760w,
+               /project/gb_industry_knowledge_graph_starting/images/demo/centrality/hits_hua505c2ef4f90b64300e02a20adabb713_228411_1200x1200_fit_q75_h2_lanczos_3.webp 1200w"
+               src="/project/gb_industry_knowledge_graph_starting/images/demo/centrality/hits_hua505c2ef4f90b64300e02a20adabb713_228411_759de08d60b7ca2b60a2c9b798eec3fe.webp"
+               width="760"
+               height="450"
+               loading="lazy" data-zoomable /></div>
+  </div></figure>
+</p>
+<h3 id="社区结构探索">社区结构探索</h3>
+<h4 id="基于gds的社区结构分析">基于GDS的社区结构分析</h4>
+<p><a href="https://neo4j.com/docs/graph-data-science/current/algorithms/community/" target="_blank" rel="noopener">Community detection - Neo4j Graph Data Science</a></p>
+<h4 id="labelpropagation">LabelPropagation</h4>
+<pre tabindex="0"><code class="language-cypher" data-lang="cypher">CALL gds.labelPropagation.stream(&#39;IndustryGraph&#39;)
+YIELD nodeId, communityId AS Community
+RETURN gds.util.asNode(nodeId).name AS Name, gds.util.asNode(nodeId).root_code AS Class,Community
+ORDER BY Community, Name
+</code></pre><p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<figure  >
+  <div class="d-flex justify-content-center">
+    <div class="w-100" ><img alt="" srcset="
+               /project/gb_industry_knowledge_graph_starting/images/industry_graph/community_detection/label_propagation_huac4e975e8a07224cbe696334d5858ef1_230156_6e838a7c039ef56ae0bc7c8045e1deab.webp 400w,
+               /project/gb_industry_knowledge_graph_starting/images/industry_graph/community_detection/label_propagation_huac4e975e8a07224cbe696334d5858ef1_230156_bc00aa2aa8a9f355866a1df6a6982a16.webp 760w,
+               /project/gb_industry_knowledge_graph_starting/images/industry_graph/community_detection/label_propagation_huac4e975e8a07224cbe696334d5858ef1_230156_1200x1200_fit_q75_h2_lanczos_3.webp 1200w"
+               src="/project/gb_industry_knowledge_graph_starting/images/industry_graph/community_detection/label_propagation_huac4e975e8a07224cbe696334d5858ef1_230156_6e838a7c039ef56ae0bc7c8045e1deab.webp"
+               width="760"
+               height="391"
+               loading="lazy" data-zoomable /></div>
+  </div></figure>
+</p>
+<h4 id="strong-connected-components">Strong Connected Components</h4>
+<p>强连通分支</p>
+<pre tabindex="0"><code class="language-cypher" data-lang="cypher">
+CALL gds.scc.stream(&#39;IndustryGraph&#39;, {})
+YIELD nodeId, componentId
+RETURN gds.util.asNode(nodeId).name AS Name, componentId AS Component
+ORDER BY Component DESC
+</code></pre><p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<figure  >
+  <div class="d-flex justify-content-center">
+    <div class="w-100" ><img alt="" srcset="
+               /project/gb_industry_knowledge_graph_starting/images/industry_graph/community_detection/scc_huebfa2ddf3bc33c4059387943e69dba99_197930_879884e62755861b5c9e1347c12659df.webp 400w,
+               /project/gb_industry_knowledge_graph_starting/images/industry_graph/community_detection/scc_huebfa2ddf3bc33c4059387943e69dba99_197930_b3a733c5ce86ac6827377869f8848b37.webp 760w,
+               /project/gb_industry_knowledge_graph_starting/images/industry_graph/community_detection/scc_huebfa2ddf3bc33c4059387943e69dba99_197930_1200x1200_fit_q75_h2_lanczos_3.webp 1200w"
+               src="/project/gb_industry_knowledge_graph_starting/images/industry_graph/community_detection/scc_huebfa2ddf3bc33c4059387943e69dba99_197930_879884e62755861b5c9e1347c12659df.webp"
+               width="760"
+               height="457"
+               loading="lazy" data-zoomable /></div>
+  </div></figure>
+</p>
+<h4 id="week-connected-components">Week Connected Components</h4>
+<p>弱连通分支</p>
+<pre tabindex="0"><code class="language-cypher" data-lang="cypher">CALL gds.wcc.stream(&#39;IndustryGraph&#39;)
+YIELD nodeId, componentId
+RETURN gds.util.asNode(nodeId).name AS name, componentId
+ORDER BY componentId, name
+</code></pre><p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<figure  >
+  <div class="d-flex justify-content-center">
+    <div class="w-100" ><img alt="" srcset="
+               /project/gb_industry_knowledge_graph_starting/images/industry_graph/community_detection/wcc_huf6d1201188c9028234ca99fd53710031_151261_d7d92a0b51ec633a545b37b074219c47.webp 400w,
+               /project/gb_industry_knowledge_graph_starting/images/industry_graph/community_detection/wcc_huf6d1201188c9028234ca99fd53710031_151261_7ab768b25db88651d43cc1f786b8aa59.webp 760w,
+               /project/gb_industry_knowledge_graph_starting/images/industry_graph/community_detection/wcc_huf6d1201188c9028234ca99fd53710031_151261_1200x1200_fit_q75_h2_lanczos_3.webp 1200w"
+               src="/project/gb_industry_knowledge_graph_starting/images/industry_graph/community_detection/wcc_huf6d1201188c9028234ca99fd53710031_151261_d7d92a0b51ec633a545b37b074219c47.webp"
+               width="760"
+               height="429"
+               loading="lazy" data-zoomable /></div>
+  </div></figure>
+</p>
+<h3 id="节点邻域分析">节点邻域分析</h3>
+<p>Ricci Flow</p>
+<h2 id="0x03-拓展资料">0x03 拓展资料</h2>
+<h3 id="文档">文档</h3>
 <ul>
 <li><a href="https://www.modb.pro/db/425129" target="_blank" rel="noopener">Neo4j 图数据可视化工具介绍 - 墨天轮</a></li>
+<li><a href="https://neo4j.com/docs/graph-data-science/current/?ref=desktop" target="_blank" rel="noopener">The Neo4j Graph Data Science Library Manual v2.5 - Neo4j Graph Data Science</a></li>
+</ul>
+<h3 id="代码">代码</h3>
+<ul>
+<li><a href="https://github.com/saibalmars/GraphRicciCurvature" target="_blank" rel="noopener">GitHub - saibalmars/GraphRicciCurvature: A python library to compute the graph Ricci curvature and Ricci flow on NetworkX graph.</a></li>
 </ul>
 
     </div>
