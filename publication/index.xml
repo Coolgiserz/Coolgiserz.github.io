@@ -5,12 +5,357 @@
     <link>/publication/</link>
       <atom:link href="/publication/index.xml" rel="self" type="application/rss+xml" />
     <description>论文</description>
-    <generator>Wowchemy (https://wowchemy.com)</generator><language>en-us</language><lastBuildDate>Sun, 17 Dec 2023 00:12:22 +0800</lastBuildDate>
+    <generator>Wowchemy (https://wowchemy.com)</generator><language>en-us</language><lastBuildDate>Tue, 16 Jan 2024 22:19:19 +0800</lastBuildDate>
     <image>
       <url>/media/icon_hue03491371183284312b8b116a73ae5ab_79511_512x512_fill_lanczos_center_3.png</url>
       <title>论文</title>
       <link>/publication/</link>
     </image>
+    
+    <item>
+      <title>「论文阅读」基于倒排索引和字典树的站内搜索引擎的设计与实现</title>
+      <link>/publication/the-design-and-implementation-of-inverted-index-and-trie-based-search-engine-2017/</link>
+      <pubDate>Tue, 16 Jan 2024 22:19:19 +0800</pubDate>
+      <guid>/publication/the-design-and-implementation-of-inverted-index-and-trie-based-search-engine-2017/</guid>
+      <description>&lt;h2 id=&#34;论文总结&#34;&gt;论文总结&lt;/h2&gt;
+&lt;h3 id=&#34;实现效果&#34;&gt;实现效果&lt;/h3&gt;
+&lt;p&gt;通过结合倒排索引和字典树加快搜索，站内搜索响应时间0.02s，拼音联想响应时间2ms。项目应用成果展示：&lt;a href=&#34;http://apistore.baidu.com/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;百度APIStore的官网站内搜索&lt;/a&gt;&lt;/p&gt;
+&lt;h3 id=&#34;系统模块功能&#34;&gt;系统模块功能&lt;/h3&gt;
+&lt;p&gt;全文搜索引擎&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;基于数据源建立倒排索引&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;倒排索引保存&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;倒排索引增量更新&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;索引压缩&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;搜索结果排序&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;拼音搜索引擎&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;关键字检索&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;模糊查询&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;拼音联想&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;主要特性&#34;&gt;主要特性&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;搜索性能&lt;/p&gt;
+&lt;p&gt;预先建立倒排索引，&lt;strong&gt;搜索时通过索引找条目&lt;/strong&gt;，相比传统数据库全文搜索，更快。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;可移植性&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;独立的搜索服务&lt;/strong&gt;，通过序列化数据进行通信，可快速移植到不同的产品项目中。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;调用灵活性&lt;/p&gt;
+&lt;p&gt;RPC&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;用户体验&lt;/p&gt;
+&lt;p&gt;拼音联想、高亮摘要显示&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;可拓展性可用性可移植性设计&#34;&gt;可拓展性/可用性/可移植性设计&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;基于磁盘排序的归并算法&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;cidxHit-算法压缩&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;BM25-相关性计算&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;字典树-拼音联想&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;研究现状调研&#34;&gt;研究现状调研&lt;/h2&gt;
+&lt;p&gt;传统信息检索系统采用的技术：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;关键词匹配&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;修改数据库索引设计，如使用全文索引（Full-Text Index Technique）&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;瓶颈：TB级数据库的出现、用户查询时无法有效提供关键字导致依靠数据库关键字匹配的检索系统无法满足用户需求。&lt;/p&gt;
+&lt;h3 id=&#34;搜索引擎的分类&#34;&gt;搜索引擎的分类&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;目录式搜索引擎&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;全文搜索引擎&lt;/p&gt;
+&lt;p&gt;通过字典中的检索字表查字，按字和词检索；如何建立索引：扫描文章中的每一个词/字，记录该词/字在文章中出现的位置和次数，写入对应的文件中。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;元搜索引擎（Meta Search Engine）&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&#34;全文搜索引擎现状&#34;&gt;全文搜索引擎现状&lt;/h4&gt;
+&lt;p&gt;核心思想：通过字典表中的检索字表查字。&lt;/p&gt;
+&lt;p&gt;智能检索：分词词典、同义、同音词典、主题词典、相关同级词典、上下位词典检索给予用户智能提示。&lt;/p&gt;
+&lt;h5 id=&#34;全文检索对比数据库查询&#34;&gt;全文检索对比数据库查询&lt;/h5&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;&lt;/th&gt;
+&lt;th&gt;全文检索&lt;/th&gt;
+&lt;th&gt;关系型数据库&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;优点&lt;/td&gt;
+&lt;td&gt;搜索速度快&lt;/td&gt;
+&lt;td&gt;事务性强&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;易于拓展，支持不同数据源类型&lt;/td&gt;
+&lt;td&gt;对精确小量查询快&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;支持相关排序：可制定特定排序方式进行相关性排序&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;缺点&lt;/td&gt;
+&lt;td&gt;索引需要大量额外空间、操作；需要定期维护索引&lt;/td&gt;
+&lt;td&gt;大文本全文搜索经常超时&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;h5 id=&#34;关键技术概述&#34;&gt;关键技术概述&lt;/h5&gt;
+&lt;p&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure  &gt;
+  &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img alt=&#34;&#34; srcset=&#34;
+               /publication/the-design-and-implementation-of-inverted-index-and-trie-based-search-engine-2017/images/fig1-1_hu250cc2d3a151edf548194a43217e3e5c_163511_c249d5d08012dcf9963af20e9f93e3ca.webp 400w,
+               /publication/the-design-and-implementation-of-inverted-index-and-trie-based-search-engine-2017/images/fig1-1_hu250cc2d3a151edf548194a43217e3e5c_163511_ebcb6f5e0e30820c9ff0908a5bceb464.webp 760w,
+               /publication/the-design-and-implementation-of-inverted-index-and-trie-based-search-engine-2017/images/fig1-1_hu250cc2d3a151edf548194a43217e3e5c_163511_1200x1200_fit_q75_h2_lanczos_3.webp 1200w&#34;
+               src=&#34;/publication/the-design-and-implementation-of-inverted-index-and-trie-based-search-engine-2017/images/fig1-1_hu250cc2d3a151edf548194a43217e3e5c_163511_c249d5d08012dcf9963af20e9f93e3ca.webp&#34;
+               width=&#34;760&#34;
+               height=&#34;459&#34;
+               loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+  &lt;/div&gt;&lt;/figure&gt;
+&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;后台过程：索引创建引擎&lt;/p&gt;
+&lt;p&gt;从文本中获取字、词相关信息，按指定方式创建索引&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;前台过程：根据用户的查询请求，搜索指定索引，返回结果&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;站内搜索系统具体设计与实现&#34;&gt;站内搜索系统具体设计与实现&lt;/h2&gt;
+&lt;h3 id=&#34;基础框架&#34;&gt;基础框架&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;NLPC（自然语言处理云平台）&lt;/p&gt;
+&lt;p&gt;集成分词、词性标注、专名识别、term 重要性、plsa(pLSA 主题模型-概率潜在语义分析)、语义表示、query 解析和情感分析等服务。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Baidu-RPC 框架&lt;/p&gt;
+&lt;p&gt;支持不同语言的远程调用。&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;需求&#34;&gt;需求&lt;/h3&gt;
+&lt;h4 id=&#34;搜索系统交互逻辑&#34;&gt;搜索系统交互逻辑&lt;/h4&gt;
+&lt;p&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure  &gt;
+  &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img alt=&#34;&#34; srcset=&#34;
+               /publication/the-design-and-implementation-of-inverted-index-and-trie-based-search-engine-2017/images/fig2-1_hudbd261d89a8d324dff3fe59537292b29_178556_227e3271d063ba1a6290efe54a0ec61a.webp 400w,
+               /publication/the-design-and-implementation-of-inverted-index-and-trie-based-search-engine-2017/images/fig2-1_hudbd261d89a8d324dff3fe59537292b29_178556_3e1750c24e948bcd18742ba9d5d390e9.webp 760w,
+               /publication/the-design-and-implementation-of-inverted-index-and-trie-based-search-engine-2017/images/fig2-1_hudbd261d89a8d324dff3fe59537292b29_178556_1200x1200_fit_q75_h2_lanczos_3.webp 1200w&#34;
+               src=&#34;/publication/the-design-and-implementation-of-inverted-index-and-trie-based-search-engine-2017/images/fig2-1_hudbd261d89a8d324dff3fe59537292b29_178556_227e3271d063ba1a6290efe54a0ec61a.webp&#34;
+               width=&#34;635&#34;
+               height=&#34;760&#34;
+               loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+  &lt;/div&gt;&lt;/figure&gt;
+&lt;/p&gt;
+&lt;h4 id=&#34;拼音搜索引擎需求&#34;&gt;拼音搜索引擎需求&lt;/h4&gt;
+&lt;p&gt;全拼音、汉字+拼音、首字母组合&lt;/p&gt;
+&lt;p&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure  &gt;
+  &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img alt=&#34;&#34; srcset=&#34;
+               /publication/the-design-and-implementation-of-inverted-index-and-trie-based-search-engine-2017/images/fig2-2_hu41608b4176faf463098b10f92998e3af_186293_e8de2fbd39a198ff38a1f09bfc334f35.webp 400w,
+               /publication/the-design-and-implementation-of-inverted-index-and-trie-based-search-engine-2017/images/fig2-2_hu41608b4176faf463098b10f92998e3af_186293_6d5f1a2e7141110319d26c297762717c.webp 760w,
+               /publication/the-design-and-implementation-of-inverted-index-and-trie-based-search-engine-2017/images/fig2-2_hu41608b4176faf463098b10f92998e3af_186293_1200x1200_fit_q75_h2_lanczos_3.webp 1200w&#34;
+               src=&#34;/publication/the-design-and-implementation-of-inverted-index-and-trie-based-search-engine-2017/images/fig2-2_hu41608b4176faf463098b10f92998e3af_186293_e8de2fbd39a198ff38a1f09bfc334f35.webp&#34;
+               width=&#34;760&#34;
+               height=&#34;681&#34;
+               loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+  &lt;/div&gt;&lt;/figure&gt;
+&lt;/p&gt;
+&lt;p&gt;站内搜索交互核心需求表：&lt;/p&gt;
+&lt;p&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure  &gt;
+  &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img alt=&#34;&#34; srcset=&#34;
+               /publication/the-design-and-implementation-of-inverted-index-and-trie-based-search-engine-2017/images/table2-1_hu3016d44d29188c8df7a06a669eeb7138_269490_249c21eb8c5efea60ae42b6691157b09.webp 400w,
+               /publication/the-design-and-implementation-of-inverted-index-and-trie-based-search-engine-2017/images/table2-1_hu3016d44d29188c8df7a06a669eeb7138_269490_9afe234e051c72c020c69d26ae9ec1f4.webp 760w,
+               /publication/the-design-and-implementation-of-inverted-index-and-trie-based-search-engine-2017/images/table2-1_hu3016d44d29188c8df7a06a669eeb7138_269490_1200x1200_fit_q75_h2_lanczos_3.webp 1200w&#34;
+               src=&#34;/publication/the-design-and-implementation-of-inverted-index-and-trie-based-search-engine-2017/images/table2-1_hu3016d44d29188c8df7a06a669eeb7138_269490_249c21eb8c5efea60ae42b6691157b09.webp&#34;
+               width=&#34;760&#34;
+               height=&#34;624&#34;
+               loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+  &lt;/div&gt;&lt;/figure&gt;
+&lt;/p&gt;
+&lt;h4 id=&#34;后台检索引擎需求&#34;&gt;后台检索引擎需求&lt;/h4&gt;
+&lt;p&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure  &gt;
+  &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img alt=&#34;&#34; srcset=&#34;
+               /publication/the-design-and-implementation-of-inverted-index-and-trie-based-search-engine-2017/images/fig2-3_hufc24db0dd94c4f84a297340fd24291e6_155136_815acd2dbaeefec3b1b83d9e1af74032.webp 400w,
+               /publication/the-design-and-implementation-of-inverted-index-and-trie-based-search-engine-2017/images/fig2-3_hufc24db0dd94c4f84a297340fd24291e6_155136_1a35c70cb0fa528e1afdfd15deac27c8.webp 760w,
+               /publication/the-design-and-implementation-of-inverted-index-and-trie-based-search-engine-2017/images/fig2-3_hufc24db0dd94c4f84a297340fd24291e6_155136_1200x1200_fit_q75_h2_lanczos_3.webp 1200w&#34;
+               src=&#34;/publication/the-design-and-implementation-of-inverted-index-and-trie-based-search-engine-2017/images/fig2-3_hufc24db0dd94c4f84a297340fd24291e6_155136_815acd2dbaeefec3b1b83d9e1af74032.webp&#34;
+               width=&#34;760&#34;
+               height=&#34;447&#34;
+               loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+  &lt;/div&gt;&lt;/figure&gt;
+&lt;/p&gt;
+&lt;p&gt;索引引擎核心功能需求分析表:&lt;/p&gt;
+&lt;p&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure  &gt;
+  &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img alt=&#34;&#34; srcset=&#34;
+               /publication/the-design-and-implementation-of-inverted-index-and-trie-based-search-engine-2017/images/table2-2_hub5a45686df3f3de29ebbd3c2f17c8e14_271629_26571807f4731623d31f5a257f16fa8e.webp 400w,
+               /publication/the-design-and-implementation-of-inverted-index-and-trie-based-search-engine-2017/images/table2-2_hub5a45686df3f3de29ebbd3c2f17c8e14_271629_0be2c162d292c9c03cfe32dd5301e175.webp 760w,
+               /publication/the-design-and-implementation-of-inverted-index-and-trie-based-search-engine-2017/images/table2-2_hub5a45686df3f3de29ebbd3c2f17c8e14_271629_1200x1200_fit_q75_h2_lanczos_3.webp 1200w&#34;
+               src=&#34;/publication/the-design-and-implementation-of-inverted-index-and-trie-based-search-engine-2017/images/table2-2_hub5a45686df3f3de29ebbd3c2f17c8e14_271629_26571807f4731623d31f5a257f16fa8e.webp&#34;
+               width=&#34;760&#34;
+               height=&#34;657&#34;
+               loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+  &lt;/div&gt;&lt;/figure&gt;
+&lt;/p&gt;
+&lt;h2 id=&#34;文献&#34;&gt;文献&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;陶晓鹏. 面向(中文)全文数据库的全文索引的研究[D]. 复旦大学, 1999&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;吕晓旭. 基于倒排索引的关系数据库全文检索查询效率研究[D]. 北京工业&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;大学, 2009&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;史亮. Web 搜索引擎索引压缩与合并技术研究[D]. 中国科学院大学, 2013&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
     
     <item>
       <title>「论文阅读」The Anatomy of a Large Scale Hypertextual Web Search Engine</title>

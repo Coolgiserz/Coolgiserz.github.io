@@ -1,0 +1,1607 @@
+<!DOCTYPE html><html lang="en-us" >
+
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  
+  
+  
+    <meta name="generator" content="Wowchemy 5.5.0 for Hugo" />
+  
+
+  
+  
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+  
+  
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  
+
+  
+  
+  
+    
+      
+      <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Roboto+Mono&family=Roboto:wght@400;700&display=swap">
+      <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Roboto+Mono&family=Roboto:wght@400;700&display=swap" media="print" onload="this.media='all'">
+    
+  
+
+  
+  
+  
+  
+  
+    
+    
+    
+  
+  
+
+  <meta name="author" content="CoolCats" />
+
+  
+  
+  
+    
+  
+  <meta name="description" content="随着互联网的不断发展，快节奏的生活，人们对更好的用户体验的追求， 搜索的长时间等待变得让人无法忍受。如何获得更快的搜索、更好的搜索结果、 更符合用户心理的推荐成为很多网站、手机应用的痛点。本项目意在通过建立 倒排索引加快搜索，使用字典树结构快速找到联想词，二者相结合的方式提供 良好的搜索体验。完成一个独立的站内搜索引擎，使得项目可以快速的移植到 不同的系统中，提高开发速度，降低开发成本。本项目主要完成一个轻量级站内搜索引擎。系统主要分为两大部分:第一 部分为全文索引引擎，主要负责从数据源建立倒排索引、以有效的格式保存索 引、增量更新索引、索引的压缩、搜索排序等功能; 第二部分主要为拼音搜索 引擎，主要完成关键字检索、模糊查询、拼音联想等功能;此外完成系统对外 的相关接口。主要的工作内容是:独立完成对整个站内搜索引擎需求分析、系 统设计、系统实现以及测试等工作;完成了系统的 8 大核心功能模块，2 个辅 助模块以及所有对外的接口。具体包括(1)文档数据源获取，(2)倒排索引的建立 与压缩，(3)倒排索引更新，(4)倒排索引的查找，(5)搜索排序，(6)拼音转化功能 的实现，(7)拼音搜索 Trie 建立，(8)拼音联想词的查找，以及辅助功能如高亮显 示、相关推荐等功能。" />
+
+  
+  <link rel="alternate" hreflang="en-us" href="/publication/the-design-and-implementation-of-inverted-index-and-trie-based-search-engine-2017/" />
+
+  
+  
+  
+    <meta name="theme-color" content="#1565c0" />
+  
+
+  
+  
+    
+    <script src="/js/mathjax-config.js"></script>
+  
+
+  
+
+  <link rel="stylesheet" href="/css/vendor-bundle.min.c7b8d9abd591ba2253ea42747e3ac3f5.css" media="print" onload="this.media='all'">
+
+  
+  
+  
+    
+    
+      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/academicons@1.9.1/css/academicons.min.css" integrity="sha512-W0xM4mr6dEP9nREo7Z9z+9X70wytKvMGeDsj7ps2+xg5QPrEBXC8tAW1IFnzjR6eoJ90JmCnFzerQJTLzIEHjA==" crossorigin="anonymous" media="print" onload="this.media='all'">
+    
+
+    
+    
+    
+    
+      
+      
+    
+    
+    
+
+    
+    
+    
+      
+    
+    
+      
+      
+        
+          <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@10.2.1/build/styles/github.min.css" crossorigin="anonymous" title="hl-light" media="print" onload="this.media='all'">
+          <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@10.2.1/build/styles/dracula.min.css" crossorigin="anonymous" title="hl-dark" media="print" onload="this.media='all'" disabled>
+        
+      
+    
+
+    
+    
+    
+      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.7.1/dist/leaflet.min.css" integrity="" crossorigin="anonymous" media="print" onload="this.media='all'">
+    
+
+    
+
+    
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js" integrity="" crossorigin="anonymous" async></script>
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+  
+
+  
+  
+  
+  
+  
+  <link rel="stylesheet" href="/css/wowchemy.1052fab8b7700a3dc49ee23683097d66.css" />
+
+  
+
+
+
+  
+
+
+  
+
+
+  
+
+
+  <script>
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?51ae6db546b05b91d4053193ba49123d";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+  
+  
+  
+
+  
+
+  
+
+  <link rel="icon" type="image/png" href="/media/icon_hue03491371183284312b8b116a73ae5ab_79511_32x32_fill_lanczos_center_3.png" />
+  <link rel="apple-touch-icon" type="image/png" href="/media/icon_hue03491371183284312b8b116a73ae5ab_79511_180x180_fill_lanczos_center_3.png" />
+
+  <link rel="canonical" href="/publication/the-design-and-implementation-of-inverted-index-and-trie-based-search-engine-2017/" />
+
+  
+  
+  
+  
+  
+  
+  
+  
+    
+    
+  
+  
+
+  
+  
+    
+    
+  
+  <meta property="twitter:card" content="summary" />
+  
+    <meta property="twitter:site" content="@wowchemy" />
+    <meta property="twitter:creator" content="@wowchemy" />
+  
+  <meta property="og:site_name" content="CoolCats" />
+  <meta property="og:url" content="/publication/the-design-and-implementation-of-inverted-index-and-trie-based-search-engine-2017/" />
+  <meta property="og:title" content="「论文阅读」基于倒排索引和字典树的站内搜索引擎的设计与实现 | CoolCats" />
+  <meta property="og:description" content="随着互联网的不断发展，快节奏的生活，人们对更好的用户体验的追求， 搜索的长时间等待变得让人无法忍受。如何获得更快的搜索、更好的搜索结果、 更符合用户心理的推荐成为很多网站、手机应用的痛点。本项目意在通过建立 倒排索引加快搜索，使用字典树结构快速找到联想词，二者相结合的方式提供 良好的搜索体验。完成一个独立的站内搜索引擎，使得项目可以快速的移植到 不同的系统中，提高开发速度，降低开发成本。本项目主要完成一个轻量级站内搜索引擎。系统主要分为两大部分:第一 部分为全文索引引擎，主要负责从数据源建立倒排索引、以有效的格式保存索 引、增量更新索引、索引的压缩、搜索排序等功能; 第二部分主要为拼音搜索 引擎，主要完成关键字检索、模糊查询、拼音联想等功能;此外完成系统对外 的相关接口。主要的工作内容是:独立完成对整个站内搜索引擎需求分析、系 统设计、系统实现以及测试等工作;完成了系统的 8 大核心功能模块，2 个辅 助模块以及所有对外的接口。具体包括(1)文档数据源获取，(2)倒排索引的建立 与压缩，(3)倒排索引更新，(4)倒排索引的查找，(5)搜索排序，(6)拼音转化功能 的实现，(7)拼音搜索 Trie 建立，(8)拼音联想词的查找，以及辅助功能如高亮显 示、相关推荐等功能。" /><meta property="og:image" content="/media/icon_hue03491371183284312b8b116a73ae5ab_79511_512x512_fill_lanczos_center_3.png" />
+    <meta property="twitter:image" content="/media/icon_hue03491371183284312b8b116a73ae5ab_79511_512x512_fill_lanczos_center_3.png" /><meta property="og:locale" content="en-us" />
+  
+    
+      <meta
+        property="article:published_time"
+        content="2017-01-16T22:19:19&#43;08:00"
+      />
+    
+    <meta property="article:modified_time" content="2024-01-16T22:19:19&#43;08:00">
+  
+
+  
+
+
+    
+
+
+
+
+
+
+
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "/publication/the-design-and-implementation-of-inverted-index-and-trie-based-search-engine-2017/"
+  },
+  "headline": "「论文阅读」基于倒排索引和字典树的站内搜索引擎的设计与实现",
+  
+  "datePublished": "2017-01-16T22:19:19+08:00",
+  "dateModified": "2024-01-16T22:19:19+08:00",
+  
+  "author": {
+    "@type": "Person",
+    "name": "CoolCats"
+  },
+  
+  "publisher": {
+    "@type": "Organization",
+    "name": "CoolCats",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "/media/icon_hue03491371183284312b8b116a73ae5ab_79511_192x192_fill_lanczos_center_3.png"
+    }
+  },
+  "description": "随着互联网的不断发展，快节奏的生活，人们对更好的用户体验的追求， 搜索的长时间等待变得让人无法忍受。如何获得更快的搜索、更好的搜索结果、 更符合用户心理的推荐成为很多网站、手机应用的痛点。本项目意在通过建立 倒排索引加快搜索，使用字典树结构快速找到联想词，二者相结合的方式提供 良好的搜索体验。完成一个独立的站内搜索引擎，使得项目可以快速的移植到 不同的系统中，提高开发速度，降低开发成本。本项目主要完成一个轻量级站内搜索引擎。系统主要分为两大部分:第一 部分为全文索引引擎，主要负责从数据源建立倒排索引、以有效的格式保存索 引、增量更新索引、索引的压缩、搜索排序等功能; 第二部分主要为拼音搜索 引擎，主要完成关键字检索、模糊查询、拼音联想等功能;此外完成系统对外 的相关接口。主要的工作内容是:独立完成对整个站内搜索引擎需求分析、系 统设计、系统实现以及测试等工作;完成了系统的 8 大核心功能模块，2 个辅 助模块以及所有对外的接口。具体包括(1)文档数据源获取，(2)倒排索引的建立 与压缩，(3)倒排索引更新，(4)倒排索引的查找，(5)搜索排序，(6)拼音转化功能 的实现，(7)拼音搜索 Trie 建立，(8)拼音联想词的查找，以及辅助功能如高亮显 示、相关推荐等功能。"
+}
+</script>
+
+  
+
+  
+
+  
+
+  
+
+
+
+
+
+  <title>「论文阅读」基于倒排索引和字典树的站内搜索引擎的设计与实现 | CoolCats</title>
+</head>
+
+
+<body id="top" data-spy="scroll" data-offset="70" data-target="#TableOfContents" class="page-wrapper   " data-wc-page-id="d27e6bf9d6b0928007bc036e65b69f24" >
+
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  <script src="/js/wowchemy-init.min.2ed908358299dd7ab553faae685c746c.js"></script>
+
+  
+
+
+<aside class="search-modal" id="search">
+  <div class="container">
+    <section class="search-header">
+
+      <div class="row no-gutters justify-content-between mb-3">
+        <div class="col-6">
+          <h1>Search</h1>
+        </div>
+        <div class="col-6 col-search-close">
+          <a class="js-search" href="#" aria-label="Close"><i class="fas fa-times-circle text-muted" aria-hidden="true"></i></a>
+        </div>
+      </div>
+
+      <div id="search-box">
+        
+        <input name="q" id="search-query" placeholder="Search..." autocapitalize="off"
+        autocomplete="off" autocorrect="off" spellcheck="false" type="search" class="form-control"
+        aria-label="Search...">
+        
+      </div>
+
+      
+      
+
+      
+
+    </section>
+    <section class="section-search-results">
+
+      <div id="search-hits">
+        
+      </div>
+
+    </section>
+  </div>
+</aside>
+
+
+
+  <div class="page-header">
+    
+
+
+
+
+
+
+
+
+
+
+
+
+<header class="header--fixed">
+  <nav class="navbar navbar-expand-lg navbar-light compensate-for-scrollbar" id="navbar-main">
+    <div class="container-xl">
+
+      
+      <div class="d-none d-lg-inline-flex">
+        <a class="navbar-brand" href="/">CoolCats</a>
+      </div>
+      
+
+      
+      <button type="button" class="navbar-toggler" data-toggle="collapse"
+              data-target="#navbar-content" aria-controls="navbar-content" aria-expanded="false" aria-label="Toggle navigation">
+      <span><i class="fas fa-bars"></i></span>
+      </button>
+      
+
+      
+      <div class="navbar-brand-mobile-wrapper d-inline-flex d-lg-none">
+        <a class="navbar-brand" href="/">CoolCats</a>
+      </div>
+      
+
+      
+      
+      <div class="navbar-collapse main-menu-item collapse justify-content-start" id="navbar-content">
+
+        
+        <ul class="navbar-nav d-md-inline-flex">
+          
+
+          
+
+          
+          
+          
+
+          
+
+          
+          
+          
+          
+
+          
+            
+              
+              
+            
+            
+          
+
+          <li class="nav-item">
+            <a class="nav-link " href="/post"><span>博客</span></a>
+          </li>
+
+          
+          
+
+          
+
+          
+          
+          
+            
+          
+
+          
+
+          
+          
+          
+          
+
+          
+            
+              
+              
+            
+            
+          
+
+          <li class="nav-item">
+            <a class="nav-link " href="/event"><span>趣事</span></a>
+          </li>
+
+          
+          
+
+          
+
+          
+          
+          
+            
+          
+
+          
+
+          
+          
+          
+          
+
+          
+            
+              
+              
+            
+            
+          
+
+          <li class="nav-item">
+            <a class="nav-link " href="/project"><span>项目</span></a>
+          </li>
+
+          
+          
+
+          
+
+          
+          
+          
+            
+          
+
+          
+
+          
+          
+          
+          
+
+          
+            
+              
+              
+            
+            
+          
+
+          <li class="nav-item">
+            <a class="nav-link  active" href="/publication"><span>论文</span></a>
+          </li>
+
+          
+          
+
+          
+
+          
+          
+          
+            
+          
+
+          
+
+          
+          
+          
+          
+
+          
+            
+              
+              
+            
+            
+          
+
+          <li class="nav-item">
+            <a class="nav-link " href="/contact"><span>联系</span></a>
+          </li>
+
+          
+          
+
+          
+
+          
+          
+          
+            
+          
+
+          
+
+          
+          
+          
+          
+
+          
+            
+              
+              
+            
+            
+          
+
+          <li class="nav-item">
+            <a class="nav-link " href="/media/files/cv"><span>简历</span></a>
+          </li>
+
+          
+          
+
+        
+
+          
+        </ul>
+      </div>
+
+      <ul class="nav-icons navbar-nav flex-row ml-auto d-flex pl-md-2">
+
+        
+        
+          
+        
+
+        
+        
+        <li class="nav-item">
+          <a class="nav-link js-search" href="#" aria-label="Search"><i class="fas fa-search" aria-hidden="true"></i></a>
+        </li>
+        
+
+        
+        
+        
+        <li class="nav-item dropdown theme-dropdown">
+          <a href="#" class="nav-link" data-toggle="dropdown" aria-haspopup="true" aria-label="Display preferences">
+            <i class="fas fa-moon" aria-hidden="true"></i>
+          </a>
+          <div class="dropdown-menu">
+            <a href="#" class="dropdown-item js-set-theme-light">
+              <span>Light</span>
+            </a>
+            <a href="#" class="dropdown-item js-set-theme-dark">
+              <span>Dark</span>
+            </a>
+            <a href="#" class="dropdown-item js-set-theme-auto">
+              <span>Automatic</span>
+            </a>
+          </div>
+        </li>
+        
+
+        
+        
+
+      </ul>
+
+    </div>
+  </nav>
+</header>
+
+
+  </div>
+
+  <div class="page-body">
+    
+    
+    
+
+    
+
+
+
+
+
+
+
+
+<div class="pub">
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+  
+  
+<div class="article-container pt-3">
+  <h1>「论文阅读」基于倒排索引和字典树的站内搜索引擎的设计与实现</h1>
+
+  
+
+  
+    
+
+
+<div class="article-metadata">
+
+  
+  
+
+  
+  <span class="article-date">
+    
+    
+      
+    
+    January, 2024
+  </span>
+  
+
+  
+
+  
+
+  
+  
+  
+  
+
+  
+  
+  <span class="middot-divider"></span>
+  <span class="article-categories">
+    <i class="fas fa-folder mr-1"></i><a href="/category/%E6%90%9C%E7%B4%A2%E5%BC%95%E6%93%8E/">搜索引擎</a></span>
+  
+
+</div>
+
+    
+
+
+
+
+
+  
+</div>
+
+
+
+  <div class="article-container">
+
+    
+    <h3>Abstract</h3>
+    <p class="pub-abstract">随着互联网的不断发展，快节奏的生活，人们对更好的用户体验的追求， 搜索的长时间等待变得让人无法忍受。如何获得更快的搜索、更好的搜索结果、 更符合用户心理的推荐成为很多网站、手机应用的痛点。本项目意在通过建立 倒排索引加快搜索，使用字典树结构快速找到联想词，二者相结合的方式提供 良好的搜索体验。完成一个独立的站内搜索引擎，使得项目可以快速的移植到 不同的系统中，提高开发速度，降低开发成本。本项目主要完成一个轻量级站内搜索引擎。系统主要分为两大部分:第一 部分为全文索引引擎，主要负责从数据源建立倒排索引、以有效的格式保存索 引、增量更新索引、索引的压缩、搜索排序等功能; 第二部分主要为拼音搜索 引擎，主要完成关键字检索、模糊查询、拼音联想等功能;此外完成系统对外 的相关接口。主要的工作内容是:独立完成对整个站内搜索引擎需求分析、系 统设计、系统实现以及测试等工作;完成了系统的 8 大核心功能模块，2 个辅 助模块以及所有对外的接口。具体包括(1)文档数据源获取，(2)倒排索引的建立 与压缩，(3)倒排索引更新，(4)倒排索引的查找，(5)搜索排序，(6)拼音转化功能 的实现，(7)拼音搜索 Trie 建立，(8)拼音联想词的查找，以及辅助功能如高亮显 示、相关推荐等功能。</p>
+    
+
+    
+    
+    <div class="row">
+      <div class="col-md-1"></div>
+      <div class="col-md-10">
+        <div class="row">
+          <div class="col-12 col-md-3 pub-row-heading">Type</div>
+          <div class="col-12 col-md-9">
+            <a href="/publication/#7">
+              Thesis
+            </a>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-1"></div>
+    </div>
+    <div class="d-md-none space-below"></div>
+    
+
+    
+
+    <div class="space-below"></div>
+
+    <div class="article-style"><h2 id="论文总结">论文总结</h2>
+<h3 id="实现效果">实现效果</h3>
+<p>通过结合倒排索引和字典树加快搜索，站内搜索响应时间0.02s，拼音联想响应时间2ms。项目应用成果展示：<a href="http://apistore.baidu.com/" target="_blank" rel="noopener">百度APIStore的官网站内搜索</a></p>
+<h3 id="系统模块功能">系统模块功能</h3>
+<p>全文搜索引擎</p>
+<ul>
+<li>
+<p>基于数据源建立倒排索引</p>
+</li>
+<li>
+<p>倒排索引保存</p>
+</li>
+<li>
+<p>倒排索引增量更新</p>
+</li>
+<li>
+<p>索引压缩</p>
+</li>
+<li>
+<p>搜索结果排序</p>
+</li>
+</ul>
+<p>拼音搜索引擎</p>
+<ul>
+<li>
+<p>关键字检索</p>
+</li>
+<li>
+<p>模糊查询</p>
+</li>
+<li>
+<p>拼音联想</p>
+</li>
+</ul>
+<h3 id="主要特性">主要特性</h3>
+<ul>
+<li>
+<p>搜索性能</p>
+<p>预先建立倒排索引，<strong>搜索时通过索引找条目</strong>，相比传统数据库全文搜索，更快。</p>
+</li>
+<li>
+<p>可移植性</p>
+<p><strong>独立的搜索服务</strong>，通过序列化数据进行通信，可快速移植到不同的产品项目中。</p>
+</li>
+<li>
+<p>调用灵活性</p>
+<p>RPC</p>
+</li>
+<li>
+<p>用户体验</p>
+<p>拼音联想、高亮摘要显示</p>
+</li>
+</ul>
+<h3 id="可拓展性可用性可移植性设计">可拓展性/可用性/可移植性设计</h3>
+<ul>
+<li>
+<p>基于磁盘排序的归并算法</p>
+</li>
+<li>
+<p>cidxHit-算法压缩</p>
+</li>
+<li>
+<p>BM25-相关性计算</p>
+</li>
+<li>
+<p>字典树-拼音联想</p>
+</li>
+</ul>
+<h2 id="研究现状调研">研究现状调研</h2>
+<p>传统信息检索系统采用的技术：</p>
+<ul>
+<li>
+<p>关键词匹配</p>
+</li>
+<li>
+<p>修改数据库索引设计，如使用全文索引（Full-Text Index Technique）</p>
+</li>
+</ul>
+<p>瓶颈：TB级数据库的出现、用户查询时无法有效提供关键字导致依靠数据库关键字匹配的检索系统无法满足用户需求。</p>
+<h3 id="搜索引擎的分类">搜索引擎的分类</h3>
+<ul>
+<li>
+<p>目录式搜索引擎</p>
+</li>
+<li>
+<p>全文搜索引擎</p>
+<p>通过字典中的检索字表查字，按字和词检索；如何建立索引：扫描文章中的每一个词/字，记录该词/字在文章中出现的位置和次数，写入对应的文件中。</p>
+</li>
+<li>
+<p>元搜索引擎（Meta Search Engine）</p>
+</li>
+</ul>
+<h4 id="全文搜索引擎现状">全文搜索引擎现状</h4>
+<p>核心思想：通过字典表中的检索字表查字。</p>
+<p>智能检索：分词词典、同义、同音词典、主题词典、相关同级词典、上下位词典检索给予用户智能提示。</p>
+<h5 id="全文检索对比数据库查询">全文检索对比数据库查询</h5>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>全文检索</th>
+<th>关系型数据库</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>优点</td>
+<td>搜索速度快</td>
+<td>事务性强</td>
+</tr>
+<tr>
+<td></td>
+<td>易于拓展，支持不同数据源类型</td>
+<td>对精确小量查询快</td>
+</tr>
+<tr>
+<td></td>
+<td>支持相关排序：可制定特定排序方式进行相关性排序</td>
+<td></td>
+</tr>
+<tr>
+<td>缺点</td>
+<td>索引需要大量额外空间、操作；需要定期维护索引</td>
+<td>大文本全文搜索经常超时</td>
+</tr>
+</tbody>
+</table>
+<h5 id="关键技术概述">关键技术概述</h5>
+<p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<figure  >
+  <div class="d-flex justify-content-center">
+    <div class="w-100" ><img alt="" srcset="
+               /publication/the-design-and-implementation-of-inverted-index-and-trie-based-search-engine-2017/images/fig1-1_hu250cc2d3a151edf548194a43217e3e5c_163511_c249d5d08012dcf9963af20e9f93e3ca.webp 400w,
+               /publication/the-design-and-implementation-of-inverted-index-and-trie-based-search-engine-2017/images/fig1-1_hu250cc2d3a151edf548194a43217e3e5c_163511_ebcb6f5e0e30820c9ff0908a5bceb464.webp 760w,
+               /publication/the-design-and-implementation-of-inverted-index-and-trie-based-search-engine-2017/images/fig1-1_hu250cc2d3a151edf548194a43217e3e5c_163511_1200x1200_fit_q75_h2_lanczos_3.webp 1200w"
+               src="/publication/the-design-and-implementation-of-inverted-index-and-trie-based-search-engine-2017/images/fig1-1_hu250cc2d3a151edf548194a43217e3e5c_163511_c249d5d08012dcf9963af20e9f93e3ca.webp"
+               width="760"
+               height="459"
+               loading="lazy" data-zoomable /></div>
+  </div></figure>
+</p>
+<ul>
+<li>
+<p>后台过程：索引创建引擎</p>
+<p>从文本中获取字、词相关信息，按指定方式创建索引</p>
+</li>
+<li>
+<p>前台过程：根据用户的查询请求，搜索指定索引，返回结果</p>
+</li>
+</ul>
+<h2 id="站内搜索系统具体设计与实现">站内搜索系统具体设计与实现</h2>
+<h3 id="基础框架">基础框架</h3>
+<ul>
+<li>
+<p>NLPC（自然语言处理云平台）</p>
+<p>集成分词、词性标注、专名识别、term 重要性、plsa(pLSA 主题模型-概率潜在语义分析)、语义表示、query 解析和情感分析等服务。</p>
+</li>
+<li>
+<p>Baidu-RPC 框架</p>
+<p>支持不同语言的远程调用。</p>
+</li>
+</ul>
+<h3 id="需求">需求</h3>
+<h4 id="搜索系统交互逻辑">搜索系统交互逻辑</h4>
+<p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<figure  >
+  <div class="d-flex justify-content-center">
+    <div class="w-100" ><img alt="" srcset="
+               /publication/the-design-and-implementation-of-inverted-index-and-trie-based-search-engine-2017/images/fig2-1_hudbd261d89a8d324dff3fe59537292b29_178556_227e3271d063ba1a6290efe54a0ec61a.webp 400w,
+               /publication/the-design-and-implementation-of-inverted-index-and-trie-based-search-engine-2017/images/fig2-1_hudbd261d89a8d324dff3fe59537292b29_178556_3e1750c24e948bcd18742ba9d5d390e9.webp 760w,
+               /publication/the-design-and-implementation-of-inverted-index-and-trie-based-search-engine-2017/images/fig2-1_hudbd261d89a8d324dff3fe59537292b29_178556_1200x1200_fit_q75_h2_lanczos_3.webp 1200w"
+               src="/publication/the-design-and-implementation-of-inverted-index-and-trie-based-search-engine-2017/images/fig2-1_hudbd261d89a8d324dff3fe59537292b29_178556_227e3271d063ba1a6290efe54a0ec61a.webp"
+               width="635"
+               height="760"
+               loading="lazy" data-zoomable /></div>
+  </div></figure>
+</p>
+<h4 id="拼音搜索引擎需求">拼音搜索引擎需求</h4>
+<p>全拼音、汉字+拼音、首字母组合</p>
+<p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<figure  >
+  <div class="d-flex justify-content-center">
+    <div class="w-100" ><img alt="" srcset="
+               /publication/the-design-and-implementation-of-inverted-index-and-trie-based-search-engine-2017/images/fig2-2_hu41608b4176faf463098b10f92998e3af_186293_e8de2fbd39a198ff38a1f09bfc334f35.webp 400w,
+               /publication/the-design-and-implementation-of-inverted-index-and-trie-based-search-engine-2017/images/fig2-2_hu41608b4176faf463098b10f92998e3af_186293_6d5f1a2e7141110319d26c297762717c.webp 760w,
+               /publication/the-design-and-implementation-of-inverted-index-and-trie-based-search-engine-2017/images/fig2-2_hu41608b4176faf463098b10f92998e3af_186293_1200x1200_fit_q75_h2_lanczos_3.webp 1200w"
+               src="/publication/the-design-and-implementation-of-inverted-index-and-trie-based-search-engine-2017/images/fig2-2_hu41608b4176faf463098b10f92998e3af_186293_e8de2fbd39a198ff38a1f09bfc334f35.webp"
+               width="760"
+               height="681"
+               loading="lazy" data-zoomable /></div>
+  </div></figure>
+</p>
+<p>站内搜索交互核心需求表：</p>
+<p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<figure  >
+  <div class="d-flex justify-content-center">
+    <div class="w-100" ><img alt="" srcset="
+               /publication/the-design-and-implementation-of-inverted-index-and-trie-based-search-engine-2017/images/table2-1_hu3016d44d29188c8df7a06a669eeb7138_269490_249c21eb8c5efea60ae42b6691157b09.webp 400w,
+               /publication/the-design-and-implementation-of-inverted-index-and-trie-based-search-engine-2017/images/table2-1_hu3016d44d29188c8df7a06a669eeb7138_269490_9afe234e051c72c020c69d26ae9ec1f4.webp 760w,
+               /publication/the-design-and-implementation-of-inverted-index-and-trie-based-search-engine-2017/images/table2-1_hu3016d44d29188c8df7a06a669eeb7138_269490_1200x1200_fit_q75_h2_lanczos_3.webp 1200w"
+               src="/publication/the-design-and-implementation-of-inverted-index-and-trie-based-search-engine-2017/images/table2-1_hu3016d44d29188c8df7a06a669eeb7138_269490_249c21eb8c5efea60ae42b6691157b09.webp"
+               width="760"
+               height="624"
+               loading="lazy" data-zoomable /></div>
+  </div></figure>
+</p>
+<h4 id="后台检索引擎需求">后台检索引擎需求</h4>
+<p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<figure  >
+  <div class="d-flex justify-content-center">
+    <div class="w-100" ><img alt="" srcset="
+               /publication/the-design-and-implementation-of-inverted-index-and-trie-based-search-engine-2017/images/fig2-3_hufc24db0dd94c4f84a297340fd24291e6_155136_815acd2dbaeefec3b1b83d9e1af74032.webp 400w,
+               /publication/the-design-and-implementation-of-inverted-index-and-trie-based-search-engine-2017/images/fig2-3_hufc24db0dd94c4f84a297340fd24291e6_155136_1a35c70cb0fa528e1afdfd15deac27c8.webp 760w,
+               /publication/the-design-and-implementation-of-inverted-index-and-trie-based-search-engine-2017/images/fig2-3_hufc24db0dd94c4f84a297340fd24291e6_155136_1200x1200_fit_q75_h2_lanczos_3.webp 1200w"
+               src="/publication/the-design-and-implementation-of-inverted-index-and-trie-based-search-engine-2017/images/fig2-3_hufc24db0dd94c4f84a297340fd24291e6_155136_815acd2dbaeefec3b1b83d9e1af74032.webp"
+               width="760"
+               height="447"
+               loading="lazy" data-zoomable /></div>
+  </div></figure>
+</p>
+<p>索引引擎核心功能需求分析表:</p>
+<p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<figure  >
+  <div class="d-flex justify-content-center">
+    <div class="w-100" ><img alt="" srcset="
+               /publication/the-design-and-implementation-of-inverted-index-and-trie-based-search-engine-2017/images/table2-2_hub5a45686df3f3de29ebbd3c2f17c8e14_271629_26571807f4731623d31f5a257f16fa8e.webp 400w,
+               /publication/the-design-and-implementation-of-inverted-index-and-trie-based-search-engine-2017/images/table2-2_hub5a45686df3f3de29ebbd3c2f17c8e14_271629_0be2c162d292c9c03cfe32dd5301e175.webp 760w,
+               /publication/the-design-and-implementation-of-inverted-index-and-trie-based-search-engine-2017/images/table2-2_hub5a45686df3f3de29ebbd3c2f17c8e14_271629_1200x1200_fit_q75_h2_lanczos_3.webp 1200w"
+               src="/publication/the-design-and-implementation-of-inverted-index-and-trie-based-search-engine-2017/images/table2-2_hub5a45686df3f3de29ebbd3c2f17c8e14_271629_26571807f4731623d31f5a257f16fa8e.webp"
+               width="760"
+               height="657"
+               loading="lazy" data-zoomable /></div>
+  </div></figure>
+</p>
+<h2 id="文献">文献</h2>
+<ul>
+<li>
+<p>陶晓鹏. 面向(中文)全文数据库的全文索引的研究[D]. 复旦大学, 1999</p>
+</li>
+<li>
+<p>吕晓旭. 基于倒排索引的关系数据库全文检索查询效率研究[D]. 北京工业</p>
+</li>
+</ul>
+<p>大学, 2009</p>
+<ul>
+<li>史亮. Web 搜索引擎索引压缩与合并技术研究[D]. 中国科学院大学, 2013</li>
+</ul>
+</div>
+
+    
+
+
+
+
+<div class="article-tags">
+  
+  <a class="badge badge-light" href="/tag/%E5%80%92%E6%8E%92%E7%B4%A2%E5%BC%95/">倒排索引</a>
+  
+  <a class="badge badge-light" href="/tag/%E6%8B%BC%E9%9F%B3%E8%81%94%E6%83%B3/">拼音联想</a>
+  
+  <a class="badge badge-light" href="/tag/%E5%AD%97%E5%85%B8%E6%A0%91/">字典树</a>
+  
+  <a class="badge badge-light" href="/tag/%E7%AB%99%E5%86%85%E6%90%9C%E7%B4%A2/">站内搜索</a>
+  
+</div>
+
+
+
+<div class="share-box">
+  <ul class="share">
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="https://twitter.com/intent/tweet?url=/publication/the-design-and-implementation-of-inverted-index-and-trie-based-search-engine-2017/&amp;text=%e3%80%8c%e8%ae%ba%e6%96%87%e9%98%85%e8%af%bb%e3%80%8d%e5%9f%ba%e4%ba%8e%e5%80%92%e6%8e%92%e7%b4%a2%e5%bc%95%e5%92%8c%e5%ad%97%e5%85%b8%e6%a0%91%e7%9a%84%e7%ab%99%e5%86%85%e6%90%9c%e7%b4%a2%e5%bc%95%e6%93%8e%e7%9a%84%e8%ae%be%e8%ae%a1%e4%b8%8e%e5%ae%9e%e7%8e%b0" target="_blank" rel="noopener" class="share-btn-twitter" aria-label="twitter">
+          <i class="fab fa-twitter"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="https://www.facebook.com/sharer.php?u=/publication/the-design-and-implementation-of-inverted-index-and-trie-based-search-engine-2017/&amp;t=%e3%80%8c%e8%ae%ba%e6%96%87%e9%98%85%e8%af%bb%e3%80%8d%e5%9f%ba%e4%ba%8e%e5%80%92%e6%8e%92%e7%b4%a2%e5%bc%95%e5%92%8c%e5%ad%97%e5%85%b8%e6%a0%91%e7%9a%84%e7%ab%99%e5%86%85%e6%90%9c%e7%b4%a2%e5%bc%95%e6%93%8e%e7%9a%84%e8%ae%be%e8%ae%a1%e4%b8%8e%e5%ae%9e%e7%8e%b0" target="_blank" rel="noopener" class="share-btn-facebook" aria-label="facebook">
+          <i class="fab fa-facebook"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="mailto:?subject=%e3%80%8c%e8%ae%ba%e6%96%87%e9%98%85%e8%af%bb%e3%80%8d%e5%9f%ba%e4%ba%8e%e5%80%92%e6%8e%92%e7%b4%a2%e5%bc%95%e5%92%8c%e5%ad%97%e5%85%b8%e6%a0%91%e7%9a%84%e7%ab%99%e5%86%85%e6%90%9c%e7%b4%a2%e5%bc%95%e6%93%8e%e7%9a%84%e8%ae%be%e8%ae%a1%e4%b8%8e%e5%ae%9e%e7%8e%b0&amp;body=/publication/the-design-and-implementation-of-inverted-index-and-trie-based-search-engine-2017/" target="_blank" rel="noopener" class="share-btn-email" aria-label="envelope">
+          <i class="fas fa-envelope"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="https://www.linkedin.com/shareArticle?url=/publication/the-design-and-implementation-of-inverted-index-and-trie-based-search-engine-2017/&amp;title=%e3%80%8c%e8%ae%ba%e6%96%87%e9%98%85%e8%af%bb%e3%80%8d%e5%9f%ba%e4%ba%8e%e5%80%92%e6%8e%92%e7%b4%a2%e5%bc%95%e5%92%8c%e5%ad%97%e5%85%b8%e6%a0%91%e7%9a%84%e7%ab%99%e5%86%85%e6%90%9c%e7%b4%a2%e5%bc%95%e6%93%8e%e7%9a%84%e8%ae%be%e8%ae%a1%e4%b8%8e%e5%ae%9e%e7%8e%b0" target="_blank" rel="noopener" class="share-btn-linkedin" aria-label="linkedin-in">
+          <i class="fab fa-linkedin-in"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="whatsapp://send?text=%e3%80%8c%e8%ae%ba%e6%96%87%e9%98%85%e8%af%bb%e3%80%8d%e5%9f%ba%e4%ba%8e%e5%80%92%e6%8e%92%e7%b4%a2%e5%bc%95%e5%92%8c%e5%ad%97%e5%85%b8%e6%a0%91%e7%9a%84%e7%ab%99%e5%86%85%e6%90%9c%e7%b4%a2%e5%bc%95%e6%93%8e%e7%9a%84%e8%ae%be%e8%ae%a1%e4%b8%8e%e5%ae%9e%e7%8e%b0%20/publication/the-design-and-implementation-of-inverted-index-and-trie-based-search-engine-2017/" target="_blank" rel="noopener" class="share-btn-whatsapp" aria-label="whatsapp">
+          <i class="fab fa-whatsapp"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="https://service.weibo.com/share/share.php?url=/publication/the-design-and-implementation-of-inverted-index-and-trie-based-search-engine-2017/&amp;title=%e3%80%8c%e8%ae%ba%e6%96%87%e9%98%85%e8%af%bb%e3%80%8d%e5%9f%ba%e4%ba%8e%e5%80%92%e6%8e%92%e7%b4%a2%e5%bc%95%e5%92%8c%e5%ad%97%e5%85%b8%e6%a0%91%e7%9a%84%e7%ab%99%e5%86%85%e6%90%9c%e7%b4%a2%e5%bc%95%e6%93%8e%e7%9a%84%e8%ae%be%e8%ae%a1%e4%b8%8e%e5%ae%9e%e7%8e%b0" target="_blank" rel="noopener" class="share-btn-weibo" aria-label="weibo">
+          <i class="fab fa-weibo"></i>
+        </a>
+      </li>
+    
+  </ul>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+
+
+
+  
+  
+  
+  
+  
+  <div class="media author-card content-widget-hr">
+    
+      
+      <a href="/authors/admin/"><img class="avatar mr-3 avatar-circle" src="/authors/admin/avatar_hu55194f19033f85038196a23353ffe543_580100_270x270_fill_q75_lanczos_center.jpg" alt="CoolCats"></a>
+    
+
+    <div class="media-body">
+      <h5 class="card-title"><a href="/authors/admin/">CoolCats</a></h5>
+      <h6 class="card-subtitle">理学学士</h6>
+      <p class="card-text">我的研究兴趣是时空数据分析、知识图谱、自然语言处理与服务端开发</p>
+      <ul class="network-icon" aria-hidden="true">
+  
+    
+    
+    
+      
+    
+    
+    
+    
+    
+    <li>
+      <a href="mailto:2811159909@qq.com" >
+        <i class="fas fa-envelope"></i>
+      </a>
+    </li>
+  
+    
+    
+    
+      
+    
+    
+    
+    
+    
+      
+    
+    <li>
+      <a href="https://github.com/Coolgiserz" target="_blank" rel="noopener">
+        <i class="fab fa-github"></i>
+      </a>
+    </li>
+  
+</ul>
+
+    </div>
+  </div>
+
+
+
+
+
+
+
+
+
+  
+  
+  
+
+  
+
+  
+
+
+
+
+
+
+
+
+
+
+  </div>
+</div>
+  </div>
+
+  <div class="page-footer">
+    
+    
+    <div class="container">
+      <footer class="site-footer">
+
+  
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+
+
+
+
+
+  
+  
+  
+
+  
+  
+    
+  
+  
+    
+  
+
+  
+
+  
+  <p class="powered-by copyright-license-text">
+    © 2024 CoolCats. This work is licensed under <a href="https://creativecommons.org/licenses/by-nc-nd/4.0" rel="noopener noreferrer" target="_blank">CC BY NC ND 4.0</a>
+  </p>
+  
+
+  <p class="powered-by footer-license-icons">
+    <a href="https://creativecommons.org/licenses/by-nc-nd/4.0" rel="noopener noreferrer" target="_blank" aria-label="Creative Commons">
+      <i class="fab fa-creative-commons fa-2x" aria-hidden="true"></i>
+      <i class="fab fa-creative-commons-by fa-2x" aria-hidden="true"></i>
+      
+        <i class="fab fa-creative-commons-nc fa-2x" aria-hidden="true"></i>
+      
+      
+        <i class="fab fa-creative-commons-nd fa-2x" aria-hidden="true"></i>
+      
+    </a>
+  </p>
+
+
+
+
+  <p class="powered-by">
+    
+    
+    
+      
+      
+      
+      
+      
+      
+      Published with <a href="https://wowchemy.com/?utm_campaign=poweredby" target="_blank" rel="noopener">Wowchemy</a> — the free, <a href="https://github.com/wowchemy/wowchemy-hugo-themes" target="_blank" rel="noopener">open source</a> website builder that empowers creators.
+    
+  </p>
+</footer>
+
+    </div>
+    
+  </div>
+
+      
+
+    
+    <script src="/js/vendor-bundle.min.fab8b449b814cc9f95b22fcf2e45f05b.js"></script>
+
+    
+    
+    
+      
+
+      
+      
+
+      
+
+      
+        
+        <script src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@10.2.1/build/highlight.min.js" integrity="sha512-Ypjm0o7jOxAd4hpdoppSEN0TQOC19UtPAqD+4s5AlXmUvbmmS/YMxYqAqarQYyxTnB6/rqip9qcxlNB/3U9Wdg==" crossorigin="anonymous"></script>
+        
+        
+        <script src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@10.2.1/build/languages/r.min.js" crossorigin="anonymous"></script>
+        
+        <script src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@10.2.1/build/languages/latex.min.js" crossorigin="anonymous"></script>
+        
+      
+
+    
+
+    
+    
+    
+      <script src="https://cdn.jsdelivr.net/npm/leaflet@1.7.1/dist/leaflet.min.js" integrity="" crossorigin="anonymous"></script>
+    
+
+    
+    
+
+    
+    
+    
+      
+      <script id="search-hit-fuse-template" type="text/x-template">
+        <div class="search-hit" id="summary-{{key}}">
+          <div class="search-hit-content">
+            <div class="search-hit-name">
+              <a href="{{relpermalink}}">{{title}}</a>
+              <div class="article-metadata search-hit-type">{{type}}</div>
+              <p class="search-hit-description">{{snippet}}</p>
+            </div>
+          </div>
+        </div>
+      </script>
+      
+        <script src="https://cdn.jsdelivr.net/gh/krisk/Fuse@v3.2.1/dist/fuse.min.js" integrity="sha512-o38bmzBGX+hD3JHWUFCDA09btWaqrNmoJ3RXLlrysA7PP01Kgs4UlE4MhelE1v5dJR3+cxlR4qQlotsW7jKsnw==" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/gh/julmot/mark.js@8.11.1/dist/jquery.mark.min.js" integrity="sha512-mhbv5DqBMgrWL+32MmsDOt/OAvqr/cHimk6B8y/bx/xS88MVkYGPiVv2ixKVrkywF2qHplNRUvFsAHUdxZ3Krg==" crossorigin="anonymous"></script>
+      
+    
+
+    
+    
+
+    
+    
+    
+    
+      <script id="dsq-count-scr" src="https://coolgiserz.disqus.com/count.js" async></script>
+    
+
+    
+    
+      
+      
+      
+      
+      
+      
+      
+    
+
+    
+
+    
+    
+    
+    <script id="page-data" type="application/json">{"use_headroom":true}</script>
+
+    
+    
+      <script src="/js/wowchemy-headroom.c251366b4128fd5e6b046d4c97a62a51.js" type="module"></script>
+    
+    
+    
+    
+    
+    
+    
+      
+      
+    
+    
+    <script src="/en/js/wowchemy.min.ab2f2890dbe3e2e83579366d3d6e8fd9.js"></script>
+
+    
+    
+      <script src="/js/wowchemy-map.a26e9d2f7238ba5b868384f1c5bc6477.js" type="module"></script>
+    
+    
+    
+    
+      
+<div id="modal" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Cite</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <pre><code class="tex hljs"></code></pre>
+      </div>
+      <div class="modal-footer">
+        <a class="btn btn-outline-primary my-1 js-copy-cite" href="#" target="_blank">
+          <i class="fas fa-copy"></i> Copy
+        </a>
+        <a class="btn btn-outline-primary my-1 js-download-cite" href="#" target="_blank">
+          <i class="fas fa-download"></i> Download
+        </a>
+        <div id="modal-error"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+      <script src="/js/wowchemy-publication.68f8d7090562ca65fc6d3cb3f8f2d2cb.js" type="module"></script>
+
+
+
+
+
+
+</body>
+</html>

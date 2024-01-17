@@ -720,8 +720,7 @@ ORDER BY Community, Name
 &lt;/p&gt;
 &lt;h4 id=&#34;strong-connected-components&#34;&gt;Strong Connected Components&lt;/h4&gt;
 &lt;p&gt;强连通分支&lt;/p&gt;
-&lt;pre tabindex=&#34;0&#34;&gt;&lt;code class=&#34;language-cypher&#34; data-lang=&#34;cypher&#34;&gt;
-CALL gds.scc.stream(&amp;#39;IndustryGraph&amp;#39;, {})
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code class=&#34;language-cypher&#34; data-lang=&#34;cypher&#34;&gt;CALL gds.scc.stream(&amp;#39;IndustryGraph&amp;#39;, {})
 YIELD nodeId, componentId
 RETURN gds.util.asNode(nodeId).name AS Name, componentId AS Component
 ORDER BY Component DESC
