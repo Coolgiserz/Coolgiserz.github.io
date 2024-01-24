@@ -5,12 +5,95 @@
     <link>/post/</link>
       <atom:link href="/post/index.xml" rel="self" type="application/rss+xml" />
     <description>博客</description>
-    <generator>Wowchemy (https://wowchemy.com)</generator><language>en-us</language><lastBuildDate>Thu, 28 Dec 2023 00:39:14 +0800</lastBuildDate>
+    <generator>Wowchemy (https://wowchemy.com)</generator><language>en-us</language><lastBuildDate>Mon, 22 Jan 2024 22:20:19 +0800</lastBuildDate>
     <image>
       <url>/media/icon_hue03491371183284312b8b116a73ae5ab_79511_512x512_fill_lanczos_center_3.png</url>
       <title>博客</title>
       <link>/post/</link>
     </image>
+    
+    <item>
+      <title>Lucene Installation and Startup</title>
+      <link>/post/lucene-installation-and-startup/</link>
+      <pubDate>Mon, 22 Jan 2024 22:20:19 +0800</pubDate>
+      <guid>/post/lucene-installation-and-startup/</guid>
+      <description>&lt;h2 id=&#34;0x00-概览&#34;&gt;0x00 概览&lt;/h2&gt;
+&lt;h2 id=&#34;0x01-安装&#34;&gt;0x01 安装&lt;/h2&gt;
+&lt;h3 id=&#34;安装前准备&#34;&gt;安装前准备&lt;/h3&gt;
+&lt;h4 id=&#34;svn&#34;&gt;svn&lt;/h4&gt;
+&lt;p&gt;通过&lt;code&gt;brew install subversion&lt;/code&gt;命令安装&lt;/p&gt;
+&lt;p&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure  &gt;
+  &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img alt=&#34;&#34; srcset=&#34;
+               /post/lucene-installation-and-startup/images/install/svn_hu699807c98b9f6047b2fb7d7b97c86ac1_181984_93ff6c841f1a93e9cdac70e489ee5f9b.webp 400w,
+               /post/lucene-installation-and-startup/images/install/svn_hu699807c98b9f6047b2fb7d7b97c86ac1_181984_8363b58046a193bdba1fc73d598943a0.webp 760w,
+               /post/lucene-installation-and-startup/images/install/svn_hu699807c98b9f6047b2fb7d7b97c86ac1_181984_1200x1200_fit_q75_h2_lanczos_3.webp 1200w&#34;
+               src=&#34;/post/lucene-installation-and-startup/images/install/svn_hu699807c98b9f6047b2fb7d7b97c86ac1_181984_93ff6c841f1a93e9cdac70e489ee5f9b.webp&#34;
+               width=&#34;760&#34;
+               height=&#34;292&#34;
+               loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+  &lt;/div&gt;&lt;/figure&gt;
+&lt;/p&gt;
+&lt;p&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure  &gt;
+  &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img alt=&#34;&#34; srcset=&#34;
+               /post/lucene-installation-and-startup/images/install/svn_1_hucc8a8c09139daac0160e6959d8411684_233833_a8ccdddc24119174b072ebc3991dee7d.webp 400w,
+               /post/lucene-installation-and-startup/images/install/svn_1_hucc8a8c09139daac0160e6959d8411684_233833_137391fd14e49d30ac17d136d58d4683.webp 760w,
+               /post/lucene-installation-and-startup/images/install/svn_1_hucc8a8c09139daac0160e6959d8411684_233833_1200x1200_fit_q75_h2_lanczos_3.webp 1200w&#34;
+               src=&#34;/post/lucene-installation-and-startup/images/install/svn_1_hucc8a8c09139daac0160e6959d8411684_233833_a8ccdddc24119174b072ebc3991dee7d.webp&#34;
+               width=&#34;760&#34;
+               height=&#34;502&#34;
+               loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+  &lt;/div&gt;&lt;/figure&gt;
+&lt;/p&gt;
+&lt;h4 id=&#34;jcc&#34;&gt;jcc&lt;/h4&gt;
+&lt;p&gt;jcc树用&lt;/p&gt;
+&lt;p&gt;先使用svn获取jcc源码：&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;svn co https://svn.apache.org/repos/asf/lucene/pylucene/trunk/jcc jcc
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;通过setuptools构建和安装jcc&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;python setup.py build
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;sudo python setup.py install
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;安装过程中可能遇到的一些问题&#34;&gt;安装过程中可能遇到的一些问题&lt;/h3&gt;
+&lt;h4 id=&#34;无法通过svn下载jcc的源码&#34;&gt;无法通过svn下载jcc的源码&lt;/h4&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;svn: E200029: Couldn&amp;#39;t perform atomic initialization
+svn: E200030: SQLite 编译为 3.43.2，但是运行于 3.39.5
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;可以用pip替代：&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;pip install JCC
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id=&#34;0x02与基本示例&#34;&gt;0x02与基本示例&lt;/h2&gt;
+</description>
+    </item>
     
     <item>
       <title>Dac系统Docker容器构建Issues</title>
@@ -70,7 +153,7 @@
 &lt;p&gt;用户输入“中山工源”，实际上想搜索的是“中山公园”；&lt;/p&gt;
 &lt;/li&gt;
 &lt;li&gt;
-&lt;p&gt;用例2（补全，且不只是从前缀补全）&lt;/p&gt;
+&lt;p&gt;用例2（关键字补全，且不只是从前缀补全）&lt;/p&gt;
 &lt;p&gt;用户输入“达梦”，实际想搜索“武汉达梦数据库有限公司”&lt;/p&gt;
 &lt;/li&gt;
 &lt;li&gt;
@@ -78,7 +161,11 @@
 &lt;p&gt;用户输入“武汉梧桐山”，实际上想搜“深圳梧桐山”&lt;/p&gt;
 &lt;/li&gt;
 &lt;li&gt;
-&lt;p&gt;多語言&lt;/p&gt;
+&lt;p&gt;用例4 （基于拼音补全）&lt;/p&gt;
+&lt;p&gt;输入shenzhen或sz都需要联想到深圳，即按照拼音或者拼音首字母进行联想。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;用例5 多語言、多字体支持&lt;/p&gt;
 &lt;p&gt;用戶用一種語言/字體查詢，返回標準字體的結果。比如在QQ音樂搜索繁體中文“倒數”，應該返回簡體中文的“倒數”。&lt;/p&gt;
 &lt;p&gt;
 
@@ -120,8 +207,212 @@
 词2--&amp;gt;{文档1, 文档2, ..., 文档m}
 &lt;/code&gt;&lt;/pre&gt;&lt;p&gt;倒排索引的优势在于可以快速查询某字词对应的文档/包含某字词的文档；正排索引的优势在于确定单个文档中有哪些关键字词。&lt;/p&gt;
 &lt;h2 id=&#34;0x01-实践&#34;&gt;0x01 实践&lt;/h2&gt;
-&lt;p&gt;并发查询&lt;/p&gt;
-&lt;h2 id=&#34;0x02-文档&#34;&gt;0x02 文档&lt;/h2&gt;
+&lt;h3 id=&#34;倒排索引构建&#34;&gt;倒排索引构建&lt;/h3&gt;
+&lt;p&gt;倒排索引的基本原理是空间换时间，底层通过Key-Value的数据结构来维护索引词与文档的映射关系，可以认为Key是字符串类型（string），Value是一个可迭代对象（Set/List）。基于上述原理，可以确定倒排索引构建过程如下：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;遍历文档集合，对于每一篇文档，进行如下处理；&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;针对单一文档，计算出所有可能的Key，得到一个Key的集合。&lt;/p&gt;
+&lt;p&gt;此处的Key可以是文档分词后得到的词集合，也可以是文档中句子的前缀/后缀等，或者分词的拼音，具体如何可根据联系需求确定。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;建立每一个Key到文档的映射关系，这一步可以将文档名或文档ID视为Value&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h4 id=&#34;示例拼音索引&#34;&gt;示例：拼音索引&lt;/h4&gt;
+&lt;p&gt;对于待处理词，通过语言模型/拼音词典输出词对应的拼音及拼音首字母组合，然后即可构建可构建拼音倒排索引类似如下结构&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;......
+jqxx --&amp;gt; 机器学习
+jiqixuexi --&amp;gt; 机器学习
+AIkj --&amp;gt; AI框架
+......
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure  &gt;
+  &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img alt=&#34;&#34; srcset=&#34;
+               /post/search_association_system_design_inverted_index/images/index/pinyin_hu4557c4bebe3f195d05017ecba5e6b92c_109171_9acb3c77e18cd447740d02e9fcd173d9.webp 400w,
+               /post/search_association_system_design_inverted_index/images/index/pinyin_hu4557c4bebe3f195d05017ecba5e6b92c_109171_4e81f9d227a7b725039457cc4767bb2a.webp 760w,
+               /post/search_association_system_design_inverted_index/images/index/pinyin_hu4557c4bebe3f195d05017ecba5e6b92c_109171_1200x1200_fit_q75_h2_lanczos_3.webp 1200w&#34;
+               src=&#34;/post/search_association_system_design_inverted_index/images/index/pinyin_hu4557c4bebe3f195d05017ecba5e6b92c_109171_9acb3c77e18cd447740d02e9fcd173d9.webp&#34;
+               width=&#34;760&#34;
+               height=&#34;191&#34;
+               loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+  &lt;/div&gt;&lt;/figure&gt;
+&lt;/p&gt;
+&lt;h3 id=&#34;实际测试&#34;&gt;实际测试&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;按关键词“王者”联想检索游戏&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure  &gt;
+  &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img alt=&#34;&#34; srcset=&#34;
+               /post/search_association_system_design_inverted_index/images/demo/game_name_demo_hu3e82217bd5942a39ed095653d8e8d787_221677_75e616a73f6268d2fa275a576fd41a07.webp 400w,
+               /post/search_association_system_design_inverted_index/images/demo/game_name_demo_hu3e82217bd5942a39ed095653d8e8d787_221677_cfa1bdeba57f4a8e6b10cdf0fa5f5528.webp 760w,
+               /post/search_association_system_design_inverted_index/images/demo/game_name_demo_hu3e82217bd5942a39ed095653d8e8d787_221677_1200x1200_fit_q75_h2_lanczos_3.webp 1200w&#34;
+               src=&#34;/post/search_association_system_design_inverted_index/images/demo/game_name_demo_hu3e82217bd5942a39ed095653d8e8d787_221677_75e616a73f6268d2fa275a576fd41a07.webp&#34;
+               width=&#34;760&#34;
+               height=&#34;611&#34;
+               loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+  &lt;/div&gt;&lt;/figure&gt;
+&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;按关键词“塞尔达”联想游戏&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure  &gt;
+  &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img alt=&#34;&#34; srcset=&#34;
+               /post/search_association_system_design_inverted_index/images/demo/game_name_demo1_huf13f33537b644fe69d3b995560637a11_222445_4dd5e66dd94c8ed6e47d3305142da7a4.webp 400w,
+               /post/search_association_system_design_inverted_index/images/demo/game_name_demo1_huf13f33537b644fe69d3b995560637a11_222445_6e84e2e1f38a113ce3d6f3f88ed4196b.webp 760w,
+               /post/search_association_system_design_inverted_index/images/demo/game_name_demo1_huf13f33537b644fe69d3b995560637a11_222445_1200x1200_fit_q75_h2_lanczos_3.webp 1200w&#34;
+               src=&#34;/post/search_association_system_design_inverted_index/images/demo/game_name_demo1_huf13f33537b644fe69d3b995560637a11_222445_4dd5e66dd94c8ed6e47d3305142da7a4.webp&#34;
+               width=&#34;760&#34;
+               height=&#34;547&#34;
+               loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+  &lt;/div&gt;&lt;/figure&gt;
+&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;按拼音首字母“sz”联想博物馆&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure  &gt;
+  &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img alt=&#34;&#34; srcset=&#34;
+               /post/search_association_system_design_inverted_index/images/demo/museum_name_demo_hu21f08c0c4c9063a896a9b06b2adc24cd_247775_b04051be5a7a0e67832606c72b1e3354.webp 400w,
+               /post/search_association_system_design_inverted_index/images/demo/museum_name_demo_hu21f08c0c4c9063a896a9b06b2adc24cd_247775_95fb7ce83c456f04de34399ab7a0be1a.webp 760w,
+               /post/search_association_system_design_inverted_index/images/demo/museum_name_demo_hu21f08c0c4c9063a896a9b06b2adc24cd_247775_1200x1200_fit_q75_h2_lanczos_3.webp 1200w&#34;
+               src=&#34;/post/search_association_system_design_inverted_index/images/demo/museum_name_demo_hu21f08c0c4c9063a896a9b06b2adc24cd_247775_b04051be5a7a0e67832606c72b1e3354.webp&#34;
+               width=&#34;695&#34;
+               height=&#34;760&#34;
+               loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+  &lt;/div&gt;&lt;/figure&gt;
+&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;按拼音“baiqiuen”联想&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure  &gt;
+  &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img alt=&#34;&#34; srcset=&#34;
+               /post/search_association_system_design_inverted_index/images/demo/museum_name_demo2_hu84ec5b9d9089b55752c5823a8a8fcc6d_208161_cfe0478518b6cdfbff59ab8564c9a26f.webp 400w,
+               /post/search_association_system_design_inverted_index/images/demo/museum_name_demo2_hu84ec5b9d9089b55752c5823a8a8fcc6d_208161_f612c959414ebd7f0bf074558a69e3e4.webp 760w,
+               /post/search_association_system_design_inverted_index/images/demo/museum_name_demo2_hu84ec5b9d9089b55752c5823a8a8fcc6d_208161_1200x1200_fit_q75_h2_lanczos_3.webp 1200w&#34;
+               src=&#34;/post/search_association_system_design_inverted_index/images/demo/museum_name_demo2_hu84ec5b9d9089b55752c5823a8a8fcc6d_208161_cfe0478518b6cdfbff59ab8564c9a26f.webp&#34;
+               width=&#34;760&#34;
+               height=&#34;513&#34;
+               loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+  &lt;/div&gt;&lt;/figure&gt;
+&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;按关键字“白求恩”联想&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure  &gt;
+  &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img alt=&#34;&#34; srcset=&#34;
+               /post/search_association_system_design_inverted_index/images/demo/museum_name_demo1_hu49e1c811b8caec925749147a1b4410d9_212007_ee765a953fb72889bf074ae5e1b8d6d7.webp 400w,
+               /post/search_association_system_design_inverted_index/images/demo/museum_name_demo1_hu49e1c811b8caec925749147a1b4410d9_212007_70fa9f613b2f2cb63d19fd76ef7ac90f.webp 760w,
+               /post/search_association_system_design_inverted_index/images/demo/museum_name_demo1_hu49e1c811b8caec925749147a1b4410d9_212007_1200x1200_fit_q75_h2_lanczos_3.webp 1200w&#34;
+               src=&#34;/post/search_association_system_design_inverted_index/images/demo/museum_name_demo1_hu49e1c811b8caec925749147a1b4410d9_212007_ee765a953fb72889bf074ae5e1b8d6d7.webp&#34;
+               width=&#34;760&#34;
+               height=&#34;577&#34;
+               loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+  &lt;/div&gt;&lt;/figure&gt;
+&lt;/p&gt;
+&lt;h2 id=&#34;0x02-参考文档&#34;&gt;0x02 参考文档&lt;/h2&gt;
 &lt;h3 id=&#34;搜索联想词&#34;&gt;搜索联想词&lt;/h3&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;a href=&#34;https://www.woshipm.com/operate/4613828.html&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;搜索联想词产品实践系列之浅见（一）定位-评估和召回篇 | 人人都是产品经理&lt;/a&gt;&lt;/li&gt;
@@ -3723,13 +4014,57 @@ DELETE r, n
 &lt;ul&gt;
 &lt;li&gt;
 &lt;p&gt;API Token&lt;/p&gt;
+&lt;p&gt;用户先通过认证接口，提供用户名、密码等认证信息进行认证，若认证通过后服务端向用户返回登录凭证（具有一定有效期）；后续的用户请求需要附带该登录凭证方可请求成功。&lt;/p&gt;
 &lt;/li&gt;
 &lt;li&gt;
 &lt;p&gt;API Key + API Secret&lt;/p&gt;
 &lt;/li&gt;
 &lt;/ul&gt;
 &lt;h2 id=&#34;0x02-django源码分析&#34;&gt;0x02 Django源码分析&lt;/h2&gt;
-&lt;p&gt;TODO&lt;/p&gt;
+&lt;h3 id=&#34;源码结构&#34;&gt;源码结构&lt;/h3&gt;
+&lt;p&gt;以Django4.2.7为例，源码目录结构如下图所示：&lt;/p&gt;
+&lt;p&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure  &gt;
+  &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img alt=&#34;&#34; srcset=&#34;
+               /post/django-core-techs-notes/images/source_code/tree_hu5457b750e29afc9bb27e4cab783d91bb_77348_e92b15fad2c495d4708f8ffb0fc38328.webp 400w,
+               /post/django-core-techs-notes/images/source_code/tree_hu5457b750e29afc9bb27e4cab783d91bb_77348_9d5197a59003ee4886f13ee7ce604db6.webp 760w,
+               /post/django-core-techs-notes/images/source_code/tree_hu5457b750e29afc9bb27e4cab783d91bb_77348_1200x1200_fit_q75_h2_lanczos_3.webp 1200w&#34;
+               src=&#34;/post/django-core-techs-notes/images/source_code/tree_hu5457b750e29afc9bb27e4cab783d91bb_77348_e92b15fad2c495d4708f8ffb0fc38328.webp&#34;
+               width=&#34;695&#34;
+               height=&#34;760&#34;
+               loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+  &lt;/div&gt;&lt;/figure&gt;
+&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;apps&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;conf&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;contrib&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;core&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
 &lt;h2 id=&#34;0x03-django开源项目&#34;&gt;0x03 Django开源项目&lt;/h2&gt;
 &lt;h3 id=&#34;django-tenants&#34;&gt;django-tenants&lt;/h3&gt;
 &lt;h3 id=&#34;djangorestframework&#34;&gt;djangorestframework&lt;/h3&gt;
@@ -10261,11 +10596,11 @@ waiting for server to start.... done
       <link>/post/python-readability-note/</link>
       <pubDate>Wed, 01 Mar 2023 20:13:27 +0800</pubDate>
       <guid>/post/python-readability-note/</guid>
-      <description>&lt;h1 id=&#34;前言&#34;&gt;前言&lt;/h1&gt;
+      <description>&lt;h2 id=&#34;0x00-前言&#34;&gt;0x00 前言&lt;/h2&gt;
 &lt;p&gt;代码可读性是代码的可修改性的一个重要影响因素。&lt;/p&gt;
 &lt;p&gt;就Python而言，最富盛名的的编码风格指南就是&lt;a href=&#34;https://peps.python.org/pep-0008/#a-foolish-consistency-is-the-hobgoblin-of-little-minds&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;PEP 8&lt;/a&gt;（Python Enhancement Proposals）&lt;/p&gt;
 &lt;p&gt;本文简单记录/翻译PEP-8的一些经典实践和见解。&lt;/p&gt;
-&lt;h2 id=&#34;pep-8笔记&#34;&gt;PEP-8笔记&lt;/h2&gt;
+&lt;h2 id=&#34;0x01-pep-8笔记&#34;&gt;0x01 PEP-8笔记&lt;/h2&gt;
 &lt;h3 id=&#34;愚蠢的一致性是心胸狭窄的妖怪&#34;&gt;“愚蠢的一致性是心胸狭窄的妖怪“&lt;/h3&gt;
 &lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;A Foolish Consistency is the Hobgoblin of Little Minds
 &lt;/code&gt;&lt;/pre&gt;&lt;p&gt;编码风格指南的宗旨是提升代码的可读性，并使得Python代码风格能够趋于一致性。一个风格指南就是提出一种使开发者代码风格保持某种一致的倡议。&lt;/p&gt;
@@ -10399,7 +10734,7 @@ waiting for server to start.... done
 &lt;p&gt;……&lt;/p&gt;
 &lt;/li&gt;
 &lt;/ul&gt;
-&lt;h2 id=&#34;代码检查工具&#34;&gt;代码检查工具&lt;/h2&gt;
+&lt;h2 id=&#34;0x02-代码检查工具&#34;&gt;0x02 代码检查工具&lt;/h2&gt;
 &lt;p&gt;可通过源代码错误和代码质量检查器辅助检查代码可读性&lt;/p&gt;
 &lt;h3 id=&#34;pylint&#34;&gt;pylint&lt;/h3&gt;
 &lt;p&gt;pylint通过与PEP8标准进行一致性对比，为待检查代码打分。常见消息码：&lt;/p&gt;
@@ -10471,7 +10806,10 @@ F: 致命错误，pylint无法运行
                loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
   &lt;/div&gt;&lt;/figure&gt;
 &lt;/p&gt;
-&lt;h2 id=&#34;编程规范更多参考&#34;&gt;编程规范更多参考&lt;/h2&gt;
+&lt;h2 id=&#34;0x03-python高级编程中关于可读性的部分内容笔记&#34;&gt;0x03 Python高级编程中关于可读性的部分内容笔记&lt;/h2&gt;
+&lt;h3 id=&#34;关于变量&#34;&gt;关于变量&lt;/h3&gt;
+&lt;p&gt;常量、公有和私有变量。但是Python的常量仅仅是通过命名约定（大写+下划线）来标记，而非像java、c++等通过const关键字来定义常量，所以Python的常量不是真正意义上的常量，“常量”是可以被修改的。&lt;/p&gt;
+&lt;h2 id=&#34;0x04-编程规范更多参考&#34;&gt;0x04 编程规范更多参考&lt;/h2&gt;
 &lt;ul&gt;
 &lt;li&gt;
 &lt;p&gt;PEP 8编程规范&lt;/p&gt;

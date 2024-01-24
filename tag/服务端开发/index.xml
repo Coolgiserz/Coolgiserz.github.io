@@ -1709,13 +1709,57 @@
 &lt;ul&gt;
 &lt;li&gt;
 &lt;p&gt;API Token&lt;/p&gt;
+&lt;p&gt;用户先通过认证接口，提供用户名、密码等认证信息进行认证，若认证通过后服务端向用户返回登录凭证（具有一定有效期）；后续的用户请求需要附带该登录凭证方可请求成功。&lt;/p&gt;
 &lt;/li&gt;
 &lt;li&gt;
 &lt;p&gt;API Key + API Secret&lt;/p&gt;
 &lt;/li&gt;
 &lt;/ul&gt;
 &lt;h2 id=&#34;0x02-django源码分析&#34;&gt;0x02 Django源码分析&lt;/h2&gt;
-&lt;p&gt;TODO&lt;/p&gt;
+&lt;h3 id=&#34;源码结构&#34;&gt;源码结构&lt;/h3&gt;
+&lt;p&gt;以Django4.2.7为例，源码目录结构如下图所示：&lt;/p&gt;
+&lt;p&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure  &gt;
+  &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img alt=&#34;&#34; srcset=&#34;
+               /post/django-core-techs-notes/images/source_code/tree_hu5457b750e29afc9bb27e4cab783d91bb_77348_e92b15fad2c495d4708f8ffb0fc38328.webp 400w,
+               /post/django-core-techs-notes/images/source_code/tree_hu5457b750e29afc9bb27e4cab783d91bb_77348_9d5197a59003ee4886f13ee7ce604db6.webp 760w,
+               /post/django-core-techs-notes/images/source_code/tree_hu5457b750e29afc9bb27e4cab783d91bb_77348_1200x1200_fit_q75_h2_lanczos_3.webp 1200w&#34;
+               src=&#34;/post/django-core-techs-notes/images/source_code/tree_hu5457b750e29afc9bb27e4cab783d91bb_77348_e92b15fad2c495d4708f8ffb0fc38328.webp&#34;
+               width=&#34;695&#34;
+               height=&#34;760&#34;
+               loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+  &lt;/div&gt;&lt;/figure&gt;
+&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;apps&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;conf&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;contrib&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;core&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
 &lt;h2 id=&#34;0x03-django开源项目&#34;&gt;0x03 Django开源项目&lt;/h2&gt;
 &lt;h3 id=&#34;django-tenants&#34;&gt;django-tenants&lt;/h3&gt;
 &lt;h3 id=&#34;djangorestframework&#34;&gt;djangorestframework&lt;/h3&gt;

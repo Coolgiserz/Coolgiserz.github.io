@@ -2507,13 +2507,57 @@
 <ul>
 <li>
 <p>API Token</p>
+<p>用户先通过认证接口，提供用户名、密码等认证信息进行认证，若认证通过后服务端向用户返回登录凭证（具有一定有效期）；后续的用户请求需要附带该登录凭证方可请求成功。</p>
 </li>
 <li>
 <p>API Key + API Secret</p>
 </li>
 </ul>
 <h2 id="0x02-django源码分析">0x02 Django源码分析</h2>
-<p>TODO</p>
+<h3 id="源码结构">源码结构</h3>
+<p>以Django4.2.7为例，源码目录结构如下图所示：</p>
+<p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<figure  >
+  <div class="d-flex justify-content-center">
+    <div class="w-100" ><img alt="" srcset="
+               /post/django-core-techs-notes/images/source_code/tree_hu5457b750e29afc9bb27e4cab783d91bb_77348_e92b15fad2c495d4708f8ffb0fc38328.webp 400w,
+               /post/django-core-techs-notes/images/source_code/tree_hu5457b750e29afc9bb27e4cab783d91bb_77348_9d5197a59003ee4886f13ee7ce604db6.webp 760w,
+               /post/django-core-techs-notes/images/source_code/tree_hu5457b750e29afc9bb27e4cab783d91bb_77348_1200x1200_fit_q75_h2_lanczos_3.webp 1200w"
+               src="/post/django-core-techs-notes/images/source_code/tree_hu5457b750e29afc9bb27e4cab783d91bb_77348_e92b15fad2c495d4708f8ffb0fc38328.webp"
+               width="695"
+               height="760"
+               loading="lazy" data-zoomable /></div>
+  </div></figure>
+</p>
+<ul>
+<li>
+<p>apps</p>
+</li>
+<li>
+<p>conf</p>
+</li>
+<li>
+<p>contrib</p>
+</li>
+<li>
+<p>core</p>
+</li>
+</ul>
 <h2 id="0x03-django开源项目">0x03 Django开源项目</h2>
 <h3 id="django-tenants">django-tenants</h3>
 <h3 id="djangorestframework">djangorestframework</h3>
