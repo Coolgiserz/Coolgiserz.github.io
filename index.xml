@@ -41,10 +41,10 @@
 &lt;figure  &gt;
   &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
     &lt;div class=&#34;w-100&#34; &gt;&lt;img alt=&#34;&#34; srcset=&#34;
-               /post/lucene-installation-and-startup/images/install/svn_hu699807c98b9f6047b2fb7d7b97c86ac1_181984_93ff6c841f1a93e9cdac70e489ee5f9b.webp 400w,
+               /post/lucene-installation-and-startup/images/install/svn_hu699807c98b9f6047b2fb7d7b97c86ac1_181984_1c298d643f7f9e3071d379e7feff25e7.webp 400w,
                /post/lucene-installation-and-startup/images/install/svn_hu699807c98b9f6047b2fb7d7b97c86ac1_181984_8363b58046a193bdba1fc73d598943a0.webp 760w,
                /post/lucene-installation-and-startup/images/install/svn_hu699807c98b9f6047b2fb7d7b97c86ac1_181984_1200x1200_fit_q75_h2_lanczos_3.webp 1200w&#34;
-               src=&#34;/post/lucene-installation-and-startup/images/install/svn_hu699807c98b9f6047b2fb7d7b97c86ac1_181984_93ff6c841f1a93e9cdac70e489ee5f9b.webp&#34;
+               src=&#34;/post/lucene-installation-and-startup/images/install/svn_hu699807c98b9f6047b2fb7d7b97c86ac1_181984_1c298d643f7f9e3071d379e7feff25e7.webp&#34;
                width=&#34;760&#34;
                height=&#34;292&#34;
                loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
@@ -69,10 +69,10 @@
 &lt;figure  &gt;
   &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
     &lt;div class=&#34;w-100&#34; &gt;&lt;img alt=&#34;&#34; srcset=&#34;
-               /post/lucene-installation-and-startup/images/install/svn_1_hucc8a8c09139daac0160e6959d8411684_233833_a8ccdddc24119174b072ebc3991dee7d.webp 400w,
+               /post/lucene-installation-and-startup/images/install/svn_1_hucc8a8c09139daac0160e6959d8411684_233833_279bbd376363abf1c8e7ed5c7820b21c.webp 400w,
                /post/lucene-installation-and-startup/images/install/svn_1_hucc8a8c09139daac0160e6959d8411684_233833_137391fd14e49d30ac17d136d58d4683.webp 760w,
                /post/lucene-installation-and-startup/images/install/svn_1_hucc8a8c09139daac0160e6959d8411684_233833_1200x1200_fit_q75_h2_lanczos_3.webp 1200w&#34;
-               src=&#34;/post/lucene-installation-and-startup/images/install/svn_1_hucc8a8c09139daac0160e6959d8411684_233833_a8ccdddc24119174b072ebc3991dee7d.webp&#34;
+               src=&#34;/post/lucene-installation-and-startup/images/install/svn_1_hucc8a8c09139daac0160e6959d8411684_233833_279bbd376363abf1c8e7ed5c7820b21c.webp&#34;
                width=&#34;760&#34;
                height=&#34;502&#34;
                loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
@@ -1805,15 +1805,81 @@ AIkj --&amp;gt; AI框架
 &lt;figure  &gt;
   &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
     &lt;div class=&#34;w-100&#34; &gt;&lt;img alt=&#34;&#34; srcset=&#34;
-               /post/search_association_system_design_inverted_index/images/index/pinyin_hu4557c4bebe3f195d05017ecba5e6b92c_109171_9acb3c77e18cd447740d02e9fcd173d9.webp 400w,
+               /post/search_association_system_design_inverted_index/images/index/pinyin_hu4557c4bebe3f195d05017ecba5e6b92c_109171_ff1f12eb46ad7afe63b694457c94796f.webp 400w,
                /post/search_association_system_design_inverted_index/images/index/pinyin_hu4557c4bebe3f195d05017ecba5e6b92c_109171_4e81f9d227a7b725039457cc4767bb2a.webp 760w,
                /post/search_association_system_design_inverted_index/images/index/pinyin_hu4557c4bebe3f195d05017ecba5e6b92c_109171_1200x1200_fit_q75_h2_lanczos_3.webp 1200w&#34;
-               src=&#34;/post/search_association_system_design_inverted_index/images/index/pinyin_hu4557c4bebe3f195d05017ecba5e6b92c_109171_9acb3c77e18cd447740d02e9fcd173d9.webp&#34;
+               src=&#34;/post/search_association_system_design_inverted_index/images/index/pinyin_hu4557c4bebe3f195d05017ecba5e6b92c_109171_ff1f12eb46ad7afe63b694457c94796f.webp&#34;
                width=&#34;760&#34;
                height=&#34;191&#34;
                loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
   &lt;/div&gt;&lt;/figure&gt;
 &lt;/p&gt;
+&lt;h4 id=&#34;示例关键词索引&#34;&gt;示例：关键词索引&lt;/h4&gt;
+&lt;p&gt;简单起见，此处示例的关键词指“分词”后的结果，当然实际应用时可以考虑采用一些关键词抽取的方法（如TextRank）抽取关键词。&lt;/p&gt;
+&lt;p&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure  &gt;
+  &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img alt=&#34;&#34; srcset=&#34;
+               /post/search_association_system_design_inverted_index/images/index/word_seg_hu66075a4a7eb259aefd9410ff65f24d80_78989_bdf44ee163b0effce7927a4980eb0d2b.webp 400w,
+               /post/search_association_system_design_inverted_index/images/index/word_seg_hu66075a4a7eb259aefd9410ff65f24d80_78989_f9c59bb06ea0f9db01dbfd8f1a00466c.webp 760w,
+               /post/search_association_system_design_inverted_index/images/index/word_seg_hu66075a4a7eb259aefd9410ff65f24d80_78989_1200x1200_fit_q75_h2_lanczos_3.webp 1200w&#34;
+               src=&#34;/post/search_association_system_design_inverted_index/images/index/word_seg_hu66075a4a7eb259aefd9410ff65f24d80_78989_bdf44ee163b0effce7927a4980eb0d2b.webp&#34;
+               width=&#34;760&#34;
+               height=&#34;196&#34;
+               loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+  &lt;/div&gt;&lt;/figure&gt;
+&lt;/p&gt;
+&lt;h3 id=&#34;倒排索引存储&#34;&gt;倒排索引存储&lt;/h3&gt;
+&lt;p&gt;最简单的存储方式，就是在内存中通过HashMap存储，Key为索引词（可以是文档关键字、拼音全拼、拼音首字母等），value为“文档”（待联想对象）。&lt;/p&gt;
+&lt;p&gt;如果数据量大，考虑到全量倒排索引构建时间较长，可以通过内存数据库（如Redis）或者文件型数据库存储倒排索引，并进行一定的压缩。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;以Redis为例，可使用Set数据类型存储“文档”&lt;/p&gt;
+&lt;p&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure  &gt;
+  &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img alt=&#34;&#34; srcset=&#34;
+               /post/search_association_system_design_inverted_index/images/persist/redis_demo_hua78c464ef2bdd3b5cd5dc8a5e1baf4da_143342_65f5ab09210fea3bf69475dd0cb8e864.webp 400w,
+               /post/search_association_system_design_inverted_index/images/persist/redis_demo_hua78c464ef2bdd3b5cd5dc8a5e1baf4da_143342_ccc2e1c4b38fe451a685b25fb6eab8b5.webp 760w,
+               /post/search_association_system_design_inverted_index/images/persist/redis_demo_hua78c464ef2bdd3b5cd5dc8a5e1baf4da_143342_1200x1200_fit_q75_h2_lanczos_3.webp 1200w&#34;
+               src=&#34;/post/search_association_system_design_inverted_index/images/persist/redis_demo_hua78c464ef2bdd3b5cd5dc8a5e1baf4da_143342_65f5ab09210fea3bf69475dd0cb8e864.webp&#34;
+               width=&#34;760&#34;
+               height=&#34;300&#34;
+               loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+  &lt;/div&gt;&lt;/figure&gt;
+&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
 &lt;h3 id=&#34;实际测试&#34;&gt;实际测试&lt;/h3&gt;
 &lt;ul&gt;
 &lt;li&gt;按关键词“王者”联想检索游戏&lt;/li&gt;
@@ -1837,10 +1903,10 @@ AIkj --&amp;gt; AI框架
 &lt;figure  &gt;
   &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
     &lt;div class=&#34;w-100&#34; &gt;&lt;img alt=&#34;&#34; srcset=&#34;
-               /post/search_association_system_design_inverted_index/images/demo/game_name_demo_hu3e82217bd5942a39ed095653d8e8d787_221677_75e616a73f6268d2fa275a576fd41a07.webp 400w,
+               /post/search_association_system_design_inverted_index/images/demo/game_name_demo_hu3e82217bd5942a39ed095653d8e8d787_221677_d75eba134b63cf44c6a9d7d74692caa8.webp 400w,
                /post/search_association_system_design_inverted_index/images/demo/game_name_demo_hu3e82217bd5942a39ed095653d8e8d787_221677_cfa1bdeba57f4a8e6b10cdf0fa5f5528.webp 760w,
                /post/search_association_system_design_inverted_index/images/demo/game_name_demo_hu3e82217bd5942a39ed095653d8e8d787_221677_1200x1200_fit_q75_h2_lanczos_3.webp 1200w&#34;
-               src=&#34;/post/search_association_system_design_inverted_index/images/demo/game_name_demo_hu3e82217bd5942a39ed095653d8e8d787_221677_75e616a73f6268d2fa275a576fd41a07.webp&#34;
+               src=&#34;/post/search_association_system_design_inverted_index/images/demo/game_name_demo_hu3e82217bd5942a39ed095653d8e8d787_221677_d75eba134b63cf44c6a9d7d74692caa8.webp&#34;
                width=&#34;760&#34;
                height=&#34;611&#34;
                loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
@@ -1868,10 +1934,10 @@ AIkj --&amp;gt; AI框架
 &lt;figure  &gt;
   &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
     &lt;div class=&#34;w-100&#34; &gt;&lt;img alt=&#34;&#34; srcset=&#34;
-               /post/search_association_system_design_inverted_index/images/demo/game_name_demo1_huf13f33537b644fe69d3b995560637a11_222445_4dd5e66dd94c8ed6e47d3305142da7a4.webp 400w,
+               /post/search_association_system_design_inverted_index/images/demo/game_name_demo1_huf13f33537b644fe69d3b995560637a11_222445_1db30f1e2bc3c1d35df9d98248085747.webp 400w,
                /post/search_association_system_design_inverted_index/images/demo/game_name_demo1_huf13f33537b644fe69d3b995560637a11_222445_6e84e2e1f38a113ce3d6f3f88ed4196b.webp 760w,
                /post/search_association_system_design_inverted_index/images/demo/game_name_demo1_huf13f33537b644fe69d3b995560637a11_222445_1200x1200_fit_q75_h2_lanczos_3.webp 1200w&#34;
-               src=&#34;/post/search_association_system_design_inverted_index/images/demo/game_name_demo1_huf13f33537b644fe69d3b995560637a11_222445_4dd5e66dd94c8ed6e47d3305142da7a4.webp&#34;
+               src=&#34;/post/search_association_system_design_inverted_index/images/demo/game_name_demo1_huf13f33537b644fe69d3b995560637a11_222445_1db30f1e2bc3c1d35df9d98248085747.webp&#34;
                width=&#34;760&#34;
                height=&#34;547&#34;
                loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
@@ -1899,10 +1965,10 @@ AIkj --&amp;gt; AI框架
 &lt;figure  &gt;
   &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
     &lt;div class=&#34;w-100&#34; &gt;&lt;img alt=&#34;&#34; srcset=&#34;
-               /post/search_association_system_design_inverted_index/images/demo/museum_name_demo_hu21f08c0c4c9063a896a9b06b2adc24cd_247775_b04051be5a7a0e67832606c72b1e3354.webp 400w,
+               /post/search_association_system_design_inverted_index/images/demo/museum_name_demo_hu21f08c0c4c9063a896a9b06b2adc24cd_247775_2b4ba44142abc567d3a2e2184b2066d4.webp 400w,
                /post/search_association_system_design_inverted_index/images/demo/museum_name_demo_hu21f08c0c4c9063a896a9b06b2adc24cd_247775_95fb7ce83c456f04de34399ab7a0be1a.webp 760w,
                /post/search_association_system_design_inverted_index/images/demo/museum_name_demo_hu21f08c0c4c9063a896a9b06b2adc24cd_247775_1200x1200_fit_q75_h2_lanczos_3.webp 1200w&#34;
-               src=&#34;/post/search_association_system_design_inverted_index/images/demo/museum_name_demo_hu21f08c0c4c9063a896a9b06b2adc24cd_247775_b04051be5a7a0e67832606c72b1e3354.webp&#34;
+               src=&#34;/post/search_association_system_design_inverted_index/images/demo/museum_name_demo_hu21f08c0c4c9063a896a9b06b2adc24cd_247775_2b4ba44142abc567d3a2e2184b2066d4.webp&#34;
                width=&#34;695&#34;
                height=&#34;760&#34;
                loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
@@ -1930,10 +1996,10 @@ AIkj --&amp;gt; AI框架
 &lt;figure  &gt;
   &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
     &lt;div class=&#34;w-100&#34; &gt;&lt;img alt=&#34;&#34; srcset=&#34;
-               /post/search_association_system_design_inverted_index/images/demo/museum_name_demo2_hu84ec5b9d9089b55752c5823a8a8fcc6d_208161_cfe0478518b6cdfbff59ab8564c9a26f.webp 400w,
+               /post/search_association_system_design_inverted_index/images/demo/museum_name_demo2_hu84ec5b9d9089b55752c5823a8a8fcc6d_208161_e57ee9e0527680ccfb472d701f4c622f.webp 400w,
                /post/search_association_system_design_inverted_index/images/demo/museum_name_demo2_hu84ec5b9d9089b55752c5823a8a8fcc6d_208161_f612c959414ebd7f0bf074558a69e3e4.webp 760w,
                /post/search_association_system_design_inverted_index/images/demo/museum_name_demo2_hu84ec5b9d9089b55752c5823a8a8fcc6d_208161_1200x1200_fit_q75_h2_lanczos_3.webp 1200w&#34;
-               src=&#34;/post/search_association_system_design_inverted_index/images/demo/museum_name_demo2_hu84ec5b9d9089b55752c5823a8a8fcc6d_208161_cfe0478518b6cdfbff59ab8564c9a26f.webp&#34;
+               src=&#34;/post/search_association_system_design_inverted_index/images/demo/museum_name_demo2_hu84ec5b9d9089b55752c5823a8a8fcc6d_208161_e57ee9e0527680ccfb472d701f4c622f.webp&#34;
                width=&#34;760&#34;
                height=&#34;513&#34;
                loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
@@ -1961,10 +2027,10 @@ AIkj --&amp;gt; AI框架
 &lt;figure  &gt;
   &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
     &lt;div class=&#34;w-100&#34; &gt;&lt;img alt=&#34;&#34; srcset=&#34;
-               /post/search_association_system_design_inverted_index/images/demo/museum_name_demo1_hu49e1c811b8caec925749147a1b4410d9_212007_ee765a953fb72889bf074ae5e1b8d6d7.webp 400w,
+               /post/search_association_system_design_inverted_index/images/demo/museum_name_demo1_hu49e1c811b8caec925749147a1b4410d9_212007_c7f55caf4f157bbe52848f5c4ddd63d0.webp 400w,
                /post/search_association_system_design_inverted_index/images/demo/museum_name_demo1_hu49e1c811b8caec925749147a1b4410d9_212007_70fa9f613b2f2cb63d19fd76ef7ac90f.webp 760w,
                /post/search_association_system_design_inverted_index/images/demo/museum_name_demo1_hu49e1c811b8caec925749147a1b4410d9_212007_1200x1200_fit_q75_h2_lanczos_3.webp 1200w&#34;
-               src=&#34;/post/search_association_system_design_inverted_index/images/demo/museum_name_demo1_hu49e1c811b8caec925749147a1b4410d9_212007_ee765a953fb72889bf074ae5e1b8d6d7.webp&#34;
+               src=&#34;/post/search_association_system_design_inverted_index/images/demo/museum_name_demo1_hu49e1c811b8caec925749147a1b4410d9_212007_c7f55caf4f157bbe52848f5c4ddd63d0.webp&#34;
                width=&#34;760&#34;
                height=&#34;577&#34;
                loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
@@ -6239,10 +6305,10 @@ DELETE r, n
 &lt;figure  &gt;
   &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
     &lt;div class=&#34;w-100&#34; &gt;&lt;img alt=&#34;&#34; srcset=&#34;
-               /post/django-core-techs-notes/images/source_code/tree_hu5457b750e29afc9bb27e4cab783d91bb_77348_e92b15fad2c495d4708f8ffb0fc38328.webp 400w,
+               /post/django-core-techs-notes/images/source_code/tree_hu5457b750e29afc9bb27e4cab783d91bb_77348_98fff4d4d7684632bdba6f3d73579582.webp 400w,
                /post/django-core-techs-notes/images/source_code/tree_hu5457b750e29afc9bb27e4cab783d91bb_77348_9d5197a59003ee4886f13ee7ce604db6.webp 760w,
                /post/django-core-techs-notes/images/source_code/tree_hu5457b750e29afc9bb27e4cab783d91bb_77348_1200x1200_fit_q75_h2_lanczos_3.webp 1200w&#34;
-               src=&#34;/post/django-core-techs-notes/images/source_code/tree_hu5457b750e29afc9bb27e4cab783d91bb_77348_e92b15fad2c495d4708f8ffb0fc38328.webp&#34;
+               src=&#34;/post/django-core-techs-notes/images/source_code/tree_hu5457b750e29afc9bb27e4cab783d91bb_77348_98fff4d4d7684632bdba6f3d73579582.webp&#34;
                width=&#34;695&#34;
                height=&#34;760&#34;
                loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
