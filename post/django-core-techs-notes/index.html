@@ -783,7 +783,7 @@
   
   <span class="middot-divider"></span>
   <span class="article-reading-time">
-    5 min read
+    7 min read
   </span>
   
 
@@ -828,6 +828,7 @@
 </li>
 <li>
 <p>sqlmigrate</p>
+<p>输出数据库模型迁移相关sql语句（DDL）</p>
 </li>
 <li>
 <p>showmigrations</p>
@@ -2432,7 +2433,146 @@
                loading="lazy" data-zoomable /></div>
   </div></figure>
 </p>
-<h3 id="-django服务日志记录">### Django服务日志记录</h3>
+<h3 id="django用户模型及拓展">Django用户模型及拓展</h3>
+<p>django.contrib.auth.models模块中包含django自带的用户模型实现，如：</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="k">class</span> <span class="nc">AbstractUser</span><span class="p">(</span><span class="n">AbstractBaseUser</span><span class="p">,</span> <span class="n">PermissionsMixin</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">    <span class="s2">&#34;&#34;&#34;
+</span></span></span><span class="line"><span class="cl"><span class="s2">    An abstract base class implementing a fully featured User model with
+</span></span></span><span class="line"><span class="cl"><span class="s2">    admin-compliant permissions.
+</span></span></span><span class="line"><span class="cl"><span class="s2">
+</span></span></span><span class="line"><span class="cl"><span class="s2">    Username and password are required. Other fields are optional.
+</span></span></span><span class="line"><span class="cl"><span class="s2">    &#34;&#34;&#34;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="n">username_validator</span> <span class="o">=</span> <span class="n">UnicodeUsernameValidator</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="n">username</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">CharField</span><span class="p">(</span>
+</span></span><span class="line"><span class="cl">        <span class="n">_</span><span class="p">(</span><span class="s2">&#34;username&#34;</span><span class="p">),</span>
+</span></span><span class="line"><span class="cl">        <span class="n">max_length</span><span class="o">=</span><span class="mi">150</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">        <span class="n">unique</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">        <span class="n">help_text</span><span class="o">=</span><span class="n">_</span><span class="p">(</span>
+</span></span><span class="line"><span class="cl">            <span class="s2">&#34;Required. 150 characters or fewer. Letters, digits and @/./+/-/_ only.&#34;</span>
+</span></span><span class="line"><span class="cl">        <span class="p">),</span>
+</span></span><span class="line"><span class="cl">        <span class="n">validators</span><span class="o">=</span><span class="p">[</span><span class="n">username_validator</span><span class="p">],</span>
+</span></span><span class="line"><span class="cl">        <span class="n">error_messages</span><span class="o">=</span><span class="p">{</span>
+</span></span><span class="line"><span class="cl">            <span class="s2">&#34;unique&#34;</span><span class="p">:</span> <span class="n">_</span><span class="p">(</span><span class="s2">&#34;A user with that username already exists.&#34;</span><span class="p">),</span>
+</span></span><span class="line"><span class="cl">        <span class="p">},</span>
+</span></span><span class="line"><span class="cl">    <span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="n">first_name</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">CharField</span><span class="p">(</span><span class="n">_</span><span class="p">(</span><span class="s2">&#34;first name&#34;</span><span class="p">),</span> <span class="n">max_length</span><span class="o">=</span><span class="mi">150</span><span class="p">,</span> <span class="n">blank</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="n">last_name</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">CharField</span><span class="p">(</span><span class="n">_</span><span class="p">(</span><span class="s2">&#34;last name&#34;</span><span class="p">),</span> <span class="n">max_length</span><span class="o">=</span><span class="mi">150</span><span class="p">,</span> <span class="n">blank</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="n">email</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">EmailField</span><span class="p">(</span><span class="n">_</span><span class="p">(</span><span class="s2">&#34;email address&#34;</span><span class="p">),</span> <span class="n">blank</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="n">is_staff</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">BooleanField</span><span class="p">(</span>
+</span></span><span class="line"><span class="cl">        <span class="n">_</span><span class="p">(</span><span class="s2">&#34;staff status&#34;</span><span class="p">),</span>
+</span></span><span class="line"><span class="cl">        <span class="n">default</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">        <span class="n">help_text</span><span class="o">=</span><span class="n">_</span><span class="p">(</span><span class="s2">&#34;Designates whether the user can log into this admin site.&#34;</span><span class="p">),</span>
+</span></span><span class="line"><span class="cl">    <span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="n">is_active</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">BooleanField</span><span class="p">(</span>
+</span></span><span class="line"><span class="cl">        <span class="n">_</span><span class="p">(</span><span class="s2">&#34;active&#34;</span><span class="p">),</span>
+</span></span><span class="line"><span class="cl">        <span class="n">default</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">        <span class="n">help_text</span><span class="o">=</span><span class="n">_</span><span class="p">(</span>
+</span></span><span class="line"><span class="cl">            <span class="s2">&#34;Designates whether this user should be treated as active. &#34;</span>
+</span></span><span class="line"><span class="cl">            <span class="s2">&#34;Unselect this instead of deleting accounts.&#34;</span>
+</span></span><span class="line"><span class="cl">        <span class="p">),</span>
+</span></span><span class="line"><span class="cl">    <span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="n">date_joined</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">DateTimeField</span><span class="p">(</span><span class="n">_</span><span class="p">(</span><span class="s2">&#34;date joined&#34;</span><span class="p">),</span> <span class="n">default</span><span class="o">=</span><span class="n">timezone</span><span class="o">.</span><span class="n">now</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="n">objects</span> <span class="o">=</span> <span class="n">UserManager</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="n">EMAIL_FIELD</span> <span class="o">=</span> <span class="s2">&#34;email&#34;</span>
+</span></span><span class="line"><span class="cl">    <span class="n">USERNAME_FIELD</span> <span class="o">=</span> <span class="s2">&#34;username&#34;</span>
+</span></span><span class="line"><span class="cl">    <span class="n">REQUIRED_FIELDS</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&#34;email&#34;</span><span class="p">]</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="k">class</span> <span class="nc">Meta</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">        <span class="n">verbose_name</span> <span class="o">=</span> <span class="n">_</span><span class="p">(</span><span class="s2">&#34;user&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="n">verbose_name_plural</span> <span class="o">=</span> <span class="n">_</span><span class="p">(</span><span class="s2">&#34;users&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="n">abstract</span> <span class="o">=</span> <span class="kc">True</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="k">def</span> <span class="nf">clean</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">clean</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">        <span class="bp">self</span><span class="o">.</span><span class="n">email</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="vm">__class__</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">normalize_email</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">email</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="k">def</span> <span class="nf">get_full_name</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">        <span class="s2">&#34;&#34;&#34;
+</span></span></span><span class="line"><span class="cl"><span class="s2">        Return the first_name plus the last_name, with a space in between.
+</span></span></span><span class="line"><span class="cl"><span class="s2">        &#34;&#34;&#34;</span>
+</span></span><span class="line"><span class="cl">        <span class="n">full_name</span> <span class="o">=</span> <span class="s2">&#34;</span><span class="si">%s</span><span class="s2"> </span><span class="si">%s</span><span class="s2">&#34;</span> <span class="o">%</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">first_name</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">last_name</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="n">full_name</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="k">def</span> <span class="nf">get_short_name</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">        <span class="s2">&#34;&#34;&#34;Return the short name for the user.&#34;&#34;&#34;</span>
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">first_name</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="k">def</span> <span class="nf">email_user</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">subject</span><span class="p">,</span> <span class="n">message</span><span class="p">,</span> <span class="n">from_email</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">        <span class="s2">&#34;&#34;&#34;Send an email to this user.&#34;&#34;&#34;</span>
+</span></span><span class="line"><span class="cl">        <span class="n">send_mail</span><span class="p">(</span><span class="n">subject</span><span class="p">,</span> <span class="n">message</span><span class="p">,</span> <span class="n">from_email</span><span class="p">,</span> <span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">email</span><span class="p">],</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">class</span> <span class="nc">User</span><span class="p">(</span><span class="n">AbstractUser</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">    <span class="s2">&#34;&#34;&#34;
+</span></span></span><span class="line"><span class="cl"><span class="s2">    Users within the Django authentication system are represented by this
+</span></span></span><span class="line"><span class="cl"><span class="s2">    model.
+</span></span></span><span class="line"><span class="cl"><span class="s2">
+</span></span></span><span class="line"><span class="cl"><span class="s2">    Username and password are required. Other fields are optional.
+</span></span></span><span class="line"><span class="cl"><span class="s2">    &#34;&#34;&#34;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="k">class</span> <span class="nc">Meta</span><span class="p">(</span><span class="n">AbstractUser</span><span class="o">.</span><span class="n">Meta</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">        <span class="n">swappable</span> <span class="o">=</span> <span class="s2">&#34;AUTH_USER_MODEL&#34;</span>
+</span></span></code></pre></div><p>假如我们想快速实现一个用户管理的功能，最快就是在django用户上进行拓展，使用django自带用户的用户、密码等基础属性，拓展新字段如L电话号码、地址、教育程度等属性。</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="k">class</span> <span class="nc">ExtendedUser</span><span class="p">(</span><span class="n">AbstractUser</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">    <span class="n">phone</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">CharField</span><span class="p">(</span><span class="n">max_length</span><span class="o">=</span><span class="mi">32</span><span class="p">,</span> <span class="n">db_comment</span><span class="o">=</span><span class="s2">&#34;电话号码&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="n">residential_address</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">CharField</span><span class="p">(</span><span class="n">max_length</span><span class="o">=</span><span class="mi">128</span><span class="p">,</span> <span class="n">db_comment</span><span class="o">=</span><span class="s2">&#34;住宅地址&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="n">wechat_openid</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">CharField</span><span class="p">(</span><span class="n">max_length</span><span class="o">=</span><span class="mi">128</span><span class="p">,</span> <span class="n">db_comment</span><span class="o">=</span><span class="s2">&#34;微信公开ID&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="n">education</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">CharField</span><span class="p">(</span><span class="n">max_length</span><span class="o">=</span><span class="mi">8</span><span class="p">,</span> <span class="n">db_comment</span><span class="o">=</span><span class="s2">&#34;教育程度&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="n">graduate_institution</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">CharField</span><span class="p">(</span><span class="n">max_length</span><span class="o">=</span><span class="mi">8</span><span class="p">,</span> <span class="n">db_comment</span><span class="o">=</span><span class="s2">&#34;毕业院校&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="n">vip_effective_time</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">DateTimeField</span><span class="p">(</span><span class="n">db_comment</span><span class="o">=</span><span class="s2">&#34;VIP有效日期期限&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="n">user_permissions</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">ManyToManyField</span><span class="p">(</span>
+</span></span><span class="line"><span class="cl">        <span class="n">Permission</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">        <span class="n">verbose_name</span><span class="o">=</span> <span class="s1">&#39;用户权限&#39;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">        <span class="n">blank</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">        <span class="n">help_text</span><span class="o">=</span> <span class="s1">&#39;Specific permissions for this user.&#39;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="c1"># 对当前表进行相关设置:</span>
+</span></span><span class="line"><span class="cl">    <span class="k">class</span> <span class="nc">Meta</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">        <span class="n">managed</span> <span class="o">=</span> <span class="kc">True</span>
+</span></span><span class="line"><span class="cl">        <span class="n">db_table</span> <span class="o">=</span> <span class="s1">&#39;extended_users&#39;</span>
+</span></span><span class="line"><span class="cl">        <span class="n">verbose_name</span> <span class="o">=</span> <span class="s1">&#39;用户基础表&#39;</span>
+</span></span><span class="line"><span class="cl">        <span class="n">verbose_name_plural</span> <span class="o">=</span> <span class="n">verbose_name</span>
+</span></span></code></pre></div><p>定义好模型文件就可以迁移，将表结构物理同步到数据库中</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">python manage.py makemigrations app_name
+</span></span><span class="line"><span class="cl">python manage.py migrate app_name
+</span></span></code></pre></div><p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<figure  >
+  <div class="d-flex justify-content-center">
+    <div class="w-100" ><img alt="" srcset="
+               /post/django-core-techs-notes/images/user/customed_user_migrate_hu4f1ffe3972cd2fe6a09aed6d4c744408_137652_65cdd9f2df73727e8d3ecdbf1184447d.webp 400w,
+               /post/django-core-techs-notes/images/user/customed_user_migrate_hu4f1ffe3972cd2fe6a09aed6d4c744408_137652_d9f9ca0e80bef2eb8e3143ca9ecbd638.webp 760w,
+               /post/django-core-techs-notes/images/user/customed_user_migrate_hu4f1ffe3972cd2fe6a09aed6d4c744408_137652_1200x1200_fit_q75_h2_lanczos_3.webp 1200w"
+               src="/post/django-core-techs-notes/images/user/customed_user_migrate_hu4f1ffe3972cd2fe6a09aed6d4c744408_137652_65cdd9f2df73727e8d3ecdbf1184447d.webp"
+               width="760"
+               height="232"
+               loading="lazy" data-zoomable /></div>
+  </div></figure>
+</p>
+<p>【注】默认用户模型的字段不允许为空，需要显式设置null=True表明字段可以为空，另外，如果需要通过django admin管理用户模型，对于允许为空的字段还需要显式设置blank=True，否则后台管理页面的前端会校验字段值要求必填。</p>
+<h3 id="django服务日志记录">Django服务日志记录</h3>
+<ul>
+<li>通过中间件记录接口请求记录</li>
+</ul>
 <h4 id="参考文档">参考文档</h4>
 <p><a href="https://docs.djangoproject.com/zh-hans/4.2/topics/logging/" target="_blank" rel="noopener">https://docs.djangoproject.com/zh-hans/4.2/topics/logging/</a></p>
 <p>Django默认使用logging模块进行日志记录，可以在settings.py文件中配置LOGGING变量对日志进行配置。如：</p>
@@ -2503,6 +2643,7 @@
                loading="lazy" data-zoomable /></div>
   </div></figure>
 </p>
+<h3 id="heading-1"></h3>
 <h3 id="django接口鉴权">Django接口鉴权</h3>
 <ul>
 <li>
