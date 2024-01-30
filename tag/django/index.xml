@@ -2018,10 +2018,10 @@
 &lt;figure  &gt;
   &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
     &lt;div class=&#34;w-100&#34; &gt;&lt;img alt=&#34;&#34; srcset=&#34;
-               /post/django-core-techs-notes/images/user/customed_user_migrate_hu4f1ffe3972cd2fe6a09aed6d4c744408_137652_65cdd9f2df73727e8d3ecdbf1184447d.webp 400w,
-               /post/django-core-techs-notes/images/user/customed_user_migrate_hu4f1ffe3972cd2fe6a09aed6d4c744408_137652_d9f9ca0e80bef2eb8e3143ca9ecbd638.webp 760w,
+               /post/django-core-techs-notes/images/user/customed_user_migrate_hu4f1ffe3972cd2fe6a09aed6d4c744408_137652_2bc7a1f07a54f8c872bed8e9a39f7fcb.webp 400w,
+               /post/django-core-techs-notes/images/user/customed_user_migrate_hu4f1ffe3972cd2fe6a09aed6d4c744408_137652_c297f599efe649108a74ed80ef040530.webp 760w,
                /post/django-core-techs-notes/images/user/customed_user_migrate_hu4f1ffe3972cd2fe6a09aed6d4c744408_137652_1200x1200_fit_q75_h2_lanczos_3.webp 1200w&#34;
-               src=&#34;/post/django-core-techs-notes/images/user/customed_user_migrate_hu4f1ffe3972cd2fe6a09aed6d4c744408_137652_65cdd9f2df73727e8d3ecdbf1184447d.webp&#34;
+               src=&#34;/post/django-core-techs-notes/images/user/customed_user_migrate_hu4f1ffe3972cd2fe6a09aed6d4c744408_137652_2bc7a1f07a54f8c872bed8e9a39f7fcb.webp&#34;
                width=&#34;760&#34;
                height=&#34;232&#34;
                loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
@@ -2171,7 +2171,7 @@
 &lt;p&gt;空间数据模型相关API：https://docs.djangoproject.com/en/4.2/ref/contrib/gis/db-api/&lt;/p&gt;
 &lt;/li&gt;
 &lt;li&gt;
-&lt;p&gt;空间数据u相关函数：&lt;a href=&#34;https://docs.djangoproject.com/en/1.11/ref/contrib/gis/functions/#django.contrib.gis.db.models.functions.Centroid&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Geographic Database Functions | Django documentation | Django&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;空间数据相关函数：&lt;a href=&#34;https://docs.djangoproject.com/en/1.11/ref/contrib/gis/functions/#django.contrib.gis.db.models.functions.Centroid&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Geographic Database Functions | Django documentation | Django&lt;/a&gt;&lt;/p&gt;
 &lt;/li&gt;
 &lt;li&gt;
 &lt;p&gt;&amp;hellip;&amp;hellip;&lt;/p&gt;

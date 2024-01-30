@@ -1,0 +1,1491 @@
+<!DOCTYPE html><html lang="en-us" >
+
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  
+  
+  
+    <meta name="generator" content="Wowchemy 5.5.0 for Hugo" />
+  
+
+  
+  
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+  
+  
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  
+
+  
+  
+  
+    
+      
+      <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Roboto+Mono&family=Roboto:wght@400;700&display=swap">
+      <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Roboto+Mono&family=Roboto:wght@400;700&display=swap" media="print" onload="this.media='all'">
+    
+  
+
+  
+  
+  
+  
+  
+    
+    
+    
+  
+  
+
+  <meta name="author" content="CoolCats" />
+
+  
+  
+  
+    
+  
+  <meta name="description" content="postgresql笔记" />
+
+  
+  <link rel="alternate" hreflang="en-us" href="/post/postgres-usage-issues-notes/" />
+
+  
+  
+  
+    <meta name="theme-color" content="#1565c0" />
+  
+
+  
+  
+    
+    <script src="/js/mathjax-config.js"></script>
+  
+
+  
+
+  <link rel="stylesheet" href="/css/vendor-bundle.min.c7b8d9abd591ba2253ea42747e3ac3f5.css" media="print" onload="this.media='all'">
+
+  
+  
+  
+    
+    
+      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/academicons@1.9.1/css/academicons.min.css" integrity="sha512-W0xM4mr6dEP9nREo7Z9z+9X70wytKvMGeDsj7ps2+xg5QPrEBXC8tAW1IFnzjR6eoJ90JmCnFzerQJTLzIEHjA==" crossorigin="anonymous" media="print" onload="this.media='all'">
+    
+
+    
+    
+    
+    
+      
+      
+    
+    
+    
+
+    
+    
+    
+      
+    
+    
+      
+      
+        
+          <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@10.2.1/build/styles/github.min.css" crossorigin="anonymous" title="hl-light" media="print" onload="this.media='all'">
+          <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@10.2.1/build/styles/dracula.min.css" crossorigin="anonymous" title="hl-dark" media="print" onload="this.media='all'" disabled>
+        
+      
+    
+
+    
+    
+    
+      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.7.1/dist/leaflet.min.css" integrity="" crossorigin="anonymous" media="print" onload="this.media='all'">
+    
+
+    
+
+    
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js" integrity="" crossorigin="anonymous" async></script>
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+  
+
+  
+  
+  
+  
+  
+  <link rel="stylesheet" href="/css/wowchemy.1052fab8b7700a3dc49ee23683097d66.css" />
+
+  
+
+
+
+  
+
+
+  
+
+
+  
+
+
+  <script>
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?51ae6db546b05b91d4053193ba49123d";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+  
+  
+  
+
+  
+
+  
+
+  <link rel="icon" type="image/png" href="/media/icon_hue03491371183284312b8b116a73ae5ab_79511_32x32_fill_lanczos_center_3.png" />
+  <link rel="apple-touch-icon" type="image/png" href="/media/icon_hue03491371183284312b8b116a73ae5ab_79511_180x180_fill_lanczos_center_3.png" />
+
+  <link rel="canonical" href="/post/postgres-usage-issues-notes/" />
+
+  
+  
+  
+  
+  
+  
+  
+  
+    
+    
+  
+  
+
+  
+  
+    
+    
+  
+  <meta property="twitter:card" content="summary" />
+  
+    <meta property="twitter:site" content="@wowchemy" />
+    <meta property="twitter:creator" content="@wowchemy" />
+  
+  <meta property="og:site_name" content="CoolCats" />
+  <meta property="og:url" content="/post/postgres-usage-issues-notes/" />
+  <meta property="og:title" content="PostgreSQL使用过程中遇到的一些问题分析和注意事项笔记 | CoolCats" />
+  <meta property="og:description" content="postgresql笔记" /><meta property="og:image" content="/media/icon_hue03491371183284312b8b116a73ae5ab_79511_512x512_fill_lanczos_center_3.png" />
+    <meta property="twitter:image" content="/media/icon_hue03491371183284312b8b116a73ae5ab_79511_512x512_fill_lanczos_center_3.png" /><meta property="og:locale" content="en-us" />
+  
+    
+      <meta
+        property="article:published_time"
+        content="2024-01-22T16:40:26&#43;08:00"
+      />
+    
+    <meta property="article:modified_time" content="2024-01-23T16:40:26&#43;08:00">
+  
+
+  
+
+
+    
+
+
+
+
+
+
+  
+
+
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "/post/postgres-usage-issues-notes/"
+  },
+  "headline": "PostgreSQL使用过程中遇到的一些问题分析和注意事项笔记",
+  
+  "datePublished": "2024-01-22T16:40:26+08:00",
+  "dateModified": "2024-01-23T16:40:26+08:00",
+  
+  "author": {
+    "@type": "Person",
+    "name": "CoolCats"
+  },
+  
+  "publisher": {
+    "@type": "Organization",
+    "name": "CoolCats",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "/media/icon_hue03491371183284312b8b116a73ae5ab_79511_192x192_fill_lanczos_center_3.png"
+    }
+  },
+  "description": "postgresql笔记"
+}
+</script>
+
+  
+
+  
+
+  
+
+  
+
+
+
+
+
+  <title>PostgreSQL使用过程中遇到的一些问题分析和注意事项笔记 | CoolCats</title>
+</head>
+
+
+<body id="top" data-spy="scroll" data-offset="70" data-target="#TableOfContents" class="page-wrapper   " data-wc-page-id="390dd896088d798e08bb5daa5f813458" >
+
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  <script src="/js/wowchemy-init.min.2ed908358299dd7ab553faae685c746c.js"></script>
+
+  
+
+
+<aside class="search-modal" id="search">
+  <div class="container">
+    <section class="search-header">
+
+      <div class="row no-gutters justify-content-between mb-3">
+        <div class="col-6">
+          <h1>Search</h1>
+        </div>
+        <div class="col-6 col-search-close">
+          <a class="js-search" href="#" aria-label="Close"><i class="fas fa-times-circle text-muted" aria-hidden="true"></i></a>
+        </div>
+      </div>
+
+      <div id="search-box">
+        
+        <input name="q" id="search-query" placeholder="Search..." autocapitalize="off"
+        autocomplete="off" autocorrect="off" spellcheck="false" type="search" class="form-control"
+        aria-label="Search...">
+        
+      </div>
+
+      
+      
+
+      
+
+    </section>
+    <section class="section-search-results">
+
+      <div id="search-hits">
+        
+      </div>
+
+    </section>
+  </div>
+</aside>
+
+
+
+  <div class="page-header">
+    
+
+
+
+
+
+
+
+
+
+
+
+
+<header class="header--fixed">
+  <nav class="navbar navbar-expand-lg navbar-light compensate-for-scrollbar" id="navbar-main">
+    <div class="container-xl">
+
+      
+      <div class="d-none d-lg-inline-flex">
+        <a class="navbar-brand" href="/">CoolCats</a>
+      </div>
+      
+
+      
+      <button type="button" class="navbar-toggler" data-toggle="collapse"
+              data-target="#navbar-content" aria-controls="navbar-content" aria-expanded="false" aria-label="Toggle navigation">
+      <span><i class="fas fa-bars"></i></span>
+      </button>
+      
+
+      
+      <div class="navbar-brand-mobile-wrapper d-inline-flex d-lg-none">
+        <a class="navbar-brand" href="/">CoolCats</a>
+      </div>
+      
+
+      
+      
+      <div class="navbar-collapse main-menu-item collapse justify-content-start" id="navbar-content">
+
+        
+        <ul class="navbar-nav d-md-inline-flex">
+          
+
+          
+
+          
+          
+          
+
+          
+
+          
+          
+          
+          
+
+          
+            
+              
+              
+            
+            
+          
+
+          <li class="nav-item">
+            <a class="nav-link  active" href="/post"><span>博客</span></a>
+          </li>
+
+          
+          
+
+          
+
+          
+          
+          
+            
+          
+
+          
+
+          
+          
+          
+          
+
+          
+            
+              
+              
+            
+            
+          
+
+          <li class="nav-item">
+            <a class="nav-link " href="/event"><span>趣事</span></a>
+          </li>
+
+          
+          
+
+          
+
+          
+          
+          
+            
+          
+
+          
+
+          
+          
+          
+          
+
+          
+            
+              
+              
+            
+            
+          
+
+          <li class="nav-item">
+            <a class="nav-link " href="/project"><span>项目</span></a>
+          </li>
+
+          
+          
+
+          
+
+          
+          
+          
+            
+          
+
+          
+
+          
+          
+          
+          
+
+          
+            
+              
+              
+            
+            
+          
+
+          <li class="nav-item">
+            <a class="nav-link " href="/publication"><span>论文</span></a>
+          </li>
+
+          
+          
+
+          
+
+          
+          
+          
+            
+          
+
+          
+
+          
+          
+          
+          
+
+          
+            
+              
+              
+            
+            
+          
+
+          <li class="nav-item">
+            <a class="nav-link " href="/contact"><span>联系</span></a>
+          </li>
+
+          
+          
+
+          
+
+          
+          
+          
+            
+          
+
+          
+
+          
+          
+          
+          
+
+          
+            
+              
+              
+            
+            
+          
+
+          <li class="nav-item">
+            <a class="nav-link " href="/media/files/cv"><span>简历</span></a>
+          </li>
+
+          
+          
+
+        
+
+          
+        </ul>
+      </div>
+
+      <ul class="nav-icons navbar-nav flex-row ml-auto d-flex pl-md-2">
+
+        
+        
+          
+        
+
+        
+        
+        <li class="nav-item">
+          <a class="nav-link js-search" href="#" aria-label="Search"><i class="fas fa-search" aria-hidden="true"></i></a>
+        </li>
+        
+
+        
+        
+        
+        <li class="nav-item dropdown theme-dropdown">
+          <a href="#" class="nav-link" data-toggle="dropdown" aria-haspopup="true" aria-label="Display preferences">
+            <i class="fas fa-moon" aria-hidden="true"></i>
+          </a>
+          <div class="dropdown-menu">
+            <a href="#" class="dropdown-item js-set-theme-light">
+              <span>Light</span>
+            </a>
+            <a href="#" class="dropdown-item js-set-theme-dark">
+              <span>Dark</span>
+            </a>
+            <a href="#" class="dropdown-item js-set-theme-auto">
+              <span>Automatic</span>
+            </a>
+          </div>
+        </li>
+        
+
+        
+        
+
+      </ul>
+
+    </div>
+  </nav>
+</header>
+
+
+  </div>
+
+  <div class="page-body">
+    
+    
+    
+
+    <article class="article">
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+  
+  
+<div class="article-container pt-3">
+  <h1>PostgreSQL使用过程中遇到的一些问题分析和注意事项笔记</h1>
+
+  
+
+  
+    
+
+
+<div class="article-metadata">
+
+  
+  
+
+  
+  <span class="article-date">
+    
+    
+      
+          Last updated on
+      
+    
+    Jan 23, 2024
+  </span>
+  
+
+  
+
+  
+  <span class="middot-divider"></span>
+  <span class="article-reading-time">
+    1 min read
+  </span>
+  
+
+  
+  
+  
+  
+
+  
+  
+  <span class="middot-divider"></span>
+  <span class="article-categories">
+    <i class="fas fa-folder mr-1"></i><a href="/category/%E6%95%B0%E6%8D%AE%E5%BA%93/">数据库</a></span>
+  
+
+</div>
+
+    
+
+
+
+
+
+  
+</div>
+
+
+
+  <div class="article-container">
+
+    <div class="article-style">
+      <h2 id="关于数据类型">关于数据类型</h2>
+<h3 id="smallserialserial和bigserial">smallserial、serial和bigserial</h3>
+<p>pgsql中如果需要实现自增长ID字段，可以采用serial类型</p>
+<h3 id="时间日期相关字段">时间、日期相关字段</h3>
+<p>根据<a href="http://www.postgres.cn/docs/13/datatype-datetime.html" target="_blank" rel="noopener">PostgreSQL中文社区的文档</a>，PostgreSQL支持的日期和时间类型包括如下：</p>
+<p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<figure  >
+  <div class="d-flex justify-content-center">
+    <div class="w-100" ><img alt="" srcset="
+               /post/postgres-usage-issues-notes/images/fields/time_and_datetime_hu882542cfecad0f42b4dfb6559d5ecbac_191277_af4de01f35f80f34a71824c2e0312d28.webp 400w,
+               /post/postgres-usage-issues-notes/images/fields/time_and_datetime_hu882542cfecad0f42b4dfb6559d5ecbac_191277_5a4813a239dd479b56602abf53249cac.webp 760w,
+               /post/postgres-usage-issues-notes/images/fields/time_and_datetime_hu882542cfecad0f42b4dfb6559d5ecbac_191277_1200x1200_fit_q75_h2_lanczos_3.webp 1200w"
+               src="/post/postgres-usage-issues-notes/images/fields/time_and_datetime_hu882542cfecad0f42b4dfb6559d5ecbac_191277_af4de01f35f80f34a71824c2e0312d28.webp"
+               width="760"
+               height="187"
+               loading="lazy" data-zoomable /></div>
+  </div></figure>
+</p>
+<p>对于日期而言，支持的可能输入包括下图所示输入：</p>
+<p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<figure  >
+  <div class="d-flex justify-content-center">
+    <div class="w-100" ><img alt="" srcset="
+               /post/postgres-usage-issues-notes/images/fields/possible_date_input_hu9465996e6b65543a7c9b19d3ef9bd627_259312_b867329241d3ca9e6fd27df7dad6fb26.webp 400w,
+               /post/postgres-usage-issues-notes/images/fields/possible_date_input_hu9465996e6b65543a7c9b19d3ef9bd627_259312_c7ac07f4b4b73a2e69dc2d5462f9805b.webp 760w,
+               /post/postgres-usage-issues-notes/images/fields/possible_date_input_hu9465996e6b65543a7c9b19d3ef9bd627_259312_1200x1200_fit_q75_h2_lanczos_3.webp 1200w"
+               src="/post/postgres-usage-issues-notes/images/fields/possible_date_input_hu9465996e6b65543a7c9b19d3ef9bd627_259312_b867329241d3ca9e6fd27df7dad6fb26.webp"
+               width="760"
+               height="631"
+               loading="lazy" data-zoomable /></div>
+  </div></figure>
+</p>
+<p>对于时间而言，支持的可能输入包括下图所示：</p>
+<p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<figure  >
+  <div class="d-flex justify-content-center">
+    <div class="w-100" ><img alt="" srcset="
+               /post/postgres-usage-issues-notes/images/fields/possible_time_input_hu4474549625705d540ddadc4eae859992_219853_887f8ff235c21975544aa8a910d7fdbd.webp 400w,
+               /post/postgres-usage-issues-notes/images/fields/possible_time_input_hu4474549625705d540ddadc4eae859992_219853_f54746ce87996ff255ddfd4e558e8cb4.webp 760w,
+               /post/postgres-usage-issues-notes/images/fields/possible_time_input_hu4474549625705d540ddadc4eae859992_219853_1200x1200_fit_q75_h2_lanczos_3.webp 1200w"
+               src="/post/postgres-usage-issues-notes/images/fields/possible_time_input_hu4474549625705d540ddadc4eae859992_219853_887f8ff235c21975544aa8a910d7fdbd.webp"
+               width="760"
+               height="525"
+               loading="lazy" data-zoomable /></div>
+  </div></figure>
+</p>
+<p>可以看到，PostgreSQL的日期和时间类型对于是否有时区做了精细的分类；对于带时区(with timezone)的类型，查询时数据库会自动将数据转为客户端时区再显示；对于不带时区（without timezone）的类型，数据库对数据的存储和展现完全不受客户端时区影响。可以通过<code>show timezone</code>命令查看数据库会话时区。</p>
+<p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<figure  >
+  <div class="d-flex justify-content-center">
+    <div class="w-100" ><img alt="" srcset="
+               /post/postgres-usage-issues-notes/images/fields/session_timezone_show_huba0bdd758c7b7deb14a2a3eb941f58fd_77972_4d2be3c8b1cad4c1169092fbe514e052.webp 400w,
+               /post/postgres-usage-issues-notes/images/fields/session_timezone_show_huba0bdd758c7b7deb14a2a3eb941f58fd_77972_d6b71a4399a3bd142165201a60c93d51.webp 760w,
+               /post/postgres-usage-issues-notes/images/fields/session_timezone_show_huba0bdd758c7b7deb14a2a3eb941f58fd_77972_1200x1200_fit_q75_h2_lanczos_3.webp 1200w"
+               src="/post/postgres-usage-issues-notes/images/fields/session_timezone_show_huba0bdd758c7b7deb14a2a3eb941f58fd_77972_4d2be3c8b1cad4c1169092fbe514e052.webp"
+               width="760"
+               height="682"
+               loading="lazy" data-zoomable /></div>
+  </div></figure>
+</p>
+<h4 id="实践中遇到的一些细节问题">实践中遇到的一些细节问题</h4>
+<ul>
+<li>更新日期/时间型字段的报错</li>
+</ul>
+<p>如果要变更的新类型与旧类型之间不可进行强制类型转换，则需要删除字段再重建，如：</p>
+<p>approval_date原本是time类型字段，其不可自动强制转换date类型，于是通过sql修改字段类型需要删除并重建字段。</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="k">ALTER</span><span class="w"> </span><span class="k">TABLE</span><span class="w"> </span><span class="n">company</span><span class="w"> </span><span class="k">DROP</span><span class="w"> </span><span class="k">COLUMN</span><span class="w"> </span><span class="n">approval_date</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="k">ALTER</span><span class="w"> </span><span class="k">TABLE</span><span class="w"> </span><span class="n">company</span><span class="w"> </span><span class="k">ADD</span><span class="w"> </span><span class="k">COLUMN</span><span class="w">  </span><span class="n">approval_date</span><span class="w"> </span><span class="nb">date</span><span class="p">;</span><span class="w">
+</span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="k">ALTER</span><span class="w"> </span><span class="k">TABLE</span><span class="w"> </span><span class="n">gb_industry</span><span class="w"> </span><span class="k">DROP</span><span class="w"> </span><span class="k">COLUMN</span><span class="w"> </span><span class="n">updated_at</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="k">ALTER</span><span class="w"> </span><span class="k">TABLE</span><span class="w"> </span><span class="n">gb_industry</span><span class="w"> </span><span class="k">ADD</span><span class="w"> </span><span class="k">COLUMN</span><span class="w">  </span><span class="n">updated_at</span><span class="w"> </span><span class="n">timestamptz</span><span class="p">;</span><span class="w">
+</span></span></span></code></pre></div><h3 id="text类型">Text类型</h3>
+<p>text类型字段是否浪费空间，对于不确定长度的字段应该用character varing并指定一个很大的最大长度好还是直接使用text类型好？</p>
+<p>先说背景，在进行一些数据入库操作时，经常发现预定义的vary charecter不足以存储完整数据，多次手动扩容还是遇到数据超长问题，直接使用text可以避免数据超长/截断问题，但是这会造成空间浪费吗？text类型字段在pgsql内部机制是动态扩容还是默认超大固定空间？</p>
+<p>根据一篇pgsql教程网站的博客:<a href="https://www.postgresqltutorial.com/postgresql-tutorial/postgresql-char-varchar-text/" target="_blank" rel="noopener">PostgreSQL Character Types: CHAR, VARCHAR, And TEXT</a></p>
+<p>TEXT和不指定最大长度的CHARECTER VARYING类型是一样的，文章建议：一般来说除非需要检查（或希望数据库明确指出）数据是否超出一定长度，都应该使用TEXT。</p>
+<p>对于text是否会浪费更多空间，查到了相关问题，但尚未发现提供了足够的技术细节论证的答案</p>
+<ul>
+<li>
+<p><a href="https://stackoverflow.com/questions/23988406/string-field-length-in-postgres-sql" target="_blank" rel="noopener">postgresql - String field length in Postgres SQL - Stack Overflow</a></p>
+</li>
+<li>
+<p><a href="https://stackoverflow.com/questions/20326892/any-downsides-of-using-data-type-text-for-storing-strings" target="_blank" rel="noopener">https://stackoverflow.com/questions/20326892/any-downsides-of-using-data-type-text-for-storing-strings</a></p>
+</li>
+</ul>
+<h3 id="空间模型字段">空间模型字段</h3>
+<p>HINT: No function matches the given name and argument types. You might need to add explicit type casts.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="k">SELECT</span><span class="w">  </span><span class="n">mailing_address_point</span><span class="p">,</span><span class="w"> </span><span class="n">ST_AsEWKB</span><span class="p">(</span><span class="n">company</span><span class="p">.</span><span class="n">registered_address_point</span><span class="p">)</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">company_registered_address_point</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="k">FROM</span><span class="w"> </span><span class="n">company</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="k">WHERE</span><span class="w"> </span><span class="n">company</span><span class="p">.</span><span class="n">mailing_address_point</span><span class="w"> </span><span class="k">IS</span><span class="w"> </span><span class="k">NULL</span><span class="w"> </span><span class="k">AND</span><span class="w"> </span><span class="n">company</span><span class="p">.</span><span class="n">mailing_address</span><span class="w"> </span><span class="k">IS</span><span class="w"> </span><span class="k">NOT</span><span class="w"> </span><span class="k">NULL</span><span class="w"> </span><span class="p">;</span><span class="w">
+</span></span></span></code></pre></div><h4 id="orm操作空间模型字段的问题">ORM操作空间模型字段的问题</h4>
+<ul>
+<li>
+<p>应该使用geometry类型还是更精确的point、linestring、polygon类型？</p>
+</li>
+<li>
+<p>如何从point类型改为geometry类型？</p>
+<p>point类型无法通过强制类型转换为geometry类型，简单的办法是删除字段再重建。</p>
+</li>
+<li>
+<p>如何查询几何对象并以WKT格式输出？</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="k">select</span><span class="w"> </span><span class="n">st_astext</span><span class="p">(</span><span class="n">geo</span><span class="p">)</span><span class="w"> </span><span class="k">from</span><span class="w"> </span><span class="n">poi_address_coordinate_log</span><span class="p">;</span><span class="w">
+</span></span></span></code></pre></div><p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<figure  >
+  <div class="d-flex justify-content-center">
+    <div class="w-100" ><img alt="" srcset="
+               /post/postgres-usage-issues-notes/images/fields/st_astext_huaaa6910ee499902fd02800e42ab2e8fa_136811_045bf392c5cdcf5d69b0cb3918895b1e.webp 400w,
+               /post/postgres-usage-issues-notes/images/fields/st_astext_huaaa6910ee499902fd02800e42ab2e8fa_136811_60f3275f0e565bda256c9682bc35195e.webp 760w,
+               /post/postgres-usage-issues-notes/images/fields/st_astext_huaaa6910ee499902fd02800e42ab2e8fa_136811_1200x1200_fit_q75_h2_lanczos_3.webp 1200w"
+               src="/post/postgres-usage-issues-notes/images/fields/st_astext_huaaa6910ee499902fd02800e42ab2e8fa_136811_045bf392c5cdcf5d69b0cb3918895b1e.webp"
+               width="679"
+               height="760"
+               loading="lazy" data-zoomable /></div>
+  </div></figure>
+</p>
+</li>
+<li>
+<p>基于sqlalchemy ORM框架如何写geometry对象？</p>
+<p>基于geoalchemy2库的函数可以构建空间要素类型，兼容sqlalchemy。以点要素为例，通过ST_MakePoint方法构建的点要素类型可直接赋给postgresql中数据表的空间要素字段.</p>
+<pre tabindex="0"><code>ST_MakePoint(114,22)
+</code></pre></li>
+</ul>
+<p><a href="https://geoalchemy-2.readthedocs.io/en/latest/core_tutorial.html" target="_blank" rel="noopener">Core Tutorial — GeoAlchemy2 0.14.4.dev1+g4e4f45d documentation</a></p>
+<ul>
+<li>&hellip;&hellip;</li>
+</ul>
+<h2 id="关于触发器">关于触发器</h2>
+<p>为了记录数据变更时间，往往会有一个字段在数据发生更新时自动记录当前时间戳，对于MySQL而言可以很方便地通过设置下列额外值实现这个需求，但对于PgSQL而言却是另一种做法。</p>
+<pre tabindex="0"><code>on update CURRENT_TIMESTAMP
+</code></pre><p>PgSQL中需要使用触发器实现这个功能：</p>
+<ol>
+<li>创建触发器函数</li>
+</ol>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="k">CREATE</span><span class="w">  </span><span class="k">FUNCTION</span><span class="w"> </span><span class="n">update_updated_on_company</span><span class="p">()</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="k">RETURNS</span><span class="w"> </span><span class="k">TRIGGER</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="err">$$</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="k">BEGIN</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="k">NEW</span><span class="p">.</span><span class="n">updated_at</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">now</span><span class="p">();</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="k">RETURN</span><span class="w"> </span><span class="k">NEW</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="k">END</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="err">$$</span><span class="w"> </span><span class="k">language</span><span class="w"> </span><span class="s1">&#39;plpgsql&#39;</span><span class="p">;</span><span class="w">
+</span></span></span></code></pre></div><ol start="2">
+<li>创建触发器</li>
+</ol>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="k">CREATE</span><span class="w"> </span><span class="k">TRIGGER</span><span class="w"> </span><span class="n">update_company_updated_on</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="k">BEFORE</span><span class="w"> </span><span class="k">UPDATE</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="k">ON</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="n">company</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="k">FOR</span><span class="w"> </span><span class="k">EACH</span><span class="w"> </span><span class="k">ROW</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="k">EXECUTE</span><span class="w"> </span><span class="k">PROCEDURE</span><span class="w"> </span><span class="n">update_updated_on_company_task</span><span class="p">();</span><span class="w">
+</span></span></span></code></pre></div><p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<figure  >
+  <div class="d-flex justify-content-center">
+    <div class="w-100" ><img alt="" srcset="
+               /post/postgres-usage-issues-notes/images/fields/updated_at_hu1d6bbcc980d3f5f988b9feb8ae9e488c_156706_77fda5502740486c30d46d1299a6ad30.webp 400w,
+               /post/postgres-usage-issues-notes/images/fields/updated_at_hu1d6bbcc980d3f5f988b9feb8ae9e488c_156706_c05349d7f9312743d62fb227070f67dc.webp 760w,
+               /post/postgres-usage-issues-notes/images/fields/updated_at_hu1d6bbcc980d3f5f988b9feb8ae9e488c_156706_1200x1200_fit_q75_h2_lanczos_3.webp 1200w"
+               src="/post/postgres-usage-issues-notes/images/fields/updated_at_hu1d6bbcc980d3f5f988b9feb8ae9e488c_156706_77fda5502740486c30d46d1299a6ad30.webp"
+               width="760"
+               height="194"
+               loading="lazy" data-zoomable /></div>
+  </div></figure>
+</p>
+
+    </div>
+
+    
+
+
+
+
+<div class="article-tags">
+  
+  <a class="badge badge-light" href="/tag/postgresql/">PostgreSQL</a>
+  
+  <a class="badge badge-light" href="/tag/postgis/">PostGIS</a>
+  
+</div>
+
+
+
+<div class="share-box">
+  <ul class="share">
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="https://twitter.com/intent/tweet?url=/post/postgres-usage-issues-notes/&amp;text=PostgreSQL%e4%bd%bf%e7%94%a8%e8%bf%87%e7%a8%8b%e4%b8%ad%e9%81%87%e5%88%b0%e7%9a%84%e4%b8%80%e4%ba%9b%e9%97%ae%e9%a2%98%e5%88%86%e6%9e%90%e5%92%8c%e6%b3%a8%e6%84%8f%e4%ba%8b%e9%a1%b9%e7%ac%94%e8%ae%b0" target="_blank" rel="noopener" class="share-btn-twitter" aria-label="twitter">
+          <i class="fab fa-twitter"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="https://www.facebook.com/sharer.php?u=/post/postgres-usage-issues-notes/&amp;t=PostgreSQL%e4%bd%bf%e7%94%a8%e8%bf%87%e7%a8%8b%e4%b8%ad%e9%81%87%e5%88%b0%e7%9a%84%e4%b8%80%e4%ba%9b%e9%97%ae%e9%a2%98%e5%88%86%e6%9e%90%e5%92%8c%e6%b3%a8%e6%84%8f%e4%ba%8b%e9%a1%b9%e7%ac%94%e8%ae%b0" target="_blank" rel="noopener" class="share-btn-facebook" aria-label="facebook">
+          <i class="fab fa-facebook"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="mailto:?subject=PostgreSQL%e4%bd%bf%e7%94%a8%e8%bf%87%e7%a8%8b%e4%b8%ad%e9%81%87%e5%88%b0%e7%9a%84%e4%b8%80%e4%ba%9b%e9%97%ae%e9%a2%98%e5%88%86%e6%9e%90%e5%92%8c%e6%b3%a8%e6%84%8f%e4%ba%8b%e9%a1%b9%e7%ac%94%e8%ae%b0&amp;body=/post/postgres-usage-issues-notes/" target="_blank" rel="noopener" class="share-btn-email" aria-label="envelope">
+          <i class="fas fa-envelope"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="https://www.linkedin.com/shareArticle?url=/post/postgres-usage-issues-notes/&amp;title=PostgreSQL%e4%bd%bf%e7%94%a8%e8%bf%87%e7%a8%8b%e4%b8%ad%e9%81%87%e5%88%b0%e7%9a%84%e4%b8%80%e4%ba%9b%e9%97%ae%e9%a2%98%e5%88%86%e6%9e%90%e5%92%8c%e6%b3%a8%e6%84%8f%e4%ba%8b%e9%a1%b9%e7%ac%94%e8%ae%b0" target="_blank" rel="noopener" class="share-btn-linkedin" aria-label="linkedin-in">
+          <i class="fab fa-linkedin-in"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="whatsapp://send?text=PostgreSQL%e4%bd%bf%e7%94%a8%e8%bf%87%e7%a8%8b%e4%b8%ad%e9%81%87%e5%88%b0%e7%9a%84%e4%b8%80%e4%ba%9b%e9%97%ae%e9%a2%98%e5%88%86%e6%9e%90%e5%92%8c%e6%b3%a8%e6%84%8f%e4%ba%8b%e9%a1%b9%e7%ac%94%e8%ae%b0%20/post/postgres-usage-issues-notes/" target="_blank" rel="noopener" class="share-btn-whatsapp" aria-label="whatsapp">
+          <i class="fab fa-whatsapp"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="https://service.weibo.com/share/share.php?url=/post/postgres-usage-issues-notes/&amp;title=PostgreSQL%e4%bd%bf%e7%94%a8%e8%bf%87%e7%a8%8b%e4%b8%ad%e9%81%87%e5%88%b0%e7%9a%84%e4%b8%80%e4%ba%9b%e9%97%ae%e9%a2%98%e5%88%86%e6%9e%90%e5%92%8c%e6%b3%a8%e6%84%8f%e4%ba%8b%e9%a1%b9%e7%ac%94%e8%ae%b0" target="_blank" rel="noopener" class="share-btn-weibo" aria-label="weibo">
+          <i class="fab fa-weibo"></i>
+        </a>
+      </li>
+    
+  </ul>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+
+
+
+  
+  
+  
+  
+  
+  <div class="media author-card content-widget-hr">
+    
+      
+      <a href="/authors/admin/"><img class="avatar mr-3 avatar-circle" src="/authors/admin/avatar_hu55194f19033f85038196a23353ffe543_580100_270x270_fill_q75_lanczos_center.jpg" alt="CoolCats"></a>
+    
+
+    <div class="media-body">
+      <h5 class="card-title"><a href="/authors/admin/">CoolCats</a></h5>
+      <h6 class="card-subtitle">理学学士</h6>
+      <p class="card-text">我的研究兴趣是时空数据分析、知识图谱、自然语言处理与服务端开发</p>
+      <ul class="network-icon" aria-hidden="true">
+  
+    
+    
+    
+      
+    
+    
+    
+    
+    
+    <li>
+      <a href="mailto:2811159909@qq.com" >
+        <i class="fas fa-envelope"></i>
+      </a>
+    </li>
+  
+    
+    
+    
+      
+    
+    
+    
+    
+    
+      
+    
+    <li>
+      <a href="https://github.com/Coolgiserz" target="_blank" rel="noopener">
+        <i class="fab fa-github"></i>
+      </a>
+    </li>
+  
+</ul>
+
+    </div>
+  </div>
+
+
+
+
+
+
+
+
+
+  
+  
+  
+
+  
+
+  
+
+
+
+
+
+
+
+
+
+
+  </div>
+</article>
+  </div>
+
+  <div class="page-footer">
+    
+    
+    <div class="container">
+      <footer class="site-footer">
+
+  
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+
+
+
+
+
+  
+  
+  
+
+  
+  
+    
+  
+  
+    
+  
+
+  
+
+  
+  <p class="powered-by copyright-license-text">
+    © 2024 CoolCats. This work is licensed under <a href="https://creativecommons.org/licenses/by-nc-nd/4.0" rel="noopener noreferrer" target="_blank">CC BY NC ND 4.0</a>
+  </p>
+  
+
+  <p class="powered-by footer-license-icons">
+    <a href="https://creativecommons.org/licenses/by-nc-nd/4.0" rel="noopener noreferrer" target="_blank" aria-label="Creative Commons">
+      <i class="fab fa-creative-commons fa-2x" aria-hidden="true"></i>
+      <i class="fab fa-creative-commons-by fa-2x" aria-hidden="true"></i>
+      
+        <i class="fab fa-creative-commons-nc fa-2x" aria-hidden="true"></i>
+      
+      
+        <i class="fab fa-creative-commons-nd fa-2x" aria-hidden="true"></i>
+      
+    </a>
+  </p>
+
+
+
+
+  <p class="powered-by">
+    
+    
+    
+      
+      
+      
+      
+      
+      
+      Published with <a href="https://wowchemy.com/?utm_campaign=poweredby" target="_blank" rel="noopener">Wowchemy</a> — the free, <a href="https://github.com/wowchemy/wowchemy-hugo-themes" target="_blank" rel="noopener">open source</a> website builder that empowers creators.
+    
+  </p>
+</footer>
+
+    </div>
+    
+  </div>
+
+      
+
+    
+    <script src="/js/vendor-bundle.min.fab8b449b814cc9f95b22fcf2e45f05b.js"></script>
+
+    
+    
+    
+      
+
+      
+      
+
+      
+
+      
+        
+        <script src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@10.2.1/build/highlight.min.js" integrity="sha512-Ypjm0o7jOxAd4hpdoppSEN0TQOC19UtPAqD+4s5AlXmUvbmmS/YMxYqAqarQYyxTnB6/rqip9qcxlNB/3U9Wdg==" crossorigin="anonymous"></script>
+        
+        
+        <script src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@10.2.1/build/languages/r.min.js" crossorigin="anonymous"></script>
+        
+        <script src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@10.2.1/build/languages/latex.min.js" crossorigin="anonymous"></script>
+        
+      
+
+    
+
+    
+    
+    
+      <script src="https://cdn.jsdelivr.net/npm/leaflet@1.7.1/dist/leaflet.min.js" integrity="" crossorigin="anonymous"></script>
+    
+
+    
+    
+
+    
+    
+    
+      
+      <script id="search-hit-fuse-template" type="text/x-template">
+        <div class="search-hit" id="summary-{{key}}">
+          <div class="search-hit-content">
+            <div class="search-hit-name">
+              <a href="{{relpermalink}}">{{title}}</a>
+              <div class="article-metadata search-hit-type">{{type}}</div>
+              <p class="search-hit-description">{{snippet}}</p>
+            </div>
+          </div>
+        </div>
+      </script>
+      
+        <script src="https://cdn.jsdelivr.net/gh/krisk/Fuse@v3.2.1/dist/fuse.min.js" integrity="sha512-o38bmzBGX+hD3JHWUFCDA09btWaqrNmoJ3RXLlrysA7PP01Kgs4UlE4MhelE1v5dJR3+cxlR4qQlotsW7jKsnw==" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/gh/julmot/mark.js@8.11.1/dist/jquery.mark.min.js" integrity="sha512-mhbv5DqBMgrWL+32MmsDOt/OAvqr/cHimk6B8y/bx/xS88MVkYGPiVv2ixKVrkywF2qHplNRUvFsAHUdxZ3Krg==" crossorigin="anonymous"></script>
+      
+    
+
+    
+    
+
+    
+    
+    
+    
+      <script id="dsq-count-scr" src="https://coolgiserz.disqus.com/count.js" async></script>
+    
+
+    
+    
+      
+      
+      
+      
+      
+      
+      
+    
+
+    
+
+    
+    
+    
+    <script id="page-data" type="application/json">{"use_headroom":true}</script>
+
+    
+    
+      <script src="/js/wowchemy-headroom.c251366b4128fd5e6b046d4c97a62a51.js" type="module"></script>
+    
+    
+    
+    
+    
+    
+    
+      
+      
+    
+    
+    <script src="/en/js/wowchemy.min.ab2f2890dbe3e2e83579366d3d6e8fd9.js"></script>
+
+    
+    
+      <script src="/js/wowchemy-map.a26e9d2f7238ba5b868384f1c5bc6477.js" type="module"></script>
+    
+    
+    
+    
+      
+<div id="modal" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Cite</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <pre><code class="tex hljs"></code></pre>
+      </div>
+      <div class="modal-footer">
+        <a class="btn btn-outline-primary my-1 js-copy-cite" href="#" target="_blank">
+          <i class="fas fa-copy"></i> Copy
+        </a>
+        <a class="btn btn-outline-primary my-1 js-download-cite" href="#" target="_blank">
+          <i class="fas fa-download"></i> Download
+        </a>
+        <div id="modal-error"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+      <script src="/js/wowchemy-publication.68f8d7090562ca65fc6d3cb3f8f2d2cb.js" type="module"></script>
+
+
+
+
+
+
+</body>
+</html>

@@ -96,7 +96,266 @@ svn: E200030: SQLite 编译为 3.43.2，但是运行于 3.39.5
     </item>
     
     <item>
-      <title>Dac系统Docker容器构建Issues</title>
+      <title>PostgreSQL使用过程中遇到的一些问题分析和注意事项笔记</title>
+      <link>/post/postgres-usage-issues-notes/</link>
+      <pubDate>Mon, 22 Jan 2024 16:40:26 +0800</pubDate>
+      <guid>/post/postgres-usage-issues-notes/</guid>
+      <description>&lt;h2 id=&#34;关于数据类型&#34;&gt;关于数据类型&lt;/h2&gt;
+&lt;h3 id=&#34;smallserialserial和bigserial&#34;&gt;smallserial、serial和bigserial&lt;/h3&gt;
+&lt;p&gt;pgsql中如果需要实现自增长ID字段，可以采用serial类型&lt;/p&gt;
+&lt;h3 id=&#34;时间日期相关字段&#34;&gt;时间、日期相关字段&lt;/h3&gt;
+&lt;p&gt;根据&lt;a href=&#34;http://www.postgres.cn/docs/13/datatype-datetime.html&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;PostgreSQL中文社区的文档&lt;/a&gt;，PostgreSQL支持的日期和时间类型包括如下：&lt;/p&gt;
+&lt;p&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure  &gt;
+  &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img alt=&#34;&#34; srcset=&#34;
+               /post/postgres-usage-issues-notes/images/fields/time_and_datetime_hu882542cfecad0f42b4dfb6559d5ecbac_191277_af4de01f35f80f34a71824c2e0312d28.webp 400w,
+               /post/postgres-usage-issues-notes/images/fields/time_and_datetime_hu882542cfecad0f42b4dfb6559d5ecbac_191277_5a4813a239dd479b56602abf53249cac.webp 760w,
+               /post/postgres-usage-issues-notes/images/fields/time_and_datetime_hu882542cfecad0f42b4dfb6559d5ecbac_191277_1200x1200_fit_q75_h2_lanczos_3.webp 1200w&#34;
+               src=&#34;/post/postgres-usage-issues-notes/images/fields/time_and_datetime_hu882542cfecad0f42b4dfb6559d5ecbac_191277_af4de01f35f80f34a71824c2e0312d28.webp&#34;
+               width=&#34;760&#34;
+               height=&#34;187&#34;
+               loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+  &lt;/div&gt;&lt;/figure&gt;
+&lt;/p&gt;
+&lt;p&gt;对于日期而言，支持的可能输入包括下图所示输入：&lt;/p&gt;
+&lt;p&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure  &gt;
+  &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img alt=&#34;&#34; srcset=&#34;
+               /post/postgres-usage-issues-notes/images/fields/possible_date_input_hu9465996e6b65543a7c9b19d3ef9bd627_259312_b867329241d3ca9e6fd27df7dad6fb26.webp 400w,
+               /post/postgres-usage-issues-notes/images/fields/possible_date_input_hu9465996e6b65543a7c9b19d3ef9bd627_259312_c7ac07f4b4b73a2e69dc2d5462f9805b.webp 760w,
+               /post/postgres-usage-issues-notes/images/fields/possible_date_input_hu9465996e6b65543a7c9b19d3ef9bd627_259312_1200x1200_fit_q75_h2_lanczos_3.webp 1200w&#34;
+               src=&#34;/post/postgres-usage-issues-notes/images/fields/possible_date_input_hu9465996e6b65543a7c9b19d3ef9bd627_259312_b867329241d3ca9e6fd27df7dad6fb26.webp&#34;
+               width=&#34;760&#34;
+               height=&#34;631&#34;
+               loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+  &lt;/div&gt;&lt;/figure&gt;
+&lt;/p&gt;
+&lt;p&gt;对于时间而言，支持的可能输入包括下图所示：&lt;/p&gt;
+&lt;p&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure  &gt;
+  &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img alt=&#34;&#34; srcset=&#34;
+               /post/postgres-usage-issues-notes/images/fields/possible_time_input_hu4474549625705d540ddadc4eae859992_219853_887f8ff235c21975544aa8a910d7fdbd.webp 400w,
+               /post/postgres-usage-issues-notes/images/fields/possible_time_input_hu4474549625705d540ddadc4eae859992_219853_f54746ce87996ff255ddfd4e558e8cb4.webp 760w,
+               /post/postgres-usage-issues-notes/images/fields/possible_time_input_hu4474549625705d540ddadc4eae859992_219853_1200x1200_fit_q75_h2_lanczos_3.webp 1200w&#34;
+               src=&#34;/post/postgres-usage-issues-notes/images/fields/possible_time_input_hu4474549625705d540ddadc4eae859992_219853_887f8ff235c21975544aa8a910d7fdbd.webp&#34;
+               width=&#34;760&#34;
+               height=&#34;525&#34;
+               loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+  &lt;/div&gt;&lt;/figure&gt;
+&lt;/p&gt;
+&lt;p&gt;可以看到，PostgreSQL的日期和时间类型对于是否有时区做了精细的分类；对于带时区(with timezone)的类型，查询时数据库会自动将数据转为客户端时区再显示；对于不带时区（without timezone）的类型，数据库对数据的存储和展现完全不受客户端时区影响。可以通过&lt;code&gt;show timezone&lt;/code&gt;命令查看数据库会话时区。&lt;/p&gt;
+&lt;p&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure  &gt;
+  &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img alt=&#34;&#34; srcset=&#34;
+               /post/postgres-usage-issues-notes/images/fields/session_timezone_show_huba0bdd758c7b7deb14a2a3eb941f58fd_77972_4d2be3c8b1cad4c1169092fbe514e052.webp 400w,
+               /post/postgres-usage-issues-notes/images/fields/session_timezone_show_huba0bdd758c7b7deb14a2a3eb941f58fd_77972_d6b71a4399a3bd142165201a60c93d51.webp 760w,
+               /post/postgres-usage-issues-notes/images/fields/session_timezone_show_huba0bdd758c7b7deb14a2a3eb941f58fd_77972_1200x1200_fit_q75_h2_lanczos_3.webp 1200w&#34;
+               src=&#34;/post/postgres-usage-issues-notes/images/fields/session_timezone_show_huba0bdd758c7b7deb14a2a3eb941f58fd_77972_4d2be3c8b1cad4c1169092fbe514e052.webp&#34;
+               width=&#34;760&#34;
+               height=&#34;682&#34;
+               loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+  &lt;/div&gt;&lt;/figure&gt;
+&lt;/p&gt;
+&lt;h4 id=&#34;实践中遇到的一些细节问题&#34;&gt;实践中遇到的一些细节问题&lt;/h4&gt;
+&lt;ul&gt;
+&lt;li&gt;更新日期/时间型字段的报错&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;如果要变更的新类型与旧类型之间不可进行强制类型转换，则需要删除字段再重建，如：&lt;/p&gt;
+&lt;p&gt;approval_date原本是time类型字段，其不可自动强制转换date类型，于是通过sql修改字段类型需要删除并重建字段。&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-sql&#34; data-lang=&#34;sql&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;k&#34;&gt;ALTER&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;k&#34;&gt;TABLE&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;n&#34;&gt;company&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;k&#34;&gt;DROP&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;k&#34;&gt;COLUMN&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;n&#34;&gt;approval_date&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;w&#34;&gt;&lt;/span&gt;&lt;span class=&#34;k&#34;&gt;ALTER&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;k&#34;&gt;TABLE&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;n&#34;&gt;company&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;k&#34;&gt;ADD&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;k&#34;&gt;COLUMN&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;  &lt;/span&gt;&lt;span class=&#34;n&#34;&gt;approval_date&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;nb&#34;&gt;date&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-sql&#34; data-lang=&#34;sql&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;k&#34;&gt;ALTER&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;k&#34;&gt;TABLE&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;n&#34;&gt;gb_industry&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;k&#34;&gt;DROP&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;k&#34;&gt;COLUMN&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;n&#34;&gt;updated_at&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;w&#34;&gt;&lt;/span&gt;&lt;span class=&#34;k&#34;&gt;ALTER&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;k&#34;&gt;TABLE&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;n&#34;&gt;gb_industry&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;k&#34;&gt;ADD&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;k&#34;&gt;COLUMN&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;  &lt;/span&gt;&lt;span class=&#34;n&#34;&gt;updated_at&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;n&#34;&gt;timestamptz&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;text类型&#34;&gt;Text类型&lt;/h3&gt;
+&lt;p&gt;text类型字段是否浪费空间，对于不确定长度的字段应该用character varing并指定一个很大的最大长度好还是直接使用text类型好？&lt;/p&gt;
+&lt;p&gt;先说背景，在进行一些数据入库操作时，经常发现预定义的vary charecter不足以存储完整数据，多次手动扩容还是遇到数据超长问题，直接使用text可以避免数据超长/截断问题，但是这会造成空间浪费吗？text类型字段在pgsql内部机制是动态扩容还是默认超大固定空间？&lt;/p&gt;
+&lt;p&gt;根据一篇pgsql教程网站的博客:&lt;a href=&#34;https://www.postgresqltutorial.com/postgresql-tutorial/postgresql-char-varchar-text/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;PostgreSQL Character Types: CHAR, VARCHAR, And TEXT&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;TEXT和不指定最大长度的CHARECTER VARYING类型是一样的，文章建议：一般来说除非需要检查（或希望数据库明确指出）数据是否超出一定长度，都应该使用TEXT。&lt;/p&gt;
+&lt;p&gt;对于text是否会浪费更多空间，查到了相关问题，但尚未发现提供了足够的技术细节论证的答案&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a href=&#34;https://stackoverflow.com/questions/23988406/string-field-length-in-postgres-sql&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;postgresql - String field length in Postgres SQL - Stack Overflow&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a href=&#34;https://stackoverflow.com/questions/20326892/any-downsides-of-using-data-type-text-for-storing-strings&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;https://stackoverflow.com/questions/20326892/any-downsides-of-using-data-type-text-for-storing-strings&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;空间模型字段&#34;&gt;空间模型字段&lt;/h3&gt;
+&lt;p&gt;HINT: No function matches the given name and argument types. You might need to add explicit type casts.&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-sql&#34; data-lang=&#34;sql&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;k&#34;&gt;SELECT&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;  &lt;/span&gt;&lt;span class=&#34;n&#34;&gt;mailing_address_point&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;n&#34;&gt;ST_AsEWKB&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;company&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;registered_address_point&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;k&#34;&gt;AS&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;n&#34;&gt;company_registered_address_point&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;w&#34;&gt;&lt;/span&gt;&lt;span class=&#34;k&#34;&gt;FROM&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;n&#34;&gt;company&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;w&#34;&gt;&lt;/span&gt;&lt;span class=&#34;k&#34;&gt;WHERE&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;n&#34;&gt;company&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;mailing_address_point&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;k&#34;&gt;IS&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;k&#34;&gt;NULL&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;k&#34;&gt;AND&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;n&#34;&gt;company&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;mailing_address&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;k&#34;&gt;IS&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;k&#34;&gt;NOT&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;k&#34;&gt;NULL&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h4 id=&#34;orm操作空间模型字段的问题&#34;&gt;ORM操作空间模型字段的问题&lt;/h4&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;应该使用geometry类型还是更精确的point、linestring、polygon类型？&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;如何从point类型改为geometry类型？&lt;/p&gt;
+&lt;p&gt;point类型无法通过强制类型转换为geometry类型，简单的办法是删除字段再重建。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;如何查询几何对象并以WKT格式输出？&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-sql&#34; data-lang=&#34;sql&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;k&#34;&gt;select&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;n&#34;&gt;st_astext&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;geo&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;k&#34;&gt;from&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;n&#34;&gt;poi_address_coordinate_log&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure  &gt;
+  &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img alt=&#34;&#34; srcset=&#34;
+               /post/postgres-usage-issues-notes/images/fields/st_astext_huaaa6910ee499902fd02800e42ab2e8fa_136811_045bf392c5cdcf5d69b0cb3918895b1e.webp 400w,
+               /post/postgres-usage-issues-notes/images/fields/st_astext_huaaa6910ee499902fd02800e42ab2e8fa_136811_60f3275f0e565bda256c9682bc35195e.webp 760w,
+               /post/postgres-usage-issues-notes/images/fields/st_astext_huaaa6910ee499902fd02800e42ab2e8fa_136811_1200x1200_fit_q75_h2_lanczos_3.webp 1200w&#34;
+               src=&#34;/post/postgres-usage-issues-notes/images/fields/st_astext_huaaa6910ee499902fd02800e42ab2e8fa_136811_045bf392c5cdcf5d69b0cb3918895b1e.webp&#34;
+               width=&#34;679&#34;
+               height=&#34;760&#34;
+               loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+  &lt;/div&gt;&lt;/figure&gt;
+&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;基于sqlalchemy ORM框架如何写geometry对象？&lt;/p&gt;
+&lt;p&gt;基于geoalchemy2库的函数可以构建空间要素类型，兼容sqlalchemy。以点要素为例，通过ST_MakePoint方法构建的点要素类型可直接赋给postgresql中数据表的空间要素字段.&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;ST_MakePoint(114,22)
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;a href=&#34;https://geoalchemy-2.readthedocs.io/en/latest/core_tutorial.html&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Core Tutorial — GeoAlchemy2 0.14.4.dev1+g4e4f45d documentation&lt;/a&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&amp;hellip;&amp;hellip;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;关于触发器&#34;&gt;关于触发器&lt;/h2&gt;
+&lt;p&gt;为了记录数据变更时间，往往会有一个字段在数据发生更新时自动记录当前时间戳，对于MySQL而言可以很方便地通过设置下列额外值实现这个需求，但对于PgSQL而言却是另一种做法。&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;on update CURRENT_TIMESTAMP
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;PgSQL中需要使用触发器实现这个功能：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;创建触发器函数&lt;/li&gt;
+&lt;/ol&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-sql&#34; data-lang=&#34;sql&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;k&#34;&gt;CREATE&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;  &lt;/span&gt;&lt;span class=&#34;k&#34;&gt;FUNCTION&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;n&#34;&gt;update_updated_on_company&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;()&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;w&#34;&gt;&lt;/span&gt;&lt;span class=&#34;k&#34;&gt;RETURNS&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;k&#34;&gt;TRIGGER&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;k&#34;&gt;AS&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;err&#34;&gt;$$&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;w&#34;&gt;&lt;/span&gt;&lt;span class=&#34;k&#34;&gt;BEGIN&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;w&#34;&gt;    &lt;/span&gt;&lt;span class=&#34;k&#34;&gt;NEW&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;updated_at&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;n&#34;&gt;now&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;();&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;w&#34;&gt;    &lt;/span&gt;&lt;span class=&#34;k&#34;&gt;RETURN&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;k&#34;&gt;NEW&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;w&#34;&gt;&lt;/span&gt;&lt;span class=&#34;k&#34;&gt;END&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;w&#34;&gt;&lt;/span&gt;&lt;span class=&#34;err&#34;&gt;$$&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;k&#34;&gt;language&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;s1&#34;&gt;&amp;#39;plpgsql&amp;#39;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;ol start=&#34;2&#34;&gt;
+&lt;li&gt;创建触发器&lt;/li&gt;
+&lt;/ol&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-sql&#34; data-lang=&#34;sql&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;k&#34;&gt;CREATE&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;k&#34;&gt;TRIGGER&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;n&#34;&gt;update_company_updated_on&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;w&#34;&gt;    &lt;/span&gt;&lt;span class=&#34;k&#34;&gt;BEFORE&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;k&#34;&gt;UPDATE&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;w&#34;&gt;    &lt;/span&gt;&lt;span class=&#34;k&#34;&gt;ON&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;w&#34;&gt;        &lt;/span&gt;&lt;span class=&#34;n&#34;&gt;company&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;w&#34;&gt;    &lt;/span&gt;&lt;span class=&#34;k&#34;&gt;FOR&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;k&#34;&gt;EACH&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;k&#34;&gt;ROW&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;w&#34;&gt;&lt;/span&gt;&lt;span class=&#34;k&#34;&gt;EXECUTE&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;k&#34;&gt;PROCEDURE&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;n&#34;&gt;update_updated_on_company_task&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;();&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure  &gt;
+  &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img alt=&#34;&#34; srcset=&#34;
+               /post/postgres-usage-issues-notes/images/fields/updated_at_hu1d6bbcc980d3f5f988b9feb8ae9e488c_156706_77fda5502740486c30d46d1299a6ad30.webp 400w,
+               /post/postgres-usage-issues-notes/images/fields/updated_at_hu1d6bbcc980d3f5f988b9feb8ae9e488c_156706_c05349d7f9312743d62fb227070f67dc.webp 760w,
+               /post/postgres-usage-issues-notes/images/fields/updated_at_hu1d6bbcc980d3f5f988b9feb8ae9e488c_156706_1200x1200_fit_q75_h2_lanczos_3.webp 1200w&#34;
+               src=&#34;/post/postgres-usage-issues-notes/images/fields/updated_at_hu1d6bbcc980d3f5f988b9feb8ae9e488c_156706_77fda5502740486c30d46d1299a6ad30.webp&#34;
+               width=&#34;760&#34;
+               height=&#34;194&#34;
+               loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+  &lt;/div&gt;&lt;/figure&gt;
+&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Mac OS Docker容器构建Issues</title>
       <link>/post/docker-mac-containers-build-issues/</link>
       <pubDate>Thu, 28 Dec 2023 00:39:14 +0800</pubDate>
       <guid>/post/docker-mac-containers-build-issues/</guid>
@@ -277,10 +536,10 @@ AIkj --&amp;gt; AI框架
 &lt;figure  &gt;
   &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
     &lt;div class=&#34;w-100&#34; &gt;&lt;img alt=&#34;&#34; srcset=&#34;
-               /post/search_association_system_design_inverted_index/images/index/word_seg_hu66075a4a7eb259aefd9410ff65f24d80_78989_4463b32f2147d9c7a4c3e708e73b43cd.webp 400w,
+               /post/search_association_system_design_inverted_index/images/index/word_seg_hu66075a4a7eb259aefd9410ff65f24d80_78989_c97d5ef8d553b4138b7abccb3d43db67.webp 400w,
                /post/search_association_system_design_inverted_index/images/index/word_seg_hu66075a4a7eb259aefd9410ff65f24d80_78989_c0322cce19fb0ba8ce39458d15fbb3a8.webp 760w,
                /post/search_association_system_design_inverted_index/images/index/word_seg_hu66075a4a7eb259aefd9410ff65f24d80_78989_1200x1200_fit_q75_h2_lanczos_3.webp 1200w&#34;
-               src=&#34;/post/search_association_system_design_inverted_index/images/index/word_seg_hu66075a4a7eb259aefd9410ff65f24d80_78989_4463b32f2147d9c7a4c3e708e73b43cd.webp&#34;
+               src=&#34;/post/search_association_system_design_inverted_index/images/index/word_seg_hu66075a4a7eb259aefd9410ff65f24d80_78989_c97d5ef8d553b4138b7abccb3d43db67.webp&#34;
                width=&#34;760&#34;
                height=&#34;196&#34;
                loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
@@ -311,10 +570,10 @@ AIkj --&amp;gt; AI框架
 &lt;figure  &gt;
   &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
     &lt;div class=&#34;w-100&#34; &gt;&lt;img alt=&#34;&#34; srcset=&#34;
-               /post/search_association_system_design_inverted_index/images/persist/redis_demo_hua78c464ef2bdd3b5cd5dc8a5e1baf4da_143342_0b62cd1337b0042ebfc4cfd39f6336e0.webp 400w,
+               /post/search_association_system_design_inverted_index/images/persist/redis_demo_hua78c464ef2bdd3b5cd5dc8a5e1baf4da_143342_61116e3415fb5d78c8d22584c9fd5782.webp 400w,
                /post/search_association_system_design_inverted_index/images/persist/redis_demo_hua78c464ef2bdd3b5cd5dc8a5e1baf4da_143342_5e501237a3a3a1010946269e927394a7.webp 760w,
                /post/search_association_system_design_inverted_index/images/persist/redis_demo_hua78c464ef2bdd3b5cd5dc8a5e1baf4da_143342_1200x1200_fit_q75_h2_lanczos_3.webp 1200w&#34;
-               src=&#34;/post/search_association_system_design_inverted_index/images/persist/redis_demo_hua78c464ef2bdd3b5cd5dc8a5e1baf4da_143342_0b62cd1337b0042ebfc4cfd39f6336e0.webp&#34;
+               src=&#34;/post/search_association_system_design_inverted_index/images/persist/redis_demo_hua78c464ef2bdd3b5cd5dc8a5e1baf4da_143342_61116e3415fb5d78c8d22584c9fd5782.webp&#34;
                width=&#34;760&#34;
                height=&#34;300&#34;
                loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
@@ -4132,10 +4391,10 @@ DELETE r, n
 &lt;figure  &gt;
   &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
     &lt;div class=&#34;w-100&#34; &gt;&lt;img alt=&#34;&#34; srcset=&#34;
-               /post/django-core-techs-notes/images/user/customed_user_migrate_hu4f1ffe3972cd2fe6a09aed6d4c744408_137652_65cdd9f2df73727e8d3ecdbf1184447d.webp 400w,
-               /post/django-core-techs-notes/images/user/customed_user_migrate_hu4f1ffe3972cd2fe6a09aed6d4c744408_137652_d9f9ca0e80bef2eb8e3143ca9ecbd638.webp 760w,
+               /post/django-core-techs-notes/images/user/customed_user_migrate_hu4f1ffe3972cd2fe6a09aed6d4c744408_137652_2bc7a1f07a54f8c872bed8e9a39f7fcb.webp 400w,
+               /post/django-core-techs-notes/images/user/customed_user_migrate_hu4f1ffe3972cd2fe6a09aed6d4c744408_137652_c297f599efe649108a74ed80ef040530.webp 760w,
                /post/django-core-techs-notes/images/user/customed_user_migrate_hu4f1ffe3972cd2fe6a09aed6d4c744408_137652_1200x1200_fit_q75_h2_lanczos_3.webp 1200w&#34;
-               src=&#34;/post/django-core-techs-notes/images/user/customed_user_migrate_hu4f1ffe3972cd2fe6a09aed6d4c744408_137652_65cdd9f2df73727e8d3ecdbf1184447d.webp&#34;
+               src=&#34;/post/django-core-techs-notes/images/user/customed_user_migrate_hu4f1ffe3972cd2fe6a09aed6d4c744408_137652_2bc7a1f07a54f8c872bed8e9a39f7fcb.webp&#34;
                width=&#34;760&#34;
                height=&#34;232&#34;
                loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
@@ -4285,7 +4544,7 @@ DELETE r, n
 &lt;p&gt;空间数据模型相关API：https://docs.djangoproject.com/en/4.2/ref/contrib/gis/db-api/&lt;/p&gt;
 &lt;/li&gt;
 &lt;li&gt;
-&lt;p&gt;空间数据u相关函数：&lt;a href=&#34;https://docs.djangoproject.com/en/1.11/ref/contrib/gis/functions/#django.contrib.gis.db.models.functions.Centroid&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Geographic Database Functions | Django documentation | Django&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;空间数据相关函数：&lt;a href=&#34;https://docs.djangoproject.com/en/1.11/ref/contrib/gis/functions/#django.contrib.gis.db.models.functions.Centroid&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Geographic Database Functions | Django documentation | Django&lt;/a&gt;&lt;/p&gt;
 &lt;/li&gt;
 &lt;li&gt;
 &lt;p&gt;&amp;hellip;&amp;hellip;&lt;/p&gt;
@@ -10246,9 +10505,9 @@ waiting for server to start.... done
       <link>/post/python-sqlalchemy-usage-notes/</link>
       <pubDate>Wed, 12 Apr 2023 23:25:46 +0800</pubDate>
       <guid>/post/python-sqlalchemy-usage-notes/</guid>
-      <description>&lt;h2 id=&#34;sqlalchemy简介&#34;&gt;SQLAlchemy简介&lt;/h2&gt;
-&lt;p&gt;暂略&lt;/p&gt;
-&lt;h2 id=&#34;技巧&#34;&gt;技巧&lt;/h2&gt;
+      <description>&lt;h2 id=&#34;0x00-sqlalchemy简介&#34;&gt;0x00 SQLAlchemy简介&lt;/h2&gt;
+&lt;p&gt;ORM框架。&lt;/p&gt;
+&lt;h2 id=&#34;0x01-技巧与经验&#34;&gt;0x01 技巧与经验&lt;/h2&gt;
 &lt;h3 id=&#34;根据建立好的数据表反向生成orm-model&#34;&gt;根据建立好的数据表反向生成ORM Model&lt;/h3&gt;
 &lt;p&gt;如果我们想针对已存在的数据表，使用ORM简化数据库操作，可以用sqlacodegen工具生成SQLALchemy格式的模型类，然后直接使用sqlalchemy进行ORM操作。考虑到有时候数据库密码可能含有特殊字符（如@），导致你直接在命令行执行操作时报符号相关错误，下面提供了一个简单脚本，根据已有的数据库信息从已有的表结构生成orm模型文件（包含模型类）。&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-python&#34; data-lang=&#34;python&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;kn&#34;&gt;import&lt;/span&gt; &lt;span class=&#34;nn&#34;&gt;os&lt;/span&gt;
@@ -10296,7 +10555,18 @@ waiting for server to start.... done
 &lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;s2&#34;&gt;        &amp;#34;&amp;#34;&amp;#34;&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        &lt;span class=&#34;bp&#34;&gt;self&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;load_options&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;+=&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;_yield_per&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;count&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        &lt;span class=&#34;k&#34;&gt;return&lt;/span&gt; &lt;span class=&#34;bp&#34;&gt;self&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id=&#34;问题&#34;&gt;问题&lt;/h2&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;空间数据类型支持&#34;&gt;空间数据类型支持&lt;/h3&gt;
+&lt;p&gt;相关地址：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a href=&#34;https://pypi.org/project/GeoAlchemy2/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;GeoAlchemy2 · PyPI&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a href=&#34;https://geoalchemy-2.readthedocs.io/en/latest/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;GeoAlchemy 2 Documentation — GeoAlchemy2 0.14.4.dev1+g4e4f45d documentation&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;0x02-问题&#34;&gt;0x02 问题&lt;/h2&gt;
 &lt;h3 id=&#34;macbook-pro-apple芯片不兼容问题&#34;&gt;Macbook Pro Apple芯片不兼容问题&lt;/h3&gt;
 &lt;p&gt;有一个项目代码在windows中执行正常，但在macbook m2 pro机器上执行失败（sqlalchemy、mysqlclient、pymysql均为同一版本）,异常跑出位置为MySQLdb.py的如下部分，导入动态依赖库失败。&lt;/p&gt;
 &lt;p&gt;

@@ -6157,9 +6157,9 @@ os.spawn*
       <link>/post/python-sqlalchemy-usage-notes/</link>
       <pubDate>Wed, 12 Apr 2023 23:25:46 +0800</pubDate>
       <guid>/post/python-sqlalchemy-usage-notes/</guid>
-      <description>&lt;h2 id=&#34;sqlalchemy简介&#34;&gt;SQLAlchemy简介&lt;/h2&gt;
-&lt;p&gt;暂略&lt;/p&gt;
-&lt;h2 id=&#34;技巧&#34;&gt;技巧&lt;/h2&gt;
+      <description>&lt;h2 id=&#34;0x00-sqlalchemy简介&#34;&gt;0x00 SQLAlchemy简介&lt;/h2&gt;
+&lt;p&gt;ORM框架。&lt;/p&gt;
+&lt;h2 id=&#34;0x01-技巧与经验&#34;&gt;0x01 技巧与经验&lt;/h2&gt;
 &lt;h3 id=&#34;根据建立好的数据表反向生成orm-model&#34;&gt;根据建立好的数据表反向生成ORM Model&lt;/h3&gt;
 &lt;p&gt;如果我们想针对已存在的数据表，使用ORM简化数据库操作，可以用sqlacodegen工具生成SQLALchemy格式的模型类，然后直接使用sqlalchemy进行ORM操作。考虑到有时候数据库密码可能含有特殊字符（如@），导致你直接在命令行执行操作时报符号相关错误，下面提供了一个简单脚本，根据已有的数据库信息从已有的表结构生成orm模型文件（包含模型类）。&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-python&#34; data-lang=&#34;python&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;kn&#34;&gt;import&lt;/span&gt; &lt;span class=&#34;nn&#34;&gt;os&lt;/span&gt;
@@ -6207,7 +6207,18 @@ os.spawn*
 &lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;s2&#34;&gt;        &amp;#34;&amp;#34;&amp;#34;&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        &lt;span class=&#34;bp&#34;&gt;self&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;load_options&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;+=&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;_yield_per&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;count&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        &lt;span class=&#34;k&#34;&gt;return&lt;/span&gt; &lt;span class=&#34;bp&#34;&gt;self&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id=&#34;问题&#34;&gt;问题&lt;/h2&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;空间数据类型支持&#34;&gt;空间数据类型支持&lt;/h3&gt;
+&lt;p&gt;相关地址：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a href=&#34;https://pypi.org/project/GeoAlchemy2/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;GeoAlchemy2 · PyPI&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a href=&#34;https://geoalchemy-2.readthedocs.io/en/latest/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;GeoAlchemy 2 Documentation — GeoAlchemy2 0.14.4.dev1+g4e4f45d documentation&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;0x02-问题&#34;&gt;0x02 问题&lt;/h2&gt;
 &lt;h3 id=&#34;macbook-pro-apple芯片不兼容问题&#34;&gt;Macbook Pro Apple芯片不兼容问题&lt;/h3&gt;
 &lt;p&gt;有一个项目代码在windows中执行正常，但在macbook m2 pro机器上执行失败（sqlalchemy、mysqlclient、pymysql均为同一版本）,异常跑出位置为MySQLdb.py的如下部分，导入动态依赖库失败。&lt;/p&gt;
 &lt;p&gt;

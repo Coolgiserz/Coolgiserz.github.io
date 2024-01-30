@@ -1815,10 +1815,10 @@
 &lt;figure  &gt;
   &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
     &lt;div class=&#34;w-100&#34; &gt;&lt;img alt=&#34;&#34; srcset=&#34;
-               /post/django-core-techs-notes/images/user/customed_user_migrate_hu4f1ffe3972cd2fe6a09aed6d4c744408_137652_65cdd9f2df73727e8d3ecdbf1184447d.webp 400w,
-               /post/django-core-techs-notes/images/user/customed_user_migrate_hu4f1ffe3972cd2fe6a09aed6d4c744408_137652_d9f9ca0e80bef2eb8e3143ca9ecbd638.webp 760w,
+               /post/django-core-techs-notes/images/user/customed_user_migrate_hu4f1ffe3972cd2fe6a09aed6d4c744408_137652_2bc7a1f07a54f8c872bed8e9a39f7fcb.webp 400w,
+               /post/django-core-techs-notes/images/user/customed_user_migrate_hu4f1ffe3972cd2fe6a09aed6d4c744408_137652_c297f599efe649108a74ed80ef040530.webp 760w,
                /post/django-core-techs-notes/images/user/customed_user_migrate_hu4f1ffe3972cd2fe6a09aed6d4c744408_137652_1200x1200_fit_q75_h2_lanczos_3.webp 1200w&#34;
-               src=&#34;/post/django-core-techs-notes/images/user/customed_user_migrate_hu4f1ffe3972cd2fe6a09aed6d4c744408_137652_65cdd9f2df73727e8d3ecdbf1184447d.webp&#34;
+               src=&#34;/post/django-core-techs-notes/images/user/customed_user_migrate_hu4f1ffe3972cd2fe6a09aed6d4c744408_137652_2bc7a1f07a54f8c872bed8e9a39f7fcb.webp&#34;
                width=&#34;760&#34;
                height=&#34;232&#34;
                loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
@@ -1968,7 +1968,7 @@
 &lt;p&gt;空间数据模型相关API：https://docs.djangoproject.com/en/4.2/ref/contrib/gis/db-api/&lt;/p&gt;
 &lt;/li&gt;
 &lt;li&gt;
-&lt;p&gt;空间数据u相关函数：&lt;a href=&#34;https://docs.djangoproject.com/en/1.11/ref/contrib/gis/functions/#django.contrib.gis.db.models.functions.Centroid&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Geographic Database Functions | Django documentation | Django&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;空间数据相关函数：&lt;a href=&#34;https://docs.djangoproject.com/en/1.11/ref/contrib/gis/functions/#django.contrib.gis.db.models.functions.Centroid&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Geographic Database Functions | Django documentation | Django&lt;/a&gt;&lt;/p&gt;
 &lt;/li&gt;
 &lt;li&gt;
 &lt;p&gt;&amp;hellip;&amp;hellip;&lt;/p&gt;
@@ -4454,9 +4454,9 @@ sonar.python.coverage.reportPaths=coverage.xml
       <link>/post/python-sqlalchemy-usage-notes/</link>
       <pubDate>Wed, 12 Apr 2023 23:25:46 +0800</pubDate>
       <guid>/post/python-sqlalchemy-usage-notes/</guid>
-      <description>&lt;h2 id=&#34;sqlalchemy简介&#34;&gt;SQLAlchemy简介&lt;/h2&gt;
-&lt;p&gt;暂略&lt;/p&gt;
-&lt;h2 id=&#34;技巧&#34;&gt;技巧&lt;/h2&gt;
+      <description>&lt;h2 id=&#34;0x00-sqlalchemy简介&#34;&gt;0x00 SQLAlchemy简介&lt;/h2&gt;
+&lt;p&gt;ORM框架。&lt;/p&gt;
+&lt;h2 id=&#34;0x01-技巧与经验&#34;&gt;0x01 技巧与经验&lt;/h2&gt;
 &lt;h3 id=&#34;根据建立好的数据表反向生成orm-model&#34;&gt;根据建立好的数据表反向生成ORM Model&lt;/h3&gt;
 &lt;p&gt;如果我们想针对已存在的数据表，使用ORM简化数据库操作，可以用sqlacodegen工具生成SQLALchemy格式的模型类，然后直接使用sqlalchemy进行ORM操作。考虑到有时候数据库密码可能含有特殊字符（如@），导致你直接在命令行执行操作时报符号相关错误，下面提供了一个简单脚本，根据已有的数据库信息从已有的表结构生成orm模型文件（包含模型类）。&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-python&#34; data-lang=&#34;python&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;kn&#34;&gt;import&lt;/span&gt; &lt;span class=&#34;nn&#34;&gt;os&lt;/span&gt;
@@ -4504,7 +4504,18 @@ sonar.python.coverage.reportPaths=coverage.xml
 &lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;s2&#34;&gt;        &amp;#34;&amp;#34;&amp;#34;&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        &lt;span class=&#34;bp&#34;&gt;self&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;load_options&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;+=&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;_yield_per&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;count&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        &lt;span class=&#34;k&#34;&gt;return&lt;/span&gt; &lt;span class=&#34;bp&#34;&gt;self&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id=&#34;问题&#34;&gt;问题&lt;/h2&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;空间数据类型支持&#34;&gt;空间数据类型支持&lt;/h3&gt;
+&lt;p&gt;相关地址：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a href=&#34;https://pypi.org/project/GeoAlchemy2/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;GeoAlchemy2 · PyPI&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a href=&#34;https://geoalchemy-2.readthedocs.io/en/latest/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;GeoAlchemy 2 Documentation — GeoAlchemy2 0.14.4.dev1+g4e4f45d documentation&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;0x02-问题&#34;&gt;0x02 问题&lt;/h2&gt;
 &lt;h3 id=&#34;macbook-pro-apple芯片不兼容问题&#34;&gt;Macbook Pro Apple芯片不兼容问题&lt;/h3&gt;
 &lt;p&gt;有一个项目代码在windows中执行正常，但在macbook m2 pro机器上执行失败（sqlalchemy、mysqlclient、pymysql均为同一版本）,异常跑出位置为MySQLdb.py的如下部分，导入动态依赖库失败。&lt;/p&gt;
 &lt;p&gt;
