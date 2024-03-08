@@ -64,7 +64,7 @@
   
     
   
-  <meta name="description" content="字典树、意图识别、搜索纠错" />
+  <meta name="description" content="SQL like查询、字典树、意图识别、搜索纠错" />
 
   
   <link rel="alternate" hreflang="en-us" href="/project/search_association_algorithms/" />
@@ -322,8 +322,8 @@
   
   <meta property="og:site_name" content="CoolCats" />
   <meta property="og:url" content="/project/search_association_algorithms/" />
-  <meta property="og:title" content="搜索联想算法后端接口服务 | CoolCats" />
-  <meta property="og:description" content="字典树、意图识别、搜索纠错" /><meta property="og:image" content="/media/icon_hue03491371183284312b8b116a73ae5ab_79511_512x512_fill_lanczos_center_3.png" />
+  <meta property="og:title" content="搜索联想算法后端接口服务(前缀版) | CoolCats" />
+  <meta property="og:description" content="SQL like查询、字典树、意图识别、搜索纠错" /><meta property="og:image" content="/media/icon_hue03491371183284312b8b116a73ae5ab_79511_512x512_fill_lanczos_center_3.png" />
     <meta property="twitter:image" content="/media/icon_hue03491371183284312b8b116a73ae5ab_79511_512x512_fill_lanczos_center_3.png" /><meta property="og:locale" content="en-us" />
   
     
@@ -356,7 +356,7 @@
     "@type": "WebPage",
     "@id": "/project/search_association_algorithms/"
   },
-  "headline": "搜索联想算法后端接口服务",
+  "headline": "搜索联想算法后端接口服务(前缀版)",
   
   "datePublished": "2023-11-01T01:19:37+08:00",
   "dateModified": "2023-11-01T01:19:37+08:00",
@@ -374,7 +374,7 @@
       "url": "/media/icon_hue03491371183284312b8b116a73ae5ab_79511_192x192_fill_lanczos_center_3.png"
     }
   },
-  "description": "字典树、意图识别、搜索纠错"
+  "description": "SQL like查询、字典树、意图识别、搜索纠错"
 }
 </script>
 
@@ -390,7 +390,7 @@
 
 
 
-  <title>搜索联想算法后端接口服务 | CoolCats</title>
+  <title>搜索联想算法后端接口服务(前缀版) | CoolCats</title>
 </head>
 
 
@@ -751,7 +751,7 @@
   
   
 <div class="article-container pt-3">
-  <h1>搜索联想算法后端接口服务</h1>
+  <h1>搜索联想算法后端接口服务(前缀版)</h1>
 
   
 
@@ -784,6 +784,10 @@
   
 
   
+  
+  <span class="middot-divider"></span>
+  <span class="article-categories">
+    <i class="fas fa-folder mr-1"></i><a href="/category/%E6%90%9C%E7%B4%A2%E8%81%94%E6%83%B3/">搜索联想</a>, <a href="/category/django/">Django</a></span>
   
 
 </div>
@@ -849,7 +853,7 @@
   <div class="article-container">
 
     <div class="article-style">
-      <h2 id="搜索联想">搜索联想</h2>
+      <h2 id="0x00-搜索联想">0x00 搜索联想</h2>
 <p>当我们使用搜素引擎时,键入少数关键字后搜索引擎就会给出多个基于你输入的词作为前缀的待选词列表，这就是搜索联想。如今，搜索联想功能几乎已成为各大内容平台（如电商、抖音等）的必备功能之一，实现良好的搜索联想功能能够大幅提高产品的用户体验。</p>
 <p>
 
@@ -951,7 +955,7 @@
   </div></figure>
 </p>
 <h2 id="heading"></h2>
-<h2 id="基于django的搜索联想接口服务示例">基于Django的搜索联想接口服务示例</h2>
+<h2 id="0x01-基于django的搜索联想接口服务示例游戏名称联想">0x01 基于Django的搜索联想接口服务示例：游戏名称联想</h2>
 <p>项目启动后即构建Trie树，当用户请求接口时，指定关键词参数，接口即返回以关键词为前缀的游戏名称列表。（数据来自本地的源于NGA游戏论坛的数据库）</p>
 <p>
 
@@ -1039,6 +1043,134 @@
   </div></figure>
 </p>
 <p>关于该项目的容器化部署，可参考<a href="https://coolgiserz.github.io/post/django-project-deployed-by-docker/" target="_blank" rel="noopener">post</a></p>
+<h2 id="0x02-示例2-基于trie树的搜索联想-vs-基于sql-like查询的搜索联想">0x02 示例2: 基于Trie树的搜索联想 vs 基于SQL like查询的搜索联想</h2>
+<table>
+<thead>
+<tr>
+<th>查询前缀</th>
+<th>Trie树耗时</th>
+<th>SQL like查询耗时</th>
+<th>返回数据条数</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>计算机</td>
+<td>2ms</td>
+<td>46ms</td>
+<td>10</td>
+</tr>
+<tr>
+<td>工业</td>
+<td>5ms</td>
+<td>123ms</td>
+<td>6</td>
+</tr>
+<tr>
+<td>社会</td>
+<td>3ms</td>
+<td>32ms</td>
+<td>8</td>
+</tr>
+<tr>
+<td>食品</td>
+<td>3ms</td>
+<td>31ms</td>
+<td>6</td>
+</tr>
+<tr>
+<td>教育</td>
+<td>2ms</td>
+<td>14ms</td>
+<td>2</td>
+</tr>
+</tbody>
+</table>
+<p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<figure  >
+  <div class="d-flex justify-content-center">
+    <div class="w-100" ><img alt="" srcset="
+               /project/search_association_algorithms/images/industry/sql_like_computer_hu943d2929eaabbb8e501db5fc879fa92d_295311_484b869c6487e061c23c1fb44386d1ec.webp 400w,
+               /project/search_association_algorithms/images/industry/sql_like_computer_hu943d2929eaabbb8e501db5fc879fa92d_295311_c2ed8a63028dcb6cf6be6687a920c463.webp 760w,
+               /project/search_association_algorithms/images/industry/sql_like_computer_hu943d2929eaabbb8e501db5fc879fa92d_295311_1200x1200_fit_q75_h2_lanczos_3.webp 1200w"
+               src="/project/search_association_algorithms/images/industry/sql_like_computer_hu943d2929eaabbb8e501db5fc879fa92d_295311_484b869c6487e061c23c1fb44386d1ec.webp"
+               width="760"
+               height="588"
+               loading="lazy" data-zoomable /></div>
+  </div></figure>
+</p>
+<p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<figure  >
+  <div class="d-flex justify-content-center">
+    <div class="w-100" ><img alt="" srcset="
+               /project/search_association_algorithms/images/industry/sql_like_industry_hu80efb910a989e368d4520acd95279f73_258744_0bc2f8bc42c445f38847fb1ecca6d1e9.webp 400w,
+               /project/search_association_algorithms/images/industry/sql_like_industry_hu80efb910a989e368d4520acd95279f73_258744_c36ec03a01294a12b2f2a1093688d588.webp 760w,
+               /project/search_association_algorithms/images/industry/sql_like_industry_hu80efb910a989e368d4520acd95279f73_258744_1200x1200_fit_q75_h2_lanczos_3.webp 1200w"
+               src="/project/search_association_algorithms/images/industry/sql_like_industry_hu80efb910a989e368d4520acd95279f73_258744_0bc2f8bc42c445f38847fb1ecca6d1e9.webp"
+               width="760"
+               height="567"
+               loading="lazy" data-zoomable /></div>
+  </div></figure>
+</p>
+<p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<figure  >
+  <div class="d-flex justify-content-center">
+    <div class="w-100" ><img alt="" srcset="
+               /project/search_association_algorithms/images/industry/trie_social_hudc6ddfac9ba4ee8bd046036fbe97ea27_268208_a91101b572641f2ad88d99bf1685c7b1.webp 400w,
+               /project/search_association_algorithms/images/industry/trie_social_hudc6ddfac9ba4ee8bd046036fbe97ea27_268208_50a43d24ef174ff077fd2d8073ce7514.webp 760w,
+               /project/search_association_algorithms/images/industry/trie_social_hudc6ddfac9ba4ee8bd046036fbe97ea27_268208_1200x1200_fit_q75_h2_lanczos_3.webp 1200w"
+               src="/project/search_association_algorithms/images/industry/trie_social_hudc6ddfac9ba4ee8bd046036fbe97ea27_268208_a91101b572641f2ad88d99bf1685c7b1.webp"
+               width="760"
+               height="559"
+               loading="lazy" data-zoomable /></div>
+  </div></figure>
+</p>
+<p>可见，同样为前缀查询，基于内存中的Trie树进行返回联想结果明显稳定比数据库即时like查询快。</p>
 <h2 id="参考文档">参考文档</h2>
 <ul>
 <li>
@@ -1056,6 +1188,14 @@
 
 
 
+<div class="article-tags">
+  
+  <a class="badge badge-light" href="/tag/%E6%95%B0%E6%8D%AE%E5%BA%93/">数据库</a>
+  
+  <a class="badge badge-light" href="/tag/%E5%AD%97%E5%85%B8%E6%A0%91/">字典树</a>
+  
+</div>
+
 
 
 <div class="share-box">
@@ -1069,7 +1209,7 @@
       
       
       <li>
-        <a href="https://twitter.com/intent/tweet?url=/project/search_association_algorithms/&amp;text=%e6%90%9c%e7%b4%a2%e8%81%94%e6%83%b3%e7%ae%97%e6%b3%95%e5%90%8e%e7%ab%af%e6%8e%a5%e5%8f%a3%e6%9c%8d%e5%8a%a1" target="_blank" rel="noopener" class="share-btn-twitter" aria-label="twitter">
+        <a href="https://twitter.com/intent/tweet?url=/project/search_association_algorithms/&amp;text=%e6%90%9c%e7%b4%a2%e8%81%94%e6%83%b3%e7%ae%97%e6%b3%95%e5%90%8e%e7%ab%af%e6%8e%a5%e5%8f%a3%e6%9c%8d%e5%8a%a1%28%e5%89%8d%e7%bc%80%e7%89%88%29" target="_blank" rel="noopener" class="share-btn-twitter" aria-label="twitter">
           <i class="fab fa-twitter"></i>
         </a>
       </li>
@@ -1082,7 +1222,7 @@
       
       
       <li>
-        <a href="https://www.facebook.com/sharer.php?u=/project/search_association_algorithms/&amp;t=%e6%90%9c%e7%b4%a2%e8%81%94%e6%83%b3%e7%ae%97%e6%b3%95%e5%90%8e%e7%ab%af%e6%8e%a5%e5%8f%a3%e6%9c%8d%e5%8a%a1" target="_blank" rel="noopener" class="share-btn-facebook" aria-label="facebook">
+        <a href="https://www.facebook.com/sharer.php?u=/project/search_association_algorithms/&amp;t=%e6%90%9c%e7%b4%a2%e8%81%94%e6%83%b3%e7%ae%97%e6%b3%95%e5%90%8e%e7%ab%af%e6%8e%a5%e5%8f%a3%e6%9c%8d%e5%8a%a1%28%e5%89%8d%e7%bc%80%e7%89%88%29" target="_blank" rel="noopener" class="share-btn-facebook" aria-label="facebook">
           <i class="fab fa-facebook"></i>
         </a>
       </li>
@@ -1095,7 +1235,7 @@
       
       
       <li>
-        <a href="mailto:?subject=%e6%90%9c%e7%b4%a2%e8%81%94%e6%83%b3%e7%ae%97%e6%b3%95%e5%90%8e%e7%ab%af%e6%8e%a5%e5%8f%a3%e6%9c%8d%e5%8a%a1&amp;body=/project/search_association_algorithms/" target="_blank" rel="noopener" class="share-btn-email" aria-label="envelope">
+        <a href="mailto:?subject=%e6%90%9c%e7%b4%a2%e8%81%94%e6%83%b3%e7%ae%97%e6%b3%95%e5%90%8e%e7%ab%af%e6%8e%a5%e5%8f%a3%e6%9c%8d%e5%8a%a1%28%e5%89%8d%e7%bc%80%e7%89%88%29&amp;body=/project/search_association_algorithms/" target="_blank" rel="noopener" class="share-btn-email" aria-label="envelope">
           <i class="fas fa-envelope"></i>
         </a>
       </li>
@@ -1108,7 +1248,7 @@
       
       
       <li>
-        <a href="https://www.linkedin.com/shareArticle?url=/project/search_association_algorithms/&amp;title=%e6%90%9c%e7%b4%a2%e8%81%94%e6%83%b3%e7%ae%97%e6%b3%95%e5%90%8e%e7%ab%af%e6%8e%a5%e5%8f%a3%e6%9c%8d%e5%8a%a1" target="_blank" rel="noopener" class="share-btn-linkedin" aria-label="linkedin-in">
+        <a href="https://www.linkedin.com/shareArticle?url=/project/search_association_algorithms/&amp;title=%e6%90%9c%e7%b4%a2%e8%81%94%e6%83%b3%e7%ae%97%e6%b3%95%e5%90%8e%e7%ab%af%e6%8e%a5%e5%8f%a3%e6%9c%8d%e5%8a%a1%28%e5%89%8d%e7%bc%80%e7%89%88%29" target="_blank" rel="noopener" class="share-btn-linkedin" aria-label="linkedin-in">
           <i class="fab fa-linkedin-in"></i>
         </a>
       </li>
@@ -1121,7 +1261,7 @@
       
       
       <li>
-        <a href="whatsapp://send?text=%e6%90%9c%e7%b4%a2%e8%81%94%e6%83%b3%e7%ae%97%e6%b3%95%e5%90%8e%e7%ab%af%e6%8e%a5%e5%8f%a3%e6%9c%8d%e5%8a%a1%20/project/search_association_algorithms/" target="_blank" rel="noopener" class="share-btn-whatsapp" aria-label="whatsapp">
+        <a href="whatsapp://send?text=%e6%90%9c%e7%b4%a2%e8%81%94%e6%83%b3%e7%ae%97%e6%b3%95%e5%90%8e%e7%ab%af%e6%8e%a5%e5%8f%a3%e6%9c%8d%e5%8a%a1%28%e5%89%8d%e7%bc%80%e7%89%88%29%20/project/search_association_algorithms/" target="_blank" rel="noopener" class="share-btn-whatsapp" aria-label="whatsapp">
           <i class="fab fa-whatsapp"></i>
         </a>
       </li>
@@ -1134,7 +1274,7 @@
       
       
       <li>
-        <a href="https://service.weibo.com/share/share.php?url=/project/search_association_algorithms/&amp;title=%e6%90%9c%e7%b4%a2%e8%81%94%e6%83%b3%e7%ae%97%e6%b3%95%e5%90%8e%e7%ab%af%e6%8e%a5%e5%8f%a3%e6%9c%8d%e5%8a%a1" target="_blank" rel="noopener" class="share-btn-weibo" aria-label="weibo">
+        <a href="https://service.weibo.com/share/share.php?url=/project/search_association_algorithms/&amp;title=%e6%90%9c%e7%b4%a2%e8%81%94%e6%83%b3%e7%ae%97%e6%b3%95%e5%90%8e%e7%ab%af%e6%8e%a5%e5%8f%a3%e6%9c%8d%e5%8a%a1%28%e5%89%8d%e7%bc%80%e7%89%88%29" target="_blank" rel="noopener" class="share-btn-weibo" aria-label="weibo">
           <i class="fab fa-weibo"></i>
         </a>
       </li>
@@ -1171,7 +1311,7 @@
     <div class="media-body">
       <h5 class="card-title"><a href="/authors/admin/">CoolCats</a></h5>
       <h6 class="card-subtitle">理学学士</h6>
-      <p class="card-text">我的研究兴趣是时空数据分析、自然语言处理、服务端开发</p>
+      <p class="card-text">我的研究兴趣是时空数据分析、知识图谱、自然语言处理与服务端开发</p>
       <ul class="network-icon" aria-hidden="true">
   
     
@@ -1296,7 +1436,7 @@
 
   
   <p class="powered-by copyright-license-text">
-    © 2023 CoolCats. This work is licensed under <a href="https://creativecommons.org/licenses/by-nc-nd/4.0" rel="noopener noreferrer" target="_blank">CC BY NC ND 4.0</a>
+    © 2024 CoolCats. This work is licensed under <a href="https://creativecommons.org/licenses/by-nc-nd/4.0" rel="noopener noreferrer" target="_blank">CC BY NC ND 4.0</a>
   </p>
   
 

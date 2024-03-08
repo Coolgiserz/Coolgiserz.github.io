@@ -5,12 +5,603 @@
     <link>/publication/</link>
       <atom:link href="/publication/index.xml" rel="self" type="application/rss+xml" />
     <description>论文</description>
-    <generator>Wowchemy (https://wowchemy.com)</generator><language>en-us</language><lastBuildDate>Mon, 11 Jul 2022 10:45:42 +0800</lastBuildDate>
+    <generator>Wowchemy (https://wowchemy.com)</generator><language>en-us</language><lastBuildDate>Tue, 16 Jan 2024 22:19:19 +0800</lastBuildDate>
     <image>
       <url>/media/icon_hue03491371183284312b8b116a73ae5ab_79511_512x512_fill_lanczos_center_3.png</url>
       <title>论文</title>
       <link>/publication/</link>
     </image>
+    
+    <item>
+      <title>「论文阅读」基于倒排索引和字典树的站内搜索引擎的设计与实现</title>
+      <link>/publication/the-design-and-implementation-of-inverted-index-and-trie-based-search-engine-2017/</link>
+      <pubDate>Tue, 16 Jan 2024 22:19:19 +0800</pubDate>
+      <guid>/publication/the-design-and-implementation-of-inverted-index-and-trie-based-search-engine-2017/</guid>
+      <description>&lt;h2 id=&#34;论文总结&#34;&gt;论文总结&lt;/h2&gt;
+&lt;h3 id=&#34;实现效果&#34;&gt;实现效果&lt;/h3&gt;
+&lt;p&gt;通过结合倒排索引和字典树加快搜索，站内搜索响应时间0.02s，拼音联想响应时间2ms。项目应用成果展示：&lt;a href=&#34;http://apistore.baidu.com/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;百度APIStore的官网站内搜索&lt;/a&gt;&lt;/p&gt;
+&lt;h3 id=&#34;系统模块功能&#34;&gt;系统模块功能&lt;/h3&gt;
+&lt;p&gt;全文搜索引擎&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;基于数据源建立倒排索引&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;倒排索引保存&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;倒排索引增量更新&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;索引压缩&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;搜索结果排序&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;拼音搜索引擎&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;关键字检索&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;模糊查询&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;拼音联想&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;主要特性&#34;&gt;主要特性&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;搜索性能&lt;/p&gt;
+&lt;p&gt;预先建立倒排索引，&lt;strong&gt;搜索时通过索引找条目&lt;/strong&gt;，相比传统数据库全文搜索，更快。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;可移植性&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;独立的搜索服务&lt;/strong&gt;，通过序列化数据进行通信，可快速移植到不同的产品项目中。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;调用灵活性&lt;/p&gt;
+&lt;p&gt;RPC&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;用户体验&lt;/p&gt;
+&lt;p&gt;拼音联想、高亮摘要显示&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;可拓展性可用性可移植性设计&#34;&gt;可拓展性/可用性/可移植性设计&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;基于磁盘排序的归并算法&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;cidxHit-算法压缩&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;BM25-相关性计算&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;字典树-拼音联想&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;研究现状调研&#34;&gt;研究现状调研&lt;/h2&gt;
+&lt;p&gt;传统信息检索系统采用的技术：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;关键词匹配&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;修改数据库索引设计，如使用全文索引（Full-Text Index Technique）&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;瓶颈：TB级数据库的出现、用户查询时无法有效提供关键字导致依靠数据库关键字匹配的检索系统无法满足用户需求。&lt;/p&gt;
+&lt;h3 id=&#34;搜索引擎的分类&#34;&gt;搜索引擎的分类&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;目录式搜索引擎&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;全文搜索引擎&lt;/p&gt;
+&lt;p&gt;通过字典中的检索字表查字，按字和词检索；如何建立索引：扫描文章中的每一个词/字，记录该词/字在文章中出现的位置和次数，写入对应的文件中。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;元搜索引擎（Meta Search Engine）&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&#34;全文搜索引擎现状&#34;&gt;全文搜索引擎现状&lt;/h4&gt;
+&lt;p&gt;核心思想：通过字典表中的检索字表查字。&lt;/p&gt;
+&lt;p&gt;智能检索：分词词典、同义、同音词典、主题词典、相关同级词典、上下位词典检索给予用户智能提示。&lt;/p&gt;
+&lt;h5 id=&#34;全文检索对比数据库查询&#34;&gt;全文检索对比数据库查询&lt;/h5&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;&lt;/th&gt;
+&lt;th&gt;全文检索&lt;/th&gt;
+&lt;th&gt;关系型数据库&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;优点&lt;/td&gt;
+&lt;td&gt;搜索速度快&lt;/td&gt;
+&lt;td&gt;事务性强&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;易于拓展，支持不同数据源类型&lt;/td&gt;
+&lt;td&gt;对精确小量查询快&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;支持相关排序：可制定特定排序方式进行相关性排序&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;缺点&lt;/td&gt;
+&lt;td&gt;索引需要大量额外空间、操作；需要定期维护索引&lt;/td&gt;
+&lt;td&gt;大文本全文搜索经常超时&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;h5 id=&#34;关键技术概述&#34;&gt;关键技术概述&lt;/h5&gt;
+&lt;p&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure  &gt;
+  &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img alt=&#34;&#34; srcset=&#34;
+               /publication/the-design-and-implementation-of-inverted-index-and-trie-based-search-engine-2017/images/fig1-1_hu250cc2d3a151edf548194a43217e3e5c_163511_c249d5d08012dcf9963af20e9f93e3ca.webp 400w,
+               /publication/the-design-and-implementation-of-inverted-index-and-trie-based-search-engine-2017/images/fig1-1_hu250cc2d3a151edf548194a43217e3e5c_163511_ebcb6f5e0e30820c9ff0908a5bceb464.webp 760w,
+               /publication/the-design-and-implementation-of-inverted-index-and-trie-based-search-engine-2017/images/fig1-1_hu250cc2d3a151edf548194a43217e3e5c_163511_1200x1200_fit_q75_h2_lanczos_3.webp 1200w&#34;
+               src=&#34;/publication/the-design-and-implementation-of-inverted-index-and-trie-based-search-engine-2017/images/fig1-1_hu250cc2d3a151edf548194a43217e3e5c_163511_c249d5d08012dcf9963af20e9f93e3ca.webp&#34;
+               width=&#34;760&#34;
+               height=&#34;459&#34;
+               loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+  &lt;/div&gt;&lt;/figure&gt;
+&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;后台过程：索引创建引擎&lt;/p&gt;
+&lt;p&gt;从文本中获取字、词相关信息，按指定方式创建索引&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;前台过程：根据用户的查询请求，搜索指定索引，返回结果&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;站内搜索系统具体设计与实现&#34;&gt;站内搜索系统具体设计与实现&lt;/h2&gt;
+&lt;h3 id=&#34;基础框架&#34;&gt;基础框架&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;NLPC（自然语言处理云平台）&lt;/p&gt;
+&lt;p&gt;集成分词、词性标注、专名识别、term 重要性、plsa(pLSA 主题模型-概率潜在语义分析)、语义表示、query 解析和情感分析等服务。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Baidu-RPC 框架&lt;/p&gt;
+&lt;p&gt;支持不同语言的远程调用。&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;需求&#34;&gt;需求&lt;/h3&gt;
+&lt;h4 id=&#34;搜索系统交互逻辑&#34;&gt;搜索系统交互逻辑&lt;/h4&gt;
+&lt;p&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure  &gt;
+  &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img alt=&#34;&#34; srcset=&#34;
+               /publication/the-design-and-implementation-of-inverted-index-and-trie-based-search-engine-2017/images/fig2-1_hudbd261d89a8d324dff3fe59537292b29_178556_227e3271d063ba1a6290efe54a0ec61a.webp 400w,
+               /publication/the-design-and-implementation-of-inverted-index-and-trie-based-search-engine-2017/images/fig2-1_hudbd261d89a8d324dff3fe59537292b29_178556_3e1750c24e948bcd18742ba9d5d390e9.webp 760w,
+               /publication/the-design-and-implementation-of-inverted-index-and-trie-based-search-engine-2017/images/fig2-1_hudbd261d89a8d324dff3fe59537292b29_178556_1200x1200_fit_q75_h2_lanczos_3.webp 1200w&#34;
+               src=&#34;/publication/the-design-and-implementation-of-inverted-index-and-trie-based-search-engine-2017/images/fig2-1_hudbd261d89a8d324dff3fe59537292b29_178556_227e3271d063ba1a6290efe54a0ec61a.webp&#34;
+               width=&#34;635&#34;
+               height=&#34;760&#34;
+               loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+  &lt;/div&gt;&lt;/figure&gt;
+&lt;/p&gt;
+&lt;h4 id=&#34;拼音搜索引擎需求&#34;&gt;拼音搜索引擎需求&lt;/h4&gt;
+&lt;p&gt;全拼音、汉字+拼音、首字母组合&lt;/p&gt;
+&lt;p&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure  &gt;
+  &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img alt=&#34;&#34; srcset=&#34;
+               /publication/the-design-and-implementation-of-inverted-index-and-trie-based-search-engine-2017/images/fig2-2_hu41608b4176faf463098b10f92998e3af_186293_e8de2fbd39a198ff38a1f09bfc334f35.webp 400w,
+               /publication/the-design-and-implementation-of-inverted-index-and-trie-based-search-engine-2017/images/fig2-2_hu41608b4176faf463098b10f92998e3af_186293_6d5f1a2e7141110319d26c297762717c.webp 760w,
+               /publication/the-design-and-implementation-of-inverted-index-and-trie-based-search-engine-2017/images/fig2-2_hu41608b4176faf463098b10f92998e3af_186293_1200x1200_fit_q75_h2_lanczos_3.webp 1200w&#34;
+               src=&#34;/publication/the-design-and-implementation-of-inverted-index-and-trie-based-search-engine-2017/images/fig2-2_hu41608b4176faf463098b10f92998e3af_186293_e8de2fbd39a198ff38a1f09bfc334f35.webp&#34;
+               width=&#34;760&#34;
+               height=&#34;681&#34;
+               loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+  &lt;/div&gt;&lt;/figure&gt;
+&lt;/p&gt;
+&lt;p&gt;站内搜索交互核心需求表：&lt;/p&gt;
+&lt;p&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure  &gt;
+  &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img alt=&#34;&#34; srcset=&#34;
+               /publication/the-design-and-implementation-of-inverted-index-and-trie-based-search-engine-2017/images/table2-1_hu3016d44d29188c8df7a06a669eeb7138_269490_249c21eb8c5efea60ae42b6691157b09.webp 400w,
+               /publication/the-design-and-implementation-of-inverted-index-and-trie-based-search-engine-2017/images/table2-1_hu3016d44d29188c8df7a06a669eeb7138_269490_9afe234e051c72c020c69d26ae9ec1f4.webp 760w,
+               /publication/the-design-and-implementation-of-inverted-index-and-trie-based-search-engine-2017/images/table2-1_hu3016d44d29188c8df7a06a669eeb7138_269490_1200x1200_fit_q75_h2_lanczos_3.webp 1200w&#34;
+               src=&#34;/publication/the-design-and-implementation-of-inverted-index-and-trie-based-search-engine-2017/images/table2-1_hu3016d44d29188c8df7a06a669eeb7138_269490_249c21eb8c5efea60ae42b6691157b09.webp&#34;
+               width=&#34;760&#34;
+               height=&#34;624&#34;
+               loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+  &lt;/div&gt;&lt;/figure&gt;
+&lt;/p&gt;
+&lt;h4 id=&#34;后台检索引擎需求&#34;&gt;后台检索引擎需求&lt;/h4&gt;
+&lt;p&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure  &gt;
+  &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img alt=&#34;&#34; srcset=&#34;
+               /publication/the-design-and-implementation-of-inverted-index-and-trie-based-search-engine-2017/images/fig2-3_hufc24db0dd94c4f84a297340fd24291e6_155136_815acd2dbaeefec3b1b83d9e1af74032.webp 400w,
+               /publication/the-design-and-implementation-of-inverted-index-and-trie-based-search-engine-2017/images/fig2-3_hufc24db0dd94c4f84a297340fd24291e6_155136_1a35c70cb0fa528e1afdfd15deac27c8.webp 760w,
+               /publication/the-design-and-implementation-of-inverted-index-and-trie-based-search-engine-2017/images/fig2-3_hufc24db0dd94c4f84a297340fd24291e6_155136_1200x1200_fit_q75_h2_lanczos_3.webp 1200w&#34;
+               src=&#34;/publication/the-design-and-implementation-of-inverted-index-and-trie-based-search-engine-2017/images/fig2-3_hufc24db0dd94c4f84a297340fd24291e6_155136_815acd2dbaeefec3b1b83d9e1af74032.webp&#34;
+               width=&#34;760&#34;
+               height=&#34;447&#34;
+               loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+  &lt;/div&gt;&lt;/figure&gt;
+&lt;/p&gt;
+&lt;p&gt;索引引擎核心功能需求分析表:&lt;/p&gt;
+&lt;p&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure  &gt;
+  &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img alt=&#34;&#34; srcset=&#34;
+               /publication/the-design-and-implementation-of-inverted-index-and-trie-based-search-engine-2017/images/table2-2_hub5a45686df3f3de29ebbd3c2f17c8e14_271629_26571807f4731623d31f5a257f16fa8e.webp 400w,
+               /publication/the-design-and-implementation-of-inverted-index-and-trie-based-search-engine-2017/images/table2-2_hub5a45686df3f3de29ebbd3c2f17c8e14_271629_0be2c162d292c9c03cfe32dd5301e175.webp 760w,
+               /publication/the-design-and-implementation-of-inverted-index-and-trie-based-search-engine-2017/images/table2-2_hub5a45686df3f3de29ebbd3c2f17c8e14_271629_1200x1200_fit_q75_h2_lanczos_3.webp 1200w&#34;
+               src=&#34;/publication/the-design-and-implementation-of-inverted-index-and-trie-based-search-engine-2017/images/table2-2_hub5a45686df3f3de29ebbd3c2f17c8e14_271629_26571807f4731623d31f5a257f16fa8e.webp&#34;
+               width=&#34;760&#34;
+               height=&#34;657&#34;
+               loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+  &lt;/div&gt;&lt;/figure&gt;
+&lt;/p&gt;
+&lt;h2 id=&#34;文献&#34;&gt;文献&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;陶晓鹏. 面向(中文)全文数据库的全文索引的研究[D]. 复旦大学, 1999&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;吕晓旭. 基于倒排索引的关系数据库全文检索查询效率研究[D]. 北京工业&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;大学, 2009&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;史亮. Web 搜索引擎索引压缩与合并技术研究[D]. 中国科学院大学, 2013&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>「论文阅读」The Anatomy of a Large Scale Hypertextual Web Search Engine</title>
+      <link>/publication/the-anatomy-of-a-large-scale-hypertextual-web-search-engine/</link>
+      <pubDate>Sun, 17 Dec 2023 00:12:22 +0800</pubDate>
+      <guid>/publication/the-anatomy-of-a-large-scale-hypertextual-web-search-engine/</guid>
+      <description>&lt;h2 id=&#34;摘要&#34;&gt;摘要&lt;/h2&gt;
+&lt;p&gt;建立搜索引擎是一项具有挑战性的工作，需要用海量可分的词汇对海量的网页数据建立索引，用于回答每天百万千万级的搜索。尽管网络页面的大规模搜索引擎十分重要，当时却很少有学术研究对搜索引擎进行针对性研究。而且，随着技术进步和网络页面激增，构建一个网络搜索引擎已于三年前（以文章发表日期算）非常不同，本文对所提出的大规模网络搜索引擎（Google）进行了详尽的描述&amp;ndash;截止文章发表日期作者所了解到的最详尽的描述。&lt;/p&gt;
+&lt;p&gt;除了在数据量级上解决传统搜索技术的问题，本文还提出了一种新技术：使用超文本中附带的信息优化搜索结果。本文解决了如何利用超文本中的附加信息来构建具有实用价值的大规模系统的问题。文章还关注如何有效处理不受控制的任何人都可以随心所欲发表内容的超文本集合。&lt;/p&gt;
+&lt;h2 id=&#34;引言&#34;&gt;引言&lt;/h2&gt;
+&lt;p&gt;Web为信息检索领域带来了全新的挑战。Web页面中信息的量级增长迅速，同时Web的新用户也在与日俱增。人们可能基于一个带有链接的图来进行网上冲浪，这种链接图往往由具有一定权威性的人或组织维护(比如Yahoo！或者搜索引擎）;人们维护一个覆盖很多流行主题的列表尽管有效但主观并且构建成本和维护成本高昂、提升缓慢并且无法覆盖所有专业领域的主题（只有内行人才能懂）。依赖于关键词匹配的自动化的搜索引擎通常返回了太多低质量的搜索结果，而且雪上加霜的是，一些广告商为了获得人们的注意专门采取策略来误导自动化搜索引擎。作者构建了一个大规模搜索引擎用于解决现有系统的大多数问题，充分利用超文本中存在的结构信息用于提升搜索结果质量。作者将其系统命名为Google，因为这是googol（10的100次方）的一个常用拼读方式，这与作者希望构建超大规模搜索引擎的愿景相适应。&lt;/p&gt;
+&lt;h3 id=&#34;11-网络搜索引擎的规模化-1994-2000&#34;&gt;1.1 网络搜索引擎的规模化: 1994-2000&lt;/h3&gt;
+&lt;p&gt;搜索引擎技术必须要进行明显地规模化才能跟上Web的增长。1994年第一代Web搜索引擎，The World Wide Web Worm(WWWW)对110000条网页和网络公开文档进行了索引；1997年11月，顶级搜索引擎（WebCrawler）声称对两百万乃至1亿个网页文档进行了索引（数据源自Search Engine Watch ）；可以预见到2000年，对Web的全面索引将会到达十亿的级别。同时，查询的量级也会进行可观的增长。1994年3～4月份，WWWW每日面临约1500条查询；1997年11月，Altavista声称其每日处理约2000万条查询。随着互联网用户的增加和检索搜索引擎的自动化系统的增多，很可能到2000年最顶级的搜索引擎将要每日处理十亿级的查询。Google的目标就是要引入高效的搜索引擎技术，解决上述搜索质量、搜索规模相关的问题。&lt;/p&gt;
+&lt;h3 id=&#34;12-google随web扩张&#34;&gt;1.2 Google：随web扩张&lt;/h3&gt;
+&lt;p&gt;创建一个能够满足今日Web规模的搜索引擎会面临如下挑战：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;快速的爬虫技术用于获取Web文档并保证其处于最新状态；&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;需要高效地利用存储空间来存储索引和文档本身&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;索引系统必须能够高效地处理百千兆字节的数据&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;查询必须被快速的处理，每秒处理成百上千&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;上述任务随着Web的扩张会变得越来越困难，尽管硬件性能和开销已经有了了不起的提升，可以部分地解决上述困难，但我们还是能发现一些明显异常如硬盘搜索空间和操作系统鲁棒性方面的问题，在设计Google时，作者已经考虑了Web的增长和技术的变迁。因此Google被设计成能够适配极大规模的数据集。更进一步考虑，作者期望索引和存储文本/超文本的成本能够逐渐下降。&lt;/p&gt;
+&lt;h4 id=&#34;13-设计目标&#34;&gt;1.3 设计目标&lt;/h4&gt;
+&lt;h5 id=&#34;提升搜索质量&#34;&gt;提升搜索质量&lt;/h5&gt;
+&lt;p&gt;1994年，一些人认为：完备的索引可以使得我们轻易地找到任何内容。根据Best of the Web 1994，最佳的导览服务应该让寻找几乎所有web内容变得简单。然而，到1997年的Web与1994年截然不同，任何用过搜索引擎的人都很乐意为这一事实作证：索引不仅仅是影响搜索结果质量的唯一因素。“垃圾结果”（Junk results）充斥着互联网，阻碍用户找到自己感兴趣的结果。事实上，在1997年11月，四大商业搜索引擎中仅有一家搜索引擎能在搜索结果的前十条里找到自己的名字，导致这一现象的主要原因是索引中文档的数量已经增长到超乎预期的量级，但用户对于文档的阅读容量并不会提高，人们还是倾向于仅仅浏览前十条搜索结果。因此，随着文档数量的增长，我们需要能够返回高质量搜索结果的工具，高质量意味着返回的内容是尽可能与用户搜索意图相关。我们希望我们返回的相关的（relevant）搜索结果包含了最好的文档，这些文档要区分于那些轻微相关的文档。这一点十分重要，我们要尽可能提高“高质量“搜索结果的召回。&lt;/p&gt;
+&lt;p&gt;有部分研究已经表明超文本的信息有助于提升搜索质量，链接结构和链接的文本也提供了大量信息用于判定文档的相关性和质量，Google同时利用了链接结构（link structure）和锚文本（anchor text）。&lt;/p&gt;
+&lt;h6 id=&#34;相关文献&#34;&gt;相关文献&lt;/h6&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a href=&#34;https://www.google.com.hk/url?sa=t&amp;amp;rct=j&amp;amp;q=&amp;amp;esrc=s&amp;amp;source=web&amp;amp;cd=&amp;amp;ved=2ahUKEwjnxuerlJ6DAxXMcvUHHcZmBgAQFnoECA8QAQ&amp;amp;url=https%3A%2F%2Fwww.sciencedirect.com%2Fscience%2Farticle%2Fpii%2FS0169755297000330&amp;amp;usg=AOvVaw0F0qK05TlFP3jvtJD8p3WR&amp;amp;opi=89978449&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;ParaSite: mining structural information on the web&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a href=&#34;https://www.sciencedirect.com/science/article/abs/pii/S0169755297000366&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;The quest for correct information on the Web: hyper search engines - ScienceDirect&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h5 id=&#34;学术型搜索引擎研究&#34;&gt;学术型搜索引擎研究&lt;/h5&gt;
+&lt;p&gt;除了规模的与日俱增以外，Web变得极度商业化。在1993年，有1.5%的Web服务是.com域名，到1997年这个数字增长到60%。同时，搜索引擎从学术领域逐步走向商业化。到现在为止（1997年），大多数搜索引擎都由公司掌控，仅仅披露了少数技术细节，这导致搜索引擎技术成了一个黑箱艺术并且主要服务于广告。有了Google，我们就有了更强的目标，那就是推动搜索引擎在学术领域的发展，增加人们对这项技术的认知。&lt;/p&gt;
+&lt;p&gt;另一个重要的设计目标就是构建一个大多数人可以实际使用的搜索引擎。“可用性”是非常重要的，因为我们认为大多数研究需要利用现代Web系统中的数据，但现有的搜索引擎因为商业价值的考虑不免费提供数据，导致用户的数据获取需求难以满足。&lt;/p&gt;
+&lt;p&gt;我们的最终的设计目标是构建一个架构，可以支持对大规模Web数据的前沿研究活动。为了支持前沿研究，Google将爬取的所有文档以压缩的形式存储。设计Google的主要目的之一是构建一个环境，让其他研究者可以快速地参与研究、处理海量的Web数据并生成有趣的结果。已经有很多论文基于Google生成的数据库，并且这一趋势还在蔓延。另一个目标就是建立一个太空实验室一样的环境，让研究者甚至学生可以基于我们的大规模Web数据开展有趣的实验。&lt;/p&gt;
+&lt;h2 id=&#34;系统特性&#34;&gt;系统特性&lt;/h2&gt;
+&lt;p&gt;Google搜索引擎能生成高质量的搜索结果得益于两个重要特性：首先，充分利用Web的链接结构来计算每个Web页面的质量排序评分，这种排序称为PageRank。其次，Google利用链接来提升搜索质量。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;PageRank：bring order to the Web&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Anchor text&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;系统设计&#34;&gt;系统设计&lt;/h2&gt;
+&lt;p&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure  &gt;
+  &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img alt=&#34;&#34; srcset=&#34;
+               /publication/the-anatomy-of-a-large-scale-hypertextual-web-search-engine/images/architecture/google_architecture_hu795f6ef43ba0edd4ee1f74c197320387_770477_f0dde4d8b6095da373ca984566d4c56a.webp 400w,
+               /publication/the-anatomy-of-a-large-scale-hypertextual-web-search-engine/images/architecture/google_architecture_hu795f6ef43ba0edd4ee1f74c197320387_770477_f4a87256238d06106f14c7c3665f07f3.webp 760w,
+               /publication/the-anatomy-of-a-large-scale-hypertextual-web-search-engine/images/architecture/google_architecture_hu795f6ef43ba0edd4ee1f74c197320387_770477_1200x1200_fit_q75_h2_lanczos_3.webp 1200w&#34;
+               src=&#34;/publication/the-anatomy-of-a-large-scale-hypertextual-web-search-engine/images/architecture/google_architecture_hu795f6ef43ba0edd4ee1f74c197320387_770477_f0dde4d8b6095da373ca984566d4c56a.webp&#34;
+               width=&#34;694&#34;
+               height=&#34;760&#34;
+               loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+  &lt;/div&gt;&lt;/figure&gt;
+&lt;/p&gt;
+&lt;h2 id=&#34;花絮&#34;&gt;花絮&lt;/h2&gt;
+&lt;h3 id=&#34;对比现有知名搜索引擎的用户体验&#34;&gt;对比现有知名搜索引擎的用户体验&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;Google&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure  &gt;
+  &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img alt=&#34;&#34; srcset=&#34;
+               /publication/the-anatomy-of-a-large-scale-hypertextual-web-search-engine/images/search_engine_compare/google/search_engine_watch_hu5bcc52f3efa4205ff57532609c26b478_1048095_20941f44cf99c918efc05c1f224c4ea5.webp 400w,
+               /publication/the-anatomy-of-a-large-scale-hypertextual-web-search-engine/images/search_engine_compare/google/search_engine_watch_hu5bcc52f3efa4205ff57532609c26b478_1048095_ccdf746246b4d964d7e582845b282acd.webp 760w,
+               /publication/the-anatomy-of-a-large-scale-hypertextual-web-search-engine/images/search_engine_compare/google/search_engine_watch_hu5bcc52f3efa4205ff57532609c26b478_1048095_1200x1200_fit_q75_h2_lanczos_3.webp 1200w&#34;
+               src=&#34;/publication/the-anatomy-of-a-large-scale-hypertextual-web-search-engine/images/search_engine_compare/google/search_engine_watch_hu5bcc52f3efa4205ff57532609c26b478_1048095_20941f44cf99c918efc05c1f224c4ea5.webp&#34;
+               width=&#34;490&#34;
+               height=&#34;760&#34;
+               loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+  &lt;/div&gt;&lt;/figure&gt;
+&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Bing&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure  &gt;
+  &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img alt=&#34;&#34; srcset=&#34;
+               /publication/the-anatomy-of-a-large-scale-hypertextual-web-search-engine/images/search_engine_compare/bing/search_engine_watch_huc3527856501cba8684a5dcb1f36ff8ec_694267_7d8bf925659d97a1f67df46d9836d1bc.webp 400w,
+               /publication/the-anatomy-of-a-large-scale-hypertextual-web-search-engine/images/search_engine_compare/bing/search_engine_watch_huc3527856501cba8684a5dcb1f36ff8ec_694267_c670426318b7e008e0a1b3b3c8740f1c.webp 760w,
+               /publication/the-anatomy-of-a-large-scale-hypertextual-web-search-engine/images/search_engine_compare/bing/search_engine_watch_huc3527856501cba8684a5dcb1f36ff8ec_694267_1200x1200_fit_q75_h2_lanczos_3.webp 1200w&#34;
+               src=&#34;/publication/the-anatomy-of-a-large-scale-hypertextual-web-search-engine/images/search_engine_compare/bing/search_engine_watch_huc3527856501cba8684a5dcb1f36ff8ec_694267_7d8bf925659d97a1f67df46d9836d1bc.webp&#34;
+               width=&#34;640&#34;
+               height=&#34;760&#34;
+               loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+  &lt;/div&gt;&lt;/figure&gt;
+&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Baidu&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure  &gt;
+  &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img alt=&#34;&#34; srcset=&#34;
+               /publication/the-anatomy-of-a-large-scale-hypertextual-web-search-engine/images/search_engine_compare/baidu/search_engine_watch_hu4844357370197e38b3fe2dca2c17ec93_1110388_97ff959b9b33fd16af5f2f9cc01d0583.webp 400w,
+               /publication/the-anatomy-of-a-large-scale-hypertextual-web-search-engine/images/search_engine_compare/baidu/search_engine_watch_hu4844357370197e38b3fe2dca2c17ec93_1110388_e670b4448d5b4a0444209b57db55d0af.webp 760w,
+               /publication/the-anatomy-of-a-large-scale-hypertextual-web-search-engine/images/search_engine_compare/baidu/search_engine_watch_hu4844357370197e38b3fe2dca2c17ec93_1110388_1200x1200_fit_q75_h2_lanczos_3.webp 1200w&#34;
+               src=&#34;/publication/the-anatomy-of-a-large-scale-hypertextual-web-search-engine/images/search_engine_compare/baidu/search_engine_watch_hu4844357370197e38b3fe2dca2c17ec93_1110388_97ff959b9b33fd16af5f2f9cc01d0583.webp&#34;
+               width=&#34;549&#34;
+               height=&#34;760&#34;
+               loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+  &lt;/div&gt;&lt;/figure&gt;
+&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;360&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure  &gt;
+  &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img alt=&#34;&#34; srcset=&#34;
+               /publication/the-anatomy-of-a-large-scale-hypertextual-web-search-engine/images/search_engine_compare/360/search_engine_watch_hu6012230617cd404d86b5fdbb8b498994_1675466_ea9ffccdeff80a20ac485407b6a300bd.webp 400w,
+               /publication/the-anatomy-of-a-large-scale-hypertextual-web-search-engine/images/search_engine_compare/360/search_engine_watch_hu6012230617cd404d86b5fdbb8b498994_1675466_2c056f09d8bc0a4c2466818342af2914.webp 760w,
+               /publication/the-anatomy-of-a-large-scale-hypertextual-web-search-engine/images/search_engine_compare/360/search_engine_watch_hu6012230617cd404d86b5fdbb8b498994_1675466_1200x1200_fit_q75_h2_lanczos_3.webp 1200w&#34;
+               src=&#34;/publication/the-anatomy-of-a-large-scale-hypertextual-web-search-engine/images/search_engine_compare/360/search_engine_watch_hu6012230617cd404d86b5fdbb8b498994_1675466_ea9ffccdeff80a20ac485407b6a300bd.webp&#34;
+               width=&#34;538&#34;
+               height=&#34;760&#34;
+               loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+  &lt;/div&gt;&lt;/figure&gt;
+&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Sougou&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure  &gt;
+  &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img alt=&#34;&#34; srcset=&#34;
+               /publication/the-anatomy-of-a-large-scale-hypertextual-web-search-engine/images/search_engine_compare/sougou/search_enging_watch_hua07aff680f6c09f21040c41131fdf882_1011591_57d4e0922de51807349562db87de3885.webp 400w,
+               /publication/the-anatomy-of-a-large-scale-hypertextual-web-search-engine/images/search_engine_compare/sougou/search_enging_watch_hua07aff680f6c09f21040c41131fdf882_1011591_db197ae5698d24310db48905e81b77f4.webp 760w,
+               /publication/the-anatomy-of-a-large-scale-hypertextual-web-search-engine/images/search_engine_compare/sougou/search_enging_watch_hua07aff680f6c09f21040c41131fdf882_1011591_1200x1200_fit_q75_h2_lanczos_3.webp 1200w&#34;
+               src=&#34;/publication/the-anatomy-of-a-large-scale-hypertextual-web-search-engine/images/search_engine_compare/sougou/search_enging_watch_hua07aff680f6c09f21040c41131fdf882_1011591_57d4e0922de51807349562db87de3885.webp&#34;
+               width=&#34;566&#34;
+               height=&#34;760&#34;
+               loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+  &lt;/div&gt;&lt;/figure&gt;
+&lt;/p&gt;
+&lt;p&gt;高下立判。&lt;/p&gt;
+</description>
+    </item>
     
     <item>
       <title>「论文阅读」- GeoMAN Multi Level Attention Networks for Geo Sensory Time Series Prediction</title>

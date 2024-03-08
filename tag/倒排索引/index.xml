@@ -1,0 +1,717 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>倒排索引 | CoolCats</title>
+    <link>/tag/%E5%80%92%E6%8E%92%E7%B4%A2%E5%BC%95/</link>
+      <atom:link href="/tag/%E5%80%92%E6%8E%92%E7%B4%A2%E5%BC%95/index.xml" rel="self" type="application/rss+xml" />
+    <description>倒排索引</description>
+    <generator>Wowchemy (https://wowchemy.com)</generator><language>en-us</language><lastBuildDate>Tue, 16 Jan 2024 22:19:19 +0800</lastBuildDate>
+    <image>
+      <url>/media/icon_hue03491371183284312b8b116a73ae5ab_79511_512x512_fill_lanczos_center_3.png</url>
+      <title>倒排索引</title>
+      <link>/tag/%E5%80%92%E6%8E%92%E7%B4%A2%E5%BC%95/</link>
+    </image>
+    
+    <item>
+      <title>「论文阅读」基于倒排索引和字典树的站内搜索引擎的设计与实现</title>
+      <link>/publication/the-design-and-implementation-of-inverted-index-and-trie-based-search-engine-2017/</link>
+      <pubDate>Tue, 16 Jan 2024 22:19:19 +0800</pubDate>
+      <guid>/publication/the-design-and-implementation-of-inverted-index-and-trie-based-search-engine-2017/</guid>
+      <description>&lt;h2 id=&#34;论文总结&#34;&gt;论文总结&lt;/h2&gt;
+&lt;h3 id=&#34;实现效果&#34;&gt;实现效果&lt;/h3&gt;
+&lt;p&gt;通过结合倒排索引和字典树加快搜索，站内搜索响应时间0.02s，拼音联想响应时间2ms。项目应用成果展示：&lt;a href=&#34;http://apistore.baidu.com/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;百度APIStore的官网站内搜索&lt;/a&gt;&lt;/p&gt;
+&lt;h3 id=&#34;系统模块功能&#34;&gt;系统模块功能&lt;/h3&gt;
+&lt;p&gt;全文搜索引擎&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;基于数据源建立倒排索引&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;倒排索引保存&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;倒排索引增量更新&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;索引压缩&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;搜索结果排序&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;拼音搜索引擎&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;关键字检索&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;模糊查询&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;拼音联想&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;主要特性&#34;&gt;主要特性&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;搜索性能&lt;/p&gt;
+&lt;p&gt;预先建立倒排索引，&lt;strong&gt;搜索时通过索引找条目&lt;/strong&gt;，相比传统数据库全文搜索，更快。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;可移植性&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;独立的搜索服务&lt;/strong&gt;，通过序列化数据进行通信，可快速移植到不同的产品项目中。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;调用灵活性&lt;/p&gt;
+&lt;p&gt;RPC&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;用户体验&lt;/p&gt;
+&lt;p&gt;拼音联想、高亮摘要显示&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;可拓展性可用性可移植性设计&#34;&gt;可拓展性/可用性/可移植性设计&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;基于磁盘排序的归并算法&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;cidxHit-算法压缩&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;BM25-相关性计算&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;字典树-拼音联想&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;研究现状调研&#34;&gt;研究现状调研&lt;/h2&gt;
+&lt;p&gt;传统信息检索系统采用的技术：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;关键词匹配&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;修改数据库索引设计，如使用全文索引（Full-Text Index Technique）&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;瓶颈：TB级数据库的出现、用户查询时无法有效提供关键字导致依靠数据库关键字匹配的检索系统无法满足用户需求。&lt;/p&gt;
+&lt;h3 id=&#34;搜索引擎的分类&#34;&gt;搜索引擎的分类&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;目录式搜索引擎&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;全文搜索引擎&lt;/p&gt;
+&lt;p&gt;通过字典中的检索字表查字，按字和词检索；如何建立索引：扫描文章中的每一个词/字，记录该词/字在文章中出现的位置和次数，写入对应的文件中。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;元搜索引擎（Meta Search Engine）&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&#34;全文搜索引擎现状&#34;&gt;全文搜索引擎现状&lt;/h4&gt;
+&lt;p&gt;核心思想：通过字典表中的检索字表查字。&lt;/p&gt;
+&lt;p&gt;智能检索：分词词典、同义、同音词典、主题词典、相关同级词典、上下位词典检索给予用户智能提示。&lt;/p&gt;
+&lt;h5 id=&#34;全文检索对比数据库查询&#34;&gt;全文检索对比数据库查询&lt;/h5&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;&lt;/th&gt;
+&lt;th&gt;全文检索&lt;/th&gt;
+&lt;th&gt;关系型数据库&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;优点&lt;/td&gt;
+&lt;td&gt;搜索速度快&lt;/td&gt;
+&lt;td&gt;事务性强&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;易于拓展，支持不同数据源类型&lt;/td&gt;
+&lt;td&gt;对精确小量查询快&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;支持相关排序：可制定特定排序方式进行相关性排序&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;缺点&lt;/td&gt;
+&lt;td&gt;索引需要大量额外空间、操作；需要定期维护索引&lt;/td&gt;
+&lt;td&gt;大文本全文搜索经常超时&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;h5 id=&#34;关键技术概述&#34;&gt;关键技术概述&lt;/h5&gt;
+&lt;p&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure  &gt;
+  &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img alt=&#34;&#34; srcset=&#34;
+               /publication/the-design-and-implementation-of-inverted-index-and-trie-based-search-engine-2017/images/fig1-1_hu250cc2d3a151edf548194a43217e3e5c_163511_c249d5d08012dcf9963af20e9f93e3ca.webp 400w,
+               /publication/the-design-and-implementation-of-inverted-index-and-trie-based-search-engine-2017/images/fig1-1_hu250cc2d3a151edf548194a43217e3e5c_163511_ebcb6f5e0e30820c9ff0908a5bceb464.webp 760w,
+               /publication/the-design-and-implementation-of-inverted-index-and-trie-based-search-engine-2017/images/fig1-1_hu250cc2d3a151edf548194a43217e3e5c_163511_1200x1200_fit_q75_h2_lanczos_3.webp 1200w&#34;
+               src=&#34;/publication/the-design-and-implementation-of-inverted-index-and-trie-based-search-engine-2017/images/fig1-1_hu250cc2d3a151edf548194a43217e3e5c_163511_c249d5d08012dcf9963af20e9f93e3ca.webp&#34;
+               width=&#34;760&#34;
+               height=&#34;459&#34;
+               loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+  &lt;/div&gt;&lt;/figure&gt;
+&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;后台过程：索引创建引擎&lt;/p&gt;
+&lt;p&gt;从文本中获取字、词相关信息，按指定方式创建索引&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;前台过程：根据用户的查询请求，搜索指定索引，返回结果&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;站内搜索系统具体设计与实现&#34;&gt;站内搜索系统具体设计与实现&lt;/h2&gt;
+&lt;h3 id=&#34;基础框架&#34;&gt;基础框架&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;NLPC（自然语言处理云平台）&lt;/p&gt;
+&lt;p&gt;集成分词、词性标注、专名识别、term 重要性、plsa(pLSA 主题模型-概率潜在语义分析)、语义表示、query 解析和情感分析等服务。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Baidu-RPC 框架&lt;/p&gt;
+&lt;p&gt;支持不同语言的远程调用。&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;需求&#34;&gt;需求&lt;/h3&gt;
+&lt;h4 id=&#34;搜索系统交互逻辑&#34;&gt;搜索系统交互逻辑&lt;/h4&gt;
+&lt;p&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure  &gt;
+  &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img alt=&#34;&#34; srcset=&#34;
+               /publication/the-design-and-implementation-of-inverted-index-and-trie-based-search-engine-2017/images/fig2-1_hudbd261d89a8d324dff3fe59537292b29_178556_227e3271d063ba1a6290efe54a0ec61a.webp 400w,
+               /publication/the-design-and-implementation-of-inverted-index-and-trie-based-search-engine-2017/images/fig2-1_hudbd261d89a8d324dff3fe59537292b29_178556_3e1750c24e948bcd18742ba9d5d390e9.webp 760w,
+               /publication/the-design-and-implementation-of-inverted-index-and-trie-based-search-engine-2017/images/fig2-1_hudbd261d89a8d324dff3fe59537292b29_178556_1200x1200_fit_q75_h2_lanczos_3.webp 1200w&#34;
+               src=&#34;/publication/the-design-and-implementation-of-inverted-index-and-trie-based-search-engine-2017/images/fig2-1_hudbd261d89a8d324dff3fe59537292b29_178556_227e3271d063ba1a6290efe54a0ec61a.webp&#34;
+               width=&#34;635&#34;
+               height=&#34;760&#34;
+               loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+  &lt;/div&gt;&lt;/figure&gt;
+&lt;/p&gt;
+&lt;h4 id=&#34;拼音搜索引擎需求&#34;&gt;拼音搜索引擎需求&lt;/h4&gt;
+&lt;p&gt;全拼音、汉字+拼音、首字母组合&lt;/p&gt;
+&lt;p&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure  &gt;
+  &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img alt=&#34;&#34; srcset=&#34;
+               /publication/the-design-and-implementation-of-inverted-index-and-trie-based-search-engine-2017/images/fig2-2_hu41608b4176faf463098b10f92998e3af_186293_e8de2fbd39a198ff38a1f09bfc334f35.webp 400w,
+               /publication/the-design-and-implementation-of-inverted-index-and-trie-based-search-engine-2017/images/fig2-2_hu41608b4176faf463098b10f92998e3af_186293_6d5f1a2e7141110319d26c297762717c.webp 760w,
+               /publication/the-design-and-implementation-of-inverted-index-and-trie-based-search-engine-2017/images/fig2-2_hu41608b4176faf463098b10f92998e3af_186293_1200x1200_fit_q75_h2_lanczos_3.webp 1200w&#34;
+               src=&#34;/publication/the-design-and-implementation-of-inverted-index-and-trie-based-search-engine-2017/images/fig2-2_hu41608b4176faf463098b10f92998e3af_186293_e8de2fbd39a198ff38a1f09bfc334f35.webp&#34;
+               width=&#34;760&#34;
+               height=&#34;681&#34;
+               loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+  &lt;/div&gt;&lt;/figure&gt;
+&lt;/p&gt;
+&lt;p&gt;站内搜索交互核心需求表：&lt;/p&gt;
+&lt;p&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure  &gt;
+  &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img alt=&#34;&#34; srcset=&#34;
+               /publication/the-design-and-implementation-of-inverted-index-and-trie-based-search-engine-2017/images/table2-1_hu3016d44d29188c8df7a06a669eeb7138_269490_249c21eb8c5efea60ae42b6691157b09.webp 400w,
+               /publication/the-design-and-implementation-of-inverted-index-and-trie-based-search-engine-2017/images/table2-1_hu3016d44d29188c8df7a06a669eeb7138_269490_9afe234e051c72c020c69d26ae9ec1f4.webp 760w,
+               /publication/the-design-and-implementation-of-inverted-index-and-trie-based-search-engine-2017/images/table2-1_hu3016d44d29188c8df7a06a669eeb7138_269490_1200x1200_fit_q75_h2_lanczos_3.webp 1200w&#34;
+               src=&#34;/publication/the-design-and-implementation-of-inverted-index-and-trie-based-search-engine-2017/images/table2-1_hu3016d44d29188c8df7a06a669eeb7138_269490_249c21eb8c5efea60ae42b6691157b09.webp&#34;
+               width=&#34;760&#34;
+               height=&#34;624&#34;
+               loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+  &lt;/div&gt;&lt;/figure&gt;
+&lt;/p&gt;
+&lt;h4 id=&#34;后台检索引擎需求&#34;&gt;后台检索引擎需求&lt;/h4&gt;
+&lt;p&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure  &gt;
+  &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img alt=&#34;&#34; srcset=&#34;
+               /publication/the-design-and-implementation-of-inverted-index-and-trie-based-search-engine-2017/images/fig2-3_hufc24db0dd94c4f84a297340fd24291e6_155136_815acd2dbaeefec3b1b83d9e1af74032.webp 400w,
+               /publication/the-design-and-implementation-of-inverted-index-and-trie-based-search-engine-2017/images/fig2-3_hufc24db0dd94c4f84a297340fd24291e6_155136_1a35c70cb0fa528e1afdfd15deac27c8.webp 760w,
+               /publication/the-design-and-implementation-of-inverted-index-and-trie-based-search-engine-2017/images/fig2-3_hufc24db0dd94c4f84a297340fd24291e6_155136_1200x1200_fit_q75_h2_lanczos_3.webp 1200w&#34;
+               src=&#34;/publication/the-design-and-implementation-of-inverted-index-and-trie-based-search-engine-2017/images/fig2-3_hufc24db0dd94c4f84a297340fd24291e6_155136_815acd2dbaeefec3b1b83d9e1af74032.webp&#34;
+               width=&#34;760&#34;
+               height=&#34;447&#34;
+               loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+  &lt;/div&gt;&lt;/figure&gt;
+&lt;/p&gt;
+&lt;p&gt;索引引擎核心功能需求分析表:&lt;/p&gt;
+&lt;p&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure  &gt;
+  &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img alt=&#34;&#34; srcset=&#34;
+               /publication/the-design-and-implementation-of-inverted-index-and-trie-based-search-engine-2017/images/table2-2_hub5a45686df3f3de29ebbd3c2f17c8e14_271629_26571807f4731623d31f5a257f16fa8e.webp 400w,
+               /publication/the-design-and-implementation-of-inverted-index-and-trie-based-search-engine-2017/images/table2-2_hub5a45686df3f3de29ebbd3c2f17c8e14_271629_0be2c162d292c9c03cfe32dd5301e175.webp 760w,
+               /publication/the-design-and-implementation-of-inverted-index-and-trie-based-search-engine-2017/images/table2-2_hub5a45686df3f3de29ebbd3c2f17c8e14_271629_1200x1200_fit_q75_h2_lanczos_3.webp 1200w&#34;
+               src=&#34;/publication/the-design-and-implementation-of-inverted-index-and-trie-based-search-engine-2017/images/table2-2_hub5a45686df3f3de29ebbd3c2f17c8e14_271629_26571807f4731623d31f5a257f16fa8e.webp&#34;
+               width=&#34;760&#34;
+               height=&#34;657&#34;
+               loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+  &lt;/div&gt;&lt;/figure&gt;
+&lt;/p&gt;
+&lt;h2 id=&#34;文献&#34;&gt;文献&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;陶晓鹏. 面向(中文)全文数据库的全文索引的研究[D]. 复旦大学, 1999&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;吕晓旭. 基于倒排索引的关系数据库全文检索查询效率研究[D]. 北京工业&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;大学, 2009&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;史亮. Web 搜索引擎索引压缩与合并技术研究[D]. 中国科学院大学, 2013&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>后端实践：基于倒排索引构建搜索联想/提示服务（总览篇）</title>
+      <link>/post/search_association_system_design_inverted_index/</link>
+      <pubDate>Wed, 20 Dec 2023 22:46:08 +0800</pubDate>
+      <guid>/post/search_association_system_design_inverted_index/</guid>
+      <description>&lt;h2 id=&#34;0x00-概念&#34;&gt;0x00 概念&lt;/h2&gt;
+&lt;h3 id=&#34;搜索联想&#34;&gt;搜索联想&lt;/h3&gt;
+&lt;p&gt;“搜索”是现代互联网用户必须要使用的功能，但互联网内容如此之多，用户不一定知道有多少内容可以查询，通过搜索什么关键字才能获得想要的信息。因此，搜索联想是改进用户搜索体验的关键功能特性，好的搜索联想可以快速补全用户不完整的输入，纠正用户不小心打出的拼写错误，让用户更容易搜索到想要的内容，有时也可以引导用户去发现从未想过的但可能会感兴趣的内容。&lt;/p&gt;
+&lt;p&gt;通常来说，联想的切入点包括：前缀联想、按拼音联想、按热度联想、按关键字联想、多語言/字體聯想等，其中还要针对用户的错别字或者输入个性化差异做出纠正引导。比如：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;用例1（字词纠错）&lt;/p&gt;
+&lt;p&gt;用户输入“中山工源”，实际上想搜索的是“中山公园”；&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;用例2（关键字补全，且不只是从前缀补全）&lt;/p&gt;
+&lt;p&gt;用户输入“达梦”，实际想搜索“武汉达梦数据库有限公司”&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;用例3（意图推断）&lt;/p&gt;
+&lt;p&gt;用户输入“武汉梧桐山”，实际上想搜“深圳梧桐山”&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;用例4 （基于拼音补全）&lt;/p&gt;
+&lt;p&gt;输入shenzhen或sz都需要联想到深圳，即按照拼音或者拼音首字母进行联想。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;用例5 多語言、多字体支持&lt;/p&gt;
+&lt;p&gt;用戶用一種語言/字體查詢，返回標準字體的結果。比如在QQ音樂搜索繁體中文“倒數”，應該返回簡體中文的“倒數”。&lt;/p&gt;
+&lt;p&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure  &gt;
+  &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img alt=&#34;&#34; srcset=&#34;
+               /post/search_association_system_design_inverted_index/images/search_language_hu9943bae7c934dd095cf71f913153c8f1_385212_fd2284a6e91ae5cd6d34b710a71654cb.webp 400w,
+               /post/search_association_system_design_inverted_index/images/search_language_hu9943bae7c934dd095cf71f913153c8f1_385212_d71696791685b5be6a1646f142e35386.webp 760w,
+               /post/search_association_system_design_inverted_index/images/search_language_hu9943bae7c934dd095cf71f913153c8f1_385212_1200x1200_fit_q75_h2_lanczos_3.webp 1200w&#34;
+               src=&#34;/post/search_association_system_design_inverted_index/images/search_language_hu9943bae7c934dd095cf71f913153c8f1_385212_fd2284a6e91ae5cd6d34b710a71654cb.webp&#34;
+               width=&#34;760&#34;
+               height=&#34;463&#34;
+               loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+  &lt;/div&gt;&lt;/figure&gt;
+&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;倒排索引&#34;&gt;倒排索引&lt;/h3&gt;
+&lt;p&gt;对于搜索引擎系统而言，倒排索引是非常重要的组成部份。所谓倒排，是相对于正排来说的，通常说的正排指以文档为键，构建文档到关键字的映射关系；那么倒排就是以关键字为键，构建关键字到文档的映射关系，这种映射关系可以认为就是倒排索引。简单形象的示例如下：&lt;/p&gt;
+&lt;p&gt;正排索引表：&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;文档1--&amp;gt;{词1, 词2, ..., 词n}
+文档2--&amp;gt;{词1, 词2, ..., 词n}
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;倒排索引表：&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;词1--&amp;gt;{文档1, 文档2, ..., 文档m}
+词2--&amp;gt;{文档1, 文档2, ..., 文档m}
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;倒排索引的优势在于可以快速查询某字词对应的文档/包含某字词的文档；正排索引的优势在于确定单个文档中有哪些关键字词。&lt;/p&gt;
+&lt;h2 id=&#34;0x01-实践&#34;&gt;0x01 实践&lt;/h2&gt;
+&lt;h3 id=&#34;倒排索引构建&#34;&gt;倒排索引构建&lt;/h3&gt;
+&lt;p&gt;倒排索引的基本原理是空间换时间，底层通过Key-Value的数据结构来维护索引词与文档的映射关系，可以认为Key是字符串类型（string），Value是一个可迭代对象（Set/List）。基于上述原理，可以确定倒排索引构建过程如下：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;遍历文档集合，对于每一篇文档，进行如下处理；&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;针对单一文档，计算出所有可能的Key，得到一个Key的集合。&lt;/p&gt;
+&lt;p&gt;此处的Key可以是文档分词后得到的词集合，也可以是文档中句子的前缀/后缀等，或者分词的拼音，具体如何可根据联系需求确定。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;建立每一个Key到文档的映射关系，这一步可以将文档名或文档ID视为Value&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h4 id=&#34;示例拼音索引&#34;&gt;示例：拼音索引&lt;/h4&gt;
+&lt;p&gt;对于待处理词，通过语言模型/拼音词典输出词对应的拼音及拼音首字母组合，然后即可构建可构建拼音倒排索引类似如下结构&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;......
+jqxx --&amp;gt; 机器学习
+jiqixuexi --&amp;gt; 机器学习
+AIkj --&amp;gt; AI框架
+......
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure  &gt;
+  &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img alt=&#34;&#34; srcset=&#34;
+               /post/search_association_system_design_inverted_index/images/index/pinyin_hu4557c4bebe3f195d05017ecba5e6b92c_109171_ff1f12eb46ad7afe63b694457c94796f.webp 400w,
+               /post/search_association_system_design_inverted_index/images/index/pinyin_hu4557c4bebe3f195d05017ecba5e6b92c_109171_4e81f9d227a7b725039457cc4767bb2a.webp 760w,
+               /post/search_association_system_design_inverted_index/images/index/pinyin_hu4557c4bebe3f195d05017ecba5e6b92c_109171_1200x1200_fit_q75_h2_lanczos_3.webp 1200w&#34;
+               src=&#34;/post/search_association_system_design_inverted_index/images/index/pinyin_hu4557c4bebe3f195d05017ecba5e6b92c_109171_ff1f12eb46ad7afe63b694457c94796f.webp&#34;
+               width=&#34;760&#34;
+               height=&#34;191&#34;
+               loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+  &lt;/div&gt;&lt;/figure&gt;
+&lt;/p&gt;
+&lt;h4 id=&#34;示例关键词索引&#34;&gt;示例：关键词索引&lt;/h4&gt;
+&lt;p&gt;简单起见，此处示例的关键词指“分词”后的结果，当然实际应用时可以考虑采用一些关键词抽取的方法（如TextRank）抽取关键词。&lt;/p&gt;
+&lt;p&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure  &gt;
+  &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img alt=&#34;&#34; srcset=&#34;
+               /post/search_association_system_design_inverted_index/images/index/word_seg_hu66075a4a7eb259aefd9410ff65f24d80_78989_c97d5ef8d553b4138b7abccb3d43db67.webp 400w,
+               /post/search_association_system_design_inverted_index/images/index/word_seg_hu66075a4a7eb259aefd9410ff65f24d80_78989_c0322cce19fb0ba8ce39458d15fbb3a8.webp 760w,
+               /post/search_association_system_design_inverted_index/images/index/word_seg_hu66075a4a7eb259aefd9410ff65f24d80_78989_1200x1200_fit_q75_h2_lanczos_3.webp 1200w&#34;
+               src=&#34;/post/search_association_system_design_inverted_index/images/index/word_seg_hu66075a4a7eb259aefd9410ff65f24d80_78989_c97d5ef8d553b4138b7abccb3d43db67.webp&#34;
+               width=&#34;760&#34;
+               height=&#34;196&#34;
+               loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+  &lt;/div&gt;&lt;/figure&gt;
+&lt;/p&gt;
+&lt;h3 id=&#34;倒排索引存储&#34;&gt;倒排索引存储&lt;/h3&gt;
+&lt;p&gt;最简单的存储方式，就是在内存中通过HashMap存储，Key为索引词（可以是文档关键字、拼音全拼、拼音首字母等），value为“文档”（待联想对象）。&lt;/p&gt;
+&lt;p&gt;如果数据量大，考虑到全量倒排索引构建时间较长，可以通过内存数据库（如Redis）或者文件型数据库存储倒排索引，并进行一定的压缩。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;以Redis为例，可使用Set数据类型存储“文档”&lt;/p&gt;
+&lt;p&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure  &gt;
+  &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img alt=&#34;&#34; srcset=&#34;
+               /post/search_association_system_design_inverted_index/images/persist/redis_demo_hua78c464ef2bdd3b5cd5dc8a5e1baf4da_143342_61116e3415fb5d78c8d22584c9fd5782.webp 400w,
+               /post/search_association_system_design_inverted_index/images/persist/redis_demo_hua78c464ef2bdd3b5cd5dc8a5e1baf4da_143342_5e501237a3a3a1010946269e927394a7.webp 760w,
+               /post/search_association_system_design_inverted_index/images/persist/redis_demo_hua78c464ef2bdd3b5cd5dc8a5e1baf4da_143342_1200x1200_fit_q75_h2_lanczos_3.webp 1200w&#34;
+               src=&#34;/post/search_association_system_design_inverted_index/images/persist/redis_demo_hua78c464ef2bdd3b5cd5dc8a5e1baf4da_143342_61116e3415fb5d78c8d22584c9fd5782.webp&#34;
+               width=&#34;760&#34;
+               height=&#34;300&#34;
+               loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+  &lt;/div&gt;&lt;/figure&gt;
+&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;实际测试&#34;&gt;实际测试&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;按关键词“王者”联想检索游戏&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure  &gt;
+  &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img alt=&#34;&#34; srcset=&#34;
+               /post/search_association_system_design_inverted_index/images/demo/game_name_demo_hu3e82217bd5942a39ed095653d8e8d787_221677_d75eba134b63cf44c6a9d7d74692caa8.webp 400w,
+               /post/search_association_system_design_inverted_index/images/demo/game_name_demo_hu3e82217bd5942a39ed095653d8e8d787_221677_cfa1bdeba57f4a8e6b10cdf0fa5f5528.webp 760w,
+               /post/search_association_system_design_inverted_index/images/demo/game_name_demo_hu3e82217bd5942a39ed095653d8e8d787_221677_1200x1200_fit_q75_h2_lanczos_3.webp 1200w&#34;
+               src=&#34;/post/search_association_system_design_inverted_index/images/demo/game_name_demo_hu3e82217bd5942a39ed095653d8e8d787_221677_d75eba134b63cf44c6a9d7d74692caa8.webp&#34;
+               width=&#34;760&#34;
+               height=&#34;611&#34;
+               loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+  &lt;/div&gt;&lt;/figure&gt;
+&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;按关键词“塞尔达”联想游戏&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure  &gt;
+  &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img alt=&#34;&#34; srcset=&#34;
+               /post/search_association_system_design_inverted_index/images/demo/game_name_demo1_huf13f33537b644fe69d3b995560637a11_222445_1db30f1e2bc3c1d35df9d98248085747.webp 400w,
+               /post/search_association_system_design_inverted_index/images/demo/game_name_demo1_huf13f33537b644fe69d3b995560637a11_222445_6e84e2e1f38a113ce3d6f3f88ed4196b.webp 760w,
+               /post/search_association_system_design_inverted_index/images/demo/game_name_demo1_huf13f33537b644fe69d3b995560637a11_222445_1200x1200_fit_q75_h2_lanczos_3.webp 1200w&#34;
+               src=&#34;/post/search_association_system_design_inverted_index/images/demo/game_name_demo1_huf13f33537b644fe69d3b995560637a11_222445_1db30f1e2bc3c1d35df9d98248085747.webp&#34;
+               width=&#34;760&#34;
+               height=&#34;547&#34;
+               loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+  &lt;/div&gt;&lt;/figure&gt;
+&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;按拼音首字母“sz”联想博物馆&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure  &gt;
+  &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img alt=&#34;&#34; srcset=&#34;
+               /post/search_association_system_design_inverted_index/images/demo/museum_name_demo_hu21f08c0c4c9063a896a9b06b2adc24cd_247775_2b4ba44142abc567d3a2e2184b2066d4.webp 400w,
+               /post/search_association_system_design_inverted_index/images/demo/museum_name_demo_hu21f08c0c4c9063a896a9b06b2adc24cd_247775_95fb7ce83c456f04de34399ab7a0be1a.webp 760w,
+               /post/search_association_system_design_inverted_index/images/demo/museum_name_demo_hu21f08c0c4c9063a896a9b06b2adc24cd_247775_1200x1200_fit_q75_h2_lanczos_3.webp 1200w&#34;
+               src=&#34;/post/search_association_system_design_inverted_index/images/demo/museum_name_demo_hu21f08c0c4c9063a896a9b06b2adc24cd_247775_2b4ba44142abc567d3a2e2184b2066d4.webp&#34;
+               width=&#34;695&#34;
+               height=&#34;760&#34;
+               loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+  &lt;/div&gt;&lt;/figure&gt;
+&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;按拼音“baiqiuen”联想&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure  &gt;
+  &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img alt=&#34;&#34; srcset=&#34;
+               /post/search_association_system_design_inverted_index/images/demo/museum_name_demo2_hu84ec5b9d9089b55752c5823a8a8fcc6d_208161_e57ee9e0527680ccfb472d701f4c622f.webp 400w,
+               /post/search_association_system_design_inverted_index/images/demo/museum_name_demo2_hu84ec5b9d9089b55752c5823a8a8fcc6d_208161_f612c959414ebd7f0bf074558a69e3e4.webp 760w,
+               /post/search_association_system_design_inverted_index/images/demo/museum_name_demo2_hu84ec5b9d9089b55752c5823a8a8fcc6d_208161_1200x1200_fit_q75_h2_lanczos_3.webp 1200w&#34;
+               src=&#34;/post/search_association_system_design_inverted_index/images/demo/museum_name_demo2_hu84ec5b9d9089b55752c5823a8a8fcc6d_208161_e57ee9e0527680ccfb472d701f4c622f.webp&#34;
+               width=&#34;760&#34;
+               height=&#34;513&#34;
+               loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+  &lt;/div&gt;&lt;/figure&gt;
+&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;按关键字“白求恩”联想&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure  &gt;
+  &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img alt=&#34;&#34; srcset=&#34;
+               /post/search_association_system_design_inverted_index/images/demo/museum_name_demo1_hu49e1c811b8caec925749147a1b4410d9_212007_c7f55caf4f157bbe52848f5c4ddd63d0.webp 400w,
+               /post/search_association_system_design_inverted_index/images/demo/museum_name_demo1_hu49e1c811b8caec925749147a1b4410d9_212007_70fa9f613b2f2cb63d19fd76ef7ac90f.webp 760w,
+               /post/search_association_system_design_inverted_index/images/demo/museum_name_demo1_hu49e1c811b8caec925749147a1b4410d9_212007_1200x1200_fit_q75_h2_lanczos_3.webp 1200w&#34;
+               src=&#34;/post/search_association_system_design_inverted_index/images/demo/museum_name_demo1_hu49e1c811b8caec925749147a1b4410d9_212007_c7f55caf4f157bbe52848f5c4ddd63d0.webp&#34;
+               width=&#34;760&#34;
+               height=&#34;577&#34;
+               loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+  &lt;/div&gt;&lt;/figure&gt;
+&lt;/p&gt;
+&lt;h2 id=&#34;0x02-参考文档&#34;&gt;0x02 参考文档&lt;/h2&gt;
+&lt;h3 id=&#34;搜索联想词&#34;&gt;搜索联想词&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://www.woshipm.com/operate/4613828.html&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;搜索联想词产品实践系列之浅见（一）定位-评估和召回篇 | 人人都是产品经理&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;trie树&#34;&gt;Trie树&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://freegeektime.com/100017301/72414/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Trie树：如何实现搜索引擎的搜索关键词提示功能&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;elasticsearch&#34;&gt;Elasticsearch&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://developer.aliyun.com/article/1082220&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;ES高频面试问题：一张图带你读懂 Elasticsearch 中“正排索引（正向索引）”和“倒排索引（反向索引）”区别-阿里云开发者社区&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

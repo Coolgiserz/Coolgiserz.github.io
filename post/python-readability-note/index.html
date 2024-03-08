@@ -809,11 +809,11 @@
   <div class="article-container">
 
     <div class="article-style">
-      <h1 id="前言">前言</h1>
+      <h2 id="0x00-前言">0x00 前言</h2>
 <p>代码可读性是代码的可修改性的一个重要影响因素。</p>
 <p>就Python而言，最富盛名的的编码风格指南就是<a href="https://peps.python.org/pep-0008/#a-foolish-consistency-is-the-hobgoblin-of-little-minds" target="_blank" rel="noopener">PEP 8</a>（Python Enhancement Proposals）</p>
 <p>本文简单记录/翻译PEP-8的一些经典实践和见解。</p>
-<h2 id="pep-8笔记">PEP-8笔记</h2>
+<h2 id="0x01-pep-8笔记">0x01 PEP-8笔记</h2>
 <h3 id="愚蠢的一致性是心胸狭窄的妖怪">“愚蠢的一致性是心胸狭窄的妖怪“</h3>
 <pre tabindex="0"><code>A Foolish Consistency is the Hobgoblin of Little Minds
 </code></pre><p>编码风格指南的宗旨是提升代码的可读性，并使得Python代码风格能够趋于一致性。一个风格指南就是提出一种使开发者代码风格保持某种一致的倡议。</p>
@@ -947,7 +947,7 @@
 <p>……</p>
 </li>
 </ul>
-<h2 id="代码检查工具">代码检查工具</h2>
+<h2 id="0x02-代码检查工具">0x02 代码检查工具</h2>
 <p>可通过源代码错误和代码质量检查器辅助检查代码可读性</p>
 <h3 id="pylint">pylint</h3>
 <p>pylint通过与PEP8标准进行一致性对比，为待检查代码打分。常见消息码：</p>
@@ -1019,7 +1019,10 @@ F: 致命错误，pylint无法运行
                loading="lazy" data-zoomable /></div>
   </div></figure>
 </p>
-<h2 id="编程规范更多参考">编程规范更多参考</h2>
+<h2 id="0x03-python高级编程中关于可读性的部分内容笔记">0x03 Python高级编程中关于可读性的部分内容笔记</h2>
+<h3 id="关于变量">关于变量</h3>
+<p>常量、公有和私有变量。但是Python的常量仅仅是通过命名约定（大写+下划线）来标记，而非像java、c++等通过const关键字来定义常量，所以Python的常量不是真正意义上的常量，“常量”是可以被修改的。</p>
+<h2 id="0x04-编程规范更多参考">0x04 编程规范更多参考</h2>
 <ul>
 <li>
 <p>PEP 8编程规范</p>
@@ -1166,7 +1169,7 @@ F: 致命错误，pylint无法运行
     <div class="media-body">
       <h5 class="card-title"><a href="/authors/admin/">CoolCats</a></h5>
       <h6 class="card-subtitle">理学学士</h6>
-      <p class="card-text">我的研究兴趣是时空数据分析、自然语言处理、服务端开发</p>
+      <p class="card-text">我的研究兴趣是时空数据分析、知识图谱、自然语言处理与服务端开发</p>
       <ul class="network-icon" aria-hidden="true">
   
     
@@ -1275,7 +1278,7 @@ F: 致命错误，pylint无法运行
 
   
   <p class="powered-by copyright-license-text">
-    © 2023 CoolCats. This work is licensed under <a href="https://creativecommons.org/licenses/by-nc-nd/4.0" rel="noopener noreferrer" target="_blank">CC BY NC ND 4.0</a>
+    © 2024 CoolCats. This work is licensed under <a href="https://creativecommons.org/licenses/by-nc-nd/4.0" rel="noopener noreferrer" target="_blank">CC BY NC ND 4.0</a>
   </p>
   
 

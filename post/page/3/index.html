@@ -329,7 +329,7 @@
     <meta property="twitter:image" content="/media/icon_hue03491371183284312b8b116a73ae5ab_79511_512x512_fill_lanczos_center_3.png" /><meta property="og:locale" content="en-us" />
   
     
-      <meta property="og:updated_time" content="2023-11-05T20:26:20&#43;08:00" />
+      <meta property="og:updated_time" content="2024-01-22T16:40:26&#43;08:00" />
     
   
 
@@ -720,6 +720,466 @@
   
 
   
+  
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+<div class="media stream-item view-compact">
+  <div class="media-body">
+
+    <div class="section-subheading article-title mb-0 mt-0">
+      <a href="/post/mac13-postgres15-startup/" >Mac13编译安装Postgres15.2及初始化配置笔记</a>
+    </div>
+
+    
+    <a href="/post/mac13-postgres15-startup/"  class="summary-link">
+      <div class="article-style">
+        Postgres官网下载postgresql-15.2源代码。
+参考源码文件INSTALL文件进行安装及初始化：
+Short Version ./configure make su make install adduser postgres mkdir -p /usr/local/pgsql/data chown postgres /usr/local/pgsql/data su - postgres /usr/local/pgsql/bin/initdb -D /usr/local/pgsql/data /usr/local/pgsql/bin/pg_ctl -D /usr/local/pgsql/data -l logfile start /usr/local/pgsql/bin/createdb test /usr/local/pgsql/bin/psql test The long version is the rest of this document.
+      </div>
+    </a>
+    
+
+    <div class="stream-meta article-metadata">
+
+      
+
+      
+        
+
+
+<div class="article-metadata">
+
+  
+  
+
+  
+  <span class="article-date">
+    
+    
+      
+    
+    May 10, 2023
+  </span>
+  
+
+  
+
+  
+  <span class="middot-divider"></span>
+  <span class="article-reading-time">
+    1 min read
+  </span>
+  
+
+  
+  
+  
+  
+
+  
+  
+
+</div>
+
+      
+    </div>
+
+    
+
+  </div>
+  <div class="ml-3">
+    
+    
+  </div>
+</div>
+
+  
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+<div class="media stream-item view-compact">
+  <div class="media-body">
+
+    <div class="section-subheading article-title mb-0 mt-0">
+      <a href="/post/refactor-note1/" >《重构-改善既有代码设计》（第二版）阅读笔记1</a>
+    </div>
+
+    
+    <a href="/post/refactor-note1/"  class="summary-link">
+      <div class="article-style">
+        阅读目标 重构是什么？
+为什么应该重构？
+应该在什么地方重构？
+如何进行重构？？
+有哪些重构名录经典案例？
+资源清单   英文电子书地址（官方）: Refactoring: Web Edition
+  中文电子书地址: https://github.com/rabbit2002/Refactoring_2nd_ebook
+  重构原则   如果你要给程序添加一个特性，但发现代码因缺乏良好的结构而不易于进行修改，那就先重构那个程序，使其比较容易添加该特性，然后再添加该特性。（P4）
+  重构前，先检查自己是否有一套可靠的测试集，这些测试集必须有自我检验能力。（P5）
+  重构技术就是以微小的步伐修改程序，如果你犯下错误，很容易便可发现它。（P8）
+  重构手法   提炼函数（Extract Function）：将一块代码抽取成一个函数。（P7）
+      </div>
+    </a>
+    
+
+    <div class="stream-meta article-metadata">
+
+      
+
+      
+        
+
+
+<div class="article-metadata">
+
+  
+  
+
+  
+  <span class="article-date">
+    
+    
+      
+    
+    May 9, 2023
+  </span>
+  
+
+  
+
+  
+  <span class="middot-divider"></span>
+  <span class="article-reading-time">
+    1 min read
+  </span>
+  
+
+  
+  
+  
+  
+
+  
+  
+
+</div>
+
+      
+    </div>
+
+    
+
+  </div>
+  <div class="ml-3">
+    
+    
+  </div>
+</div>
+
+  
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+<div class="media stream-item view-compact">
+  <div class="media-body">
+
+    <div class="section-subheading article-title mb-0 mt-0">
+      <a href="/post/python-sqlalchemy-usage-notes/" >Python Sqlalchemy的一些使用技巧和问题</a>
+    </div>
+
+    
+    <a href="/post/python-sqlalchemy-usage-notes/"  class="summary-link">
+      <div class="article-style">
+        流行ORM框架Sqlalchemy的一些使用技巧和问题
+      </div>
+    </a>
+    
+
+    <div class="stream-meta article-metadata">
+
+      
+
+      
+        
+
+
+<div class="article-metadata">
+
+  
+  
+
+  
+  <span class="article-date">
+    
+    
+      
+          Last updated on
+      
+    
+    Dec 12, 2023
+  </span>
+  
+
+  
+
+  
+  <span class="middot-divider"></span>
+  <span class="article-reading-time">
+    2 min read
+  </span>
+  
+
+  
+  
+  
+  
+
+  
+  
+  <span class="middot-divider"></span>
+  <span class="article-categories">
+    <i class="fas fa-folder mr-1"></i><a href="/category/python/">Python</a></span>
+  
+
+</div>
+
+      
+    </div>
+
+    
+
+  </div>
+  <div class="ml-3">
+    
+    
+  </div>
+</div>
+
+  
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+<div class="media stream-item view-compact">
+  <div class="media-body">
+
+    <div class="section-subheading article-title mb-0 mt-0">
+      <a href="/post/raster-resample-example/" >GDAL栅格数据重采样示例</a>
+    </div>
+
+    
+    <a href="/post/raster-resample-example/"  class="summary-link">
+      <div class="article-style">
+        前言 栅格重采样：不改变影像的空间范围/尺度，仅仅改变影像像元的分辨率和像元数量（分辨率和像元个数密切相关）
+可参考文档   GDAL-Python API文档 
+  GDAL-doxygen-documentation
+  示例代码 &#34;&#34;&#34; 数据重采样 &#34;&#34;&#34; from osgeo import gdal, gdalconst import os def resampling(source_file, target_file, scale=1.0): &#34;&#34;&#34; 栅格影像重采样 :param source_file: 源文件 :param target_file: 输出影像 :param scale: 像元缩放比例 :return: &#34;&#34;&#34; dataset = gdal.
+      </div>
+    </a>
+    
+
+    <div class="stream-meta article-metadata">
+
+      
+
+      
+        
+
+
+<div class="article-metadata">
+
+  
+  
+
+  
+  <span class="article-date">
+    
+    
+      
+    
+    Mar 27, 2023
+  </span>
+  
+
+  
+
+  
+  <span class="middot-divider"></span>
+  <span class="article-reading-time">
+    1 min read
+  </span>
+  
+
+  
+  
+  
+  
+
+  
+  
+  <span class="middot-divider"></span>
+  <span class="article-categories">
+    <i class="fas fa-folder mr-1"></i><a href="/category/gis/">GIS</a></span>
+  
+
+</div>
+
+      
+    </div>
+
+    
+
+  </div>
+  <div class="ml-3">
+    
+    
+  </div>
+</div>
+
+  
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+<div class="media stream-item view-compact">
+  <div class="media-body">
+
+    <div class="section-subheading article-title mb-0 mt-0">
+      <a href="/post/python-core-twisted-framework-demo/" >Twisted框架使用</a>
+    </div>
+
+    
+    <a href="/post/python-core-twisted-framework-demo/"  class="summary-link">
+      <div class="article-style">
+         文档  Twisted Core  
+      </div>
+    </a>
+    
+
+    <div class="stream-meta article-metadata">
+
+      
+
+      
+        
+
+
+<div class="article-metadata">
+
+  
+  
+
+  
+  <span class="article-date">
+    
+    
+      
+    
+    Mar 15, 2023
+  </span>
+  
+
+  
+
+  
+  <span class="middot-divider"></span>
+  <span class="article-reading-time">
+    1 min read
+  </span>
+  
+
+  
+  
+  
+  
+
+  
+  
+
+</div>
+
+      
+    </div>
+
+    
+
+  </div>
+  <div class="ml-3">
+    
+    
+  </div>
+</div>
+
   
     
 
@@ -1162,476 +1622,6 @@
 </div>
 
   
-    
-
-
-
-
-
-
-
-
-
-
-
-
-
-  
-
-
-<div class="media stream-item view-compact">
-  <div class="media-body">
-
-    <div class="section-subheading article-title mb-0 mt-0">
-      <a href="/post/transformer-for-time-series-forecasting/" >Transformer &amp;&amp; Multivariate Time Series Forecasting</a>
-    </div>
-
-    
-    <a href="/post/transformer-for-time-series-forecasting/"  class="summary-link">
-      <div class="article-style">
-        Resources about Transformer Architecture and Multivariate Time Series Forecasting
-      </div>
-    </a>
-    
-
-    <div class="stream-meta article-metadata">
-
-      
-
-      
-        
-
-
-<div class="article-metadata">
-
-  
-  
-
-  
-  <span class="article-date">
-    
-    
-      
-    
-    Aug 7, 2022
-  </span>
-  
-
-  
-
-  
-  <span class="middot-divider"></span>
-  <span class="article-reading-time">
-    1 min read
-  </span>
-  
-
-  
-  
-  
-  
-
-  
-  
-
-</div>
-
-      
-    </div>
-
-    
-
-  </div>
-  <div class="ml-3">
-    
-    
-  </div>
-</div>
-
-  
-    
-
-
-
-
-
-
-
-
-
-
-
-
-
-  
-
-
-<div class="media stream-item view-compact">
-  <div class="media-body">
-
-    <div class="section-subheading article-title mb-0 mt-0">
-      <a href="/post/understanding-graph-ricci-curvature/" >关于图上的离散Ricci曲率意义的思考</a>
-    </div>
-
-    
-    <a href="/post/understanding-graph-ricci-curvature/"  class="summary-link">
-      <div class="article-style">
-        Ricci曲率从连续到离散的旅程
-      </div>
-    </a>
-    
-
-    <div class="stream-meta article-metadata">
-
-      
-
-      
-        
-
-
-<div class="article-metadata">
-
-  
-  
-
-  
-  <span class="article-date">
-    
-    
-      
-    
-    May 20, 2022
-  </span>
-  
-
-  
-
-  
-  <span class="middot-divider"></span>
-  <span class="article-reading-time">
-    2 min read
-  </span>
-  
-
-  
-  
-  
-  
-    <span class="middot-divider"></span>
-    <a href="/post/understanding-graph-ricci-curvature/#disqus_thread"></a>
-  
-
-  
-  
-  <span class="middot-divider"></span>
-  <span class="article-categories">
-    <i class="fas fa-folder mr-1"></i><a href="/category/%E6%95%B0%E5%AD%A6/">数学</a>, <a href="/category/%E5%A4%8D%E6%9D%82%E7%BD%91%E7%BB%9C/">复杂网络</a></span>
-  
-
-</div>
-
-      
-    </div>
-
-    
-
-  </div>
-  <div class="ml-3">
-    
-    
-  </div>
-</div>
-
-  
-    
-
-
-
-
-
-
-
-
-
-
-
-
-
-  
-
-
-<div class="media stream-item view-compact">
-  <div class="media-body">
-
-    <div class="section-subheading article-title mb-0 mt-0">
-      <a href="/post/how-to-write-an-academic-paper/" >关于方法类科技论文写作的思考</a>
-    </div>
-
-    
-    <a href="/post/how-to-write-an-academic-paper/"  class="summary-link">
-      <div class="article-style">
-        科技论文是用于报道具有重要意义和创新性的科技成果的文章，如何能撰写出好的论文？有哪些写作原则和常见错误？
-      </div>
-    </a>
-    
-
-    <div class="stream-meta article-metadata">
-
-      
-
-      
-        
-
-
-<div class="article-metadata">
-
-  
-  
-  
-  
-  <div>
-    
-
-  <span >
-      <a href="/authors/coolcats/">CoolCats</a></span>
-  </div>
-  
-  
-
-  
-  <span class="article-date">
-    
-    
-      
-          Last updated on
-      
-    
-    Jun 2, 2022
-  </span>
-  
-
-  
-
-  
-  <span class="middot-divider"></span>
-  <span class="article-reading-time">
-    2 min read
-  </span>
-  
-
-  
-  
-  
-  
-    <span class="middot-divider"></span>
-    <a href="/post/how-to-write-an-academic-paper/#disqus_thread"></a>
-  
-
-  
-  
-  <span class="middot-divider"></span>
-  <span class="article-categories">
-    <i class="fas fa-folder mr-1"></i><a href="/category/%E5%86%99%E4%BD%9C/">写作</a></span>
-  
-
-</div>
-
-      
-    </div>
-
-    
-
-  </div>
-  <div class="ml-3">
-    
-    
-  </div>
-</div>
-
-  
-    
-
-
-
-
-
-
-
-
-
-
-
-
-
-  
-
-
-<div class="media stream-item view-compact">
-  <div class="media-body">
-
-    <div class="section-subheading article-title mb-0 mt-0">
-      <a href="/post/rethinking-regression-model-and-its-evaluations/" >关于回归模型及其评价方法的一些问题</a>
-    </div>
-
-    
-    <a href="/post/rethinking-regression-model-and-its-evaluations/"  class="summary-link">
-      <div class="article-style">
-        简答关于回归模型及其评价方法的一些疑问
-      </div>
-    </a>
-    
-
-    <div class="stream-meta article-metadata">
-
-      
-
-      
-        
-
-
-<div class="article-metadata">
-
-  
-  
-
-  
-  <span class="article-date">
-    
-    
-      
-    
-    May 16, 2022
-  </span>
-  
-
-  
-
-  
-  <span class="middot-divider"></span>
-  <span class="article-reading-time">
-    2 min read
-  </span>
-  
-
-  
-  
-  
-  
-    <span class="middot-divider"></span>
-    <a href="/post/rethinking-regression-model-and-its-evaluations/#disqus_thread"></a>
-  
-
-  
-  
-  <span class="middot-divider"></span>
-  <span class="article-categories">
-    <i class="fas fa-folder mr-1"></i><a href="/category/%E6%95%B0%E5%AD%A6/">数学</a></span>
-  
-
-</div>
-
-      
-    </div>
-
-    
-
-  </div>
-  <div class="ml-3">
-    
-    
-  </div>
-</div>
-
-  
-    
-
-
-
-
-
-
-
-
-
-
-
-
-
-  
-
-
-<div class="media stream-item view-compact">
-  <div class="media-body">
-
-    <div class="section-subheading article-title mb-0 mt-0">
-      <a href="/post/how-to-write-memo-for-explaining-your-commit/" >如何为Git Commit进行备注？</a>
-    </div>
-
-    
-    <a href="/post/how-to-write-memo-for-explaining-your-commit/"  class="summary-link">
-      <div class="article-style">
-        关于git commit的规范
-      </div>
-    </a>
-    
-
-    <div class="stream-meta article-metadata">
-
-      
-
-      
-        
-
-
-<div class="article-metadata">
-
-  
-  
-
-  
-  <span class="article-date">
-    
-    
-      
-          Last updated on
-      
-    
-    Jun 25, 2022
-  </span>
-  
-
-  
-
-  
-  <span class="middot-divider"></span>
-  <span class="article-reading-time">
-    1 min read
-  </span>
-  
-
-  
-  
-  
-  
-
-  
-  
-
-</div>
-
-      
-    </div>
-
-    
-
-  </div>
-  <div class="ml-3">
-    
-    
-  </div>
-</div>
-
-  
 
   
 <nav class="mt-1">
@@ -1690,7 +1680,7 @@
 
   
   <p class="powered-by copyright-license-text">
-    © 2023 CoolCats. This work is licensed under <a href="https://creativecommons.org/licenses/by-nc-nd/4.0" rel="noopener noreferrer" target="_blank">CC BY NC ND 4.0</a>
+    © 2024 CoolCats. This work is licensed under <a href="https://creativecommons.org/licenses/by-nc-nd/4.0" rel="noopener noreferrer" target="_blank">CC BY NC ND 4.0</a>
   </p>
   
 
