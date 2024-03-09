@@ -1,0 +1,1515 @@
+<!DOCTYPE html><html lang="en-us" >
+
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  
+  
+  
+    <meta name="generator" content="Wowchemy 5.5.0 for Hugo" />
+  
+
+  
+  
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+  
+  
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  
+
+  
+  
+  
+    
+      
+      <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Roboto+Mono&family=Roboto:wght@400;700&display=swap">
+      <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Roboto+Mono&family=Roboto:wght@400;700&display=swap" media="print" onload="this.media='all'">
+    
+  
+
+  
+  
+  
+  
+  
+    
+    
+    
+  
+  
+
+  <meta name="author" content="CoolCats" />
+
+  
+  
+  
+    
+  
+  <meta name="description" content="阿里云轻量应用服务器新机环境搭建" />
+
+  
+  <link rel="alternate" hreflang="en-us" href="/post/aliyun-cloud-server-envionment-prepare/" />
+
+  
+  
+  
+    <meta name="theme-color" content="#1565c0" />
+  
+
+  
+  
+    
+    <script src="/js/mathjax-config.js"></script>
+  
+
+  
+
+  <link rel="stylesheet" href="/css/vendor-bundle.min.c7b8d9abd591ba2253ea42747e3ac3f5.css" media="print" onload="this.media='all'">
+
+  
+  
+  
+    
+    
+      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/academicons@1.9.1/css/academicons.min.css" integrity="sha512-W0xM4mr6dEP9nREo7Z9z+9X70wytKvMGeDsj7ps2+xg5QPrEBXC8tAW1IFnzjR6eoJ90JmCnFzerQJTLzIEHjA==" crossorigin="anonymous" media="print" onload="this.media='all'">
+    
+
+    
+    
+    
+    
+      
+      
+    
+    
+    
+
+    
+    
+    
+      
+    
+    
+      
+      
+        
+          <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@10.2.1/build/styles/github.min.css" crossorigin="anonymous" title="hl-light" media="print" onload="this.media='all'">
+          <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@10.2.1/build/styles/dracula.min.css" crossorigin="anonymous" title="hl-dark" media="print" onload="this.media='all'" disabled>
+        
+      
+    
+
+    
+    
+    
+      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.7.1/dist/leaflet.min.css" integrity="" crossorigin="anonymous" media="print" onload="this.media='all'">
+    
+
+    
+
+    
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js" integrity="" crossorigin="anonymous" async></script>
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+  
+
+  
+  
+  
+  
+  
+  <link rel="stylesheet" href="/css/wowchemy.1052fab8b7700a3dc49ee23683097d66.css" />
+
+  
+
+
+
+  
+
+
+  
+
+
+  
+
+
+  <script>
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?51ae6db546b05b91d4053193ba49123d";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+  
+  
+  
+
+  
+
+  
+
+  <link rel="icon" type="image/png" href="/media/icon_hue03491371183284312b8b116a73ae5ab_79511_32x32_fill_lanczos_center_3.png" />
+  <link rel="apple-touch-icon" type="image/png" href="/media/icon_hue03491371183284312b8b116a73ae5ab_79511_180x180_fill_lanczos_center_3.png" />
+
+  <link rel="canonical" href="/post/aliyun-cloud-server-envionment-prepare/" />
+
+  
+  
+  
+  
+  
+  
+  
+  
+    
+    
+  
+  
+
+  
+  
+    
+    
+  
+  <meta property="twitter:card" content="summary" />
+  
+    <meta property="twitter:site" content="@wowchemy" />
+    <meta property="twitter:creator" content="@wowchemy" />
+  
+  <meta property="og:site_name" content="CoolCats" />
+  <meta property="og:url" content="/post/aliyun-cloud-server-envionment-prepare/" />
+  <meta property="og:title" content="Aliyun Cloud Server Envionment Preparation | CoolCats" />
+  <meta property="og:description" content="阿里云轻量应用服务器新机环境搭建" /><meta property="og:image" content="/media/icon_hue03491371183284312b8b116a73ae5ab_79511_512x512_fill_lanczos_center_3.png" />
+    <meta property="twitter:image" content="/media/icon_hue03491371183284312b8b116a73ae5ab_79511_512x512_fill_lanczos_center_3.png" /><meta property="og:locale" content="en-us" />
+  
+    
+      <meta
+        property="article:published_time"
+        content="2024-03-01T20:02:21&#43;08:00"
+      />
+    
+    <meta property="article:modified_time" content="2024-03-01T20:02:21&#43;08:00">
+  
+
+  
+
+
+    
+
+
+
+
+
+
+  
+
+
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "/post/aliyun-cloud-server-envionment-prepare/"
+  },
+  "headline": "Aliyun Cloud Server Envionment Preparation",
+  
+  "datePublished": "2024-03-01T20:02:21+08:00",
+  "dateModified": "2024-03-01T20:02:21+08:00",
+  
+  "author": {
+    "@type": "Person",
+    "name": "CoolCats"
+  },
+  
+  "publisher": {
+    "@type": "Organization",
+    "name": "CoolCats",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "/media/icon_hue03491371183284312b8b116a73ae5ab_79511_192x192_fill_lanczos_center_3.png"
+    }
+  },
+  "description": "阿里云轻量应用服务器新机环境搭建"
+}
+</script>
+
+  
+
+  
+
+  
+
+  
+
+
+
+
+
+  <title>Aliyun Cloud Server Envionment Preparation | CoolCats</title>
+</head>
+
+
+<body id="top" data-spy="scroll" data-offset="70" data-target="#TableOfContents" class="page-wrapper   " data-wc-page-id="13c97b0ff621980f3092c475b2532a31" >
+
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  <script src="/js/wowchemy-init.min.2ed908358299dd7ab553faae685c746c.js"></script>
+
+  
+
+
+<aside class="search-modal" id="search">
+  <div class="container">
+    <section class="search-header">
+
+      <div class="row no-gutters justify-content-between mb-3">
+        <div class="col-6">
+          <h1>Search</h1>
+        </div>
+        <div class="col-6 col-search-close">
+          <a class="js-search" href="#" aria-label="Close"><i class="fas fa-times-circle text-muted" aria-hidden="true"></i></a>
+        </div>
+      </div>
+
+      <div id="search-box">
+        
+        <input name="q" id="search-query" placeholder="Search..." autocapitalize="off"
+        autocomplete="off" autocorrect="off" spellcheck="false" type="search" class="form-control"
+        aria-label="Search...">
+        
+      </div>
+
+      
+      
+
+      
+
+    </section>
+    <section class="section-search-results">
+
+      <div id="search-hits">
+        
+      </div>
+
+    </section>
+  </div>
+</aside>
+
+
+
+  <div class="page-header">
+    
+
+
+
+
+
+
+
+
+
+
+
+
+<header class="header--fixed">
+  <nav class="navbar navbar-expand-lg navbar-light compensate-for-scrollbar" id="navbar-main">
+    <div class="container-xl">
+
+      
+      <div class="d-none d-lg-inline-flex">
+        <a class="navbar-brand" href="/">CoolCats</a>
+      </div>
+      
+
+      
+      <button type="button" class="navbar-toggler" data-toggle="collapse"
+              data-target="#navbar-content" aria-controls="navbar-content" aria-expanded="false" aria-label="Toggle navigation">
+      <span><i class="fas fa-bars"></i></span>
+      </button>
+      
+
+      
+      <div class="navbar-brand-mobile-wrapper d-inline-flex d-lg-none">
+        <a class="navbar-brand" href="/">CoolCats</a>
+      </div>
+      
+
+      
+      
+      <div class="navbar-collapse main-menu-item collapse justify-content-start" id="navbar-content">
+
+        
+        <ul class="navbar-nav d-md-inline-flex">
+          
+
+          
+
+          
+          
+          
+
+          
+
+          
+          
+          
+          
+
+          
+            
+              
+              
+            
+            
+          
+
+          <li class="nav-item">
+            <a class="nav-link  active" href="/post"><span>博客</span></a>
+          </li>
+
+          
+          
+
+          
+
+          
+          
+          
+            
+          
+
+          
+
+          
+          
+          
+          
+
+          
+            
+              
+              
+            
+            
+          
+
+          <li class="nav-item">
+            <a class="nav-link " href="/event"><span>趣事</span></a>
+          </li>
+
+          
+          
+
+          
+
+          
+          
+          
+            
+          
+
+          
+
+          
+          
+          
+          
+
+          
+            
+              
+              
+            
+            
+          
+
+          <li class="nav-item">
+            <a class="nav-link " href="/project"><span>项目</span></a>
+          </li>
+
+          
+          
+
+          
+
+          
+          
+          
+            
+          
+
+          
+
+          
+          
+          
+          
+
+          
+            
+              
+              
+            
+            
+          
+
+          <li class="nav-item">
+            <a class="nav-link " href="/publication"><span>论文</span></a>
+          </li>
+
+          
+          
+
+          
+
+          
+          
+          
+            
+          
+
+          
+
+          
+          
+          
+          
+
+          
+            
+              
+              
+            
+            
+          
+
+          <li class="nav-item">
+            <a class="nav-link " href="/contact"><span>联系</span></a>
+          </li>
+
+          
+          
+
+          
+
+          
+          
+          
+            
+          
+
+          
+
+          
+          
+          
+          
+
+          
+            
+              
+              
+            
+            
+          
+
+          <li class="nav-item">
+            <a class="nav-link " href="/media/files/cv"><span>简历</span></a>
+          </li>
+
+          
+          
+
+        
+
+          
+        </ul>
+      </div>
+
+      <ul class="nav-icons navbar-nav flex-row ml-auto d-flex pl-md-2">
+
+        
+        
+          
+        
+
+        
+        
+        <li class="nav-item">
+          <a class="nav-link js-search" href="#" aria-label="Search"><i class="fas fa-search" aria-hidden="true"></i></a>
+        </li>
+        
+
+        
+        
+        
+        <li class="nav-item dropdown theme-dropdown">
+          <a href="#" class="nav-link" data-toggle="dropdown" aria-haspopup="true" aria-label="Display preferences">
+            <i class="fas fa-moon" aria-hidden="true"></i>
+          </a>
+          <div class="dropdown-menu">
+            <a href="#" class="dropdown-item js-set-theme-light">
+              <span>Light</span>
+            </a>
+            <a href="#" class="dropdown-item js-set-theme-dark">
+              <span>Dark</span>
+            </a>
+            <a href="#" class="dropdown-item js-set-theme-auto">
+              <span>Automatic</span>
+            </a>
+          </div>
+        </li>
+        
+
+        
+        
+
+      </ul>
+
+    </div>
+  </nav>
+</header>
+
+
+  </div>
+
+  <div class="page-body">
+    
+    
+    
+
+    <article class="article">
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+  
+  
+<div class="article-container pt-3">
+  <h1>Aliyun Cloud Server Envionment Preparation</h1>
+
+  
+
+  
+    
+
+
+<div class="article-metadata">
+
+  
+  
+
+  
+  <span class="article-date">
+    
+    
+      
+    
+    Mar 1, 2024
+  </span>
+  
+
+  
+
+  
+  <span class="middot-divider"></span>
+  <span class="article-reading-time">
+    1 min read
+  </span>
+  
+
+  
+  
+  
+  
+
+  
+  
+  <span class="middot-divider"></span>
+  <span class="article-categories">
+    <i class="fas fa-folder mr-1"></i><a href="/category/%E6%9C%8D%E5%8A%A1%E5%99%A8%E8%BF%90%E7%BB%B4/">服务器运维</a></span>
+  
+
+</div>
+
+    
+
+
+
+
+
+  
+</div>
+
+
+
+  <div class="article-container">
+
+    <div class="article-style">
+      <h2 id="环境搭建">环境搭建</h2>
+<p>购买了一款Ubuntu系统的阿里云服务器，简单记录下部分环境搭建过程。</p>
+<h3 id="一远程连接">一、远程连接</h3>
+<h3 id="accesskey-accesssecret可选">AccessKey, AccessSecret（可选）</h3>
+<p>阿里云提供客户端便于管理实例，使用客户端需要密钥，通过阿里云官网可以进行申请，详情参考文档。</p>
+<p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<figure  >
+  <div class="d-flex justify-content-center">
+    <div class="w-100" ><img alt="" srcset="
+               /post/aliyun-cloud-server-envionment-prepare/images/connection/accesskey_hu9aed189b0fb339c4f7248f1a2b08bc1e_100772_9c5e28cf3ac8f991609b6043a2b66672.webp 400w,
+               /post/aliyun-cloud-server-envionment-prepare/images/connection/accesskey_hu9aed189b0fb339c4f7248f1a2b08bc1e_100772_4094745e3c164a88e8b661dc7c5a7229.webp 760w,
+               /post/aliyun-cloud-server-envionment-prepare/images/connection/accesskey_hu9aed189b0fb339c4f7248f1a2b08bc1e_100772_1200x1200_fit_q75_h2_lanczos_3.webp 1200w"
+               src="/post/aliyun-cloud-server-envionment-prepare/images/connection/accesskey_hu9aed189b0fb339c4f7248f1a2b08bc1e_100772_9c5e28cf3ac8f991609b6043a2b66672.webp"
+               width="760"
+               height="227"
+               loading="lazy" data-zoomable /></div>
+  </div></figure>
+</p>
+<h3 id="ssh端口修改和用户登录限制可选">ssh端口修改和用户登录限制（可选）</h3>
+<p>默认阿里云root用户可以ssh登录到服务器，端口号默认为22，均需要修改</p>
+<pre tabindex="0"><code>sudo vim /etc/ssh/sshd_config
+</code></pre><p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<figure  >
+  <div class="d-flex justify-content-center">
+    <div class="w-100" ><img alt="" srcset="
+               /post/aliyun-cloud-server-envionment-prepare/images/connection/ssh_hu8b84ae5fcecd8b71dc7a02f7d4983af7_170408_384d4de6c6b279e474222e8512a38f83.webp 400w,
+               /post/aliyun-cloud-server-envionment-prepare/images/connection/ssh_hu8b84ae5fcecd8b71dc7a02f7d4983af7_170408_16e88d501804a85b095ff63b66db935e.webp 760w,
+               /post/aliyun-cloud-server-envionment-prepare/images/connection/ssh_hu8b84ae5fcecd8b71dc7a02f7d4983af7_170408_1200x1200_fit_q75_h2_lanczos_3.webp 1200w"
+               src="/post/aliyun-cloud-server-envionment-prepare/images/connection/ssh_hu8b84ae5fcecd8b71dc7a02f7d4983af7_170408_384d4de6c6b279e474222e8512a38f83.webp"
+               width="760"
+               height="584"
+               loading="lazy" data-zoomable /></div>
+  </div></figure>
+</p>
+<p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<figure  >
+  <div class="d-flex justify-content-center">
+    <div class="w-100" ><img alt="" srcset="
+               /post/aliyun-cloud-server-envionment-prepare/images/connection/no-root_huff0bd8d76279ead195014928e54a694e_91347_92ac2cfb202f49b52b37db1523fe0aee.webp 400w,
+               /post/aliyun-cloud-server-envionment-prepare/images/connection/no-root_huff0bd8d76279ead195014928e54a694e_91347_166c52655e830267a9dc0a46fae2b332.webp 760w,
+               /post/aliyun-cloud-server-envionment-prepare/images/connection/no-root_huff0bd8d76279ead195014928e54a694e_91347_1200x1200_fit_q75_h2_lanczos_3.webp 1200w"
+               src="/post/aliyun-cloud-server-envionment-prepare/images/connection/no-root_huff0bd8d76279ead195014928e54a694e_91347_92ac2cfb202f49b52b37db1523fe0aee.webp"
+               width="760"
+               height="412"
+               loading="lazy" data-zoomable /></div>
+  </div></figure>
+</p>
+<p>修改后重启，并需要在阿里云控制台对服务器防火墙规则进行修改，开放相关端口方可远程连接。</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl"><span class="c1"># 重启sshd</span>
+</span></span><span class="line"><span class="cl">service sshd restart
+</span></span></code></pre></div><pre tabindex="0"><code>ssh -p PORT [USERNAME]@[IP]
+</code></pre><p>为了提高安全性，还可以添加密钥验证。</p>
+<p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<figure  >
+  <div class="d-flex justify-content-center">
+    <div class="w-100" ><img alt="" srcset="
+               /post/aliyun-cloud-server-envionment-prepare/images/connection/secret-ssh_huf7e2bccdf48bad991ffad845d5d44f1a_114822_dee1f2f3220381d4372d9271241cd88a.webp 400w,
+               /post/aliyun-cloud-server-envionment-prepare/images/connection/secret-ssh_huf7e2bccdf48bad991ffad845d5d44f1a_114822_0124f0896ee6c074944b6e0ca90e1c89.webp 760w,
+               /post/aliyun-cloud-server-envionment-prepare/images/connection/secret-ssh_huf7e2bccdf48bad991ffad845d5d44f1a_114822_1200x1200_fit_q75_h2_lanczos_3.webp 1200w"
+               src="/post/aliyun-cloud-server-envionment-prepare/images/connection/secret-ssh_huf7e2bccdf48bad991ffad845d5d44f1a_114822_dee1f2f3220381d4372d9271241cd88a.webp"
+               width="760"
+               height="479"
+               loading="lazy" data-zoomable /></div>
+  </div></figure>
+</p>
+<h3 id="heading"></h3>
+<h3 id="二用户和组">二、用户和组</h3>
+<p>新建组</p>
+<pre tabindex="0"><code>groupadd -g 1314 testgroup
+</code></pre><p>新建用户</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">useradd -g testgroup testuser
+</span></span><span class="line"><span class="cl">passwd testuser
+</span></span><span class="line"><span class="cl"><span class="c1"># 指定用户登录默认终端为bash</span>
+</span></span><span class="line"><span class="cl">chsh -s /bin/bash testuser
+</span></span></code></pre></div><p>新建sudo用户</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">visudo
+</span></span></code></pre></div><p>&hellip;&hellip;</p>
+<h3 id="三开发环境">三、开发环境</h3>
+<ul>
+<li>
+<p>Python安装Anaconda</p>
+<p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<figure  >
+  <div class="d-flex justify-content-center">
+    <div class="w-100" ><img alt="" srcset="
+               /post/aliyun-cloud-server-envionment-prepare/images/envs/python/conda_hu55c3dc6963221f00c0898d2a27b45af2_244611_a785f79a584d571e94a76243cff5e734.webp 400w,
+               /post/aliyun-cloud-server-envionment-prepare/images/envs/python/conda_hu55c3dc6963221f00c0898d2a27b45af2_244611_2cbf5fc15e5ea7621a0ef708b2c36314.webp 760w,
+               /post/aliyun-cloud-server-envionment-prepare/images/envs/python/conda_hu55c3dc6963221f00c0898d2a27b45af2_244611_1200x1200_fit_q75_h2_lanczos_3.webp 1200w"
+               src="/post/aliyun-cloud-server-envionment-prepare/images/envs/python/conda_hu55c3dc6963221f00c0898d2a27b45af2_244611_a785f79a584d571e94a76243cff5e734.webp"
+               width="760"
+               height="368"
+               loading="lazy" data-zoomable /></div>
+  </div></figure>
+</p>
+</li>
+<li>
+<p>Java</p>
+</li>
+<li>
+<p>Scala</p>
+</li>
+</ul>
+<h3 id="四代理服务">四、代理服务</h3>
+<ul>
+<li>nginx</li>
+</ul>
+<h4 id="nginx安装">nginx安装</h4>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">apt install nginx
+</span></span></code></pre></div><p>执行完上述命令，访问[IP]:80看到如下界面说明nginx服务已正常运行</p>
+<p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<figure  >
+  <div class="d-flex justify-content-center">
+    <div class="w-100" ><img alt="" srcset="
+               /post/aliyun-cloud-server-envionment-prepare/images/proxy/nginx-success_hu83640c76c78267b496e966187ac49ae6_113494_a8ce3cdb2e6d427ed0161bc00de77e6a.webp 400w,
+               /post/aliyun-cloud-server-envionment-prepare/images/proxy/nginx-success_hu83640c76c78267b496e966187ac49ae6_113494_6086eb2c8fdacee7d4d1affa4cb1745c.webp 760w,
+               /post/aliyun-cloud-server-envionment-prepare/images/proxy/nginx-success_hu83640c76c78267b496e966187ac49ae6_113494_1200x1200_fit_q75_h2_lanczos_3.webp 1200w"
+               src="/post/aliyun-cloud-server-envionment-prepare/images/proxy/nginx-success_hu83640c76c78267b496e966187ac49ae6_113494_a8ce3cdb2e6d427ed0161bc00de77e6a.webp"
+               width="760"
+               height="410"
+               loading="lazy" data-zoomable /></div>
+  </div></figure>
+</p>
+<p>默认情况下，nginx服务开机自启。</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">systemctl list-unit-files <span class="p">|</span> grep nginx
+</span></span></code></pre></div><p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<figure  >
+  <div class="d-flex justify-content-center">
+    <div class="w-100" ><img alt="" srcset="
+               /post/aliyun-cloud-server-envionment-prepare/images/proxy/nginx-startctl_hud286ff208a4cb2cf55b91ce12d9ca713_30295_0a9c3dcb8b2c69dff988ed073b494642.webp 400w,
+               /post/aliyun-cloud-server-envionment-prepare/images/proxy/nginx-startctl_hud286ff208a4cb2cf55b91ce12d9ca713_30295_cb0a14976a7439f9a77d714fe24208c9.webp 760w,
+               /post/aliyun-cloud-server-envionment-prepare/images/proxy/nginx-startctl_hud286ff208a4cb2cf55b91ce12d9ca713_30295_1200x1200_fit_q75_h2_lanczos_3.webp 1200w"
+               src="/post/aliyun-cloud-server-envionment-prepare/images/proxy/nginx-startctl_hud286ff208a4cb2cf55b91ce12d9ca713_30295_0a9c3dcb8b2c69dff988ed073b494642.webp"
+               width="760"
+               height="44"
+               loading="lazy" data-zoomable /></div>
+  </div></figure>
+</p>
+<h3 id="五容器服务">五、容器服务</h3>
+<ul>
+<li>
+<p>docker</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">sudo apt  install docker.io
+</span></span></code></pre></div></li>
+</ul>
+<h3 id="六数据库服务">六、数据库服务</h3>
+<ul>
+<li>
+<p>PgSQL</p>
+</li>
+<li>
+<p>MySQL</p>
+</li>
+<li>
+<p>MongoDB</p>
+</li>
+<li>
+<p>Redis</p>
+</li>
+<li>
+<p>&hellip;&hellip;</p>
+</li>
+</ul>
+<h3 id="七其他">七、其他</h3>
+<ul>
+<li>
+<p>浏览器驱动</p>
+</li>
+<li>
+<p>Spark</p>
+</li>
+<li>
+<p>&hellip;&hellip;</p>
+</li>
+</ul>
+
+    </div>
+
+    
+
+
+
+
+<div class="article-tags">
+  
+  <a class="badge badge-light" href="/tag/%E9%98%BF%E9%87%8C%E4%BA%91/">阿里云</a>
+  
+</div>
+
+
+
+<div class="share-box">
+  <ul class="share">
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="https://twitter.com/intent/tweet?url=/post/aliyun-cloud-server-envionment-prepare/&amp;text=Aliyun%20Cloud%20Server%20Envionment%20Preparation" target="_blank" rel="noopener" class="share-btn-twitter" aria-label="twitter">
+          <i class="fab fa-twitter"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="https://www.facebook.com/sharer.php?u=/post/aliyun-cloud-server-envionment-prepare/&amp;t=Aliyun%20Cloud%20Server%20Envionment%20Preparation" target="_blank" rel="noopener" class="share-btn-facebook" aria-label="facebook">
+          <i class="fab fa-facebook"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="mailto:?subject=Aliyun%20Cloud%20Server%20Envionment%20Preparation&amp;body=/post/aliyun-cloud-server-envionment-prepare/" target="_blank" rel="noopener" class="share-btn-email" aria-label="envelope">
+          <i class="fas fa-envelope"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="https://www.linkedin.com/shareArticle?url=/post/aliyun-cloud-server-envionment-prepare/&amp;title=Aliyun%20Cloud%20Server%20Envionment%20Preparation" target="_blank" rel="noopener" class="share-btn-linkedin" aria-label="linkedin-in">
+          <i class="fab fa-linkedin-in"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="whatsapp://send?text=Aliyun%20Cloud%20Server%20Envionment%20Preparation%20/post/aliyun-cloud-server-envionment-prepare/" target="_blank" rel="noopener" class="share-btn-whatsapp" aria-label="whatsapp">
+          <i class="fab fa-whatsapp"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="https://service.weibo.com/share/share.php?url=/post/aliyun-cloud-server-envionment-prepare/&amp;title=Aliyun%20Cloud%20Server%20Envionment%20Preparation" target="_blank" rel="noopener" class="share-btn-weibo" aria-label="weibo">
+          <i class="fab fa-weibo"></i>
+        </a>
+      </li>
+    
+  </ul>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+
+
+
+  
+  
+  
+  
+  
+  <div class="media author-card content-widget-hr">
+    
+      
+      <a href="/authors/admin/"><img class="avatar mr-3 avatar-circle" src="/authors/admin/avatar_hu55194f19033f85038196a23353ffe543_580100_270x270_fill_q75_lanczos_center.jpg" alt="CoolCats"></a>
+    
+
+    <div class="media-body">
+      <h5 class="card-title"><a href="/authors/admin/">CoolCats</a></h5>
+      <h6 class="card-subtitle">理学学士</h6>
+      <p class="card-text">我的研究兴趣是时空数据分析、知识图谱、自然语言处理与服务端开发</p>
+      <ul class="network-icon" aria-hidden="true">
+  
+    
+    
+    
+      
+    
+    
+    
+    
+    
+    <li>
+      <a href="mailto:2811159909@qq.com" >
+        <i class="fas fa-envelope"></i>
+      </a>
+    </li>
+  
+    
+    
+    
+      
+    
+    
+    
+    
+    
+      
+    
+    <li>
+      <a href="https://github.com/Coolgiserz" target="_blank" rel="noopener">
+        <i class="fab fa-github"></i>
+      </a>
+    </li>
+  
+</ul>
+
+    </div>
+  </div>
+
+
+
+
+
+
+
+
+
+  
+  
+  
+
+  
+
+  
+
+
+
+
+
+
+
+
+
+
+  </div>
+</article>
+  </div>
+
+  <div class="page-footer">
+    
+    
+    <div class="container">
+      <footer class="site-footer">
+
+  
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+
+
+
+
+
+  
+  
+  
+
+  
+  
+    
+  
+  
+    
+  
+
+  
+
+  
+  <p class="powered-by copyright-license-text">
+    © 2024 CoolCats. This work is licensed under <a href="https://creativecommons.org/licenses/by-nc-nd/4.0" rel="noopener noreferrer" target="_blank">CC BY NC ND 4.0</a>
+  </p>
+  
+
+  <p class="powered-by footer-license-icons">
+    <a href="https://creativecommons.org/licenses/by-nc-nd/4.0" rel="noopener noreferrer" target="_blank" aria-label="Creative Commons">
+      <i class="fab fa-creative-commons fa-2x" aria-hidden="true"></i>
+      <i class="fab fa-creative-commons-by fa-2x" aria-hidden="true"></i>
+      
+        <i class="fab fa-creative-commons-nc fa-2x" aria-hidden="true"></i>
+      
+      
+        <i class="fab fa-creative-commons-nd fa-2x" aria-hidden="true"></i>
+      
+    </a>
+  </p>
+
+
+
+
+  <p class="powered-by">
+    
+    
+    
+      
+      
+      
+      
+      
+      
+      Published with <a href="https://wowchemy.com/?utm_campaign=poweredby" target="_blank" rel="noopener">Wowchemy</a> — the free, <a href="https://github.com/wowchemy/wowchemy-hugo-themes" target="_blank" rel="noopener">open source</a> website builder that empowers creators.
+    
+  </p>
+</footer>
+
+    </div>
+    
+  </div>
+
+      
+
+    
+    <script src="/js/vendor-bundle.min.fab8b449b814cc9f95b22fcf2e45f05b.js"></script>
+
+    
+    
+    
+      
+
+      
+      
+
+      
+
+      
+        
+        <script src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@10.2.1/build/highlight.min.js" integrity="sha512-Ypjm0o7jOxAd4hpdoppSEN0TQOC19UtPAqD+4s5AlXmUvbmmS/YMxYqAqarQYyxTnB6/rqip9qcxlNB/3U9Wdg==" crossorigin="anonymous"></script>
+        
+        
+        <script src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@10.2.1/build/languages/r.min.js" crossorigin="anonymous"></script>
+        
+        <script src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@10.2.1/build/languages/latex.min.js" crossorigin="anonymous"></script>
+        
+      
+
+    
+
+    
+    
+    
+      <script src="https://cdn.jsdelivr.net/npm/leaflet@1.7.1/dist/leaflet.min.js" integrity="" crossorigin="anonymous"></script>
+    
+
+    
+    
+
+    
+    
+    
+      
+      <script id="search-hit-fuse-template" type="text/x-template">
+        <div class="search-hit" id="summary-{{key}}">
+          <div class="search-hit-content">
+            <div class="search-hit-name">
+              <a href="{{relpermalink}}">{{title}}</a>
+              <div class="article-metadata search-hit-type">{{type}}</div>
+              <p class="search-hit-description">{{snippet}}</p>
+            </div>
+          </div>
+        </div>
+      </script>
+      
+        <script src="https://cdn.jsdelivr.net/gh/krisk/Fuse@v3.2.1/dist/fuse.min.js" integrity="sha512-o38bmzBGX+hD3JHWUFCDA09btWaqrNmoJ3RXLlrysA7PP01Kgs4UlE4MhelE1v5dJR3+cxlR4qQlotsW7jKsnw==" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/gh/julmot/mark.js@8.11.1/dist/jquery.mark.min.js" integrity="sha512-mhbv5DqBMgrWL+32MmsDOt/OAvqr/cHimk6B8y/bx/xS88MVkYGPiVv2ixKVrkywF2qHplNRUvFsAHUdxZ3Krg==" crossorigin="anonymous"></script>
+      
+    
+
+    
+    
+
+    
+    
+    
+    
+      <script id="dsq-count-scr" src="https://coolgiserz.disqus.com/count.js" async></script>
+    
+
+    
+    
+      
+      
+      
+      
+      
+      
+      
+    
+
+    
+
+    
+    
+    
+    <script id="page-data" type="application/json">{"use_headroom":true}</script>
+
+    
+    
+      <script src="/js/wowchemy-headroom.c251366b4128fd5e6b046d4c97a62a51.js" type="module"></script>
+    
+    
+    
+    
+    
+    
+    
+      
+      
+    
+    
+    <script src="/en/js/wowchemy.min.ab2f2890dbe3e2e83579366d3d6e8fd9.js"></script>
+
+    
+    
+      <script src="/js/wowchemy-map.a26e9d2f7238ba5b868384f1c5bc6477.js" type="module"></script>
+    
+    
+    
+    
+      
+<div id="modal" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Cite</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <pre><code class="tex hljs"></code></pre>
+      </div>
+      <div class="modal-footer">
+        <a class="btn btn-outline-primary my-1 js-copy-cite" href="#" target="_blank">
+          <i class="fas fa-copy"></i> Copy
+        </a>
+        <a class="btn btn-outline-primary my-1 js-download-cite" href="#" target="_blank">
+          <i class="fas fa-download"></i> Download
+        </a>
+        <div id="modal-error"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+      <script src="/js/wowchemy-publication.68f8d7090562ca65fc6d3cb3f8f2d2cb.js" type="module"></script>
+
+
+
+
+
+
+</body>
+</html>

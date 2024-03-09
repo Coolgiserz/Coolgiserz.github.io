@@ -1,0 +1,303 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>阿里云 | CoolCats</title>
+    <link>/tag/%E9%98%BF%E9%87%8C%E4%BA%91/</link>
+      <atom:link href="/tag/%E9%98%BF%E9%87%8C%E4%BA%91/index.xml" rel="self" type="application/rss+xml" />
+    <description>阿里云</description>
+    <generator>Wowchemy (https://wowchemy.com)</generator><language>en-us</language><lastBuildDate>Fri, 01 Mar 2024 20:02:21 +0800</lastBuildDate>
+    <image>
+      <url>/media/icon_hue03491371183284312b8b116a73ae5ab_79511_512x512_fill_lanczos_center_3.png</url>
+      <title>阿里云</title>
+      <link>/tag/%E9%98%BF%E9%87%8C%E4%BA%91/</link>
+    </image>
+    
+    <item>
+      <title>Aliyun Cloud Server Envionment Preparation</title>
+      <link>/post/aliyun-cloud-server-envionment-prepare/</link>
+      <pubDate>Fri, 01 Mar 2024 20:02:21 +0800</pubDate>
+      <guid>/post/aliyun-cloud-server-envionment-prepare/</guid>
+      <description>&lt;h2 id=&#34;环境搭建&#34;&gt;环境搭建&lt;/h2&gt;
+&lt;p&gt;购买了一款Ubuntu系统的阿里云服务器，简单记录下部分环境搭建过程。&lt;/p&gt;
+&lt;h3 id=&#34;一远程连接&#34;&gt;一、远程连接&lt;/h3&gt;
+&lt;h3 id=&#34;accesskey-accesssecret可选&#34;&gt;AccessKey, AccessSecret（可选）&lt;/h3&gt;
+&lt;p&gt;阿里云提供客户端便于管理实例，使用客户端需要密钥，通过阿里云官网可以进行申请，详情参考文档。&lt;/p&gt;
+&lt;p&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure  &gt;
+  &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img alt=&#34;&#34; srcset=&#34;
+               /post/aliyun-cloud-server-envionment-prepare/images/connection/accesskey_hu9aed189b0fb339c4f7248f1a2b08bc1e_100772_9c5e28cf3ac8f991609b6043a2b66672.webp 400w,
+               /post/aliyun-cloud-server-envionment-prepare/images/connection/accesskey_hu9aed189b0fb339c4f7248f1a2b08bc1e_100772_4094745e3c164a88e8b661dc7c5a7229.webp 760w,
+               /post/aliyun-cloud-server-envionment-prepare/images/connection/accesskey_hu9aed189b0fb339c4f7248f1a2b08bc1e_100772_1200x1200_fit_q75_h2_lanczos_3.webp 1200w&#34;
+               src=&#34;/post/aliyun-cloud-server-envionment-prepare/images/connection/accesskey_hu9aed189b0fb339c4f7248f1a2b08bc1e_100772_9c5e28cf3ac8f991609b6043a2b66672.webp&#34;
+               width=&#34;760&#34;
+               height=&#34;227&#34;
+               loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+  &lt;/div&gt;&lt;/figure&gt;
+&lt;/p&gt;
+&lt;h3 id=&#34;ssh端口修改和用户登录限制可选&#34;&gt;ssh端口修改和用户登录限制（可选）&lt;/h3&gt;
+&lt;p&gt;默认阿里云root用户可以ssh登录到服务器，端口号默认为22，均需要修改&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;sudo vim /etc/ssh/sshd_config
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure  &gt;
+  &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img alt=&#34;&#34; srcset=&#34;
+               /post/aliyun-cloud-server-envionment-prepare/images/connection/ssh_hu8b84ae5fcecd8b71dc7a02f7d4983af7_170408_384d4de6c6b279e474222e8512a38f83.webp 400w,
+               /post/aliyun-cloud-server-envionment-prepare/images/connection/ssh_hu8b84ae5fcecd8b71dc7a02f7d4983af7_170408_16e88d501804a85b095ff63b66db935e.webp 760w,
+               /post/aliyun-cloud-server-envionment-prepare/images/connection/ssh_hu8b84ae5fcecd8b71dc7a02f7d4983af7_170408_1200x1200_fit_q75_h2_lanczos_3.webp 1200w&#34;
+               src=&#34;/post/aliyun-cloud-server-envionment-prepare/images/connection/ssh_hu8b84ae5fcecd8b71dc7a02f7d4983af7_170408_384d4de6c6b279e474222e8512a38f83.webp&#34;
+               width=&#34;760&#34;
+               height=&#34;584&#34;
+               loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+  &lt;/div&gt;&lt;/figure&gt;
+&lt;/p&gt;
+&lt;p&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure  &gt;
+  &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img alt=&#34;&#34; srcset=&#34;
+               /post/aliyun-cloud-server-envionment-prepare/images/connection/no-root_huff0bd8d76279ead195014928e54a694e_91347_92ac2cfb202f49b52b37db1523fe0aee.webp 400w,
+               /post/aliyun-cloud-server-envionment-prepare/images/connection/no-root_huff0bd8d76279ead195014928e54a694e_91347_166c52655e830267a9dc0a46fae2b332.webp 760w,
+               /post/aliyun-cloud-server-envionment-prepare/images/connection/no-root_huff0bd8d76279ead195014928e54a694e_91347_1200x1200_fit_q75_h2_lanczos_3.webp 1200w&#34;
+               src=&#34;/post/aliyun-cloud-server-envionment-prepare/images/connection/no-root_huff0bd8d76279ead195014928e54a694e_91347_92ac2cfb202f49b52b37db1523fe0aee.webp&#34;
+               width=&#34;760&#34;
+               height=&#34;412&#34;
+               loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+  &lt;/div&gt;&lt;/figure&gt;
+&lt;/p&gt;
+&lt;p&gt;修改后重启，并需要在阿里云控制台对服务器防火墙规则进行修改，开放相关端口方可远程连接。&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;# 重启sshd&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;service sshd restart
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;ssh -p PORT [USERNAME]@[IP]
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;为了提高安全性，还可以添加密钥验证。&lt;/p&gt;
+&lt;p&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure  &gt;
+  &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img alt=&#34;&#34; srcset=&#34;
+               /post/aliyun-cloud-server-envionment-prepare/images/connection/secret-ssh_huf7e2bccdf48bad991ffad845d5d44f1a_114822_dee1f2f3220381d4372d9271241cd88a.webp 400w,
+               /post/aliyun-cloud-server-envionment-prepare/images/connection/secret-ssh_huf7e2bccdf48bad991ffad845d5d44f1a_114822_0124f0896ee6c074944b6e0ca90e1c89.webp 760w,
+               /post/aliyun-cloud-server-envionment-prepare/images/connection/secret-ssh_huf7e2bccdf48bad991ffad845d5d44f1a_114822_1200x1200_fit_q75_h2_lanczos_3.webp 1200w&#34;
+               src=&#34;/post/aliyun-cloud-server-envionment-prepare/images/connection/secret-ssh_huf7e2bccdf48bad991ffad845d5d44f1a_114822_dee1f2f3220381d4372d9271241cd88a.webp&#34;
+               width=&#34;760&#34;
+               height=&#34;479&#34;
+               loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+  &lt;/div&gt;&lt;/figure&gt;
+&lt;/p&gt;
+&lt;h3 id=&#34;heading&#34;&gt;&lt;/h3&gt;
+&lt;h3 id=&#34;二用户和组&#34;&gt;二、用户和组&lt;/h3&gt;
+&lt;p&gt;新建组&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;groupadd -g 1314 testgroup
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;新建用户&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;useradd -g testgroup testuser
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;passwd testuser
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;# 指定用户登录默认终端为bash&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;chsh -s /bin/bash testuser
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;新建sudo用户&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;visudo
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&amp;hellip;&amp;hellip;&lt;/p&gt;
+&lt;h3 id=&#34;三开发环境&#34;&gt;三、开发环境&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;Python安装Anaconda&lt;/p&gt;
+&lt;p&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure  &gt;
+  &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img alt=&#34;&#34; srcset=&#34;
+               /post/aliyun-cloud-server-envionment-prepare/images/envs/python/conda_hu55c3dc6963221f00c0898d2a27b45af2_244611_a785f79a584d571e94a76243cff5e734.webp 400w,
+               /post/aliyun-cloud-server-envionment-prepare/images/envs/python/conda_hu55c3dc6963221f00c0898d2a27b45af2_244611_2cbf5fc15e5ea7621a0ef708b2c36314.webp 760w,
+               /post/aliyun-cloud-server-envionment-prepare/images/envs/python/conda_hu55c3dc6963221f00c0898d2a27b45af2_244611_1200x1200_fit_q75_h2_lanczos_3.webp 1200w&#34;
+               src=&#34;/post/aliyun-cloud-server-envionment-prepare/images/envs/python/conda_hu55c3dc6963221f00c0898d2a27b45af2_244611_a785f79a584d571e94a76243cff5e734.webp&#34;
+               width=&#34;760&#34;
+               height=&#34;368&#34;
+               loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+  &lt;/div&gt;&lt;/figure&gt;
+&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Java&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Scala&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;四代理服务&#34;&gt;四、代理服务&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;nginx&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&#34;nginx安装&#34;&gt;nginx安装&lt;/h4&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;apt install nginx
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;执行完上述命令，访问[IP]:80看到如下界面说明nginx服务已正常运行&lt;/p&gt;
+&lt;p&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure  &gt;
+  &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img alt=&#34;&#34; srcset=&#34;
+               /post/aliyun-cloud-server-envionment-prepare/images/proxy/nginx-success_hu83640c76c78267b496e966187ac49ae6_113494_a8ce3cdb2e6d427ed0161bc00de77e6a.webp 400w,
+               /post/aliyun-cloud-server-envionment-prepare/images/proxy/nginx-success_hu83640c76c78267b496e966187ac49ae6_113494_6086eb2c8fdacee7d4d1affa4cb1745c.webp 760w,
+               /post/aliyun-cloud-server-envionment-prepare/images/proxy/nginx-success_hu83640c76c78267b496e966187ac49ae6_113494_1200x1200_fit_q75_h2_lanczos_3.webp 1200w&#34;
+               src=&#34;/post/aliyun-cloud-server-envionment-prepare/images/proxy/nginx-success_hu83640c76c78267b496e966187ac49ae6_113494_a8ce3cdb2e6d427ed0161bc00de77e6a.webp&#34;
+               width=&#34;760&#34;
+               height=&#34;410&#34;
+               loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+  &lt;/div&gt;&lt;/figure&gt;
+&lt;/p&gt;
+&lt;p&gt;默认情况下，nginx服务开机自启。&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;systemctl list-unit-files &lt;span class=&#34;p&#34;&gt;|&lt;/span&gt; grep nginx
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure  &gt;
+  &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img alt=&#34;&#34; srcset=&#34;
+               /post/aliyun-cloud-server-envionment-prepare/images/proxy/nginx-startctl_hud286ff208a4cb2cf55b91ce12d9ca713_30295_0a9c3dcb8b2c69dff988ed073b494642.webp 400w,
+               /post/aliyun-cloud-server-envionment-prepare/images/proxy/nginx-startctl_hud286ff208a4cb2cf55b91ce12d9ca713_30295_cb0a14976a7439f9a77d714fe24208c9.webp 760w,
+               /post/aliyun-cloud-server-envionment-prepare/images/proxy/nginx-startctl_hud286ff208a4cb2cf55b91ce12d9ca713_30295_1200x1200_fit_q75_h2_lanczos_3.webp 1200w&#34;
+               src=&#34;/post/aliyun-cloud-server-envionment-prepare/images/proxy/nginx-startctl_hud286ff208a4cb2cf55b91ce12d9ca713_30295_0a9c3dcb8b2c69dff988ed073b494642.webp&#34;
+               width=&#34;760&#34;
+               height=&#34;44&#34;
+               loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+  &lt;/div&gt;&lt;/figure&gt;
+&lt;/p&gt;
+&lt;h3 id=&#34;五容器服务&#34;&gt;五、容器服务&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;docker&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;sudo apt  install docker.io
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;六数据库服务&#34;&gt;六、数据库服务&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;PgSQL&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;MySQL&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;MongoDB&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Redis&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&amp;hellip;&amp;hellip;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;七其他&#34;&gt;七、其他&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;浏览器驱动&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Spark&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&amp;hellip;&amp;hellip;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

@@ -5,12 +5,681 @@
     <link>/post/</link>
       <atom:link href="/post/index.xml" rel="self" type="application/rss+xml" />
     <description>博客</description>
-    <generator>Wowchemy (https://wowchemy.com)</generator><language>en-us</language><lastBuildDate>Mon, 22 Jan 2024 16:40:26 +0800</lastBuildDate>
+    <generator>Wowchemy (https://wowchemy.com)</generator><language>en-us</language><lastBuildDate>Thu, 07 Mar 2024 22:40:03 +0800</lastBuildDate>
     <image>
       <url>/media/icon_hue03491371183284312b8b116a73ae5ab_79511_512x512_fill_lanczos_center_3.png</url>
       <title>博客</title>
       <link>/post/</link>
     </image>
+    
+    <item>
+      <title>基于Nginx日志审计的个人站点访问统计</title>
+      <link>/post/nginx-log-audit/</link>
+      <pubDate>Thu, 07 Mar 2024 22:40:03 +0800</pubDate>
+      <guid>/post/nginx-log-audit/</guid>
+      <description>&lt;h2 id=&#34;前言&#34;&gt;前言&lt;/h2&gt;
+&lt;p&gt;想要统计静态个人站点的访问者最喜欢浏览哪些文章？又或是有无恶意用户尝试攻击站点？如果你的站点是通过nginx等代理部署的，那么可以对nginx日志进行解析审计以解答上述问题。&lt;/p&gt;
+&lt;h3 id=&#34;nginx日志结构&#34;&gt;Nginx日志结构&lt;/h3&gt;
+&lt;p&gt;默认安装好nginx后，nginx就会将请求分类记录到对应的日志中，正常的请求记录在/var/log/nginx/access.log中，严重错误的请求记录在/var/log/nginx/error.log中.&lt;/p&gt;
+&lt;p&gt;通过tail命令可以在终端上查看最新的请求日志&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;tail -f /var/log/nginx/access.log
+&lt;/code&gt;&lt;/pre&gt;&lt;h3 id=&#34;nginx日志接入数据库&#34;&gt;Nginx日志接入数据库&lt;/h3&gt;
+&lt;p&gt;先查阅google看前人的工作，发现如下几篇文章和工具：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a href=&#34;https://www.shubhamdipt.com/blog/send-nginx-logs-to-sql-database/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;How to send Nginx logs to SQL database&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a href=&#34;https://luvpreetsingh.github.io/nginx-to-rsyslog/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Sending Nginx logs to Elasticsearch via Rsyslog&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a href=&#34;https://blog.supersetinc.com/2018/04/09/high-performance-logging-nginx-postgres-using-rsyslog/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;High-performance logging from Nginx to Postgres with Rsyslog - Superset Blog&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;工具：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a href=&#34;https://github.com/rsyslog/rsyslog&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;rsyslog&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;一款可以具有日志消息过滤、转发等功能的开源程序&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;hugo博客nginx部署访问统计&#34;&gt;Hugo博客+nginx部署+访问统计&lt;/h2&gt;
+&lt;h3 id=&#34;hugo博客&#34;&gt;Hugo博客&lt;/h3&gt;
+&lt;p&gt;略&lt;/p&gt;
+&lt;h3 id=&#34;nginx部署&#34;&gt;Nginx部署&lt;/h3&gt;
+&lt;p&gt;将打包后的Hugo博客站点资源文件存放到frontend_directory目录下，基于Nginx最简单的一种部署方式就是直接新开放一个端口用于提供前端资源服务。&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-nginx&#34; data-lang=&#34;nginx&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;k&#34;&gt;server&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;kn&#34;&gt;listen&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;10229&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;kn&#34;&gt;server_name&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;127&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;.0.0.1&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;kn&#34;&gt;location&lt;/span&gt; &lt;span class=&#34;s&#34;&gt;/&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        &lt;span class=&#34;kn&#34;&gt;root&lt;/span&gt; &lt;span class=&#34;s&#34;&gt;frontend_directory&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        &lt;span class=&#34;kn&#34;&gt;index&lt;/span&gt; &lt;span class=&#34;s&#34;&gt;index.html&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        &lt;span class=&#34;kn&#34;&gt;error_page&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;404&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;404&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;.html&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;访问统计&#34;&gt;访问统计&lt;/h3&gt;
+&lt;h4 id=&#34;日志文件解析&#34;&gt;日志文件解析&lt;/h4&gt;
+&lt;h4 id=&#34;日志转发数据库&#34;&gt;日志转发数据库&lt;/h4&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>关于大语言模型使用技巧与API工具使用的个人笔记</title>
+      <link>/post/bigmodel-api-usage-notes/</link>
+      <pubDate>Sat, 02 Mar 2024 22:44:32 +0800</pubDate>
+      <guid>/post/bigmodel-api-usage-notes/</guid>
+      <description>&lt;h2 id=&#34;提示工程&#34;&gt;提示工程&lt;/h2&gt;
+&lt;h3 id=&#34;为什么要了解提示工程&#34;&gt;为什么要了解提示工程&lt;/h3&gt;
+&lt;p&gt;同样的提问意图，在不同的提问策略下可以得到有显著差异的结果，有技巧地提问更能期待大模型得到更高质量的回答。所谓的高质量回答体现在：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;挖掘出模型的潜在知识和能力&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;使模型更准确地理解输入的问题或任务，并提供相关回答&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;改进模型的生成输出，提高可读性、连贯性和准确性&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h3 id=&#34;提示工程的指导原则&#34;&gt;提示工程的指导原则&lt;/h3&gt;
+&lt;p&gt;简单总结一些影响大模型回答质量的重要因素/技巧（其中部分技巧可能会随着大模型迭代升级而变得没那么重要，但从思维方法论的角度来说也值得践行）&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;提问具体明确不含糊&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;举例引导期望的答案&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&#34;3r&#34;&gt;3R&lt;/h4&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;Role：角色设定和目的，确定大模型以什么样的身份完成任务。如企查查知彼阿尔法定位商查大模型，可查商业相关信息（企业、供应商相关工商、招聘、专利、舆情等信息）&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Result：期望的结果。希望大模型输出什么样的结果，结果包括什么内容、有哪些特点或约束。可参考OKR（职场目标与关键成果）的SMART要求：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;Specific，清晰具体的语言为对话定义明确的焦点，确保大模型理解当前主题和任务&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-python&#34; data-lang=&#34;python&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;反例&lt;/span&gt;&lt;span class=&#34;err&#34;&gt;：&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;你对xxx报告的看法&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;正例&lt;/span&gt;&lt;span class=&#34;err&#34;&gt;：&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;xxx报告的结论是否被xxx特点的人广泛接受&lt;/span&gt;&lt;span class=&#34;err&#34;&gt;，&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;有哪些赞同或反对的声音&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;反例：简单易懂
+正例：用短语，不用专业术语，xx句/词以内
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Measurable，提供可衡量的约束条件，如数字、客观标准&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;反例：对于xxx, 要有权威论证
+正例：对于xxx，要有xxx行业/研究所的专家的观点
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Relevant，相关联的，对结果的描述要与角色设定、背景目的保持一致，体现相关性。&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Recipe，思考如何才能拿到预期的结果，并给出方法和指导。对于复杂的、独特的任务，可以给出示例，帮助大模型进行任务拆解，通过思维链的方法进行问题拆解（大问题拆为小问题），以逻辑清晰的方式组织问题或步骤，引导大模型沿着特定的思考路径以更系统、更连贯的方式回答问题。&lt;/p&gt;
+&lt;p&gt;当然，大模型原有知识可能不足以提供复杂任务所需要的数据支撑，在数据/知识源不充足的情况下， 即便采用思维链的方法大模型也无法得出最终结果，但至少可以在问题拆解后给出更具体的问题解决思路/更丰富的逻辑框架。&lt;/p&gt;
+&lt;p&gt;示例1：&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;问题：深圳有多少渣男
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure  &gt;
+  &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img alt=&#34;&#34; srcset=&#34;
+               /post/bigmodel-api-usage-notes/images/cot-demo1_huaeefb32a2fa6297e5c8e86e51f1beae4_270530_497324fdb84562438ff5db4134622088.webp 400w,
+               /post/bigmodel-api-usage-notes/images/cot-demo1_huaeefb32a2fa6297e5c8e86e51f1beae4_270530_9408b91624fee33bbbaa24bcd0e02fc0.webp 760w,
+               /post/bigmodel-api-usage-notes/images/cot-demo1_huaeefb32a2fa6297e5c8e86e51f1beae4_270530_1200x1200_fit_q75_h2_lanczos_3.webp 1200w&#34;
+               src=&#34;/post/bigmodel-api-usage-notes/images/cot-demo1_huaeefb32a2fa6297e5c8e86e51f1beae4_270530_497324fdb84562438ff5db4134622088.webp&#34;
+               width=&#34;760&#34;
+               height=&#34;364&#34;
+               loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+  &lt;/div&gt;&lt;/figure&gt;
+&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;问题：深圳有多少渣男
+思路：这是一道市场规模估算题，目的是考察逻辑能力、分析能力、计算能力。该问题没有标准答案但有标准套路。
+步骤：1. 界定问题：明确问题范围和假设，如指定的地域指哪个行政区，目标对象指哪些类型
+     2. 分解问题：将问题分解为若干子问题或模块，例如按照不同地区、不同密度和比例划分
+     3. 估算数据：对每个子问题或模块进行合理假设和估算，如利用已知数据、常识判断、类比推理等方法得出每个模块的数量或比例
+     4. 汇总结果：将所有子问题或模块的结果相加或相乘，得出最终答案，并检查是否合理和一致
+     5. 总结思路：简要回顾整个解题过程，并指出可能存在的不确定性和改进空间。
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure  &gt;
+  &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img alt=&#34;&#34; srcset=&#34;
+               /post/bigmodel-api-usage-notes/images/cot-demo2_huc716c97ee685110a09104041a117ae4d_516515_39a38f68a25dc8c23f1fb09b480c0b1c.webp 400w,
+               /post/bigmodel-api-usage-notes/images/cot-demo2_huc716c97ee685110a09104041a117ae4d_516515_a10ad360e28f435596e556c3a70164ff.webp 760w,
+               /post/bigmodel-api-usage-notes/images/cot-demo2_huc716c97ee685110a09104041a117ae4d_516515_1200x1200_fit_q75_h2_lanczos_3.webp 1200w&#34;
+               src=&#34;/post/bigmodel-api-usage-notes/images/cot-demo2_huc716c97ee685110a09104041a117ae4d_516515_39a38f68a25dc8c23f1fb09b480c0b1c.webp&#34;
+               width=&#34;756&#34;
+               height=&#34;760&#34;
+               loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+  &lt;/div&gt;&lt;/figure&gt;
+&lt;/p&gt;
+&lt;p&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure  &gt;
+  &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img alt=&#34;&#34; srcset=&#34;
+               /post/bigmodel-api-usage-notes/images/cot-demo3_huee1d310bcbdf6f9f35283a26320f1159_538883_88569466c47ebc3a873096e38c6b6925.webp 400w,
+               /post/bigmodel-api-usage-notes/images/cot-demo3_huee1d310bcbdf6f9f35283a26320f1159_538883_8c372ceb7bf2fd5102b3dd61d48922b1.webp 760w,
+               /post/bigmodel-api-usage-notes/images/cot-demo3_huee1d310bcbdf6f9f35283a26320f1159_538883_1200x1200_fit_q75_h2_lanczos_3.webp 1200w&#34;
+               src=&#34;/post/bigmodel-api-usage-notes/images/cot-demo3_huee1d310bcbdf6f9f35283a26320f1159_538883_88569466c47ebc3a873096e38c6b6925.webp&#34;
+               width=&#34;760&#34;
+               height=&#34;431&#34;
+               loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+  &lt;/div&gt;&lt;/figure&gt;
+&lt;/p&gt;
+&lt;h3 id=&#34;问答示例&#34;&gt;问答示例&lt;/h3&gt;
+&lt;h4 id=&#34;询问旅游游玩地点&#34;&gt;询问旅游/游玩地点&lt;/h4&gt;
+&lt;p&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure  &gt;
+  &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img alt=&#34;&#34; srcset=&#34;
+               /post/bigmodel-api-usage-notes/images/travel/shenzhen1_hu7c2200664d86554472e4fab9a3d10ba7_344636_01acfc36cea83cb19ec958e8c566333b.webp 400w,
+               /post/bigmodel-api-usage-notes/images/travel/shenzhen1_hu7c2200664d86554472e4fab9a3d10ba7_344636_35d77e61169b5acfdac186976828ce9d.webp 760w,
+               /post/bigmodel-api-usage-notes/images/travel/shenzhen1_hu7c2200664d86554472e4fab9a3d10ba7_344636_1200x1200_fit_q75_h2_lanczos_3.webp 1200w&#34;
+               src=&#34;/post/bigmodel-api-usage-notes/images/travel/shenzhen1_hu7c2200664d86554472e4fab9a3d10ba7_344636_01acfc36cea83cb19ec958e8c566333b.webp&#34;
+               width=&#34;760&#34;
+               height=&#34;557&#34;
+               loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+  &lt;/div&gt;&lt;/figure&gt;
+&lt;/p&gt;
+&lt;p&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure  &gt;
+  &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img alt=&#34;&#34; srcset=&#34;
+               /post/bigmodel-api-usage-notes/images/travel/shenzhen2_hua7686d1132b61743939c1b6fb760eb23_351596_6f23db5957634c0d167c04ecba65b16c.webp 400w,
+               /post/bigmodel-api-usage-notes/images/travel/shenzhen2_hua7686d1132b61743939c1b6fb760eb23_351596_c9a253f75a4591713e6d3783c71cda2b.webp 760w,
+               /post/bigmodel-api-usage-notes/images/travel/shenzhen2_hua7686d1132b61743939c1b6fb760eb23_351596_1200x1200_fit_q75_h2_lanczos_3.webp 1200w&#34;
+               src=&#34;/post/bigmodel-api-usage-notes/images/travel/shenzhen2_hua7686d1132b61743939c1b6fb760eb23_351596_6f23db5957634c0d167c04ecba65b16c.webp&#34;
+               width=&#34;752&#34;
+               height=&#34;760&#34;
+               loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+  &lt;/div&gt;&lt;/figure&gt;
+&lt;/p&gt;
+&lt;p&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure  &gt;
+  &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img alt=&#34;&#34; srcset=&#34;
+               /post/bigmodel-api-usage-notes/images/travel/shenzhen3_hu02bb29436b8e5b307aed49ad743be430_420411_b12a4b2dc18e511102168cba673ba2ce.webp 400w,
+               /post/bigmodel-api-usage-notes/images/travel/shenzhen3_hu02bb29436b8e5b307aed49ad743be430_420411_1d54a9a37e60aa5113c552c6862cdebf.webp 760w,
+               /post/bigmodel-api-usage-notes/images/travel/shenzhen3_hu02bb29436b8e5b307aed49ad743be430_420411_1200x1200_fit_q75_h2_lanczos_3.webp 1200w&#34;
+               src=&#34;/post/bigmodel-api-usage-notes/images/travel/shenzhen3_hu02bb29436b8e5b307aed49ad743be430_420411_b12a4b2dc18e511102168cba673ba2ce.webp&#34;
+               width=&#34;760&#34;
+               height=&#34;572&#34;
+               loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+  &lt;/div&gt;&lt;/figure&gt;
+&lt;/p&gt;
+&lt;h4 id=&#34;询问美食相关&#34;&gt;询问美食相关&lt;/h4&gt;
+&lt;p&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure  &gt;
+  &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img alt=&#34;&#34; srcset=&#34;
+               /post/bigmodel-api-usage-notes/images/travel/shenzhen4_hub59d7b171bf89e52b6fbd32d09663858_456851_abfb2ddc398faa62204f48d9fc5a4983.webp 400w,
+               /post/bigmodel-api-usage-notes/images/travel/shenzhen4_hub59d7b171bf89e52b6fbd32d09663858_456851_e995179b36766b911f8800c44849a9e4.webp 760w,
+               /post/bigmodel-api-usage-notes/images/travel/shenzhen4_hub59d7b171bf89e52b6fbd32d09663858_456851_1200x1200_fit_q75_h2_lanczos_3.webp 1200w&#34;
+               src=&#34;/post/bigmodel-api-usage-notes/images/travel/shenzhen4_hub59d7b171bf89e52b6fbd32d09663858_456851_abfb2ddc398faa62204f48d9fc5a4983.webp&#34;
+               width=&#34;760&#34;
+               height=&#34;626&#34;
+               loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+  &lt;/div&gt;&lt;/figure&gt;
+&lt;/p&gt;
+&lt;h2 id=&#34;大模型开放平台&#34;&gt;大模型开放平台&lt;/h2&gt;
+&lt;p&gt;国内：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a href=&#34;https://xinghuo.xfyun.cn&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;讯飞星火&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;智谱AI&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;MoonShot Kimi&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;https://kimi.moonshot.cn/chat/cnjib4kudu689nk5pgm0&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Kimi.ai - 帮你看更大的世界&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;通义千问&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;文心一言&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&amp;hellip;&amp;hellip;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;相关文档&#34;&gt;相关文档&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a href=&#34;https://www.langchain.com&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;LangChain&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a href=&#34;https://www.promptingguide.ai/zh&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;提示工程&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Aliyun Cloud Server Envionment Preparation</title>
+      <link>/post/aliyun-cloud-server-envionment-prepare/</link>
+      <pubDate>Fri, 01 Mar 2024 20:02:21 +0800</pubDate>
+      <guid>/post/aliyun-cloud-server-envionment-prepare/</guid>
+      <description>&lt;h2 id=&#34;环境搭建&#34;&gt;环境搭建&lt;/h2&gt;
+&lt;p&gt;购买了一款Ubuntu系统的阿里云服务器，简单记录下部分环境搭建过程。&lt;/p&gt;
+&lt;h3 id=&#34;一远程连接&#34;&gt;一、远程连接&lt;/h3&gt;
+&lt;h3 id=&#34;accesskey-accesssecret可选&#34;&gt;AccessKey, AccessSecret（可选）&lt;/h3&gt;
+&lt;p&gt;阿里云提供客户端便于管理实例，使用客户端需要密钥，通过阿里云官网可以进行申请，详情参考文档。&lt;/p&gt;
+&lt;p&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure  &gt;
+  &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img alt=&#34;&#34; srcset=&#34;
+               /post/aliyun-cloud-server-envionment-prepare/images/connection/accesskey_hu9aed189b0fb339c4f7248f1a2b08bc1e_100772_9c5e28cf3ac8f991609b6043a2b66672.webp 400w,
+               /post/aliyun-cloud-server-envionment-prepare/images/connection/accesskey_hu9aed189b0fb339c4f7248f1a2b08bc1e_100772_4094745e3c164a88e8b661dc7c5a7229.webp 760w,
+               /post/aliyun-cloud-server-envionment-prepare/images/connection/accesskey_hu9aed189b0fb339c4f7248f1a2b08bc1e_100772_1200x1200_fit_q75_h2_lanczos_3.webp 1200w&#34;
+               src=&#34;/post/aliyun-cloud-server-envionment-prepare/images/connection/accesskey_hu9aed189b0fb339c4f7248f1a2b08bc1e_100772_9c5e28cf3ac8f991609b6043a2b66672.webp&#34;
+               width=&#34;760&#34;
+               height=&#34;227&#34;
+               loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+  &lt;/div&gt;&lt;/figure&gt;
+&lt;/p&gt;
+&lt;h3 id=&#34;ssh端口修改和用户登录限制可选&#34;&gt;ssh端口修改和用户登录限制（可选）&lt;/h3&gt;
+&lt;p&gt;默认阿里云root用户可以ssh登录到服务器，端口号默认为22，均需要修改&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;sudo vim /etc/ssh/sshd_config
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure  &gt;
+  &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img alt=&#34;&#34; srcset=&#34;
+               /post/aliyun-cloud-server-envionment-prepare/images/connection/ssh_hu8b84ae5fcecd8b71dc7a02f7d4983af7_170408_384d4de6c6b279e474222e8512a38f83.webp 400w,
+               /post/aliyun-cloud-server-envionment-prepare/images/connection/ssh_hu8b84ae5fcecd8b71dc7a02f7d4983af7_170408_16e88d501804a85b095ff63b66db935e.webp 760w,
+               /post/aliyun-cloud-server-envionment-prepare/images/connection/ssh_hu8b84ae5fcecd8b71dc7a02f7d4983af7_170408_1200x1200_fit_q75_h2_lanczos_3.webp 1200w&#34;
+               src=&#34;/post/aliyun-cloud-server-envionment-prepare/images/connection/ssh_hu8b84ae5fcecd8b71dc7a02f7d4983af7_170408_384d4de6c6b279e474222e8512a38f83.webp&#34;
+               width=&#34;760&#34;
+               height=&#34;584&#34;
+               loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+  &lt;/div&gt;&lt;/figure&gt;
+&lt;/p&gt;
+&lt;p&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure  &gt;
+  &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img alt=&#34;&#34; srcset=&#34;
+               /post/aliyun-cloud-server-envionment-prepare/images/connection/no-root_huff0bd8d76279ead195014928e54a694e_91347_92ac2cfb202f49b52b37db1523fe0aee.webp 400w,
+               /post/aliyun-cloud-server-envionment-prepare/images/connection/no-root_huff0bd8d76279ead195014928e54a694e_91347_166c52655e830267a9dc0a46fae2b332.webp 760w,
+               /post/aliyun-cloud-server-envionment-prepare/images/connection/no-root_huff0bd8d76279ead195014928e54a694e_91347_1200x1200_fit_q75_h2_lanczos_3.webp 1200w&#34;
+               src=&#34;/post/aliyun-cloud-server-envionment-prepare/images/connection/no-root_huff0bd8d76279ead195014928e54a694e_91347_92ac2cfb202f49b52b37db1523fe0aee.webp&#34;
+               width=&#34;760&#34;
+               height=&#34;412&#34;
+               loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+  &lt;/div&gt;&lt;/figure&gt;
+&lt;/p&gt;
+&lt;p&gt;修改后重启，并需要在阿里云控制台对服务器防火墙规则进行修改，开放相关端口方可远程连接。&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;# 重启sshd&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;service sshd restart
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;ssh -p PORT [USERNAME]@[IP]
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;为了提高安全性，还可以添加密钥验证。&lt;/p&gt;
+&lt;p&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure  &gt;
+  &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img alt=&#34;&#34; srcset=&#34;
+               /post/aliyun-cloud-server-envionment-prepare/images/connection/secret-ssh_huf7e2bccdf48bad991ffad845d5d44f1a_114822_dee1f2f3220381d4372d9271241cd88a.webp 400w,
+               /post/aliyun-cloud-server-envionment-prepare/images/connection/secret-ssh_huf7e2bccdf48bad991ffad845d5d44f1a_114822_0124f0896ee6c074944b6e0ca90e1c89.webp 760w,
+               /post/aliyun-cloud-server-envionment-prepare/images/connection/secret-ssh_huf7e2bccdf48bad991ffad845d5d44f1a_114822_1200x1200_fit_q75_h2_lanczos_3.webp 1200w&#34;
+               src=&#34;/post/aliyun-cloud-server-envionment-prepare/images/connection/secret-ssh_huf7e2bccdf48bad991ffad845d5d44f1a_114822_dee1f2f3220381d4372d9271241cd88a.webp&#34;
+               width=&#34;760&#34;
+               height=&#34;479&#34;
+               loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+  &lt;/div&gt;&lt;/figure&gt;
+&lt;/p&gt;
+&lt;h3 id=&#34;heading&#34;&gt;&lt;/h3&gt;
+&lt;h3 id=&#34;二用户和组&#34;&gt;二、用户和组&lt;/h3&gt;
+&lt;p&gt;新建组&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;groupadd -g 1314 testgroup
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;新建用户&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;useradd -g testgroup testuser
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;passwd testuser
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;# 指定用户登录默认终端为bash&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;chsh -s /bin/bash testuser
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;新建sudo用户&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;visudo
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&amp;hellip;&amp;hellip;&lt;/p&gt;
+&lt;h3 id=&#34;三开发环境&#34;&gt;三、开发环境&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;Python安装Anaconda&lt;/p&gt;
+&lt;p&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure  &gt;
+  &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img alt=&#34;&#34; srcset=&#34;
+               /post/aliyun-cloud-server-envionment-prepare/images/envs/python/conda_hu55c3dc6963221f00c0898d2a27b45af2_244611_a785f79a584d571e94a76243cff5e734.webp 400w,
+               /post/aliyun-cloud-server-envionment-prepare/images/envs/python/conda_hu55c3dc6963221f00c0898d2a27b45af2_244611_2cbf5fc15e5ea7621a0ef708b2c36314.webp 760w,
+               /post/aliyun-cloud-server-envionment-prepare/images/envs/python/conda_hu55c3dc6963221f00c0898d2a27b45af2_244611_1200x1200_fit_q75_h2_lanczos_3.webp 1200w&#34;
+               src=&#34;/post/aliyun-cloud-server-envionment-prepare/images/envs/python/conda_hu55c3dc6963221f00c0898d2a27b45af2_244611_a785f79a584d571e94a76243cff5e734.webp&#34;
+               width=&#34;760&#34;
+               height=&#34;368&#34;
+               loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+  &lt;/div&gt;&lt;/figure&gt;
+&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Java&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Scala&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;四代理服务&#34;&gt;四、代理服务&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;nginx&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&#34;nginx安装&#34;&gt;nginx安装&lt;/h4&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;apt install nginx
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;执行完上述命令，访问[IP]:80看到如下界面说明nginx服务已正常运行&lt;/p&gt;
+&lt;p&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure  &gt;
+  &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img alt=&#34;&#34; srcset=&#34;
+               /post/aliyun-cloud-server-envionment-prepare/images/proxy/nginx-success_hu83640c76c78267b496e966187ac49ae6_113494_a8ce3cdb2e6d427ed0161bc00de77e6a.webp 400w,
+               /post/aliyun-cloud-server-envionment-prepare/images/proxy/nginx-success_hu83640c76c78267b496e966187ac49ae6_113494_6086eb2c8fdacee7d4d1affa4cb1745c.webp 760w,
+               /post/aliyun-cloud-server-envionment-prepare/images/proxy/nginx-success_hu83640c76c78267b496e966187ac49ae6_113494_1200x1200_fit_q75_h2_lanczos_3.webp 1200w&#34;
+               src=&#34;/post/aliyun-cloud-server-envionment-prepare/images/proxy/nginx-success_hu83640c76c78267b496e966187ac49ae6_113494_a8ce3cdb2e6d427ed0161bc00de77e6a.webp&#34;
+               width=&#34;760&#34;
+               height=&#34;410&#34;
+               loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+  &lt;/div&gt;&lt;/figure&gt;
+&lt;/p&gt;
+&lt;p&gt;默认情况下，nginx服务开机自启。&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;systemctl list-unit-files &lt;span class=&#34;p&#34;&gt;|&lt;/span&gt; grep nginx
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure  &gt;
+  &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img alt=&#34;&#34; srcset=&#34;
+               /post/aliyun-cloud-server-envionment-prepare/images/proxy/nginx-startctl_hud286ff208a4cb2cf55b91ce12d9ca713_30295_0a9c3dcb8b2c69dff988ed073b494642.webp 400w,
+               /post/aliyun-cloud-server-envionment-prepare/images/proxy/nginx-startctl_hud286ff208a4cb2cf55b91ce12d9ca713_30295_cb0a14976a7439f9a77d714fe24208c9.webp 760w,
+               /post/aliyun-cloud-server-envionment-prepare/images/proxy/nginx-startctl_hud286ff208a4cb2cf55b91ce12d9ca713_30295_1200x1200_fit_q75_h2_lanczos_3.webp 1200w&#34;
+               src=&#34;/post/aliyun-cloud-server-envionment-prepare/images/proxy/nginx-startctl_hud286ff208a4cb2cf55b91ce12d9ca713_30295_0a9c3dcb8b2c69dff988ed073b494642.webp&#34;
+               width=&#34;760&#34;
+               height=&#34;44&#34;
+               loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+  &lt;/div&gt;&lt;/figure&gt;
+&lt;/p&gt;
+&lt;h3 id=&#34;五容器服务&#34;&gt;五、容器服务&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;docker&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;sudo apt  install docker.io
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;六数据库服务&#34;&gt;六、数据库服务&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;PgSQL&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;MySQL&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;MongoDB&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Redis&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&amp;hellip;&amp;hellip;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;七其他&#34;&gt;七、其他&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;浏览器驱动&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Spark&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&amp;hellip;&amp;hellip;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Scala基础和Spark入门笔记</title>
+      <link>/post/spark-for-newbee-notes/</link>
+      <pubDate>Tue, 06 Feb 2024 23:09:40 +0800</pubDate>
+      <guid>/post/spark-for-newbee-notes/</guid>
+      <description>&lt;h2 id=&#34;教程&#34;&gt;教程&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;Scala3教程：&lt;a href=&#34;https://juejin.cn/s/scala%203%20%e6%95%99%e7%a8%8b&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;scala 3 教程-掘金&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;https://www.runoob.com/scala/scala-basic-syntax.html&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Scala 基础语法 | 菜鸟教程&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a href=&#34;https://time.geekbang.org/column/article/415209&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;01｜Spark：从“大数据的Hello World”开始-零基础入门Spark-极客时间&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;安装&#34;&gt;安装&lt;/h2&gt;
+&lt;h4 id=&#34;scala3&#34;&gt;Scala3&lt;/h4&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;brew install coursier/formulas/coursier &lt;span class=&#34;o&#34;&gt;&amp;amp;&amp;amp;&lt;/span&gt; cs setup
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;安装成功后重启或新建终端，执行如下命令成功即说明scala安装成功。&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;scala --version
+&lt;/code&gt;&lt;/pre&gt;&lt;h4 id=&#34;spark&#34;&gt;Spark&lt;/h4&gt;
+&lt;p&gt;&lt;a href=&#34;https://spark.apache.org/downloads.html&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;https://spark.apache.org/downloads.html&lt;/a&gt;&lt;/p&gt;
+&lt;h2 id=&#34;scala基础示例&#34;&gt;Scala基础示例&lt;/h2&gt;
+&lt;h2 id=&#34;spark入门实操示例&#34;&gt;Spark入门实操示例&lt;/h2&gt;
+</description>
+    </item>
     
     <item>
       <title>PostgreSQL使用过程中遇到的一些问题分析和注意事项笔记</title>
@@ -268,6 +937,194 @@
                loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
   &lt;/div&gt;&lt;/figure&gt;
 &lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>关于工作职业性质特征、大模型对职业的影响、以及人类认知变革的一些随笔</title>
+      <link>/post/bigmodel-impact/</link>
+      <pubDate>Tue, 09 Jan 2024 15:58:22 +0800</pubDate>
+      <guid>/post/bigmodel-impact/</guid>
+      <description>&lt;h2 id=&#34;20世纪的工作&#34;&gt;20世纪的工作&lt;/h2&gt;
+&lt;p&gt;《国家的工作》（The Work Of Nation）中，Robert Reich将20世纪的工作分为三类：&lt;/p&gt;
+&lt;h4 id=&#34;第一类符号分析师&#34;&gt;第一类：符号分析师&lt;/h4&gt;
+&lt;p&gt;知识工作者&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;经理人&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;工程师&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;金融分析师&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;律师&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;科学家&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;记者&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;咨询师&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;第二类逐渐被计算机接管的常规工作&#34;&gt;第二类：逐渐被计算机接管的常规工作&lt;/h3&gt;
+&lt;h3 id=&#34;第三类面对面服务工作&#34;&gt;第三类：面对面服务工作&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;前台服务员&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;餐饮服务员&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&amp;hellip;&amp;hellip;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;在经济形势变化之下，“符号分析师是从新经济中受益最大的新阶层“，其特征是：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;具有批判性思维&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;拥有解决问题并有与人沟通的能力&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;21世纪大语言模型会对经济产生什么影响新经济形势下哪些阶层职业能最大受益&#34;&gt;21世纪大语言模型会对经济产生什么影响？新经济形势下哪些阶层/职业能最大受益？&lt;/h2&gt;
+&lt;h3 id=&#34;生产力提升&#34;&gt;生产力提升&lt;/h3&gt;
+&lt;p&gt;大模型能够执行一些认知和创意任务，这可能导致某些职业/工作的部分自动化，如文本生成、数据分析、编程等领域的工作。&lt;/p&gt;
+&lt;p&gt;作为生产力工具，大模型可以辅助人类工作人员提高工作效率，尤其是在知识生成领域的工作，如编程、撰写报告（如论文报告、专利报告）、材料分析（如市场分析）、智能客服等。&lt;/p&gt;
+&lt;p&gt;如市面上已有的一些工具：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;专利解读报告生成&lt;/p&gt;
+&lt;p&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure  &gt;
+  &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img alt=&#34;&#34; srcset=&#34;
+               /post/bigmodel-impact/images/patent_hude933647c8c47176d89f923c90b172e7_677081_fb1340cdd4c5538206bdb8a296c944ef.webp 400w,
+               /post/bigmodel-impact/images/patent_hude933647c8c47176d89f923c90b172e7_677081_ca2c8d933960f6f1d0ccc84494178bbc.webp 760w,
+               /post/bigmodel-impact/images/patent_hude933647c8c47176d89f923c90b172e7_677081_1200x1200_fit_q75_h2_lanczos_3.webp 1200w&#34;
+               src=&#34;/post/bigmodel-impact/images/patent_hude933647c8c47176d89f923c90b172e7_677081_fb1340cdd4c5538206bdb8a296c944ef.webp&#34;
+               width=&#34;760&#34;
+               height=&#34;398&#34;
+               loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+  &lt;/div&gt;&lt;/figure&gt;
+论文解读&lt;/p&gt;
+&lt;p&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure  &gt;
+  &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img alt=&#34;&#34; srcset=&#34;
+               /post/bigmodel-impact/images/paper_hu324c4d52ad323f8d067bdbbe3df73d66_1074196_d54302dcc8d796efea68e5444fd77ac4.webp 400w,
+               /post/bigmodel-impact/images/paper_hu324c4d52ad323f8d067bdbbe3df73d66_1074196_8e5363aea45e81d69ae7956a291fc73b.webp 760w,
+               /post/bigmodel-impact/images/paper_hu324c4d52ad323f8d067bdbbe3df73d66_1074196_1200x1200_fit_q75_h2_lanczos_3.webp 1200w&#34;
+               src=&#34;/post/bigmodel-impact/images/paper_hu324c4d52ad323f8d067bdbbe3df73d66_1074196_d54302dcc8d796efea68e5444fd77ac4.webp&#34;
+               width=&#34;760&#34;
+               height=&#34;448&#34;
+               loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+  &lt;/div&gt;&lt;/figure&gt;
+&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;新闻解读/总结&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;新职业或兴起的旧职业&#34;&gt;新职业或兴起的旧职业&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;提示工程师（prompt engineer）&lt;/p&gt;
+&lt;p&gt;为AI模型编写有效的提示，以引导AI生成预期的结果。&lt;/p&gt;
+&lt;p&gt;苏格拉底：“人类最高级的智慧，就是向自己或向别人提问”。但是，即便被提问者知道你所疑惑的问题的答案，不同的问题、不同的提问方式也可能得到不同的回答，如何进行更高效地提问是一种艺术。Github上开源项目《提问的智慧》和《提示工程指南》值得品味。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;AI伦理研究员&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;数据隐私保护研究员&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;大数据处理工程师&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&amp;hellip;&amp;hellip;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;历史上人类认知过程变革的机缘&#34;&gt;历史上人类认知过程变革的机缘&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;印刷术：改变了知识获取、保存和传播的方式，促进知识传播与交流&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;互联网：与当年的印刷术具有同样的功能，但具有更强大的功效，大幅提高了知识传播的数量和效率，并带来了信息的爆炸。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;大模型：改善人与信息交互的方式，部分承担了人类大脑的作用，帮助人类更快速、有效地吸收和理解知识，并可以根据学习到的东西创造新的内容。&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;heading&#34;&gt;&lt;/h2&gt;
+&lt;p&gt;人类对知识处理的层次：记忆、理解、应用、分析、评价、创造。&lt;/p&gt;
+&lt;p&gt;其中随着信息技术的发展，记忆层次的处理工作大多数可以转移到计算机设备，人们通过检索工具（如搜索引擎和数据库查询）来查询相关数据/知识。而在理解、应用、分析、评价、创造等层面的处理依然由人来主导推进，计算机所扮演的角色主要是执行人所设计的指令。但随着生成式大模型的发展，部分知识生成、处理的工作也将移交给计算机完成，也就是说：计算机不仅仅执行指令，还会生成指令，而人可以通过设计过的提问引导AI产出更好的输出内容。&lt;/p&gt;
+&lt;h3 id=&#34;如何利用大模型学习知识完成任务&#34;&gt;如何利用大模型学习知识、完成任务？&lt;/h3&gt;
+&lt;p&gt;通过“提示”尽可能与大模型就以下方面达成共识：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;预期结果&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;指导方针/基本思想&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;可用资源（如外部知识源：搜索引擎、数据库）&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;评价标准&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;挑战&#34;&gt;挑战&lt;/h2&gt;
+&lt;p&gt;评价：铸就大模型的训练数据可能存在偏见与误解，导致其不太能够为主观判断、价值判断、道德观念等问题的评价提供有足够深度的论证。&lt;/p&gt;
+&lt;h2 id=&#34;参考文章&#34;&gt;参考文章&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a href=&#34;https://arxiv.org/abs/2102.07350&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;[2102.07350] Prompt Programming for Large Language Models: Beyond the Few-Shot Paradigm&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;《大模型时代》龙志勇，黄雯&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
 </description>
     </item>
     

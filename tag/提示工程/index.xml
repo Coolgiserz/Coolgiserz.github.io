@@ -1,0 +1,318 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>提示工程 | CoolCats</title>
+    <link>/tag/%E6%8F%90%E7%A4%BA%E5%B7%A5%E7%A8%8B/</link>
+      <atom:link href="/tag/%E6%8F%90%E7%A4%BA%E5%B7%A5%E7%A8%8B/index.xml" rel="self" type="application/rss+xml" />
+    <description>提示工程</description>
+    <generator>Wowchemy (https://wowchemy.com)</generator><language>en-us</language><lastBuildDate>Sat, 02 Mar 2024 22:44:32 +0800</lastBuildDate>
+    <image>
+      <url>/media/icon_hue03491371183284312b8b116a73ae5ab_79511_512x512_fill_lanczos_center_3.png</url>
+      <title>提示工程</title>
+      <link>/tag/%E6%8F%90%E7%A4%BA%E5%B7%A5%E7%A8%8B/</link>
+    </image>
+    
+    <item>
+      <title>关于大语言模型使用技巧与API工具使用的个人笔记</title>
+      <link>/post/bigmodel-api-usage-notes/</link>
+      <pubDate>Sat, 02 Mar 2024 22:44:32 +0800</pubDate>
+      <guid>/post/bigmodel-api-usage-notes/</guid>
+      <description>&lt;h2 id=&#34;提示工程&#34;&gt;提示工程&lt;/h2&gt;
+&lt;h3 id=&#34;为什么要了解提示工程&#34;&gt;为什么要了解提示工程&lt;/h3&gt;
+&lt;p&gt;同样的提问意图，在不同的提问策略下可以得到有显著差异的结果，有技巧地提问更能期待大模型得到更高质量的回答。所谓的高质量回答体现在：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;挖掘出模型的潜在知识和能力&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;使模型更准确地理解输入的问题或任务，并提供相关回答&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;改进模型的生成输出，提高可读性、连贯性和准确性&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h3 id=&#34;提示工程的指导原则&#34;&gt;提示工程的指导原则&lt;/h3&gt;
+&lt;p&gt;简单总结一些影响大模型回答质量的重要因素/技巧（其中部分技巧可能会随着大模型迭代升级而变得没那么重要，但从思维方法论的角度来说也值得践行）&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;提问具体明确不含糊&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;举例引导期望的答案&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&#34;3r&#34;&gt;3R&lt;/h4&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;Role：角色设定和目的，确定大模型以什么样的身份完成任务。如企查查知彼阿尔法定位商查大模型，可查商业相关信息（企业、供应商相关工商、招聘、专利、舆情等信息）&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Result：期望的结果。希望大模型输出什么样的结果，结果包括什么内容、有哪些特点或约束。可参考OKR（职场目标与关键成果）的SMART要求：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;Specific，清晰具体的语言为对话定义明确的焦点，确保大模型理解当前主题和任务&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-python&#34; data-lang=&#34;python&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;反例&lt;/span&gt;&lt;span class=&#34;err&#34;&gt;：&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;你对xxx报告的看法&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;正例&lt;/span&gt;&lt;span class=&#34;err&#34;&gt;：&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;xxx报告的结论是否被xxx特点的人广泛接受&lt;/span&gt;&lt;span class=&#34;err&#34;&gt;，&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;有哪些赞同或反对的声音&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;反例：简单易懂
+正例：用短语，不用专业术语，xx句/词以内
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Measurable，提供可衡量的约束条件，如数字、客观标准&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;反例：对于xxx, 要有权威论证
+正例：对于xxx，要有xxx行业/研究所的专家的观点
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Relevant，相关联的，对结果的描述要与角色设定、背景目的保持一致，体现相关性。&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Recipe，思考如何才能拿到预期的结果，并给出方法和指导。对于复杂的、独特的任务，可以给出示例，帮助大模型进行任务拆解，通过思维链的方法进行问题拆解（大问题拆为小问题），以逻辑清晰的方式组织问题或步骤，引导大模型沿着特定的思考路径以更系统、更连贯的方式回答问题。&lt;/p&gt;
+&lt;p&gt;当然，大模型原有知识可能不足以提供复杂任务所需要的数据支撑，在数据/知识源不充足的情况下， 即便采用思维链的方法大模型也无法得出最终结果，但至少可以在问题拆解后给出更具体的问题解决思路/更丰富的逻辑框架。&lt;/p&gt;
+&lt;p&gt;示例1：&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;问题：深圳有多少渣男
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure  &gt;
+  &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img alt=&#34;&#34; srcset=&#34;
+               /post/bigmodel-api-usage-notes/images/cot-demo1_huaeefb32a2fa6297e5c8e86e51f1beae4_270530_497324fdb84562438ff5db4134622088.webp 400w,
+               /post/bigmodel-api-usage-notes/images/cot-demo1_huaeefb32a2fa6297e5c8e86e51f1beae4_270530_9408b91624fee33bbbaa24bcd0e02fc0.webp 760w,
+               /post/bigmodel-api-usage-notes/images/cot-demo1_huaeefb32a2fa6297e5c8e86e51f1beae4_270530_1200x1200_fit_q75_h2_lanczos_3.webp 1200w&#34;
+               src=&#34;/post/bigmodel-api-usage-notes/images/cot-demo1_huaeefb32a2fa6297e5c8e86e51f1beae4_270530_497324fdb84562438ff5db4134622088.webp&#34;
+               width=&#34;760&#34;
+               height=&#34;364&#34;
+               loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+  &lt;/div&gt;&lt;/figure&gt;
+&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;问题：深圳有多少渣男
+思路：这是一道市场规模估算题，目的是考察逻辑能力、分析能力、计算能力。该问题没有标准答案但有标准套路。
+步骤：1. 界定问题：明确问题范围和假设，如指定的地域指哪个行政区，目标对象指哪些类型
+     2. 分解问题：将问题分解为若干子问题或模块，例如按照不同地区、不同密度和比例划分
+     3. 估算数据：对每个子问题或模块进行合理假设和估算，如利用已知数据、常识判断、类比推理等方法得出每个模块的数量或比例
+     4. 汇总结果：将所有子问题或模块的结果相加或相乘，得出最终答案，并检查是否合理和一致
+     5. 总结思路：简要回顾整个解题过程，并指出可能存在的不确定性和改进空间。
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure  &gt;
+  &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img alt=&#34;&#34; srcset=&#34;
+               /post/bigmodel-api-usage-notes/images/cot-demo2_huc716c97ee685110a09104041a117ae4d_516515_39a38f68a25dc8c23f1fb09b480c0b1c.webp 400w,
+               /post/bigmodel-api-usage-notes/images/cot-demo2_huc716c97ee685110a09104041a117ae4d_516515_a10ad360e28f435596e556c3a70164ff.webp 760w,
+               /post/bigmodel-api-usage-notes/images/cot-demo2_huc716c97ee685110a09104041a117ae4d_516515_1200x1200_fit_q75_h2_lanczos_3.webp 1200w&#34;
+               src=&#34;/post/bigmodel-api-usage-notes/images/cot-demo2_huc716c97ee685110a09104041a117ae4d_516515_39a38f68a25dc8c23f1fb09b480c0b1c.webp&#34;
+               width=&#34;756&#34;
+               height=&#34;760&#34;
+               loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+  &lt;/div&gt;&lt;/figure&gt;
+&lt;/p&gt;
+&lt;p&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure  &gt;
+  &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img alt=&#34;&#34; srcset=&#34;
+               /post/bigmodel-api-usage-notes/images/cot-demo3_huee1d310bcbdf6f9f35283a26320f1159_538883_88569466c47ebc3a873096e38c6b6925.webp 400w,
+               /post/bigmodel-api-usage-notes/images/cot-demo3_huee1d310bcbdf6f9f35283a26320f1159_538883_8c372ceb7bf2fd5102b3dd61d48922b1.webp 760w,
+               /post/bigmodel-api-usage-notes/images/cot-demo3_huee1d310bcbdf6f9f35283a26320f1159_538883_1200x1200_fit_q75_h2_lanczos_3.webp 1200w&#34;
+               src=&#34;/post/bigmodel-api-usage-notes/images/cot-demo3_huee1d310bcbdf6f9f35283a26320f1159_538883_88569466c47ebc3a873096e38c6b6925.webp&#34;
+               width=&#34;760&#34;
+               height=&#34;431&#34;
+               loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+  &lt;/div&gt;&lt;/figure&gt;
+&lt;/p&gt;
+&lt;h3 id=&#34;问答示例&#34;&gt;问答示例&lt;/h3&gt;
+&lt;h4 id=&#34;询问旅游游玩地点&#34;&gt;询问旅游/游玩地点&lt;/h4&gt;
+&lt;p&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure  &gt;
+  &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img alt=&#34;&#34; srcset=&#34;
+               /post/bigmodel-api-usage-notes/images/travel/shenzhen1_hu7c2200664d86554472e4fab9a3d10ba7_344636_01acfc36cea83cb19ec958e8c566333b.webp 400w,
+               /post/bigmodel-api-usage-notes/images/travel/shenzhen1_hu7c2200664d86554472e4fab9a3d10ba7_344636_35d77e61169b5acfdac186976828ce9d.webp 760w,
+               /post/bigmodel-api-usage-notes/images/travel/shenzhen1_hu7c2200664d86554472e4fab9a3d10ba7_344636_1200x1200_fit_q75_h2_lanczos_3.webp 1200w&#34;
+               src=&#34;/post/bigmodel-api-usage-notes/images/travel/shenzhen1_hu7c2200664d86554472e4fab9a3d10ba7_344636_01acfc36cea83cb19ec958e8c566333b.webp&#34;
+               width=&#34;760&#34;
+               height=&#34;557&#34;
+               loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+  &lt;/div&gt;&lt;/figure&gt;
+&lt;/p&gt;
+&lt;p&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure  &gt;
+  &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img alt=&#34;&#34; srcset=&#34;
+               /post/bigmodel-api-usage-notes/images/travel/shenzhen2_hua7686d1132b61743939c1b6fb760eb23_351596_6f23db5957634c0d167c04ecba65b16c.webp 400w,
+               /post/bigmodel-api-usage-notes/images/travel/shenzhen2_hua7686d1132b61743939c1b6fb760eb23_351596_c9a253f75a4591713e6d3783c71cda2b.webp 760w,
+               /post/bigmodel-api-usage-notes/images/travel/shenzhen2_hua7686d1132b61743939c1b6fb760eb23_351596_1200x1200_fit_q75_h2_lanczos_3.webp 1200w&#34;
+               src=&#34;/post/bigmodel-api-usage-notes/images/travel/shenzhen2_hua7686d1132b61743939c1b6fb760eb23_351596_6f23db5957634c0d167c04ecba65b16c.webp&#34;
+               width=&#34;752&#34;
+               height=&#34;760&#34;
+               loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+  &lt;/div&gt;&lt;/figure&gt;
+&lt;/p&gt;
+&lt;p&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure  &gt;
+  &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img alt=&#34;&#34; srcset=&#34;
+               /post/bigmodel-api-usage-notes/images/travel/shenzhen3_hu02bb29436b8e5b307aed49ad743be430_420411_b12a4b2dc18e511102168cba673ba2ce.webp 400w,
+               /post/bigmodel-api-usage-notes/images/travel/shenzhen3_hu02bb29436b8e5b307aed49ad743be430_420411_1d54a9a37e60aa5113c552c6862cdebf.webp 760w,
+               /post/bigmodel-api-usage-notes/images/travel/shenzhen3_hu02bb29436b8e5b307aed49ad743be430_420411_1200x1200_fit_q75_h2_lanczos_3.webp 1200w&#34;
+               src=&#34;/post/bigmodel-api-usage-notes/images/travel/shenzhen3_hu02bb29436b8e5b307aed49ad743be430_420411_b12a4b2dc18e511102168cba673ba2ce.webp&#34;
+               width=&#34;760&#34;
+               height=&#34;572&#34;
+               loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+  &lt;/div&gt;&lt;/figure&gt;
+&lt;/p&gt;
+&lt;h4 id=&#34;询问美食相关&#34;&gt;询问美食相关&lt;/h4&gt;
+&lt;p&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure  &gt;
+  &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img alt=&#34;&#34; srcset=&#34;
+               /post/bigmodel-api-usage-notes/images/travel/shenzhen4_hub59d7b171bf89e52b6fbd32d09663858_456851_abfb2ddc398faa62204f48d9fc5a4983.webp 400w,
+               /post/bigmodel-api-usage-notes/images/travel/shenzhen4_hub59d7b171bf89e52b6fbd32d09663858_456851_e995179b36766b911f8800c44849a9e4.webp 760w,
+               /post/bigmodel-api-usage-notes/images/travel/shenzhen4_hub59d7b171bf89e52b6fbd32d09663858_456851_1200x1200_fit_q75_h2_lanczos_3.webp 1200w&#34;
+               src=&#34;/post/bigmodel-api-usage-notes/images/travel/shenzhen4_hub59d7b171bf89e52b6fbd32d09663858_456851_abfb2ddc398faa62204f48d9fc5a4983.webp&#34;
+               width=&#34;760&#34;
+               height=&#34;626&#34;
+               loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+  &lt;/div&gt;&lt;/figure&gt;
+&lt;/p&gt;
+&lt;h2 id=&#34;大模型开放平台&#34;&gt;大模型开放平台&lt;/h2&gt;
+&lt;p&gt;国内：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a href=&#34;https://xinghuo.xfyun.cn&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;讯飞星火&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;智谱AI&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;MoonShot Kimi&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;https://kimi.moonshot.cn/chat/cnjib4kudu689nk5pgm0&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Kimi.ai - 帮你看更大的世界&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;通义千问&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;文心一言&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&amp;hellip;&amp;hellip;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;相关文档&#34;&gt;相关文档&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a href=&#34;https://www.langchain.com&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;LangChain&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a href=&#34;https://www.promptingguide.ai/zh&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;提示工程&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>
