@@ -5,65 +5,12 @@
     <link>/</link>
       <atom:link href="/index.xml" rel="self" type="application/rss+xml" />
     <description>CoolCats</description>
-    <generator>Wowchemy (https://wowchemy.com)</generator><language>en-us</language><lastBuildDate>Thu, 07 Mar 2024 22:40:03 +0800</lastBuildDate>
+    <generator>Wowchemy (https://wowchemy.com)</generator><language>en-us</language><lastBuildDate>Tue, 05 Mar 2024 21:51:48 +0800</lastBuildDate>
     <image>
       <url>/media/icon_hue03491371183284312b8b116a73ae5ab_79511_512x512_fill_lanczos_center_3.png</url>
       <title>CoolCats</title>
       <link>/</link>
     </image>
-    
-    <item>
-      <title>基于Nginx日志审计的个人站点访问统计</title>
-      <link>/post/nginx-log-audit/</link>
-      <pubDate>Thu, 07 Mar 2024 22:40:03 +0800</pubDate>
-      <guid>/post/nginx-log-audit/</guid>
-      <description>&lt;h2 id=&#34;前言&#34;&gt;前言&lt;/h2&gt;
-&lt;p&gt;想要统计静态个人站点的访问者最喜欢浏览哪些文章？又或是有无恶意用户尝试攻击站点？如果你的站点是通过nginx等代理部署的，那么可以对nginx日志进行解析审计以解答上述问题。&lt;/p&gt;
-&lt;h3 id=&#34;nginx日志结构&#34;&gt;Nginx日志结构&lt;/h3&gt;
-&lt;p&gt;默认安装好nginx后，nginx就会将请求分类记录到对应的日志中，正常的请求记录在/var/log/nginx/access.log中，严重错误的请求记录在/var/log/nginx/error.log中.&lt;/p&gt;
-&lt;p&gt;通过tail命令可以在终端上查看最新的请求日志&lt;/p&gt;
-&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;tail -f /var/log/nginx/access.log
-&lt;/code&gt;&lt;/pre&gt;&lt;h3 id=&#34;nginx日志接入数据库&#34;&gt;Nginx日志接入数据库&lt;/h3&gt;
-&lt;p&gt;先查阅google看前人的工作，发现如下几篇文章和工具：&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;
-&lt;p&gt;&lt;a href=&#34;https://www.shubhamdipt.com/blog/send-nginx-logs-to-sql-database/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;How to send Nginx logs to SQL database&lt;/a&gt;&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;&lt;a href=&#34;https://luvpreetsingh.github.io/nginx-to-rsyslog/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Sending Nginx logs to Elasticsearch via Rsyslog&lt;/a&gt;&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;&lt;a href=&#34;https://blog.supersetinc.com/2018/04/09/high-performance-logging-nginx-postgres-using-rsyslog/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;High-performance logging from Nginx to Postgres with Rsyslog - Superset Blog&lt;/a&gt;&lt;/p&gt;
-&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;工具：&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;
-&lt;p&gt;&lt;a href=&#34;https://github.com/rsyslog/rsyslog&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;rsyslog&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;一款可以具有日志消息过滤、转发等功能的开源程序&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h2 id=&#34;hugo博客nginx部署访问统计&#34;&gt;Hugo博客+nginx部署+访问统计&lt;/h2&gt;
-&lt;h3 id=&#34;hugo博客&#34;&gt;Hugo博客&lt;/h3&gt;
-&lt;p&gt;略&lt;/p&gt;
-&lt;h3 id=&#34;nginx部署&#34;&gt;Nginx部署&lt;/h3&gt;
-&lt;p&gt;将打包后的Hugo博客站点资源文件存放到frontend_directory目录下，基于Nginx最简单的一种部署方式就是直接新开放一个端口用于提供前端资源服务。&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-nginx&#34; data-lang=&#34;nginx&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;k&#34;&gt;server&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;kn&#34;&gt;listen&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;10229&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;kn&#34;&gt;server_name&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;127&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;.0.0.1&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;kn&#34;&gt;location&lt;/span&gt; &lt;span class=&#34;s&#34;&gt;/&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        &lt;span class=&#34;kn&#34;&gt;root&lt;/span&gt; &lt;span class=&#34;s&#34;&gt;frontend_directory&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        &lt;span class=&#34;kn&#34;&gt;index&lt;/span&gt; &lt;span class=&#34;s&#34;&gt;index.html&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        &lt;span class=&#34;kn&#34;&gt;error_page&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;404&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;404&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;.html&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;访问统计&#34;&gt;访问统计&lt;/h3&gt;
-&lt;h4 id=&#34;日志文件解析&#34;&gt;日志文件解析&lt;/h4&gt;
-&lt;h4 id=&#34;日志转发数据库&#34;&gt;日志转发数据库&lt;/h4&gt;
-</description>
-    </item>
     
     <item>
       <title>企业信息相关领域知识总结和数据库表设计和数据解析存储代码实现</title>
@@ -1054,6 +1001,37 @@
 &lt;p&gt;&amp;hellip;&amp;hellip;&lt;/p&gt;
 &lt;/li&gt;
 &lt;/ul&gt;
+&lt;h4 id=&#34;pgsql&#34;&gt;PgSQL&lt;/h4&gt;
+&lt;p&gt;由于个人电脑pgsql采用版本15，故服务器上选择安装pgsql 15.&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;axel https://ftp.postgresql.org/pub/source/v15.6/postgresql-15.6.tar.gz
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure  &gt;
+  &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img alt=&#34;&#34; srcset=&#34;
+               /post/aliyun-cloud-server-envionment-prepare/images/envs/databases/download-pgsql15_hu5f22f6ac8dfc70a24d1611bcc27d1b8b_73117_97c87915a45fc16d5520f2eee66a375d.webp 400w,
+               /post/aliyun-cloud-server-envionment-prepare/images/envs/databases/download-pgsql15_hu5f22f6ac8dfc70a24d1611bcc27d1b8b_73117_a0ab2dae9d4985dd3991be16c1e9073c.webp 760w,
+               /post/aliyun-cloud-server-envionment-prepare/images/envs/databases/download-pgsql15_hu5f22f6ac8dfc70a24d1611bcc27d1b8b_73117_1200x1200_fit_q75_h2_lanczos_3.webp 1200w&#34;
+               src=&#34;/post/aliyun-cloud-server-envionment-prepare/images/envs/databases/download-pgsql15_hu5f22f6ac8dfc70a24d1611bcc27d1b8b_73117_97c87915a45fc16d5520f2eee66a375d.webp&#34;
+               width=&#34;760&#34;
+               height=&#34;79&#34;
+               loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+  &lt;/div&gt;&lt;/figure&gt;
+&lt;/p&gt;
 &lt;h3 id=&#34;七其他&#34;&gt;七、其他&lt;/h3&gt;
 &lt;ul&gt;
 &lt;li&gt;
@@ -1066,33 +1044,6 @@
 &lt;p&gt;&amp;hellip;&amp;hellip;&lt;/p&gt;
 &lt;/li&gt;
 &lt;/ul&gt;
-</description>
-    </item>
-    
-    <item>
-      <title>Scala基础和Spark入门笔记</title>
-      <link>/post/spark-for-newbee-notes/</link>
-      <pubDate>Tue, 06 Feb 2024 23:09:40 +0800</pubDate>
-      <guid>/post/spark-for-newbee-notes/</guid>
-      <description>&lt;h2 id=&#34;教程&#34;&gt;教程&lt;/h2&gt;
-&lt;ul&gt;
-&lt;li&gt;
-&lt;p&gt;Scala3教程：&lt;a href=&#34;https://juejin.cn/s/scala%203%20%e6%95%99%e7%a8%8b&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;scala 3 教程-掘金&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;&lt;a href=&#34;https://www.runoob.com/scala/scala-basic-syntax.html&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Scala 基础语法 | 菜鸟教程&lt;/a&gt;&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;&lt;a href=&#34;https://time.geekbang.org/column/article/415209&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;01｜Spark：从“大数据的Hello World”开始-零基础入门Spark-极客时间&lt;/a&gt;&lt;/p&gt;
-&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h2 id=&#34;安装&#34;&gt;安装&lt;/h2&gt;
-&lt;h4 id=&#34;scala3&#34;&gt;Scala3&lt;/h4&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;brew install coursier/formulas/coursier &lt;span class=&#34;o&#34;&gt;&amp;amp;&amp;amp;&lt;/span&gt; cs setup
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;安装成功后重启或新建终端，执行如下命令成功即说明scala安装成功。&lt;/p&gt;
-&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;scala --version
-&lt;/code&gt;&lt;/pre&gt;&lt;h4 id=&#34;spark&#34;&gt;Spark&lt;/h4&gt;
-&lt;p&gt;&lt;a href=&#34;https://spark.apache.org/downloads.html&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;https://spark.apache.org/downloads.html&lt;/a&gt;&lt;/p&gt;
-&lt;h2 id=&#34;scala基础示例&#34;&gt;Scala基础示例&lt;/h2&gt;
-&lt;h2 id=&#34;spark入门实操示例&#34;&gt;Spark入门实操示例&lt;/h2&gt;
 </description>
     </item>
     
@@ -2687,6 +2638,13 @@ ORDER BY componentId, name
 &lt;li&gt;
 &lt;p&gt;新闻解读/总结&lt;/p&gt;
 &lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;编码助手&lt;/p&gt;
+&lt;p&gt;Github Copilot&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&amp;hellip;&amp;hellip;.&lt;/p&gt;
+&lt;/li&gt;
 &lt;/ul&gt;
 &lt;h3 id=&#34;新职业或兴起的旧职业&#34;&gt;新职业或兴起的旧职业&lt;/h3&gt;
 &lt;ul&gt;
@@ -2703,9 +2661,45 @@ ORDER BY componentId, name
 &lt;/li&gt;
 &lt;li&gt;
 &lt;p&gt;大数据处理工程师&lt;/p&gt;
+&lt;p&gt;数据是大模型的燃料。如果大模型应用愈加火热，那么大数据处理工程师的需求将会大幅增加，并且大数据工程师可以利用基础大模型的能力提高工作质量和产出。&lt;/p&gt;
 &lt;/li&gt;
 &lt;li&gt;
 &lt;p&gt;&amp;hellip;&amp;hellip;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;OpenAI发布了一篇论文&lt;a href=&#34;https://arxiv.org/abs/2303.10130&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;《GPTs are GPTs: An Early Look at the Labor Market Impact Potential of Large Language Models》&lt;/a&gt;（作为通用技术的GPT：关于大语言模型对劳动力市场潜在影响的初步研究），其中给出了一些大模型对美国劳动力市场潜在影响的观点和估计。文章的的摘要提到：“约有80%的劳动力的10%工作会随着大模型的引入而受影响”，结论部分提到：“约有19%的劳动力受大模型的影响更大，其工作任务的50%以上都会由大模型完成。”。GPT大模型满足通用技术的三个核心标准：随着时间推移，技术不断改进，贯穿整个经济体系，能够催生互补性的创新。报告还指出，大模型变更影响了一些曾经需要较高学历和丰富实践经验才可准入的职业，如药剂师、律师、设计师、程序员，对于运用科学方法和批判性思维解决问题的技能则不容易被替代。&lt;/p&gt;
+&lt;p&gt;对于贫困人口，医疗、教育等需要知识劳动力投入的领域，大模型的引入可以自然而然地对其产生帮助，这一点来看，大模型在解决社会公平问题上迈出了革命性一步。&lt;/p&gt;
+&lt;h3 id=&#34;大模型应用分级&#34;&gt;大模型应用分级&lt;/h3&gt;
+&lt;p&gt;大模型应用分级也可参考自动驾驶应用分级制定，在限定/不限定场景、地点、时间情况下是否需要人参与控制：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;L1：辅助驾驶&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;L2：部分自动驾驶&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;L3：有条件自动驾驶&lt;/p&gt;
+&lt;p&gt;特定环境下实现完全自动化的加减速和转向，复杂或异常情况下需要人类司机接管控制权&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;L4：高度自动驾驶&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;L5：完全自动化或无人化&lt;/p&gt;
+&lt;p&gt;任何条件、场景下都可实现完全自动化行驶，无需人类司机接管控制权。&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;创新的两种路径&#34;&gt;创新的两种路径&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;渐进式创新&lt;/p&gt;
+&lt;p&gt;对现有产品、服务或流程进行细微的改进和优化，以提高性能、降低成本或提高用户体验。&lt;/p&gt;
+&lt;p&gt;如利用大模型（的语言理解能力）改进客户服务，提供更快速有效的响应；生成营销材料起草报告简化内容创作过程。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;颠覆式创新&lt;/p&gt;
+&lt;p&gt;突破性的创新，以大幅降低的成本和大幅提升的便利性改变原有产品的市场定位和商业模式，或者用新产品实现原本满足不了的需求，为消费者带来新的价值。&lt;/p&gt;
 &lt;/li&gt;
 &lt;/ul&gt;
 &lt;h2 id=&#34;历史上人类认知过程变革的机缘&#34;&gt;历史上人类认知过程变革的机缘&lt;/h2&gt;
@@ -2740,7 +2734,30 @@ ORDER BY componentId, name
 &lt;/li&gt;
 &lt;/ul&gt;
 &lt;h2 id=&#34;挑战&#34;&gt;挑战&lt;/h2&gt;
-&lt;p&gt;评价：铸就大模型的训练数据可能存在偏见与误解，导致其不太能够为主观判断、价值判断、道德观念等问题的评价提供有足够深度的论证。&lt;/p&gt;
+&lt;h3 id=&#34;大模型的评价能力&#34;&gt;大模型的评价能力&lt;/h3&gt;
+&lt;p&gt;铸就大模型的训练数据可能存在偏见与误解，导致其不太能够为主观判断、价值判断、道德观念等问题的评价提供有足够深度的论证。&lt;/p&gt;
+&lt;h3 id=&#34;任务分配&#34;&gt;任务分配&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;如何在人类和AI间分配任务？&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;谁委托任务？&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;谁协调任务？&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;谁评估工作成果的质量？&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&#34;副驾模式-vs-代价模式&#34;&gt;副驾模式 vs 代价模式&lt;/h4&gt;
+&lt;p&gt;副驾模式：大模型听令于某一个人，协助主人完成各项工作&lt;/p&gt;
+&lt;p&gt;代价模式：大模型不只听令某一个人做一些“打杂”的工作，而是承担固定的职能。&lt;/p&gt;
+&lt;h2 id=&#34;大模型变革下个人素质的发展&#34;&gt;大模型变革下个人素质的发展&lt;/h2&gt;
+&lt;p&gt;海森堡：“提出正确的问题，往往等于解决了问题的一大半”。&lt;/p&gt;
+&lt;p&gt;OpenAI：难以被人工智能替代的是批判性思维。&lt;/p&gt;
+&lt;p&gt;在情感和创意方面，人类仍然具有优势。即便大模型有能力穷举海量的创意组合，但无论是图像设计还是文本创作，仍需要由人来主导正确需求的提出，对结果质量的评判，并且高质量的结果往往需要人与大模型一起碰撞后才可产出。&lt;/p&gt;
 &lt;h2 id=&#34;参考文章&#34;&gt;参考文章&lt;/h2&gt;
 &lt;ul&gt;
 &lt;li&gt;
