@@ -1080,8 +1080,9 @@
 <p>&hellip;&hellip;</p>
 </li>
 </ul>
-<h4 id="pgsql">PgSQL</h4>
-<p>由于个人电脑pgsql采用版本15，故服务器上选择安装pgsql 15.</p>
+<h4 id="postgresql">PostgreSQL</h4>
+<h5 id="编译安装postgresql">编译安装postgresql</h5>
+<p>由于个人电脑pgsql采用版本15，故服务器上选择安装pgsql 15, 你也可以到<a href="https://www.postgresql.org/ftp/source/v15.6/" target="_blank" rel="noopener">PostgreSQL: File Browser</a>选择一个你需要的版本.</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">axel https://ftp.postgresql.org/pub/source/v15.6/postgresql-15.6.tar.gz
 </span></span></code></pre></div><p>
 
@@ -1102,15 +1103,94 @@
 <figure  >
   <div class="d-flex justify-content-center">
     <div class="w-100" ><img alt="" srcset="
-               /post/aliyun-cloud-server-envionment-prepare/images/envs/databases/download-pgsql15_hu5f22f6ac8dfc70a24d1611bcc27d1b8b_73117_97c87915a45fc16d5520f2eee66a375d.webp 400w,
+               /post/aliyun-cloud-server-envionment-prepare/images/envs/databases/download-pgsql15_hu5f22f6ac8dfc70a24d1611bcc27d1b8b_73117_3b2872d20ce20847c01a7d70350ad789.webp 400w,
                /post/aliyun-cloud-server-envionment-prepare/images/envs/databases/download-pgsql15_hu5f22f6ac8dfc70a24d1611bcc27d1b8b_73117_a0ab2dae9d4985dd3991be16c1e9073c.webp 760w,
                /post/aliyun-cloud-server-envionment-prepare/images/envs/databases/download-pgsql15_hu5f22f6ac8dfc70a24d1611bcc27d1b8b_73117_1200x1200_fit_q75_h2_lanczos_3.webp 1200w"
-               src="/post/aliyun-cloud-server-envionment-prepare/images/envs/databases/download-pgsql15_hu5f22f6ac8dfc70a24d1611bcc27d1b8b_73117_97c87915a45fc16d5520f2eee66a375d.webp"
+               src="/post/aliyun-cloud-server-envionment-prepare/images/envs/databases/download-pgsql15_hu5f22f6ac8dfc70a24d1611bcc27d1b8b_73117_3b2872d20ce20847c01a7d70350ad789.webp"
                width="760"
                height="79"
                loading="lazy" data-zoomable /></div>
   </div></figure>
 </p>
+<p>下载完后解压压缩包，执行configure脚本检测系统的特性（系统类型和版本、编译器、依赖库的可用性等）并设置pgsql软件包的配置文件（Makefile）以适应系统</p>
+<pre tabindex="0"><code>postgresql-15.6.tar.gz
+./configure --prefix=/opt/spacetimelab/software_repo/postgresql15.6
+</code></pre><p>遇到错误提示缺失readline库，执行如下命令安装，安装完成后再执行上一条命令。</p>
+<pre tabindex="0"><code>sudo apt install libreadline-dev
+</code></pre><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">make
+</span></span><span class="line"><span class="cl">make install
+</span></span></code></pre></div><p>安装完成后，创建数据目录和系统内的数据库用户：</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">mkdir -p /data/postgresql/
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">useradd postgres
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">chown -R postgres /data/postgresql
+</span></span></code></pre></div><p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<figure  >
+  <div class="d-flex justify-content-center">
+    <div class="w-100" ><img alt="" srcset="
+               /post/aliyun-cloud-server-envionment-prepare/images/envs/databases/pgsql-initdb_hud8b916f48061df8d28fab1d91339b56f_197508_58fb4fa0faa5cccb534d1ee98cb865f5.webp 400w,
+               /post/aliyun-cloud-server-envionment-prepare/images/envs/databases/pgsql-initdb_hud8b916f48061df8d28fab1d91339b56f_197508_2f02535a1bf5001e28d2a41f2f61ff3d.webp 760w,
+               /post/aliyun-cloud-server-envionment-prepare/images/envs/databases/pgsql-initdb_hud8b916f48061df8d28fab1d91339b56f_197508_1200x1200_fit_q75_h2_lanczos_3.webp 1200w"
+               src="/post/aliyun-cloud-server-envionment-prepare/images/envs/databases/pgsql-initdb_hud8b916f48061df8d28fab1d91339b56f_197508_58fb4fa0faa5cccb534d1ee98cb865f5.webp"
+               width="760"
+               height="292"
+               loading="lazy" data-zoomable /></div>
+  </div></figure>
+</p>
+<p>创建数据库以验证基本命令可以正常执行</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl"><span class="c1"># 初始化数据目录</span>
+</span></span><span class="line"><span class="cl">initdb -D /data/postgresql
+</span></span><span class="line"><span class="cl"><span class="c1"># 启动数据库服务</span>
+</span></span><span class="line"><span class="cl">pg_ctl -D /data/postgresql start
+</span></span><span class="line"><span class="cl"><span class="c1"># 创建测试数据库</span>
+</span></span><span class="line"><span class="cl">createdb testdb
+</span></span><span class="line"><span class="cl"><span class="c1"># 连接测试数据库</span>
+</span></span><span class="line"><span class="cl">psql testdb
+</span></span></code></pre></div><p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<figure  >
+  <div class="d-flex justify-content-center">
+    <div class="w-100" ><img alt="" srcset="
+               /post/aliyun-cloud-server-envionment-prepare/images/envs/databases/createdb_huc6e42c14d2151caf7a205efb025ecc1e_140460_6741bdd26ef81600b4abc809e0e6bc9e.webp 400w,
+               /post/aliyun-cloud-server-envionment-prepare/images/envs/databases/createdb_huc6e42c14d2151caf7a205efb025ecc1e_140460_3fd025883bc99436054b64b51ceb0e80.webp 760w,
+               /post/aliyun-cloud-server-envionment-prepare/images/envs/databases/createdb_huc6e42c14d2151caf7a205efb025ecc1e_140460_1200x1200_fit_q75_h2_lanczos_3.webp 1200w"
+               src="/post/aliyun-cloud-server-envionment-prepare/images/envs/databases/createdb_huc6e42c14d2151caf7a205efb025ecc1e_140460_6741bdd26ef81600b4abc809e0e6bc9e.webp"
+               width="760"
+               height="285"
+               loading="lazy" data-zoomable /></div>
+  </div></figure>
+</p>
+<p>至此无问题，编译安装过程也没报错，说明pgsql正常安装完成。后续还需编译安装postgis插件，更改postgres配置项提高安全性，此处暂略。</p>
 <h3 id="七其他">七、其他</h3>
 <ul>
 <li>

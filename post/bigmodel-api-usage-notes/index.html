@@ -1072,7 +1072,7 @@
   </div></figure>
 </p>
 <h2 id="大模型开放平台">大模型开放平台</h2>
-<p>国内：</p>
+<p>国内大模型列表：</p>
 <ul>
 <li>
 <p><a href="https://xinghuo.xfyun.cn" target="_blank" rel="noopener">讯飞星火</a></p>
@@ -1094,6 +1094,147 @@
 <p>&hellip;&hellip;</p>
 </li>
 </ul>
+<p>以下示例均基于Python</p>
+<h3 id="智谱">智谱</h3>
+<pre tabindex="0"><code>pip install zhipuai
+</code></pre><h3 id="moonshot-ai">Moonshot AI</h3>
+<p>参考<a href="https://platform.moonshot.cn/docs/api-reference" target="_blank" rel="noopener">Moonshot AI - 开放平台</a>，API调用非常简单，支持非流式请求和流式请求。</p>
+<p>可以简单复用openai库.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">pip install openai
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="kn">from</span> <span class="nn">openai</span> <span class="kn">import</span> <span class="n">OpenAI</span>
+</span></span><span class="line"><span class="cl"><span class="kn">from</span> <span class="nn">prompts.prompt_template</span> <span class="kn">import</span> <span class="n">GastRole</span>
+</span></span><span class="line"><span class="cl"><span class="n">MOONSHOT_API_KEY</span> <span class="o">=</span> <span class="s2">&#34;xxxxxxxxxxx&#34;</span>
+</span></span><span class="line"><span class="cl"><span class="n">client</span> <span class="o">=</span> <span class="n">OpenAI</span><span class="p">(</span>
+</span></span><span class="line"><span class="cl">    <span class="n">api_key</span><span class="o">=</span><span class="n">MOONSHOT_API_KEY</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="n">base_url</span><span class="o">=</span><span class="s2">&#34;https://api.moonshot.cn/v1&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl"><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">model</span><span class="o">=</span><span class="s2">&#34;moonshot-v1-8k&#34;</span>
+</span></span><span class="line"><span class="cl"><span class="n">question</span> <span class="o">=</span> <span class="s2">&#34;从外地来深圳，不想吃辣椒&#34;</span>
+</span></span><span class="line"><span class="cl"><span class="n">prompt_messages</span> <span class="o">=</span> <span class="n">GastRole</span><span class="o">.</span><span class="n">prompt_messages</span>
+</span></span><span class="line"><span class="cl"><span class="n">prompt_messages</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span></span><span class="line"><span class="cl">        <span class="p">{</span><span class="s2">&#34;role&#34;</span><span class="p">:</span> <span class="s2">&#34;user&#34;</span><span class="p">,</span> <span class="s2">&#34;content&#34;</span><span class="p">:</span><span class="n">question</span><span class="p">}])</span>
+</span></span><span class="line"><span class="cl"><span class="n">completion</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">chat</span><span class="o">.</span><span class="n">completions</span><span class="o">.</span><span class="n">create</span><span class="p">(</span>
+</span></span><span class="line"><span class="cl">  <span class="n">model</span><span class="o">=</span><span class="s2">&#34;moonshot-v1-8k&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">  <span class="n">messages</span><span class="o">=</span><span class="n">prompt_messages</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">  <span class="n">temperature</span><span class="o">=</span><span class="mf">0.3</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl"><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">message</span>  <span class="o">=</span> <span class="n">completion</span><span class="o">.</span><span class="n">choices</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">message</span>
+</span></span><span class="line"><span class="cl"><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&#34;Question: </span><span class="si">{</span><span class="n">question</span><span class="si">}</span><span class="s2">&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&#34;Answer: </span><span class="si">{</span><span class="n">message</span><span class="o">.</span><span class="n">content</span><span class="si">}</span><span class="s2">&#34;</span><span class="p">)</span>
+</span></span></code></pre></div><h4 id="示例让大模型扮演一个职业规划顾问">示例：让大模型扮演一个职业规划顾问</h4>
+<p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<figure  >
+  <div class="d-flex justify-content-center">
+    <div class="w-100" ><img alt="" srcset="
+               /post/bigmodel-api-usage-notes/images/api/demo/moonshot1_hu1c1c1df4ecfd743c69b82c14fc0f43a6_441732_47d40f00c759f9c1c76ac5246592647d.webp 400w,
+               /post/bigmodel-api-usage-notes/images/api/demo/moonshot1_hu1c1c1df4ecfd743c69b82c14fc0f43a6_441732_11f6944e15d0d08209d46a82cb36d036.webp 760w,
+               /post/bigmodel-api-usage-notes/images/api/demo/moonshot1_hu1c1c1df4ecfd743c69b82c14fc0f43a6_441732_1200x1200_fit_q75_h2_lanczos_3.webp 1200w"
+               src="/post/bigmodel-api-usage-notes/images/api/demo/moonshot1_hu1c1c1df4ecfd743c69b82c14fc0f43a6_441732_47d40f00c759f9c1c76ac5246592647d.webp"
+               width="760"
+               height="407"
+               loading="lazy" data-zoomable /></div>
+  </div></figure>
+</p>
+<p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<figure  >
+  <div class="d-flex justify-content-center">
+    <div class="w-100" ><img alt="" srcset="
+               /post/bigmodel-api-usage-notes/images/api/demo/moonshot2_hu41de925e09bf939f5c4d0603d750d13d_443947_07d7924079b9642b5cdcad08e5236013.webp 400w,
+               /post/bigmodel-api-usage-notes/images/api/demo/moonshot2_hu41de925e09bf939f5c4d0603d750d13d_443947_c5eff7c1924521119e9f5320d7c2983a.webp 760w,
+               /post/bigmodel-api-usage-notes/images/api/demo/moonshot2_hu41de925e09bf939f5c4d0603d750d13d_443947_1200x1200_fit_q75_h2_lanczos_3.webp 1200w"
+               src="/post/bigmodel-api-usage-notes/images/api/demo/moonshot2_hu41de925e09bf939f5c4d0603d750d13d_443947_07d7924079b9642b5cdcad08e5236013.webp"
+               width="760"
+               height="443"
+               loading="lazy" data-zoomable /></div>
+  </div></figure>
+</p>
+<h2 id="示例让大模型扮演一个美食家">示例：让大模型扮演一个美食家</h2>
+<p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<figure  >
+  <div class="d-flex justify-content-center">
+    <div class="w-100" ><img alt="" srcset="
+               /post/bigmodel-api-usage-notes/images/api/demo/moonshot3_hu22dc979f479e41f405034926953e5a3a_205857_7d636e23eef126362a4ff2cde02916ba.webp 400w,
+               /post/bigmodel-api-usage-notes/images/api/demo/moonshot3_hu22dc979f479e41f405034926953e5a3a_205857_0ec43d0dcf1df90695d8341e456bd1e8.webp 760w,
+               /post/bigmodel-api-usage-notes/images/api/demo/moonshot3_hu22dc979f479e41f405034926953e5a3a_205857_1200x1200_fit_q75_h2_lanczos_3.webp 1200w"
+               src="/post/bigmodel-api-usage-notes/images/api/demo/moonshot3_hu22dc979f479e41f405034926953e5a3a_205857_7d636e23eef126362a4ff2cde02916ba.webp"
+               width="760"
+               height="250"
+               loading="lazy" data-zoomable /></div>
+  </div></figure>
+</p>
+<p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<figure  >
+  <div class="d-flex justify-content-center">
+    <div class="w-100" ><img alt="" srcset="
+               /post/bigmodel-api-usage-notes/images/api/demo/moonshot5_hu3b01263b6127daafdd9443a6e5b137cd_331331_c0c2a27bfcf45f8e7bb86822f96c6773.webp 400w,
+               /post/bigmodel-api-usage-notes/images/api/demo/moonshot5_hu3b01263b6127daafdd9443a6e5b137cd_331331_a5d781d5c37b537f6b537ae5570720ad.webp 760w,
+               /post/bigmodel-api-usage-notes/images/api/demo/moonshot5_hu3b01263b6127daafdd9443a6e5b137cd_331331_1200x1200_fit_q75_h2_lanczos_3.webp 1200w"
+               src="/post/bigmodel-api-usage-notes/images/api/demo/moonshot5_hu3b01263b6127daafdd9443a6e5b137cd_331331_c0c2a27bfcf45f8e7bb86822f96c6773.webp"
+               width="760"
+               height="304"
+               loading="lazy" data-zoomable /></div>
+  </div></figure>
+</p>
 <h2 id="相关文档">相关文档</h2>
 <ul>
 <li>

@@ -284,8 +284,9 @@
 &lt;p&gt;&amp;hellip;&amp;hellip;&lt;/p&gt;
 &lt;/li&gt;
 &lt;/ul&gt;
-&lt;h4 id=&#34;pgsql&#34;&gt;PgSQL&lt;/h4&gt;
-&lt;p&gt;由于个人电脑pgsql采用版本15，故服务器上选择安装pgsql 15.&lt;/p&gt;
+&lt;h4 id=&#34;postgresql&#34;&gt;PostgreSQL&lt;/h4&gt;
+&lt;h5 id=&#34;编译安装postgresql&#34;&gt;编译安装postgresql&lt;/h5&gt;
+&lt;p&gt;由于个人电脑pgsql采用版本15，故服务器上选择安装pgsql 15, 你也可以到&lt;a href=&#34;https://www.postgresql.org/ftp/source/v15.6/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;PostgreSQL: File Browser&lt;/a&gt;选择一个你需要的版本.&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;axel https://ftp.postgresql.org/pub/source/v15.6/postgresql-15.6.tar.gz
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;
 
@@ -306,15 +307,94 @@
 &lt;figure  &gt;
   &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
     &lt;div class=&#34;w-100&#34; &gt;&lt;img alt=&#34;&#34; srcset=&#34;
-               /post/aliyun-cloud-server-envionment-prepare/images/envs/databases/download-pgsql15_hu5f22f6ac8dfc70a24d1611bcc27d1b8b_73117_97c87915a45fc16d5520f2eee66a375d.webp 400w,
+               /post/aliyun-cloud-server-envionment-prepare/images/envs/databases/download-pgsql15_hu5f22f6ac8dfc70a24d1611bcc27d1b8b_73117_3b2872d20ce20847c01a7d70350ad789.webp 400w,
                /post/aliyun-cloud-server-envionment-prepare/images/envs/databases/download-pgsql15_hu5f22f6ac8dfc70a24d1611bcc27d1b8b_73117_a0ab2dae9d4985dd3991be16c1e9073c.webp 760w,
                /post/aliyun-cloud-server-envionment-prepare/images/envs/databases/download-pgsql15_hu5f22f6ac8dfc70a24d1611bcc27d1b8b_73117_1200x1200_fit_q75_h2_lanczos_3.webp 1200w&#34;
-               src=&#34;/post/aliyun-cloud-server-envionment-prepare/images/envs/databases/download-pgsql15_hu5f22f6ac8dfc70a24d1611bcc27d1b8b_73117_97c87915a45fc16d5520f2eee66a375d.webp&#34;
+               src=&#34;/post/aliyun-cloud-server-envionment-prepare/images/envs/databases/download-pgsql15_hu5f22f6ac8dfc70a24d1611bcc27d1b8b_73117_3b2872d20ce20847c01a7d70350ad789.webp&#34;
                width=&#34;760&#34;
                height=&#34;79&#34;
                loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
   &lt;/div&gt;&lt;/figure&gt;
 &lt;/p&gt;
+&lt;p&gt;下载完后解压压缩包，执行configure脚本检测系统的特性（系统类型和版本、编译器、依赖库的可用性等）并设置pgsql软件包的配置文件（Makefile）以适应系统&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;postgresql-15.6.tar.gz
+./configure --prefix=/opt/spacetimelab/software_repo/postgresql15.6
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;遇到错误提示缺失readline库，执行如下命令安装，安装完成后再执行上一条命令。&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;sudo apt install libreadline-dev
+&lt;/code&gt;&lt;/pre&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;make
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;make install
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;安装完成后，创建数据目录和系统内的数据库用户：&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;mkdir -p /data/postgresql/
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;useradd postgres
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;chown -R postgres /data/postgresql
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure  &gt;
+  &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img alt=&#34;&#34; srcset=&#34;
+               /post/aliyun-cloud-server-envionment-prepare/images/envs/databases/pgsql-initdb_hud8b916f48061df8d28fab1d91339b56f_197508_58fb4fa0faa5cccb534d1ee98cb865f5.webp 400w,
+               /post/aliyun-cloud-server-envionment-prepare/images/envs/databases/pgsql-initdb_hud8b916f48061df8d28fab1d91339b56f_197508_2f02535a1bf5001e28d2a41f2f61ff3d.webp 760w,
+               /post/aliyun-cloud-server-envionment-prepare/images/envs/databases/pgsql-initdb_hud8b916f48061df8d28fab1d91339b56f_197508_1200x1200_fit_q75_h2_lanczos_3.webp 1200w&#34;
+               src=&#34;/post/aliyun-cloud-server-envionment-prepare/images/envs/databases/pgsql-initdb_hud8b916f48061df8d28fab1d91339b56f_197508_58fb4fa0faa5cccb534d1ee98cb865f5.webp&#34;
+               width=&#34;760&#34;
+               height=&#34;292&#34;
+               loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+  &lt;/div&gt;&lt;/figure&gt;
+&lt;/p&gt;
+&lt;p&gt;创建数据库以验证基本命令可以正常执行&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;# 初始化数据目录&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;initdb -D /data/postgresql
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;# 启动数据库服务&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;pg_ctl -D /data/postgresql start
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;# 创建测试数据库&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;createdb testdb
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;# 连接测试数据库&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;psql testdb
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure  &gt;
+  &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img alt=&#34;&#34; srcset=&#34;
+               /post/aliyun-cloud-server-envionment-prepare/images/envs/databases/createdb_huc6e42c14d2151caf7a205efb025ecc1e_140460_6741bdd26ef81600b4abc809e0e6bc9e.webp 400w,
+               /post/aliyun-cloud-server-envionment-prepare/images/envs/databases/createdb_huc6e42c14d2151caf7a205efb025ecc1e_140460_3fd025883bc99436054b64b51ceb0e80.webp 760w,
+               /post/aliyun-cloud-server-envionment-prepare/images/envs/databases/createdb_huc6e42c14d2151caf7a205efb025ecc1e_140460_1200x1200_fit_q75_h2_lanczos_3.webp 1200w&#34;
+               src=&#34;/post/aliyun-cloud-server-envionment-prepare/images/envs/databases/createdb_huc6e42c14d2151caf7a205efb025ecc1e_140460_6741bdd26ef81600b4abc809e0e6bc9e.webp&#34;
+               width=&#34;760&#34;
+               height=&#34;285&#34;
+               loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+  &lt;/div&gt;&lt;/figure&gt;
+&lt;/p&gt;
+&lt;p&gt;至此无问题，编译安装过程也没报错，说明pgsql正常安装完成。后续还需编译安装postgis插件，更改postgres配置项提高安全性，此处暂略。&lt;/p&gt;
 &lt;h3 id=&#34;七其他&#34;&gt;七、其他&lt;/h3&gt;
 &lt;ul&gt;
 &lt;li&gt;
