@@ -1091,11 +1091,23 @@
 <p>文心一言</p>
 </li>
 <li>
+<p><a href="https://lingyiwanwu.com" target="_blank" rel="noopener">零一万物</a></p>
+</li>
+<li>
 <p>&hellip;&hellip;</p>
 </li>
 </ul>
+<p>国外大模型列表：</p>
+<ul>
+<li>
+<p>ChatGPT</p>
+</li>
+<li>
+<p><a href="https://github.com/Significant-Gravitas/AutoGPT" target="_blank" rel="noopener">AutoGPT</a></p>
+</li>
+</ul>
 <p>以下示例均基于Python</p>
-<h3 id="智谱">智谱</h3>
+<h3 id="智谱ai">智谱AI</h3>
 <pre tabindex="0"><code>pip install zhipuai
 </code></pre><h3 id="moonshot-ai">Moonshot AI</h3>
 <p>参考<a href="https://platform.moonshot.cn/docs/api-reference" target="_blank" rel="noopener">Moonshot AI - 开放平台</a>，API调用非常简单，支持非流式请求和流式请求。</p>
@@ -1114,7 +1126,7 @@
 </span></span><span class="line"><span class="cl"><span class="n">prompt_messages</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
 </span></span><span class="line"><span class="cl">        <span class="p">{</span><span class="s2">&#34;role&#34;</span><span class="p">:</span> <span class="s2">&#34;user&#34;</span><span class="p">,</span> <span class="s2">&#34;content&#34;</span><span class="p">:</span><span class="n">question</span><span class="p">}])</span>
 </span></span><span class="line"><span class="cl"><span class="n">completion</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">chat</span><span class="o">.</span><span class="n">completions</span><span class="o">.</span><span class="n">create</span><span class="p">(</span>
-</span></span><span class="line"><span class="cl">  <span class="n">model</span><span class="o">=</span><span class="s2">&#34;moonshot-v1-8k&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">  <span class="n">model</span><span class="o">=</span><span class="n">model</span><span class="p">,</span>
 </span></span><span class="line"><span class="cl">  <span class="n">messages</span><span class="o">=</span><span class="n">prompt_messages</span><span class="p">,</span>
 </span></span><span class="line"><span class="cl">  <span class="n">temperature</span><span class="o">=</span><span class="mf">0.3</span><span class="p">,</span>
 </span></span><span class="line"><span class="cl"><span class="p">)</span>
@@ -1141,10 +1153,10 @@
 <figure  >
   <div class="d-flex justify-content-center">
     <div class="w-100" ><img alt="" srcset="
-               /post/bigmodel-api-usage-notes/images/api/demo/moonshot1_hu1c1c1df4ecfd743c69b82c14fc0f43a6_441732_47d40f00c759f9c1c76ac5246592647d.webp 400w,
-               /post/bigmodel-api-usage-notes/images/api/demo/moonshot1_hu1c1c1df4ecfd743c69b82c14fc0f43a6_441732_11f6944e15d0d08209d46a82cb36d036.webp 760w,
+               /post/bigmodel-api-usage-notes/images/api/demo/moonshot1_hu1c1c1df4ecfd743c69b82c14fc0f43a6_441732_9fa154a290f447e4e970a821fcddd213.webp 400w,
+               /post/bigmodel-api-usage-notes/images/api/demo/moonshot1_hu1c1c1df4ecfd743c69b82c14fc0f43a6_441732_1213ef971a54ce9f16a200e04d8d7e9f.webp 760w,
                /post/bigmodel-api-usage-notes/images/api/demo/moonshot1_hu1c1c1df4ecfd743c69b82c14fc0f43a6_441732_1200x1200_fit_q75_h2_lanczos_3.webp 1200w"
-               src="/post/bigmodel-api-usage-notes/images/api/demo/moonshot1_hu1c1c1df4ecfd743c69b82c14fc0f43a6_441732_47d40f00c759f9c1c76ac5246592647d.webp"
+               src="/post/bigmodel-api-usage-notes/images/api/demo/moonshot1_hu1c1c1df4ecfd743c69b82c14fc0f43a6_441732_9fa154a290f447e4e970a821fcddd213.webp"
                width="760"
                height="407"
                loading="lazy" data-zoomable /></div>
@@ -1169,10 +1181,10 @@
 <figure  >
   <div class="d-flex justify-content-center">
     <div class="w-100" ><img alt="" srcset="
-               /post/bigmodel-api-usage-notes/images/api/demo/moonshot2_hu41de925e09bf939f5c4d0603d750d13d_443947_07d7924079b9642b5cdcad08e5236013.webp 400w,
-               /post/bigmodel-api-usage-notes/images/api/demo/moonshot2_hu41de925e09bf939f5c4d0603d750d13d_443947_c5eff7c1924521119e9f5320d7c2983a.webp 760w,
+               /post/bigmodel-api-usage-notes/images/api/demo/moonshot2_hu41de925e09bf939f5c4d0603d750d13d_443947_3b4000cd8b4b1476c3e69fb324f57de4.webp 400w,
+               /post/bigmodel-api-usage-notes/images/api/demo/moonshot2_hu41de925e09bf939f5c4d0603d750d13d_443947_a535d74f28d49005fdf2af28d07dd1c7.webp 760w,
                /post/bigmodel-api-usage-notes/images/api/demo/moonshot2_hu41de925e09bf939f5c4d0603d750d13d_443947_1200x1200_fit_q75_h2_lanczos_3.webp 1200w"
-               src="/post/bigmodel-api-usage-notes/images/api/demo/moonshot2_hu41de925e09bf939f5c4d0603d750d13d_443947_07d7924079b9642b5cdcad08e5236013.webp"
+               src="/post/bigmodel-api-usage-notes/images/api/demo/moonshot2_hu41de925e09bf939f5c4d0603d750d13d_443947_3b4000cd8b4b1476c3e69fb324f57de4.webp"
                width="760"
                height="443"
                loading="lazy" data-zoomable /></div>
@@ -1198,10 +1210,10 @@
 <figure  >
   <div class="d-flex justify-content-center">
     <div class="w-100" ><img alt="" srcset="
-               /post/bigmodel-api-usage-notes/images/api/demo/moonshot3_hu22dc979f479e41f405034926953e5a3a_205857_7d636e23eef126362a4ff2cde02916ba.webp 400w,
-               /post/bigmodel-api-usage-notes/images/api/demo/moonshot3_hu22dc979f479e41f405034926953e5a3a_205857_0ec43d0dcf1df90695d8341e456bd1e8.webp 760w,
+               /post/bigmodel-api-usage-notes/images/api/demo/moonshot3_hu22dc979f479e41f405034926953e5a3a_205857_64fd3ae2955b48ad4da9e98c41e85d6d.webp 400w,
+               /post/bigmodel-api-usage-notes/images/api/demo/moonshot3_hu22dc979f479e41f405034926953e5a3a_205857_de8be627ca2c7338267f161ec39cffb3.webp 760w,
                /post/bigmodel-api-usage-notes/images/api/demo/moonshot3_hu22dc979f479e41f405034926953e5a3a_205857_1200x1200_fit_q75_h2_lanczos_3.webp 1200w"
-               src="/post/bigmodel-api-usage-notes/images/api/demo/moonshot3_hu22dc979f479e41f405034926953e5a3a_205857_7d636e23eef126362a4ff2cde02916ba.webp"
+               src="/post/bigmodel-api-usage-notes/images/api/demo/moonshot3_hu22dc979f479e41f405034926953e5a3a_205857_64fd3ae2955b48ad4da9e98c41e85d6d.webp"
                width="760"
                height="250"
                loading="lazy" data-zoomable /></div>
@@ -1226,12 +1238,59 @@
 <figure  >
   <div class="d-flex justify-content-center">
     <div class="w-100" ><img alt="" srcset="
-               /post/bigmodel-api-usage-notes/images/api/demo/moonshot5_hu3b01263b6127daafdd9443a6e5b137cd_331331_c0c2a27bfcf45f8e7bb86822f96c6773.webp 400w,
-               /post/bigmodel-api-usage-notes/images/api/demo/moonshot5_hu3b01263b6127daafdd9443a6e5b137cd_331331_a5d781d5c37b537f6b537ae5570720ad.webp 760w,
+               /post/bigmodel-api-usage-notes/images/api/demo/moonshot5_hu3b01263b6127daafdd9443a6e5b137cd_331331_158841e2b0d9c2af50a2b100890bbe81.webp 400w,
+               /post/bigmodel-api-usage-notes/images/api/demo/moonshot5_hu3b01263b6127daafdd9443a6e5b137cd_331331_aba6397acbc2f03976fa637fb733af0e.webp 760w,
                /post/bigmodel-api-usage-notes/images/api/demo/moonshot5_hu3b01263b6127daafdd9443a6e5b137cd_331331_1200x1200_fit_q75_h2_lanczos_3.webp 1200w"
-               src="/post/bigmodel-api-usage-notes/images/api/demo/moonshot5_hu3b01263b6127daafdd9443a6e5b137cd_331331_c0c2a27bfcf45f8e7bb86822f96c6773.webp"
+               src="/post/bigmodel-api-usage-notes/images/api/demo/moonshot5_hu3b01263b6127daafdd9443a6e5b137cd_331331_158841e2b0d9c2af50a2b100890bbe81.webp"
                width="760"
                height="304"
+               loading="lazy" data-zoomable /></div>
+  </div></figure>
+</p>
+<h3 id="零一万物大模型">零一万物大模型</h3>
+<p>除文字问答外，支持视觉问答。</p>
+<h4 id="示例nl2sql">示例：NL2SQL</h4>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="kn">from</span> <span class="nn">openai</span> <span class="kn">import</span> <span class="n">OpenAI</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">API_BASE</span> <span class="o">=</span> <span class="s2">&#34;https://api.lingyiwanwu.com/v1&#34;</span>
+</span></span><span class="line"><span class="cl"><span class="n">API_KEY</span> <span class="o">=</span> <span class="s2">&#34;xxxxxxxxxx&#34;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">client</span> <span class="o">=</span> <span class="n">OpenAI</span><span class="p">(</span>
+</span></span><span class="line"><span class="cl">    <span class="n">api_key</span><span class="o">=</span><span class="n">API_KEY</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="n">base_url</span><span class="o">=</span><span class="n">API_BASE</span>
+</span></span><span class="line"><span class="cl"><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">question</span> <span class="o">=</span> <span class="s2">&#34;你的自然语言转SQL能力如何?我来考你一个问题,在PostgreSQL数据库中，我有一个企业数据表company，希望你帮我查出注册资本（reg_cap）大于5000万人民币, 行业(industry)为互联网，通信地址在深圳西丽地铁站方圆500米的企业。&#34;</span>
+</span></span><span class="line"><span class="cl"><span class="n">completion</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">chat</span><span class="o">.</span><span class="n">completions</span><span class="o">.</span><span class="n">create</span><span class="p">(</span>
+</span></span><span class="line"><span class="cl">    <span class="n">model</span><span class="o">=</span><span class="s2">&#34;yi-34b-chat-0205&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="n">messages</span><span class="o">=</span><span class="p">[{</span><span class="s2">&#34;role&#34;</span><span class="p">:</span> <span class="s2">&#34;user&#34;</span><span class="p">,</span> <span class="s2">&#34;content&#34;</span><span class="p">:</span> <span class="n">question</span><span class="p">}]</span>
+</span></span><span class="line"><span class="cl"><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="nb">print</span><span class="p">(</span><span class="n">completion</span><span class="o">.</span><span class="n">choices</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">message</span><span class="o">.</span><span class="n">content</span><span class="p">)</span>
+</span></span></code></pre></div><p>下图为问答结果，可以看到生成的SQL语句在语法上没有问题，实际应用时可通过提示指明字段的说明让SQL更加精确。</p>
+<p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<figure  >
+  <div class="d-flex justify-content-center">
+    <div class="w-100" ><img alt="" srcset="
+               /post/bigmodel-api-usage-notes/images/api/demo/01-1_hu22ee249b9bb8d11d368503c8abb581bb_218976_5abcfe497b225d393f65e51c1d66ed96.webp 400w,
+               /post/bigmodel-api-usage-notes/images/api/demo/01-1_hu22ee249b9bb8d11d368503c8abb581bb_218976_0e7fa5be1fafe7e8baf735b2bbfd1627.webp 760w,
+               /post/bigmodel-api-usage-notes/images/api/demo/01-1_hu22ee249b9bb8d11d368503c8abb581bb_218976_1200x1200_fit_q75_h2_lanczos_3.webp 1200w"
+               src="/post/bigmodel-api-usage-notes/images/api/demo/01-1_hu22ee249b9bb8d11d368503c8abb581bb_218976_5abcfe497b225d393f65e51c1d66ed96.webp"
+               width="760"
+               height="289"
                loading="lazy" data-zoomable /></div>
   </div></figure>
 </p>
