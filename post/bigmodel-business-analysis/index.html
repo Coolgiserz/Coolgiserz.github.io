@@ -1,0 +1,1364 @@
+<!DOCTYPE html><html lang="en-us" >
+
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  
+  
+  
+    <meta name="generator" content="Wowchemy 5.5.0 for Hugo" />
+  
+
+  
+  
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+  
+  
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  
+
+  
+  
+  
+    
+      
+      <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Roboto+Mono&family=Roboto:wght@400;700&display=swap">
+      <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Roboto+Mono&family=Roboto:wght@400;700&display=swap" media="print" onload="this.media='all'">
+    
+  
+
+  
+  
+  
+  
+  
+    
+    
+    
+  
+  
+
+  <meta name="author" content="CoolCats" />
+
+  
+  
+  
+    
+  
+  <meta name="description" content="市场竞争是激烈并且通常是残酷的，如何定义一款产品？如何研判产品是否有市场、市场有多大？回答上述问题都需要数据作为依据，而商业分析就是要从大数据中归纳总结得出数据供决策者参考。" />
+
+  
+  <link rel="alternate" hreflang="en-us" href="/post/bigmodel-business-analysis/" />
+
+  
+  
+  
+    <meta name="theme-color" content="#1565c0" />
+  
+
+  
+  
+    
+    <script src="/js/mathjax-config.js"></script>
+  
+
+  
+
+  <link rel="stylesheet" href="/css/vendor-bundle.min.c7b8d9abd591ba2253ea42747e3ac3f5.css" media="print" onload="this.media='all'">
+
+  
+  
+  
+    
+    
+      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/academicons@1.9.1/css/academicons.min.css" integrity="sha512-W0xM4mr6dEP9nREo7Z9z+9X70wytKvMGeDsj7ps2+xg5QPrEBXC8tAW1IFnzjR6eoJ90JmCnFzerQJTLzIEHjA==" crossorigin="anonymous" media="print" onload="this.media='all'">
+    
+
+    
+    
+    
+    
+      
+      
+    
+    
+    
+
+    
+    
+    
+      
+    
+    
+      
+      
+        
+          <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@10.2.1/build/styles/github.min.css" crossorigin="anonymous" title="hl-light" media="print" onload="this.media='all'">
+          <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@10.2.1/build/styles/dracula.min.css" crossorigin="anonymous" title="hl-dark" media="print" onload="this.media='all'" disabled>
+        
+      
+    
+
+    
+    
+    
+      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.7.1/dist/leaflet.min.css" integrity="" crossorigin="anonymous" media="print" onload="this.media='all'">
+    
+
+    
+
+    
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js" integrity="" crossorigin="anonymous" async></script>
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+  
+
+  
+  
+  
+  
+  
+  <link rel="stylesheet" href="/css/wowchemy.1052fab8b7700a3dc49ee23683097d66.css" />
+
+  
+
+
+
+  
+
+
+  
+
+
+  
+
+
+  <script>
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?51ae6db546b05b91d4053193ba49123d";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+  
+  
+  
+
+  
+
+  
+
+  <link rel="icon" type="image/png" href="/media/icon_hue03491371183284312b8b116a73ae5ab_79511_32x32_fill_lanczos_center_3.png" />
+  <link rel="apple-touch-icon" type="image/png" href="/media/icon_hue03491371183284312b8b116a73ae5ab_79511_180x180_fill_lanczos_center_3.png" />
+
+  <link rel="canonical" href="/post/bigmodel-business-analysis/" />
+
+  
+  
+  
+  
+  
+  
+  
+  
+    
+    
+  
+  
+
+  
+  
+    
+    
+  
+  <meta property="twitter:card" content="summary" />
+  
+    <meta property="twitter:site" content="@wowchemy" />
+    <meta property="twitter:creator" content="@wowchemy" />
+  
+  <meta property="og:site_name" content="CoolCats" />
+  <meta property="og:url" content="/post/bigmodel-business-analysis/" />
+  <meta property="og:title" content="商业分析领域的需求和痛点分析 | CoolCats" />
+  <meta property="og:description" content="市场竞争是激烈并且通常是残酷的，如何定义一款产品？如何研判产品是否有市场、市场有多大？回答上述问题都需要数据作为依据，而商业分析就是要从大数据中归纳总结得出数据供决策者参考。" /><meta property="og:image" content="/media/icon_hue03491371183284312b8b116a73ae5ab_79511_512x512_fill_lanczos_center_3.png" />
+    <meta property="twitter:image" content="/media/icon_hue03491371183284312b8b116a73ae5ab_79511_512x512_fill_lanczos_center_3.png" /><meta property="og:locale" content="en-us" />
+  
+    
+      <meta
+        property="article:published_time"
+        content="2024-03-14T10:08:12&#43;08:00"
+      />
+    
+    <meta property="article:modified_time" content="2024-03-14T10:08:12&#43;08:00">
+  
+
+  
+
+
+    
+
+
+
+
+
+
+  
+
+
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "/post/bigmodel-business-analysis/"
+  },
+  "headline": "商业分析领域的需求和痛点分析",
+  
+  "datePublished": "2024-03-14T10:08:12+08:00",
+  "dateModified": "2024-03-14T10:08:12+08:00",
+  
+  "author": {
+    "@type": "Person",
+    "name": "CoolCats"
+  },
+  
+  "publisher": {
+    "@type": "Organization",
+    "name": "CoolCats",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "/media/icon_hue03491371183284312b8b116a73ae5ab_79511_192x192_fill_lanczos_center_3.png"
+    }
+  },
+  "description": "市场竞争是激烈并且通常是残酷的，如何定义一款产品？如何研判产品是否有市场、市场有多大？回答上述问题都需要数据作为依据，而商业分析就是要从大数据中归纳总结得出数据供决策者参考。"
+}
+</script>
+
+  
+
+  
+
+  
+
+  
+
+
+
+
+
+  <title>商业分析领域的需求和痛点分析 | CoolCats</title>
+</head>
+
+
+<body id="top" data-spy="scroll" data-offset="70" data-target="#TableOfContents" class="page-wrapper   " data-wc-page-id="d2601c03d996c4de4f4137a261ccd655" >
+
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  <script src="/js/wowchemy-init.min.2ed908358299dd7ab553faae685c746c.js"></script>
+
+  
+
+
+<aside class="search-modal" id="search">
+  <div class="container">
+    <section class="search-header">
+
+      <div class="row no-gutters justify-content-between mb-3">
+        <div class="col-6">
+          <h1>Search</h1>
+        </div>
+        <div class="col-6 col-search-close">
+          <a class="js-search" href="#" aria-label="Close"><i class="fas fa-times-circle text-muted" aria-hidden="true"></i></a>
+        </div>
+      </div>
+
+      <div id="search-box">
+        
+        <input name="q" id="search-query" placeholder="Search..." autocapitalize="off"
+        autocomplete="off" autocorrect="off" spellcheck="false" type="search" class="form-control"
+        aria-label="Search...">
+        
+      </div>
+
+      
+      
+
+      
+
+    </section>
+    <section class="section-search-results">
+
+      <div id="search-hits">
+        
+      </div>
+
+    </section>
+  </div>
+</aside>
+
+
+
+  <div class="page-header">
+    
+
+
+
+
+
+
+
+
+
+
+
+
+<header class="header--fixed">
+  <nav class="navbar navbar-expand-lg navbar-light compensate-for-scrollbar" id="navbar-main">
+    <div class="container-xl">
+
+      
+      <div class="d-none d-lg-inline-flex">
+        <a class="navbar-brand" href="/">CoolCats</a>
+      </div>
+      
+
+      
+      <button type="button" class="navbar-toggler" data-toggle="collapse"
+              data-target="#navbar-content" aria-controls="navbar-content" aria-expanded="false" aria-label="Toggle navigation">
+      <span><i class="fas fa-bars"></i></span>
+      </button>
+      
+
+      
+      <div class="navbar-brand-mobile-wrapper d-inline-flex d-lg-none">
+        <a class="navbar-brand" href="/">CoolCats</a>
+      </div>
+      
+
+      
+      
+      <div class="navbar-collapse main-menu-item collapse justify-content-start" id="navbar-content">
+
+        
+        <ul class="navbar-nav d-md-inline-flex">
+          
+
+          
+
+          
+          
+          
+
+          
+
+          
+          
+          
+          
+
+          
+            
+              
+              
+            
+            
+          
+
+          <li class="nav-item">
+            <a class="nav-link  active" href="/post"><span>博客</span></a>
+          </li>
+
+          
+          
+
+          
+
+          
+          
+          
+            
+          
+
+          
+
+          
+          
+          
+          
+
+          
+            
+              
+              
+            
+            
+          
+
+          <li class="nav-item">
+            <a class="nav-link " href="/event"><span>趣事</span></a>
+          </li>
+
+          
+          
+
+          
+
+          
+          
+          
+            
+          
+
+          
+
+          
+          
+          
+          
+
+          
+            
+              
+              
+            
+            
+          
+
+          <li class="nav-item">
+            <a class="nav-link " href="/project"><span>项目</span></a>
+          </li>
+
+          
+          
+
+          
+
+          
+          
+          
+            
+          
+
+          
+
+          
+          
+          
+          
+
+          
+            
+              
+              
+            
+            
+          
+
+          <li class="nav-item">
+            <a class="nav-link " href="/publication"><span>论文</span></a>
+          </li>
+
+          
+          
+
+          
+
+          
+          
+          
+            
+          
+
+          
+
+          
+          
+          
+          
+
+          
+            
+              
+              
+            
+            
+          
+
+          <li class="nav-item">
+            <a class="nav-link " href="/contact"><span>联系</span></a>
+          </li>
+
+          
+          
+
+          
+
+          
+          
+          
+            
+          
+
+          
+
+          
+          
+          
+          
+
+          
+            
+              
+              
+            
+            
+          
+
+          <li class="nav-item">
+            <a class="nav-link " href="/media/files/cv"><span>简历</span></a>
+          </li>
+
+          
+          
+
+        
+
+          
+        </ul>
+      </div>
+
+      <ul class="nav-icons navbar-nav flex-row ml-auto d-flex pl-md-2">
+
+        
+        
+          
+        
+
+        
+        
+        <li class="nav-item">
+          <a class="nav-link js-search" href="#" aria-label="Search"><i class="fas fa-search" aria-hidden="true"></i></a>
+        </li>
+        
+
+        
+        
+        
+        <li class="nav-item dropdown theme-dropdown">
+          <a href="#" class="nav-link" data-toggle="dropdown" aria-haspopup="true" aria-label="Display preferences">
+            <i class="fas fa-moon" aria-hidden="true"></i>
+          </a>
+          <div class="dropdown-menu">
+            <a href="#" class="dropdown-item js-set-theme-light">
+              <span>Light</span>
+            </a>
+            <a href="#" class="dropdown-item js-set-theme-dark">
+              <span>Dark</span>
+            </a>
+            <a href="#" class="dropdown-item js-set-theme-auto">
+              <span>Automatic</span>
+            </a>
+          </div>
+        </li>
+        
+
+        
+        
+
+      </ul>
+
+    </div>
+  </nav>
+</header>
+
+
+  </div>
+
+  <div class="page-body">
+    
+    
+    
+
+    <article class="article">
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+  
+  
+<div class="article-container pt-3">
+  <h1>商业分析领域的需求和痛点分析</h1>
+
+  
+
+  
+    
+
+
+<div class="article-metadata">
+
+  
+  
+
+  
+  <span class="article-date">
+    
+    
+      
+    
+    Mar 14, 2024
+  </span>
+  
+
+  
+
+  
+  <span class="middot-divider"></span>
+  <span class="article-reading-time">
+    1 min read
+  </span>
+  
+
+  
+  
+  
+  
+
+  
+  
+
+</div>
+
+    
+
+
+
+
+
+  
+</div>
+
+
+
+  <div class="article-container">
+
+    <div class="article-style">
+      <h2 id="前言">前言</h2>
+<p>市场竞争是激烈并且通常是残酷的，如何定义一款产品？如何研判产品是否有市场、市场有多大？回答上述问题都需要数据作为依据，而商业分析就是要从大数据中归纳总结得出数据供决策者参考。</p>
+<p>具体需要商业数据分析的决策场景包括：市场需求与趋势研判、供应链优化、物流管理，而这些场景中都存在一些典型的、通用的痛点。</p>
+<h3 id="典型痛点">典型痛点</h3>
+<ul>
+<li>
+<p>数据收集、处理效率不足</p>
+<p>传统商业分析需要先进行数据收集和准备过程，其中多数据源的数据需要整合、清洗和转换。这个过程通常是耗时耗力的，尤其是对于一些没有专业技术团队支撑市场分析的组织而言，很多流程偏向人工进行或者寻找咨询机构，价格昂贵。并且在没有专业技术团队支撑的情况下，收集数据的实时性可能也不能让人满意，信息的滞后性对于发展速度快的行业来说参考价值可能会较弱。。</p>
+</li>
+<li>
+<p>信息提取困难</p>
+<p>大数据环境下冗余数据也多，如何从纷繁的数据中提取出对于业务决策有重要价值的信息往往需要对数据进行多维度分析，比如采用多种可视化方法分析。如何选择可视化方式能够最好地呈现数据中隐含的信息价值，往往需要多轮迭代碰撞，成本较高。</p>
+</li>
+<li>
+<p>对市场动态的快速响应</p>
+<p>信息快速传播的时代，市场需求和趋势变化周期可能很短，企业需要时刻关注市场需求和趋势变化以便分析市场趋势、行业竞争、产品定位、客户需求等关键信息，从而制定商业决策和行动计划。</p>
+</li>
+</ul>
+<h2 id="需求拆分">需求拆分</h2>
+<h3 id="数据需求">数据需求</h3>
+<p>就纯粹数据需求而言：</p>
+<ul>
+<li>
+<p>针对实体数据，需要企业、机构、投资者、人才/专家等实体的画像数据及其相关联的活动、事件数据。</p>
+</li>
+<li>
+<p>针对市场动态，重点在于政策、招投标、投融资事件、行业研报、产业链结构，其中不少事件类信息来自新闻，产业链结构需要专家知识根据产业关系定义图谱，以支撑供应商溯源、产业风险分析、供应链优化等场景应用。</p>
+</li>
+<li>
+<p>针对技术动态，重点在于专利、论文、技术报告、新闻等</p>
+</li>
+</ul>
+<p>考虑数据底座需求：</p>
+<ul>
+<li>
+<p>数据存储</p>
+</li>
+<li>
+<p>数据搜索（索引、排序）</p>
+</li>
+<li>
+<p>数据报表</p>
+</li>
+<li>
+<p>&hellip;&hellip;</p>
+</li>
+</ul>
+<h3 id="人才需求">人才需求</h3>
+<ul>
+<li>
+<p>技术型</p>
+</li>
+<li>
+<p>市场型</p>
+</li>
+<li>
+<p>战略分析师</p>
+</li>
+<li>
+<p>金融分析师</p>
+</li>
+<li>
+<p>&hellip;&hellip;</p>
+</li>
+</ul>
+<h3 id="大模型如何解决商业分析中的问题">大模型如何解决商业分析中的问题</h3>
+<p><strong>提高数据获取、处理、可视化的效率，从而提升决策效率和质量</strong></p>
+<ul>
+<li>
+<p>自然语言转SQL，快捷地从数据库、数据仓库中提取所关心的数据。</p>
+</li>
+<li>
+<p>辅助生成数据可视化结果，帮助团队理解数据，进行市场预测。</p>
+</li>
+<li>
+<p>对海量数据、信息进行总结提炼，帮助团队对市场整体进行分析，了解整体趋势、市场变化、竞对产品及其特征、消费者偏好趋势、热门产品特点等。</p>
+</li>
+</ul>
+<p>基于大模型的基础能力，分析师可能可以通过如下的交互方式进行商业分析：</p>
+<pre tabindex="0"><code>user: 展示xx商品销售数据最大增长亮点的产品品类和地区，最适合的可视化方式是什么？
+
+
+
+user: 以下为xxx时期的xxx数据，编写代码以热力图和地图的形式展示数据
+
+
+
+user: 公司去年销量最好的产品是xxx，请分析xxx产品在xxxxxx市场的整体销售趋势和市场变化、竞争对手产品和优缺点、消费者需求变化、并预测下季度可能受欢迎的产品特点，给出你的依据。
+</code></pre><h2 id="bi工具">BI工具</h2>
+<h2 id="相关公司组织结构">相关公司/组织结构</h2>
+<ul>
+<li>企知道-科创空间</li>
+</ul>
+<p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<figure  >
+  <div class="d-flex justify-content-center">
+    <div class="w-100" ><img alt="" srcset="
+               /post/bigmodel-business-analysis/images/market/qizhidao_hua15e8492d5fff38c903f7a6181de03f7_114563_5efe38a9bbb873a2b7c09fcd61b94cf0.webp 400w,
+               /post/bigmodel-business-analysis/images/market/qizhidao_hua15e8492d5fff38c903f7a6181de03f7_114563_2f089797e590a2a57e50eb9f25ece7e0.webp 760w,
+               /post/bigmodel-business-analysis/images/market/qizhidao_hua15e8492d5fff38c903f7a6181de03f7_114563_1200x1200_fit_q75_h2_lanczos_3.webp 1200w"
+               src="/post/bigmodel-business-analysis/images/market/qizhidao_hua15e8492d5fff38c903f7a6181de03f7_114563_5efe38a9bbb873a2b7c09fcd61b94cf0.webp"
+               width="760"
+               height="501"
+               loading="lazy" data-zoomable /></div>
+  </div></figure>
+</p>
+<ul>
+<li>
+<p>AMiner-学术知识图谱</p>
+</li>
+<li>
+<p>中国科学院</p>
+</li>
+<li>
+<p>文因互联</p>
+</li>
+<li>
+<p>灵犀实业</p>
+</li>
+<li>
+<p>素问智能-科技雷达</p>
+</li>
+</ul>
+
+    </div>
+
+    
+
+
+
+
+
+
+<div class="share-box">
+  <ul class="share">
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="https://twitter.com/intent/tweet?url=/post/bigmodel-business-analysis/&amp;text=%e5%95%86%e4%b8%9a%e5%88%86%e6%9e%90%e9%a2%86%e5%9f%9f%e7%9a%84%e9%9c%80%e6%b1%82%e5%92%8c%e7%97%9b%e7%82%b9%e5%88%86%e6%9e%90" target="_blank" rel="noopener" class="share-btn-twitter" aria-label="twitter">
+          <i class="fab fa-twitter"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="https://www.facebook.com/sharer.php?u=/post/bigmodel-business-analysis/&amp;t=%e5%95%86%e4%b8%9a%e5%88%86%e6%9e%90%e9%a2%86%e5%9f%9f%e7%9a%84%e9%9c%80%e6%b1%82%e5%92%8c%e7%97%9b%e7%82%b9%e5%88%86%e6%9e%90" target="_blank" rel="noopener" class="share-btn-facebook" aria-label="facebook">
+          <i class="fab fa-facebook"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="mailto:?subject=%e5%95%86%e4%b8%9a%e5%88%86%e6%9e%90%e9%a2%86%e5%9f%9f%e7%9a%84%e9%9c%80%e6%b1%82%e5%92%8c%e7%97%9b%e7%82%b9%e5%88%86%e6%9e%90&amp;body=/post/bigmodel-business-analysis/" target="_blank" rel="noopener" class="share-btn-email" aria-label="envelope">
+          <i class="fas fa-envelope"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="https://www.linkedin.com/shareArticle?url=/post/bigmodel-business-analysis/&amp;title=%e5%95%86%e4%b8%9a%e5%88%86%e6%9e%90%e9%a2%86%e5%9f%9f%e7%9a%84%e9%9c%80%e6%b1%82%e5%92%8c%e7%97%9b%e7%82%b9%e5%88%86%e6%9e%90" target="_blank" rel="noopener" class="share-btn-linkedin" aria-label="linkedin-in">
+          <i class="fab fa-linkedin-in"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="whatsapp://send?text=%e5%95%86%e4%b8%9a%e5%88%86%e6%9e%90%e9%a2%86%e5%9f%9f%e7%9a%84%e9%9c%80%e6%b1%82%e5%92%8c%e7%97%9b%e7%82%b9%e5%88%86%e6%9e%90%20/post/bigmodel-business-analysis/" target="_blank" rel="noopener" class="share-btn-whatsapp" aria-label="whatsapp">
+          <i class="fab fa-whatsapp"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="https://service.weibo.com/share/share.php?url=/post/bigmodel-business-analysis/&amp;title=%e5%95%86%e4%b8%9a%e5%88%86%e6%9e%90%e9%a2%86%e5%9f%9f%e7%9a%84%e9%9c%80%e6%b1%82%e5%92%8c%e7%97%9b%e7%82%b9%e5%88%86%e6%9e%90" target="_blank" rel="noopener" class="share-btn-weibo" aria-label="weibo">
+          <i class="fab fa-weibo"></i>
+        </a>
+      </li>
+    
+  </ul>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+
+
+
+  
+  
+  
+  
+  
+  <div class="media author-card content-widget-hr">
+    
+      
+      <a href="/authors/admin/"><img class="avatar mr-3 avatar-circle" src="/authors/admin/avatar_hu55194f19033f85038196a23353ffe543_580100_270x270_fill_q75_lanczos_center.jpg" alt="CoolCats"></a>
+    
+
+    <div class="media-body">
+      <h5 class="card-title"><a href="/authors/admin/">CoolCats</a></h5>
+      <h6 class="card-subtitle">理学学士</h6>
+      <p class="card-text">我的研究兴趣是时空数据分析、知识图谱、自然语言处理与服务端开发</p>
+      <ul class="network-icon" aria-hidden="true">
+  
+    
+    
+    
+      
+    
+    
+    
+    
+    
+    <li>
+      <a href="mailto:2811159909@qq.com" >
+        <i class="fas fa-envelope"></i>
+      </a>
+    </li>
+  
+    
+    
+    
+      
+    
+    
+    
+    
+    
+      
+    
+    <li>
+      <a href="https://github.com/Coolgiserz" target="_blank" rel="noopener">
+        <i class="fab fa-github"></i>
+      </a>
+    </li>
+  
+</ul>
+
+    </div>
+  </div>
+
+
+
+
+
+
+
+
+
+  
+  
+  
+
+  
+
+  
+
+
+
+
+
+
+
+
+
+
+  </div>
+</article>
+  </div>
+
+  <div class="page-footer">
+    
+    
+    <div class="container">
+      <footer class="site-footer">
+
+  
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+
+
+
+
+
+  
+  
+  
+
+  
+  
+    
+  
+  
+    
+  
+
+  
+
+  
+  <p class="powered-by copyright-license-text">
+    © 2024 CoolCats. This work is licensed under <a href="https://creativecommons.org/licenses/by-nc-nd/4.0" rel="noopener noreferrer" target="_blank">CC BY NC ND 4.0</a>
+  </p>
+  
+
+  <p class="powered-by footer-license-icons">
+    <a href="https://creativecommons.org/licenses/by-nc-nd/4.0" rel="noopener noreferrer" target="_blank" aria-label="Creative Commons">
+      <i class="fab fa-creative-commons fa-2x" aria-hidden="true"></i>
+      <i class="fab fa-creative-commons-by fa-2x" aria-hidden="true"></i>
+      
+        <i class="fab fa-creative-commons-nc fa-2x" aria-hidden="true"></i>
+      
+      
+        <i class="fab fa-creative-commons-nd fa-2x" aria-hidden="true"></i>
+      
+    </a>
+  </p>
+
+
+
+
+  <p class="powered-by">
+    
+    
+    
+      
+      
+      
+      
+      
+      
+      Published with <a href="https://wowchemy.com/?utm_campaign=poweredby" target="_blank" rel="noopener">Wowchemy</a> — the free, <a href="https://github.com/wowchemy/wowchemy-hugo-themes" target="_blank" rel="noopener">open source</a> website builder that empowers creators.
+    
+  </p>
+</footer>
+
+    </div>
+    
+  </div>
+
+      
+
+    
+    <script src="/js/vendor-bundle.min.fab8b449b814cc9f95b22fcf2e45f05b.js"></script>
+
+    
+    
+    
+      
+
+      
+      
+
+      
+
+      
+        
+        <script src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@10.2.1/build/highlight.min.js" integrity="sha512-Ypjm0o7jOxAd4hpdoppSEN0TQOC19UtPAqD+4s5AlXmUvbmmS/YMxYqAqarQYyxTnB6/rqip9qcxlNB/3U9Wdg==" crossorigin="anonymous"></script>
+        
+        
+        <script src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@10.2.1/build/languages/r.min.js" crossorigin="anonymous"></script>
+        
+        <script src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@10.2.1/build/languages/latex.min.js" crossorigin="anonymous"></script>
+        
+      
+
+    
+
+    
+    
+    
+      <script src="https://cdn.jsdelivr.net/npm/leaflet@1.7.1/dist/leaflet.min.js" integrity="" crossorigin="anonymous"></script>
+    
+
+    
+    
+
+    
+    
+    
+      
+      <script id="search-hit-fuse-template" type="text/x-template">
+        <div class="search-hit" id="summary-{{key}}">
+          <div class="search-hit-content">
+            <div class="search-hit-name">
+              <a href="{{relpermalink}}">{{title}}</a>
+              <div class="article-metadata search-hit-type">{{type}}</div>
+              <p class="search-hit-description">{{snippet}}</p>
+            </div>
+          </div>
+        </div>
+      </script>
+      
+        <script src="https://cdn.jsdelivr.net/gh/krisk/Fuse@v3.2.1/dist/fuse.min.js" integrity="sha512-o38bmzBGX+hD3JHWUFCDA09btWaqrNmoJ3RXLlrysA7PP01Kgs4UlE4MhelE1v5dJR3+cxlR4qQlotsW7jKsnw==" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/gh/julmot/mark.js@8.11.1/dist/jquery.mark.min.js" integrity="sha512-mhbv5DqBMgrWL+32MmsDOt/OAvqr/cHimk6B8y/bx/xS88MVkYGPiVv2ixKVrkywF2qHplNRUvFsAHUdxZ3Krg==" crossorigin="anonymous"></script>
+      
+    
+
+    
+    
+
+    
+    
+    
+    
+      <script id="dsq-count-scr" src="https://coolgiserz.disqus.com/count.js" async></script>
+    
+
+    
+    
+      
+      
+      
+      
+      
+      
+      
+    
+
+    
+
+    
+    
+    
+    <script id="page-data" type="application/json">{"use_headroom":true}</script>
+
+    
+    
+      <script src="/js/wowchemy-headroom.c251366b4128fd5e6b046d4c97a62a51.js" type="module"></script>
+    
+    
+    
+    
+    
+    
+    
+      
+      
+    
+    
+    <script src="/en/js/wowchemy.min.ab2f2890dbe3e2e83579366d3d6e8fd9.js"></script>
+
+    
+    
+      <script src="/js/wowchemy-map.a26e9d2f7238ba5b868384f1c5bc6477.js" type="module"></script>
+    
+    
+    
+    
+      
+<div id="modal" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Cite</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <pre><code class="tex hljs"></code></pre>
+      </div>
+      <div class="modal-footer">
+        <a class="btn btn-outline-primary my-1 js-copy-cite" href="#" target="_blank">
+          <i class="fas fa-copy"></i> Copy
+        </a>
+        <a class="btn btn-outline-primary my-1 js-download-cite" href="#" target="_blank">
+          <i class="fas fa-download"></i> Download
+        </a>
+        <div id="modal-error"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+      <script src="/js/wowchemy-publication.68f8d7090562ca65fc6d3cb3f8f2d2cb.js" type="module"></script>
+
+
+
+
+
+
+</body>
+</html>

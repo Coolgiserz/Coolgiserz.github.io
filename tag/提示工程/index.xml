@@ -293,7 +293,7 @@
 &lt;p&gt;&lt;a href=&#34;https://kimi.moonshot.cn/chat/cnjib4kudu689nk5pgm0&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Kimi.ai - 帮你看更大的世界&lt;/a&gt;&lt;/p&gt;
 &lt;/li&gt;
 &lt;li&gt;
-&lt;p&gt;通义千问&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;https://tongyi.aliyun.com&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;通义千问&lt;/a&gt;&lt;/p&gt;
 &lt;/li&gt;
 &lt;li&gt;
 &lt;p&gt;文心一言&lt;/p&gt;
@@ -493,10 +493,10 @@
 &lt;figure  &gt;
   &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
     &lt;div class=&#34;w-100&#34; &gt;&lt;img alt=&#34;&#34; srcset=&#34;
-               /post/bigmodel-api-usage-notes/images/api/demo/01-1_hu22ee249b9bb8d11d368503c8abb581bb_218976_8a40dc37ee22f464d3dec03c2abd5c0c.webp 400w,
+               /post/bigmodel-api-usage-notes/images/api/demo/01-1_hu22ee249b9bb8d11d368503c8abb581bb_218976_97af61e80e38c035fb5b2a880db42ac8.webp 400w,
                /post/bigmodel-api-usage-notes/images/api/demo/01-1_hu22ee249b9bb8d11d368503c8abb581bb_218976_e30028e607ed3d95d07e7b253aa5ee38.webp 760w,
                /post/bigmodel-api-usage-notes/images/api/demo/01-1_hu22ee249b9bb8d11d368503c8abb581bb_218976_1200x1200_fit_q75_h2_lanczos_3.webp 1200w&#34;
-               src=&#34;/post/bigmodel-api-usage-notes/images/api/demo/01-1_hu22ee249b9bb8d11d368503c8abb581bb_218976_8a40dc37ee22f464d3dec03c2abd5c0c.webp&#34;
+               src=&#34;/post/bigmodel-api-usage-notes/images/api/demo/01-1_hu22ee249b9bb8d11d368503c8abb581bb_218976_97af61e80e38c035fb5b2a880db42ac8.webp&#34;
                width=&#34;760&#34;
                height=&#34;289&#34;
                loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
@@ -547,10 +547,10 @@
 &lt;figure  &gt;
   &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
     &lt;div class=&#34;w-100&#34; &gt;&lt;img alt=&#34;&#34; srcset=&#34;
-               /post/bigmodel-api-usage-notes/images/api/demo/01-2_hu668647c39fa43e3d6e400942af1f2cbc_422714_4d4d55b6ebd48dbffea28c9537ae51ff.webp 400w,
-               /post/bigmodel-api-usage-notes/images/api/demo/01-2_hu668647c39fa43e3d6e400942af1f2cbc_422714_e093e12229e7c6f9e92a17016b7589fb.webp 760w,
+               /post/bigmodel-api-usage-notes/images/api/demo/01-2_hu668647c39fa43e3d6e400942af1f2cbc_422714_41c4b1875a0fcece062b1b5213b499f1.webp 400w,
+               /post/bigmodel-api-usage-notes/images/api/demo/01-2_hu668647c39fa43e3d6e400942af1f2cbc_422714_1a3eb5a5b543db568ee0db0843a77d1a.webp 760w,
                /post/bigmodel-api-usage-notes/images/api/demo/01-2_hu668647c39fa43e3d6e400942af1f2cbc_422714_1200x1200_fit_q75_h2_lanczos_3.webp 1200w&#34;
-               src=&#34;/post/bigmodel-api-usage-notes/images/api/demo/01-2_hu668647c39fa43e3d6e400942af1f2cbc_422714_4d4d55b6ebd48dbffea28c9537ae51ff.webp&#34;
+               src=&#34;/post/bigmodel-api-usage-notes/images/api/demo/01-2_hu668647c39fa43e3d6e400942af1f2cbc_422714_41c4b1875a0fcece062b1b5213b499f1.webp&#34;
                width=&#34;760&#34;
                height=&#34;165&#34;
                loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
@@ -600,15 +600,181 @@
 &lt;figure  &gt;
   &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
     &lt;div class=&#34;w-100&#34; &gt;&lt;img alt=&#34;&#34; srcset=&#34;
-               /post/bigmodel-api-usage-notes/images/api/demo/01-3_hu6cc0c8c11e0307389e4b384dffdd1a1f_92978_57072454752c84e246dea7e3142c050b.webp 400w,
-               /post/bigmodel-api-usage-notes/images/api/demo/01-3_hu6cc0c8c11e0307389e4b384dffdd1a1f_92978_4baa3304c0c711a5926fd4a53c72de3c.webp 760w,
+               /post/bigmodel-api-usage-notes/images/api/demo/01-3_hu6cc0c8c11e0307389e4b384dffdd1a1f_92978_77b951e554dc60951d267f3f89e3c88b.webp 400w,
+               /post/bigmodel-api-usage-notes/images/api/demo/01-3_hu6cc0c8c11e0307389e4b384dffdd1a1f_92978_bb9a89c751242606f41962330b821874.webp 760w,
                /post/bigmodel-api-usage-notes/images/api/demo/01-3_hu6cc0c8c11e0307389e4b384dffdd1a1f_92978_1200x1200_fit_q75_h2_lanczos_3.webp 1200w&#34;
-               src=&#34;/post/bigmodel-api-usage-notes/images/api/demo/01-3_hu6cc0c8c11e0307389e4b384dffdd1a1f_92978_57072454752c84e246dea7e3142c050b.webp&#34;
+               src=&#34;/post/bigmodel-api-usage-notes/images/api/demo/01-3_hu6cc0c8c11e0307389e4b384dffdd1a1f_92978_77b951e554dc60951d267f3f89e3c88b.webp&#34;
                width=&#34;760&#34;
                height=&#34;54&#34;
                loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
   &lt;/div&gt;&lt;/figure&gt;
 &lt;/p&gt;
+&lt;h2 id=&#34;场景&#34;&gt;场景&lt;/h2&gt;
+&lt;p&gt;利用大模型的基础能力，完成一些基础NLP任务&lt;/p&gt;
+&lt;h3 id=&#34;问题分类意图识别&#34;&gt;问题分类/意图识别&lt;/h3&gt;
+&lt;p&gt;prompt:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-python&#34; data-lang=&#34;python&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;PROMPT&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;s2&#34;&gt;&amp;#34;ticket_question&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        &lt;span class=&#34;s2&#34;&gt;&amp;#34;name&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;票务问答&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        &lt;span class=&#34;s2&#34;&gt;&amp;#34;description&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;查询或预定车票、船票、机票等，关于票务类交通工具班次类问题。&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;p&#34;&gt;},&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;s2&#34;&gt;&amp;#34;food_question&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:{&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        &lt;span class=&#34;s2&#34;&gt;&amp;#34;name&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;美食问答&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        &lt;span class=&#34;s2&#34;&gt;&amp;#34;description&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;查询美食，食品&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;p&#34;&gt;},&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;s2&#34;&gt;&amp;#34;travel_question&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:{&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        &lt;span class=&#34;s2&#34;&gt;&amp;#34;name&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;旅游问答&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        &lt;span class=&#34;s2&#34;&gt;&amp;#34;description&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;查询旅游景点、游玩地，包括热门景点和冷门景点，或者具有特殊性的地方。&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;p&#34;&gt;},&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;s2&#34;&gt;&amp;#34;other_question&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:{&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        &lt;span class=&#34;s2&#34;&gt;&amp;#34;name&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;其他问答&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        &lt;span class=&#34;s2&#34;&gt;&amp;#34;description&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;不明确的问题&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure  &gt;
+  &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img alt=&#34;&#34; srcset=&#34;
+               /post/bigmodel-api-usage-notes/images/api/trick/question_classification_prompt_hu4d9fd96cc8dbecc550f38535a617d1e0_117146_684a7adce1d254933136eb3c5c42ca46.webp 400w,
+               /post/bigmodel-api-usage-notes/images/api/trick/question_classification_prompt_hu4d9fd96cc8dbecc550f38535a617d1e0_117146_648b3ab5a848bbb52c0f6dba63a34e84.webp 760w,
+               /post/bigmodel-api-usage-notes/images/api/trick/question_classification_prompt_hu4d9fd96cc8dbecc550f38535a617d1e0_117146_1200x1200_fit_q75_h2_lanczos_3.webp 1200w&#34;
+               src=&#34;/post/bigmodel-api-usage-notes/images/api/trick/question_classification_prompt_hu4d9fd96cc8dbecc550f38535a617d1e0_117146_684a7adce1d254933136eb3c5c42ca46.webp&#34;
+               width=&#34;760&#34;
+               height=&#34;277&#34;
+               loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+  &lt;/div&gt;&lt;/figure&gt;
+&lt;/p&gt;
+&lt;p&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure  &gt;
+  &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img alt=&#34;&#34; srcset=&#34;
+               /post/bigmodel-api-usage-notes/images/api/trick/question_classification_hu585ff6bf1a685c2d98b43fe6b30322f6_65682_e5080ec66d9940a5444d00cee804b86d.webp 400w,
+               /post/bigmodel-api-usage-notes/images/api/trick/question_classification_hu585ff6bf1a685c2d98b43fe6b30322f6_65682_6fe8fefeac47065d11936fa72d83de2f.webp 760w,
+               /post/bigmodel-api-usage-notes/images/api/trick/question_classification_hu585ff6bf1a685c2d98b43fe6b30322f6_65682_1200x1200_fit_q75_h2_lanczos_3.webp 1200w&#34;
+               src=&#34;/post/bigmodel-api-usage-notes/images/api/trick/question_classification_hu585ff6bf1a685c2d98b43fe6b30322f6_65682_e5080ec66d9940a5444d00cee804b86d.webp&#34;
+               width=&#34;760&#34;
+               height=&#34;305&#34;
+               loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+  &lt;/div&gt;&lt;/figure&gt;
+&lt;/p&gt;
+&lt;h3 id=&#34;关系抽取&#34;&gt;关系抽取&lt;/h3&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-python&#34; data-lang=&#34;python&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;PROMPT&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        &lt;span class=&#34;s2&#34;&gt;&amp;#34;document&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;郭靖和黄蓉是情侣，欧阳克追求过黄蓉，欧阳锋呢？&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        &lt;span class=&#34;s2&#34;&gt;&amp;#34;entities&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;郭靖&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;黄蓉&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;欧阳克&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;欧阳锋&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;],&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        &lt;span class=&#34;s2&#34;&gt;&amp;#34;relation&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;[(&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;郭靖&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;情侣&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;黄蓉&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;),&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;                    &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;黄蓉&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;追求者&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;欧阳克&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;                     &lt;span class=&#34;p&#34;&gt;]&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;p&#34;&gt;]&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;ul&gt;
+&lt;li&gt;基于零一万物的模型yi-34b-chat-0205&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure  &gt;
+  &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img alt=&#34;&#34; srcset=&#34;
+               /post/bigmodel-api-usage-notes/images/api/trick/relation_extraction_demo1-01wanwu_huff5240787adf35b46631ff7461b4450e_229768_ca7b68bf127b67a2e0cdb7fb3ea98f33.webp 400w,
+               /post/bigmodel-api-usage-notes/images/api/trick/relation_extraction_demo1-01wanwu_huff5240787adf35b46631ff7461b4450e_229768_4e99f50c42e212bb84053a75116e04d4.webp 760w,
+               /post/bigmodel-api-usage-notes/images/api/trick/relation_extraction_demo1-01wanwu_huff5240787adf35b46631ff7461b4450e_229768_1200x1200_fit_q75_h2_lanczos_3.webp 1200w&#34;
+               src=&#34;/post/bigmodel-api-usage-notes/images/api/trick/relation_extraction_demo1-01wanwu_huff5240787adf35b46631ff7461b4450e_229768_ca7b68bf127b67a2e0cdb7fb3ea98f33.webp&#34;
+               width=&#34;760&#34;
+               height=&#34;181&#34;
+               loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+  &lt;/div&gt;&lt;/figure&gt;
+&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;基于月之暗面的模型Moonshot 8k&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure  &gt;
+  &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img alt=&#34;&#34; srcset=&#34;
+               /post/bigmodel-api-usage-notes/images/api/trick/relation_extraction_demo1-moonshot_hu9d2c15bc3b06da5aaf26e8880ad12c6f_276776_068678802f06bde6c78a60a68cd73efe.webp 400w,
+               /post/bigmodel-api-usage-notes/images/api/trick/relation_extraction_demo1-moonshot_hu9d2c15bc3b06da5aaf26e8880ad12c6f_276776_07f5ab259682d2426dfe9ceea41f226e.webp 760w,
+               /post/bigmodel-api-usage-notes/images/api/trick/relation_extraction_demo1-moonshot_hu9d2c15bc3b06da5aaf26e8880ad12c6f_276776_1200x1200_fit_q75_h2_lanczos_3.webp 1200w&#34;
+               src=&#34;/post/bigmodel-api-usage-notes/images/api/trick/relation_extraction_demo1-moonshot_hu9d2c15bc3b06da5aaf26e8880ad12c6f_276776_068678802f06bde6c78a60a68cd73efe.webp&#34;
+               width=&#34;760&#34;
+               height=&#34;312&#34;
+               loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+  &lt;/div&gt;&lt;/figure&gt;
+&lt;/p&gt;
+&lt;p&gt;可以看到，当给出一些不合事实的文档，月之暗面的模型能够更好地鉴别反事实现象并给出解释。&lt;/p&gt;
+&lt;h2 id=&#34;通用流程&#34;&gt;通用流程&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;数据收集&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;数据清洗和预处理&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;数据表示（可直接使用文字，也可进行嵌入表示，如将文本嵌入向量空间，除方便大规模分析之外，也可提高数据集安全性）&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;应用（根据业务需求构造prompt支持下游任务，针对prompt还可引入指令优化）&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
 &lt;h2 id=&#34;相关文档&#34;&gt;相关文档&lt;/h2&gt;
 &lt;ul&gt;
 &lt;li&gt;

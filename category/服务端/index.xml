@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>服务端 | CoolCats</title>
+    <link>/category/%E6%9C%8D%E5%8A%A1%E7%AB%AF/</link>
+      <atom:link href="/category/%E6%9C%8D%E5%8A%A1%E7%AB%AF/index.xml" rel="self" type="application/rss+xml" />
+    <description>服务端</description>
+    <generator>Wowchemy (https://wowchemy.com)</generator><language>en-us</language><lastBuildDate>Tue, 05 Mar 2024 23:05:28 +0800</lastBuildDate>
+    <image>
+      <url>/media/icon_hue03491371183284312b8b116a73ae5ab_79511_512x512_fill_lanczos_center_3.png</url>
+      <title>服务端</title>
+      <link>/category/%E6%9C%8D%E5%8A%A1%E7%AB%AF/</link>
+    </image>
+    
+    <item>
+      <title>Web Security Testcase and Defense</title>
+      <link>/post/web-security-testcase-and-defense/</link>
+      <pubDate>Tue, 05 Mar 2024 23:05:28 +0800</pubDate>
+      <guid>/post/web-security-testcase-and-defense/</guid>
+      <description>&lt;h2 id=&#34;测试用例&#34;&gt;测试用例&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;注销功能漏洞&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;最终认证是否在服务端&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;会话标识是否唯一&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;参考资料&#34;&gt;参考资料&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://websec.readthedocs.io/zh/latest/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Web安全学习笔记 — Web安全学习笔记 1.0 文档&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>
