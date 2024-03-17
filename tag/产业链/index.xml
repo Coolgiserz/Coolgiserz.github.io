@@ -1,0 +1,548 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>产业链 | CoolCats</title>
+    <link>/tag/%E4%BA%A7%E4%B8%9A%E9%93%BE/</link>
+      <atom:link href="/tag/%E4%BA%A7%E4%B8%9A%E9%93%BE/index.xml" rel="self" type="application/rss+xml" />
+    <description>产业链</description>
+    <generator>Wowchemy (https://wowchemy.com)</generator><language>en-us</language><lastBuildDate>Thu, 14 Mar 2024 10:08:12 +0800</lastBuildDate>
+    <image>
+      <url>/media/icon_hue03491371183284312b8b116a73ae5ab_79511_512x512_fill_lanczos_center_3.png</url>
+      <title>产业链</title>
+      <link>/tag/%E4%BA%A7%E4%B8%9A%E9%93%BE/</link>
+    </image>
+    
+    <item>
+      <title>商业分析领域的需求和痛点分析</title>
+      <link>/post/bigmodel-business-analysis/</link>
+      <pubDate>Thu, 14 Mar 2024 10:08:12 +0800</pubDate>
+      <guid>/post/bigmodel-business-analysis/</guid>
+      <description>&lt;h2 id=&#34;前言&#34;&gt;前言&lt;/h2&gt;
+&lt;p&gt;市场竞争是激烈并且通常是残酷的，如何定义一款产品？如何研判产品是否有市场、市场有多大？回答上述问题都需要数据作为依据，而商业分析就是要从大数据中归纳总结得出数据供决策者参考。&lt;/p&gt;
+&lt;p&gt;具体需要商业数据分析的决策场景包括：市场需求与趋势研判、供应链优化、物流管理，而这些场景中都存在一些典型的、通用的痛点。&lt;/p&gt;
+&lt;h3 id=&#34;典型痛点&#34;&gt;典型痛点&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;数据收集、处理效率不足&lt;/p&gt;
+&lt;p&gt;传统商业分析需要先进行数据收集和准备过程，其中多数据源的数据需要整合、清洗和转换。这个过程通常是耗时耗力的，尤其是对于一些没有专业技术团队支撑市场分析的组织而言，很多流程偏向人工进行或者寻找咨询机构，价格昂贵。并且在没有专业技术团队支撑的情况下，收集数据的实时性可能也不能让人满意，信息的滞后性对于发展速度快的行业来说参考价值可能会较弱。。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;信息提取困难&lt;/p&gt;
+&lt;p&gt;大数据环境下冗余数据也多，如何从纷繁的数据中提取出对于业务决策有重要价值的信息往往需要对数据进行多维度分析，比如采用多种可视化方法分析。如何选择可视化方式能够最好地呈现数据中隐含的信息价值，往往需要多轮迭代碰撞，成本较高。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;对市场动态的快速响应&lt;/p&gt;
+&lt;p&gt;信息快速传播的时代，市场需求和趋势变化周期可能很短，企业需要时刻关注市场需求和趋势变化以便分析市场趋势、行业竞争、产品定位、客户需求等关键信息，从而制定商业决策和行动计划。&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;需求拆分&#34;&gt;需求拆分&lt;/h2&gt;
+&lt;h3 id=&#34;数据需求&#34;&gt;数据需求&lt;/h3&gt;
+&lt;p&gt;就纯粹数据需求而言：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;针对实体数据，需要企业、机构、投资者、人才/专家等实体的画像数据及其相关联的活动、事件数据。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;针对市场动态，重点在于政策、招投标、投融资事件、行业研报、产业链结构，其中不少事件类信息来自新闻，产业链结构需要专家知识根据产业关系定义图谱，以支撑供应商溯源、产业风险分析、供应链优化等场景应用。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;针对技术动态，重点在于专利、论文、技术报告、新闻等&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;考虑数据底座需求：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;数据采集&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;数据存储&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;数据搜索（索引、排序）&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;数据加工（算法：分类、自动化标注）&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;数据报表&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;数据标注工具&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&amp;hellip;&amp;hellip;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;人才需求&#34;&gt;人才需求&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;技术型&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;市场型&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;战略分析师&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;金融分析师&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&amp;hellip;&amp;hellip;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;大模型如何解决商业分析中的问题&#34;&gt;大模型如何解决商业分析中的问题&lt;/h3&gt;
+&lt;p&gt;&lt;strong&gt;提高数据获取、处理、可视化的效率，从而提升决策效率和质量&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;自然语言转SQL，快捷地从数据库、数据仓库中提取所关心的数据。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;辅助生成数据可视化结果，帮助团队理解数据，进行市场预测。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;对海量数据、信息进行总结提炼，帮助团队对市场整体进行分析，了解整体趋势、市场变化、竞对产品及其特征、消费者偏好趋势、热门产品特点等。&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;基于大模型的基础能力，分析师可能可以通过如下的交互方式进行商业分析：&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;user: 展示xx商品销售数据最大增长亮点的产品品类和地区，最适合的可视化方式是什么？
+
+
+
+user: 以下为xxx时期的xxx数据，编写代码以热力图和地图的形式展示数据
+
+
+
+user: 公司去年销量最好的产品是xxx，请分析xxx产品在xxxxxx市场的整体销售趋势和市场变化、竞争对手产品和优缺点、消费者需求变化、并预测下季度可能受欢迎的产品特点，给出你的依据。
+&lt;/code&gt;&lt;/pre&gt;&lt;h2 id=&#34;市面上bi工具&#34;&gt;市面上BI工具&lt;/h2&gt;
+&lt;h3 id=&#34;产业分析&#34;&gt;产业分析&lt;/h3&gt;
+&lt;p&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure  &gt;
+  &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img alt=&#34;&#34; srcset=&#34;
+               /post/bigmodel-business-analysis/images/market/lingxidata-industry-graph_hu551c35cc5b3c44f4315d258b13b6d889_524991_fab1f981acf0de55ed9f2b003771b94b.webp 400w,
+               /post/bigmodel-business-analysis/images/market/lingxidata-industry-graph_hu551c35cc5b3c44f4315d258b13b6d889_524991_e240de830c82bbdafb1e09ca9c9d13a2.webp 760w,
+               /post/bigmodel-business-analysis/images/market/lingxidata-industry-graph_hu551c35cc5b3c44f4315d258b13b6d889_524991_1200x1200_fit_q75_h2_lanczos_3.webp 1200w&#34;
+               src=&#34;/post/bigmodel-business-analysis/images/market/lingxidata-industry-graph_hu551c35cc5b3c44f4315d258b13b6d889_524991_fab1f981acf0de55ed9f2b003771b94b.webp&#34;
+               width=&#34;760&#34;
+               height=&#34;498&#34;
+               loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+  &lt;/div&gt;&lt;/figure&gt;
+&lt;/p&gt;
+&lt;p&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure  &gt;
+  &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img alt=&#34;&#34; srcset=&#34;
+               /post/bigmodel-business-analysis/images/market/lingxidata-industry-graph-AI_hu4944bb4a3313fa4b8082a47190073d6b_660018_373e917c9d38a52298e7a1f6a51507b7.webp 400w,
+               /post/bigmodel-business-analysis/images/market/lingxidata-industry-graph-AI_hu4944bb4a3313fa4b8082a47190073d6b_660018_d92d03d05a90d2426b13c0b6fb95eb44.webp 760w,
+               /post/bigmodel-business-analysis/images/market/lingxidata-industry-graph-AI_hu4944bb4a3313fa4b8082a47190073d6b_660018_1200x1200_fit_q75_h2_lanczos_3.webp 1200w&#34;
+               src=&#34;/post/bigmodel-business-analysis/images/market/lingxidata-industry-graph-AI_hu4944bb4a3313fa4b8082a47190073d6b_660018_373e917c9d38a52298e7a1f6a51507b7.webp&#34;
+               width=&#34;760&#34;
+               height=&#34;517&#34;
+               loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+  &lt;/div&gt;&lt;/figure&gt;
+&lt;/p&gt;
+&lt;h3 id=&#34;企业画像&#34;&gt;企业画像&lt;/h3&gt;
+&lt;p&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure  &gt;
+  &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img alt=&#34;&#34; srcset=&#34;
+               /post/bigmodel-business-analysis/images/market/lingxidata-icompany-graph_hu5c1fdd21aa2e7ba694bec317821cc8e9_534720_5658b1c45942a02d98c4a8d79fdea6e1.webp 400w,
+               /post/bigmodel-business-analysis/images/market/lingxidata-icompany-graph_hu5c1fdd21aa2e7ba694bec317821cc8e9_534720_129a9ad06322c96fcbbad7ca0e9bfeec.webp 760w,
+               /post/bigmodel-business-analysis/images/market/lingxidata-icompany-graph_hu5c1fdd21aa2e7ba694bec317821cc8e9_534720_1200x1200_fit_q75_h2_lanczos_3.webp 1200w&#34;
+               src=&#34;/post/bigmodel-business-analysis/images/market/lingxidata-icompany-graph_hu5c1fdd21aa2e7ba694bec317821cc8e9_534720_5658b1c45942a02d98c4a8d79fdea6e1.webp&#34;
+               width=&#34;760&#34;
+               height=&#34;450&#34;
+               loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+  &lt;/div&gt;&lt;/figure&gt;
+&lt;/p&gt;
+&lt;p&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure  &gt;
+  &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img alt=&#34;&#34; srcset=&#34;
+               /post/bigmodel-business-analysis/images/market/lingxidata-icompany-graph-patent_hu12757d991581e3446be578006eb16be4_495753_5ac91eed9b9171fb2609adbfaec99217.webp 400w,
+               /post/bigmodel-business-analysis/images/market/lingxidata-icompany-graph-patent_hu12757d991581e3446be578006eb16be4_495753_516c9433d95d3e765e60ca8a76e5148b.webp 760w,
+               /post/bigmodel-business-analysis/images/market/lingxidata-icompany-graph-patent_hu12757d991581e3446be578006eb16be4_495753_1200x1200_fit_q75_h2_lanczos_3.webp 1200w&#34;
+               src=&#34;/post/bigmodel-business-analysis/images/market/lingxidata-icompany-graph-patent_hu12757d991581e3446be578006eb16be4_495753_5ac91eed9b9171fb2609adbfaec99217.webp&#34;
+               width=&#34;760&#34;
+               height=&#34;465&#34;
+               loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+  &lt;/div&gt;&lt;/figure&gt;
+&lt;/p&gt;
+&lt;h2 id=&#34;相关公司组织结构&#34;&gt;相关公司/组织结构&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;企知道-科创空间&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure  &gt;
+  &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img alt=&#34;&#34; srcset=&#34;
+               /post/bigmodel-business-analysis/images/market/qizhidao_hua15e8492d5fff38c903f7a6181de03f7_114563_5efe38a9bbb873a2b7c09fcd61b94cf0.webp 400w,
+               /post/bigmodel-business-analysis/images/market/qizhidao_hua15e8492d5fff38c903f7a6181de03f7_114563_2f089797e590a2a57e50eb9f25ece7e0.webp 760w,
+               /post/bigmodel-business-analysis/images/market/qizhidao_hua15e8492d5fff38c903f7a6181de03f7_114563_1200x1200_fit_q75_h2_lanczos_3.webp 1200w&#34;
+               src=&#34;/post/bigmodel-business-analysis/images/market/qizhidao_hua15e8492d5fff38c903f7a6181de03f7_114563_5efe38a9bbb873a2b7c09fcd61b94cf0.webp&#34;
+               width=&#34;760&#34;
+               height=&#34;501&#34;
+               loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+  &lt;/div&gt;&lt;/figure&gt;
+&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;AMiner-学术知识图谱&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;中国科学院-知识产权与科技成果转化网&lt;/p&gt;
+&lt;p&gt;中国科学院-文献情报中心/知识服务平台&lt;/p&gt;
+&lt;p&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure  &gt;
+  &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img alt=&#34;&#34; srcset=&#34;
+               /post/bigmodel-business-analysis/images/market/_hu5d422e1411b0081f4bbee295e90de9a9_1968923_6ab30ebc5dab4a018bd4bf6c5badaf29.webp 400w,
+               /post/bigmodel-business-analysis/images/market/_hu5d422e1411b0081f4bbee295e90de9a9_1968923_ff75317b080c501d24a92b01c1dd9274.webp 760w,
+               /post/bigmodel-business-analysis/images/market/_hu5d422e1411b0081f4bbee295e90de9a9_1968923_cde0d6330e985392c147349b5028764c.webp 1200w&#34;
+               src=&#34;/post/bigmodel-business-analysis/images/market/_hu5d422e1411b0081f4bbee295e90de9a9_1968923_6ab30ebc5dab4a018bd4bf6c5badaf29.webp&#34;
+               width=&#34;760&#34;
+               height=&#34;481&#34;
+               loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+  &lt;/div&gt;&lt;/figure&gt;
+&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;    &lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;文因互联&lt;/p&gt;
+&lt;p&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure  &gt;
+  &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img alt=&#34;&#34; srcset=&#34;
+               /post/bigmodel-business-analysis/images/market/memory_connected_hubd221428fa7ded5e1ac55303e0c71ca3_1515477_1ab91b444174b9f60d1267648ba92943.webp 400w,
+               /post/bigmodel-business-analysis/images/market/memory_connected_hubd221428fa7ded5e1ac55303e0c71ca3_1515477_cdbe9cbd59bfe9102f48119aff2afe8a.webp 760w,
+               /post/bigmodel-business-analysis/images/market/memory_connected_hubd221428fa7ded5e1ac55303e0c71ca3_1515477_1200x1200_fit_q75_h2_lanczos_3.webp 1200w&#34;
+               src=&#34;/post/bigmodel-business-analysis/images/market/memory_connected_hubd221428fa7ded5e1ac55303e0c71ca3_1515477_1ab91b444174b9f60d1267648ba92943.webp&#34;
+               width=&#34;760&#34;
+               height=&#34;345&#34;
+               loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+  &lt;/div&gt;&lt;/figure&gt;
+&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;灵犀实业-&lt;a href=&#34;http://www.lingxidata.cn/#/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;灵犀超链&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure  &gt;
+  &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img alt=&#34;&#34; srcset=&#34;
+               /post/bigmodel-business-analysis/images/market/lingxidata-head_hud36e518ed6e0db0a953927cd28c08caf_850188_cec7642e1fd679d44cff3f12d7c1c297.webp 400w,
+               /post/bigmodel-business-analysis/images/market/lingxidata-head_hud36e518ed6e0db0a953927cd28c08caf_850188_096f04473f0bb0acc782b49d19563435.webp 760w,
+               /post/bigmodel-business-analysis/images/market/lingxidata-head_hud36e518ed6e0db0a953927cd28c08caf_850188_1200x1200_fit_q75_h2_lanczos_3.webp 1200w&#34;
+               src=&#34;/post/bigmodel-business-analysis/images/market/lingxidata-head_hud36e518ed6e0db0a953927cd28c08caf_850188_cec7642e1fd679d44cff3f12d7c1c297.webp&#34;
+               width=&#34;760&#34;
+               height=&#34;480&#34;
+               loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+  &lt;/div&gt;&lt;/figure&gt;
+&lt;/p&gt;
+&lt;p&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure  &gt;
+  &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img alt=&#34;&#34; srcset=&#34;
+               /post/bigmodel-business-analysis/images/market/lingxidata_hube0818b8ebc011792cb5ba061673afb1_945663_43485bac09c75cebef206ce415e440b1.webp 400w,
+               /post/bigmodel-business-analysis/images/market/lingxidata_hube0818b8ebc011792cb5ba061673afb1_945663_d9043ee3010208c46624ab7c390d82f2.webp 760w,
+               /post/bigmodel-business-analysis/images/market/lingxidata_hube0818b8ebc011792cb5ba061673afb1_945663_1200x1200_fit_q75_h2_lanczos_3.webp 1200w&#34;
+               src=&#34;/post/bigmodel-business-analysis/images/market/lingxidata_hube0818b8ebc011792cb5ba061673afb1_945663_43485bac09c75cebef206ce415e440b1.webp&#34;
+               width=&#34;760&#34;
+               height=&#34;495&#34;
+               loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+  &lt;/div&gt;&lt;/figure&gt;
+&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;素问智能&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;相关专利&#34;&gt;相关专利&lt;/h2&gt;
+&lt;h3 id=&#34;产业链图谱绘制相关&#34;&gt;产业链图谱绘制相关&lt;/h3&gt;
+&lt;p&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure  &gt;
+  &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img alt=&#34;&#34; srcset=&#34;
+               /post/bigmodel-business-analysis/images/market/patent/industry-graph-construction_hu333b09b91b02d9b6a793e3b2309587e5_836991_4a8b68d1ebb64c6c80b84e47e54b6a56.webp 400w,
+               /post/bigmodel-business-analysis/images/market/patent/industry-graph-construction_hu333b09b91b02d9b6a793e3b2309587e5_836991_e2de7f88630f08aededeced4a66efa01.webp 760w,
+               /post/bigmodel-business-analysis/images/market/patent/industry-graph-construction_hu333b09b91b02d9b6a793e3b2309587e5_836991_1200x1200_fit_q75_h2_lanczos_3.webp 1200w&#34;
+               src=&#34;/post/bigmodel-business-analysis/images/market/patent/industry-graph-construction_hu333b09b91b02d9b6a793e3b2309587e5_836991_4a8b68d1ebb64c6c80b84e47e54b6a56.webp&#34;
+               width=&#34;760&#34;
+               height=&#34;445&#34;
+               loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+  &lt;/div&gt;&lt;/figure&gt;
+&lt;/p&gt;
+&lt;h5 id=&#34;一种产业链的自主绘制管理方法及装置httpspatentsgooglecompatentcn112347752bzh&#34;&gt;&lt;a href=&#34;https://patents.google.com/patent/CN112347752B/zh&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;一种产业链的自主绘制管理方法及装置&lt;/a&gt;&lt;/h5&gt;
+&lt;h3 id=&#34;企业画像构建相关&#34;&gt;企业画像构建相关&lt;/h3&gt;
+&lt;h5 id=&#34;企业简称生成方法及相关装置&#34;&gt;企业简称生成方法及相关装置&lt;/h5&gt;
+&lt;p&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure  &gt;
+  &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img alt=&#34;&#34; srcset=&#34;
+               /post/bigmodel-business-analysis/images/market/patent/company-short-word_hubc3f044a3292663ffe0962d2c5d2a2fd_510033_acd732030fcdd42a56b9b1ad0fa366a3.webp 400w,
+               /post/bigmodel-business-analysis/images/market/patent/company-short-word_hubc3f044a3292663ffe0962d2c5d2a2fd_510033_3de46b988136500b9a4aca4dceaf753e.webp 760w,
+               /post/bigmodel-business-analysis/images/market/patent/company-short-word_hubc3f044a3292663ffe0962d2c5d2a2fd_510033_1200x1200_fit_q75_h2_lanczos_3.webp 1200w&#34;
+               src=&#34;/post/bigmodel-business-analysis/images/market/patent/company-short-word_hubc3f044a3292663ffe0962d2c5d2a2fd_510033_acd732030fcdd42a56b9b1ad0fa366a3.webp&#34;
+               width=&#34;760&#34;
+               height=&#34;465&#34;
+               loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+  &lt;/div&gt;&lt;/figure&gt;
+&lt;/p&gt;
+&lt;p&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure  &gt;
+  &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img alt=&#34;&#34; srcset=&#34;
+               /post/bigmodel-business-analysis/images/market/patent/word-cloud_huf15159db086f32fa391faa017f5926c6_336666_a04da48276e9e533dddd46e7074a810d.webp 400w,
+               /post/bigmodel-business-analysis/images/market/patent/word-cloud_huf15159db086f32fa391faa017f5926c6_336666_6fdb323a36e6c026917c242ece1f3100.webp 760w,
+               /post/bigmodel-business-analysis/images/market/patent/word-cloud_huf15159db086f32fa391faa017f5926c6_336666_1200x1200_fit_q75_h2_lanczos_3.webp 1200w&#34;
+               src=&#34;/post/bigmodel-business-analysis/images/market/patent/word-cloud_huf15159db086f32fa391faa017f5926c6_336666_a04da48276e9e533dddd46e7074a810d.webp&#34;
+               width=&#34;760&#34;
+               height=&#34;298&#34;
+               loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+  &lt;/div&gt;&lt;/figure&gt;
+&lt;/p&gt;
+&lt;h5 id=&#34;企业简称提取方法装置设备及介质-cn115481631a&#34;&gt;企业简称提取方法、装置、设备及介质-CN115481631A&lt;/h5&gt;
+&lt;p&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure  &gt;
+  &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img alt=&#34;&#34; srcset=&#34;
+               /post/bigmodel-business-analysis/images/market/patent/company-short-word-CN115481631A_huaa52167b1cf68524dd304d7a36bb9cad_612934_86cead5e917bff8e94f73d4f9f479bbe.webp 400w,
+               /post/bigmodel-business-analysis/images/market/patent/company-short-word-CN115481631A_huaa52167b1cf68524dd304d7a36bb9cad_612934_e84799d3c16408732bd89571a3b3c572.webp 760w,
+               /post/bigmodel-business-analysis/images/market/patent/company-short-word-CN115481631A_huaa52167b1cf68524dd304d7a36bb9cad_612934_1200x1200_fit_q75_h2_lanczos_3.webp 1200w&#34;
+               src=&#34;/post/bigmodel-business-analysis/images/market/patent/company-short-word-CN115481631A_huaa52167b1cf68524dd304d7a36bb9cad_612934_86cead5e917bff8e94f73d4f9f479bbe.webp&#34;
+               width=&#34;760&#34;
+               height=&#34;447&#34;
+               loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+  &lt;/div&gt;&lt;/figure&gt;
+&lt;/p&gt;
+&lt;h5 id=&#34;企业实体的识别方法装置计算机设备及存储介质-cn108460014a&#34;&gt;企业实体的识别方法、装置、计算机设备及存储介质-CN108460014A&lt;/h5&gt;
+&lt;p&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure  &gt;
+  &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img alt=&#34;&#34; srcset=&#34;
+               /post/bigmodel-business-analysis/images/market/patent/company-entity-recognition_hu1e5e1ec4e664e5f7fcf6d4b4c033867a_356971_8bae0d75d4034d54eab0474406b77221.webp 400w,
+               /post/bigmodel-business-analysis/images/market/patent/company-entity-recognition_hu1e5e1ec4e664e5f7fcf6d4b4c033867a_356971_c9c7b6bda33b72b6918a424280f3b7f8.webp 760w,
+               /post/bigmodel-business-analysis/images/market/patent/company-entity-recognition_hu1e5e1ec4e664e5f7fcf6d4b4c033867a_356971_1200x1200_fit_q75_h2_lanczos_3.webp 1200w&#34;
+               src=&#34;/post/bigmodel-business-analysis/images/market/patent/company-entity-recognition_hu1e5e1ec4e664e5f7fcf6d4b4c033867a_356971_8bae0d75d4034d54eab0474406b77221.webp&#34;
+               width=&#34;760&#34;
+               height=&#34;326&#34;
+               loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+  &lt;/div&gt;&lt;/figure&gt;
+&lt;/p&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>
