@@ -781,7 +781,7 @@
   
   <span class="middot-divider"></span>
   <span class="article-reading-time">
-    2 min read
+    3 min read
   </span>
   
 
@@ -1076,6 +1076,7 @@
 <ul>
 <li>
 <p><a href="https://xinghuo.xfyun.cn" target="_blank" rel="noopener">讯飞星火</a></p>
+<p><a href="https://www.xfyun.cn/doc/spark/Web.html" target="_blank" rel="noopener">星火认知大模型Web API文档 | 讯飞开放平台文档中心</a></p>
 </li>
 <li>
 <p>智谱AI</p>
@@ -1107,8 +1108,130 @@
 </li>
 </ul>
 <p>以下示例均基于Python</p>
+<h3 id="星火大模型">星火大模型</h3>
+<p>官方提供了简单的demo脚本，可自行稍加改造封装成一个组件。</p>
+<pre tabindex="0"><code>输入： 你是一个专业导游，对惠州罗浮山非常熟悉，请给出罗浮山3日游攻略，大于500字小于1000字
+</code></pre><p>星火大模型V2.0</p>
+<p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<figure  >
+  <div class="d-flex justify-content-center">
+    <div class="w-100" ><img alt="" srcset="
+               /post/bigmodel-api-usage-notes/images/travel/huizhou-luofushan_hu2c38aa1f07a4df61eeca4174cd4422f1_434566_aaad34a5636d9948fffa18150377f4da.webp 400w,
+               /post/bigmodel-api-usage-notes/images/travel/huizhou-luofushan_hu2c38aa1f07a4df61eeca4174cd4422f1_434566_6ca9c28cc60db305354095c04632e025.webp 760w,
+               /post/bigmodel-api-usage-notes/images/travel/huizhou-luofushan_hu2c38aa1f07a4df61eeca4174cd4422f1_434566_1200x1200_fit_q75_h2_lanczos_3.webp 1200w"
+               src="/post/bigmodel-api-usage-notes/images/travel/huizhou-luofushan_hu2c38aa1f07a4df61eeca4174cd4422f1_434566_aaad34a5636d9948fffa18150377f4da.webp"
+               width="760"
+               height="500"
+               loading="lazy" data-zoomable /></div>
+  </div></figure>
+</p>
+<p>可以看到，星火大模型V2在回答上述问题时出现了事实错误，其介绍的“罗浮宫”并不存在。</p>
 <h3 id="智谱ai">智谱AI</h3>
 <pre tabindex="0"><code>pip install zhipuai
+</code></pre><p>用户输入：</p>
+<pre tabindex="0"><code>如何学习Spark，请给出学习计划
+</code></pre><p>GLM4:</p>
+<p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<figure  >
+  <div class="d-flex justify-content-center">
+    <div class="w-100" ><img alt="" srcset="
+               /post/bigmodel-api-usage-notes/images/api/demo/glm4_hu666d697c2e6c9ba51d007da1667a5471_160749_5f08d0c327a5367738f2af733813fe69.webp 400w,
+               /post/bigmodel-api-usage-notes/images/api/demo/glm4_hu666d697c2e6c9ba51d007da1667a5471_160749_b25a1ae981025d638a9aacbf921d17ac.webp 760w,
+               /post/bigmodel-api-usage-notes/images/api/demo/glm4_hu666d697c2e6c9ba51d007da1667a5471_160749_1200x1200_fit_q75_h2_lanczos_3.webp 1200w"
+               src="/post/bigmodel-api-usage-notes/images/api/demo/glm4_hu666d697c2e6c9ba51d007da1667a5471_160749_5f08d0c327a5367738f2af733813fe69.webp"
+               width="760"
+               height="247"
+               loading="lazy" data-zoomable /></div>
+  </div></figure>
+</p>
+<pre tabindex="0"><code>
+============================== 1 passed in 22.79s ==============================
+PASSED                               [100%]ChatResponse(code=1, message=学习Spark涉及多个阶段，以下是一个详细的学习计划，旨在帮助您从基础到高级逐步掌握Spark。
+
+### 阶段一：基础知识准备
+1. **编程语言基础**（1-2周）
+   - 学习Scala和Java基础，特别是Scala的特质（trait）、函数式编程、泛型等。
+   - 对于Java，关注多线程、网络编程（Netty）、远程过程调用（RPC）、类加载器（ClassLoader）等。
+
+2. **大数据基础**（1周）
+   - 了解Hadoop生态系统，特别是HDFS和MapReduce的工作原理。
+   - 学习数据存储和数据处理的基本概念。
+
+### 阶段二：Spark基础入门
+1. **Spark框架理解**（1周）
+   - 理解Spark是什么，以及它的应用场景，如批处理、流计算、图计算等。
+   - 了解Spark与Hadoop的区别及Spark的优势。
+
+2. **API使用**（2周）
+   - 学习RDD（弹性分布式数据集）的基础操作，包括transformation和action。
+   - 掌握SparkSession的创建及使用，学习DataFrame和Dataset API。
+
+3. **运行模式**（1周）
+   - 熟悉Spark的本地运行模式，Standalone集群模式，以及Spark on Yarn的部署和运行。
+
+### 阶段三：深入理解Spark Core
+1. **任务调度与执行**（2周）
+   - 学习Spark的任务提交过程、任务调度和执行原理。
+   - 理解宽依赖和窄依赖，以及lineage机制。
+
+2. **性能调优**（2周）
+   - 学习Shuffle操作及其优化。
+   - 掌握Spark中的缓存机制，理解何时以及如何使用缓存。
+
+### 阶段四：高级特性与优化
+1. **Spark SQL**（2周）
+   - 学习Spark SQL的使用，包括Hive兼容性、DataFrame和Dataset的转换。
+   - 探索Spark SQL的优化策略，如查询优化、执行计划等。
+
+2. **Spark Streaming**（2周）
+   - 理解Spark Streaming的基本概念和架构。
+   - 学习如何构建实时数据处理应用，包括窗口操作、状态管理。
+
+3. **其他模块**（1-2周）
+   - 学习图计算（GraphX）和机器学习库（MLlib）的基础。
+   - 了解Spark的扩展库，如Structured Streaming和PySpark的新特性。
+
+### 阶段五：实战与源码阅读
+1. **实战项目**（3-4周）
+   - 完成一个或多个Spark项目，实践之前学习的理论知识。
+
+2. **源码阅读**（4周以上）
+   - 选择Spark的部分模块进行源码阅读，理解其内部实现机制。
+
+### 阶段六：持续学习与社区参与
+- 跟进Spark的最新版本更新和社区动态。
+- 参与社区讨论，尝试解决GitHub上的问题。
+- 持续学习，实践是检验真理的唯一标准。
 </code></pre><h3 id="moonshot-ai">Moonshot AI</h3>
 <p>参考<a href="https://platform.moonshot.cn/docs/api-reference" target="_blank" rel="noopener">Moonshot AI - 开放平台</a>，API调用非常简单，支持非流式请求和流式请求。</p>
 <p>可以简单复用openai库.</p>
