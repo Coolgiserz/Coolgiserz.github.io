@@ -863,6 +863,10 @@ user: 公司去年销量最好的产品是xxx，请分析xxx产品在xxxxxx市�
 &lt;p&gt;&lt;a href=&#34;https://lingyiwanwu.com&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;零一万物&lt;/a&gt;&lt;/p&gt;
 &lt;/li&gt;
 &lt;li&gt;
+&lt;p&gt;盘古大模型&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;https://www.huaweicloud.com/product/pangu.html&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;盘古大模型_panguLM_大模型_华为云&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
 &lt;p&gt;&amp;hellip;&amp;hellip;&lt;/p&gt;
 &lt;/li&gt;
 &lt;/ul&gt;
@@ -933,17 +937,16 @@ user: 公司去年销量最好的产品是xxx，请分析xxx产品在xxxxxx市�
 &lt;figure  &gt;
   &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
     &lt;div class=&#34;w-100&#34; &gt;&lt;img alt=&#34;&#34; srcset=&#34;
-               /post/bigmodel-api-usage-notes/images/api/demo/glm4_hu666d697c2e6c9ba51d007da1667a5471_160749_5f08d0c327a5367738f2af733813fe69.webp 400w,
+               /post/bigmodel-api-usage-notes/images/api/demo/glm4_hu666d697c2e6c9ba51d007da1667a5471_160749_bbd5be4ba3a61e4dfc2eb8acc969233f.webp 400w,
                /post/bigmodel-api-usage-notes/images/api/demo/glm4_hu666d697c2e6c9ba51d007da1667a5471_160749_b25a1ae981025d638a9aacbf921d17ac.webp 760w,
                /post/bigmodel-api-usage-notes/images/api/demo/glm4_hu666d697c2e6c9ba51d007da1667a5471_160749_1200x1200_fit_q75_h2_lanczos_3.webp 1200w&#34;
-               src=&#34;/post/bigmodel-api-usage-notes/images/api/demo/glm4_hu666d697c2e6c9ba51d007da1667a5471_160749_5f08d0c327a5367738f2af733813fe69.webp&#34;
+               src=&#34;/post/bigmodel-api-usage-notes/images/api/demo/glm4_hu666d697c2e6c9ba51d007da1667a5471_160749_bbd5be4ba3a61e4dfc2eb8acc969233f.webp&#34;
                width=&#34;760&#34;
                height=&#34;247&#34;
                loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
   &lt;/div&gt;&lt;/figure&gt;
 &lt;/p&gt;
-&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;
-============================== 1 passed in 22.79s ==============================
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;============================== 1 passed in 22.79s ==============================
 PASSED                               [100%]ChatResponse(code=1, message=学习Spark涉及多个阶段，以下是一个详细的学习计划，旨在帮助您从基础到高级逐步掌握Spark。
 
 ### 阶段一：基础知识准备

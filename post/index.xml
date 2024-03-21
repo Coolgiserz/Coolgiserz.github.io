@@ -5,7 +5,7 @@
     <link>/post/</link>
       <atom:link href="/post/index.xml" rel="self" type="application/rss+xml" />
     <description>博客</description>
-    <generator>Wowchemy (https://wowchemy.com)</generator><language>en-us</language><lastBuildDate>Mon, 18 Mar 2024 21:22:46 +0800</lastBuildDate>
+    <generator>Wowchemy (https://wowchemy.com)</generator><language>en-us</language><lastBuildDate>Thu, 21 Mar 2024 20:59:33 +0800</lastBuildDate>
     <image>
       <url>/media/icon_hue03491371183284312b8b116a73ae5ab_79511_512x512_fill_lanczos_center_3.png</url>
       <title>博客</title>
@@ -13,14 +13,23 @@
     </image>
     
     <item>
-      <title>Text2sql技术工具调研</title>
+      <title>Celery Task Queue Usage</title>
+      <link>/post/celery-task-queue-usage/</link>
+      <pubDate>Thu, 21 Mar 2024 20:59:33 +0800</pubDate>
+      <guid>/post/celery-task-queue-usage/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Text2sql技术工具调研与框架设计</title>
       <link>/post/text2sql-investigation/</link>
-      <pubDate>Mon, 18 Mar 2024 21:22:46 +0800</pubDate>
+      <pubDate>Sat, 16 Mar 2024 21:22:46 +0800</pubDate>
       <guid>/post/text2sql-investigation/</guid>
       <description>&lt;h2 id=&#34;工具&#34;&gt;工具&lt;/h2&gt;
 &lt;p&gt;&lt;a href=&#34;https://zhuanlan.zhihu.com/p/642719916&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;DB-GPT-Hub：基于LLM的Text-to-SQL解析框架&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;&lt;a href=&#34;https://gitee.com/Samuelcoding/NL2SQL&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;NL2SQL: Text2SQL 语义解析数据集、解决方案、paper资源整合项目&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;&lt;a href=&#34;https://github.com/BeachWang/DAIL-SQL&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;https://github.com/BeachWang/DAIL-SQL&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;https://www.ai2sql.io/text2sql&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Text2SQL: A Powerful Tool for Querying Databases with Natural Language&lt;/a&gt;&lt;/p&gt;
 &lt;h2 id=&#34;功能需求分类&#34;&gt;功能需求分类&lt;/h2&gt;
 &lt;h3 id=&#34;基本需求&#34;&gt;基本需求&lt;/h3&gt;
 &lt;ul&gt;
@@ -86,13 +95,60 @@
                loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
   &lt;/div&gt;&lt;/figure&gt;
 &lt;/p&gt;
+&lt;h2 id=&#34;原理&#34;&gt;原理&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;语义解析：将自然语言输入解析成结构化数据，表示查询中涉及的概念及概念间关系&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;实体识别：表名、列名、值&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;语义匹配：将自然语言中识别出的实体与数据库中的实体进行匹配&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;查询生成：生成对应的SQL语句&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;语义解析&#34;&gt;语义解析&lt;/h3&gt;
+&lt;p&gt;语义解析时，除了从用户输入中对概念实体进行识别，可能还需要精确数据（如用户希望查询或查询条件需要精细的数据：xxx名称、坐标地点、身份证号码等）查询，精确数据不一定在大模型训练数据集中存在，所以可能需要接入私有数据库或借助第三方数据API进行精细数据获取，其中会涉及用户意图细节补全。&lt;/p&gt;
 &lt;h2 id=&#34;实现思路&#34;&gt;实现思路&lt;/h2&gt;
 &lt;p&gt;第一步：简单考虑，针对给定的表结构提示，针对单表进行text2sql查询&lt;/p&gt;
 &lt;p&gt;第二步：给定数据库，针对数据库内表结构进行text2sql&lt;/p&gt;
 &lt;p&gt;第三步：给定数据库连接（只读），模型自动学习数据库表结构，生成对应prompt，进行text2SQL&lt;/p&gt;
 &lt;p&gt;第四步：指定多个数据源，模型需要判断查询哪些数据源，&amp;hellip;。&lt;/p&gt;
+&lt;p&gt;拓展：并行调用&lt;/p&gt;
 &lt;h2 id=&#34;代码骨架设计&#34;&gt;代码骨架设计&lt;/h2&gt;
-&lt;p&gt;TODO&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;模型（大语言模型）&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;流水线（对话循环）&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;提示模板&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;任务（text2SQL, &amp;hellip;&amp;hellip;）&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;配置&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;测试用例&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;通用工具（日志、数据库驱动、搜索引擎）&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;辅助工具&#34;&gt;辅助工具&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;搜索引擎&lt;/p&gt;
+&lt;p&gt;bing search api&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
 </description>
     </item>
     
@@ -947,6 +1003,10 @@ user: 公司去年销量最好的产品是xxx，请分析xxx产品在xxxxxx市�
 &lt;p&gt;&lt;a href=&#34;https://lingyiwanwu.com&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;零一万物&lt;/a&gt;&lt;/p&gt;
 &lt;/li&gt;
 &lt;li&gt;
+&lt;p&gt;盘古大模型&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;https://www.huaweicloud.com/product/pangu.html&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;盘古大模型_panguLM_大模型_华为云&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
 &lt;p&gt;&amp;hellip;&amp;hellip;&lt;/p&gt;
 &lt;/li&gt;
 &lt;/ul&gt;
@@ -1017,17 +1077,16 @@ user: 公司去年销量最好的产品是xxx，请分析xxx产品在xxxxxx市�
 &lt;figure  &gt;
   &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
     &lt;div class=&#34;w-100&#34; &gt;&lt;img alt=&#34;&#34; srcset=&#34;
-               /post/bigmodel-api-usage-notes/images/api/demo/glm4_hu666d697c2e6c9ba51d007da1667a5471_160749_5f08d0c327a5367738f2af733813fe69.webp 400w,
+               /post/bigmodel-api-usage-notes/images/api/demo/glm4_hu666d697c2e6c9ba51d007da1667a5471_160749_bbd5be4ba3a61e4dfc2eb8acc969233f.webp 400w,
                /post/bigmodel-api-usage-notes/images/api/demo/glm4_hu666d697c2e6c9ba51d007da1667a5471_160749_b25a1ae981025d638a9aacbf921d17ac.webp 760w,
                /post/bigmodel-api-usage-notes/images/api/demo/glm4_hu666d697c2e6c9ba51d007da1667a5471_160749_1200x1200_fit_q75_h2_lanczos_3.webp 1200w&#34;
-               src=&#34;/post/bigmodel-api-usage-notes/images/api/demo/glm4_hu666d697c2e6c9ba51d007da1667a5471_160749_5f08d0c327a5367738f2af733813fe69.webp&#34;
+               src=&#34;/post/bigmodel-api-usage-notes/images/api/demo/glm4_hu666d697c2e6c9ba51d007da1667a5471_160749_bbd5be4ba3a61e4dfc2eb8acc969233f.webp&#34;
                width=&#34;760&#34;
                height=&#34;247&#34;
                loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
   &lt;/div&gt;&lt;/figure&gt;
 &lt;/p&gt;
-&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;
-============================== 1 passed in 22.79s ==============================
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;============================== 1 passed in 22.79s ==============================
 PASSED                               [100%]ChatResponse(code=1, message=学习Spark涉及多个阶段，以下是一个详细的学习计划，旨在帮助您从基础到高级逐步掌握Spark。
 
 ### 阶段一：基础知识准备
