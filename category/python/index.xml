@@ -5,12 +5,231 @@
     <link>/category/python/</link>
       <atom:link href="/category/python/index.xml" rel="self" type="application/rss+xml" />
     <description>Python</description>
-    <generator>Wowchemy (https://wowchemy.com)</generator><language>en-us</language><lastBuildDate>Sat, 02 Sep 2023 22:05:14 +0800</lastBuildDate>
+    <generator>Wowchemy (https://wowchemy.com)</generator><language>en-us</language><lastBuildDate>Fri, 22 Mar 2024 21:01:42 +0800</lastBuildDate>
     <image>
       <url>/media/icon_hue03491371183284312b8b116a73ae5ab_79511_512x512_fill_lanczos_center_3.png</url>
       <title>Python</title>
       <link>/category/python/</link>
     </image>
+    
+    <item>
+      <title>前端低代码框架Gradio，快速构建可交互原型</title>
+      <link>/post/python-gradio-frontend-lightly/</link>
+      <pubDate>Fri, 22 Mar 2024 21:01:42 +0800</pubDate>
+      <guid>/post/python-gradio-frontend-lightly/</guid>
+      <description>&lt;h2 id=&#34;前言&#34;&gt;前言&lt;/h2&gt;
+&lt;p&gt;Gradio 是一个用于创建机器学习模型交互式界面的 Python 库。它提供了一系列的预定义组件，使得开发者可以快速地构建出美观且功能丰富的界面，而无需深入了解复杂的前端技术。&lt;/p&gt;
+&lt;p&gt;官方文档：&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;https://www.gradio.app/guides/quickstart&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Quickstart&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;https://www.gradio.app/custom-components/gallery&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Gradio Custom Components Gallery&lt;/a&gt;&lt;/p&gt;
+&lt;h2 id=&#34;示例quickstart&#34;&gt;示例（QuickStart）&lt;/h2&gt;
+&lt;h3 id=&#34;对话机器人&#34;&gt;对话机器人&lt;/h3&gt;
+&lt;p&gt;界面核心元素：文本框、按钮&lt;/p&gt;
+&lt;p&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure  &gt;
+  &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img alt=&#34;&#34; srcset=&#34;
+               /post/python-gradio-frontend-lightly/images/demo/chatbot/lean_people_hu69402b9aeea7b8a75eb649910abe2d05_475136_6a3215073a34e8dd78462c2450d1dcad.webp 400w,
+               /post/python-gradio-frontend-lightly/images/demo/chatbot/lean_people_hu69402b9aeea7b8a75eb649910abe2d05_475136_3301312eba5c372e4e2367ee9ee8f8ae.webp 760w,
+               /post/python-gradio-frontend-lightly/images/demo/chatbot/lean_people_hu69402b9aeea7b8a75eb649910abe2d05_475136_1200x1200_fit_q75_h2_lanczos_3.webp 1200w&#34;
+               src=&#34;/post/python-gradio-frontend-lightly/images/demo/chatbot/lean_people_hu69402b9aeea7b8a75eb649910abe2d05_475136_6a3215073a34e8dd78462c2450d1dcad.webp&#34;
+               width=&#34;760&#34;
+               height=&#34;381&#34;
+               loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+  &lt;/div&gt;&lt;/figure&gt;
+&lt;/p&gt;
+&lt;p&gt;实现：&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-python&#34; data-lang=&#34;python&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;# @Author: weirdgiser&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;# @Time: 2024/3/22&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;# @Function:&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;kn&#34;&gt;import&lt;/span&gt; &lt;span class=&#34;nn&#34;&gt;gradio&lt;/span&gt; &lt;span class=&#34;k&#34;&gt;as&lt;/span&gt; &lt;span class=&#34;nn&#34;&gt;gr&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;kn&#34;&gt;import&lt;/span&gt; &lt;span class=&#34;nn&#34;&gt;random&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;kn&#34;&gt;import&lt;/span&gt; &lt;span class=&#34;nn&#34;&gt;time&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;kn&#34;&gt;from&lt;/span&gt; &lt;span class=&#34;nn&#34;&gt;models.llm.glm&lt;/span&gt; &lt;span class=&#34;kn&#34;&gt;import&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;ChatGLMLanguageModel&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;kn&#34;&gt;from&lt;/span&gt; &lt;span class=&#34;nn&#34;&gt;prompts.roleplay&lt;/span&gt; &lt;span class=&#34;kn&#34;&gt;import&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;MeanPeopleRolePromptTemplate&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;kn&#34;&gt;from&lt;/span&gt; &lt;span class=&#34;nn&#34;&gt;decouple&lt;/span&gt; &lt;span class=&#34;kn&#34;&gt;import&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;config&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;model&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;ChatGLMLanguageModel&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;api_key&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;config&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;GLM_MODEL_API_KEY&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;),&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;                             &lt;span class=&#34;n&#34;&gt;prompt&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;MeanPeopleRolePromptTemplate&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;prompt_messages&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;k&#34;&gt;with&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;gr&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;Blocks&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;title&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;人工智障Plus&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;k&#34;&gt;as&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;demo&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;n&#34;&gt;chatbot&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;gr&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;Chatbot&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;()&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;n&#34;&gt;msg&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;gr&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;Textbox&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;placeholder&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;请输入你的问题&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;n&#34;&gt;clear&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;gr&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;ClearButton&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;([&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;msg&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;chatbot&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;],&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;value&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;清空&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;k&#34;&gt;def&lt;/span&gt; &lt;span class=&#34;nf&#34;&gt;respond&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;message&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;chat_history&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;):&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        &lt;span class=&#34;n&#34;&gt;resp&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;model&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;chat&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;message&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        &lt;span class=&#34;n&#34;&gt;chat_history&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;append&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;((&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;message&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;resp&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;message&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;))&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        &lt;span class=&#34;k&#34;&gt;return&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;chat_history&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;n&#34;&gt;msg&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;submit&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;respond&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;msg&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;chatbot&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;],&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;msg&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;chatbot&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;])&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;demo&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;launch&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;说明：上述代码使用了3类Gradio组件：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;Chatbot：以响应对列表的形式存储用户和机器人间整个对话历史记录。我们只需要关注机器人响应逻辑即可。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Textbox：文本框，用户在其中输入消息，通过回车键触发机器人响应&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;ClearButton：清除按钮，用于清除文本框和整个对话历史&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;参考文档：&lt;a href=&#34;https://www.gradio.app/guides/creating-a-custom-chatbot-with-blocks&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Creating A Custom Chatbot With Blocks&lt;/a&gt;&lt;/p&gt;
+&lt;h4 id=&#34;其它机器人&#34;&gt;其它机器人&lt;/h4&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;文艺青年&lt;/p&gt;
+&lt;p&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure  &gt;
+  &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img alt=&#34;&#34; srcset=&#34;
+               /post/python-gradio-frontend-lightly/images/demo/chatbot/jianghu_hu85624ac5fa4e14c1b4a48d011feaaf37_452094_d91b5d416c5d85d56225099f70299308.webp 400w,
+               /post/python-gradio-frontend-lightly/images/demo/chatbot/jianghu_hu85624ac5fa4e14c1b4a48d011feaaf37_452094_8e0c14bf2e5128e2d5b656610744c792.webp 760w,
+               /post/python-gradio-frontend-lightly/images/demo/chatbot/jianghu_hu85624ac5fa4e14c1b4a48d011feaaf37_452094_1200x1200_fit_q75_h2_lanczos_3.webp 1200w&#34;
+               src=&#34;/post/python-gradio-frontend-lightly/images/demo/chatbot/jianghu_hu85624ac5fa4e14c1b4a48d011feaaf37_452094_d91b5d416c5d85d56225099f70299308.webp&#34;
+               width=&#34;760&#34;
+               height=&#34;352&#34;
+               loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+  &lt;/div&gt;&lt;/figure&gt;
+&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;“江湖”高手&lt;/p&gt;
+&lt;p&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure  &gt;
+  &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img alt=&#34;&#34; srcset=&#34;
+               /post/python-gradio-frontend-lightly/images/demo/chatbot/jianghu1_hu955434195db7c656d3bdaaf9a52687c2_627071_f117eb1f4f8e84f4764383bf466c6e2c.webp 400w,
+               /post/python-gradio-frontend-lightly/images/demo/chatbot/jianghu1_hu955434195db7c656d3bdaaf9a52687c2_627071_311bead0a76bd687ac87a85f402ae8d0.webp 760w,
+               /post/python-gradio-frontend-lightly/images/demo/chatbot/jianghu1_hu955434195db7c656d3bdaaf9a52687c2_627071_1200x1200_fit_q75_h2_lanczos_3.webp 1200w&#34;
+               src=&#34;/post/python-gradio-frontend-lightly/images/demo/chatbot/jianghu1_hu955434195db7c656d3bdaaf9a52687c2_627071_f117eb1f4f8e84f4764383bf466c6e2c.webp&#34;
+               width=&#34;760&#34;
+               height=&#34;408&#34;
+               loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+  &lt;/div&gt;&lt;/figure&gt;
+&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;守财奴&lt;/p&gt;
+&lt;p&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure  &gt;
+  &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img alt=&#34;&#34; srcset=&#34;
+               /post/python-gradio-frontend-lightly/images/demo/chatbot/mean_people_hu4dc5c79a6505af6886c82da1b6c83e13_397518_f1e5fac37de047b89914365217f8794c.webp 400w,
+               /post/python-gradio-frontend-lightly/images/demo/chatbot/mean_people_hu4dc5c79a6505af6886c82da1b6c83e13_397518_df18a747d64b800709d6a2eb8ec7acdd.webp 760w,
+               /post/python-gradio-frontend-lightly/images/demo/chatbot/mean_people_hu4dc5c79a6505af6886c82da1b6c83e13_397518_1200x1200_fit_q75_h2_lanczos_3.webp 1200w&#34;
+               src=&#34;/post/python-gradio-frontend-lightly/images/demo/chatbot/mean_people_hu4dc5c79a6505af6886c82da1b6c83e13_397518_f1e5fac37de047b89914365217f8794c.webp&#34;
+               width=&#34;760&#34;
+               height=&#34;369&#34;
+               loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+  &lt;/div&gt;&lt;/figure&gt;
+&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;gradio组件&#34;&gt;Gradio组件&lt;/h2&gt;
+&lt;p&gt;&lt;strong&gt;Input&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;gr.Text&lt;/code&gt;：用于文本输入。&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;gr.Number&lt;/code&gt;：用于输入数字。&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;gr.Image&lt;/code&gt;：用于上传和显示图像。&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;gr.Video&lt;/code&gt;：用于上传和播放视频。&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;gr.Audio&lt;/code&gt;：用于上传和播放音频。&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;gr.Dropdown&lt;/code&gt;：下拉菜单，用于选择一个选项。&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;gr.Slider&lt;/code&gt;：滑块，用于选择一个范围内的值。&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;gr.Checkbox&lt;/code&gt;：复选框，用于开关选择。&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;gr.Date&lt;/code&gt;：日期选择器。&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;gr.Time&lt;/code&gt;：时间选择器。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;Layouts&lt;/strong&gt;：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;Row&lt;/code&gt;：水平排列子组件。&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;Column&lt;/code&gt;：垂直排列子组件。&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;Tab&lt;/code&gt;：选项卡布局，用于在不同的标签页中展示不同的组件。&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;Group&lt;/code&gt;：将子组件组合在一起，无间距。&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;Box&lt;/code&gt;：将子组件放在一个带有圆角和一些填充的框中。&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;Accordion&lt;/code&gt;：手风琴布局，可以切换显示/隐藏所包含的内容。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;Other Components&lt;/strong&gt;：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;gr.Button&lt;/code&gt;：按钮，用于触发事件。&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;gr.Markdown&lt;/code&gt;：用于渲染 Markdown 文本。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;低代码框架&#34;&gt;低代码框架&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;amis&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a href=&#34;https://aisuda.github.io/amis-editor-demo&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;https://aisuda.github.io/amis-editor-demo&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;gradio&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
     
     <item>
       <title>Expert Python Programming Notes</title>
@@ -1689,6 +1908,8 @@
                loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
   &lt;/div&gt;&lt;/figure&gt;
 &lt;/p&gt;
+&lt;h4 id=&#34;基于waitress部署&#34;&gt;基于waitress部署&lt;/h4&gt;
+&lt;p&gt;轻量级的Web服务器，纯Python编写，多平台适用。&lt;/p&gt;
 &lt;h3 id=&#34;django用户模型及拓展&#34;&gt;Django用户模型及拓展&lt;/h3&gt;
 &lt;p&gt;django.contrib.auth.models模块中包含django自带的用户模型实现，如：&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-python&#34; data-lang=&#34;python&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;k&#34;&gt;class&lt;/span&gt; &lt;span class=&#34;nc&#34;&gt;AbstractUser&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;AbstractBaseUser&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;PermissionsMixin&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;):&lt;/span&gt;

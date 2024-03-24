@@ -1,0 +1,1449 @@
+<!DOCTYPE html><html lang="en-us" >
+
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  
+  
+  
+    <meta name="generator" content="Wowchemy 5.5.0 for Hugo" />
+  
+
+  
+  
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+  
+  
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  
+
+  
+  
+  
+    
+      
+      <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Roboto+Mono&family=Roboto:wght@400;700&display=swap">
+      <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Roboto+Mono&family=Roboto:wght@400;700&display=swap" media="print" onload="this.media='all'">
+    
+  
+
+  
+  
+  
+  
+  
+    
+    
+    
+  
+  
+
+  <meta name="author" content="CoolCats" />
+
+  
+  
+  
+    
+  
+  <meta name="description" content="低代码前端" />
+
+  
+  <link rel="alternate" hreflang="en-us" href="/post/python-gradio-frontend-lightly/" />
+
+  
+  
+  
+    <meta name="theme-color" content="#1565c0" />
+  
+
+  
+  
+    
+    <script src="/js/mathjax-config.js"></script>
+  
+
+  
+
+  <link rel="stylesheet" href="/css/vendor-bundle.min.c7b8d9abd591ba2253ea42747e3ac3f5.css" media="print" onload="this.media='all'">
+
+  
+  
+  
+    
+    
+      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/academicons@1.9.1/css/academicons.min.css" integrity="sha512-W0xM4mr6dEP9nREo7Z9z+9X70wytKvMGeDsj7ps2+xg5QPrEBXC8tAW1IFnzjR6eoJ90JmCnFzerQJTLzIEHjA==" crossorigin="anonymous" media="print" onload="this.media='all'">
+    
+
+    
+    
+    
+    
+      
+      
+    
+    
+    
+
+    
+    
+    
+      
+    
+    
+      
+      
+        
+          <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@10.2.1/build/styles/github.min.css" crossorigin="anonymous" title="hl-light" media="print" onload="this.media='all'">
+          <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@10.2.1/build/styles/dracula.min.css" crossorigin="anonymous" title="hl-dark" media="print" onload="this.media='all'" disabled>
+        
+      
+    
+
+    
+    
+    
+      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.7.1/dist/leaflet.min.css" integrity="" crossorigin="anonymous" media="print" onload="this.media='all'">
+    
+
+    
+
+    
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js" integrity="" crossorigin="anonymous" async></script>
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+  
+
+  
+  
+  
+  
+  
+  <link rel="stylesheet" href="/css/wowchemy.1052fab8b7700a3dc49ee23683097d66.css" />
+
+  
+
+
+
+  
+
+
+  
+
+
+  
+
+
+  <script>
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?51ae6db546b05b91d4053193ba49123d";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+  
+  
+  
+
+  
+
+  
+
+  <link rel="icon" type="image/png" href="/media/icon_hue03491371183284312b8b116a73ae5ab_79511_32x32_fill_lanczos_center_3.png" />
+  <link rel="apple-touch-icon" type="image/png" href="/media/icon_hue03491371183284312b8b116a73ae5ab_79511_180x180_fill_lanczos_center_3.png" />
+
+  <link rel="canonical" href="/post/python-gradio-frontend-lightly/" />
+
+  
+  
+  
+  
+  
+  
+  
+  
+    
+    
+  
+  
+
+  
+  
+    
+    
+  
+  <meta property="twitter:card" content="summary" />
+  
+    <meta property="twitter:site" content="@wowchemy" />
+    <meta property="twitter:creator" content="@wowchemy" />
+  
+  <meta property="og:site_name" content="CoolCats" />
+  <meta property="og:url" content="/post/python-gradio-frontend-lightly/" />
+  <meta property="og:title" content="前端低代码框架Gradio，快速构建可交互原型 | CoolCats" />
+  <meta property="og:description" content="低代码前端" /><meta property="og:image" content="/media/icon_hue03491371183284312b8b116a73ae5ab_79511_512x512_fill_lanczos_center_3.png" />
+    <meta property="twitter:image" content="/media/icon_hue03491371183284312b8b116a73ae5ab_79511_512x512_fill_lanczos_center_3.png" /><meta property="og:locale" content="en-us" />
+  
+    
+      <meta
+        property="article:published_time"
+        content="2024-03-22T21:01:42&#43;08:00"
+      />
+    
+    <meta property="article:modified_time" content="2024-03-22T21:01:42&#43;08:00">
+  
+
+  
+
+
+    
+
+
+
+
+
+
+  
+
+
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "/post/python-gradio-frontend-lightly/"
+  },
+  "headline": "前端低代码框架Gradio，快速构建可交互原型",
+  
+  "datePublished": "2024-03-22T21:01:42+08:00",
+  "dateModified": "2024-03-22T21:01:42+08:00",
+  
+  "author": {
+    "@type": "Person",
+    "name": "CoolCats"
+  },
+  
+  "publisher": {
+    "@type": "Organization",
+    "name": "CoolCats",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "/media/icon_hue03491371183284312b8b116a73ae5ab_79511_192x192_fill_lanczos_center_3.png"
+    }
+  },
+  "description": "低代码前端"
+}
+</script>
+
+  
+
+  
+
+  
+
+  
+
+
+
+
+
+  <title>前端低代码框架Gradio，快速构建可交互原型 | CoolCats</title>
+</head>
+
+
+<body id="top" data-spy="scroll" data-offset="70" data-target="#TableOfContents" class="page-wrapper   " data-wc-page-id="6069297b1f1a69427e2a0976f39fae86" >
+
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  <script src="/js/wowchemy-init.min.2ed908358299dd7ab553faae685c746c.js"></script>
+
+  
+
+
+<aside class="search-modal" id="search">
+  <div class="container">
+    <section class="search-header">
+
+      <div class="row no-gutters justify-content-between mb-3">
+        <div class="col-6">
+          <h1>Search</h1>
+        </div>
+        <div class="col-6 col-search-close">
+          <a class="js-search" href="#" aria-label="Close"><i class="fas fa-times-circle text-muted" aria-hidden="true"></i></a>
+        </div>
+      </div>
+
+      <div id="search-box">
+        
+        <input name="q" id="search-query" placeholder="Search..." autocapitalize="off"
+        autocomplete="off" autocorrect="off" spellcheck="false" type="search" class="form-control"
+        aria-label="Search...">
+        
+      </div>
+
+      
+      
+
+      
+
+    </section>
+    <section class="section-search-results">
+
+      <div id="search-hits">
+        
+      </div>
+
+    </section>
+  </div>
+</aside>
+
+
+
+  <div class="page-header">
+    
+
+
+
+
+
+
+
+
+
+
+
+
+<header class="header--fixed">
+  <nav class="navbar navbar-expand-lg navbar-light compensate-for-scrollbar" id="navbar-main">
+    <div class="container-xl">
+
+      
+      <div class="d-none d-lg-inline-flex">
+        <a class="navbar-brand" href="/">CoolCats</a>
+      </div>
+      
+
+      
+      <button type="button" class="navbar-toggler" data-toggle="collapse"
+              data-target="#navbar-content" aria-controls="navbar-content" aria-expanded="false" aria-label="Toggle navigation">
+      <span><i class="fas fa-bars"></i></span>
+      </button>
+      
+
+      
+      <div class="navbar-brand-mobile-wrapper d-inline-flex d-lg-none">
+        <a class="navbar-brand" href="/">CoolCats</a>
+      </div>
+      
+
+      
+      
+      <div class="navbar-collapse main-menu-item collapse justify-content-start" id="navbar-content">
+
+        
+        <ul class="navbar-nav d-md-inline-flex">
+          
+
+          
+
+          
+          
+          
+
+          
+
+          
+          
+          
+          
+
+          
+            
+              
+              
+            
+            
+          
+
+          <li class="nav-item">
+            <a class="nav-link  active" href="/post"><span>博客</span></a>
+          </li>
+
+          
+          
+
+          
+
+          
+          
+          
+            
+          
+
+          
+
+          
+          
+          
+          
+
+          
+            
+              
+              
+            
+            
+          
+
+          <li class="nav-item">
+            <a class="nav-link " href="/event"><span>趣事</span></a>
+          </li>
+
+          
+          
+
+          
+
+          
+          
+          
+            
+          
+
+          
+
+          
+          
+          
+          
+
+          
+            
+              
+              
+            
+            
+          
+
+          <li class="nav-item">
+            <a class="nav-link " href="/project"><span>项目</span></a>
+          </li>
+
+          
+          
+
+          
+
+          
+          
+          
+            
+          
+
+          
+
+          
+          
+          
+          
+
+          
+            
+              
+              
+            
+            
+          
+
+          <li class="nav-item">
+            <a class="nav-link " href="/publication"><span>论文</span></a>
+          </li>
+
+          
+          
+
+          
+
+          
+          
+          
+            
+          
+
+          
+
+          
+          
+          
+          
+
+          
+            
+              
+              
+            
+            
+          
+
+          <li class="nav-item">
+            <a class="nav-link " href="/contact"><span>联系</span></a>
+          </li>
+
+          
+          
+
+          
+
+          
+          
+          
+            
+          
+
+          
+
+          
+          
+          
+          
+
+          
+            
+              
+              
+            
+            
+          
+
+          <li class="nav-item">
+            <a class="nav-link " href="/media/files/cv"><span>简历</span></a>
+          </li>
+
+          
+          
+
+        
+
+          
+        </ul>
+      </div>
+
+      <ul class="nav-icons navbar-nav flex-row ml-auto d-flex pl-md-2">
+
+        
+        
+          
+        
+
+        
+        
+        <li class="nav-item">
+          <a class="nav-link js-search" href="#" aria-label="Search"><i class="fas fa-search" aria-hidden="true"></i></a>
+        </li>
+        
+
+        
+        
+        
+        <li class="nav-item dropdown theme-dropdown">
+          <a href="#" class="nav-link" data-toggle="dropdown" aria-haspopup="true" aria-label="Display preferences">
+            <i class="fas fa-moon" aria-hidden="true"></i>
+          </a>
+          <div class="dropdown-menu">
+            <a href="#" class="dropdown-item js-set-theme-light">
+              <span>Light</span>
+            </a>
+            <a href="#" class="dropdown-item js-set-theme-dark">
+              <span>Dark</span>
+            </a>
+            <a href="#" class="dropdown-item js-set-theme-auto">
+              <span>Automatic</span>
+            </a>
+          </div>
+        </li>
+        
+
+        
+        
+
+      </ul>
+
+    </div>
+  </nav>
+</header>
+
+
+  </div>
+
+  <div class="page-body">
+    
+    
+    
+
+    <article class="article">
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+  
+  
+<div class="article-container pt-3">
+  <h1>前端低代码框架Gradio，快速构建可交互原型</h1>
+
+  
+
+  
+    
+
+
+<div class="article-metadata">
+
+  
+  
+
+  
+  <span class="article-date">
+    
+    
+      
+    
+    Mar 22, 2024
+  </span>
+  
+
+  
+
+  
+  <span class="middot-divider"></span>
+  <span class="article-reading-time">
+    1 min read
+  </span>
+  
+
+  
+  
+  
+  
+
+  
+  
+  <span class="middot-divider"></span>
+  <span class="article-categories">
+    <i class="fas fa-folder mr-1"></i><a href="/category/python/">Python</a></span>
+  
+
+</div>
+
+    
+
+
+
+
+
+  
+</div>
+
+
+
+  <div class="article-container">
+
+    <div class="article-style">
+      <h2 id="前言">前言</h2>
+<p>Gradio 是一个用于创建机器学习模型交互式界面的 Python 库。它提供了一系列的预定义组件，使得开发者可以快速地构建出美观且功能丰富的界面，而无需深入了解复杂的前端技术。</p>
+<p>官方文档：</p>
+<p><a href="https://www.gradio.app/guides/quickstart" target="_blank" rel="noopener">Quickstart</a></p>
+<p><a href="https://www.gradio.app/custom-components/gallery" target="_blank" rel="noopener">Gradio Custom Components Gallery</a></p>
+<h2 id="示例quickstart">示例（QuickStart）</h2>
+<h3 id="对话机器人">对话机器人</h3>
+<p>界面核心元素：文本框、按钮</p>
+<p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<figure  >
+  <div class="d-flex justify-content-center">
+    <div class="w-100" ><img alt="" srcset="
+               /post/python-gradio-frontend-lightly/images/demo/chatbot/lean_people_hu69402b9aeea7b8a75eb649910abe2d05_475136_6a3215073a34e8dd78462c2450d1dcad.webp 400w,
+               /post/python-gradio-frontend-lightly/images/demo/chatbot/lean_people_hu69402b9aeea7b8a75eb649910abe2d05_475136_3301312eba5c372e4e2367ee9ee8f8ae.webp 760w,
+               /post/python-gradio-frontend-lightly/images/demo/chatbot/lean_people_hu69402b9aeea7b8a75eb649910abe2d05_475136_1200x1200_fit_q75_h2_lanczos_3.webp 1200w"
+               src="/post/python-gradio-frontend-lightly/images/demo/chatbot/lean_people_hu69402b9aeea7b8a75eb649910abe2d05_475136_6a3215073a34e8dd78462c2450d1dcad.webp"
+               width="760"
+               height="381"
+               loading="lazy" data-zoomable /></div>
+  </div></figure>
+</p>
+<p>实现：</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="c1"># @Author: weirdgiser</span>
+</span></span><span class="line"><span class="cl"><span class="c1"># @Time: 2024/3/22</span>
+</span></span><span class="line"><span class="cl"><span class="c1"># @Function:</span>
+</span></span><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">gradio</span> <span class="k">as</span> <span class="nn">gr</span>
+</span></span><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">random</span>
+</span></span><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">time</span>
+</span></span><span class="line"><span class="cl"><span class="kn">from</span> <span class="nn">models.llm.glm</span> <span class="kn">import</span> <span class="n">ChatGLMLanguageModel</span>
+</span></span><span class="line"><span class="cl"><span class="kn">from</span> <span class="nn">prompts.roleplay</span> <span class="kn">import</span> <span class="n">MeanPeopleRolePromptTemplate</span>
+</span></span><span class="line"><span class="cl"><span class="kn">from</span> <span class="nn">decouple</span> <span class="kn">import</span> <span class="n">config</span>
+</span></span><span class="line"><span class="cl"><span class="n">model</span> <span class="o">=</span> <span class="n">ChatGLMLanguageModel</span><span class="p">(</span><span class="n">api_key</span><span class="o">=</span><span class="n">config</span><span class="p">(</span><span class="s2">&#34;GLM_MODEL_API_KEY&#34;</span><span class="p">),</span>
+</span></span><span class="line"><span class="cl">                             <span class="n">prompt</span><span class="o">=</span><span class="n">MeanPeopleRolePromptTemplate</span><span class="o">.</span><span class="n">prompt_messages</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">with</span> <span class="n">gr</span><span class="o">.</span><span class="n">Blocks</span><span class="p">(</span><span class="n">title</span><span class="o">=</span><span class="s2">&#34;人工智障Plus&#34;</span><span class="p">)</span> <span class="k">as</span> <span class="n">demo</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">    <span class="n">chatbot</span> <span class="o">=</span> <span class="n">gr</span><span class="o">.</span><span class="n">Chatbot</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">    <span class="n">msg</span> <span class="o">=</span> <span class="n">gr</span><span class="o">.</span><span class="n">Textbox</span><span class="p">(</span><span class="n">placeholder</span><span class="o">=</span><span class="s2">&#34;请输入你的问题&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="n">clear</span> <span class="o">=</span> <span class="n">gr</span><span class="o">.</span><span class="n">ClearButton</span><span class="p">([</span><span class="n">msg</span><span class="p">,</span> <span class="n">chatbot</span><span class="p">],</span><span class="n">value</span><span class="o">=</span><span class="s2">&#34;清空&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="k">def</span> <span class="nf">respond</span><span class="p">(</span><span class="n">message</span><span class="p">,</span> <span class="n">chat_history</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">        <span class="n">resp</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">chat</span><span class="p">(</span><span class="n">message</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="n">chat_history</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="n">message</span><span class="p">,</span> <span class="n">resp</span><span class="o">.</span><span class="n">message</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="s2">&#34;&#34;</span><span class="p">,</span> <span class="n">chat_history</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="n">msg</span><span class="o">.</span><span class="n">submit</span><span class="p">(</span><span class="n">respond</span><span class="p">,</span> <span class="p">[</span><span class="n">msg</span><span class="p">,</span> <span class="n">chatbot</span><span class="p">],</span> <span class="p">[</span><span class="n">msg</span><span class="p">,</span> <span class="n">chatbot</span><span class="p">])</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">demo</span><span class="o">.</span><span class="n">launch</span><span class="p">(</span>
+</span></span></code></pre></div><p>说明：上述代码使用了3类Gradio组件：</p>
+<ul>
+<li>
+<p>Chatbot：以响应对列表的形式存储用户和机器人间整个对话历史记录。我们只需要关注机器人响应逻辑即可。</p>
+</li>
+<li>
+<p>Textbox：文本框，用户在其中输入消息，通过回车键触发机器人响应</p>
+</li>
+<li>
+<p>ClearButton：清除按钮，用于清除文本框和整个对话历史</p>
+</li>
+</ul>
+<p>参考文档：<a href="https://www.gradio.app/guides/creating-a-custom-chatbot-with-blocks" target="_blank" rel="noopener">Creating A Custom Chatbot With Blocks</a></p>
+<h4 id="其它机器人">其它机器人</h4>
+<ul>
+<li>
+<p>文艺青年</p>
+<p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<figure  >
+  <div class="d-flex justify-content-center">
+    <div class="w-100" ><img alt="" srcset="
+               /post/python-gradio-frontend-lightly/images/demo/chatbot/jianghu_hu85624ac5fa4e14c1b4a48d011feaaf37_452094_d91b5d416c5d85d56225099f70299308.webp 400w,
+               /post/python-gradio-frontend-lightly/images/demo/chatbot/jianghu_hu85624ac5fa4e14c1b4a48d011feaaf37_452094_8e0c14bf2e5128e2d5b656610744c792.webp 760w,
+               /post/python-gradio-frontend-lightly/images/demo/chatbot/jianghu_hu85624ac5fa4e14c1b4a48d011feaaf37_452094_1200x1200_fit_q75_h2_lanczos_3.webp 1200w"
+               src="/post/python-gradio-frontend-lightly/images/demo/chatbot/jianghu_hu85624ac5fa4e14c1b4a48d011feaaf37_452094_d91b5d416c5d85d56225099f70299308.webp"
+               width="760"
+               height="352"
+               loading="lazy" data-zoomable /></div>
+  </div></figure>
+</p>
+</li>
+<li>
+<p>“江湖”高手</p>
+<p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<figure  >
+  <div class="d-flex justify-content-center">
+    <div class="w-100" ><img alt="" srcset="
+               /post/python-gradio-frontend-lightly/images/demo/chatbot/jianghu1_hu955434195db7c656d3bdaaf9a52687c2_627071_f117eb1f4f8e84f4764383bf466c6e2c.webp 400w,
+               /post/python-gradio-frontend-lightly/images/demo/chatbot/jianghu1_hu955434195db7c656d3bdaaf9a52687c2_627071_311bead0a76bd687ac87a85f402ae8d0.webp 760w,
+               /post/python-gradio-frontend-lightly/images/demo/chatbot/jianghu1_hu955434195db7c656d3bdaaf9a52687c2_627071_1200x1200_fit_q75_h2_lanczos_3.webp 1200w"
+               src="/post/python-gradio-frontend-lightly/images/demo/chatbot/jianghu1_hu955434195db7c656d3bdaaf9a52687c2_627071_f117eb1f4f8e84f4764383bf466c6e2c.webp"
+               width="760"
+               height="408"
+               loading="lazy" data-zoomable /></div>
+  </div></figure>
+</p>
+</li>
+<li>
+<p>守财奴</p>
+<p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<figure  >
+  <div class="d-flex justify-content-center">
+    <div class="w-100" ><img alt="" srcset="
+               /post/python-gradio-frontend-lightly/images/demo/chatbot/mean_people_hu4dc5c79a6505af6886c82da1b6c83e13_397518_f1e5fac37de047b89914365217f8794c.webp 400w,
+               /post/python-gradio-frontend-lightly/images/demo/chatbot/mean_people_hu4dc5c79a6505af6886c82da1b6c83e13_397518_df18a747d64b800709d6a2eb8ec7acdd.webp 760w,
+               /post/python-gradio-frontend-lightly/images/demo/chatbot/mean_people_hu4dc5c79a6505af6886c82da1b6c83e13_397518_1200x1200_fit_q75_h2_lanczos_3.webp 1200w"
+               src="/post/python-gradio-frontend-lightly/images/demo/chatbot/mean_people_hu4dc5c79a6505af6886c82da1b6c83e13_397518_f1e5fac37de047b89914365217f8794c.webp"
+               width="760"
+               height="369"
+               loading="lazy" data-zoomable /></div>
+  </div></figure>
+</p>
+</li>
+</ul>
+<h2 id="gradio组件">Gradio组件</h2>
+<p><strong>Input</strong></p>
+<ul>
+<li><code>gr.Text</code>：用于文本输入。</li>
+<li><code>gr.Number</code>：用于输入数字。</li>
+<li><code>gr.Image</code>：用于上传和显示图像。</li>
+<li><code>gr.Video</code>：用于上传和播放视频。</li>
+<li><code>gr.Audio</code>：用于上传和播放音频。</li>
+<li><code>gr.Dropdown</code>：下拉菜单，用于选择一个选项。</li>
+<li><code>gr.Slider</code>：滑块，用于选择一个范围内的值。</li>
+<li><code>gr.Checkbox</code>：复选框，用于开关选择。</li>
+<li><code>gr.Date</code>：日期选择器。</li>
+<li><code>gr.Time</code>：时间选择器。</li>
+</ul>
+<p><strong>Layouts</strong>：</p>
+<ul>
+<li><code>Row</code>：水平排列子组件。</li>
+<li><code>Column</code>：垂直排列子组件。</li>
+<li><code>Tab</code>：选项卡布局，用于在不同的标签页中展示不同的组件。</li>
+<li><code>Group</code>：将子组件组合在一起，无间距。</li>
+<li><code>Box</code>：将子组件放在一个带有圆角和一些填充的框中。</li>
+<li><code>Accordion</code>：手风琴布局，可以切换显示/隐藏所包含的内容。</li>
+</ul>
+<p><strong>Other Components</strong>：</p>
+<ul>
+<li><code>gr.Button</code>：按钮，用于触发事件。</li>
+<li><code>gr.Markdown</code>：用于渲染 Markdown 文本。</li>
+</ul>
+<h2 id="低代码框架">低代码框架</h2>
+<ul>
+<li>
+<p>amis</p>
+</li>
+<li>
+<p><a href="https://aisuda.github.io/amis-editor-demo" target="_blank" rel="noopener">https://aisuda.github.io/amis-editor-demo</a></p>
+</li>
+<li>
+<p>gradio</p>
+</li>
+</ul>
+
+    </div>
+
+    
+
+
+
+
+<div class="article-tags">
+  
+  <a class="badge badge-light" href="/tag/%E5%89%8D%E7%AB%AF/">前端</a>
+  
+  <a class="badge badge-light" href="/tag/%E8%81%8A%E5%A4%A9%E6%9C%BA%E5%99%A8%E4%BA%BA/">聊天机器人</a>
+  
+</div>
+
+
+
+<div class="share-box">
+  <ul class="share">
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="https://twitter.com/intent/tweet?url=/post/python-gradio-frontend-lightly/&amp;text=%e5%89%8d%e7%ab%af%e4%bd%8e%e4%bb%a3%e7%a0%81%e6%a1%86%e6%9e%b6Gradio%ef%bc%8c%e5%bf%ab%e9%80%9f%e6%9e%84%e5%bb%ba%e5%8f%af%e4%ba%a4%e4%ba%92%e5%8e%9f%e5%9e%8b" target="_blank" rel="noopener" class="share-btn-twitter" aria-label="twitter">
+          <i class="fab fa-twitter"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="https://www.facebook.com/sharer.php?u=/post/python-gradio-frontend-lightly/&amp;t=%e5%89%8d%e7%ab%af%e4%bd%8e%e4%bb%a3%e7%a0%81%e6%a1%86%e6%9e%b6Gradio%ef%bc%8c%e5%bf%ab%e9%80%9f%e6%9e%84%e5%bb%ba%e5%8f%af%e4%ba%a4%e4%ba%92%e5%8e%9f%e5%9e%8b" target="_blank" rel="noopener" class="share-btn-facebook" aria-label="facebook">
+          <i class="fab fa-facebook"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="mailto:?subject=%e5%89%8d%e7%ab%af%e4%bd%8e%e4%bb%a3%e7%a0%81%e6%a1%86%e6%9e%b6Gradio%ef%bc%8c%e5%bf%ab%e9%80%9f%e6%9e%84%e5%bb%ba%e5%8f%af%e4%ba%a4%e4%ba%92%e5%8e%9f%e5%9e%8b&amp;body=/post/python-gradio-frontend-lightly/" target="_blank" rel="noopener" class="share-btn-email" aria-label="envelope">
+          <i class="fas fa-envelope"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="https://www.linkedin.com/shareArticle?url=/post/python-gradio-frontend-lightly/&amp;title=%e5%89%8d%e7%ab%af%e4%bd%8e%e4%bb%a3%e7%a0%81%e6%a1%86%e6%9e%b6Gradio%ef%bc%8c%e5%bf%ab%e9%80%9f%e6%9e%84%e5%bb%ba%e5%8f%af%e4%ba%a4%e4%ba%92%e5%8e%9f%e5%9e%8b" target="_blank" rel="noopener" class="share-btn-linkedin" aria-label="linkedin-in">
+          <i class="fab fa-linkedin-in"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="whatsapp://send?text=%e5%89%8d%e7%ab%af%e4%bd%8e%e4%bb%a3%e7%a0%81%e6%a1%86%e6%9e%b6Gradio%ef%bc%8c%e5%bf%ab%e9%80%9f%e6%9e%84%e5%bb%ba%e5%8f%af%e4%ba%a4%e4%ba%92%e5%8e%9f%e5%9e%8b%20/post/python-gradio-frontend-lightly/" target="_blank" rel="noopener" class="share-btn-whatsapp" aria-label="whatsapp">
+          <i class="fab fa-whatsapp"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="https://service.weibo.com/share/share.php?url=/post/python-gradio-frontend-lightly/&amp;title=%e5%89%8d%e7%ab%af%e4%bd%8e%e4%bb%a3%e7%a0%81%e6%a1%86%e6%9e%b6Gradio%ef%bc%8c%e5%bf%ab%e9%80%9f%e6%9e%84%e5%bb%ba%e5%8f%af%e4%ba%a4%e4%ba%92%e5%8e%9f%e5%9e%8b" target="_blank" rel="noopener" class="share-btn-weibo" aria-label="weibo">
+          <i class="fab fa-weibo"></i>
+        </a>
+      </li>
+    
+  </ul>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+
+
+
+  
+  
+  
+  
+  
+  <div class="media author-card content-widget-hr">
+    
+      
+      <a href="/authors/admin/"><img class="avatar mr-3 avatar-circle" src="/authors/admin/avatar_hu55194f19033f85038196a23353ffe543_580100_270x270_fill_q75_lanczos_center.jpg" alt="CoolCats"></a>
+    
+
+    <div class="media-body">
+      <h5 class="card-title"><a href="/authors/admin/">CoolCats</a></h5>
+      <h6 class="card-subtitle">理学学士</h6>
+      <p class="card-text">我的研究兴趣是时空数据分析、知识图谱、自然语言处理与服务端开发</p>
+      <ul class="network-icon" aria-hidden="true">
+  
+    
+    
+    
+      
+    
+    
+    
+    
+    
+    <li>
+      <a href="mailto:2811159909@qq.com" >
+        <i class="fas fa-envelope"></i>
+      </a>
+    </li>
+  
+    
+    
+    
+      
+    
+    
+    
+    
+    
+      
+    
+    <li>
+      <a href="https://github.com/Coolgiserz" target="_blank" rel="noopener">
+        <i class="fab fa-github"></i>
+      </a>
+    </li>
+  
+</ul>
+
+    </div>
+  </div>
+
+
+
+
+
+
+
+
+
+  
+  
+  
+
+  
+
+  
+
+
+
+
+
+
+
+
+
+
+  </div>
+</article>
+  </div>
+
+  <div class="page-footer">
+    
+    
+    <div class="container">
+      <footer class="site-footer">
+
+  
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+
+
+
+
+
+  
+  
+  
+
+  
+  
+    
+  
+  
+    
+  
+
+  
+
+  
+  <p class="powered-by copyright-license-text">
+    © 2024 CoolCats. This work is licensed under <a href="https://creativecommons.org/licenses/by-nc-nd/4.0" rel="noopener noreferrer" target="_blank">CC BY NC ND 4.0</a>
+  </p>
+  
+
+  <p class="powered-by footer-license-icons">
+    <a href="https://creativecommons.org/licenses/by-nc-nd/4.0" rel="noopener noreferrer" target="_blank" aria-label="Creative Commons">
+      <i class="fab fa-creative-commons fa-2x" aria-hidden="true"></i>
+      <i class="fab fa-creative-commons-by fa-2x" aria-hidden="true"></i>
+      
+        <i class="fab fa-creative-commons-nc fa-2x" aria-hidden="true"></i>
+      
+      
+        <i class="fab fa-creative-commons-nd fa-2x" aria-hidden="true"></i>
+      
+    </a>
+  </p>
+
+
+
+
+  <p class="powered-by">
+    
+    
+    
+      
+      
+      
+      
+      
+      
+      Published with <a href="https://wowchemy.com/?utm_campaign=poweredby" target="_blank" rel="noopener">Wowchemy</a> — the free, <a href="https://github.com/wowchemy/wowchemy-hugo-themes" target="_blank" rel="noopener">open source</a> website builder that empowers creators.
+    
+  </p>
+</footer>
+
+    </div>
+    
+  </div>
+
+      
+
+    
+    <script src="/js/vendor-bundle.min.fab8b449b814cc9f95b22fcf2e45f05b.js"></script>
+
+    
+    
+    
+      
+
+      
+      
+
+      
+
+      
+        
+        <script src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@10.2.1/build/highlight.min.js" integrity="sha512-Ypjm0o7jOxAd4hpdoppSEN0TQOC19UtPAqD+4s5AlXmUvbmmS/YMxYqAqarQYyxTnB6/rqip9qcxlNB/3U9Wdg==" crossorigin="anonymous"></script>
+        
+        
+        <script src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@10.2.1/build/languages/r.min.js" crossorigin="anonymous"></script>
+        
+        <script src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@10.2.1/build/languages/latex.min.js" crossorigin="anonymous"></script>
+        
+      
+
+    
+
+    
+    
+    
+      <script src="https://cdn.jsdelivr.net/npm/leaflet@1.7.1/dist/leaflet.min.js" integrity="" crossorigin="anonymous"></script>
+    
+
+    
+    
+
+    
+    
+    
+      
+      <script id="search-hit-fuse-template" type="text/x-template">
+        <div class="search-hit" id="summary-{{key}}">
+          <div class="search-hit-content">
+            <div class="search-hit-name">
+              <a href="{{relpermalink}}">{{title}}</a>
+              <div class="article-metadata search-hit-type">{{type}}</div>
+              <p class="search-hit-description">{{snippet}}</p>
+            </div>
+          </div>
+        </div>
+      </script>
+      
+        <script src="https://cdn.jsdelivr.net/gh/krisk/Fuse@v3.2.1/dist/fuse.min.js" integrity="sha512-o38bmzBGX+hD3JHWUFCDA09btWaqrNmoJ3RXLlrysA7PP01Kgs4UlE4MhelE1v5dJR3+cxlR4qQlotsW7jKsnw==" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/gh/julmot/mark.js@8.11.1/dist/jquery.mark.min.js" integrity="sha512-mhbv5DqBMgrWL+32MmsDOt/OAvqr/cHimk6B8y/bx/xS88MVkYGPiVv2ixKVrkywF2qHplNRUvFsAHUdxZ3Krg==" crossorigin="anonymous"></script>
+      
+    
+
+    
+    
+
+    
+    
+    
+    
+      <script id="dsq-count-scr" src="https://coolgiserz.disqus.com/count.js" async></script>
+    
+
+    
+    
+      
+      
+      
+      
+      
+      
+      
+    
+
+    
+
+    
+    
+    
+    <script id="page-data" type="application/json">{"use_headroom":true}</script>
+
+    
+    
+      <script src="/js/wowchemy-headroom.c251366b4128fd5e6b046d4c97a62a51.js" type="module"></script>
+    
+    
+    
+    
+    
+    
+    
+      
+      
+    
+    
+    <script src="/en/js/wowchemy.min.ab2f2890dbe3e2e83579366d3d6e8fd9.js"></script>
+
+    
+    
+      <script src="/js/wowchemy-map.a26e9d2f7238ba5b868384f1c5bc6477.js" type="module"></script>
+    
+    
+    
+    
+      
+<div id="modal" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Cite</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <pre><code class="tex hljs"></code></pre>
+      </div>
+      <div class="modal-footer">
+        <a class="btn btn-outline-primary my-1 js-copy-cite" href="#" target="_blank">
+          <i class="fas fa-copy"></i> Copy
+        </a>
+        <a class="btn btn-outline-primary my-1 js-download-cite" href="#" target="_blank">
+          <i class="fas fa-download"></i> Download
+        </a>
+        <div id="modal-error"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+      <script src="/js/wowchemy-publication.68f8d7090562ca65fc6d3cb3f8f2d2cb.js" type="module"></script>
+
+
+
+
+
+
+</body>
+</html>

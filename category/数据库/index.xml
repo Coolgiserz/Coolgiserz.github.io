@@ -119,6 +119,9 @@
 &lt;p&gt;流水线（对话循环）&lt;/p&gt;
 &lt;/li&gt;
 &lt;li&gt;
+&lt;p&gt;消息&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
 &lt;p&gt;提示模板&lt;/p&gt;
 &lt;/li&gt;
 &lt;li&gt;
@@ -134,6 +137,34 @@
 &lt;p&gt;通用工具（日志、数据库驱动、搜索引擎）&lt;/p&gt;
 &lt;/li&gt;
 &lt;/ul&gt;
+&lt;p&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure  &gt;
+  &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img alt=&#34;&#34; srcset=&#34;
+               /post/text2sql-investigation/images/demo/arch_hu802ca09f74bb2120882962cb8188af10_376958_177d6358b033d933f3b22abe11281ac3.webp 400w,
+               /post/text2sql-investigation/images/demo/arch_hu802ca09f74bb2120882962cb8188af10_376958_6a16a73a5d83941c478193be413b48b1.webp 760w,
+               /post/text2sql-investigation/images/demo/arch_hu802ca09f74bb2120882962cb8188af10_376958_1200x1200_fit_q75_h2_lanczos_3.webp 1200w&#34;
+               src=&#34;/post/text2sql-investigation/images/demo/arch_hu802ca09f74bb2120882962cb8188af10_376958_177d6358b033d933f3b22abe11281ac3.webp&#34;
+               width=&#34;760&#34;
+               height=&#34;379&#34;
+               loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+  &lt;/div&gt;&lt;/figure&gt;
+&lt;/p&gt;
 &lt;h2 id=&#34;辅助工具&#34;&gt;辅助工具&lt;/h2&gt;
 &lt;ul&gt;
 &lt;li&gt;
@@ -141,7 +172,73 @@
 &lt;p&gt;bing search api&lt;/p&gt;
 &lt;/li&gt;
 &lt;/ul&gt;
-</description>
+&lt;h2 id=&#34;示例&#34;&gt;示例&lt;/h2&gt;
+&lt;h3 id=&#34;基本测试&#34;&gt;基本测试&lt;/h3&gt;
+&lt;h4 id=&#34;glm4&#34;&gt;GLM4&lt;/h4&gt;
+&lt;ul&gt;
+&lt;li&gt;大模型是否可以判断用户问题是否“可解”&lt;/li&gt;
+&lt;/ul&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;question:  世界上生与死的距离是否大于1公里？ code:  1
+answer: 由于这个问题并没有直接或间接地表明需要查询数据库，也没有提供具体的数据库表结构信息，因此我无法生成相应的Postgres查询语句。根据您给出的规则，我应该返回：
+0
+&lt;/code&gt;&lt;/pre&gt;&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;question:  屏幕前的你和屏幕前的我现在是否正在熬夜？ code:  1
+由于这个问题并不包含任何直接的查询意图，我无法生成一条Postgres查询语句。因此，根据您的要求，我会返回0。
+
+0
+&lt;/code&gt;&lt;/pre&gt;&lt;ul&gt;
+&lt;li&gt;大模型是否可以判断现有库表结构对回答用户问题的可支持程度&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;从下面示例可以看出，虽然大模型会对作出假设给出相应的查询语句，但其也会根据给定数据库表结构来判断问题实际是否能被现有数据支持。&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;question:  南京路和北京路距离有多远？ code:  1
+根据用户提出的问题，似乎用户希望得知的是两个地点（可能是以“南京路”和“北京路”命名的道路）之间的距离。但是，由于没有提供具体的表结构信息，我们无法直接生成一条准确的PostgreSQL查询语句。
+
+如果假设用户是在请求城市中具体命名的道路之间的距离，并且我们的数据库中有相关道路的地理信息，那么理论上我们可以使用postGIS的函数来计算这两点之间的距离。
+
+以下是一个假设性的查询语句，它假定：
+
+- 数据库中有一个名为`roads`的表，其中包含道路的名称和地理数据。
+- `geom`列包含的是postGIS支持的地理数据类型，如`LINESTRING`。
+- `name`列包含道路的名称。
+
+查询语句如下：
+
+```sql
+SELECT ST_Distance(
+    ST_Transform(
+        ST_SetSRID(
+            ST_MakePoint(
+                ST_StartPoint(geom)::text, -- 假定geom是LINESTRING类型，获取起点
+                ST_EndPoint(geom)::text    -- 获取终点
+            ),
+        4326), -- 设置为WGS84坐标系
+    900913), -- 转换为米制坐标系，适合计算距离
+    ST_Transform(
+        ST_SetSRID(
+            ST_MakePoint(
+                (SELECT ST_StartPoint(geom)::text FROM roads WHERE name = &amp;#39;北京路&amp;#39;), -- 假定找到北京路的起点
+                (SELECT ST_EndPoint(geom)::text FROM roads WHERE name = &amp;#39;北京路&amp;#39;)    -- 假定找到北京路的终点
+            ),
+        4326),
+    900913)
+) / 1000 AS distance_in_km
+FROM roads
+WHERE name = &amp;#39;南京路&amp;#39;; -- 假定找到南京路的起点和终点
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;如果数据库中不存在这样的表和列，或者用户的问题实际上与数据库查询无关，那么按照您的要求，应当返回1，因为现有的信息不足以支持用户的查询需求。&lt;/p&gt;
+&lt;p&gt;由于用户的问题不是很明确，这里我假设用户确实是在查询数据库中的信息，因此提供了上述查询语句。如果实际情况下用户的问题并不涉及数据库查询，正确的回应应当是：&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-plaintext&#34; data-lang=&#34;plaintext&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;1
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;表示现有数据库表结构不足以支持用户的查询需求。&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;
+- 大模型生成的SQL是否合理
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;question:  天安门和地安门是否在同一个城市 code:  1
+answer: 基于提供的参考信息，我可以判断天安门和地安门位于同一个城市，即中国的北京市。&lt;/p&gt;
+&lt;p&gt;以下是针对用户可能的查询需求而生成的一条PostgreSQL查询语句（假设数据库中有一个名为&lt;code&gt;historic_buildings&lt;/code&gt;的表，且该表包含表示建筑名称和所在城市的字段）：&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-sql&#34; data-lang=&#34;sql&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;k&#34;&gt;SELECT&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;k&#34;&gt;COUNT&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;*&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;w&#34;&gt;&lt;/span&gt;&lt;span class=&#34;k&#34;&gt;FROM&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;n&#34;&gt;historic_buildings&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;w&#34;&gt;&lt;/span&gt;&lt;span class=&#34;k&#34;&gt;WHERE&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;n&#34;&gt;name&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;k&#34;&gt;IN&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s1&#34;&gt;&amp;#39;天安门&amp;#39;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;s1&#34;&gt;&amp;#39;地安门&amp;#39;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;k&#34;&gt;AND&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;n&#34;&gt;city&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;s1&#34;&gt;&amp;#39;北京市&amp;#39;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;如果天安门和地安门的相关信息确实保存在数据库中，并且表结构如假设所述，上述查询将返回2，表示这两个建筑都位于北京市。&lt;/p&gt;
+&lt;p&gt;但是，如果数据库中并没有相关表或者字段来支持查询这两个建筑的信息，那么根据您的要求，应返回1。而如果用户输入的信息中不存在查询意图，则应返回0。&lt;/p&gt;
+&lt;p&gt;由于这里是假设性回答，并且没有具体的数据库结构信息，以上查询只是根据用户需求的可能情景而构造的示例。实际情况中，需要根据数据库的具体结构和内容来确定查询语句。&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;&lt;/code&gt;&lt;/pre&gt;</description>
     </item>
     
     <item>

@@ -931,6 +931,9 @@ Text2SQL: A Powerful Tool for Querying Databases with Natural Language
 <p>流水线（对话循环）</p>
 </li>
 <li>
+<p>消息</p>
+</li>
+<li>
 <p>提示模板</p>
 </li>
 <li>
@@ -946,6 +949,34 @@ Text2SQL: A Powerful Tool for Querying Databases with Natural Language
 <p>通用工具（日志、数据库驱动、搜索引擎）</p>
 </li>
 </ul>
+<p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<figure  >
+  <div class="d-flex justify-content-center">
+    <div class="w-100" ><img alt="" srcset="
+               /post/text2sql-investigation/images/demo/arch_hu802ca09f74bb2120882962cb8188af10_376958_177d6358b033d933f3b22abe11281ac3.webp 400w,
+               /post/text2sql-investigation/images/demo/arch_hu802ca09f74bb2120882962cb8188af10_376958_6a16a73a5d83941c478193be413b48b1.webp 760w,
+               /post/text2sql-investigation/images/demo/arch_hu802ca09f74bb2120882962cb8188af10_376958_1200x1200_fit_q75_h2_lanczos_3.webp 1200w"
+               src="/post/text2sql-investigation/images/demo/arch_hu802ca09f74bb2120882962cb8188af10_376958_177d6358b033d933f3b22abe11281ac3.webp"
+               width="760"
+               height="379"
+               loading="lazy" data-zoomable /></div>
+  </div></figure>
+</p>
 <h2 id="辅助工具">辅助工具</h2>
 <ul>
 <li>
@@ -953,7 +984,73 @@ Text2SQL: A Powerful Tool for Querying Databases with Natural Language
 <p>bing search api</p>
 </li>
 </ul>
+<h2 id="示例">示例</h2>
+<h3 id="基本测试">基本测试</h3>
+<h4 id="glm4">GLM4</h4>
+<ul>
+<li>大模型是否可以判断用户问题是否“可解”</li>
+</ul>
+<pre tabindex="0"><code>question:  世界上生与死的距离是否大于1公里？ code:  1
+answer: 由于这个问题并没有直接或间接地表明需要查询数据库，也没有提供具体的数据库表结构信息，因此我无法生成相应的Postgres查询语句。根据您给出的规则，我应该返回：
+0
+</code></pre><pre tabindex="0"><code>question:  屏幕前的你和屏幕前的我现在是否正在熬夜？ code:  1
+由于这个问题并不包含任何直接的查询意图，我无法生成一条Postgres查询语句。因此，根据您的要求，我会返回0。
 
+0
+</code></pre><ul>
+<li>大模型是否可以判断现有库表结构对回答用户问题的可支持程度</li>
+</ul>
+<p>从下面示例可以看出，虽然大模型会对作出假设给出相应的查询语句，但其也会根据给定数据库表结构来判断问题实际是否能被现有数据支持。</p>
+<pre tabindex="0"><code>question:  南京路和北京路距离有多远？ code:  1
+根据用户提出的问题，似乎用户希望得知的是两个地点（可能是以“南京路”和“北京路”命名的道路）之间的距离。但是，由于没有提供具体的表结构信息，我们无法直接生成一条准确的PostgreSQL查询语句。
+
+如果假设用户是在请求城市中具体命名的道路之间的距离，并且我们的数据库中有相关道路的地理信息，那么理论上我们可以使用postGIS的函数来计算这两点之间的距离。
+
+以下是一个假设性的查询语句，它假定：
+
+- 数据库中有一个名为`roads`的表，其中包含道路的名称和地理数据。
+- `geom`列包含的是postGIS支持的地理数据类型，如`LINESTRING`。
+- `name`列包含道路的名称。
+
+查询语句如下：
+
+```sql
+SELECT ST_Distance(
+    ST_Transform(
+        ST_SetSRID(
+            ST_MakePoint(
+                ST_StartPoint(geom)::text, -- 假定geom是LINESTRING类型，获取起点
+                ST_EndPoint(geom)::text    -- 获取终点
+            ),
+        4326), -- 设置为WGS84坐标系
+    900913), -- 转换为米制坐标系，适合计算距离
+    ST_Transform(
+        ST_SetSRID(
+            ST_MakePoint(
+                (SELECT ST_StartPoint(geom)::text FROM roads WHERE name = &#39;北京路&#39;), -- 假定找到北京路的起点
+                (SELECT ST_EndPoint(geom)::text FROM roads WHERE name = &#39;北京路&#39;)    -- 假定找到北京路的终点
+            ),
+        4326),
+    900913)
+) / 1000 AS distance_in_km
+FROM roads
+WHERE name = &#39;南京路&#39;; -- 假定找到南京路的起点和终点
+</code></pre><p>如果数据库中不存在这样的表和列，或者用户的问题实际上与数据库查询无关，那么按照您的要求，应当返回1，因为现有的信息不足以支持用户的查询需求。</p>
+<p>由于用户的问题不是很明确，这里我假设用户确实是在查询数据库中的信息，因此提供了上述查询语句。如果实际情况下用户的问题并不涉及数据库查询，正确的回应应当是：</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-plaintext" data-lang="plaintext"><span class="line"><span class="cl">1
+</span></span></code></pre></div><p>表示现有数据库表结构不足以支持用户的查询需求。</p>
+<pre tabindex="0"><code>
+- 大模型生成的SQL是否合理
+</code></pre><p>question:  天安门和地安门是否在同一个城市 code:  1
+answer: 基于提供的参考信息，我可以判断天安门和地安门位于同一个城市，即中国的北京市。</p>
+<p>以下是针对用户可能的查询需求而生成的一条PostgreSQL查询语句（假设数据库中有一个名为<code>historic_buildings</code>的表，且该表包含表示建筑名称和所在城市的字段）：</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="k">SELECT</span><span class="w"> </span><span class="k">COUNT</span><span class="p">(</span><span class="o">*</span><span class="p">)</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="k">FROM</span><span class="w"> </span><span class="n">historic_buildings</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="k">WHERE</span><span class="w"> </span><span class="n">name</span><span class="w"> </span><span class="k">IN</span><span class="w"> </span><span class="p">(</span><span class="s1">&#39;天安门&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;地安门&#39;</span><span class="p">)</span><span class="w"> </span><span class="k">AND</span><span class="w"> </span><span class="n">city</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;北京市&#39;</span><span class="p">;</span><span class="w">
+</span></span></span></code></pre></div><p>如果天安门和地安门的相关信息确实保存在数据库中，并且表结构如假设所述，上述查询将返回2，表示这两个建筑都位于北京市。</p>
+<p>但是，如果数据库中并没有相关表或者字段来支持查询这两个建筑的信息，那么根据您的要求，应返回1。而如果用户输入的信息中不存在查询意图，则应返回0。</p>
+<p>由于这里是假设性回答，并且没有具体的数据库结构信息，以上查询只是根据用户需求的可能情景而构造的示例。实际情况中，需要根据数据库的具体结构和内容来确定查询语句。</p>
+<pre tabindex="0"><code></code></pre>
     </div>
 
     
