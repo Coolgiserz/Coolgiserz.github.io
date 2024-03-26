@@ -1,22 +1,22 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>多线程 | CoolCats</title>
-    <link>/tag/%E5%A4%9A%E7%BA%BF%E7%A8%8B/</link>
-      <atom:link href="/tag/%E5%A4%9A%E7%BA%BF%E7%A8%8B/index.xml" rel="self" type="application/rss+xml" />
+    <title>多线程 | NullSpace</title>
+    <link>https://spacetimelab.cn/tag/%E5%A4%9A%E7%BA%BF%E7%A8%8B/</link>
+      <atom:link href="https://spacetimelab.cn/tag/%E5%A4%9A%E7%BA%BF%E7%A8%8B/index.xml" rel="self" type="application/rss+xml" />
     <description>多线程</description>
     <generator>Wowchemy (https://wowchemy.com)</generator><language>en-us</language><lastBuildDate>Mon, 05 Jun 2023 22:00:11 +0800</lastBuildDate>
     <image>
-      <url>/media/icon_hue03491371183284312b8b116a73ae5ab_79511_512x512_fill_lanczos_center_3.png</url>
+      <url>https://spacetimelab.cn/media/icon_hue03491371183284312b8b116a73ae5ab_79511_512x512_fill_lanczos_center_3.png</url>
       <title>多线程</title>
-      <link>/tag/%E5%A4%9A%E7%BA%BF%E7%A8%8B/</link>
+      <link>https://spacetimelab.cn/tag/%E5%A4%9A%E7%BA%BF%E7%A8%8B/</link>
     </image>
     
     <item>
       <title>Python核心编程-多线程编程(代码篇)</title>
-      <link>/post/python-multithread-programing/</link>
+      <link>https://spacetimelab.cn/post/python-multithread-programing/</link>
       <pubDate>Mon, 05 Jun 2023 22:00:11 +0800</pubDate>
-      <guid>/post/python-multithread-programing/</guid>
+      <guid>https://spacetimelab.cn/post/python-multithread-programing/</guid>
       <description>&lt;h2 id=&#34;前言&#34;&gt;前言&lt;/h2&gt;
 &lt;p&gt;本篇短文基于Python核心编程第四章，通过代码示例总结python多线程的用法、相关概念、数据结构、注意事项。内容要点如下：&lt;/p&gt;
 &lt;ul&gt;
@@ -105,7 +105,7 @@
                /post/python-multithread-programing/images/mtsleepA_hu6b90f680ebbe11cc820b9ba5a2980461_78185_f47b54597987c8627ea553a0b8480e0e.webp 400w,
                /post/python-multithread-programing/images/mtsleepA_hu6b90f680ebbe11cc820b9ba5a2980461_78185_6a51984e5a8651d03739dcdf5c14dd81.webp 760w,
                /post/python-multithread-programing/images/mtsleepA_hu6b90f680ebbe11cc820b9ba5a2980461_78185_1200x1200_fit_q75_h2_lanczos_3.webp 1200w&#34;
-               src=&#34;/post/python-multithread-programing/images/mtsleepA_hu6b90f680ebbe11cc820b9ba5a2980461_78185_f47b54597987c8627ea553a0b8480e0e.webp&#34;
+               src=&#34;https://spacetimelab.cn/post/python-multithread-programing/images/mtsleepA_hu6b90f680ebbe11cc820b9ba5a2980461_78185_f47b54597987c8627ea553a0b8480e0e.webp&#34;
                width=&#34;760&#34;
                height=&#34;192&#34;
                loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
@@ -199,7 +199,7 @@
                /post/python-multithread-programing/images/mtsleepB_hu01de57303dc7731f13e85257d567d462_69610_b5bec2d5b8be49f4333e243455eaec2c.webp 400w,
                /post/python-multithread-programing/images/mtsleepB_hu01de57303dc7731f13e85257d567d462_69610_ebce67b8c92c9703b4186ed956e4c7d1.webp 760w,
                /post/python-multithread-programing/images/mtsleepB_hu01de57303dc7731f13e85257d567d462_69610_1200x1200_fit_q75_h2_lanczos_3.webp 1200w&#34;
-               src=&#34;/post/python-multithread-programing/images/mtsleepB_hu01de57303dc7731f13e85257d567d462_69610_b5bec2d5b8be49f4333e243455eaec2c.webp&#34;
+               src=&#34;https://spacetimelab.cn/post/python-multithread-programing/images/mtsleepB_hu01de57303dc7731f13e85257d567d462_69610_b5bec2d5b8be49f4333e243455eaec2c.webp&#34;
                width=&#34;760&#34;
                height=&#34;260&#34;
                loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
@@ -260,7 +260,7 @@
                /post/python-multithread-programing/images/mtsleepC_hu88dd6e9e202cfefa991d009923849f58_83573_b219fbf01d04ca04fca0f6a79a1d8089.webp 400w,
                /post/python-multithread-programing/images/mtsleepC_hu88dd6e9e202cfefa991d009923849f58_83573_45760142c8fd7cf3e0ea06fc38e1be29.webp 760w,
                /post/python-multithread-programing/images/mtsleepC_hu88dd6e9e202cfefa991d009923849f58_83573_1200x1200_fit_q75_h2_lanczos_3.webp 1200w&#34;
-               src=&#34;/post/python-multithread-programing/images/mtsleepC_hu88dd6e9e202cfefa991d009923849f58_83573_b219fbf01d04ca04fca0f6a79a1d8089.webp&#34;
+               src=&#34;https://spacetimelab.cn/post/python-multithread-programing/images/mtsleepC_hu88dd6e9e202cfefa991d009923849f58_83573_b219fbf01d04ca04fca0f6a79a1d8089.webp&#34;
                width=&#34;760&#34;
                height=&#34;175&#34;
                loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
@@ -325,7 +325,7 @@
                /post/python-multithread-programing/images/mtsleepD_hu06a97d5eedb8741ca05d9ac9dfc1e5d6_71685_bd665cccf018d579a3e6c35348abbe23.webp 400w,
                /post/python-multithread-programing/images/mtsleepD_hu06a97d5eedb8741ca05d9ac9dfc1e5d6_71685_424737ce117a418760b81d4e54614b12.webp 760w,
                /post/python-multithread-programing/images/mtsleepD_hu06a97d5eedb8741ca05d9ac9dfc1e5d6_71685_1200x1200_fit_q75_h2_lanczos_3.webp 1200w&#34;
-               src=&#34;/post/python-multithread-programing/images/mtsleepD_hu06a97d5eedb8741ca05d9ac9dfc1e5d6_71685_bd665cccf018d579a3e6c35348abbe23.webp&#34;
+               src=&#34;https://spacetimelab.cn/post/python-multithread-programing/images/mtsleepD_hu06a97d5eedb8741ca05d9ac9dfc1e5d6_71685_bd665cccf018d579a3e6c35348abbe23.webp&#34;
                width=&#34;760&#34;
                height=&#34;159&#34;
                loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
@@ -391,7 +391,7 @@
                /post/python-multithread-programing/images/mtsleepE_hu91b1109b437e73ac38308a756365e7a0_76837_12adfc6c089329e982b3d6b681e58fd3.webp 400w,
                /post/python-multithread-programing/images/mtsleepE_hu91b1109b437e73ac38308a756365e7a0_76837_8249873ac0a21cc5396e35b07b6d02fe.webp 760w,
                /post/python-multithread-programing/images/mtsleepE_hu91b1109b437e73ac38308a756365e7a0_76837_1200x1200_fit_q75_h2_lanczos_3.webp 1200w&#34;
-               src=&#34;/post/python-multithread-programing/images/mtsleepE_hu91b1109b437e73ac38308a756365e7a0_76837_12adfc6c089329e982b3d6b681e58fd3.webp&#34;
+               src=&#34;https://spacetimelab.cn/post/python-multithread-programing/images/mtsleepE_hu91b1109b437e73ac38308a756365e7a0_76837_12adfc6c089329e982b3d6b681e58fd3.webp&#34;
                width=&#34;760&#34;
                height=&#34;183&#34;
                loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
@@ -491,7 +491,7 @@
                /post/python-multithread-programing/images/mtfacfib_hua7b83a3efb8c55f5c6028a14d02bbae6_169868_cf1b2560505c1cbe9232316e4de6f12f.webp 400w,
                /post/python-multithread-programing/images/mtfacfib_hua7b83a3efb8c55f5c6028a14d02bbae6_169868_b83830efd998da4bbcd2cf4fa25661be.webp 760w,
                /post/python-multithread-programing/images/mtfacfib_hua7b83a3efb8c55f5c6028a14d02bbae6_169868_1200x1200_fit_q75_h2_lanczos_3.webp 1200w&#34;
-               src=&#34;/post/python-multithread-programing/images/mtfacfib_hua7b83a3efb8c55f5c6028a14d02bbae6_169868_cf1b2560505c1cbe9232316e4de6f12f.webp&#34;
+               src=&#34;https://spacetimelab.cn/post/python-multithread-programing/images/mtfacfib_hua7b83a3efb8c55f5c6028a14d02bbae6_169868_cf1b2560505c1cbe9232316e4de6f12f.webp&#34;
                width=&#34;760&#34;
                height=&#34;330&#34;
                loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
@@ -521,7 +521,7 @@
                /post/python-multithread-programing/images/automated_visit_hue738c88088994f270c2a46db42e66248_104650_ebc2020dff64f21868a5facfa87e0d8d.webp 400w,
                /post/python-multithread-programing/images/automated_visit_hue738c88088994f270c2a46db42e66248_104650_803001c1cdc915536e0d61d816f0d3bf.webp 760w,
                /post/python-multithread-programing/images/automated_visit_hue738c88088994f270c2a46db42e66248_104650_1200x1200_fit_q75_h2_lanczos.webp 1200w&#34;
-               src=&#34;/post/python-multithread-programing/images/automated_visit_hue738c88088994f270c2a46db42e66248_104650_ebc2020dff64f21868a5facfa87e0d8d.webp&#34;
+               src=&#34;https://spacetimelab.cn/post/python-multithread-programing/images/automated_visit_hue738c88088994f270c2a46db42e66248_104650_ebc2020dff64f21868a5facfa87e0d8d.webp&#34;
                width=&#34;760&#34;
                height=&#34;401&#34;
                loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
@@ -608,7 +608,7 @@
                /post/python-multithread-programing/images/amazon_bookrank_hud37c7d46c24e73ffa21acbf2d23ccfa8_127020_911c49c2df290f8d4a83a7061dd857c9.webp 400w,
                /post/python-multithread-programing/images/amazon_bookrank_hud37c7d46c24e73ffa21acbf2d23ccfa8_127020_52a2271d441e5162362bb51a4eed1f70.webp 760w,
                /post/python-multithread-programing/images/amazon_bookrank_hud37c7d46c24e73ffa21acbf2d23ccfa8_127020_1200x1200_fit_q75_h2_lanczos.webp 1200w&#34;
-               src=&#34;/post/python-multithread-programing/images/amazon_bookrank_hud37c7d46c24e73ffa21acbf2d23ccfa8_127020_911c49c2df290f8d4a83a7061dd857c9.webp&#34;
+               src=&#34;https://spacetimelab.cn/post/python-multithread-programing/images/amazon_bookrank_hud37c7d46c24e73ffa21acbf2d23ccfa8_127020_911c49c2df290f8d4a83a7061dd857c9.webp&#34;
                width=&#34;760&#34;
                height=&#34;239&#34;
                loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
@@ -706,7 +706,7 @@
                /post/python-multithread-programing/images/bookrank_multi_thread_hu1bd22906df5cc1adff037fcc9467414d_285162_8e6a66979c46c87d3dc0161a02d0d1e0.webp 400w,
                /post/python-multithread-programing/images/bookrank_multi_thread_hu1bd22906df5cc1adff037fcc9467414d_285162_33a3d7821de7afa0903074cff636799a.webp 760w,
                /post/python-multithread-programing/images/bookrank_multi_thread_hu1bd22906df5cc1adff037fcc9467414d_285162_1200x1200_fit_q75_h2_lanczos.webp 1200w&#34;
-               src=&#34;/post/python-multithread-programing/images/bookrank_multi_thread_hu1bd22906df5cc1adff037fcc9467414d_285162_8e6a66979c46c87d3dc0161a02d0d1e0.webp&#34;
+               src=&#34;https://spacetimelab.cn/post/python-multithread-programing/images/bookrank_multi_thread_hu1bd22906df5cc1adff037fcc9467414d_285162_8e6a66979c46c87d3dc0161a02d0d1e0.webp&#34;
                width=&#34;760&#34;
                height=&#34;308&#34;
                loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
@@ -769,7 +769,7 @@
                /post/python-multithread-programing/images/mtsleepF_hu8dceaa3aec0a8d5644f811915954b8d6_134438_727c79e0bc995cce44dbf737fc875a57.webp 400w,
                /post/python-multithread-programing/images/mtsleepF_hu8dceaa3aec0a8d5644f811915954b8d6_134438_d420cb77f742f5ba67ed2875ad21d608.webp 760w,
                /post/python-multithread-programing/images/mtsleepF_hu8dceaa3aec0a8d5644f811915954b8d6_134438_1200x1200_fit_q75_h2_lanczos.webp 1200w&#34;
-               src=&#34;/post/python-multithread-programing/images/mtsleepF_hu8dceaa3aec0a8d5644f811915954b8d6_134438_727c79e0bc995cce44dbf737fc875a57.webp&#34;
+               src=&#34;https://spacetimelab.cn/post/python-multithread-programing/images/mtsleepF_hu8dceaa3aec0a8d5644f811915954b8d6_134438_727c79e0bc995cce44dbf737fc875a57.webp&#34;
                width=&#34;760&#34;
                height=&#34;376&#34;
                loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
@@ -836,7 +836,7 @@
                /post/python-multithread-programing/images/mtsleepF_lock_hu52781f0c317fdd86aeba6aeb686d29e0_143075_c49cfab2f597d4a25520a97102d55619.webp 400w,
                /post/python-multithread-programing/images/mtsleepF_lock_hu52781f0c317fdd86aeba6aeb686d29e0_143075_552f2905ddad3b2a82e9ed37518b2976.webp 760w,
                /post/python-multithread-programing/images/mtsleepF_lock_hu52781f0c317fdd86aeba6aeb686d29e0_143075_1200x1200_fit_q75_h2_lanczos.webp 1200w&#34;
-               src=&#34;/post/python-multithread-programing/images/mtsleepF_lock_hu52781f0c317fdd86aeba6aeb686d29e0_143075_c49cfab2f597d4a25520a97102d55619.webp&#34;
+               src=&#34;https://spacetimelab.cn/post/python-multithread-programing/images/mtsleepF_lock_hu52781f0c317fdd86aeba6aeb686d29e0_143075_c49cfab2f597d4a25520a97102d55619.webp&#34;
                width=&#34;760&#34;
                height=&#34;404&#34;
                loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
@@ -913,7 +913,7 @@
                /post/python-multithread-programing/images/mtsleepF_withlock_hud688200b3f183c6f1b8390789054eb94_137547_09bdbb94e147f46031db18d9ee61580b.webp 400w,
                /post/python-multithread-programing/images/mtsleepF_withlock_hud688200b3f183c6f1b8390789054eb94_137547_7bb5b35b2d029f76cacfa1c54b6162ae.webp 760w,
                /post/python-multithread-programing/images/mtsleepF_withlock_hud688200b3f183c6f1b8390789054eb94_137547_1200x1200_fit_q75_h2_lanczos.webp 1200w&#34;
-               src=&#34;/post/python-multithread-programing/images/mtsleepF_withlock_hud688200b3f183c6f1b8390789054eb94_137547_09bdbb94e147f46031db18d9ee61580b.webp&#34;
+               src=&#34;https://spacetimelab.cn/post/python-multithread-programing/images/mtsleepF_withlock_hud688200b3f183c6f1b8390789054eb94_137547_09bdbb94e147f46031db18d9ee61580b.webp&#34;
                width=&#34;760&#34;
                height=&#34;389&#34;
                loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
@@ -1022,7 +1022,7 @@
                /post/python-multithread-programing/images/candy_hud0245c1f2f377aafe3335dcb25f15e15_69994_06658555a60c36ff402bad0f140b725f.webp 400w,
                /post/python-multithread-programing/images/candy_hud0245c1f2f377aafe3335dcb25f15e15_69994_d355df8b0c74b5a674764e280f9ea024.webp 760w,
                /post/python-multithread-programing/images/candy_hud0245c1f2f377aafe3335dcb25f15e15_69994_1200x1200_fit_q75_h2_lanczos.webp 1200w&#34;
-               src=&#34;/post/python-multithread-programing/images/candy_hud0245c1f2f377aafe3335dcb25f15e15_69994_06658555a60c36ff402bad0f140b725f.webp&#34;
+               src=&#34;https://spacetimelab.cn/post/python-multithread-programing/images/candy_hud0245c1f2f377aafe3335dcb25f15e15_69994_06658555a60c36ff402bad0f140b725f.webp&#34;
                width=&#34;760&#34;
                height=&#34;467&#34;
                loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
@@ -1105,7 +1105,7 @@
                /post/python-multithread-programing/images/prodcons_hu004b7ea38852171a3c5fc46c85a5ec1b_200946_db4663ef4ded8b960aad6819b51030f6.webp 400w,
                /post/python-multithread-programing/images/prodcons_hu004b7ea38852171a3c5fc46c85a5ec1b_200946_049f40f016d602d1fe8d2b6653ab9320.webp 760w,
                /post/python-multithread-programing/images/prodcons_hu004b7ea38852171a3c5fc46c85a5ec1b_200946_1200x1200_fit_q75_h2_lanczos_3.webp 1200w&#34;
-               src=&#34;/post/python-multithread-programing/images/prodcons_hu004b7ea38852171a3c5fc46c85a5ec1b_200946_db4663ef4ded8b960aad6819b51030f6.webp&#34;
+               src=&#34;https://spacetimelab.cn/post/python-multithread-programing/images/prodcons_hu004b7ea38852171a3c5fc46c85a5ec1b_200946_db4663ef4ded8b960aad6819b51030f6.webp&#34;
                width=&#34;760&#34;
                height=&#34;272&#34;
                loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
@@ -1199,7 +1199,7 @@
                /post/python-multithread-programing/images/file_single_thread_hu38a5f0899eaa5d01428041ff81aeb5a4_23874_e4f33c7d81799b42dda1a00c3946cd07.webp 400w,
                /post/python-multithread-programing/images/file_single_thread_hu38a5f0899eaa5d01428041ff81aeb5a4_23874_a289241c76fdf3e46bd5d1d9f2455098.webp 760w,
                /post/python-multithread-programing/images/file_single_thread_hu38a5f0899eaa5d01428041ff81aeb5a4_23874_1200x1200_fit_q75_h2_lanczos_3.webp 1200w&#34;
-               src=&#34;/post/python-multithread-programing/images/file_single_thread_hu38a5f0899eaa5d01428041ff81aeb5a4_23874_e4f33c7d81799b42dda1a00c3946cd07.webp&#34;
+               src=&#34;https://spacetimelab.cn/post/python-multithread-programing/images/file_single_thread_hu38a5f0899eaa5d01428041ff81aeb5a4_23874_e4f33c7d81799b42dda1a00c3946cd07.webp&#34;
                width=&#34;760&#34;
                height=&#34;127&#34;
                loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
@@ -1304,7 +1304,7 @@
                /post/python-multithread-programing/images/file_10_threads_hu8ca8bfaa61206722ae26cedf0ec7e0be_25635_2eec5f780c21a4c57e90a917ad4117da.webp 400w,
                /post/python-multithread-programing/images/file_10_threads_hu8ca8bfaa61206722ae26cedf0ec7e0be_25635_453a2becc72b2a86e46023f4fe1f3048.webp 760w,
                /post/python-multithread-programing/images/file_10_threads_hu8ca8bfaa61206722ae26cedf0ec7e0be_25635_1200x1200_fit_q75_h2_lanczos_3.webp 1200w&#34;
-               src=&#34;/post/python-multithread-programing/images/file_10_threads_hu8ca8bfaa61206722ae26cedf0ec7e0be_25635_2eec5f780c21a4c57e90a917ad4117da.webp&#34;
+               src=&#34;https://spacetimelab.cn/post/python-multithread-programing/images/file_10_threads_hu8ca8bfaa61206722ae26cedf0ec7e0be_25635_2eec5f780c21a4c57e90a917ad4117da.webp&#34;
                width=&#34;760&#34;
                height=&#34;110&#34;
                loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
@@ -1410,7 +1410,7 @@
                /post/python-multithread-programing/images/file_10_processes_hu39a1ce44e596f92591fee6ffba759911_24594_958b746b27ac21db101dd6cfbdf11649.webp 400w,
                /post/python-multithread-programing/images/file_10_processes_hu39a1ce44e596f92591fee6ffba759911_24594_cdea0fdc3d631686b7c65513d005e99d.webp 760w,
                /post/python-multithread-programing/images/file_10_processes_hu39a1ce44e596f92591fee6ffba759911_24594_1200x1200_fit_q75_h2_lanczos_3.webp 1200w&#34;
-               src=&#34;/post/python-multithread-programing/images/file_10_processes_hu39a1ce44e596f92591fee6ffba759911_24594_958b746b27ac21db101dd6cfbdf11649.webp&#34;
+               src=&#34;https://spacetimelab.cn/post/python-multithread-programing/images/file_10_processes_hu39a1ce44e596f92591fee6ffba759911_24594_958b746b27ac21db101dd6cfbdf11649.webp&#34;
                width=&#34;760&#34;
                height=&#34;125&#34;
                loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
@@ -1520,7 +1520,7 @@
                /post/python-multithread-programing/images/count_file_line_hu28e01a32ed88eb1e88d6e65b426960cb_84977_0dfb18b84c25b0b6e560fabd6bf04c39.webp 400w,
                /post/python-multithread-programing/images/count_file_line_hu28e01a32ed88eb1e88d6e65b426960cb_84977_eba95381fa610202af5c96dd4d663322.webp 760w,
                /post/python-multithread-programing/images/count_file_line_hu28e01a32ed88eb1e88d6e65b426960cb_84977_1200x1200_fit_q75_h2_lanczos_3.webp 1200w&#34;
-               src=&#34;/post/python-multithread-programing/images/count_file_line_hu28e01a32ed88eb1e88d6e65b426960cb_84977_0dfb18b84c25b0b6e560fabd6bf04c39.webp&#34;
+               src=&#34;https://spacetimelab.cn/post/python-multithread-programing/images/count_file_line_hu28e01a32ed88eb1e88d6e65b426960cb_84977_0dfb18b84c25b0b6e560fabd6bf04c39.webp&#34;
                width=&#34;760&#34;
                height=&#34;364&#34;
                loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
@@ -1583,7 +1583,7 @@
                /post/python-multithread-programing/images/count_line_mt_hu9562cc8b475acada0ff9dac6b7cce2c3_97526_a8ad24c6b1a159568af1072870e1daf1.webp 400w,
                /post/python-multithread-programing/images/count_line_mt_hu9562cc8b475acada0ff9dac6b7cce2c3_97526_168e1f785396ae876421604ce884bf3e.webp 760w,
                /post/python-multithread-programing/images/count_line_mt_hu9562cc8b475acada0ff9dac6b7cce2c3_97526_1200x1200_fit_q75_h2_lanczos_3.webp 1200w&#34;
-               src=&#34;/post/python-multithread-programing/images/count_line_mt_hu9562cc8b475acada0ff9dac6b7cce2c3_97526_a8ad24c6b1a159568af1072870e1daf1.webp&#34;
+               src=&#34;https://spacetimelab.cn/post/python-multithread-programing/images/count_line_mt_hu9562cc8b475acada0ff9dac6b7cce2c3_97526_a8ad24c6b1a159568af1072870e1daf1.webp&#34;
                width=&#34;760&#34;
                height=&#34;327&#34;
                loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
@@ -1642,7 +1642,7 @@
                /post/python-multithread-programing/images/count_line_threadpool_hu46dc5e22d7a44ac37ed469320d0e1427_99404_a2bc39451270bd6c6b0f705d0d2631a4.webp 400w,
                /post/python-multithread-programing/images/count_line_threadpool_hu46dc5e22d7a44ac37ed469320d0e1427_99404_3729da59b878bb6f52f558aa6b85fafb.webp 760w,
                /post/python-multithread-programing/images/count_line_threadpool_hu46dc5e22d7a44ac37ed469320d0e1427_99404_1200x1200_fit_q75_h2_lanczos_3.webp 1200w&#34;
-               src=&#34;/post/python-multithread-programing/images/count_line_threadpool_hu46dc5e22d7a44ac37ed469320d0e1427_99404_a2bc39451270bd6c6b0f705d0d2631a4.webp&#34;
+               src=&#34;https://spacetimelab.cn/post/python-multithread-programing/images/count_line_threadpool_hu46dc5e22d7a44ac37ed469320d0e1427_99404_a2bc39451270bd6c6b0f705d0d2631a4.webp&#34;
                width=&#34;760&#34;
                height=&#34;354&#34;
                loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
@@ -1728,7 +1728,7 @@
                /post/python-multithread-programing/images/lock_demo_hub784b5dfa483de8850451bd821453b2e_36336_603e03962dbe9a315a8ef3d784884cbd.webp 400w,
                /post/python-multithread-programing/images/lock_demo_hub784b5dfa483de8850451bd821453b2e_36336_ad24f4af23b8ac340bb1ed40249e1ad0.webp 760w,
                /post/python-multithread-programing/images/lock_demo_hub784b5dfa483de8850451bd821453b2e_36336_1200x1200_fit_q75_h2_lanczos_3.webp 1200w&#34;
-               src=&#34;/post/python-multithread-programing/images/lock_demo_hub784b5dfa483de8850451bd821453b2e_36336_603e03962dbe9a315a8ef3d784884cbd.webp&#34;
+               src=&#34;https://spacetimelab.cn/post/python-multithread-programing/images/lock_demo_hub784b5dfa483de8850451bd821453b2e_36336_603e03962dbe9a315a8ef3d784884cbd.webp&#34;
                width=&#34;760&#34;
                height=&#34;159&#34;
                loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
@@ -1769,7 +1769,7 @@
                /post/python-multithread-programing/images/rlock_obj_hu2d45796b89bb6bc67740fe98ad3567a3_83530_53e7b1513cc93c65d050170b740099f7.webp 400w,
                /post/python-multithread-programing/images/rlock_obj_hu2d45796b89bb6bc67740fe98ad3567a3_83530_96df8210b1a20016bf182cc9609c5c28.webp 760w,
                /post/python-multithread-programing/images/rlock_obj_hu2d45796b89bb6bc67740fe98ad3567a3_83530_1200x1200_fit_q75_h2_lanczos_3.webp 1200w&#34;
-               src=&#34;/post/python-multithread-programing/images/rlock_obj_hu2d45796b89bb6bc67740fe98ad3567a3_83530_53e7b1513cc93c65d050170b740099f7.webp&#34;
+               src=&#34;https://spacetimelab.cn/post/python-multithread-programing/images/rlock_obj_hu2d45796b89bb6bc67740fe98ad3567a3_83530_53e7b1513cc93c65d050170b740099f7.webp&#34;
                width=&#34;760&#34;
                height=&#34;372&#34;
                loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
@@ -1821,7 +1821,7 @@
                /post/python-multithread-programing/images/rlock_demo_hu8d6b631cb6c49f5597b7172c9eef603d_81380_abcce15dfbd5f06eec056be66f8bb622.webp 400w,
                /post/python-multithread-programing/images/rlock_demo_hu8d6b631cb6c49f5597b7172c9eef603d_81380_e53b227aa494ffb5f4036edf9d9699a2.webp 760w,
                /post/python-multithread-programing/images/rlock_demo_hu8d6b631cb6c49f5597b7172c9eef603d_81380_1200x1200_fit_q75_h2_lanczos_3.webp 1200w&#34;
-               src=&#34;/post/python-multithread-programing/images/rlock_demo_hu8d6b631cb6c49f5597b7172c9eef603d_81380_abcce15dfbd5f06eec056be66f8bb622.webp&#34;
+               src=&#34;https://spacetimelab.cn/post/python-multithread-programing/images/rlock_demo_hu8d6b631cb6c49f5597b7172c9eef603d_81380_abcce15dfbd5f06eec056be66f8bb622.webp&#34;
                width=&#34;760&#34;
                height=&#34;280&#34;
                loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
@@ -1953,7 +1953,7 @@
                /post/python-multithread-programing/images/cond_demo_hu9c93b44e95355344017a94d3d4ed3666_143344_49e0435f80bbba03fa5c7cc3851ba6e4.webp 400w,
                /post/python-multithread-programing/images/cond_demo_hu9c93b44e95355344017a94d3d4ed3666_143344_b0cef4a72fded6f354804cc41e105962.webp 760w,
                /post/python-multithread-programing/images/cond_demo_hu9c93b44e95355344017a94d3d4ed3666_143344_1200x1200_fit_q75_h2_lanczos_3.webp 1200w&#34;
-               src=&#34;/post/python-multithread-programing/images/cond_demo_hu9c93b44e95355344017a94d3d4ed3666_143344_49e0435f80bbba03fa5c7cc3851ba6e4.webp&#34;
+               src=&#34;https://spacetimelab.cn/post/python-multithread-programing/images/cond_demo_hu9c93b44e95355344017a94d3d4ed3666_143344_49e0435f80bbba03fa5c7cc3851ba6e4.webp&#34;
                width=&#34;760&#34;
                height=&#34;358&#34;
                loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
@@ -2091,7 +2091,7 @@
                /post/python-multithread-programing/images/semaphore_demo_hu22205be70349c558a7da953609aec944_177639_fec8445cdb5aae71c04cffe3043c7156.webp 400w,
                /post/python-multithread-programing/images/semaphore_demo_hu22205be70349c558a7da953609aec944_177639_97559d19aa21f74abf3a39cb8b75232a.webp 760w,
                /post/python-multithread-programing/images/semaphore_demo_hu22205be70349c558a7da953609aec944_177639_1200x1200_fit_q75_h2_lanczos_3.webp 1200w&#34;
-               src=&#34;/post/python-multithread-programing/images/semaphore_demo_hu22205be70349c558a7da953609aec944_177639_fec8445cdb5aae71c04cffe3043c7156.webp&#34;
+               src=&#34;https://spacetimelab.cn/post/python-multithread-programing/images/semaphore_demo_hu22205be70349c558a7da953609aec944_177639_fec8445cdb5aae71c04cffe3043c7156.webp&#34;
                width=&#34;679&#34;
                height=&#34;760&#34;
                loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;

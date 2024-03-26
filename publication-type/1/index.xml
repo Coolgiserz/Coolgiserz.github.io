@@ -1,22 +1,22 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>1 | CoolCats</title>
-    <link>/publication-type/1/</link>
-      <atom:link href="/publication-type/1/index.xml" rel="self" type="application/rss+xml" />
+    <title>1 | NullSpace</title>
+    <link>https://spacetimelab.cn/publication-type/1/</link>
+      <atom:link href="https://spacetimelab.cn/publication-type/1/index.xml" rel="self" type="application/rss+xml" />
     <description>1</description>
     <generator>Wowchemy (https://wowchemy.com)</generator><language>en-us</language><lastBuildDate>Tue, 07 Jun 2022 15:28:47 +0800</lastBuildDate>
     <image>
-      <url>/media/icon_hue03491371183284312b8b116a73ae5ab_79511_512x512_fill_lanczos_center_3.png</url>
+      <url>https://spacetimelab.cn/media/icon_hue03491371183284312b8b116a73ae5ab_79511_512x512_fill_lanczos_center_3.png</url>
       <title>1</title>
-      <link>/publication-type/1/</link>
+      <link>https://spacetimelab.cn/publication-type/1/</link>
     </image>
     
     <item>
       <title>「论文阅读」- 基于时空多图卷积网络的网约车需求预测</title>
-      <link>/publication/stmgcn-spatial-temporal-multi-graph-convolution-network-for-ride-hailing-demand-forecasting/</link>
+      <link>https://spacetimelab.cn/publication/stmgcn-spatial-temporal-multi-graph-convolution-network-for-ride-hailing-demand-forecasting/</link>
       <pubDate>Tue, 07 Jun 2022 15:28:47 +0800</pubDate>
-      <guid>/publication/stmgcn-spatial-temporal-multi-graph-convolution-network-for-ride-hailing-demand-forecasting/</guid>
+      <guid>https://spacetimelab.cn/publication/stmgcn-spatial-temporal-multi-graph-convolution-network-for-ride-hailing-demand-forecasting/</guid>
       <description>&lt;h2 id=&#34;st-mgcn模型&#34;&gt;ST-MGCN模型&lt;/h2&gt;
 &lt;h3 id=&#34;空间依赖性建模&#34;&gt;空间依赖性建模&lt;/h3&gt;
 &lt;h3 id=&#34;时序相关性建模&#34;&gt;时序相关性建模&lt;/h3&gt;
@@ -25,9 +25,9 @@
     
     <item>
       <title>「论文阅读」-Connecting the Dots基于GNN进行多变量时间序列预测</title>
-      <link>/publication/connecting-the-dots-multivariate-time-series-forcasting-with-gnn/</link>
+      <link>https://spacetimelab.cn/publication/connecting-the-dots-multivariate-time-series-forcasting-with-gnn/</link>
       <pubDate>Tue, 24 May 2022 19:26:02 +0800</pubDate>
-      <guid>/publication/connecting-the-dots-multivariate-time-series-forcasting-with-gnn/</guid>
+      <guid>https://spacetimelab.cn/publication/connecting-the-dots-multivariate-time-series-forcasting-with-gnn/</guid>
       <description>&lt;h2 id=&#34;问题&#34;&gt;问题&lt;/h2&gt;
 &lt;ul&gt;
 &lt;li&gt;多变量时间序列预测的基本假设是？&lt;/li&gt;
@@ -84,9 +84,9 @@ style=&#34;float: middle; margin-right: 10px;&#34; /&gt;&lt;/p&gt;
     
     <item>
       <title>「论文阅读」-Attention Based Spatial Temporal Graph Convolutional Networks for Traffic Flow Forecasting</title>
-      <link>/publication/attention-based-spatial-temporal-graph-convolutional-networks-for-traffic-flow-forecasting/</link>
+      <link>https://spacetimelab.cn/publication/attention-based-spatial-temporal-graph-convolutional-networks-for-traffic-flow-forecasting/</link>
       <pubDate>Fri, 26 Feb 2021 23:55:52 +0800</pubDate>
-      <guid>/publication/attention-based-spatial-temporal-graph-convolutional-networks-for-traffic-flow-forecasting/</guid>
+      <guid>https://spacetimelab.cn/publication/attention-based-spatial-temporal-graph-convolutional-networks-for-traffic-flow-forecasting/</guid>
       <description>&lt;h2 id=&#34;论文概括&#34;&gt;论文概括&lt;/h2&gt;
 &lt;h3 id=&#34;研究问题&#34;&gt;研究问题&lt;/h3&gt;
 &lt;p&gt;&lt;img src=&#34;images/fig1.png&#34;
@@ -167,17 +167,17 @@ style=&#34;float: middle; margin-right: 10px;&#34; /&gt;&lt;/p&gt;
     
     <item>
       <title>「论文阅读」- 重新审视时空相似性：一种面向交通流预测的深度学习框架</title>
-      <link>/publication/revisiting-spatial-temporal-similarity-a-deep-learning-framework-for-traffic-prediction/</link>
+      <link>https://spacetimelab.cn/publication/revisiting-spatial-temporal-similarity-a-deep-learning-framework-for-traffic-prediction/</link>
       <pubDate>Sat, 16 Jan 2021 20:34:17 +0800</pubDate>
-      <guid>/publication/revisiting-spatial-temporal-similarity-a-deep-learning-framework-for-traffic-prediction/</guid>
+      <guid>https://spacetimelab.cn/publication/revisiting-spatial-temporal-similarity-a-deep-learning-framework-for-traffic-prediction/</guid>
       <description></description>
     </item>
     
     <item>
       <title>「论文阅读」- 用于交通流预测的自适应图卷积循环网络</title>
-      <link>/publication/adaptive-graph-convolutional-recurrent-network-for-traffic-forecasting/</link>
+      <link>https://spacetimelab.cn/publication/adaptive-graph-convolutional-recurrent-network-for-traffic-forecasting/</link>
       <pubDate>Fri, 15 Jan 2021 09:58:49 +0800</pubDate>
-      <guid>/publication/adaptive-graph-convolutional-recurrent-network-for-traffic-forecasting/</guid>
+      <guid>https://spacetimelab.cn/publication/adaptive-graph-convolutional-recurrent-network-for-traffic-forecasting/</guid>
       <description>&lt;p&gt;快速的城市化使城市人口不断增加，并为人口流动性和发展可持续性带来了巨大挑战。在这些挑战中，智能交通系统(ITS)已经成为一个活跃的研究领域[1]，因为它具有促进系统效率和决策的潜力。作为智能交通系统的重要步骤，交通预测旨在预测城市交通系统的未来状态（如交通流量和速度，以及乘客需求）。它在交通调度和管理中起着至关重要的作用，近年来引起了机器学习研究界的极大关注[2，3，4，5，6]。&lt;/p&gt;
 &lt;p&gt;由于不同来源的交通流量和交通速度预测的不同环形检测器/交叉口，以及乘客需求预测的不同车站/地区，产生了复杂的内部依赖关系(一个交通序列中的时间相关性)和相互依赖关系(即多个相关交通序列之间的空间相关性)[3]，因此交通预测具有挑战性。传统的方法只是简单地部署时间序列模型，如将自回归综合移动平均(ARIMA)和向量自回归(VAR)用于交通预测。这些方法无法捕捉大规模交通数据中的非线性关联性和复杂的时空模式。最近，研究人员转向基于深度学习的方法，并专注于设计新的神经网络架构，以捕获所有交通序列共有的突出时空模式。他们通常用循环神经网络[7，8，9，10]（如长短时记忆和门控循环单元）或时空卷积模块[3，4]来模拟时空相关性。关于空间相关性，他们通常使用基于GCN的方法[2，4，3，6，11，5，12]来模拟非结构化的交通序列及其相互依赖性。&lt;/p&gt;
 &lt;p&gt;虽然最近基于深度学习的方法取得了可喜的成果，但它们偏重于所有交通序列中突出的和共有的模式&amp;ndash;共&lt;strong&gt;享的参数空间使得目前的方法在准确捕捉细粒度的数据源特定模式方面存在不足&lt;/strong&gt;。事实上，交通序列呈现出多样化的模式(如图 1 所示)，它们在不同的数据源中可能出现相似、不同甚至矛盾的属性[7, 13]。此外，&lt;strong&gt;现有的基于 GCN 的方法需要通过相似度或距离度量[14]来预先定义一个互连图&lt;/strong&gt;，以捕获空间相关性。这进一步要求大量的领域知识，并且对图的质量很敏感。这种方式生成的图通常是基于直观、不完备且没有直接针对预测任务，在没有相应知识的情况下，可能会存在偏差，不能适应领域。
@@ -298,9 +298,9 @@ style=&#34;float: middle; margin-right: 10px;&#34; /&gt;&lt;/p&gt;
     
     <item>
       <title>「论文翻译」- 基于轨迹大数据的个性化路径推荐</title>
-      <link>/publication/personalized-route-recommendation-using-big-trajectory-data/</link>
+      <link>https://spacetimelab.cn/publication/personalized-route-recommendation-using-big-trajectory-data/</link>
       <pubDate>Mon, 11 Jan 2021 11:29:26 +0800</pubDate>
-      <guid>/publication/personalized-route-recommendation-using-big-trajectory-data/</guid>
+      <guid>https://spacetimelab.cn/publication/personalized-route-recommendation-using-big-trajectory-data/</guid>
       <description>&lt;p&gt;出行在我们的生活中扮演着重要的角色，越来越多的人选择使用车辆出行。为了方便选择路线，各种导航服务应运而生，在给出来源地、目的地，有时还给出出发时间时，就能推荐路线。然而，现有的导航服务所推荐的路线并不总是所有司机都喜欢的。例如，最近的一项研究表明，领先的导航服务提供的路线往往与当地司机选择的路线不一致[5]。&lt;/p&gt;
 &lt;p&gt;产生分歧的原因可能有两个方面。首先，现有的导航服务大多只考虑有限的几种出行成本，如距离或出行时间，以及尽量降低单一出行成本的返回路线，如最短路线或最快路线。相反，司机可能会考虑多种不同的出行成本。例如，由于公众环保意识的增强和燃料价格的高涨，许多驾驶员除了考虑旅行时间和旅行距离外，还越来越多地考虑燃料消耗[1]。&lt;/p&gt;
 &lt;p&gt;其次，现有的导航服务为所有驾驶员提供相同的路线(如最短路线或最快路线)，而且没有考虑到个别驾驶员的驾驶偏好(如省时驾驶、省油驾驶或两者之间的某种权衡)。&lt;/p&gt;
@@ -328,7 +328,7 @@ style=&#34;float: middle; margin-right: 10px;&#34; /&gt;&lt;/p&gt;
                /publication/personalized-route-recommendation-using-big-trajectory-data/images/fig1_hu29c927f7891b310cf73b92b0a1ee6e31_277347_d8a6765eb367463e5084f2c5b5e99167.webp 400w,
                /publication/personalized-route-recommendation-using-big-trajectory-data/images/fig1_hu29c927f7891b310cf73b92b0a1ee6e31_277347_f5a55f8e0b90a23263594174e2fbaa1d.webp 760w,
                /publication/personalized-route-recommendation-using-big-trajectory-data/images/fig1_hu29c927f7891b310cf73b92b0a1ee6e31_277347_1200x1200_fit_q75_h2_lanczos_3.webp 1200w&#34;
-               src=&#34;/publication/personalized-route-recommendation-using-big-trajectory-data/images/fig1_hu29c927f7891b310cf73b92b0a1ee6e31_277347_d8a6765eb367463e5084f2c5b5e99167.webp&#34;
+               src=&#34;https://spacetimelab.cn/publication/personalized-route-recommendation-using-big-trajectory-data/images/fig1_hu29c927f7891b310cf73b92b0a1ee6e31_277347_d8a6765eb367463e5084f2c5b5e99167.webp&#34;
                width=&#34;760&#34;
                height=&#34;403&#34;
                loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
@@ -414,17 +414,17 @@ style=&#34;float: middle; margin-right: 10px;&#34; /&gt;&lt;/p&gt;
     
     <item>
       <title>「论文阅读」-DCRNN: 数据驱动的交通流预测</title>
-      <link>/publication/dcrnn-data-driven-traffic-forecasting/</link>
+      <link>https://spacetimelab.cn/publication/dcrnn-data-driven-traffic-forecasting/</link>
       <pubDate>Mon, 28 Dec 2020 15:28:24 +0800</pubDate>
-      <guid>/publication/dcrnn-data-driven-traffic-forecasting/</guid>
+      <guid>https://spacetimelab.cn/publication/dcrnn-data-driven-traffic-forecasting/</guid>
       <description></description>
     </item>
     
     <item>
       <title>「论文阅读」-STGCN：面向交通流预测的深度学习框架</title>
-      <link>/publication/stgcn-deep-learning-framework-for-traffic-forecasting/</link>
+      <link>https://spacetimelab.cn/publication/stgcn-deep-learning-framework-for-traffic-forecasting/</link>
       <pubDate>Mon, 28 Dec 2020 10:01:58 +0800</pubDate>
-      <guid>/publication/stgcn-deep-learning-framework-for-traffic-forecasting/</guid>
+      <guid>https://spacetimelab.cn/publication/stgcn-deep-learning-framework-for-traffic-forecasting/</guid>
       <description>&lt;h2 id=&#34;文章分析&#34;&gt;文章分析&lt;/h2&gt;
 &lt;h3 id=&#34;引言&#34;&gt;引言&lt;/h3&gt;
 &lt;p&gt;为了充分利用空间特征，一些研究者使用卷积神经网络（CNN）来捕捉交通网络之间的相邻关系，同时在时间轴上采用循环神经网络（RNN）。通过结合长短期记忆（LSTM）网络[Hochreiter和Schmidhuber，1997]和一维CNN，Wu和Tan[2016]提出了一种用于短期交通预测的特征级融合架构CLTFP。虽然采用了简单明了的策略，但CLTFP还是首次尝试将空间和时间规律性统一起来。之后，Shi等人[2015]提出了卷积LSTM，它是一种扩展的全连接LSTM（FC-LSTM），内嵌卷积层。但是，应用的普通卷积操作限制了模型只能处理网格结构（如图像、视频），而不是一般的域。同时，用于序列学习的递归网络需要进行迭代训练，这就引入了分步的误差积累。此外，基于RNN的网络（包括LSTM）通常被认为难以训练且计算量大。&lt;/p&gt;
@@ -652,9 +652,9 @@ style=&#34;float: middle; margin-right: 10px;&#34; /&gt;&lt;/p&gt;
     
     <item>
       <title>「论文阅读」—GMAN: 一种用于交通预测的图多注意力网络</title>
-      <link>/publication/gman-a-graph-multi-attention-network-for-traffic-prediction/</link>
+      <link>https://spacetimelab.cn/publication/gman-a-graph-multi-attention-network-for-traffic-prediction/</link>
       <pubDate>Wed, 23 Dec 2020 11:25:09 +0800</pubDate>
-      <guid>/publication/gman-a-graph-multi-attention-network-for-traffic-prediction/</guid>
+      <guid>https://spacetimelab.cn/publication/gman-a-graph-multi-attention-network-for-traffic-prediction/</guid>
       <description>&lt;h2 id=&#34;文章&#34;&gt;文章&lt;/h2&gt;
 &lt;p&gt;交通预测的目的是根据历史观测结果（如通过传感器记录的数据）预测道路网络中未来的交通状况（如交通量或速度）。它在许多现实世界的应用中发挥着重要作用。例如，准确的交通预测可以帮助交通机构更好地控制交通，以减少交通拥堵（Lv等，2018；Zheng等，2019）。&lt;/p&gt;
 &lt;h2 id=&#34;模型&#34;&gt;模型&lt;/h2&gt;
@@ -687,7 +687,7 @@ style=&#34;float: middle; margin-right: 10px;&#34; /&gt;&lt;/p&gt;
                /publication/gman-a-graph-multi-attention-network-for-traffic-prediction/images/fig5_hu7715b61d25ea775e6dd96e73608c3993_78890_fcb7d4f6643f3ca3412e9c608cf38e20.webp 400w,
                /publication/gman-a-graph-multi-attention-network-for-traffic-prediction/images/fig5_hu7715b61d25ea775e6dd96e73608c3993_78890_778ff39eaa02ba2fd6c4c6e2ad6602bc.webp 760w,
                /publication/gman-a-graph-multi-attention-network-for-traffic-prediction/images/fig5_hu7715b61d25ea775e6dd96e73608c3993_78890_1200x1200_fit_q75_h2_lanczos_3.webp 1200w&#34;
-               src=&#34;/publication/gman-a-graph-multi-attention-network-for-traffic-prediction/images/fig5_hu7715b61d25ea775e6dd96e73608c3993_78890_fcb7d4f6643f3ca3412e9c608cf38e20.webp&#34;
+               src=&#34;https://spacetimelab.cn/publication/gman-a-graph-multi-attention-network-for-traffic-prediction/images/fig5_hu7715b61d25ea775e6dd96e73608c3993_78890_fcb7d4f6643f3ca3412e9c608cf38e20.webp&#34;
                width=&#34;728&#34;
                height=&#34;424&#34;
                loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
@@ -704,9 +704,9 @@ style=&#34;float: middle; margin-right: 10px;&#34; /&gt;&lt;/p&gt;
     
     <item>
       <title>「论文阅读」-学习用于通勤流嵌入的地理上下文嵌入</title>
-      <link>/publication/learning-geo-embeding-for-commute-flow-prediction/</link>
+      <link>https://spacetimelab.cn/publication/learning-geo-embeding-for-commute-flow-prediction/</link>
       <pubDate>Wed, 09 Dec 2020 20:18:23 +0800</pubDate>
-      <guid>/publication/learning-geo-embeding-for-commute-flow-prediction/</guid>
+      <guid>https://spacetimelab.cn/publication/learning-geo-embeding-for-commute-flow-prediction/</guid>
       <description>&lt;h1 id=&#34;learning-geo-contextual-embeddings-for-commuting-flow-prediction&#34;&gt;Learning Geo-Contextual Embeddings for Commuting Flow Prediction&lt;/h1&gt;
 &lt;h2 id=&#34;0x00-引言&#34;&gt;0x00 引言&lt;/h2&gt;
 &lt;p&gt;本文章题为“用于&lt;strong&gt;通勤流&lt;/strong&gt;预测的&lt;strong&gt;地理上下文嵌入&lt;/strong&gt;学习”。&lt;/p&gt;
@@ -743,7 +743,7 @@ style=&#34;float: middle; margin-right: 10px;&#34; /&gt;&lt;/p&gt;
                /publication/learning-geo-embeding-for-commute-flow-prediction/images/network_hubaff1d27d2e8195db4523c4cc8c31b1c_478450_fd801f0ba2012a967787ba0f88df7381.webp 400w,
                /publication/learning-geo-embeding-for-commute-flow-prediction/images/network_hubaff1d27d2e8195db4523c4cc8c31b1c_478450_4f0c8ee3465889a97c1aa796c36bdc09.webp 760w,
                /publication/learning-geo-embeding-for-commute-flow-prediction/images/network_hubaff1d27d2e8195db4523c4cc8c31b1c_478450_1200x1200_fit_q75_h2_lanczos_3.webp 1200w&#34;
-               src=&#34;/publication/learning-geo-embeding-for-commute-flow-prediction/images/network_hubaff1d27d2e8195db4523c4cc8c31b1c_478450_fd801f0ba2012a967787ba0f88df7381.webp&#34;
+               src=&#34;https://spacetimelab.cn/publication/learning-geo-embeding-for-commute-flow-prediction/images/network_hubaff1d27d2e8195db4523c4cc8c31b1c_478450_fd801f0ba2012a967787ba0f88df7381.webp&#34;
                width=&#34;567&#34;
                height=&#34;628&#34;
                loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
@@ -790,7 +790,7 @@ style=&#34;float: middle; margin-right: 10px;&#34; /&gt;&lt;/p&gt;
                /publication/learning-geo-embeding-for-commute-flow-prediction/images/gmel_hu17ac8b9c4882d12d1f36d3dea926d512_119997_04b4a22e38f8076794b85edd2744c9ca.webp 400w,
                /publication/learning-geo-embeding-for-commute-flow-prediction/images/gmel_hu17ac8b9c4882d12d1f36d3dea926d512_119997_0db64feb146c310b7470c46be661cbea.webp 760w,
                /publication/learning-geo-embeding-for-commute-flow-prediction/images/gmel_hu17ac8b9c4882d12d1f36d3dea926d512_119997_1200x1200_fit_q75_h2_lanczos_3.webp 1200w&#34;
-               src=&#34;/publication/learning-geo-embeding-for-commute-flow-prediction/images/gmel_hu17ac8b9c4882d12d1f36d3dea926d512_119997_04b4a22e38f8076794b85edd2744c9ca.webp&#34;
+               src=&#34;https://spacetimelab.cn/publication/learning-geo-embeding-for-commute-flow-prediction/images/gmel_hu17ac8b9c4882d12d1f36d3dea926d512_119997_04b4a22e38f8076794b85edd2744c9ca.webp&#34;
                width=&#34;760&#34;
                height=&#34;420&#34;
                loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
@@ -829,7 +829,7 @@ style=&#34;float: middle; margin-right: 10px;&#34; /&gt;&lt;/p&gt;
                /publication/learning-geo-embeding-for-commute-flow-prediction/images/algo_huf9fc8b5ae68b3f522fe6f6f61b13b518_203638_b2cf5a09b6099309fd8716fd5e9f92d1.webp 400w,
                /publication/learning-geo-embeding-for-commute-flow-prediction/images/algo_huf9fc8b5ae68b3f522fe6f6f61b13b518_203638_d45c9adfa1144b51d69f8859d362cc06.webp 760w,
                /publication/learning-geo-embeding-for-commute-flow-prediction/images/algo_huf9fc8b5ae68b3f522fe6f6f61b13b518_203638_1200x1200_fit_q75_h2_lanczos_3.webp 1200w&#34;
-               src=&#34;/publication/learning-geo-embeding-for-commute-flow-prediction/images/algo_huf9fc8b5ae68b3f522fe6f6f61b13b518_203638_b2cf5a09b6099309fd8716fd5e9f92d1.webp&#34;
+               src=&#34;https://spacetimelab.cn/publication/learning-geo-embeding-for-commute-flow-prediction/images/algo_huf9fc8b5ae68b3f522fe6f6f61b13b518_203638_b2cf5a09b6099309fd8716fd5e9f92d1.webp&#34;
                width=&#34;543&#34;
                height=&#34;760&#34;
                loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
@@ -873,7 +873,7 @@ style=&#34;float: middle; margin-right: 10px;&#34; /&gt;&lt;/p&gt;
                /publication/learning-geo-embeding-for-commute-flow-prediction/images/test_set_huaf0371918803daba3ec3808a5c70ae00_107551_35643127bc8ce10aad6df4cf98b532f9.webp 400w,
                /publication/learning-geo-embeding-for-commute-flow-prediction/images/test_set_huaf0371918803daba3ec3808a5c70ae00_107551_d64a09809848f449bb1dcb6e8e07d4d6.webp 760w,
                /publication/learning-geo-embeding-for-commute-flow-prediction/images/test_set_huaf0371918803daba3ec3808a5c70ae00_107551_1200x1200_fit_q75_h2_lanczos_3.webp 1200w&#34;
-               src=&#34;/publication/learning-geo-embeding-for-commute-flow-prediction/images/test_set_huaf0371918803daba3ec3808a5c70ae00_107551_35643127bc8ce10aad6df4cf98b532f9.webp&#34;
+               src=&#34;https://spacetimelab.cn/publication/learning-geo-embeding-for-commute-flow-prediction/images/test_set_huaf0371918803daba3ec3808a5c70ae00_107551_35643127bc8ce10aad6df4cf98b532f9.webp&#34;
                width=&#34;567&#34;
                height=&#34;497&#34;
                loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
@@ -903,7 +903,7 @@ style=&#34;float: middle; margin-right: 10px;&#34; /&gt;&lt;/p&gt;
                /publication/learning-geo-embeding-for-commute-flow-prediction/images/residual_hu840bbd1bf0f27265d0aa4d2a4d3fde58_516351_52e8b2e0973163e659f876620b02f256.webp 400w,
                /publication/learning-geo-embeding-for-commute-flow-prediction/images/residual_hu840bbd1bf0f27265d0aa4d2a4d3fde58_516351_b27989e2da9404d46ccd2697e78ec5e3.webp 760w,
                /publication/learning-geo-embeding-for-commute-flow-prediction/images/residual_hu840bbd1bf0f27265d0aa4d2a4d3fde58_516351_1200x1200_fit_q75_h2_lanczos_3.webp 1200w&#34;
-               src=&#34;/publication/learning-geo-embeding-for-commute-flow-prediction/images/residual_hu840bbd1bf0f27265d0aa4d2a4d3fde58_516351_52e8b2e0973163e659f876620b02f256.webp&#34;
+               src=&#34;https://spacetimelab.cn/publication/learning-geo-embeding-for-commute-flow-prediction/images/residual_hu840bbd1bf0f27265d0aa4d2a4d3fde58_516351_52e8b2e0973163e659f876620b02f256.webp&#34;
                width=&#34;760&#34;
                height=&#34;416&#34;
                loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
@@ -917,9 +917,9 @@ style=&#34;float: middle; margin-right: 10px;&#34; /&gt;&lt;/p&gt;
     
     <item>
       <title>「论文翻译」- 你需要的只是注意力</title>
-      <link>/publication/attention-is-all-you-need/</link>
+      <link>https://spacetimelab.cn/publication/attention-is-all-you-need/</link>
       <pubDate>Wed, 30 Sep 2020 19:09:30 +0800</pubDate>
-      <guid>/publication/attention-is-all-you-need/</guid>
+      <guid>https://spacetimelab.cn/publication/attention-is-all-you-need/</guid>
       <description>&lt;h3 id=&#34;引言&#34;&gt;引言&lt;/h3&gt;
 &lt;p&gt;循环神经网络，特别是长短期记忆[12]和门控循环[7]神经网络，已经被牢固地确立为语言建模和机器翻译等序列建模和转换问题的最先进方法[29，2，5]。此后，大量的努力继续推动循环语言模型和编码器-解码器架构的边界[31，21，13]。&lt;/p&gt;
 &lt;p&gt;循环模型通常沿着输入和输出序列的符号位置进行因子计算。这种固有的顺序性使得我们无法训练实例中的并行化，这在较长的序列长度上变得至关重要，因为内存约束限制了跨实例的批处理。最近的工作通过因子化技巧[18]和条件计算[26]实现了计算效率的显著提高，同时也提高了后者情况下的模型性能。然而，顺序计算的基本约束仍然存在。&lt;/p&gt;

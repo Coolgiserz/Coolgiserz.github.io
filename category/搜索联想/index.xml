@@ -1,22 +1,22 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>搜索联想 | CoolCats</title>
-    <link>/category/%E6%90%9C%E7%B4%A2%E8%81%94%E6%83%B3/</link>
-      <atom:link href="/category/%E6%90%9C%E7%B4%A2%E8%81%94%E6%83%B3/index.xml" rel="self" type="application/rss+xml" />
+    <title>搜索联想 | NullSpace</title>
+    <link>https://spacetimelab.cn/category/%E6%90%9C%E7%B4%A2%E8%81%94%E6%83%B3/</link>
+      <atom:link href="https://spacetimelab.cn/category/%E6%90%9C%E7%B4%A2%E8%81%94%E6%83%B3/index.xml" rel="self" type="application/rss+xml" />
     <description>搜索联想</description>
     <generator>Wowchemy (https://wowchemy.com)</generator><language>en-us</language><lastBuildDate>Wed, 01 Nov 2023 01:19:37 +0800</lastBuildDate>
     <image>
-      <url>/media/icon_hue03491371183284312b8b116a73ae5ab_79511_512x512_fill_lanczos_center_3.png</url>
+      <url>https://spacetimelab.cn/media/icon_hue03491371183284312b8b116a73ae5ab_79511_512x512_fill_lanczos_center_3.png</url>
       <title>搜索联想</title>
-      <link>/category/%E6%90%9C%E7%B4%A2%E8%81%94%E6%83%B3/</link>
+      <link>https://spacetimelab.cn/category/%E6%90%9C%E7%B4%A2%E8%81%94%E6%83%B3/</link>
     </image>
     
     <item>
       <title>搜索联想算法后端接口服务(前缀版)</title>
-      <link>/project/search_association_algorithms/</link>
+      <link>https://spacetimelab.cn/project/search_association_algorithms/</link>
       <pubDate>Wed, 01 Nov 2023 01:19:37 +0800</pubDate>
-      <guid>/project/search_association_algorithms/</guid>
+      <guid>https://spacetimelab.cn/project/search_association_algorithms/</guid>
       <description>&lt;h2 id=&#34;0x00-搜索联想&#34;&gt;0x00 搜索联想&lt;/h2&gt;
 &lt;p&gt;当我们使用搜素引擎时,键入少数关键字后搜索引擎就会给出多个基于你输入的词作为前缀的待选词列表，这就是搜索联想。如今，搜索联想功能几乎已成为各大内容平台（如电商、抖音等）的必备功能之一，实现良好的搜索联想功能能够大幅提高产品的用户体验。&lt;/p&gt;
 &lt;p&gt;
@@ -41,7 +41,7 @@
                /project/search_association_algorithms/images/search_engine_a1_hudfd4f4103befaca2c06300a7e4b12714_249811_96d93a8229149cdce9f3c161b60398e1.webp 400w,
                /project/search_association_algorithms/images/search_engine_a1_hudfd4f4103befaca2c06300a7e4b12714_249811_91f075f2b9b1e9d644b8a082e360ac45.webp 760w,
                /project/search_association_algorithms/images/search_engine_a1_hudfd4f4103befaca2c06300a7e4b12714_249811_1200x1200_fit_q75_h2_lanczos_3.webp 1200w&#34;
-               src=&#34;/project/search_association_algorithms/images/search_engine_a1_hudfd4f4103befaca2c06300a7e4b12714_249811_96d93a8229149cdce9f3c161b60398e1.webp&#34;
+               src=&#34;https://spacetimelab.cn/project/search_association_algorithms/images/search_engine_a1_hudfd4f4103befaca2c06300a7e4b12714_249811_96d93a8229149cdce9f3c161b60398e1.webp&#34;
                width=&#34;760&#34;
                height=&#34;347&#34;
                loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
@@ -73,7 +73,7 @@
                /project/search_association_algorithms/images/asso_taobao_hu39ab1f6d3053e942f458903be001dcb2_188912_b7dede952961b44960f35a4ada5e1544.webp 400w,
                /project/search_association_algorithms/images/asso_taobao_hu39ab1f6d3053e942f458903be001dcb2_188912_018b45e60ab9cc5da6274c3962a8b316.webp 760w,
                /project/search_association_algorithms/images/asso_taobao_hu39ab1f6d3053e942f458903be001dcb2_188912_1200x1200_fit_q75_h2_lanczos_3.webp 1200w&#34;
-               src=&#34;/project/search_association_algorithms/images/asso_taobao_hu39ab1f6d3053e942f458903be001dcb2_188912_b7dede952961b44960f35a4ada5e1544.webp&#34;
+               src=&#34;https://spacetimelab.cn/project/search_association_algorithms/images/asso_taobao_hu39ab1f6d3053e942f458903be001dcb2_188912_b7dede952961b44960f35a4ada5e1544.webp&#34;
                width=&#34;443&#34;
                height=&#34;760&#34;
                loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
@@ -112,7 +112,7 @@
                /project/search_association_algorithms/images/asso_test_hud7429dd10ca3bb3e0782657a551123e2_289353_7a457bc8e9ddfad1ef6ecb6e7be97ac4.webp 400w,
                /project/search_association_algorithms/images/asso_test_hud7429dd10ca3bb3e0782657a551123e2_289353_f624965db863644408a28be5ccf53b71.webp 760w,
                /project/search_association_algorithms/images/asso_test_hud7429dd10ca3bb3e0782657a551123e2_289353_1200x1200_fit_q75_h2_lanczos_3.webp 1200w&#34;
-               src=&#34;/project/search_association_algorithms/images/asso_test_hud7429dd10ca3bb3e0782657a551123e2_289353_7a457bc8e9ddfad1ef6ecb6e7be97ac4.webp&#34;
+               src=&#34;https://spacetimelab.cn/project/search_association_algorithms/images/asso_test_hud7429dd10ca3bb3e0782657a551123e2_289353_7a457bc8e9ddfad1ef6ecb6e7be97ac4.webp&#34;
                width=&#34;760&#34;
                height=&#34;359&#34;
                loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
@@ -143,7 +143,7 @@
                /project/search_association_algorithms/images/db_game_hubaf60215eedc7fac2aee6817067d31c8_1374244_884c28b1c3b8b689b22d5676c5943c0f.webp 400w,
                /project/search_association_algorithms/images/db_game_hubaf60215eedc7fac2aee6817067d31c8_1374244_7b3a094f74a8f0d81fce33665cfac0ac.webp 760w,
                /project/search_association_algorithms/images/db_game_hubaf60215eedc7fac2aee6817067d31c8_1374244_1200x1200_fit_q75_h2_lanczos_3.webp 1200w&#34;
-               src=&#34;/project/search_association_algorithms/images/db_game_hubaf60215eedc7fac2aee6817067d31c8_1374244_884c28b1c3b8b689b22d5676c5943c0f.webp&#34;
+               src=&#34;https://spacetimelab.cn/project/search_association_algorithms/images/db_game_hubaf60215eedc7fac2aee6817067d31c8_1374244_884c28b1c3b8b689b22d5676c5943c0f.webp&#34;
                width=&#34;760&#34;
                height=&#34;486&#34;
                loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
@@ -172,7 +172,7 @@
                /project/search_association_algorithms/images/asso1_hue7585576c11b02b3cdc4e82eb543375a_196397_9d27eecc4d7978dd5d1f074cf4c823d6.webp 400w,
                /project/search_association_algorithms/images/asso1_hue7585576c11b02b3cdc4e82eb543375a_196397_2efa71f70875693dd917cd1764f0f7f0.webp 760w,
                /project/search_association_algorithms/images/asso1_hue7585576c11b02b3cdc4e82eb543375a_196397_1200x1200_fit_q75_h2_lanczos_3.webp 1200w&#34;
-               src=&#34;/project/search_association_algorithms/images/asso1_hue7585576c11b02b3cdc4e82eb543375a_196397_9d27eecc4d7978dd5d1f074cf4c823d6.webp&#34;
+               src=&#34;https://spacetimelab.cn/project/search_association_algorithms/images/asso1_hue7585576c11b02b3cdc4e82eb543375a_196397_9d27eecc4d7978dd5d1f074cf4c823d6.webp&#34;
                width=&#34;760&#34;
                height=&#34;685&#34;
                loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
@@ -200,7 +200,7 @@
                /project/search_association_algorithms/images/asso2_huc8b528fa7e72ed40b53a4f5d6efd2063_129183_3d8fd371c9315d335c539e4557f8ff8c.webp 400w,
                /project/search_association_algorithms/images/asso2_huc8b528fa7e72ed40b53a4f5d6efd2063_129183_1525f3275371c95d0a10530592f52341.webp 760w,
                /project/search_association_algorithms/images/asso2_huc8b528fa7e72ed40b53a4f5d6efd2063_129183_1200x1200_fit_q75_h2_lanczos_3.webp 1200w&#34;
-               src=&#34;/project/search_association_algorithms/images/asso2_huc8b528fa7e72ed40b53a4f5d6efd2063_129183_3d8fd371c9315d335c539e4557f8ff8c.webp&#34;
+               src=&#34;https://spacetimelab.cn/project/search_association_algorithms/images/asso2_huc8b528fa7e72ed40b53a4f5d6efd2063_129183_3d8fd371c9315d335c539e4557f8ff8c.webp&#34;
                width=&#34;760&#34;
                height=&#34;493&#34;
                loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
@@ -272,7 +272,7 @@
                /project/search_association_algorithms/images/industry/sql_like_computer_hu943d2929eaabbb8e501db5fc879fa92d_295311_484b869c6487e061c23c1fb44386d1ec.webp 400w,
                /project/search_association_algorithms/images/industry/sql_like_computer_hu943d2929eaabbb8e501db5fc879fa92d_295311_c2ed8a63028dcb6cf6be6687a920c463.webp 760w,
                /project/search_association_algorithms/images/industry/sql_like_computer_hu943d2929eaabbb8e501db5fc879fa92d_295311_1200x1200_fit_q75_h2_lanczos_3.webp 1200w&#34;
-               src=&#34;/project/search_association_algorithms/images/industry/sql_like_computer_hu943d2929eaabbb8e501db5fc879fa92d_295311_484b869c6487e061c23c1fb44386d1ec.webp&#34;
+               src=&#34;https://spacetimelab.cn/project/search_association_algorithms/images/industry/sql_like_computer_hu943d2929eaabbb8e501db5fc879fa92d_295311_484b869c6487e061c23c1fb44386d1ec.webp&#34;
                width=&#34;760&#34;
                height=&#34;588&#34;
                loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
@@ -300,7 +300,7 @@
                /project/search_association_algorithms/images/industry/sql_like_industry_hu80efb910a989e368d4520acd95279f73_258744_0bc2f8bc42c445f38847fb1ecca6d1e9.webp 400w,
                /project/search_association_algorithms/images/industry/sql_like_industry_hu80efb910a989e368d4520acd95279f73_258744_c36ec03a01294a12b2f2a1093688d588.webp 760w,
                /project/search_association_algorithms/images/industry/sql_like_industry_hu80efb910a989e368d4520acd95279f73_258744_1200x1200_fit_q75_h2_lanczos_3.webp 1200w&#34;
-               src=&#34;/project/search_association_algorithms/images/industry/sql_like_industry_hu80efb910a989e368d4520acd95279f73_258744_0bc2f8bc42c445f38847fb1ecca6d1e9.webp&#34;
+               src=&#34;https://spacetimelab.cn/project/search_association_algorithms/images/industry/sql_like_industry_hu80efb910a989e368d4520acd95279f73_258744_0bc2f8bc42c445f38847fb1ecca6d1e9.webp&#34;
                width=&#34;760&#34;
                height=&#34;567&#34;
                loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
@@ -328,7 +328,7 @@
                /project/search_association_algorithms/images/industry/trie_social_hudc6ddfac9ba4ee8bd046036fbe97ea27_268208_a91101b572641f2ad88d99bf1685c7b1.webp 400w,
                /project/search_association_algorithms/images/industry/trie_social_hudc6ddfac9ba4ee8bd046036fbe97ea27_268208_50a43d24ef174ff077fd2d8073ce7514.webp 760w,
                /project/search_association_algorithms/images/industry/trie_social_hudc6ddfac9ba4ee8bd046036fbe97ea27_268208_1200x1200_fit_q75_h2_lanczos_3.webp 1200w&#34;
-               src=&#34;/project/search_association_algorithms/images/industry/trie_social_hudc6ddfac9ba4ee8bd046036fbe97ea27_268208_a91101b572641f2ad88d99bf1685c7b1.webp&#34;
+               src=&#34;https://spacetimelab.cn/project/search_association_algorithms/images/industry/trie_social_hudc6ddfac9ba4ee8bd046036fbe97ea27_268208_a91101b572641f2ad88d99bf1685c7b1.webp&#34;
                width=&#34;760&#34;
                height=&#34;559&#34;
                loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;

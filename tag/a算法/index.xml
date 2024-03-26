@@ -1,22 +1,22 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>A*算法 | CoolCats</title>
-    <link>/tag/a%E7%AE%97%E6%B3%95/</link>
-      <atom:link href="/tag/a%E7%AE%97%E6%B3%95/index.xml" rel="self" type="application/rss+xml" />
+    <title>A*算法 | NullSpace</title>
+    <link>https://spacetimelab.cn/tag/a%E7%AE%97%E6%B3%95/</link>
+      <atom:link href="https://spacetimelab.cn/tag/a%E7%AE%97%E6%B3%95/index.xml" rel="self" type="application/rss+xml" />
     <description>A*算法</description>
     <generator>Wowchemy (https://wowchemy.com)</generator><language>en-us</language><lastBuildDate>Mon, 27 Apr 2020 00:00:00 +0000</lastBuildDate>
     <image>
-      <url>/media/icon_hue03491371183284312b8b116a73ae5ab_79511_512x512_fill_lanczos_center_3.png</url>
+      <url>https://spacetimelab.cn/media/icon_hue03491371183284312b8b116a73ae5ab_79511_512x512_fill_lanczos_center_3.png</url>
       <title>A*算法</title>
-      <link>/tag/a%E7%AE%97%E6%B3%95/</link>
+      <link>https://spacetimelab.cn/tag/a%E7%AE%97%E6%B3%95/</link>
     </image>
     
     <item>
       <title>基于OpenStreetMap的路径规划项目</title>
-      <link>/project/osm-route-planning/</link>
+      <link>https://spacetimelab.cn/project/osm-route-planning/</link>
       <pubDate>Mon, 27 Apr 2020 00:00:00 +0000</pubDate>
-      <guid>/project/osm-route-planning/</guid>
+      <guid>https://spacetimelab.cn/project/osm-route-planning/</guid>
       <description>&lt;h2 id=&#34;0x00-背景介绍&#34;&gt;0x00 背景介绍&lt;/h2&gt;
 &lt;p&gt;路径规划是运动规划中的一个主要问题，在很多领域中都有应用，高新领域有如机器人运动、无人机飞行、巡航导弹运动等；日常生活有如出行导航、路网规划等。在不同的场景中有不同的目标和约束，规划的方案会有所不同，也可能不止一个。比如说我们使用百度地图/高德地图等软件的导航功能时，软件返回的方案会包括时间最短、距离最短、红绿灯最少等方案，根据骑行、步行、自驾小汽车、公交等出行方式的不同又会有不同的方案（如下图），有时我们可能还要求所规划的路线必须经过某些指定地点。所以说路径规划本身的问题可以是非常复杂的，因为现实就是很复杂。&lt;/p&gt;
 &lt;img src=&#34;images/baidumap.jpg&#34; width = &#34;300&#34; height = &#34;200&#34; alt=&#34;百度地图&#34; align=center /&gt;
@@ -129,7 +129,7 @@
                /project/osm-route-planning/images/search_flow_hu50a7477e55fd085dd921f99ef199bf83_398105_5a99dcde2b4b5d0dff891beaf74276d6.webp 400w,
                /project/osm-route-planning/images/search_flow_hu50a7477e55fd085dd921f99ef199bf83_398105_7d188979bc86ed4e21a80bf527bf1766.webp 760w,
                /project/osm-route-planning/images/search_flow_hu50a7477e55fd085dd921f99ef199bf83_398105_1200x1200_fit_q75_h2_lanczos_3.webp 1200w&#34;
-               src=&#34;/project/osm-route-planning/images/search_flow_hu50a7477e55fd085dd921f99ef199bf83_398105_5a99dcde2b4b5d0dff891beaf74276d6.webp&#34;
+               src=&#34;https://spacetimelab.cn/project/osm-route-planning/images/search_flow_hu50a7477e55fd085dd921f99ef199bf83_398105_5a99dcde2b4b5d0dff891beaf74276d6.webp&#34;
                width=&#34;760&#34;
                height=&#34;751&#34;
                loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;

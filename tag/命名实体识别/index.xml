@@ -1,0 +1,293 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>命名实体识别 | NullSpace</title>
+    <link>https://spacetimelab.cn/tag/%E5%91%BD%E5%90%8D%E5%AE%9E%E4%BD%93%E8%AF%86%E5%88%AB/</link>
+      <atom:link href="https://spacetimelab.cn/tag/%E5%91%BD%E5%90%8D%E5%AE%9E%E4%BD%93%E8%AF%86%E5%88%AB/index.xml" rel="self" type="application/rss+xml" />
+    <description>命名实体识别</description>
+    <generator>Wowchemy (https://wowchemy.com)</generator><language>en-us</language><lastBuildDate>Sun, 24 Mar 2024 16:11:11 +0800</lastBuildDate>
+    <image>
+      <url>https://spacetimelab.cn/media/icon_hue03491371183284312b8b116a73ae5ab_79511_512x512_fill_lanczos_center_3.png</url>
+      <title>命名实体识别</title>
+      <link>https://spacetimelab.cn/tag/%E5%91%BD%E5%90%8D%E5%AE%9E%E4%BD%93%E8%AF%86%E5%88%AB/</link>
+    </image>
+    
+    <item>
+      <title>文本匹配技术调研与实验--以企业名称识别为例</title>
+      <link>https://spacetimelab.cn/post/text-matching-investigation/</link>
+      <pubDate>Sun, 24 Mar 2024 16:11:11 +0800</pubDate>
+      <guid>https://spacetimelab.cn/post/text-matching-investigation/</guid>
+      <description>&lt;h2 id=&#34;前言&#34;&gt;前言&lt;/h2&gt;
+&lt;p&gt;对文档进行标签化/分类是很多现代系统的基本功能，如新闻类平台对新闻主题进行分类、商业智能领域需要从新闻、专利、招投标、行业研报等文档中识别出企业实体信息并对数据建立关联关系。&lt;/p&gt;
+&lt;h2 id=&#34;方法&#34;&gt;方法&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;基于规则的字符串模式匹配：判断文档中是否存在子串（关键字），并且需要考虑同一关键字的多种表达（如商汤科技简称商汤，又可称sensetime）
+&lt;ul&gt;
+&lt;li&gt;实现1：子字符串存在性判断&lt;/li&gt;
+&lt;li&gt;实现2：正则表达式&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;命名实体识别：识别组织型实体&lt;/li&gt;
+&lt;li&gt;对文档集合构建倒排索引，通过判定索引词是否包含指定关键字或是企业实体进行数据匹配&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;实现&#34;&gt;实现&lt;/h2&gt;
+&lt;h3 id=&#34;经典方法字符串模式匹配&#34;&gt;经典方法：字符串模式匹配&lt;/h3&gt;
+&lt;h4 id=&#34;基于in操作符&#34;&gt;基于in操作符&lt;/h4&gt;
+&lt;p&gt;8线程情况下，处理10个新闻正文匹配，耗时9s&lt;/p&gt;
+&lt;p&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure  &gt;
+  &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img alt=&#34;&#34; srcset=&#34;
+               /post/text-matching-investigation/images/testcase/traditional/multithread-8-in-operator_hu6beb7ff41c0e086c995d8ed3e89c5914_722719_f7be10cf9e228508b41e431c4ac353ac.webp 400w,
+               /post/text-matching-investigation/images/testcase/traditional/multithread-8-in-operator_hu6beb7ff41c0e086c995d8ed3e89c5914_722719_839bddf05c2fc15006d9343e6a475bf1.webp 760w,
+               /post/text-matching-investigation/images/testcase/traditional/multithread-8-in-operator_hu6beb7ff41c0e086c995d8ed3e89c5914_722719_1200x1200_fit_q75_h2_lanczos_3.webp 1200w&#34;
+               src=&#34;https://spacetimelab.cn/post/text-matching-investigation/images/testcase/traditional/multithread-8-in-operator_hu6beb7ff41c0e086c995d8ed3e89c5914_722719_f7be10cf9e228508b41e431c4ac353ac.webp&#34;
+               width=&#34;760&#34;
+               height=&#34;505&#34;
+               loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+  &lt;/div&gt;&lt;/figure&gt;
+&lt;/p&gt;
+&lt;h4 id=&#34;基于正则表达式&#34;&gt;基于正则表达式&lt;/h4&gt;
+&lt;p&gt;暂略&lt;/p&gt;
+&lt;h4 id=&#34;正则表达式与in操作符效率对比&#34;&gt;正则表达式与in操作符效率对比&lt;/h4&gt;
+&lt;p&gt;子串查找方面，in操作符效率更高。&lt;/p&gt;
+&lt;h3 id=&#34;命名实体识别企业实体识别&#34;&gt;命名实体识别：企业实体识别&lt;/h3&gt;
+&lt;p&gt;先测试现成NLP工具库spacy的效果&lt;/p&gt;
+&lt;h4 id=&#34;基于spacy进行命名实体识别&#34;&gt;基于spacy进行命名实体识别&lt;/h4&gt;
+&lt;h5 id=&#34;准备工作&#34;&gt;准备工作&lt;/h5&gt;
+&lt;p&gt;安装中文模型，详情可参考文档&lt;a href=&#34;https://spacy.io/models/zh&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Chinese · spaCy Models Documentation&lt;/a&gt;：&lt;/p&gt;
+&lt;p&gt;可通过如下命令安装模型&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;python -m spacy download zh_core_web_sm
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;python -m spacy download zh_core_web_lg
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;python -m spacy download zh_core_web_trf
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure  &gt;
+  &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img alt=&#34;&#34; srcset=&#34;
+               /post/text-matching-investigation/images/library/zh_core_web_lg_hubf80460201484d18b240c3d05aa15eaa_346053_d986266f811510054411274c48e6044e.webp 400w,
+               /post/text-matching-investigation/images/library/zh_core_web_lg_hubf80460201484d18b240c3d05aa15eaa_346053_6b976940a1dd3e2acb99ebf24c2d1d5c.webp 760w,
+               /post/text-matching-investigation/images/library/zh_core_web_lg_hubf80460201484d18b240c3d05aa15eaa_346053_1200x1200_fit_q75_h2_lanczos_3.webp 1200w&#34;
+               src=&#34;https://spacetimelab.cn/post/text-matching-investigation/images/library/zh_core_web_lg_hubf80460201484d18b240c3d05aa15eaa_346053_d986266f811510054411274c48e6044e.webp&#34;
+               width=&#34;760&#34;
+               height=&#34;329&#34;
+               loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+  &lt;/div&gt;&lt;/figure&gt;
+&lt;/p&gt;
+&lt;p&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure  &gt;
+  &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img alt=&#34;&#34; srcset=&#34;
+               /post/text-matching-investigation/images/library/zh_core_web_lg-done_hu18b10af9299ac806977face395bd23aa_45046_1e3d233e3615e651be4804af8e95cddc.webp 400w,
+               /post/text-matching-investigation/images/library/zh_core_web_lg-done_hu18b10af9299ac806977face395bd23aa_45046_ca95b166f1f748afd0818c0c00b27717.webp 760w,
+               /post/text-matching-investigation/images/library/zh_core_web_lg-done_hu18b10af9299ac806977face395bd23aa_45046_1200x1200_fit_q75_h2_lanczos_3.webp 1200w&#34;
+               src=&#34;https://spacetimelab.cn/post/text-matching-investigation/images/library/zh_core_web_lg-done_hu18b10af9299ac806977face395bd23aa_45046_1e3d233e3615e651be4804af8e95cddc.webp&#34;
+               width=&#34;760&#34;
+               height=&#34;94&#34;
+               loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+  &lt;/div&gt;&lt;/figure&gt;
+&lt;/p&gt;
+&lt;p&gt;可以查看模型的特征（训练数据集特征、适用任务、特征向量维度、模型大小等）&lt;/p&gt;
+&lt;p&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure  &gt;
+  &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img alt=&#34;&#34; srcset=&#34;
+               /post/text-matching-investigation/images/library/spacy-model-intro_hu36c1753372f8053554da791034c1f537_556116_39197d42d10061428df4784db02906d3.webp 400w,
+               /post/text-matching-investigation/images/library/spacy-model-intro_hu36c1753372f8053554da791034c1f537_556116_195d48b1ce1315f62096edf0b65699bf.webp 760w,
+               /post/text-matching-investigation/images/library/spacy-model-intro_hu36c1753372f8053554da791034c1f537_556116_1200x1200_fit_q75_h2_lanczos_3.webp 1200w&#34;
+               src=&#34;https://spacetimelab.cn/post/text-matching-investigation/images/library/spacy-model-intro_hu36c1753372f8053554da791034c1f537_556116_39197d42d10061428df4784db02906d3.webp&#34;
+               width=&#34;760&#34;
+               height=&#34;486&#34;
+               loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+  &lt;/div&gt;&lt;/figure&gt;
+&lt;/p&gt;
+&lt;p&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure  &gt;
+  &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img alt=&#34;&#34; srcset=&#34;
+               /post/text-matching-investigation/images/library/spacy-model-label-scheme_hu7d07048a7116f6b8adf0f5b51beba366_232030_84663ad6a7bfefac23b331a8d9bf730f.webp 400w,
+               /post/text-matching-investigation/images/library/spacy-model-label-scheme_hu7d07048a7116f6b8adf0f5b51beba366_232030_4a779b787edd2b1f0bae0bc5b4ab89a0.webp 760w,
+               /post/text-matching-investigation/images/library/spacy-model-label-scheme_hu7d07048a7116f6b8adf0f5b51beba366_232030_1200x1200_fit_q75_h2_lanczos_3.webp 1200w&#34;
+               src=&#34;https://spacetimelab.cn/post/text-matching-investigation/images/library/spacy-model-label-scheme_hu7d07048a7116f6b8adf0f5b51beba366_232030_84663ad6a7bfefac23b331a8d9bf730f.webp&#34;
+               width=&#34;630&#34;
+               height=&#34;760&#34;
+               loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+  &lt;/div&gt;&lt;/figure&gt;
+&lt;/p&gt;
+&lt;h5 id=&#34;基本测试&#34;&gt;基本测试&lt;/h5&gt;
+&lt;p&gt;用例：&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;华为爱上了苹果，小米吃醋了，vivo和oppo也不甘示弱，纷纷表示要超越华为，成为中国最大的手机厂商. 
+商汤科技，旷视科技，旷视科技有限公司认识宝莱特，宝莱特公司说这是一个测试用例，可以给外包公司做，自己公司可以不考虑这些事项。
+企知道也不知道，企查查说他知道，灵犀数据说他也知道，但是他们都不知道。文因说文因互联是一个很好的公司，可以给他们做一些事情。
+但韶华为了韶华科技，韶华科技有限公司，也这么说商汤集团。但平安不这么看。
+&lt;/code&gt;&lt;/pre&gt;&lt;ul&gt;
+&lt;li&gt;zh-core-web-lg&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure  &gt;
+  &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img alt=&#34;&#34; srcset=&#34;
+               /post/text-matching-investigation/images/testcase/spacy-ner-zh-lg_huf113ee2e8370972364ac8efbaf6ae901_175486_f322826c5a1d38ffef49451ebb48e73c.webp 400w,
+               /post/text-matching-investigation/images/testcase/spacy-ner-zh-lg_huf113ee2e8370972364ac8efbaf6ae901_175486_656f0db477c745f8ce0f63e016398db5.webp 760w,
+               /post/text-matching-investigation/images/testcase/spacy-ner-zh-lg_huf113ee2e8370972364ac8efbaf6ae901_175486_1200x1200_fit_q75_h2_lanczos_3.webp 1200w&#34;
+               src=&#34;https://spacetimelab.cn/post/text-matching-investigation/images/testcase/spacy-ner-zh-lg_huf113ee2e8370972364ac8efbaf6ae901_175486_f322826c5a1d38ffef49451ebb48e73c.webp&#34;
+               width=&#34;760&#34;
+               height=&#34;426&#34;
+               loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+  &lt;/div&gt;&lt;/figure&gt;
+&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;zh-core-web-trf&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure  &gt;
+  &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img alt=&#34;&#34; srcset=&#34;
+               /post/text-matching-investigation/images/testcase/spacy-ner-zh-trf_hu275e6f738634e94f8967e2932abfa09e_182760_5bc3ff29e29522e02e4026932321cd29.webp 400w,
+               /post/text-matching-investigation/images/testcase/spacy-ner-zh-trf_hu275e6f738634e94f8967e2932abfa09e_182760_07bc7f617c3bf1ffe356ba02132117a6.webp 760w,
+               /post/text-matching-investigation/images/testcase/spacy-ner-zh-trf_hu275e6f738634e94f8967e2932abfa09e_182760_1200x1200_fit_q75_h2_lanczos_3.webp 1200w&#34;
+               src=&#34;https://spacetimelab.cn/post/text-matching-investigation/images/testcase/spacy-ner-zh-trf_hu275e6f738634e94f8967e2932abfa09e_182760_5bc3ff29e29522e02e4026932321cd29.webp&#34;
+               width=&#34;760&#34;
+               height=&#34;432&#34;
+               loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+  &lt;/div&gt;&lt;/figure&gt;
+&lt;/p&gt;
+&lt;p&gt;针对上述例子，对比一下zh-core-web-lg、zh-core-web-trf模型的企业实体识别效果：&lt;/p&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;模型&lt;/th&gt;
+&lt;th&gt;zh-core-web-lg&lt;/th&gt;
+&lt;th&gt;zh-core-web-trf&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;实体名称错误&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;oppo、科技有限公司&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;实体类别错误&lt;/td&gt;
+&lt;td&gt;宝莱特&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;未命中&lt;/td&gt;
+&lt;td&gt;平安、韶华科技、文因互联、企知道、灵犀数据&lt;/td&gt;
+&lt;td&gt;小米、文因互联、企查查、企知道、灵犀数据&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;可以看到，两个模型均存在一些问题。&lt;/p&gt;
+&lt;h5 id=&#34;可否通过微调模型或结合规则提升模型对企业实体识别的召回率&#34;&gt;可否通过微调模型或结合规则提升模型对企业实体识别的召回率&lt;/h5&gt;
+&lt;p&gt;TODO&lt;/p&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

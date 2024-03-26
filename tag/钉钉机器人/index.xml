@@ -1,22 +1,22 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>钉钉机器人 | CoolCats</title>
-    <link>/tag/%E9%92%89%E9%92%89%E6%9C%BA%E5%99%A8%E4%BA%BA/</link>
-      <atom:link href="/tag/%E9%92%89%E9%92%89%E6%9C%BA%E5%99%A8%E4%BA%BA/index.xml" rel="self" type="application/rss+xml" />
+    <title>钉钉机器人 | NullSpace</title>
+    <link>https://spacetimelab.cn/tag/%E9%92%89%E9%92%89%E6%9C%BA%E5%99%A8%E4%BA%BA/</link>
+      <atom:link href="https://spacetimelab.cn/tag/%E9%92%89%E9%92%89%E6%9C%BA%E5%99%A8%E4%BA%BA/index.xml" rel="self" type="application/rss+xml" />
     <description>钉钉机器人</description>
     <generator>Wowchemy (https://wowchemy.com)</generator><language>en-us</language><lastBuildDate>Fri, 23 Jun 2023 19:21:53 +0800</lastBuildDate>
     <image>
-      <url>/media/icon_hue03491371183284312b8b116a73ae5ab_79511_512x512_fill_lanczos_center_3.png</url>
+      <url>https://spacetimelab.cn/media/icon_hue03491371183284312b8b116a73ae5ab_79511_512x512_fill_lanczos_center_3.png</url>
       <title>钉钉机器人</title>
-      <link>/tag/%E9%92%89%E9%92%89%E6%9C%BA%E5%99%A8%E4%BA%BA/</link>
+      <link>https://spacetimelab.cn/tag/%E9%92%89%E9%92%89%E6%9C%BA%E5%99%A8%E4%BA%BA/</link>
     </image>
     
     <item>
       <title>Python实现钉钉通报和邮件通知</title>
-      <link>/post/python-notice-feature-demo/</link>
+      <link>https://spacetimelab.cn/post/python-notice-feature-demo/</link>
       <pubDate>Fri, 23 Jun 2023 19:21:53 +0800</pubDate>
-      <guid>/post/python-notice-feature-demo/</guid>
+      <guid>https://spacetimelab.cn/post/python-notice-feature-demo/</guid>
       <description>&lt;h2 id=&#34;概述&#34;&gt;概述&lt;/h2&gt;
 &lt;p&gt;监控预警是一个自动化系统中常见的模块，我们希望系统出问题时能够主动把问题推送给维护人员，而不是要维护人员定时主动到服务端去查看各项服务的运行状态。&lt;/p&gt;
 &lt;p&gt;本文实现两种类型的消息通知功能：钉钉机器人通报和邮件通报。&lt;/p&gt;
@@ -47,7 +47,7 @@
                /post/python-notice-feature-demo/images/robot_manager_hu49f619641c2d579aaec4f6252d1d85b5_40955_730a6be7ac162b1f20396d08f4186691.webp 400w,
                /post/python-notice-feature-demo/images/robot_manager_hu49f619641c2d579aaec4f6252d1d85b5_40955_5bfea7cb9abb98ff98104687337d87dd.webp 760w,
                /post/python-notice-feature-demo/images/robot_manager_hu49f619641c2d579aaec4f6252d1d85b5_40955_1200x1200_fit_q75_h2_lanczos.webp 1200w&#34;
-               src=&#34;/post/python-notice-feature-demo/images/robot_manager_hu49f619641c2d579aaec4f6252d1d85b5_40955_730a6be7ac162b1f20396d08f4186691.webp&#34;
+               src=&#34;https://spacetimelab.cn/post/python-notice-feature-demo/images/robot_manager_hu49f619641c2d579aaec4f6252d1d85b5_40955_730a6be7ac162b1f20396d08f4186691.webp&#34;
                width=&#34;579&#34;
                height=&#34;751&#34;
                loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
@@ -93,7 +93,7 @@
                /post/python-notice-feature-demo/images/add_new_robot_hu7091401721e8eb99d7d9fffdde0360cd_59974_bc616acce72681b537eebe0fa823760a.webp 400w,
                /post/python-notice-feature-demo/images/add_new_robot_hu7091401721e8eb99d7d9fffdde0360cd_59974_01052c9300c67454ced78e15de6b5b18.webp 760w,
                /post/python-notice-feature-demo/images/add_new_robot_hu7091401721e8eb99d7d9fffdde0360cd_59974_1200x1200_fit_q75_h2_lanczos.webp 1200w&#34;
-               src=&#34;/post/python-notice-feature-demo/images/add_new_robot_hu7091401721e8eb99d7d9fffdde0360cd_59974_bc616acce72681b537eebe0fa823760a.webp&#34;
+               src=&#34;https://spacetimelab.cn/post/python-notice-feature-demo/images/add_new_robot_hu7091401721e8eb99d7d9fffdde0360cd_59974_bc616acce72681b537eebe0fa823760a.webp&#34;
                width=&#34;760&#34;
                height=&#34;610&#34;
                loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
@@ -121,7 +121,7 @@
                /post/python-notice-feature-demo/images/set_webhook_huf44f48c50f7445134de09591794414d2_51263_a6f3e3528a4d1c29be478a1bc3a59a43.webp 400w,
                /post/python-notice-feature-demo/images/set_webhook_huf44f48c50f7445134de09591794414d2_51263_40a586843df32574959c1846b82b7dd9.webp 760w,
                /post/python-notice-feature-demo/images/set_webhook_huf44f48c50f7445134de09591794414d2_51263_1200x1200_fit_q75_h2_lanczos.webp 1200w&#34;
-               src=&#34;/post/python-notice-feature-demo/images/set_webhook_huf44f48c50f7445134de09591794414d2_51263_a6f3e3528a4d1c29be478a1bc3a59a43.webp&#34;
+               src=&#34;https://spacetimelab.cn/post/python-notice-feature-demo/images/set_webhook_huf44f48c50f7445134de09591794414d2_51263_a6f3e3528a4d1c29be478a1bc3a59a43.webp&#34;
                width=&#34;760&#34;
                height=&#34;624&#34;
                loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
@@ -151,7 +151,7 @@
                /post/python-notice-feature-demo/images/parameter_hu4cc2cd7c2725fc85da420845c4452971_25069_819972702258cc2f1346a888d75f0f91.webp 400w,
                /post/python-notice-feature-demo/images/parameter_hu4cc2cd7c2725fc85da420845c4452971_25069_b32ea523783a91d51010dafc38e08a10.webp 760w,
                /post/python-notice-feature-demo/images/parameter_hu4cc2cd7c2725fc85da420845c4452971_25069_1200x1200_fit_q75_h2_lanczos.webp 1200w&#34;
-               src=&#34;/post/python-notice-feature-demo/images/parameter_hu4cc2cd7c2725fc85da420845c4452971_25069_819972702258cc2f1346a888d75f0f91.webp&#34;
+               src=&#34;https://spacetimelab.cn/post/python-notice-feature-demo/images/parameter_hu4cc2cd7c2725fc85da420845c4452971_25069_819972702258cc2f1346a888d75f0f91.webp&#34;
                width=&#34;760&#34;
                height=&#34;150&#34;
                loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
@@ -208,7 +208,7 @@
                /post/python-notice-feature-demo/images/success_demo_hue99a308f1963589bd555e99c7744548c_23593_5d677b90af324f71ffb3f1e9e2984c44.webp 400w,
                /post/python-notice-feature-demo/images/success_demo_hue99a308f1963589bd555e99c7744548c_23593_88d7d77104ac290658076433c1813ef5.webp 760w,
                /post/python-notice-feature-demo/images/success_demo_hue99a308f1963589bd555e99c7744548c_23593_1200x1200_fit_q75_h2_lanczos.webp 1200w&#34;
-               src=&#34;/post/python-notice-feature-demo/images/success_demo_hue99a308f1963589bd555e99c7744548c_23593_5d677b90af324f71ffb3f1e9e2984c44.webp&#34;
+               src=&#34;https://spacetimelab.cn/post/python-notice-feature-demo/images/success_demo_hue99a308f1963589bd555e99c7744548c_23593_5d677b90af324f71ffb3f1e9e2984c44.webp&#34;
                width=&#34;741&#34;
                height=&#34;293&#34;
                loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
@@ -374,7 +374,7 @@
                /post/python-notice-feature-demo/images/errcode310000_hua22021fc90f5fb8777b1658cd9ac34d9_24491_282e4d060cf2ec842122931590c5c76f.webp 400w,
                /post/python-notice-feature-demo/images/errcode310000_hua22021fc90f5fb8777b1658cd9ac34d9_24491_156f4deacc6707676d96ab092afd4f1c.webp 760w,
                /post/python-notice-feature-demo/images/errcode310000_hua22021fc90f5fb8777b1658cd9ac34d9_24491_1200x1200_fit_q75_h2_lanczos.webp 1200w&#34;
-               src=&#34;/post/python-notice-feature-demo/images/errcode310000_hua22021fc90f5fb8777b1658cd9ac34d9_24491_282e4d060cf2ec842122931590c5c76f.webp&#34;
+               src=&#34;https://spacetimelab.cn/post/python-notice-feature-demo/images/errcode310000_hua22021fc90f5fb8777b1658cd9ac34d9_24491_282e4d060cf2ec842122931590c5c76f.webp&#34;
                width=&#34;760&#34;
                height=&#34;87&#34;
                loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;

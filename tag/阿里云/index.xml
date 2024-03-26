@@ -1,22 +1,22 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>阿里云 | CoolCats</title>
-    <link>/tag/%E9%98%BF%E9%87%8C%E4%BA%91/</link>
-      <atom:link href="/tag/%E9%98%BF%E9%87%8C%E4%BA%91/index.xml" rel="self" type="application/rss+xml" />
+    <title>阿里云 | NullSpace</title>
+    <link>https://spacetimelab.cn/tag/%E9%98%BF%E9%87%8C%E4%BA%91/</link>
+      <atom:link href="https://spacetimelab.cn/tag/%E9%98%BF%E9%87%8C%E4%BA%91/index.xml" rel="self" type="application/rss+xml" />
     <description>阿里云</description>
     <generator>Wowchemy (https://wowchemy.com)</generator><language>en-us</language><lastBuildDate>Fri, 01 Mar 2024 20:02:21 +0800</lastBuildDate>
     <image>
-      <url>/media/icon_hue03491371183284312b8b116a73ae5ab_79511_512x512_fill_lanczos_center_3.png</url>
+      <url>https://spacetimelab.cn/media/icon_hue03491371183284312b8b116a73ae5ab_79511_512x512_fill_lanczos_center_3.png</url>
       <title>阿里云</title>
-      <link>/tag/%E9%98%BF%E9%87%8C%E4%BA%91/</link>
+      <link>https://spacetimelab.cn/tag/%E9%98%BF%E9%87%8C%E4%BA%91/</link>
     </image>
     
     <item>
       <title>Aliyun Cloud Server Envionment Preparation</title>
-      <link>/post/aliyun-cloud-server-envionment-prepare/</link>
+      <link>https://spacetimelab.cn/post/aliyun-cloud-server-envionment-prepare/</link>
       <pubDate>Fri, 01 Mar 2024 20:02:21 +0800</pubDate>
-      <guid>/post/aliyun-cloud-server-envionment-prepare/</guid>
+      <guid>https://spacetimelab.cn/post/aliyun-cloud-server-envionment-prepare/</guid>
       <description>&lt;h2 id=&#34;环境搭建&#34;&gt;环境搭建&lt;/h2&gt;
 &lt;p&gt;购买了一款Ubuntu系统的阿里云服务器，简单记录下部分环境搭建过程。&lt;/p&gt;
 &lt;h3 id=&#34;一远程连接&#34;&gt;一、远程连接&lt;/h3&gt;
@@ -44,7 +44,7 @@
                /post/aliyun-cloud-server-envionment-prepare/images/connection/accesskey_hu9aed189b0fb339c4f7248f1a2b08bc1e_100772_9c5e28cf3ac8f991609b6043a2b66672.webp 400w,
                /post/aliyun-cloud-server-envionment-prepare/images/connection/accesskey_hu9aed189b0fb339c4f7248f1a2b08bc1e_100772_4094745e3c164a88e8b661dc7c5a7229.webp 760w,
                /post/aliyun-cloud-server-envionment-prepare/images/connection/accesskey_hu9aed189b0fb339c4f7248f1a2b08bc1e_100772_1200x1200_fit_q75_h2_lanczos_3.webp 1200w&#34;
-               src=&#34;/post/aliyun-cloud-server-envionment-prepare/images/connection/accesskey_hu9aed189b0fb339c4f7248f1a2b08bc1e_100772_9c5e28cf3ac8f991609b6043a2b66672.webp&#34;
+               src=&#34;https://spacetimelab.cn/post/aliyun-cloud-server-envionment-prepare/images/connection/accesskey_hu9aed189b0fb339c4f7248f1a2b08bc1e_100772_9c5e28cf3ac8f991609b6043a2b66672.webp&#34;
                width=&#34;760&#34;
                height=&#34;227&#34;
                loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
@@ -75,7 +75,7 @@
                /post/aliyun-cloud-server-envionment-prepare/images/connection/ssh_hu8b84ae5fcecd8b71dc7a02f7d4983af7_170408_384d4de6c6b279e474222e8512a38f83.webp 400w,
                /post/aliyun-cloud-server-envionment-prepare/images/connection/ssh_hu8b84ae5fcecd8b71dc7a02f7d4983af7_170408_16e88d501804a85b095ff63b66db935e.webp 760w,
                /post/aliyun-cloud-server-envionment-prepare/images/connection/ssh_hu8b84ae5fcecd8b71dc7a02f7d4983af7_170408_1200x1200_fit_q75_h2_lanczos_3.webp 1200w&#34;
-               src=&#34;/post/aliyun-cloud-server-envionment-prepare/images/connection/ssh_hu8b84ae5fcecd8b71dc7a02f7d4983af7_170408_384d4de6c6b279e474222e8512a38f83.webp&#34;
+               src=&#34;https://spacetimelab.cn/post/aliyun-cloud-server-envionment-prepare/images/connection/ssh_hu8b84ae5fcecd8b71dc7a02f7d4983af7_170408_384d4de6c6b279e474222e8512a38f83.webp&#34;
                width=&#34;760&#34;
                height=&#34;584&#34;
                loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
@@ -103,7 +103,7 @@
                /post/aliyun-cloud-server-envionment-prepare/images/connection/no-root_huff0bd8d76279ead195014928e54a694e_91347_92ac2cfb202f49b52b37db1523fe0aee.webp 400w,
                /post/aliyun-cloud-server-envionment-prepare/images/connection/no-root_huff0bd8d76279ead195014928e54a694e_91347_166c52655e830267a9dc0a46fae2b332.webp 760w,
                /post/aliyun-cloud-server-envionment-prepare/images/connection/no-root_huff0bd8d76279ead195014928e54a694e_91347_1200x1200_fit_q75_h2_lanczos_3.webp 1200w&#34;
-               src=&#34;/post/aliyun-cloud-server-envionment-prepare/images/connection/no-root_huff0bd8d76279ead195014928e54a694e_91347_92ac2cfb202f49b52b37db1523fe0aee.webp&#34;
+               src=&#34;https://spacetimelab.cn/post/aliyun-cloud-server-envionment-prepare/images/connection/no-root_huff0bd8d76279ead195014928e54a694e_91347_92ac2cfb202f49b52b37db1523fe0aee.webp&#34;
                width=&#34;760&#34;
                height=&#34;412&#34;
                loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
@@ -136,7 +136,7 @@
                /post/aliyun-cloud-server-envionment-prepare/images/connection/secret-ssh_huf7e2bccdf48bad991ffad845d5d44f1a_114822_dee1f2f3220381d4372d9271241cd88a.webp 400w,
                /post/aliyun-cloud-server-envionment-prepare/images/connection/secret-ssh_huf7e2bccdf48bad991ffad845d5d44f1a_114822_0124f0896ee6c074944b6e0ca90e1c89.webp 760w,
                /post/aliyun-cloud-server-envionment-prepare/images/connection/secret-ssh_huf7e2bccdf48bad991ffad845d5d44f1a_114822_1200x1200_fit_q75_h2_lanczos_3.webp 1200w&#34;
-               src=&#34;/post/aliyun-cloud-server-envionment-prepare/images/connection/secret-ssh_huf7e2bccdf48bad991ffad845d5d44f1a_114822_dee1f2f3220381d4372d9271241cd88a.webp&#34;
+               src=&#34;https://spacetimelab.cn/post/aliyun-cloud-server-envionment-prepare/images/connection/secret-ssh_huf7e2bccdf48bad991ffad845d5d44f1a_114822_dee1f2f3220381d4372d9271241cd88a.webp&#34;
                width=&#34;760&#34;
                height=&#34;479&#34;
                loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
@@ -180,7 +180,7 @@
                /post/aliyun-cloud-server-envionment-prepare/images/envs/python/conda_hu55c3dc6963221f00c0898d2a27b45af2_244611_a785f79a584d571e94a76243cff5e734.webp 400w,
                /post/aliyun-cloud-server-envionment-prepare/images/envs/python/conda_hu55c3dc6963221f00c0898d2a27b45af2_244611_2cbf5fc15e5ea7621a0ef708b2c36314.webp 760w,
                /post/aliyun-cloud-server-envionment-prepare/images/envs/python/conda_hu55c3dc6963221f00c0898d2a27b45af2_244611_1200x1200_fit_q75_h2_lanczos_3.webp 1200w&#34;
-               src=&#34;/post/aliyun-cloud-server-envionment-prepare/images/envs/python/conda_hu55c3dc6963221f00c0898d2a27b45af2_244611_a785f79a584d571e94a76243cff5e734.webp&#34;
+               src=&#34;https://spacetimelab.cn/post/aliyun-cloud-server-envionment-prepare/images/envs/python/conda_hu55c3dc6963221f00c0898d2a27b45af2_244611_a785f79a584d571e94a76243cff5e734.webp&#34;
                width=&#34;760&#34;
                height=&#34;368&#34;
                loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
@@ -223,7 +223,7 @@
                /post/aliyun-cloud-server-envionment-prepare/images/proxy/nginx-success_hu83640c76c78267b496e966187ac49ae6_113494_a8ce3cdb2e6d427ed0161bc00de77e6a.webp 400w,
                /post/aliyun-cloud-server-envionment-prepare/images/proxy/nginx-success_hu83640c76c78267b496e966187ac49ae6_113494_6086eb2c8fdacee7d4d1affa4cb1745c.webp 760w,
                /post/aliyun-cloud-server-envionment-prepare/images/proxy/nginx-success_hu83640c76c78267b496e966187ac49ae6_113494_1200x1200_fit_q75_h2_lanczos_3.webp 1200w&#34;
-               src=&#34;/post/aliyun-cloud-server-envionment-prepare/images/proxy/nginx-success_hu83640c76c78267b496e966187ac49ae6_113494_a8ce3cdb2e6d427ed0161bc00de77e6a.webp&#34;
+               src=&#34;https://spacetimelab.cn/post/aliyun-cloud-server-envionment-prepare/images/proxy/nginx-success_hu83640c76c78267b496e966187ac49ae6_113494_a8ce3cdb2e6d427ed0161bc00de77e6a.webp&#34;
                width=&#34;760&#34;
                height=&#34;410&#34;
                loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
@@ -253,7 +253,7 @@
                /post/aliyun-cloud-server-envionment-prepare/images/proxy/nginx-startctl_hud286ff208a4cb2cf55b91ce12d9ca713_30295_0a9c3dcb8b2c69dff988ed073b494642.webp 400w,
                /post/aliyun-cloud-server-envionment-prepare/images/proxy/nginx-startctl_hud286ff208a4cb2cf55b91ce12d9ca713_30295_cb0a14976a7439f9a77d714fe24208c9.webp 760w,
                /post/aliyun-cloud-server-envionment-prepare/images/proxy/nginx-startctl_hud286ff208a4cb2cf55b91ce12d9ca713_30295_1200x1200_fit_q75_h2_lanczos_3.webp 1200w&#34;
-               src=&#34;/post/aliyun-cloud-server-envionment-prepare/images/proxy/nginx-startctl_hud286ff208a4cb2cf55b91ce12d9ca713_30295_0a9c3dcb8b2c69dff988ed073b494642.webp&#34;
+               src=&#34;https://spacetimelab.cn/post/aliyun-cloud-server-envionment-prepare/images/proxy/nginx-startctl_hud286ff208a4cb2cf55b91ce12d9ca713_30295_0a9c3dcb8b2c69dff988ed073b494642.webp&#34;
                width=&#34;760&#34;
                height=&#34;44&#34;
                loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
@@ -279,7 +279,70 @@
 &lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;通过autoindex off关闭目录索引避免别人直接查看目录内的文件列表&lt;/p&gt;
-&lt;h3 id=&#34;五容器服务&#34;&gt;五、容器服务&lt;/h3&gt;
+&lt;h4 id=&#34;配置ssl证书&#34;&gt;配置SSL证书&lt;/h4&gt;
+&lt;p&gt;数字证书管理服务商店购买或申请SSL证书，申请到证书后，以阿里云Nginx部署为例，下载证书公私钥文件部署到服务器上，修改Nginx配置，详细部署说明可参考&lt;a href=&#34;https://help.aliyun.com/zh/ssl-certificate/deploy-a-certificate-to-an-alibaba-cloud-service&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;文档&lt;/a&gt;。&lt;/p&gt;
+&lt;p&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure  &gt;
+  &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img alt=&#34;&#34; srcset=&#34;
+               /post/aliyun-cloud-server-envionment-prepare/images/https/ssl_hu5fe504b77fe3ab5b9fd0bb9044aefa62_167727_79cf17843800c114b52446636f413938.webp 400w,
+               /post/aliyun-cloud-server-envionment-prepare/images/https/ssl_hu5fe504b77fe3ab5b9fd0bb9044aefa62_167727_a2b5118bdffc4e1d3f30863e6c73df52.webp 760w,
+               /post/aliyun-cloud-server-envionment-prepare/images/https/ssl_hu5fe504b77fe3ab5b9fd0bb9044aefa62_167727_1200x1200_fit_q75_h2_lanczos_3.webp 1200w&#34;
+               src=&#34;https://spacetimelab.cn/post/aliyun-cloud-server-envionment-prepare/images/https/ssl_hu5fe504b77fe3ab5b9fd0bb9044aefa62_167727_79cf17843800c114b52446636f413938.webp&#34;
+               width=&#34;760&#34;
+               height=&#34;623&#34;
+               loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+  &lt;/div&gt;&lt;/figure&gt;
+&lt;/p&gt;
+&lt;p&gt;一种示例配置如下(实际部署时选择高安全性的加密套件，并且视需求而定可以关闭80端口或者将80端口的http请求强制改写为https请求，本人选择前者):&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-nginx&#34; data-lang=&#34;nginx&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;k&#34;&gt;server&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        &lt;span class=&#34;c1&#34;&gt;#HTTPS的默认访问端口443
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;&lt;/span&gt;        &lt;span class=&#34;c1&#34;&gt;#如果未在此处配置HTTPS的默认访问端口，可能会造成Nginx无法启动。
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;&lt;/span&gt;        &lt;span class=&#34;kn&#34;&gt;listen&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;443&lt;/span&gt; &lt;span class=&#34;s&#34;&gt;ssl&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        &lt;span class=&#34;c1&#34;&gt;#填写证书绑定的域名
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;&lt;/span&gt;        &lt;span class=&#34;kn&#34;&gt;server_name&lt;/span&gt; &lt;span class=&#34;s&#34;&gt;&amp;lt;yourdomain&amp;gt;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;		
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        &lt;span class=&#34;c1&#34;&gt;#填写证书文件绝对路径
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;&lt;/span&gt;        &lt;span class=&#34;kn&#34;&gt;ssl_certificate&lt;/span&gt;      &lt;span class=&#34;s&#34;&gt;&amp;#34;/etc/nginx/conf.d/cert/cert.pem&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        &lt;span class=&#34;c1&#34;&gt;#填写证书私钥文件绝对路径 
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;&lt;/span&gt;        &lt;span class=&#34;kn&#34;&gt;ssl_certificate_key&lt;/span&gt;  &lt;span class=&#34;s&#34;&gt;&amp;#34;/etc/nginx/conf.d/cert/cert.key&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt; 
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        &lt;span class=&#34;kn&#34;&gt;ssl_session_cache&lt;/span&gt;    &lt;span class=&#34;s&#34;&gt;shared:SSL:1m&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        &lt;span class=&#34;kn&#34;&gt;ssl_session_timeout&lt;/span&gt;  &lt;span class=&#34;mi&#34;&gt;5m&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;		
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        &lt;span class=&#34;c1&#34;&gt;#默认加密套件
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;&lt;/span&gt;        &lt;span class=&#34;kn&#34;&gt;ssl_ciphers&lt;/span&gt;  &lt;span class=&#34;s&#34;&gt;HIGH:!aNULL:!MD5&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;		
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        &lt;span class=&#34;c1&#34;&gt;#自定义设置使用的TLS协议的类型以及加密套件（以下为配置示例，请您自行评估是否需要配置）
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;&lt;/span&gt;        &lt;span class=&#34;c1&#34;&gt;#TLS协议版本越高，HTTPS通信的安全性越高，但是相较于低版本TLS协议，高版本TLS协议对浏览器的兼容性较差。
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;&lt;/span&gt;        &lt;span class=&#34;c1&#34;&gt;#ssl_ciphers ECDHE-RSA-AES128-GCM-SHA256:ECDHE:ECDH:AES:HIGH:!NULL:!aNULL:!MD5:!ADH:!RC4;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;&lt;/span&gt;        &lt;span class=&#34;c1&#34;&gt;#ssl_protocols TLSv1.1 TLSv1.2 TLSv1.3;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;&lt;/span&gt;		
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        &lt;span class=&#34;c1&#34;&gt;#表示优先使用服务端加密套件。默认开启
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;&lt;/span&gt;        &lt;span class=&#34;kn&#34;&gt;ssl_prefer_server_ciphers&lt;/span&gt;  &lt;span class=&#34;no&#34;&gt;on&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt; 
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        &lt;span class=&#34;kn&#34;&gt;location&lt;/span&gt; &lt;span class=&#34;s&#34;&gt;/&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;            &lt;span class=&#34;kn&#34;&gt;root&lt;/span&gt;   &lt;span class=&#34;s&#34;&gt;html&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;            &lt;span class=&#34;kn&#34;&gt;index&lt;/span&gt;  &lt;span class=&#34;s&#34;&gt;index.html&lt;/span&gt; &lt;span class=&#34;s&#34;&gt;index.htm&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        &lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;k&#34;&gt;}&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;五容器服务&#34;&gt;五、容器服务&lt;/h3&gt;
 &lt;ul&gt;
 &lt;li&gt;
 &lt;p&gt;docker&lt;/p&gt;
@@ -330,7 +393,7 @@
                /post/aliyun-cloud-server-envionment-prepare/images/envs/databases/download-pgsql15_hu5f22f6ac8dfc70a24d1611bcc27d1b8b_73117_3b2872d20ce20847c01a7d70350ad789.webp 400w,
                /post/aliyun-cloud-server-envionment-prepare/images/envs/databases/download-pgsql15_hu5f22f6ac8dfc70a24d1611bcc27d1b8b_73117_a0ab2dae9d4985dd3991be16c1e9073c.webp 760w,
                /post/aliyun-cloud-server-envionment-prepare/images/envs/databases/download-pgsql15_hu5f22f6ac8dfc70a24d1611bcc27d1b8b_73117_1200x1200_fit_q75_h2_lanczos_3.webp 1200w&#34;
-               src=&#34;/post/aliyun-cloud-server-envionment-prepare/images/envs/databases/download-pgsql15_hu5f22f6ac8dfc70a24d1611bcc27d1b8b_73117_3b2872d20ce20847c01a7d70350ad789.webp&#34;
+               src=&#34;https://spacetimelab.cn/post/aliyun-cloud-server-envionment-prepare/images/envs/databases/download-pgsql15_hu5f22f6ac8dfc70a24d1611bcc27d1b8b_73117_3b2872d20ce20847c01a7d70350ad789.webp&#34;
                width=&#34;760&#34;
                height=&#34;79&#34;
                loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
@@ -371,7 +434,7 @@
                /post/aliyun-cloud-server-envionment-prepare/images/envs/databases/pgsql-initdb_hud8b916f48061df8d28fab1d91339b56f_197508_58fb4fa0faa5cccb534d1ee98cb865f5.webp 400w,
                /post/aliyun-cloud-server-envionment-prepare/images/envs/databases/pgsql-initdb_hud8b916f48061df8d28fab1d91339b56f_197508_2f02535a1bf5001e28d2a41f2f61ff3d.webp 760w,
                /post/aliyun-cloud-server-envionment-prepare/images/envs/databases/pgsql-initdb_hud8b916f48061df8d28fab1d91339b56f_197508_1200x1200_fit_q75_h2_lanczos_3.webp 1200w&#34;
-               src=&#34;/post/aliyun-cloud-server-envionment-prepare/images/envs/databases/pgsql-initdb_hud8b916f48061df8d28fab1d91339b56f_197508_58fb4fa0faa5cccb534d1ee98cb865f5.webp&#34;
+               src=&#34;https://spacetimelab.cn/post/aliyun-cloud-server-envionment-prepare/images/envs/databases/pgsql-initdb_hud8b916f48061df8d28fab1d91339b56f_197508_58fb4fa0faa5cccb534d1ee98cb865f5.webp&#34;
                width=&#34;760&#34;
                height=&#34;292&#34;
                loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
@@ -408,7 +471,7 @@
                /post/aliyun-cloud-server-envionment-prepare/images/envs/databases/createdb_huc6e42c14d2151caf7a205efb025ecc1e_140460_6741bdd26ef81600b4abc809e0e6bc9e.webp 400w,
                /post/aliyun-cloud-server-envionment-prepare/images/envs/databases/createdb_huc6e42c14d2151caf7a205efb025ecc1e_140460_3fd025883bc99436054b64b51ceb0e80.webp 760w,
                /post/aliyun-cloud-server-envionment-prepare/images/envs/databases/createdb_huc6e42c14d2151caf7a205efb025ecc1e_140460_1200x1200_fit_q75_h2_lanczos_3.webp 1200w&#34;
-               src=&#34;/post/aliyun-cloud-server-envionment-prepare/images/envs/databases/createdb_huc6e42c14d2151caf7a205efb025ecc1e_140460_6741bdd26ef81600b4abc809e0e6bc9e.webp&#34;
+               src=&#34;https://spacetimelab.cn/post/aliyun-cloud-server-envionment-prepare/images/envs/databases/createdb_huc6e42c14d2151caf7a205efb025ecc1e_140460_6741bdd26ef81600b4abc809e0e6bc9e.webp&#34;
                width=&#34;760&#34;
                height=&#34;285&#34;
                loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;

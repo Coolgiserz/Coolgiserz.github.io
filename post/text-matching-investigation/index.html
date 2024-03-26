@@ -1,0 +1,1509 @@
+<!DOCTYPE html><html lang="en-us" >
+
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  
+  
+  
+    <meta name="generator" content="Wowchemy 5.5.0 for Hugo" />
+  
+
+  
+  
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+  
+  
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  
+
+  
+  
+  
+    
+      
+      <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Roboto+Mono&family=Roboto:wght@400;700&display=swap">
+      <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Roboto+Mono&family=Roboto:wght@400;700&display=swap" media="print" onload="this.media='all'">
+    
+  
+
+  
+  
+  
+  
+  
+    
+    
+    
+  
+  
+
+  <meta name="author" content="CoolCats" />
+
+  
+  
+  
+    
+  
+  <meta name="description" content="给定多篇文档，如何判断文档中是否包含指定词集合中的关键词？这种技术可用于知识图谱构建，搜索引擎优化等方面。" />
+
+  
+  <link rel="alternate" hreflang="en-us" href="https://spacetimelab.cn/post/text-matching-investigation/" />
+
+  
+  
+  
+    <meta name="theme-color" content="#1565c0" />
+  
+
+  
+  
+    
+    <script src="/js/mathjax-config.js"></script>
+  
+
+  
+
+  <link rel="stylesheet" href="/css/vendor-bundle.min.c7b8d9abd591ba2253ea42747e3ac3f5.css" media="print" onload="this.media='all'">
+
+  
+  
+  
+    
+    
+      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/academicons@1.9.1/css/academicons.min.css" integrity="sha512-W0xM4mr6dEP9nREo7Z9z+9X70wytKvMGeDsj7ps2+xg5QPrEBXC8tAW1IFnzjR6eoJ90JmCnFzerQJTLzIEHjA==" crossorigin="anonymous" media="print" onload="this.media='all'">
+    
+
+    
+    
+    
+    
+      
+      
+    
+    
+    
+
+    
+    
+    
+      
+    
+    
+      
+      
+        
+          <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@10.2.1/build/styles/github.min.css" crossorigin="anonymous" title="hl-light" media="print" onload="this.media='all'">
+          <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@10.2.1/build/styles/dracula.min.css" crossorigin="anonymous" title="hl-dark" media="print" onload="this.media='all'" disabled>
+        
+      
+    
+
+    
+    
+    
+      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.7.1/dist/leaflet.min.css" integrity="" crossorigin="anonymous" media="print" onload="this.media='all'">
+    
+
+    
+
+    
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js" integrity="" crossorigin="anonymous" async></script>
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+  
+
+  
+  
+  
+  
+  
+  <link rel="stylesheet" href="/css/wowchemy.1052fab8b7700a3dc49ee23683097d66.css" />
+
+  
+
+
+
+  
+
+
+  
+
+
+  
+
+
+  <script>
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?51ae6db546b05b91d4053193ba49123d";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+  
+  
+  
+
+  
+
+  
+
+  <link rel="icon" type="image/png" href="/media/icon_hue03491371183284312b8b116a73ae5ab_79511_32x32_fill_lanczos_center_3.png" />
+  <link rel="apple-touch-icon" type="image/png" href="/media/icon_hue03491371183284312b8b116a73ae5ab_79511_180x180_fill_lanczos_center_3.png" />
+
+  <link rel="canonical" href="https://spacetimelab.cn/post/text-matching-investigation/" />
+
+  
+  
+  
+  
+  
+  
+  
+  
+    
+    
+  
+  
+
+  
+  
+    
+    
+  
+  <meta property="twitter:card" content="summary" />
+  
+    <meta property="twitter:site" content="@wowchemy" />
+    <meta property="twitter:creator" content="@wowchemy" />
+  
+  <meta property="og:site_name" content="NullSpace" />
+  <meta property="og:url" content="https://spacetimelab.cn/post/text-matching-investigation/" />
+  <meta property="og:title" content="文本匹配技术调研与实验--以企业名称识别为例 | NullSpace" />
+  <meta property="og:description" content="给定多篇文档，如何判断文档中是否包含指定词集合中的关键词？这种技术可用于知识图谱构建，搜索引擎优化等方面。" /><meta property="og:image" content="https://spacetimelab.cn/media/icon_hue03491371183284312b8b116a73ae5ab_79511_512x512_fill_lanczos_center_3.png" />
+    <meta property="twitter:image" content="https://spacetimelab.cn/media/icon_hue03491371183284312b8b116a73ae5ab_79511_512x512_fill_lanczos_center_3.png" /><meta property="og:locale" content="en-us" />
+  
+    
+      <meta
+        property="article:published_time"
+        content="2024-03-24T16:11:11&#43;08:00"
+      />
+    
+    <meta property="article:modified_time" content="2024-03-24T16:11:11&#43;08:00">
+  
+
+  
+
+
+    
+
+
+
+
+
+
+  
+
+
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://spacetimelab.cn/post/text-matching-investigation/"
+  },
+  "headline": "文本匹配技术调研与实验--以企业名称识别为例",
+  
+  "datePublished": "2024-03-24T16:11:11+08:00",
+  "dateModified": "2024-03-24T16:11:11+08:00",
+  
+  "author": {
+    "@type": "Person",
+    "name": "CoolCats"
+  },
+  
+  "publisher": {
+    "@type": "Organization",
+    "name": "NullSpace",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://spacetimelab.cn/media/icon_hue03491371183284312b8b116a73ae5ab_79511_192x192_fill_lanczos_center_3.png"
+    }
+  },
+  "description": "给定多篇文档，如何判断文档中是否包含指定词集合中的关键词？这种技术可用于知识图谱构建，搜索引擎优化等方面。"
+}
+</script>
+
+  
+
+  
+
+  
+
+  
+
+
+
+
+
+  <title>文本匹配技术调研与实验--以企业名称识别为例 | NullSpace</title>
+</head>
+
+
+<body id="top" data-spy="scroll" data-offset="70" data-target="#TableOfContents" class="page-wrapper   " data-wc-page-id="413ac16b358a0f6ee4434556e362e0ba" >
+
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  <script src="/js/wowchemy-init.min.2ed908358299dd7ab553faae685c746c.js"></script>
+
+  
+
+
+<aside class="search-modal" id="search">
+  <div class="container">
+    <section class="search-header">
+
+      <div class="row no-gutters justify-content-between mb-3">
+        <div class="col-6">
+          <h1>Search</h1>
+        </div>
+        <div class="col-6 col-search-close">
+          <a class="js-search" href="#" aria-label="Close"><i class="fas fa-times-circle text-muted" aria-hidden="true"></i></a>
+        </div>
+      </div>
+
+      <div id="search-box">
+        
+        <input name="q" id="search-query" placeholder="Search..." autocapitalize="off"
+        autocomplete="off" autocorrect="off" spellcheck="false" type="search" class="form-control"
+        aria-label="Search...">
+        
+      </div>
+
+      
+      
+
+      
+
+    </section>
+    <section class="section-search-results">
+
+      <div id="search-hits">
+        
+      </div>
+
+    </section>
+  </div>
+</aside>
+
+
+
+  <div class="page-header">
+    
+
+
+
+
+
+
+
+
+
+
+
+
+<header class="header--fixed">
+  <nav class="navbar navbar-expand-lg navbar-light compensate-for-scrollbar" id="navbar-main">
+    <div class="container-xl">
+
+      
+      <div class="d-none d-lg-inline-flex">
+        <a class="navbar-brand" href="/">NullSpace</a>
+      </div>
+      
+
+      
+      <button type="button" class="navbar-toggler" data-toggle="collapse"
+              data-target="#navbar-content" aria-controls="navbar-content" aria-expanded="false" aria-label="Toggle navigation">
+      <span><i class="fas fa-bars"></i></span>
+      </button>
+      
+
+      
+      <div class="navbar-brand-mobile-wrapper d-inline-flex d-lg-none">
+        <a class="navbar-brand" href="/">NullSpace</a>
+      </div>
+      
+
+      
+      
+      <div class="navbar-collapse main-menu-item collapse justify-content-start" id="navbar-content">
+
+        
+        <ul class="navbar-nav d-md-inline-flex">
+          
+
+          
+
+          
+          
+          
+
+          
+
+          
+          
+          
+          
+
+          
+            
+              
+              
+            
+            
+          
+
+          <li class="nav-item">
+            <a class="nav-link  active" href="/post"><span>博客</span></a>
+          </li>
+
+          
+          
+
+          
+
+          
+          
+          
+            
+          
+
+          
+
+          
+          
+          
+          
+
+          
+            
+              
+              
+            
+            
+          
+
+          <li class="nav-item">
+            <a class="nav-link " href="/event"><span>趣事</span></a>
+          </li>
+
+          
+          
+
+          
+
+          
+          
+          
+            
+          
+
+          
+
+          
+          
+          
+          
+
+          
+            
+              
+              
+            
+            
+          
+
+          <li class="nav-item">
+            <a class="nav-link " href="/project"><span>项目</span></a>
+          </li>
+
+          
+          
+
+          
+
+          
+          
+          
+            
+          
+
+          
+
+          
+          
+          
+          
+
+          
+            
+              
+              
+            
+            
+          
+
+          <li class="nav-item">
+            <a class="nav-link " href="/publication"><span>论文</span></a>
+          </li>
+
+          
+          
+
+          
+
+          
+          
+          
+            
+          
+
+          
+
+          
+          
+          
+          
+
+          
+            
+              
+              
+            
+            
+          
+
+          <li class="nav-item">
+            <a class="nav-link " href="/contact"><span>联系</span></a>
+          </li>
+
+          
+          
+
+          
+
+          
+          
+          
+            
+          
+
+          
+
+          
+          
+          
+          
+
+          
+            
+              
+              
+            
+            
+          
+
+          <li class="nav-item">
+            <a class="nav-link " href="/media/files/cv"><span>简历</span></a>
+          </li>
+
+          
+          
+
+        
+
+          
+        </ul>
+      </div>
+
+      <ul class="nav-icons navbar-nav flex-row ml-auto d-flex pl-md-2">
+
+        
+        
+          
+        
+
+        
+        
+        <li class="nav-item">
+          <a class="nav-link js-search" href="#" aria-label="Search"><i class="fas fa-search" aria-hidden="true"></i></a>
+        </li>
+        
+
+        
+        
+        
+        <li class="nav-item dropdown theme-dropdown">
+          <a href="#" class="nav-link" data-toggle="dropdown" aria-haspopup="true" aria-label="Display preferences">
+            <i class="fas fa-moon" aria-hidden="true"></i>
+          </a>
+          <div class="dropdown-menu">
+            <a href="#" class="dropdown-item js-set-theme-light">
+              <span>Light</span>
+            </a>
+            <a href="#" class="dropdown-item js-set-theme-dark">
+              <span>Dark</span>
+            </a>
+            <a href="#" class="dropdown-item js-set-theme-auto">
+              <span>Automatic</span>
+            </a>
+          </div>
+        </li>
+        
+
+        
+        
+
+      </ul>
+
+    </div>
+  </nav>
+</header>
+
+
+  </div>
+
+  <div class="page-body">
+    
+    
+    
+
+    <article class="article">
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+  
+  
+<div class="article-container pt-3">
+  <h1>文本匹配技术调研与实验--以企业名称识别为例</h1>
+
+  
+
+  
+    
+
+
+<div class="article-metadata">
+
+  
+  
+
+  
+  <span class="article-date">
+    
+    
+      
+    
+    Mar 24, 2024
+  </span>
+  
+
+  
+
+  
+  <span class="middot-divider"></span>
+  <span class="article-reading-time">
+    1 min read
+  </span>
+  
+
+  
+  
+  
+  
+
+  
+  
+  <span class="middot-divider"></span>
+  <span class="article-categories">
+    <i class="fas fa-folder mr-1"></i><a href="/category/%E8%87%AA%E7%84%B6%E8%AF%AD%E8%A8%80%E5%A4%84%E7%90%86/">自然语言处理</a></span>
+  
+
+</div>
+
+    
+
+
+
+
+
+  
+</div>
+
+
+
+  <div class="article-container">
+
+    <div class="article-style">
+      <h2 id="前言">前言</h2>
+<p>对文档进行标签化/分类是很多现代系统的基本功能，如新闻类平台对新闻主题进行分类、商业智能领域需要从新闻、专利、招投标、行业研报等文档中识别出企业实体信息并对数据建立关联关系。</p>
+<h2 id="方法">方法</h2>
+<ul>
+<li>基于规则的字符串模式匹配：判断文档中是否存在子串（关键字），并且需要考虑同一关键字的多种表达（如商汤科技简称商汤，又可称sensetime）
+<ul>
+<li>实现1：子字符串存在性判断</li>
+<li>实现2：正则表达式</li>
+</ul>
+</li>
+<li>命名实体识别：识别组织型实体</li>
+<li>对文档集合构建倒排索引，通过判定索引词是否包含指定关键字或是企业实体进行数据匹配</li>
+</ul>
+<h2 id="实现">实现</h2>
+<h3 id="经典方法字符串模式匹配">经典方法：字符串模式匹配</h3>
+<h4 id="基于in操作符">基于in操作符</h4>
+<p>8线程情况下，处理10个新闻正文匹配，耗时9s</p>
+<p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<figure  >
+  <div class="d-flex justify-content-center">
+    <div class="w-100" ><img alt="" srcset="
+               /post/text-matching-investigation/images/testcase/traditional/multithread-8-in-operator_hu6beb7ff41c0e086c995d8ed3e89c5914_722719_f7be10cf9e228508b41e431c4ac353ac.webp 400w,
+               /post/text-matching-investigation/images/testcase/traditional/multithread-8-in-operator_hu6beb7ff41c0e086c995d8ed3e89c5914_722719_839bddf05c2fc15006d9343e6a475bf1.webp 760w,
+               /post/text-matching-investigation/images/testcase/traditional/multithread-8-in-operator_hu6beb7ff41c0e086c995d8ed3e89c5914_722719_1200x1200_fit_q75_h2_lanczos_3.webp 1200w"
+               src="/post/text-matching-investigation/images/testcase/traditional/multithread-8-in-operator_hu6beb7ff41c0e086c995d8ed3e89c5914_722719_f7be10cf9e228508b41e431c4ac353ac.webp"
+               width="760"
+               height="505"
+               loading="lazy" data-zoomable /></div>
+  </div></figure>
+</p>
+<h4 id="基于正则表达式">基于正则表达式</h4>
+<p>暂略</p>
+<h4 id="正则表达式与in操作符效率对比">正则表达式与in操作符效率对比</h4>
+<p>子串查找方面，in操作符效率更高。</p>
+<h3 id="命名实体识别企业实体识别">命名实体识别：企业实体识别</h3>
+<p>先测试现成NLP工具库spacy的效果</p>
+<h4 id="基于spacy进行命名实体识别">基于spacy进行命名实体识别</h4>
+<h5 id="准备工作">准备工作</h5>
+<p>安装中文模型，详情可参考文档<a href="https://spacy.io/models/zh" target="_blank" rel="noopener">Chinese · spaCy Models Documentation</a>：</p>
+<p>可通过如下命令安装模型</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">python -m spacy download zh_core_web_sm
+</span></span><span class="line"><span class="cl">python -m spacy download zh_core_web_lg
+</span></span><span class="line"><span class="cl">python -m spacy download zh_core_web_trf
+</span></span></code></pre></div><p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<figure  >
+  <div class="d-flex justify-content-center">
+    <div class="w-100" ><img alt="" srcset="
+               /post/text-matching-investigation/images/library/zh_core_web_lg_hubf80460201484d18b240c3d05aa15eaa_346053_d986266f811510054411274c48e6044e.webp 400w,
+               /post/text-matching-investigation/images/library/zh_core_web_lg_hubf80460201484d18b240c3d05aa15eaa_346053_6b976940a1dd3e2acb99ebf24c2d1d5c.webp 760w,
+               /post/text-matching-investigation/images/library/zh_core_web_lg_hubf80460201484d18b240c3d05aa15eaa_346053_1200x1200_fit_q75_h2_lanczos_3.webp 1200w"
+               src="/post/text-matching-investigation/images/library/zh_core_web_lg_hubf80460201484d18b240c3d05aa15eaa_346053_d986266f811510054411274c48e6044e.webp"
+               width="760"
+               height="329"
+               loading="lazy" data-zoomable /></div>
+  </div></figure>
+</p>
+<p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<figure  >
+  <div class="d-flex justify-content-center">
+    <div class="w-100" ><img alt="" srcset="
+               /post/text-matching-investigation/images/library/zh_core_web_lg-done_hu18b10af9299ac806977face395bd23aa_45046_1e3d233e3615e651be4804af8e95cddc.webp 400w,
+               /post/text-matching-investigation/images/library/zh_core_web_lg-done_hu18b10af9299ac806977face395bd23aa_45046_ca95b166f1f748afd0818c0c00b27717.webp 760w,
+               /post/text-matching-investigation/images/library/zh_core_web_lg-done_hu18b10af9299ac806977face395bd23aa_45046_1200x1200_fit_q75_h2_lanczos_3.webp 1200w"
+               src="/post/text-matching-investigation/images/library/zh_core_web_lg-done_hu18b10af9299ac806977face395bd23aa_45046_1e3d233e3615e651be4804af8e95cddc.webp"
+               width="760"
+               height="94"
+               loading="lazy" data-zoomable /></div>
+  </div></figure>
+</p>
+<p>可以查看模型的特征（训练数据集特征、适用任务、特征向量维度、模型大小等）</p>
+<p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<figure  >
+  <div class="d-flex justify-content-center">
+    <div class="w-100" ><img alt="" srcset="
+               /post/text-matching-investigation/images/library/spacy-model-intro_hu36c1753372f8053554da791034c1f537_556116_39197d42d10061428df4784db02906d3.webp 400w,
+               /post/text-matching-investigation/images/library/spacy-model-intro_hu36c1753372f8053554da791034c1f537_556116_195d48b1ce1315f62096edf0b65699bf.webp 760w,
+               /post/text-matching-investigation/images/library/spacy-model-intro_hu36c1753372f8053554da791034c1f537_556116_1200x1200_fit_q75_h2_lanczos_3.webp 1200w"
+               src="/post/text-matching-investigation/images/library/spacy-model-intro_hu36c1753372f8053554da791034c1f537_556116_39197d42d10061428df4784db02906d3.webp"
+               width="760"
+               height="486"
+               loading="lazy" data-zoomable /></div>
+  </div></figure>
+</p>
+<p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<figure  >
+  <div class="d-flex justify-content-center">
+    <div class="w-100" ><img alt="" srcset="
+               /post/text-matching-investigation/images/library/spacy-model-label-scheme_hu7d07048a7116f6b8adf0f5b51beba366_232030_84663ad6a7bfefac23b331a8d9bf730f.webp 400w,
+               /post/text-matching-investigation/images/library/spacy-model-label-scheme_hu7d07048a7116f6b8adf0f5b51beba366_232030_4a779b787edd2b1f0bae0bc5b4ab89a0.webp 760w,
+               /post/text-matching-investigation/images/library/spacy-model-label-scheme_hu7d07048a7116f6b8adf0f5b51beba366_232030_1200x1200_fit_q75_h2_lanczos_3.webp 1200w"
+               src="/post/text-matching-investigation/images/library/spacy-model-label-scheme_hu7d07048a7116f6b8adf0f5b51beba366_232030_84663ad6a7bfefac23b331a8d9bf730f.webp"
+               width="630"
+               height="760"
+               loading="lazy" data-zoomable /></div>
+  </div></figure>
+</p>
+<h5 id="基本测试">基本测试</h5>
+<p>用例：</p>
+<pre tabindex="0"><code>华为爱上了苹果，小米吃醋了，vivo和oppo也不甘示弱，纷纷表示要超越华为，成为中国最大的手机厂商. 
+商汤科技，旷视科技，旷视科技有限公司认识宝莱特，宝莱特公司说这是一个测试用例，可以给外包公司做，自己公司可以不考虑这些事项。
+企知道也不知道，企查查说他知道，灵犀数据说他也知道，但是他们都不知道。文因说文因互联是一个很好的公司，可以给他们做一些事情。
+但韶华为了韶华科技，韶华科技有限公司，也这么说商汤集团。但平安不这么看。
+</code></pre><ul>
+<li>zh-core-web-lg</li>
+</ul>
+<p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<figure  >
+  <div class="d-flex justify-content-center">
+    <div class="w-100" ><img alt="" srcset="
+               /post/text-matching-investigation/images/testcase/spacy-ner-zh-lg_huf113ee2e8370972364ac8efbaf6ae901_175486_f322826c5a1d38ffef49451ebb48e73c.webp 400w,
+               /post/text-matching-investigation/images/testcase/spacy-ner-zh-lg_huf113ee2e8370972364ac8efbaf6ae901_175486_656f0db477c745f8ce0f63e016398db5.webp 760w,
+               /post/text-matching-investigation/images/testcase/spacy-ner-zh-lg_huf113ee2e8370972364ac8efbaf6ae901_175486_1200x1200_fit_q75_h2_lanczos_3.webp 1200w"
+               src="/post/text-matching-investigation/images/testcase/spacy-ner-zh-lg_huf113ee2e8370972364ac8efbaf6ae901_175486_f322826c5a1d38ffef49451ebb48e73c.webp"
+               width="760"
+               height="426"
+               loading="lazy" data-zoomable /></div>
+  </div></figure>
+</p>
+<ul>
+<li>zh-core-web-trf</li>
+</ul>
+<p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<figure  >
+  <div class="d-flex justify-content-center">
+    <div class="w-100" ><img alt="" srcset="
+               /post/text-matching-investigation/images/testcase/spacy-ner-zh-trf_hu275e6f738634e94f8967e2932abfa09e_182760_5bc3ff29e29522e02e4026932321cd29.webp 400w,
+               /post/text-matching-investigation/images/testcase/spacy-ner-zh-trf_hu275e6f738634e94f8967e2932abfa09e_182760_07bc7f617c3bf1ffe356ba02132117a6.webp 760w,
+               /post/text-matching-investigation/images/testcase/spacy-ner-zh-trf_hu275e6f738634e94f8967e2932abfa09e_182760_1200x1200_fit_q75_h2_lanczos_3.webp 1200w"
+               src="/post/text-matching-investigation/images/testcase/spacy-ner-zh-trf_hu275e6f738634e94f8967e2932abfa09e_182760_5bc3ff29e29522e02e4026932321cd29.webp"
+               width="760"
+               height="432"
+               loading="lazy" data-zoomable /></div>
+  </div></figure>
+</p>
+<p>针对上述例子，对比一下zh-core-web-lg、zh-core-web-trf模型的企业实体识别效果：</p>
+<table>
+<thead>
+<tr>
+<th>模型</th>
+<th>zh-core-web-lg</th>
+<th>zh-core-web-trf</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>实体名称错误</td>
+<td></td>
+<td>oppo、科技有限公司</td>
+</tr>
+<tr>
+<td>实体类别错误</td>
+<td>宝莱特</td>
+<td></td>
+</tr>
+<tr>
+<td>未命中</td>
+<td>平安、韶华科技、文因互联、企知道、灵犀数据</td>
+<td>小米、文因互联、企查查、企知道、灵犀数据</td>
+</tr>
+</tbody>
+</table>
+<p>可以看到，两个模型均存在一些问题。</p>
+<h5 id="可否通过微调模型或结合规则提升模型对企业实体识别的召回率">可否通过微调模型或结合规则提升模型对企业实体识别的召回率</h5>
+<p>TODO</p>
+
+    </div>
+
+    
+
+
+
+
+<div class="article-tags">
+  
+  <a class="badge badge-light" href="/tag/%E8%87%AA%E7%84%B6%E8%AF%AD%E8%A8%80%E5%A4%84%E7%90%86/">自然语言处理</a>
+  
+  <a class="badge badge-light" href="/tag/%E6%96%87%E6%9C%AC%E5%8C%B9%E9%85%8D/">文本匹配</a>
+  
+  <a class="badge badge-light" href="/tag/%E5%91%BD%E5%90%8D%E5%AE%9E%E4%BD%93%E8%AF%86%E5%88%AB/">命名实体识别</a>
+  
+</div>
+
+
+
+<div class="share-box">
+  <ul class="share">
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="https://twitter.com/intent/tweet?url=https://spacetimelab.cn/post/text-matching-investigation/&amp;text=%e6%96%87%e6%9c%ac%e5%8c%b9%e9%85%8d%e6%8a%80%e6%9c%af%e8%b0%83%e7%a0%94%e4%b8%8e%e5%ae%9e%e9%aa%8c--%e4%bb%a5%e4%bc%81%e4%b8%9a%e5%90%8d%e7%a7%b0%e8%af%86%e5%88%ab%e4%b8%ba%e4%be%8b" target="_blank" rel="noopener" class="share-btn-twitter" aria-label="twitter">
+          <i class="fab fa-twitter"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="https://www.facebook.com/sharer.php?u=https://spacetimelab.cn/post/text-matching-investigation/&amp;t=%e6%96%87%e6%9c%ac%e5%8c%b9%e9%85%8d%e6%8a%80%e6%9c%af%e8%b0%83%e7%a0%94%e4%b8%8e%e5%ae%9e%e9%aa%8c--%e4%bb%a5%e4%bc%81%e4%b8%9a%e5%90%8d%e7%a7%b0%e8%af%86%e5%88%ab%e4%b8%ba%e4%be%8b" target="_blank" rel="noopener" class="share-btn-facebook" aria-label="facebook">
+          <i class="fab fa-facebook"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="mailto:?subject=%e6%96%87%e6%9c%ac%e5%8c%b9%e9%85%8d%e6%8a%80%e6%9c%af%e8%b0%83%e7%a0%94%e4%b8%8e%e5%ae%9e%e9%aa%8c--%e4%bb%a5%e4%bc%81%e4%b8%9a%e5%90%8d%e7%a7%b0%e8%af%86%e5%88%ab%e4%b8%ba%e4%be%8b&amp;body=https://spacetimelab.cn/post/text-matching-investigation/" target="_blank" rel="noopener" class="share-btn-email" aria-label="envelope">
+          <i class="fas fa-envelope"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="https://www.linkedin.com/shareArticle?url=https://spacetimelab.cn/post/text-matching-investigation/&amp;title=%e6%96%87%e6%9c%ac%e5%8c%b9%e9%85%8d%e6%8a%80%e6%9c%af%e8%b0%83%e7%a0%94%e4%b8%8e%e5%ae%9e%e9%aa%8c--%e4%bb%a5%e4%bc%81%e4%b8%9a%e5%90%8d%e7%a7%b0%e8%af%86%e5%88%ab%e4%b8%ba%e4%be%8b" target="_blank" rel="noopener" class="share-btn-linkedin" aria-label="linkedin-in">
+          <i class="fab fa-linkedin-in"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="whatsapp://send?text=%e6%96%87%e6%9c%ac%e5%8c%b9%e9%85%8d%e6%8a%80%e6%9c%af%e8%b0%83%e7%a0%94%e4%b8%8e%e5%ae%9e%e9%aa%8c--%e4%bb%a5%e4%bc%81%e4%b8%9a%e5%90%8d%e7%a7%b0%e8%af%86%e5%88%ab%e4%b8%ba%e4%be%8b%20https://spacetimelab.cn/post/text-matching-investigation/" target="_blank" rel="noopener" class="share-btn-whatsapp" aria-label="whatsapp">
+          <i class="fab fa-whatsapp"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="https://service.weibo.com/share/share.php?url=https://spacetimelab.cn/post/text-matching-investigation/&amp;title=%e6%96%87%e6%9c%ac%e5%8c%b9%e9%85%8d%e6%8a%80%e6%9c%af%e8%b0%83%e7%a0%94%e4%b8%8e%e5%ae%9e%e9%aa%8c--%e4%bb%a5%e4%bc%81%e4%b8%9a%e5%90%8d%e7%a7%b0%e8%af%86%e5%88%ab%e4%b8%ba%e4%be%8b" target="_blank" rel="noopener" class="share-btn-weibo" aria-label="weibo">
+          <i class="fab fa-weibo"></i>
+        </a>
+      </li>
+    
+  </ul>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+
+
+
+  
+  
+  
+  
+  
+  <div class="media author-card content-widget-hr">
+    
+      
+      <a href="/authors/admin/"><img class="avatar mr-3 avatar-circle" src="/authors/admin/avatar_hu55194f19033f85038196a23353ffe543_580100_270x270_fill_q75_lanczos_center.jpg" alt="CoolCats"></a>
+    
+
+    <div class="media-body">
+      <h5 class="card-title"><a href="/authors/admin/">CoolCats</a></h5>
+      <h6 class="card-subtitle">理学学士</h6>
+      <p class="card-text">我的研究兴趣是时空数据分析、知识图谱、自然语言处理与服务端开发</p>
+      <ul class="network-icon" aria-hidden="true">
+  
+    
+    
+    
+      
+    
+    
+    
+    
+    
+    <li>
+      <a href="mailto:2811159909@qq.com" >
+        <i class="fas fa-envelope"></i>
+      </a>
+    </li>
+  
+    
+    
+    
+      
+    
+    
+    
+    
+    
+      
+    
+    <li>
+      <a href="https://github.com/Coolgiserz" target="_blank" rel="noopener">
+        <i class="fab fa-github"></i>
+      </a>
+    </li>
+  
+</ul>
+
+    </div>
+  </div>
+
+
+
+
+
+
+
+
+
+  
+  
+  
+
+  
+
+  
+
+
+
+
+
+
+
+
+
+
+  </div>
+</article>
+  </div>
+
+  <div class="page-footer">
+    
+    
+    <div class="container">
+      <footer class="site-footer">
+
+  
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+
+
+
+
+
+  
+  
+  
+
+  
+  
+    
+  
+  
+    
+  
+
+  
+
+  
+  <p class="powered-by copyright-license-text">
+    © 2024 Weirdgiser &amp; <a href="https://beian.miit.gov.cn" target="_blank" rel="noopener">粤ICP备2024213180号</a>
+  </p>
+  
+
+  <p class="powered-by footer-license-icons">
+    <a href="https://creativecommons.org/licenses/by-nc-nd/4.0" rel="noopener noreferrer" target="_blank" aria-label="Creative Commons">
+      <i class="fab fa-creative-commons fa-2x" aria-hidden="true"></i>
+      <i class="fab fa-creative-commons-by fa-2x" aria-hidden="true"></i>
+      
+        <i class="fab fa-creative-commons-nc fa-2x" aria-hidden="true"></i>
+      
+      
+        <i class="fab fa-creative-commons-nd fa-2x" aria-hidden="true"></i>
+      
+    </a>
+  </p>
+
+
+
+
+  <p class="powered-by">
+    
+    
+    
+      
+      
+      
+      
+      
+      
+      Published with <a href="https://wowchemy.com/?utm_campaign=poweredby" target="_blank" rel="noopener">Wowchemy</a> — the free, <a href="https://github.com/wowchemy/wowchemy-hugo-themes" target="_blank" rel="noopener">open source</a> website builder that empowers creators.
+    
+  </p>
+</footer>
+
+    </div>
+    
+  </div>
+
+      
+
+    
+    <script src="/js/vendor-bundle.min.fab8b449b814cc9f95b22fcf2e45f05b.js"></script>
+
+    
+    
+    
+      
+
+      
+      
+
+      
+
+      
+        
+        <script src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@10.2.1/build/highlight.min.js" integrity="sha512-Ypjm0o7jOxAd4hpdoppSEN0TQOC19UtPAqD+4s5AlXmUvbmmS/YMxYqAqarQYyxTnB6/rqip9qcxlNB/3U9Wdg==" crossorigin="anonymous"></script>
+        
+        
+        <script src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@10.2.1/build/languages/r.min.js" crossorigin="anonymous"></script>
+        
+        <script src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@10.2.1/build/languages/latex.min.js" crossorigin="anonymous"></script>
+        
+      
+
+    
+
+    
+    
+    
+      <script src="https://cdn.jsdelivr.net/npm/leaflet@1.7.1/dist/leaflet.min.js" integrity="" crossorigin="anonymous"></script>
+    
+
+    
+    
+
+    
+    
+    
+      
+      <script id="search-hit-fuse-template" type="text/x-template">
+        <div class="search-hit" id="summary-{{key}}">
+          <div class="search-hit-content">
+            <div class="search-hit-name">
+              <a href="{{relpermalink}}">{{title}}</a>
+              <div class="article-metadata search-hit-type">{{type}}</div>
+              <p class="search-hit-description">{{snippet}}</p>
+            </div>
+          </div>
+        </div>
+      </script>
+      
+        <script src="https://cdn.jsdelivr.net/gh/krisk/Fuse@v3.2.1/dist/fuse.min.js" integrity="sha512-o38bmzBGX+hD3JHWUFCDA09btWaqrNmoJ3RXLlrysA7PP01Kgs4UlE4MhelE1v5dJR3+cxlR4qQlotsW7jKsnw==" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/gh/julmot/mark.js@8.11.1/dist/jquery.mark.min.js" integrity="sha512-mhbv5DqBMgrWL+32MmsDOt/OAvqr/cHimk6B8y/bx/xS88MVkYGPiVv2ixKVrkywF2qHplNRUvFsAHUdxZ3Krg==" crossorigin="anonymous"></script>
+      
+    
+
+    
+    
+
+    
+    
+    
+    
+      <script id="dsq-count-scr" src="https://weirdgiser.disqus.com/count.js" async></script>
+    
+
+    
+    
+      
+      
+      
+      
+      
+      
+      
+    
+
+    
+
+    
+    
+    
+    <script id="page-data" type="application/json">{"use_headroom":true}</script>
+
+    
+    
+      <script src="/js/wowchemy-headroom.c251366b4128fd5e6b046d4c97a62a51.js" type="module"></script>
+    
+    
+    
+    
+    
+    
+    
+      
+      
+    
+    
+    <script src="/en/js/wowchemy.min.ab2f2890dbe3e2e83579366d3d6e8fd9.js"></script>
+
+    
+    
+      <script src="/js/wowchemy-map.a26e9d2f7238ba5b868384f1c5bc6477.js" type="module"></script>
+    
+    
+    
+    
+      
+<div id="modal" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Cite</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <pre><code class="tex hljs"></code></pre>
+      </div>
+      <div class="modal-footer">
+        <a class="btn btn-outline-primary my-1 js-copy-cite" href="#" target="_blank">
+          <i class="fas fa-copy"></i> Copy
+        </a>
+        <a class="btn btn-outline-primary my-1 js-download-cite" href="#" target="_blank">
+          <i class="fas fa-download"></i> Download
+        </a>
+        <div id="modal-error"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+      <script src="/js/wowchemy-publication.68f8d7090562ca65fc6d3cb3f8f2d2cb.js" type="module"></script>
+
+
+
+
+
+
+</body>
+</html>

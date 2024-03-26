@@ -1,22 +1,22 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Git | CoolCats</title>
-    <link>/tag/git/</link>
-      <atom:link href="/tag/git/index.xml" rel="self" type="application/rss+xml" />
+    <title>Git | NullSpace</title>
+    <link>https://spacetimelab.cn/tag/git/</link>
+      <atom:link href="https://spacetimelab.cn/tag/git/index.xml" rel="self" type="application/rss+xml" />
     <description>Git</description>
     <generator>Wowchemy (https://wowchemy.com)</generator><language>en-us</language><lastBuildDate>Mon, 25 Apr 2022 09:32:03 +0800</lastBuildDate>
     <image>
-      <url>/media/icon_hue03491371183284312b8b116a73ae5ab_79511_512x512_fill_lanczos_center_3.png</url>
+      <url>https://spacetimelab.cn/media/icon_hue03491371183284312b8b116a73ae5ab_79511_512x512_fill_lanczos_center_3.png</url>
       <title>Git</title>
-      <link>/tag/git/</link>
+      <link>https://spacetimelab.cn/tag/git/</link>
     </image>
     
     <item>
       <title>如何为Git Commit进行备注？</title>
-      <link>/post/how-to-write-memo-for-explaining-your-commit/</link>
+      <link>https://spacetimelab.cn/post/how-to-write-memo-for-explaining-your-commit/</link>
       <pubDate>Mon, 25 Apr 2022 09:32:03 +0800</pubDate>
-      <guid>/post/how-to-write-memo-for-explaining-your-commit/</guid>
+      <guid>https://spacetimelab.cn/post/how-to-write-memo-for-explaining-your-commit/</guid>
       <description>&lt;h2 id=&#34;0x00-前言&#34;&gt;0x00 前言&lt;/h2&gt;
 &lt;p&gt;无论是个人开发还是团队开发，我们都很有可能用到版本管理工具如git、svn等，使用它们我们可以针对每次提交的代码进行备注，以便日后追溯或查看时容易理解当时变更代码的目的。&lt;/p&gt;
 &lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;git commit -m &amp;#34;进行了代码变更&amp;#34;

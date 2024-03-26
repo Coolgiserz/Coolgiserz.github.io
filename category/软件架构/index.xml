@@ -1,22 +1,22 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>软件架构 | CoolCats</title>
-    <link>/category/%E8%BD%AF%E4%BB%B6%E6%9E%B6%E6%9E%84/</link>
-      <atom:link href="/category/%E8%BD%AF%E4%BB%B6%E6%9E%B6%E6%9E%84/index.xml" rel="self" type="application/rss+xml" />
+    <title>软件架构 | NullSpace</title>
+    <link>https://spacetimelab.cn/category/%E8%BD%AF%E4%BB%B6%E6%9E%B6%E6%9E%84/</link>
+      <atom:link href="https://spacetimelab.cn/category/%E8%BD%AF%E4%BB%B6%E6%9E%B6%E6%9E%84/index.xml" rel="self" type="application/rss+xml" />
     <description>软件架构</description>
     <generator>Wowchemy (https://wowchemy.com)</generator><language>en-us</language><lastBuildDate>Sat, 20 May 2023 23:49:19 +0800</lastBuildDate>
     <image>
-      <url>/media/icon_hue03491371183284312b8b116a73ae5ab_79511_512x512_fill_lanczos_center_3.png</url>
+      <url>https://spacetimelab.cn/media/icon_hue03491371183284312b8b116a73ae5ab_79511_512x512_fill_lanczos_center_3.png</url>
       <title>软件架构</title>
-      <link>/category/%E8%BD%AF%E4%BB%B6%E6%9E%B6%E6%9E%84/</link>
+      <link>https://spacetimelab.cn/category/%E8%BD%AF%E4%BB%B6%E6%9E%B6%E6%9E%84/</link>
     </image>
     
     <item>
       <title>《Python软件架构》知识点练习代码</title>
-      <link>/project/python-software-architecture-practice/</link>
+      <link>https://spacetimelab.cn/project/python-software-architecture-practice/</link>
       <pubDate>Sat, 20 May 2023 23:49:19 +0800</pubDate>
-      <guid>/project/python-software-architecture-practice/</guid>
+      <guid>https://spacetimelab.cn/project/python-software-architecture-practice/</guid>
       <description>&lt;p&gt;Python软件架构知识点练习代码&lt;/p&gt;
 </description>
     </item>

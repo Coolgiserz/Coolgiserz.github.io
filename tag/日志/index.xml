@@ -1,22 +1,22 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>日志 | CoolCats</title>
-    <link>/tag/%E6%97%A5%E5%BF%97/</link>
-      <atom:link href="/tag/%E6%97%A5%E5%BF%97/index.xml" rel="self" type="application/rss+xml" />
+    <title>日志 | NullSpace</title>
+    <link>https://spacetimelab.cn/tag/%E6%97%A5%E5%BF%97/</link>
+      <atom:link href="https://spacetimelab.cn/tag/%E6%97%A5%E5%BF%97/index.xml" rel="self" type="application/rss+xml" />
     <description>日志</description>
     <generator>Wowchemy (https://wowchemy.com)</generator><language>en-us</language><lastBuildDate>Sun, 18 Jun 2023 09:02:27 +0800</lastBuildDate>
     <image>
-      <url>/media/icon_hue03491371183284312b8b116a73ae5ab_79511_512x512_fill_lanczos_center_3.png</url>
+      <url>https://spacetimelab.cn/media/icon_hue03491371183284312b8b116a73ae5ab_79511_512x512_fill_lanczos_center_3.png</url>
       <title>日志</title>
-      <link>/tag/%E6%97%A5%E5%BF%97/</link>
+      <link>https://spacetimelab.cn/tag/%E6%97%A5%E5%BF%97/</link>
     </image>
     
     <item>
       <title>Python内置日志模块源码分析和进阶用法</title>
-      <link>/post/python-logging-usage-and-extend/</link>
+      <link>https://spacetimelab.cn/post/python-logging-usage-and-extend/</link>
       <pubDate>Sun, 18 Jun 2023 09:02:27 +0800</pubDate>
-      <guid>/post/python-logging-usage-and-extend/</guid>
+      <guid>https://spacetimelab.cn/post/python-logging-usage-and-extend/</guid>
       <description>&lt;h2 id=&#34;概述&#34;&gt;概述&lt;/h2&gt;
 &lt;p&gt;日志是在程序运行过程中进行事件追踪的方式，通过向程序引入日志模块可以使开发者方便地了解到特定的事件是否发生，以及事件发生时相关的信息。&lt;/p&gt;
 &lt;p&gt;本文假定你已经了解日志模块的基本使用（如通常博客、教材所介绍），想要定制化拓展你的日志功能（如定制化的日志持久化，在日志中记录特定属性（区分于message）等），或许本文的部分内容会对你有帮助。&lt;/p&gt;
@@ -60,7 +60,7 @@
                /post/python-logging-usage-and-extend/images/logging_hubc6be535caacc45bc8718786526cd277_157377_f69308afae4bf6fe8eed3b928dfd089f.webp 400w,
                /post/python-logging-usage-and-extend/images/logging_hubc6be535caacc45bc8718786526cd277_157377_1c0f211c5e03b599f4f79c33263f4493.webp 760w,
                /post/python-logging-usage-and-extend/images/logging_hubc6be535caacc45bc8718786526cd277_157377_1200x1200_fit_q75_h2_lanczos_3.webp 1200w&#34;
-               src=&#34;/post/python-logging-usage-and-extend/images/logging_hubc6be535caacc45bc8718786526cd277_157377_f69308afae4bf6fe8eed3b928dfd089f.webp&#34;
+               src=&#34;https://spacetimelab.cn/post/python-logging-usage-and-extend/images/logging_hubc6be535caacc45bc8718786526cd277_157377_f69308afae4bf6fe8eed3b928dfd089f.webp&#34;
                width=&#34;760&#34;
                height=&#34;387&#34;
                loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
@@ -91,7 +91,7 @@
                /post/python-logging-usage-and-extend/images/log_level_hu9bef11106bc193a0cd590e92650ac977_135766_4c2f52ea62661693ee95d4994592b58a.webp 400w,
                /post/python-logging-usage-and-extend/images/log_level_hu9bef11106bc193a0cd590e92650ac977_135766_fee3dbb37c1fb45d51d52e6c0e87e70f.webp 760w,
                /post/python-logging-usage-and-extend/images/log_level_hu9bef11106bc193a0cd590e92650ac977_135766_1200x1200_fit_q75_h2_lanczos_3.webp 1200w&#34;
-               src=&#34;/post/python-logging-usage-and-extend/images/log_level_hu9bef11106bc193a0cd590e92650ac977_135766_4c2f52ea62661693ee95d4994592b58a.webp&#34;
+               src=&#34;https://spacetimelab.cn/post/python-logging-usage-and-extend/images/log_level_hu9bef11106bc193a0cd590e92650ac977_135766_4c2f52ea62661693ee95d4994592b58a.webp&#34;
                width=&#34;760&#34;
                height=&#34;431&#34;
                loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
@@ -119,7 +119,7 @@
                /post/python-logging-usage-and-extend/images/log_level_name_hu667f4dbf1ec23e6cfdec5f7e343ca129_96914_2754a2e48e65986ba563668aea4905bb.webp 400w,
                /post/python-logging-usage-and-extend/images/log_level_name_hu667f4dbf1ec23e6cfdec5f7e343ca129_96914_6b7d4d3c41d11a6bfb2705456e7e0ae4.webp 760w,
                /post/python-logging-usage-and-extend/images/log_level_name_hu667f4dbf1ec23e6cfdec5f7e343ca129_96914_1200x1200_fit_q75_h2_lanczos_3.webp 1200w&#34;
-               src=&#34;/post/python-logging-usage-and-extend/images/log_level_name_hu667f4dbf1ec23e6cfdec5f7e343ca129_96914_2754a2e48e65986ba563668aea4905bb.webp&#34;
+               src=&#34;https://spacetimelab.cn/post/python-logging-usage-and-extend/images/log_level_name_hu667f4dbf1ec23e6cfdec5f7e343ca129_96914_2754a2e48e65986ba563668aea4905bb.webp&#34;
                width=&#34;760&#34;
                height=&#34;732&#34;
                loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
@@ -149,7 +149,7 @@
                /post/python-logging-usage-and-extend/images/log_data_flow_hu6274e8f9f952444ad4e548d4de5bbeca_260241_a82725665d1d23059475521047c93d10.webp 400w,
                /post/python-logging-usage-and-extend/images/log_data_flow_hu6274e8f9f952444ad4e548d4de5bbeca_260241_76b0e1c8cb6b1b290fdcc3fec47cdcfb.webp 760w,
                /post/python-logging-usage-and-extend/images/log_data_flow_hu6274e8f9f952444ad4e548d4de5bbeca_260241_1200x1200_fit_q75_h2_lanczos_3.webp 1200w&#34;
-               src=&#34;/post/python-logging-usage-and-extend/images/log_data_flow_hu6274e8f9f952444ad4e548d4de5bbeca_260241_a82725665d1d23059475521047c93d10.webp&#34;
+               src=&#34;https://spacetimelab.cn/post/python-logging-usage-and-extend/images/log_data_flow_hu6274e8f9f952444ad4e548d4de5bbeca_260241_a82725665d1d23059475521047c93d10.webp&#34;
                width=&#34;760&#34;
                height=&#34;589&#34;
                loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
@@ -180,7 +180,7 @@ LogRecord实例会在需要记录某些东西时被创建，包含需要记录�
                /post/python-logging-usage-and-extend/images/logrecord_hu8674e2f76785f016a54448c27384beaa_213741_e588c56d01720de6d75abd12478ceb36.webp 400w,
                /post/python-logging-usage-and-extend/images/logrecord_hu8674e2f76785f016a54448c27384beaa_213741_6dc2b70a6490bf6b8274f784f40777f4.webp 760w,
                /post/python-logging-usage-and-extend/images/logrecord_hu8674e2f76785f016a54448c27384beaa_213741_1200x1200_fit_q75_h2_lanczos_3.webp 1200w&#34;
-               src=&#34;/post/python-logging-usage-and-extend/images/logrecord_hu8674e2f76785f016a54448c27384beaa_213741_e588c56d01720de6d75abd12478ceb36.webp&#34;
+               src=&#34;https://spacetimelab.cn/post/python-logging-usage-and-extend/images/logrecord_hu8674e2f76785f016a54448c27384beaa_213741_e588c56d01720de6d75abd12478ceb36.webp&#34;
                width=&#34;760&#34;
                height=&#34;555&#34;
                loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;

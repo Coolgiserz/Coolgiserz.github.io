@@ -1,22 +1,22 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>数据结构 | CoolCats</title>
-    <link>/category/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/</link>
-      <atom:link href="/category/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/index.xml" rel="self" type="application/rss+xml" />
+    <title>数据结构 | NullSpace</title>
+    <link>https://spacetimelab.cn/category/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/</link>
+      <atom:link href="https://spacetimelab.cn/category/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/index.xml" rel="self" type="application/rss+xml" />
     <description>数据结构</description>
     <generator>Wowchemy (https://wowchemy.com)</generator><language>en-us</language><lastBuildDate>Wed, 19 Dec 2018 22:55:46 +0800</lastBuildDate>
     <image>
-      <url>/media/icon_hue03491371183284312b8b116a73ae5ab_79511_512x512_fill_lanczos_center_3.png</url>
+      <url>https://spacetimelab.cn/media/icon_hue03491371183284312b8b116a73ae5ab_79511_512x512_fill_lanczos_center_3.png</url>
       <title>数据结构</title>
-      <link>/category/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/</link>
+      <link>https://spacetimelab.cn/category/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/</link>
     </image>
     
     <item>
       <title>哈夫曼编码及其实现</title>
-      <link>/post/hftree-datastructure/</link>
+      <link>https://spacetimelab.cn/post/hftree-datastructure/</link>
       <pubDate>Wed, 19 Dec 2018 22:55:46 +0800</pubDate>
-      <guid>/post/hftree-datastructure/</guid>
+      <guid>https://spacetimelab.cn/post/hftree-datastructure/</guid>
       <description>&lt;h2 id=&#34;哈夫曼树&#34;&gt;哈夫曼树&lt;/h2&gt;
 &lt;h3 id=&#34;哈夫曼树特点&#34;&gt;哈夫曼树特点&lt;/h3&gt;
 &lt;p&gt;哈夫曼树又称最优二叉树，是一种带权路径长度最短的二叉树。常可用作无损压缩。&lt;/p&gt;

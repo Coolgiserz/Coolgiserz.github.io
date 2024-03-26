@@ -1,22 +1,22 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>自适应图结构 | CoolCats</title>
-    <link>/tag/%E8%87%AA%E9%80%82%E5%BA%94%E5%9B%BE%E7%BB%93%E6%9E%84/</link>
-      <atom:link href="/tag/%E8%87%AA%E9%80%82%E5%BA%94%E5%9B%BE%E7%BB%93%E6%9E%84/index.xml" rel="self" type="application/rss+xml" />
+    <title>自适应图结构 | NullSpace</title>
+    <link>https://spacetimelab.cn/tag/%E8%87%AA%E9%80%82%E5%BA%94%E5%9B%BE%E7%BB%93%E6%9E%84/</link>
+      <atom:link href="https://spacetimelab.cn/tag/%E8%87%AA%E9%80%82%E5%BA%94%E5%9B%BE%E7%BB%93%E6%9E%84/index.xml" rel="self" type="application/rss+xml" />
     <description>自适应图结构</description>
     <generator>Wowchemy (https://wowchemy.com)</generator><language>en-us</language><lastBuildDate>Fri, 15 Jan 2021 09:58:49 +0800</lastBuildDate>
     <image>
-      <url>/media/icon_hue03491371183284312b8b116a73ae5ab_79511_512x512_fill_lanczos_center_3.png</url>
+      <url>https://spacetimelab.cn/media/icon_hue03491371183284312b8b116a73ae5ab_79511_512x512_fill_lanczos_center_3.png</url>
       <title>自适应图结构</title>
-      <link>/tag/%E8%87%AA%E9%80%82%E5%BA%94%E5%9B%BE%E7%BB%93%E6%9E%84/</link>
+      <link>https://spacetimelab.cn/tag/%E8%87%AA%E9%80%82%E5%BA%94%E5%9B%BE%E7%BB%93%E6%9E%84/</link>
     </image>
     
     <item>
       <title>「论文阅读」- 用于交通流预测的自适应图卷积循环网络</title>
-      <link>/publication/adaptive-graph-convolutional-recurrent-network-for-traffic-forecasting/</link>
+      <link>https://spacetimelab.cn/publication/adaptive-graph-convolutional-recurrent-network-for-traffic-forecasting/</link>
       <pubDate>Fri, 15 Jan 2021 09:58:49 +0800</pubDate>
-      <guid>/publication/adaptive-graph-convolutional-recurrent-network-for-traffic-forecasting/</guid>
+      <guid>https://spacetimelab.cn/publication/adaptive-graph-convolutional-recurrent-network-for-traffic-forecasting/</guid>
       <description>&lt;p&gt;快速的城市化使城市人口不断增加，并为人口流动性和发展可持续性带来了巨大挑战。在这些挑战中，智能交通系统(ITS)已经成为一个活跃的研究领域[1]，因为它具有促进系统效率和决策的潜力。作为智能交通系统的重要步骤，交通预测旨在预测城市交通系统的未来状态（如交通流量和速度，以及乘客需求）。它在交通调度和管理中起着至关重要的作用，近年来引起了机器学习研究界的极大关注[2，3，4，5，6]。&lt;/p&gt;
 &lt;p&gt;由于不同来源的交通流量和交通速度预测的不同环形检测器/交叉口，以及乘客需求预测的不同车站/地区，产生了复杂的内部依赖关系(一个交通序列中的时间相关性)和相互依赖关系(即多个相关交通序列之间的空间相关性)[3]，因此交通预测具有挑战性。传统的方法只是简单地部署时间序列模型，如将自回归综合移动平均(ARIMA)和向量自回归(VAR)用于交通预测。这些方法无法捕捉大规模交通数据中的非线性关联性和复杂的时空模式。最近，研究人员转向基于深度学习的方法，并专注于设计新的神经网络架构，以捕获所有交通序列共有的突出时空模式。他们通常用循环神经网络[7，8，9，10]（如长短时记忆和门控循环单元）或时空卷积模块[3，4]来模拟时空相关性。关于空间相关性，他们通常使用基于GCN的方法[2，4，3，6，11，5，12]来模拟非结构化的交通序列及其相互依赖性。&lt;/p&gt;
 &lt;p&gt;虽然最近基于深度学习的方法取得了可喜的成果，但它们偏重于所有交通序列中突出的和共有的模式&amp;ndash;共&lt;strong&gt;享的参数空间使得目前的方法在准确捕捉细粒度的数据源特定模式方面存在不足&lt;/strong&gt;。事实上，交通序列呈现出多样化的模式(如图 1 所示)，它们在不同的数据源中可能出现相似、不同甚至矛盾的属性[7, 13]。此外，&lt;strong&gt;现有的基于 GCN 的方法需要通过相似度或距离度量[14]来预先定义一个互连图&lt;/strong&gt;，以捕获空间相关性。这进一步要求大量的领域知识，并且对图的质量很敏感。这种方式生成的图通常是基于直观、不完备且没有直接针对预测任务，在没有相应知识的情况下，可能会存在偏差，不能适应领域。

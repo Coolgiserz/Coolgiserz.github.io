@@ -1,22 +1,22 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>GIS | CoolCats</title>
-    <link>/category/gis/</link>
-      <atom:link href="/category/gis/index.xml" rel="self" type="application/rss+xml" />
+    <title>GIS | NullSpace</title>
+    <link>https://spacetimelab.cn/category/gis/</link>
+      <atom:link href="https://spacetimelab.cn/category/gis/index.xml" rel="self" type="application/rss+xml" />
     <description>GIS</description>
     <generator>Wowchemy (https://wowchemy.com)</generator><language>en-us</language><lastBuildDate>Mon, 27 Mar 2023 19:09:05 +0800</lastBuildDate>
     <image>
-      <url>/media/icon_hue03491371183284312b8b116a73ae5ab_79511_512x512_fill_lanczos_center_3.png</url>
+      <url>https://spacetimelab.cn/media/icon_hue03491371183284312b8b116a73ae5ab_79511_512x512_fill_lanczos_center_3.png</url>
       <title>GIS</title>
-      <link>/category/gis/</link>
+      <link>https://spacetimelab.cn/category/gis/</link>
     </image>
     
     <item>
       <title>GDAL栅格数据重采样示例</title>
-      <link>/post/raster-resample-example/</link>
+      <link>https://spacetimelab.cn/post/raster-resample-example/</link>
       <pubDate>Mon, 27 Mar 2023 19:09:05 +0800</pubDate>
-      <guid>/post/raster-resample-example/</guid>
+      <guid>https://spacetimelab.cn/post/raster-resample-example/</guid>
       <description>&lt;h2 id=&#34;前言&#34;&gt;前言&lt;/h2&gt;
 &lt;p&gt;栅格重采样：不改变影像的空间范围/尺度，仅仅改变影像像元的分辨率和像元数量（分辨率和像元个数密切相关）&lt;/p&gt;
 &lt;h2 id=&#34;可参考文档&#34;&gt;可参考文档&lt;/h2&gt;
@@ -122,9 +122,9 @@
     
     <item>
       <title>地理空间分析python常用包</title>
-      <link>/post/geospatial-analysis-python-library/</link>
+      <link>https://spacetimelab.cn/post/geospatial-analysis-python-library/</link>
       <pubDate>Fri, 28 Dec 2018 13:49:42 +0800</pubDate>
-      <guid>/post/geospatial-analysis-python-library/</guid>
+      <guid>https://spacetimelab.cn/post/geospatial-analysis-python-library/</guid>
       <description>&lt;h2 id=&#34;0x00-gis-python包汇总&#34;&gt;0x00 GIS python包汇总&lt;/h2&gt;
 &lt;ul&gt;
 &lt;li&gt;GDAL（https://www.lfd.uci.edu/~gohlke/pythonlibs/#gdal）
@@ -184,9 +184,9 @@ Github：https://github.com/thunlp/OpenNE&lt;/p&gt;
     
     <item>
       <title>高德地图 Js Api总结</title>
-      <link>/post/amap-js-api-summary/</link>
+      <link>https://spacetimelab.cn/post/amap-js-api-summary/</link>
       <pubDate>Fri, 21 Dec 2018 00:47:38 +0800</pubDate>
-      <guid>/post/amap-js-api-summary/</guid>
+      <guid>https://spacetimelab.cn/post/amap-js-api-summary/</guid>
       <description>&lt;h2 id=&#34;0x00-api分类文档&#34;&gt;0x00 API分类文档&lt;/h2&gt;
 &lt;p&gt;&lt;a href=&#34;https://lbs.amap.com/api/webservice/guide/api/search&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;https://lbs.amap.com/api/webservice/guide/api/search&lt;/a&gt;
 &lt;a href=&#34;https://lbs.amap.com/api/webservice/guide/api/search#polygon&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;https://lbs.amap.com/api/webservice/guide/api/search#polygon&lt;/a&gt;

@@ -1,22 +1,22 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>隐马尔可夫模型 | CoolCats</title>
-    <link>/tag/%E9%9A%90%E9%A9%AC%E5%B0%94%E5%8F%AF%E5%A4%AB%E6%A8%A1%E5%9E%8B/</link>
-      <atom:link href="/tag/%E9%9A%90%E9%A9%AC%E5%B0%94%E5%8F%AF%E5%A4%AB%E6%A8%A1%E5%9E%8B/index.xml" rel="self" type="application/rss+xml" />
+    <title>隐马尔可夫模型 | NullSpace</title>
+    <link>https://spacetimelab.cn/tag/%E9%9A%90%E9%A9%AC%E5%B0%94%E5%8F%AF%E5%A4%AB%E6%A8%A1%E5%9E%8B/</link>
+      <atom:link href="https://spacetimelab.cn/tag/%E9%9A%90%E9%A9%AC%E5%B0%94%E5%8F%AF%E5%A4%AB%E6%A8%A1%E5%9E%8B/index.xml" rel="self" type="application/rss+xml" />
     <description>隐马尔可夫模型</description>
     <generator>Wowchemy (https://wowchemy.com)</generator><language>en-us</language><lastBuildDate>Sat, 21 Mar 2020 20:23:11 +0800</lastBuildDate>
     <image>
-      <url>/media/icon_hue03491371183284312b8b116a73ae5ab_79511_512x512_fill_lanczos_center_3.png</url>
+      <url>https://spacetimelab.cn/media/icon_hue03491371183284312b8b116a73ae5ab_79511_512x512_fill_lanczos_center_3.png</url>
       <title>隐马尔可夫模型</title>
-      <link>/tag/%E9%9A%90%E9%A9%AC%E5%B0%94%E5%8F%AF%E5%A4%AB%E6%A8%A1%E5%9E%8B/</link>
+      <link>https://spacetimelab.cn/tag/%E9%9A%90%E9%A9%AC%E5%B0%94%E5%8F%AF%E5%A4%AB%E6%A8%A1%E5%9E%8B/</link>
     </image>
     
     <item>
       <title>基于隐马尔可夫模型实现简易词性分析器</title>
-      <link>/project/pos-tagger-implemented-on-hmm-model/</link>
+      <link>https://spacetimelab.cn/project/pos-tagger-implemented-on-hmm-model/</link>
       <pubDate>Sat, 21 Mar 2020 20:23:11 +0800</pubDate>
-      <guid>/project/pos-tagger-implemented-on-hmm-model/</guid>
+      <guid>https://spacetimelab.cn/project/pos-tagger-implemented-on-hmm-model/</guid>
       <description>&lt;h2 id=&#34;前言&#34;&gt;前言&lt;/h2&gt;
 &lt;p&gt;本项目基于隐马尔可夫模型实现一个简易的词性标注器。首先简单介绍下面几个问题：&lt;/p&gt;
 &lt;ul&gt;

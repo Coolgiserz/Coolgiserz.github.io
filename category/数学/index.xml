@@ -1,22 +1,22 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>数学 | CoolCats</title>
-    <link>/category/%E6%95%B0%E5%AD%A6/</link>
-      <atom:link href="/category/%E6%95%B0%E5%AD%A6/index.xml" rel="self" type="application/rss+xml" />
+    <title>数学 | NullSpace</title>
+    <link>https://spacetimelab.cn/category/%E6%95%B0%E5%AD%A6/</link>
+      <atom:link href="https://spacetimelab.cn/category/%E6%95%B0%E5%AD%A6/index.xml" rel="self" type="application/rss+xml" />
     <description>数学</description>
     <generator>Wowchemy (https://wowchemy.com)</generator><language>en-us</language><lastBuildDate>Fri, 20 May 2022 10:38:29 +0800</lastBuildDate>
     <image>
-      <url>/media/icon_hue03491371183284312b8b116a73ae5ab_79511_512x512_fill_lanczos_center_3.png</url>
+      <url>https://spacetimelab.cn/media/icon_hue03491371183284312b8b116a73ae5ab_79511_512x512_fill_lanczos_center_3.png</url>
       <title>数学</title>
-      <link>/category/%E6%95%B0%E5%AD%A6/</link>
+      <link>https://spacetimelab.cn/category/%E6%95%B0%E5%AD%A6/</link>
     </image>
     
     <item>
       <title>关于图上的离散Ricci曲率意义的思考</title>
-      <link>/post/understanding-graph-ricci-curvature/</link>
+      <link>https://spacetimelab.cn/post/understanding-graph-ricci-curvature/</link>
       <pubDate>Fri, 20 May 2022 10:38:29 +0800</pubDate>
-      <guid>/post/understanding-graph-ricci-curvature/</guid>
+      <guid>https://spacetimelab.cn/post/understanding-graph-ricci-curvature/</guid>
       <description>&lt;h2 id=&#34;灵魂拷问&#34;&gt;灵魂拷问&lt;/h2&gt;
 &lt;ul&gt;
 &lt;li&gt;曲率是什么？正曲率、零曲率、负曲率各自代表什么意义(几何、物理)？能给我们什么启发？&lt;/li&gt;
@@ -136,17 +136,17 @@ network fragility and systemic risk&lt;/a&gt;&lt;/p&gt;
     
     <item>
       <title>「论文阅读」-针对复杂网络上两种离散Ricci曲率的对比分析</title>
-      <link>/publication/comparative-analysis-of-two-discretizations-of-ricci-curvature-for-complex-networks/</link>
+      <link>https://spacetimelab.cn/publication/comparative-analysis-of-two-discretizations-of-ricci-curvature-for-complex-networks/</link>
       <pubDate>Thu, 19 May 2022 15:31:51 +0800</pubDate>
-      <guid>/publication/comparative-analysis-of-two-discretizations-of-ricci-curvature-for-complex-networks/</guid>
+      <guid>https://spacetimelab.cn/publication/comparative-analysis-of-two-discretizations-of-ricci-curvature-for-complex-networks/</guid>
       <description></description>
     </item>
     
     <item>
       <title>关于回归模型及其评价方法的一些问题</title>
-      <link>/post/rethinking-regression-model-and-its-evaluations/</link>
+      <link>https://spacetimelab.cn/post/rethinking-regression-model-and-its-evaluations/</link>
       <pubDate>Mon, 16 May 2022 20:31:34 +0800</pubDate>
-      <guid>/post/rethinking-regression-model-and-its-evaluations/</guid>
+      <guid>https://spacetimelab.cn/post/rethinking-regression-model-and-its-evaluations/</guid>
       <description>&lt;p&gt;促使我写这篇文章的原因是某项实验中发现一些先进的预测模型尽管在MAE、MAPE、RMSE指标上的表现远超其他模型，但却具有非常低的R2和EVAR值，再加上对实际数据与预测数据的观察，让我对「什么是”好“的回归模型」以及「各项回归评价指标具体能告诉你什么信息」蒙上了一层疑问。所以写这篇文章整理一下思路。&lt;/p&gt;
 &lt;h2 id=&#34;0x00-回归分析溯源&#34;&gt;0x00 回归分析溯源&lt;/h2&gt;
 &lt;h3 id=&#34;何时应该使用回归分析回归分析可以做什么&#34;&gt;何时应该使用回归分析？回归分析可以做什么？&lt;/h3&gt;

@@ -1,22 +1,22 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>路径规划 | CoolCats</title>
-    <link>/tag/%E8%B7%AF%E5%BE%84%E8%A7%84%E5%88%92/</link>
-      <atom:link href="/tag/%E8%B7%AF%E5%BE%84%E8%A7%84%E5%88%92/index.xml" rel="self" type="application/rss+xml" />
+    <title>路径规划 | NullSpace</title>
+    <link>https://spacetimelab.cn/tag/%E8%B7%AF%E5%BE%84%E8%A7%84%E5%88%92/</link>
+      <atom:link href="https://spacetimelab.cn/tag/%E8%B7%AF%E5%BE%84%E8%A7%84%E5%88%92/index.xml" rel="self" type="application/rss+xml" />
     <description>路径规划</description>
     <generator>Wowchemy (https://wowchemy.com)</generator><language>en-us</language><lastBuildDate>Mon, 11 Jan 2021 11:29:26 +0800</lastBuildDate>
     <image>
-      <url>/media/icon_hue03491371183284312b8b116a73ae5ab_79511_512x512_fill_lanczos_center_3.png</url>
+      <url>https://spacetimelab.cn/media/icon_hue03491371183284312b8b116a73ae5ab_79511_512x512_fill_lanczos_center_3.png</url>
       <title>路径规划</title>
-      <link>/tag/%E8%B7%AF%E5%BE%84%E8%A7%84%E5%88%92/</link>
+      <link>https://spacetimelab.cn/tag/%E8%B7%AF%E5%BE%84%E8%A7%84%E5%88%92/</link>
     </image>
     
     <item>
       <title>「论文翻译」- 基于轨迹大数据的个性化路径推荐</title>
-      <link>/publication/personalized-route-recommendation-using-big-trajectory-data/</link>
+      <link>https://spacetimelab.cn/publication/personalized-route-recommendation-using-big-trajectory-data/</link>
       <pubDate>Mon, 11 Jan 2021 11:29:26 +0800</pubDate>
-      <guid>/publication/personalized-route-recommendation-using-big-trajectory-data/</guid>
+      <guid>https://spacetimelab.cn/publication/personalized-route-recommendation-using-big-trajectory-data/</guid>
       <description>&lt;p&gt;出行在我们的生活中扮演着重要的角色，越来越多的人选择使用车辆出行。为了方便选择路线，各种导航服务应运而生，在给出来源地、目的地，有时还给出出发时间时，就能推荐路线。然而，现有的导航服务所推荐的路线并不总是所有司机都喜欢的。例如，最近的一项研究表明，领先的导航服务提供的路线往往与当地司机选择的路线不一致[5]。&lt;/p&gt;
 &lt;p&gt;产生分歧的原因可能有两个方面。首先，现有的导航服务大多只考虑有限的几种出行成本，如距离或出行时间，以及尽量降低单一出行成本的返回路线，如最短路线或最快路线。相反，司机可能会考虑多种不同的出行成本。例如，由于公众环保意识的增强和燃料价格的高涨，许多驾驶员除了考虑旅行时间和旅行距离外，还越来越多地考虑燃料消耗[1]。&lt;/p&gt;
 &lt;p&gt;其次，现有的导航服务为所有驾驶员提供相同的路线(如最短路线或最快路线)，而且没有考虑到个别驾驶员的驾驶偏好(如省时驾驶、省油驾驶或两者之间的某种权衡)。&lt;/p&gt;
@@ -44,7 +44,7 @@
                /publication/personalized-route-recommendation-using-big-trajectory-data/images/fig1_hu29c927f7891b310cf73b92b0a1ee6e31_277347_d8a6765eb367463e5084f2c5b5e99167.webp 400w,
                /publication/personalized-route-recommendation-using-big-trajectory-data/images/fig1_hu29c927f7891b310cf73b92b0a1ee6e31_277347_f5a55f8e0b90a23263594174e2fbaa1d.webp 760w,
                /publication/personalized-route-recommendation-using-big-trajectory-data/images/fig1_hu29c927f7891b310cf73b92b0a1ee6e31_277347_1200x1200_fit_q75_h2_lanczos_3.webp 1200w&#34;
-               src=&#34;/publication/personalized-route-recommendation-using-big-trajectory-data/images/fig1_hu29c927f7891b310cf73b92b0a1ee6e31_277347_d8a6765eb367463e5084f2c5b5e99167.webp&#34;
+               src=&#34;https://spacetimelab.cn/publication/personalized-route-recommendation-using-big-trajectory-data/images/fig1_hu29c927f7891b310cf73b92b0a1ee6e31_277347_d8a6765eb367463e5084f2c5b5e99167.webp&#34;
                width=&#34;760&#34;
                height=&#34;403&#34;
                loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
@@ -130,9 +130,9 @@
     
     <item>
       <title>基于OpenStreetMap的路径规划项目</title>
-      <link>/project/osm-route-planning/</link>
+      <link>https://spacetimelab.cn/project/osm-route-planning/</link>
       <pubDate>Mon, 27 Apr 2020 00:00:00 +0000</pubDate>
-      <guid>/project/osm-route-planning/</guid>
+      <guid>https://spacetimelab.cn/project/osm-route-planning/</guid>
       <description>&lt;h2 id=&#34;0x00-背景介绍&#34;&gt;0x00 背景介绍&lt;/h2&gt;
 &lt;p&gt;路径规划是运动规划中的一个主要问题，在很多领域中都有应用，高新领域有如机器人运动、无人机飞行、巡航导弹运动等；日常生活有如出行导航、路网规划等。在不同的场景中有不同的目标和约束，规划的方案会有所不同，也可能不止一个。比如说我们使用百度地图/高德地图等软件的导航功能时，软件返回的方案会包括时间最短、距离最短、红绿灯最少等方案，根据骑行、步行、自驾小汽车、公交等出行方式的不同又会有不同的方案（如下图），有时我们可能还要求所规划的路线必须经过某些指定地点。所以说路径规划本身的问题可以是非常复杂的，因为现实就是很复杂。&lt;/p&gt;
 &lt;img src=&#34;images/baidumap.jpg&#34; width = &#34;300&#34; height = &#34;200&#34; alt=&#34;百度地图&#34; align=center /&gt;
@@ -245,7 +245,7 @@
                /project/osm-route-planning/images/search_flow_hu50a7477e55fd085dd921f99ef199bf83_398105_5a99dcde2b4b5d0dff891beaf74276d6.webp 400w,
                /project/osm-route-planning/images/search_flow_hu50a7477e55fd085dd921f99ef199bf83_398105_7d188979bc86ed4e21a80bf527bf1766.webp 760w,
                /project/osm-route-planning/images/search_flow_hu50a7477e55fd085dd921f99ef199bf83_398105_1200x1200_fit_q75_h2_lanczos_3.webp 1200w&#34;
-               src=&#34;/project/osm-route-planning/images/search_flow_hu50a7477e55fd085dd921f99ef199bf83_398105_5a99dcde2b4b5d0dff891beaf74276d6.webp&#34;
+               src=&#34;https://spacetimelab.cn/project/osm-route-planning/images/search_flow_hu50a7477e55fd085dd921f99ef199bf83_398105_5a99dcde2b4b5d0dff891beaf74276d6.webp&#34;
                width=&#34;760&#34;
                height=&#34;751&#34;
                loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;

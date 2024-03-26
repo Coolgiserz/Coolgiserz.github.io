@@ -1,22 +1,22 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Cypher | CoolCats</title>
-    <link>/tag/cypher/</link>
-      <atom:link href="/tag/cypher/index.xml" rel="self" type="application/rss+xml" />
+    <title>Cypher | NullSpace</title>
+    <link>https://spacetimelab.cn/tag/cypher/</link>
+      <atom:link href="https://spacetimelab.cn/tag/cypher/index.xml" rel="self" type="application/rss+xml" />
     <description>Cypher</description>
     <generator>Wowchemy (https://wowchemy.com)</generator><language>en-us</language><lastBuildDate>Wed, 20 Sep 2023 21:57:38 +0800</lastBuildDate>
     <image>
-      <url>/media/icon_hue03491371183284312b8b116a73ae5ab_79511_512x512_fill_lanczos_center_3.png</url>
+      <url>https://spacetimelab.cn/media/icon_hue03491371183284312b8b116a73ae5ab_79511_512x512_fill_lanczos_center_3.png</url>
       <title>Cypher</title>
-      <link>/tag/cypher/</link>
+      <link>https://spacetimelab.cn/tag/cypher/</link>
     </image>
     
     <item>
       <title>Neo4j基本使用与Cypher语言基础</title>
-      <link>/post/neo4j-basic-usage/</link>
+      <link>https://spacetimelab.cn/post/neo4j-basic-usage/</link>
       <pubDate>Wed, 20 Sep 2023 21:57:38 +0800</pubDate>
-      <guid>/post/neo4j-basic-usage/</guid>
+      <guid>https://spacetimelab.cn/post/neo4j-basic-usage/</guid>
       <description>&lt;!-- START doctoc generated TOC please keep comment here to allow auto update --&gt;
 &lt;!-- DON&#39;T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE --&gt;
 &lt;ul&gt;
@@ -115,7 +115,7 @@
                /post/neo4j-basic-usage/images/neo4j_ecosystem_hu60432bf84967ed0b8bc72bc38614ce2e_465492_69e450de2e08243edc4db98be7ddd319.webp 400w,
                /post/neo4j-basic-usage/images/neo4j_ecosystem_hu60432bf84967ed0b8bc72bc38614ce2e_465492_2e854e3b29a3e14524e85a5919be44fe.webp 760w,
                /post/neo4j-basic-usage/images/neo4j_ecosystem_hu60432bf84967ed0b8bc72bc38614ce2e_465492_1200x1200_fit_q75_h2_lanczos_3.webp 1200w&#34;
-               src=&#34;/post/neo4j-basic-usage/images/neo4j_ecosystem_hu60432bf84967ed0b8bc72bc38614ce2e_465492_69e450de2e08243edc4db98be7ddd319.webp&#34;
+               src=&#34;https://spacetimelab.cn/post/neo4j-basic-usage/images/neo4j_ecosystem_hu60432bf84967ed0b8bc72bc38614ce2e_465492_69e450de2e08243edc4db98be7ddd319.webp&#34;
                width=&#34;760&#34;
                height=&#34;418&#34;
                loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
@@ -156,7 +156,7 @@
                /post/neo4j-basic-usage/images/user_control_huda101d2ca49fee0bed3d71c127f275ad_397455_1f838fd24e9abe876277054e141d8c05.webp 400w,
                /post/neo4j-basic-usage/images/user_control_huda101d2ca49fee0bed3d71c127f275ad_397455_63f808adcc3bf3620978e82980764a26.webp 760w,
                /post/neo4j-basic-usage/images/user_control_huda101d2ca49fee0bed3d71c127f275ad_397455_1200x1200_fit_q75_h2_lanczos_3.webp 1200w&#34;
-               src=&#34;/post/neo4j-basic-usage/images/user_control_huda101d2ca49fee0bed3d71c127f275ad_397455_1f838fd24e9abe876277054e141d8c05.webp&#34;
+               src=&#34;https://spacetimelab.cn/post/neo4j-basic-usage/images/user_control_huda101d2ca49fee0bed3d71c127f275ad_397455_1f838fd24e9abe876277054e141d8c05.webp&#34;
                width=&#34;760&#34;
                height=&#34;530&#34;
                loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
@@ -191,7 +191,7 @@
                /post/neo4j-basic-usage/images/cypher-cert_hud9b63beb5e416256a44650f8ad9e09d7_310319_0820588f2fd752b62e680ad0ebe27ba7.webp 400w,
                /post/neo4j-basic-usage/images/cypher-cert_hud9b63beb5e416256a44650f8ad9e09d7_310319_7235bde26f7f204a1126e2ea040f5f4d.webp 760w,
                /post/neo4j-basic-usage/images/cypher-cert_hud9b63beb5e416256a44650f8ad9e09d7_310319_1200x1200_fit_q75_h2_lanczos_3.webp 1200w&#34;
-               src=&#34;/post/neo4j-basic-usage/images/cypher-cert_hud9b63beb5e416256a44650f8ad9e09d7_310319_0820588f2fd752b62e680ad0ebe27ba7.webp&#34;
+               src=&#34;https://spacetimelab.cn/post/neo4j-basic-usage/images/cypher-cert_hud9b63beb5e416256a44650f8ad9e09d7_310319_0820588f2fd752b62e680ad0ebe27ba7.webp&#34;
                width=&#34;760&#34;
                height=&#34;505&#34;
                loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
@@ -265,7 +265,7 @@ RETURN n
                /post/neo4j-basic-usage/images/count_ral_hu609c892ccf74617c00f8b505aa58e031_101564_19962bff97cd06bf300eabbff370409a.webp 400w,
                /post/neo4j-basic-usage/images/count_ral_hu609c892ccf74617c00f8b505aa58e031_101564_c3419146c0ff3605e17b1ebc6369898a.webp 760w,
                /post/neo4j-basic-usage/images/count_ral_hu609c892ccf74617c00f8b505aa58e031_101564_1200x1200_fit_q75_h2_lanczos_3.webp 1200w&#34;
-               src=&#34;/post/neo4j-basic-usage/images/count_ral_hu609c892ccf74617c00f8b505aa58e031_101564_19962bff97cd06bf300eabbff370409a.webp&#34;
+               src=&#34;https://spacetimelab.cn/post/neo4j-basic-usage/images/count_ral_hu609c892ccf74617c00f8b505aa58e031_101564_19962bff97cd06bf300eabbff370409a.webp&#34;
                width=&#34;760&#34;
                height=&#34;374&#34;
                loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
@@ -307,7 +307,7 @@ DELETE r
                /post/neo4j-basic-usage/images/batch_update_rel_huaabd8c5baab7d86789d0ce36e469c880_95562_d7e635ff99b0feace3f1a586539e285e.webp 400w,
                /post/neo4j-basic-usage/images/batch_update_rel_huaabd8c5baab7d86789d0ce36e469c880_95562_75fc55384486186b0b0fbfc7aa1b63a5.webp 760w,
                /post/neo4j-basic-usage/images/batch_update_rel_huaabd8c5baab7d86789d0ce36e469c880_95562_1200x1200_fit_q75_h2_lanczos_3.webp 1200w&#34;
-               src=&#34;/post/neo4j-basic-usage/images/batch_update_rel_huaabd8c5baab7d86789d0ce36e469c880_95562_d7e635ff99b0feace3f1a586539e285e.webp&#34;
+               src=&#34;https://spacetimelab.cn/post/neo4j-basic-usage/images/batch_update_rel_huaabd8c5baab7d86789d0ce36e469c880_95562_d7e635ff99b0feace3f1a586539e285e.webp&#34;
                width=&#34;760&#34;
                height=&#34;190&#34;
                loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
@@ -339,7 +339,7 @@ DELETE r, n
                /post/neo4j-basic-usage/images/delete_rel_hub79c3adfcc56562c273d6dfb0e8ce7fe_63069_f1e8b85e09246c59824b162b6950b2a9.webp 400w,
                /post/neo4j-basic-usage/images/delete_rel_hub79c3adfcc56562c273d6dfb0e8ce7fe_63069_3fff2ab5bbedaa921009aca72e2157ae.webp 760w,
                /post/neo4j-basic-usage/images/delete_rel_hub79c3adfcc56562c273d6dfb0e8ce7fe_63069_1200x1200_fit_q75_h2_lanczos_3.webp 1200w&#34;
-               src=&#34;/post/neo4j-basic-usage/images/delete_rel_hub79c3adfcc56562c273d6dfb0e8ce7fe_63069_f1e8b85e09246c59824b162b6950b2a9.webp&#34;
+               src=&#34;https://spacetimelab.cn/post/neo4j-basic-usage/images/delete_rel_hub79c3adfcc56562c273d6dfb0e8ce7fe_63069_f1e8b85e09246c59824b162b6950b2a9.webp&#34;
                width=&#34;760&#34;
                height=&#34;210&#34;
                loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
@@ -370,7 +370,7 @@ DELETE r, n
                /post/neo4j-basic-usage/images/delete_isolation_hu9340a42477fa1348724df4603e3685d9_74873_f0276fb3e8c0e7bb7ce6e75d424e2538.webp 400w,
                /post/neo4j-basic-usage/images/delete_isolation_hu9340a42477fa1348724df4603e3685d9_74873_8b85c9bbd674fb15038f6d3c0892df4c.webp 760w,
                /post/neo4j-basic-usage/images/delete_isolation_hu9340a42477fa1348724df4603e3685d9_74873_1200x1200_fit_q75_h2_lanczos_3.webp 1200w&#34;
-               src=&#34;/post/neo4j-basic-usage/images/delete_isolation_hu9340a42477fa1348724df4603e3685d9_74873_f0276fb3e8c0e7bb7ce6e75d424e2538.webp&#34;
+               src=&#34;https://spacetimelab.cn/post/neo4j-basic-usage/images/delete_isolation_hu9340a42477fa1348724df4603e3685d9_74873_f0276fb3e8c0e7bb7ce6e75d424e2538.webp&#34;
                width=&#34;760&#34;
                height=&#34;353&#34;
                loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
@@ -406,7 +406,7 @@ DELETE r, n
                /post/neo4j-basic-usage/images/export_csv_or_json_hu60a27eb803964fc7a512e14ee1334b82_121379_8b78a78796b8a83584b75129861e49b7.webp 400w,
                /post/neo4j-basic-usage/images/export_csv_or_json_hu60a27eb803964fc7a512e14ee1334b82_121379_f6fb121bde40f8a68579d8ba191b36bf.webp 760w,
                /post/neo4j-basic-usage/images/export_csv_or_json_hu60a27eb803964fc7a512e14ee1334b82_121379_1200x1200_fit_q75_h2_lanczos_3.webp 1200w&#34;
-               src=&#34;/post/neo4j-basic-usage/images/export_csv_or_json_hu60a27eb803964fc7a512e14ee1334b82_121379_8b78a78796b8a83584b75129861e49b7.webp&#34;
+               src=&#34;https://spacetimelab.cn/post/neo4j-basic-usage/images/export_csv_or_json_hu60a27eb803964fc7a512e14ee1334b82_121379_8b78a78796b8a83584b75129861e49b7.webp&#34;
                width=&#34;760&#34;
                height=&#34;281&#34;
                loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;

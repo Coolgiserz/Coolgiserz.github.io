@@ -67,7 +67,7 @@
   <meta name="description" content="实现后端服务时可能会需要对某些字段进行组合过滤，如何设计数据库表结构/索引和查询逻辑才能高效？本文构造了百万量级的数据库对几种思路进行了简单的对比测试。" />
 
   
-  <link rel="alternate" hreflang="en-us" href="/post/database-design-for-combinatorial-query/" />
+  <link rel="alternate" hreflang="en-us" href="https://spacetimelab.cn/post/database-design-for-combinatorial-query/" />
 
   
   
@@ -295,7 +295,7 @@
   <link rel="icon" type="image/png" href="/media/icon_hue03491371183284312b8b116a73ae5ab_79511_32x32_fill_lanczos_center_3.png" />
   <link rel="apple-touch-icon" type="image/png" href="/media/icon_hue03491371183284312b8b116a73ae5ab_79511_180x180_fill_lanczos_center_3.png" />
 
-  <link rel="canonical" href="/post/database-design-for-combinatorial-query/" />
+  <link rel="canonical" href="https://spacetimelab.cn/post/database-design-for-combinatorial-query/" />
 
   
   
@@ -320,11 +320,11 @@
     <meta property="twitter:site" content="@wowchemy" />
     <meta property="twitter:creator" content="@wowchemy" />
   
-  <meta property="og:site_name" content="CoolCats" />
-  <meta property="og:url" content="/post/database-design-for-combinatorial-query/" />
-  <meta property="og:title" content="对数据库表设计之组合条件筛选的思考与实验 | CoolCats" />
-  <meta property="og:description" content="实现后端服务时可能会需要对某些字段进行组合过滤，如何设计数据库表结构/索引和查询逻辑才能高效？本文构造了百万量级的数据库对几种思路进行了简单的对比测试。" /><meta property="og:image" content="/media/icon_hue03491371183284312b8b116a73ae5ab_79511_512x512_fill_lanczos_center_3.png" />
-    <meta property="twitter:image" content="/media/icon_hue03491371183284312b8b116a73ae5ab_79511_512x512_fill_lanczos_center_3.png" /><meta property="og:locale" content="en-us" />
+  <meta property="og:site_name" content="NullSpace" />
+  <meta property="og:url" content="https://spacetimelab.cn/post/database-design-for-combinatorial-query/" />
+  <meta property="og:title" content="对数据库表设计之组合条件筛选的思考与实验 | NullSpace" />
+  <meta property="og:description" content="实现后端服务时可能会需要对某些字段进行组合过滤，如何设计数据库表结构/索引和查询逻辑才能高效？本文构造了百万量级的数据库对几种思路进行了简单的对比测试。" /><meta property="og:image" content="https://spacetimelab.cn/media/icon_hue03491371183284312b8b116a73ae5ab_79511_512x512_fill_lanczos_center_3.png" />
+    <meta property="twitter:image" content="https://spacetimelab.cn/media/icon_hue03491371183284312b8b116a73ae5ab_79511_512x512_fill_lanczos_center_3.png" /><meta property="og:locale" content="en-us" />
   
     
       <meta
@@ -356,7 +356,7 @@
   "@type": "BlogPosting",
   "mainEntityOfPage": {
     "@type": "WebPage",
-    "@id": "/post/database-design-for-combinatorial-query/"
+    "@id": "https://spacetimelab.cn/post/database-design-for-combinatorial-query/"
   },
   "headline": "对数据库表设计之组合条件筛选的思考与实验",
   
@@ -370,10 +370,10 @@
   
   "publisher": {
     "@type": "Organization",
-    "name": "CoolCats",
+    "name": "NullSpace",
     "logo": {
       "@type": "ImageObject",
-      "url": "/media/icon_hue03491371183284312b8b116a73ae5ab_79511_192x192_fill_lanczos_center_3.png"
+      "url": "https://spacetimelab.cn/media/icon_hue03491371183284312b8b116a73ae5ab_79511_192x192_fill_lanczos_center_3.png"
     }
   },
   "description": "实现后端服务时可能会需要对某些字段进行组合过滤，如何设计数据库表结构/索引和查询逻辑才能高效？本文构造了百万量级的数据库对几种思路进行了简单的对比测试。"
@@ -392,7 +392,7 @@
 
 
 
-  <title>对数据库表设计之组合条件筛选的思考与实验 | CoolCats</title>
+  <title>对数据库表设计之组合条件筛选的思考与实验 | NullSpace</title>
 </head>
 
 
@@ -471,7 +471,7 @@
 
       
       <div class="d-none d-lg-inline-flex">
-        <a class="navbar-brand" href="/">CoolCats</a>
+        <a class="navbar-brand" href="/">NullSpace</a>
       </div>
       
 
@@ -484,7 +484,7 @@
 
       
       <div class="navbar-brand-mobile-wrapper d-inline-flex d-lg-none">
-        <a class="navbar-brand" href="/">CoolCats</a>
+        <a class="navbar-brand" href="/">NullSpace</a>
       </div>
       
 
@@ -1761,7 +1761,7 @@ JOIN查询：</p>
       
       
       <li>
-        <a href="https://twitter.com/intent/tweet?url=/post/database-design-for-combinatorial-query/&amp;text=%e5%af%b9%e6%95%b0%e6%8d%ae%e5%ba%93%e8%a1%a8%e8%ae%be%e8%ae%a1%e4%b9%8b%e7%bb%84%e5%90%88%e6%9d%a1%e4%bb%b6%e7%ad%9b%e9%80%89%e7%9a%84%e6%80%9d%e8%80%83%e4%b8%8e%e5%ae%9e%e9%aa%8c" target="_blank" rel="noopener" class="share-btn-twitter" aria-label="twitter">
+        <a href="https://twitter.com/intent/tweet?url=https://spacetimelab.cn/post/database-design-for-combinatorial-query/&amp;text=%e5%af%b9%e6%95%b0%e6%8d%ae%e5%ba%93%e8%a1%a8%e8%ae%be%e8%ae%a1%e4%b9%8b%e7%bb%84%e5%90%88%e6%9d%a1%e4%bb%b6%e7%ad%9b%e9%80%89%e7%9a%84%e6%80%9d%e8%80%83%e4%b8%8e%e5%ae%9e%e9%aa%8c" target="_blank" rel="noopener" class="share-btn-twitter" aria-label="twitter">
           <i class="fab fa-twitter"></i>
         </a>
       </li>
@@ -1774,7 +1774,7 @@ JOIN查询：</p>
       
       
       <li>
-        <a href="https://www.facebook.com/sharer.php?u=/post/database-design-for-combinatorial-query/&amp;t=%e5%af%b9%e6%95%b0%e6%8d%ae%e5%ba%93%e8%a1%a8%e8%ae%be%e8%ae%a1%e4%b9%8b%e7%bb%84%e5%90%88%e6%9d%a1%e4%bb%b6%e7%ad%9b%e9%80%89%e7%9a%84%e6%80%9d%e8%80%83%e4%b8%8e%e5%ae%9e%e9%aa%8c" target="_blank" rel="noopener" class="share-btn-facebook" aria-label="facebook">
+        <a href="https://www.facebook.com/sharer.php?u=https://spacetimelab.cn/post/database-design-for-combinatorial-query/&amp;t=%e5%af%b9%e6%95%b0%e6%8d%ae%e5%ba%93%e8%a1%a8%e8%ae%be%e8%ae%a1%e4%b9%8b%e7%bb%84%e5%90%88%e6%9d%a1%e4%bb%b6%e7%ad%9b%e9%80%89%e7%9a%84%e6%80%9d%e8%80%83%e4%b8%8e%e5%ae%9e%e9%aa%8c" target="_blank" rel="noopener" class="share-btn-facebook" aria-label="facebook">
           <i class="fab fa-facebook"></i>
         </a>
       </li>
@@ -1787,7 +1787,7 @@ JOIN查询：</p>
       
       
       <li>
-        <a href="mailto:?subject=%e5%af%b9%e6%95%b0%e6%8d%ae%e5%ba%93%e8%a1%a8%e8%ae%be%e8%ae%a1%e4%b9%8b%e7%bb%84%e5%90%88%e6%9d%a1%e4%bb%b6%e7%ad%9b%e9%80%89%e7%9a%84%e6%80%9d%e8%80%83%e4%b8%8e%e5%ae%9e%e9%aa%8c&amp;body=/post/database-design-for-combinatorial-query/" target="_blank" rel="noopener" class="share-btn-email" aria-label="envelope">
+        <a href="mailto:?subject=%e5%af%b9%e6%95%b0%e6%8d%ae%e5%ba%93%e8%a1%a8%e8%ae%be%e8%ae%a1%e4%b9%8b%e7%bb%84%e5%90%88%e6%9d%a1%e4%bb%b6%e7%ad%9b%e9%80%89%e7%9a%84%e6%80%9d%e8%80%83%e4%b8%8e%e5%ae%9e%e9%aa%8c&amp;body=https://spacetimelab.cn/post/database-design-for-combinatorial-query/" target="_blank" rel="noopener" class="share-btn-email" aria-label="envelope">
           <i class="fas fa-envelope"></i>
         </a>
       </li>
@@ -1800,7 +1800,7 @@ JOIN查询：</p>
       
       
       <li>
-        <a href="https://www.linkedin.com/shareArticle?url=/post/database-design-for-combinatorial-query/&amp;title=%e5%af%b9%e6%95%b0%e6%8d%ae%e5%ba%93%e8%a1%a8%e8%ae%be%e8%ae%a1%e4%b9%8b%e7%bb%84%e5%90%88%e6%9d%a1%e4%bb%b6%e7%ad%9b%e9%80%89%e7%9a%84%e6%80%9d%e8%80%83%e4%b8%8e%e5%ae%9e%e9%aa%8c" target="_blank" rel="noopener" class="share-btn-linkedin" aria-label="linkedin-in">
+        <a href="https://www.linkedin.com/shareArticle?url=https://spacetimelab.cn/post/database-design-for-combinatorial-query/&amp;title=%e5%af%b9%e6%95%b0%e6%8d%ae%e5%ba%93%e8%a1%a8%e8%ae%be%e8%ae%a1%e4%b9%8b%e7%bb%84%e5%90%88%e6%9d%a1%e4%bb%b6%e7%ad%9b%e9%80%89%e7%9a%84%e6%80%9d%e8%80%83%e4%b8%8e%e5%ae%9e%e9%aa%8c" target="_blank" rel="noopener" class="share-btn-linkedin" aria-label="linkedin-in">
           <i class="fab fa-linkedin-in"></i>
         </a>
       </li>
@@ -1813,7 +1813,7 @@ JOIN查询：</p>
       
       
       <li>
-        <a href="whatsapp://send?text=%e5%af%b9%e6%95%b0%e6%8d%ae%e5%ba%93%e8%a1%a8%e8%ae%be%e8%ae%a1%e4%b9%8b%e7%bb%84%e5%90%88%e6%9d%a1%e4%bb%b6%e7%ad%9b%e9%80%89%e7%9a%84%e6%80%9d%e8%80%83%e4%b8%8e%e5%ae%9e%e9%aa%8c%20/post/database-design-for-combinatorial-query/" target="_blank" rel="noopener" class="share-btn-whatsapp" aria-label="whatsapp">
+        <a href="whatsapp://send?text=%e5%af%b9%e6%95%b0%e6%8d%ae%e5%ba%93%e8%a1%a8%e8%ae%be%e8%ae%a1%e4%b9%8b%e7%bb%84%e5%90%88%e6%9d%a1%e4%bb%b6%e7%ad%9b%e9%80%89%e7%9a%84%e6%80%9d%e8%80%83%e4%b8%8e%e5%ae%9e%e9%aa%8c%20https://spacetimelab.cn/post/database-design-for-combinatorial-query/" target="_blank" rel="noopener" class="share-btn-whatsapp" aria-label="whatsapp">
           <i class="fab fa-whatsapp"></i>
         </a>
       </li>
@@ -1826,7 +1826,7 @@ JOIN查询：</p>
       
       
       <li>
-        <a href="https://service.weibo.com/share/share.php?url=/post/database-design-for-combinatorial-query/&amp;title=%e5%af%b9%e6%95%b0%e6%8d%ae%e5%ba%93%e8%a1%a8%e8%ae%be%e8%ae%a1%e4%b9%8b%e7%bb%84%e5%90%88%e6%9d%a1%e4%bb%b6%e7%ad%9b%e9%80%89%e7%9a%84%e6%80%9d%e8%80%83%e4%b8%8e%e5%ae%9e%e9%aa%8c" target="_blank" rel="noopener" class="share-btn-weibo" aria-label="weibo">
+        <a href="https://service.weibo.com/share/share.php?url=https://spacetimelab.cn/post/database-design-for-combinatorial-query/&amp;title=%e5%af%b9%e6%95%b0%e6%8d%ae%e5%ba%93%e8%a1%a8%e8%ae%be%e8%ae%a1%e4%b9%8b%e7%bb%84%e5%90%88%e6%9d%a1%e4%bb%b6%e7%ad%9b%e9%80%89%e7%9a%84%e6%80%9d%e8%80%83%e4%b8%8e%e5%ae%9e%e9%aa%8c" target="_blank" rel="noopener" class="share-btn-weibo" aria-label="weibo">
           <i class="fab fa-weibo"></i>
         </a>
       </li>
@@ -1972,7 +1972,7 @@ JOIN查询：</p>
 
   
   <p class="powered-by copyright-license-text">
-    © 2024 CoolCats. This work is licensed under <a href="https://creativecommons.org/licenses/by-nc-nd/4.0" rel="noopener noreferrer" target="_blank">CC BY NC ND 4.0</a>
+    © 2024 Weirdgiser &amp; <a href="https://beian.miit.gov.cn" target="_blank" rel="noopener">粤ICP备2024213180号</a>
   </p>
   
 
@@ -2076,7 +2076,7 @@ JOIN查询：</p>
     
     
     
-      <script id="dsq-count-scr" src="https://coolgiserz.disqus.com/count.js" async></script>
+      <script id="dsq-count-scr" src="https://weirdgiser.disqus.com/count.js" async></script>
     
 
     

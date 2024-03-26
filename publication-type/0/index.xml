@@ -1,22 +1,22 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>0 | CoolCats</title>
-    <link>/publication-type/0/</link>
-      <atom:link href="/publication-type/0/index.xml" rel="self" type="application/rss+xml" />
+    <title>0 | NullSpace</title>
+    <link>https://spacetimelab.cn/publication-type/0/</link>
+      <atom:link href="https://spacetimelab.cn/publication-type/0/index.xml" rel="self" type="application/rss+xml" />
     <description>0</description>
     <generator>Wowchemy (https://wowchemy.com)</generator><language>en-us</language><lastBuildDate>Mon, 11 Jul 2022 10:45:42 +0800</lastBuildDate>
     <image>
-      <url>/media/icon_hue03491371183284312b8b116a73ae5ab_79511_512x512_fill_lanczos_center_3.png</url>
+      <url>https://spacetimelab.cn/media/icon_hue03491371183284312b8b116a73ae5ab_79511_512x512_fill_lanczos_center_3.png</url>
       <title>0</title>
-      <link>/publication-type/0/</link>
+      <link>https://spacetimelab.cn/publication-type/0/</link>
     </image>
     
     <item>
       <title>「论文阅读」- GeoMAN Multi Level Attention Networks for Geo Sensory Time Series Prediction</title>
-      <link>/publication/geoman-multi-level-attention-networks-for-geo-sensory-time-series-prediction/</link>
+      <link>https://spacetimelab.cn/publication/geoman-multi-level-attention-networks-for-geo-sensory-time-series-prediction/</link>
       <pubDate>Mon, 11 Jul 2022 10:45:42 +0800</pubDate>
-      <guid>/publication/geoman-multi-level-attention-networks-for-geo-sensory-time-series-prediction/</guid>
+      <guid>https://spacetimelab.cn/publication/geoman-multi-level-attention-networks-for-geo-sensory-time-series-prediction/</guid>
       <description>&lt;h2 id=&#34;论文概况&#34;&gt;论文概况&lt;/h2&gt;
 &lt;h3 id=&#34;研究问题&#34;&gt;研究问题&lt;/h3&gt;
 &lt;p&gt;&lt;img src=&#34;images/fig1.png&#34;
@@ -55,17 +55,17 @@ style=&#34;float: left; margin-right: 10px;&#34; /&gt;&lt;/p&gt;
     
     <item>
       <title>「论文阅读」- 一种基于时空图神经网络的出行时间估计解决方案</title>
-      <link>/publication/constgat-contextual-spatial-stemporal-graph-attention-network-for-travel-time-estimation-at-baidu-maps/</link>
+      <link>https://spacetimelab.cn/publication/constgat-contextual-spatial-stemporal-graph-attention-network-for-travel-time-estimation-at-baidu-maps/</link>
       <pubDate>Thu, 14 Jan 2021 20:34:52 +0800</pubDate>
-      <guid>/publication/constgat-contextual-spatial-stemporal-graph-attention-network-for-travel-time-estimation-at-baidu-maps/</guid>
+      <guid>https://spacetimelab.cn/publication/constgat-contextual-spatial-stemporal-graph-attention-network-for-travel-time-estimation-at-baidu-maps/</guid>
       <description></description>
     </item>
     
     <item>
       <title>「论文阅读」-面向人群流量预测融合上下文信息的时空神经网络</title>
-      <link>/publication/context-aware-spatial-temporal-neural-network-for-crowd-flow-prediction-in-metropolis/</link>
+      <link>https://spacetimelab.cn/publication/context-aware-spatial-temporal-neural-network-for-crowd-flow-prediction-in-metropolis/</link>
       <pubDate>Tue, 15 Dec 2020 11:35:14 +0800</pubDate>
-      <guid>/publication/context-aware-spatial-temporal-neural-network-for-crowd-flow-prediction-in-metropolis/</guid>
+      <guid>https://spacetimelab.cn/publication/context-aware-spatial-temporal-neural-network-for-crowd-flow-prediction-in-metropolis/</guid>
       <description></description>
     </item>
     

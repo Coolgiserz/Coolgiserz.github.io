@@ -1,22 +1,22 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Text2SQL | CoolCats</title>
-    <link>/tag/text2sql/</link>
-      <atom:link href="/tag/text2sql/index.xml" rel="self" type="application/rss+xml" />
+    <title>Text2SQL | NullSpace</title>
+    <link>https://spacetimelab.cn/tag/text2sql/</link>
+      <atom:link href="https://spacetimelab.cn/tag/text2sql/index.xml" rel="self" type="application/rss+xml" />
     <description>Text2SQL</description>
     <generator>Wowchemy (https://wowchemy.com)</generator><language>en-us</language><lastBuildDate>Sat, 16 Mar 2024 21:22:46 +0800</lastBuildDate>
     <image>
-      <url>/media/icon_hue03491371183284312b8b116a73ae5ab_79511_512x512_fill_lanczos_center_3.png</url>
+      <url>https://spacetimelab.cn/media/icon_hue03491371183284312b8b116a73ae5ab_79511_512x512_fill_lanczos_center_3.png</url>
       <title>Text2SQL</title>
-      <link>/tag/text2sql/</link>
+      <link>https://spacetimelab.cn/tag/text2sql/</link>
     </image>
     
     <item>
       <title>Text2sql技术工具调研与框架设计</title>
-      <link>/post/text2sql-investigation/</link>
+      <link>https://spacetimelab.cn/post/text2sql-investigation/</link>
       <pubDate>Sat, 16 Mar 2024 21:22:46 +0800</pubDate>
-      <guid>/post/text2sql-investigation/</guid>
+      <guid>https://spacetimelab.cn/post/text2sql-investigation/</guid>
       <description>&lt;h2 id=&#34;工具&#34;&gt;工具&lt;/h2&gt;
 &lt;p&gt;&lt;a href=&#34;https://zhuanlan.zhihu.com/p/642719916&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;DB-GPT-Hub：基于LLM的Text-to-SQL解析框架&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;&lt;a href=&#34;https://gitee.com/Samuelcoding/NL2SQL&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;NL2SQL: Text2SQL 语义解析数据集、解决方案、paper资源整合项目&lt;/a&gt;&lt;/p&gt;
@@ -81,7 +81,7 @@
                /post/text2sql-investigation/images/demo/query_museum_hu42f84c661dd7c8c6e1196620aa110334_296943_c6ba022baed06dda7048ea615c7ef28a.webp 400w,
                /post/text2sql-investigation/images/demo/query_museum_hu42f84c661dd7c8c6e1196620aa110334_296943_03c83870d946ee3cb848725c5b39cc0b.webp 760w,
                /post/text2sql-investigation/images/demo/query_museum_hu42f84c661dd7c8c6e1196620aa110334_296943_1200x1200_fit_q75_h2_lanczos_3.webp 1200w&#34;
-               src=&#34;/post/text2sql-investigation/images/demo/query_museum_hu42f84c661dd7c8c6e1196620aa110334_296943_c6ba022baed06dda7048ea615c7ef28a.webp&#34;
+               src=&#34;https://spacetimelab.cn/post/text2sql-investigation/images/demo/query_museum_hu42f84c661dd7c8c6e1196620aa110334_296943_c6ba022baed06dda7048ea615c7ef28a.webp&#34;
                width=&#34;760&#34;
                height=&#34;383&#34;
                loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
@@ -156,10 +156,10 @@
 &lt;figure  &gt;
   &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
     &lt;div class=&#34;w-100&#34; &gt;&lt;img alt=&#34;&#34; srcset=&#34;
-               /post/text2sql-investigation/images/demo/arch_hu802ca09f74bb2120882962cb8188af10_376958_177d6358b033d933f3b22abe11281ac3.webp 400w,
+               /post/text2sql-investigation/images/demo/arch_hu802ca09f74bb2120882962cb8188af10_376958_cc549d11d01570b6933fd0ea9f703d4f.webp 400w,
                /post/text2sql-investigation/images/demo/arch_hu802ca09f74bb2120882962cb8188af10_376958_6a16a73a5d83941c478193be413b48b1.webp 760w,
                /post/text2sql-investigation/images/demo/arch_hu802ca09f74bb2120882962cb8188af10_376958_1200x1200_fit_q75_h2_lanczos_3.webp 1200w&#34;
-               src=&#34;/post/text2sql-investigation/images/demo/arch_hu802ca09f74bb2120882962cb8188af10_376958_177d6358b033d933f3b22abe11281ac3.webp&#34;
+               src=&#34;https://spacetimelab.cn/post/text2sql-investigation/images/demo/arch_hu802ca09f74bb2120882962cb8188af10_376958_cc549d11d01570b6933fd0ea9f703d4f.webp&#34;
                width=&#34;760&#34;
                height=&#34;379&#34;
                loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;

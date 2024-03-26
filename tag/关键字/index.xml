@@ -1,22 +1,22 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>关键字 | CoolCats</title>
-    <link>/tag/%E5%85%B3%E9%94%AE%E5%AD%97/</link>
-      <atom:link href="/tag/%E5%85%B3%E9%94%AE%E5%AD%97/index.xml" rel="self" type="application/rss+xml" />
+    <title>关键字 | NullSpace</title>
+    <link>https://spacetimelab.cn/tag/%E5%85%B3%E9%94%AE%E5%AD%97/</link>
+      <atom:link href="https://spacetimelab.cn/tag/%E5%85%B3%E9%94%AE%E5%AD%97/index.xml" rel="self" type="application/rss+xml" />
     <description>关键字</description>
     <generator>Wowchemy (https://wowchemy.com)</generator><language>en-us</language><lastBuildDate>Fri, 23 Nov 2018 23:31:05 +0800</lastBuildDate>
     <image>
-      <url>/media/icon_hue03491371183284312b8b116a73ae5ab_79511_512x512_fill_lanczos_center_3.png</url>
+      <url>https://spacetimelab.cn/media/icon_hue03491371183284312b8b116a73ae5ab_79511_512x512_fill_lanczos_center_3.png</url>
       <title>关键字</title>
-      <link>/tag/%E5%85%B3%E9%94%AE%E5%AD%97/</link>
+      <link>https://spacetimelab.cn/tag/%E5%85%B3%E9%94%AE%E5%AD%97/</link>
     </image>
     
     <item>
       <title>Java关键字相关知识点总结</title>
-      <link>/post/java-keywords-summary/</link>
+      <link>https://spacetimelab.cn/post/java-keywords-summary/</link>
       <pubDate>Fri, 23 Nov 2018 23:31:05 +0800</pubDate>
-      <guid>/post/java-keywords-summary/</guid>
+      <guid>https://spacetimelab.cn/post/java-keywords-summary/</guid>
       <description>&lt;h2 id=&#34;0x00-概念&#34;&gt;0x00 概念&lt;/h2&gt;
 &lt;p&gt;首先区分两个概念：关键字和保留字。关键字指事先定义的，用来表示一种数据类型或者程序结构的对于编译器有特殊意义的“字符串”。而保留字则是预留的关键字，即现在还没有用到，但以后可能会作为关键字被使用。
 所以，认识关键字与保留字的一个基本的作用，起码就在于为变量命名时不至于与关键字冲突、或者与“未来的关键字”冲突（如果使用了关键字、保留字作为变量命名，比较智能的IDE是会报错的，但如果用记事本或者在线刷题那就不一定有这么好的福利了）。当然，要真正使程序高效、健壮，那就要深刻认识各个关键字的内在含义。&lt;/p&gt;

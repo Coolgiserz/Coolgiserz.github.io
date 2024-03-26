@@ -1,22 +1,22 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>提示工程 | CoolCats</title>
-    <link>/tag/%E6%8F%90%E7%A4%BA%E5%B7%A5%E7%A8%8B/</link>
-      <atom:link href="/tag/%E6%8F%90%E7%A4%BA%E5%B7%A5%E7%A8%8B/index.xml" rel="self" type="application/rss+xml" />
+    <title>提示工程 | NullSpace</title>
+    <link>https://spacetimelab.cn/tag/%E6%8F%90%E7%A4%BA%E5%B7%A5%E7%A8%8B/</link>
+      <atom:link href="https://spacetimelab.cn/tag/%E6%8F%90%E7%A4%BA%E5%B7%A5%E7%A8%8B/index.xml" rel="self" type="application/rss+xml" />
     <description>提示工程</description>
     <generator>Wowchemy (https://wowchemy.com)</generator><language>en-us</language><lastBuildDate>Sat, 02 Mar 2024 22:44:32 +0800</lastBuildDate>
     <image>
-      <url>/media/icon_hue03491371183284312b8b116a73ae5ab_79511_512x512_fill_lanczos_center_3.png</url>
+      <url>https://spacetimelab.cn/media/icon_hue03491371183284312b8b116a73ae5ab_79511_512x512_fill_lanczos_center_3.png</url>
       <title>提示工程</title>
-      <link>/tag/%E6%8F%90%E7%A4%BA%E5%B7%A5%E7%A8%8B/</link>
+      <link>https://spacetimelab.cn/tag/%E6%8F%90%E7%A4%BA%E5%B7%A5%E7%A8%8B/</link>
     </image>
     
     <item>
       <title>关于大语言模型使用技巧与API工具使用的个人笔记</title>
-      <link>/post/bigmodel-api-usage-notes/</link>
+      <link>https://spacetimelab.cn/post/bigmodel-api-usage-notes/</link>
       <pubDate>Sat, 02 Mar 2024 22:44:32 +0800</pubDate>
-      <guid>/post/bigmodel-api-usage-notes/</guid>
+      <guid>https://spacetimelab.cn/post/bigmodel-api-usage-notes/</guid>
       <description>&lt;h2 id=&#34;提示工程&#34;&gt;提示工程&lt;/h2&gt;
 &lt;h3 id=&#34;为什么要了解提示工程&#34;&gt;为什么要了解提示工程&lt;/h3&gt;
 &lt;p&gt;同样的提问意图，在不同的提问策略下可以得到有显著差异的结果，有技巧地提问更能期待大模型得到更高质量的回答。所谓的高质量回答体现在：&lt;/p&gt;
@@ -93,7 +93,7 @@
                /post/bigmodel-api-usage-notes/images/cot-demo1_huaeefb32a2fa6297e5c8e86e51f1beae4_270530_497324fdb84562438ff5db4134622088.webp 400w,
                /post/bigmodel-api-usage-notes/images/cot-demo1_huaeefb32a2fa6297e5c8e86e51f1beae4_270530_9408b91624fee33bbbaa24bcd0e02fc0.webp 760w,
                /post/bigmodel-api-usage-notes/images/cot-demo1_huaeefb32a2fa6297e5c8e86e51f1beae4_270530_1200x1200_fit_q75_h2_lanczos_3.webp 1200w&#34;
-               src=&#34;/post/bigmodel-api-usage-notes/images/cot-demo1_huaeefb32a2fa6297e5c8e86e51f1beae4_270530_497324fdb84562438ff5db4134622088.webp&#34;
+               src=&#34;https://spacetimelab.cn/post/bigmodel-api-usage-notes/images/cot-demo1_huaeefb32a2fa6297e5c8e86e51f1beae4_270530_497324fdb84562438ff5db4134622088.webp&#34;
                width=&#34;760&#34;
                height=&#34;364&#34;
                loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
@@ -130,7 +130,7 @@
                /post/bigmodel-api-usage-notes/images/cot-demo2_huc716c97ee685110a09104041a117ae4d_516515_39a38f68a25dc8c23f1fb09b480c0b1c.webp 400w,
                /post/bigmodel-api-usage-notes/images/cot-demo2_huc716c97ee685110a09104041a117ae4d_516515_a10ad360e28f435596e556c3a70164ff.webp 760w,
                /post/bigmodel-api-usage-notes/images/cot-demo2_huc716c97ee685110a09104041a117ae4d_516515_1200x1200_fit_q75_h2_lanczos_3.webp 1200w&#34;
-               src=&#34;/post/bigmodel-api-usage-notes/images/cot-demo2_huc716c97ee685110a09104041a117ae4d_516515_39a38f68a25dc8c23f1fb09b480c0b1c.webp&#34;
+               src=&#34;https://spacetimelab.cn/post/bigmodel-api-usage-notes/images/cot-demo2_huc716c97ee685110a09104041a117ae4d_516515_39a38f68a25dc8c23f1fb09b480c0b1c.webp&#34;
                width=&#34;756&#34;
                height=&#34;760&#34;
                loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
@@ -158,7 +158,7 @@
                /post/bigmodel-api-usage-notes/images/cot-demo3_huee1d310bcbdf6f9f35283a26320f1159_538883_88569466c47ebc3a873096e38c6b6925.webp 400w,
                /post/bigmodel-api-usage-notes/images/cot-demo3_huee1d310bcbdf6f9f35283a26320f1159_538883_8c372ceb7bf2fd5102b3dd61d48922b1.webp 760w,
                /post/bigmodel-api-usage-notes/images/cot-demo3_huee1d310bcbdf6f9f35283a26320f1159_538883_1200x1200_fit_q75_h2_lanczos_3.webp 1200w&#34;
-               src=&#34;/post/bigmodel-api-usage-notes/images/cot-demo3_huee1d310bcbdf6f9f35283a26320f1159_538883_88569466c47ebc3a873096e38c6b6925.webp&#34;
+               src=&#34;https://spacetimelab.cn/post/bigmodel-api-usage-notes/images/cot-demo3_huee1d310bcbdf6f9f35283a26320f1159_538883_88569466c47ebc3a873096e38c6b6925.webp&#34;
                width=&#34;760&#34;
                height=&#34;431&#34;
                loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
@@ -188,7 +188,7 @@
                /post/bigmodel-api-usage-notes/images/travel/shenzhen1_hu7c2200664d86554472e4fab9a3d10ba7_344636_01acfc36cea83cb19ec958e8c566333b.webp 400w,
                /post/bigmodel-api-usage-notes/images/travel/shenzhen1_hu7c2200664d86554472e4fab9a3d10ba7_344636_35d77e61169b5acfdac186976828ce9d.webp 760w,
                /post/bigmodel-api-usage-notes/images/travel/shenzhen1_hu7c2200664d86554472e4fab9a3d10ba7_344636_1200x1200_fit_q75_h2_lanczos_3.webp 1200w&#34;
-               src=&#34;/post/bigmodel-api-usage-notes/images/travel/shenzhen1_hu7c2200664d86554472e4fab9a3d10ba7_344636_01acfc36cea83cb19ec958e8c566333b.webp&#34;
+               src=&#34;https://spacetimelab.cn/post/bigmodel-api-usage-notes/images/travel/shenzhen1_hu7c2200664d86554472e4fab9a3d10ba7_344636_01acfc36cea83cb19ec958e8c566333b.webp&#34;
                width=&#34;760&#34;
                height=&#34;557&#34;
                loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
@@ -216,7 +216,7 @@
                /post/bigmodel-api-usage-notes/images/travel/shenzhen2_hua7686d1132b61743939c1b6fb760eb23_351596_6f23db5957634c0d167c04ecba65b16c.webp 400w,
                /post/bigmodel-api-usage-notes/images/travel/shenzhen2_hua7686d1132b61743939c1b6fb760eb23_351596_c9a253f75a4591713e6d3783c71cda2b.webp 760w,
                /post/bigmodel-api-usage-notes/images/travel/shenzhen2_hua7686d1132b61743939c1b6fb760eb23_351596_1200x1200_fit_q75_h2_lanczos_3.webp 1200w&#34;
-               src=&#34;/post/bigmodel-api-usage-notes/images/travel/shenzhen2_hua7686d1132b61743939c1b6fb760eb23_351596_6f23db5957634c0d167c04ecba65b16c.webp&#34;
+               src=&#34;https://spacetimelab.cn/post/bigmodel-api-usage-notes/images/travel/shenzhen2_hua7686d1132b61743939c1b6fb760eb23_351596_6f23db5957634c0d167c04ecba65b16c.webp&#34;
                width=&#34;752&#34;
                height=&#34;760&#34;
                loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
@@ -244,7 +244,7 @@
                /post/bigmodel-api-usage-notes/images/travel/shenzhen3_hu02bb29436b8e5b307aed49ad743be430_420411_b12a4b2dc18e511102168cba673ba2ce.webp 400w,
                /post/bigmodel-api-usage-notes/images/travel/shenzhen3_hu02bb29436b8e5b307aed49ad743be430_420411_1d54a9a37e60aa5113c552c6862cdebf.webp 760w,
                /post/bigmodel-api-usage-notes/images/travel/shenzhen3_hu02bb29436b8e5b307aed49ad743be430_420411_1200x1200_fit_q75_h2_lanczos_3.webp 1200w&#34;
-               src=&#34;/post/bigmodel-api-usage-notes/images/travel/shenzhen3_hu02bb29436b8e5b307aed49ad743be430_420411_b12a4b2dc18e511102168cba673ba2ce.webp&#34;
+               src=&#34;https://spacetimelab.cn/post/bigmodel-api-usage-notes/images/travel/shenzhen3_hu02bb29436b8e5b307aed49ad743be430_420411_b12a4b2dc18e511102168cba673ba2ce.webp&#34;
                width=&#34;760&#34;
                height=&#34;572&#34;
                loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
@@ -273,7 +273,7 @@
                /post/bigmodel-api-usage-notes/images/travel/shenzhen4_hub59d7b171bf89e52b6fbd32d09663858_456851_abfb2ddc398faa62204f48d9fc5a4983.webp 400w,
                /post/bigmodel-api-usage-notes/images/travel/shenzhen4_hub59d7b171bf89e52b6fbd32d09663858_456851_e995179b36766b911f8800c44849a9e4.webp 760w,
                /post/bigmodel-api-usage-notes/images/travel/shenzhen4_hub59d7b171bf89e52b6fbd32d09663858_456851_1200x1200_fit_q75_h2_lanczos_3.webp 1200w&#34;
-               src=&#34;/post/bigmodel-api-usage-notes/images/travel/shenzhen4_hub59d7b171bf89e52b6fbd32d09663858_456851_abfb2ddc398faa62204f48d9fc5a4983.webp&#34;
+               src=&#34;https://spacetimelab.cn/post/bigmodel-api-usage-notes/images/travel/shenzhen4_hub59d7b171bf89e52b6fbd32d09663858_456851_abfb2ddc398faa62204f48d9fc5a4983.webp&#34;
                width=&#34;760&#34;
                height=&#34;626&#34;
                loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
@@ -346,7 +346,7 @@
                /post/bigmodel-api-usage-notes/images/travel/huizhou-luofushan_hu2c38aa1f07a4df61eeca4174cd4422f1_434566_aaad34a5636d9948fffa18150377f4da.webp 400w,
                /post/bigmodel-api-usage-notes/images/travel/huizhou-luofushan_hu2c38aa1f07a4df61eeca4174cd4422f1_434566_6ca9c28cc60db305354095c04632e025.webp 760w,
                /post/bigmodel-api-usage-notes/images/travel/huizhou-luofushan_hu2c38aa1f07a4df61eeca4174cd4422f1_434566_1200x1200_fit_q75_h2_lanczos_3.webp 1200w&#34;
-               src=&#34;/post/bigmodel-api-usage-notes/images/travel/huizhou-luofushan_hu2c38aa1f07a4df61eeca4174cd4422f1_434566_aaad34a5636d9948fffa18150377f4da.webp&#34;
+               src=&#34;https://spacetimelab.cn/post/bigmodel-api-usage-notes/images/travel/huizhou-luofushan_hu2c38aa1f07a4df61eeca4174cd4422f1_434566_aaad34a5636d9948fffa18150377f4da.webp&#34;
                width=&#34;760&#34;
                height=&#34;500&#34;
                loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
@@ -380,7 +380,7 @@
                /post/bigmodel-api-usage-notes/images/api/demo/glm4_hu666d697c2e6c9ba51d007da1667a5471_160749_bbd5be4ba3a61e4dfc2eb8acc969233f.webp 400w,
                /post/bigmodel-api-usage-notes/images/api/demo/glm4_hu666d697c2e6c9ba51d007da1667a5471_160749_b25a1ae981025d638a9aacbf921d17ac.webp 760w,
                /post/bigmodel-api-usage-notes/images/api/demo/glm4_hu666d697c2e6c9ba51d007da1667a5471_160749_1200x1200_fit_q75_h2_lanczos_3.webp 1200w&#34;
-               src=&#34;/post/bigmodel-api-usage-notes/images/api/demo/glm4_hu666d697c2e6c9ba51d007da1667a5471_160749_bbd5be4ba3a61e4dfc2eb8acc969233f.webp&#34;
+               src=&#34;https://spacetimelab.cn/post/bigmodel-api-usage-notes/images/api/demo/glm4_hu666d697c2e6c9ba51d007da1667a5471_160749_bbd5be4ba3a61e4dfc2eb8acc969233f.webp&#34;
                width=&#34;760&#34;
                height=&#34;247&#34;
                loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
@@ -490,7 +490,7 @@ PASSED                               [100%]ChatResponse(code=1, message=学习Sp
                /post/bigmodel-api-usage-notes/images/api/demo/moonshot1_hu1c1c1df4ecfd743c69b82c14fc0f43a6_441732_e5ab264477bde7e3937e052a896accee.webp 400w,
                /post/bigmodel-api-usage-notes/images/api/demo/moonshot1_hu1c1c1df4ecfd743c69b82c14fc0f43a6_441732_1213ef971a54ce9f16a200e04d8d7e9f.webp 760w,
                /post/bigmodel-api-usage-notes/images/api/demo/moonshot1_hu1c1c1df4ecfd743c69b82c14fc0f43a6_441732_1200x1200_fit_q75_h2_lanczos_3.webp 1200w&#34;
-               src=&#34;/post/bigmodel-api-usage-notes/images/api/demo/moonshot1_hu1c1c1df4ecfd743c69b82c14fc0f43a6_441732_e5ab264477bde7e3937e052a896accee.webp&#34;
+               src=&#34;https://spacetimelab.cn/post/bigmodel-api-usage-notes/images/api/demo/moonshot1_hu1c1c1df4ecfd743c69b82c14fc0f43a6_441732_e5ab264477bde7e3937e052a896accee.webp&#34;
                width=&#34;760&#34;
                height=&#34;407&#34;
                loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
@@ -518,7 +518,7 @@ PASSED                               [100%]ChatResponse(code=1, message=学习Sp
                /post/bigmodel-api-usage-notes/images/api/demo/moonshot2_hu41de925e09bf939f5c4d0603d750d13d_443947_ffea9c52a9c9de78b1f0f422ad08ca0b.webp 400w,
                /post/bigmodel-api-usage-notes/images/api/demo/moonshot2_hu41de925e09bf939f5c4d0603d750d13d_443947_a535d74f28d49005fdf2af28d07dd1c7.webp 760w,
                /post/bigmodel-api-usage-notes/images/api/demo/moonshot2_hu41de925e09bf939f5c4d0603d750d13d_443947_1200x1200_fit_q75_h2_lanczos_3.webp 1200w&#34;
-               src=&#34;/post/bigmodel-api-usage-notes/images/api/demo/moonshot2_hu41de925e09bf939f5c4d0603d750d13d_443947_ffea9c52a9c9de78b1f0f422ad08ca0b.webp&#34;
+               src=&#34;https://spacetimelab.cn/post/bigmodel-api-usage-notes/images/api/demo/moonshot2_hu41de925e09bf939f5c4d0603d750d13d_443947_ffea9c52a9c9de78b1f0f422ad08ca0b.webp&#34;
                width=&#34;760&#34;
                height=&#34;443&#34;
                loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
@@ -547,7 +547,7 @@ PASSED                               [100%]ChatResponse(code=1, message=学习Sp
                /post/bigmodel-api-usage-notes/images/api/demo/moonshot3_hu22dc979f479e41f405034926953e5a3a_205857_5683b3fa5d6a4a9a9bc3338ace79c505.webp 400w,
                /post/bigmodel-api-usage-notes/images/api/demo/moonshot3_hu22dc979f479e41f405034926953e5a3a_205857_de8be627ca2c7338267f161ec39cffb3.webp 760w,
                /post/bigmodel-api-usage-notes/images/api/demo/moonshot3_hu22dc979f479e41f405034926953e5a3a_205857_1200x1200_fit_q75_h2_lanczos_3.webp 1200w&#34;
-               src=&#34;/post/bigmodel-api-usage-notes/images/api/demo/moonshot3_hu22dc979f479e41f405034926953e5a3a_205857_5683b3fa5d6a4a9a9bc3338ace79c505.webp&#34;
+               src=&#34;https://spacetimelab.cn/post/bigmodel-api-usage-notes/images/api/demo/moonshot3_hu22dc979f479e41f405034926953e5a3a_205857_5683b3fa5d6a4a9a9bc3338ace79c505.webp&#34;
                width=&#34;760&#34;
                height=&#34;250&#34;
                loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
@@ -575,7 +575,7 @@ PASSED                               [100%]ChatResponse(code=1, message=学习Sp
                /post/bigmodel-api-usage-notes/images/api/demo/moonshot5_hu3b01263b6127daafdd9443a6e5b137cd_331331_3cfbcc4d7898141f013dd93d02c5267d.webp 400w,
                /post/bigmodel-api-usage-notes/images/api/demo/moonshot5_hu3b01263b6127daafdd9443a6e5b137cd_331331_aba6397acbc2f03976fa637fb733af0e.webp 760w,
                /post/bigmodel-api-usage-notes/images/api/demo/moonshot5_hu3b01263b6127daafdd9443a6e5b137cd_331331_1200x1200_fit_q75_h2_lanczos_3.webp 1200w&#34;
-               src=&#34;/post/bigmodel-api-usage-notes/images/api/demo/moonshot5_hu3b01263b6127daafdd9443a6e5b137cd_331331_3cfbcc4d7898141f013dd93d02c5267d.webp&#34;
+               src=&#34;https://spacetimelab.cn/post/bigmodel-api-usage-notes/images/api/demo/moonshot5_hu3b01263b6127daafdd9443a6e5b137cd_331331_3cfbcc4d7898141f013dd93d02c5267d.webp&#34;
                width=&#34;760&#34;
                height=&#34;304&#34;
                loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
@@ -622,7 +622,7 @@ PASSED                               [100%]ChatResponse(code=1, message=学习Sp
                /post/bigmodel-api-usage-notes/images/api/demo/01-1_hu22ee249b9bb8d11d368503c8abb581bb_218976_97af61e80e38c035fb5b2a880db42ac8.webp 400w,
                /post/bigmodel-api-usage-notes/images/api/demo/01-1_hu22ee249b9bb8d11d368503c8abb581bb_218976_e30028e607ed3d95d07e7b253aa5ee38.webp 760w,
                /post/bigmodel-api-usage-notes/images/api/demo/01-1_hu22ee249b9bb8d11d368503c8abb581bb_218976_1200x1200_fit_q75_h2_lanczos_3.webp 1200w&#34;
-               src=&#34;/post/bigmodel-api-usage-notes/images/api/demo/01-1_hu22ee249b9bb8d11d368503c8abb581bb_218976_97af61e80e38c035fb5b2a880db42ac8.webp&#34;
+               src=&#34;https://spacetimelab.cn/post/bigmodel-api-usage-notes/images/api/demo/01-1_hu22ee249b9bb8d11d368503c8abb581bb_218976_97af61e80e38c035fb5b2a880db42ac8.webp&#34;
                width=&#34;760&#34;
                height=&#34;289&#34;
                loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
@@ -676,7 +676,7 @@ PASSED                               [100%]ChatResponse(code=1, message=学习Sp
                /post/bigmodel-api-usage-notes/images/api/demo/01-2_hu668647c39fa43e3d6e400942af1f2cbc_422714_41c4b1875a0fcece062b1b5213b499f1.webp 400w,
                /post/bigmodel-api-usage-notes/images/api/demo/01-2_hu668647c39fa43e3d6e400942af1f2cbc_422714_1a3eb5a5b543db568ee0db0843a77d1a.webp 760w,
                /post/bigmodel-api-usage-notes/images/api/demo/01-2_hu668647c39fa43e3d6e400942af1f2cbc_422714_1200x1200_fit_q75_h2_lanczos_3.webp 1200w&#34;
-               src=&#34;/post/bigmodel-api-usage-notes/images/api/demo/01-2_hu668647c39fa43e3d6e400942af1f2cbc_422714_41c4b1875a0fcece062b1b5213b499f1.webp&#34;
+               src=&#34;https://spacetimelab.cn/post/bigmodel-api-usage-notes/images/api/demo/01-2_hu668647c39fa43e3d6e400942af1f2cbc_422714_41c4b1875a0fcece062b1b5213b499f1.webp&#34;
                width=&#34;760&#34;
                height=&#34;165&#34;
                loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
@@ -729,7 +729,7 @@ PASSED                               [100%]ChatResponse(code=1, message=学习Sp
                /post/bigmodel-api-usage-notes/images/api/demo/01-3_hu6cc0c8c11e0307389e4b384dffdd1a1f_92978_77b951e554dc60951d267f3f89e3c88b.webp 400w,
                /post/bigmodel-api-usage-notes/images/api/demo/01-3_hu6cc0c8c11e0307389e4b384dffdd1a1f_92978_bb9a89c751242606f41962330b821874.webp 760w,
                /post/bigmodel-api-usage-notes/images/api/demo/01-3_hu6cc0c8c11e0307389e4b384dffdd1a1f_92978_1200x1200_fit_q75_h2_lanczos_3.webp 1200w&#34;
-               src=&#34;/post/bigmodel-api-usage-notes/images/api/demo/01-3_hu6cc0c8c11e0307389e4b384dffdd1a1f_92978_77b951e554dc60951d267f3f89e3c88b.webp&#34;
+               src=&#34;https://spacetimelab.cn/post/bigmodel-api-usage-notes/images/api/demo/01-3_hu6cc0c8c11e0307389e4b384dffdd1a1f_92978_77b951e554dc60951d267f3f89e3c88b.webp&#34;
                width=&#34;760&#34;
                height=&#34;54&#34;
                loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
@@ -779,7 +779,7 @@ PASSED                               [100%]ChatResponse(code=1, message=学习Sp
                /post/bigmodel-api-usage-notes/images/api/trick/question_classification_prompt_hu4d9fd96cc8dbecc550f38535a617d1e0_117146_684a7adce1d254933136eb3c5c42ca46.webp 400w,
                /post/bigmodel-api-usage-notes/images/api/trick/question_classification_prompt_hu4d9fd96cc8dbecc550f38535a617d1e0_117146_648b3ab5a848bbb52c0f6dba63a34e84.webp 760w,
                /post/bigmodel-api-usage-notes/images/api/trick/question_classification_prompt_hu4d9fd96cc8dbecc550f38535a617d1e0_117146_1200x1200_fit_q75_h2_lanczos_3.webp 1200w&#34;
-               src=&#34;/post/bigmodel-api-usage-notes/images/api/trick/question_classification_prompt_hu4d9fd96cc8dbecc550f38535a617d1e0_117146_684a7adce1d254933136eb3c5c42ca46.webp&#34;
+               src=&#34;https://spacetimelab.cn/post/bigmodel-api-usage-notes/images/api/trick/question_classification_prompt_hu4d9fd96cc8dbecc550f38535a617d1e0_117146_684a7adce1d254933136eb3c5c42ca46.webp&#34;
                width=&#34;760&#34;
                height=&#34;277&#34;
                loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
@@ -807,7 +807,7 @@ PASSED                               [100%]ChatResponse(code=1, message=学习Sp
                /post/bigmodel-api-usage-notes/images/api/trick/question_classification_hu585ff6bf1a685c2d98b43fe6b30322f6_65682_e5080ec66d9940a5444d00cee804b86d.webp 400w,
                /post/bigmodel-api-usage-notes/images/api/trick/question_classification_hu585ff6bf1a685c2d98b43fe6b30322f6_65682_6fe8fefeac47065d11936fa72d83de2f.webp 760w,
                /post/bigmodel-api-usage-notes/images/api/trick/question_classification_hu585ff6bf1a685c2d98b43fe6b30322f6_65682_1200x1200_fit_q75_h2_lanczos_3.webp 1200w&#34;
-               src=&#34;/post/bigmodel-api-usage-notes/images/api/trick/question_classification_hu585ff6bf1a685c2d98b43fe6b30322f6_65682_e5080ec66d9940a5444d00cee804b86d.webp&#34;
+               src=&#34;https://spacetimelab.cn/post/bigmodel-api-usage-notes/images/api/trick/question_classification_hu585ff6bf1a685c2d98b43fe6b30322f6_65682_e5080ec66d9940a5444d00cee804b86d.webp&#34;
                width=&#34;760&#34;
                height=&#34;305&#34;
                loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
@@ -848,7 +848,7 @@ PASSED                               [100%]ChatResponse(code=1, message=学习Sp
                /post/bigmodel-api-usage-notes/images/api/trick/relation_extraction_demo1-01wanwu_huff5240787adf35b46631ff7461b4450e_229768_ca7b68bf127b67a2e0cdb7fb3ea98f33.webp 400w,
                /post/bigmodel-api-usage-notes/images/api/trick/relation_extraction_demo1-01wanwu_huff5240787adf35b46631ff7461b4450e_229768_4e99f50c42e212bb84053a75116e04d4.webp 760w,
                /post/bigmodel-api-usage-notes/images/api/trick/relation_extraction_demo1-01wanwu_huff5240787adf35b46631ff7461b4450e_229768_1200x1200_fit_q75_h2_lanczos_3.webp 1200w&#34;
-               src=&#34;/post/bigmodel-api-usage-notes/images/api/trick/relation_extraction_demo1-01wanwu_huff5240787adf35b46631ff7461b4450e_229768_ca7b68bf127b67a2e0cdb7fb3ea98f33.webp&#34;
+               src=&#34;https://spacetimelab.cn/post/bigmodel-api-usage-notes/images/api/trick/relation_extraction_demo1-01wanwu_huff5240787adf35b46631ff7461b4450e_229768_ca7b68bf127b67a2e0cdb7fb3ea98f33.webp&#34;
                width=&#34;760&#34;
                height=&#34;181&#34;
                loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
@@ -879,7 +879,7 @@ PASSED                               [100%]ChatResponse(code=1, message=学习Sp
                /post/bigmodel-api-usage-notes/images/api/trick/relation_extraction_demo1-moonshot_hu9d2c15bc3b06da5aaf26e8880ad12c6f_276776_068678802f06bde6c78a60a68cd73efe.webp 400w,
                /post/bigmodel-api-usage-notes/images/api/trick/relation_extraction_demo1-moonshot_hu9d2c15bc3b06da5aaf26e8880ad12c6f_276776_07f5ab259682d2426dfe9ceea41f226e.webp 760w,
                /post/bigmodel-api-usage-notes/images/api/trick/relation_extraction_demo1-moonshot_hu9d2c15bc3b06da5aaf26e8880ad12c6f_276776_1200x1200_fit_q75_h2_lanczos_3.webp 1200w&#34;
-               src=&#34;/post/bigmodel-api-usage-notes/images/api/trick/relation_extraction_demo1-moonshot_hu9d2c15bc3b06da5aaf26e8880ad12c6f_276776_068678802f06bde6c78a60a68cd73efe.webp&#34;
+               src=&#34;https://spacetimelab.cn/post/bigmodel-api-usage-notes/images/api/trick/relation_extraction_demo1-moonshot_hu9d2c15bc3b06da5aaf26e8880ad12c6f_276776_068678802f06bde6c78a60a68cd73efe.webp&#34;
                width=&#34;760&#34;
                height=&#34;312&#34;
                loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;

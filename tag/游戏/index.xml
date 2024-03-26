@@ -1,22 +1,22 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>游戏 | CoolCats</title>
-    <link>/tag/%E6%B8%B8%E6%88%8F/</link>
-      <atom:link href="/tag/%E6%B8%B8%E6%88%8F/index.xml" rel="self" type="application/rss+xml" />
+    <title>游戏 | NullSpace</title>
+    <link>https://spacetimelab.cn/tag/%E6%B8%B8%E6%88%8F/</link>
+      <atom:link href="https://spacetimelab.cn/tag/%E6%B8%B8%E6%88%8F/index.xml" rel="self" type="application/rss+xml" />
     <description>游戏</description>
     <generator>Wowchemy (https://wowchemy.com)</generator><language>en-us</language><lastBuildDate>Mon, 31 Jul 2023 23:15:54 +0800</lastBuildDate>
     <image>
-      <url>/media/icon_hue03491371183284312b8b116a73ae5ab_79511_512x512_fill_lanczos_center_3.png</url>
+      <url>https://spacetimelab.cn/media/icon_hue03491371183284312b8b116a73ae5ab_79511_512x512_fill_lanczos_center_3.png</url>
       <title>游戏</title>
-      <link>/tag/%E6%B8%B8%E6%88%8F/</link>
+      <link>https://spacetimelab.cn/tag/%E6%B8%B8%E6%88%8F/</link>
     </image>
     
     <item>
       <title>思考：如何测试一个游戏？</title>
-      <link>/post/game-testing-thinking/</link>
+      <link>https://spacetimelab.cn/post/game-testing-thinking/</link>
       <pubDate>Mon, 31 Jul 2023 23:15:54 +0800</pubDate>
-      <guid>/post/game-testing-thinking/</guid>
+      <guid>https://spacetimelab.cn/post/game-testing-thinking/</guid>
       <description>&lt;h2 id=&#34;概述&#34;&gt;概述&lt;/h2&gt;
 &lt;p&gt;测试的目的是寻找产品缺陷，最终提高产品的质量。对于游戏而言，与一般软件不同的是，当用户在使用游戏软件时时，往往会在一段时间内沉浸式地与软件进行细致地交互（假设游戏对用户有吸引力），因此需要测试游戏的流畅度、控制的灵敏度，各种硬件配置环境测试游戏，如果是多人对战游戏还需要关注游戏角色、能力的平衡性。总的来说，游戏测试包括但不限于如下方面：&lt;/p&gt;
 &lt;ul&gt;
@@ -181,9 +181,9 @@
     
     <item>
       <title>峡谷历险记: 别着急，先发育</title>
-      <link>/talk/%E5%B3%A1%E8%B0%B7%E5%8E%86%E9%99%A9%E8%AE%B0-%E5%88%AB%E7%9D%80%E6%80%A5%E5%85%88%E5%8F%91%E8%82%B2/</link>
+      <link>https://spacetimelab.cn/talk/%E5%B3%A1%E8%B0%B7%E5%8E%86%E9%99%A9%E8%AE%B0-%E5%88%AB%E7%9D%80%E6%80%A5%E5%85%88%E5%8F%91%E8%82%B2/</link>
       <pubDate>Fri, 28 Jul 2017 14:22:54 +0800</pubDate>
-      <guid>/talk/%E5%B3%A1%E8%B0%B7%E5%8E%86%E9%99%A9%E8%AE%B0-%E5%88%AB%E7%9D%80%E6%80%A5%E5%85%88%E5%8F%91%E8%82%B2/</guid>
+      <guid>https://spacetimelab.cn/talk/%E5%B3%A1%E8%B0%B7%E5%8E%86%E9%99%A9%E8%AE%B0-%E5%88%AB%E7%9D%80%E6%80%A5%E5%85%88%E5%8F%91%E8%82%B2/</guid>
       <description>&lt;p&gt;人生不一定处处都有顺利，或许经常需要克服“一打九”的困难，这个时候，人可以选择摆烂开演，等待运气降临或内心完全不抱期望地过下去；也可以理智带线、猥琐发育，创造翻盘的机会，在恰当的时机完成局势逆转。&lt;/p&gt;
 &lt;h3 id=&#34;发育路猥琐发育别浪&#34;&gt;发育路：”猥琐发育，别浪！“&lt;/h3&gt;
 &lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;&amp;#34;不得不承认,有时候肌肉比头脑管用&amp;#34;

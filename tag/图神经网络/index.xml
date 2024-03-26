@@ -1,22 +1,22 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>图神经网络 | CoolCats</title>
-    <link>/tag/%E5%9B%BE%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C/</link>
-      <atom:link href="/tag/%E5%9B%BE%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C/index.xml" rel="self" type="application/rss+xml" />
+    <title>图神经网络 | NullSpace</title>
+    <link>https://spacetimelab.cn/tag/%E5%9B%BE%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C/</link>
+      <atom:link href="https://spacetimelab.cn/tag/%E5%9B%BE%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C/index.xml" rel="self" type="application/rss+xml" />
     <description>图神经网络</description>
     <generator>Wowchemy (https://wowchemy.com)</generator><language>en-us</language><lastBuildDate>Tue, 24 May 2022 19:26:02 +0800</lastBuildDate>
     <image>
-      <url>/media/icon_hue03491371183284312b8b116a73ae5ab_79511_512x512_fill_lanczos_center_3.png</url>
+      <url>https://spacetimelab.cn/media/icon_hue03491371183284312b8b116a73ae5ab_79511_512x512_fill_lanczos_center_3.png</url>
       <title>图神经网络</title>
-      <link>/tag/%E5%9B%BE%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C/</link>
+      <link>https://spacetimelab.cn/tag/%E5%9B%BE%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C/</link>
     </image>
     
     <item>
       <title>「论文阅读」-Connecting the Dots基于GNN进行多变量时间序列预测</title>
-      <link>/publication/connecting-the-dots-multivariate-time-series-forcasting-with-gnn/</link>
+      <link>https://spacetimelab.cn/publication/connecting-the-dots-multivariate-time-series-forcasting-with-gnn/</link>
       <pubDate>Tue, 24 May 2022 19:26:02 +0800</pubDate>
-      <guid>/publication/connecting-the-dots-multivariate-time-series-forcasting-with-gnn/</guid>
+      <guid>https://spacetimelab.cn/publication/connecting-the-dots-multivariate-time-series-forcasting-with-gnn/</guid>
       <description>&lt;h2 id=&#34;问题&#34;&gt;问题&lt;/h2&gt;
 &lt;ul&gt;
 &lt;li&gt;多变量时间序列预测的基本假设是？&lt;/li&gt;

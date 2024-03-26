@@ -1,22 +1,22 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>持续集成 | CoolCats</title>
-    <link>/tag/%E6%8C%81%E7%BB%AD%E9%9B%86%E6%88%90/</link>
-      <atom:link href="/tag/%E6%8C%81%E7%BB%AD%E9%9B%86%E6%88%90/index.xml" rel="self" type="application/rss+xml" />
+    <title>持续集成 | NullSpace</title>
+    <link>https://spacetimelab.cn/tag/%E6%8C%81%E7%BB%AD%E9%9B%86%E6%88%90/</link>
+      <atom:link href="https://spacetimelab.cn/tag/%E6%8C%81%E7%BB%AD%E9%9B%86%E6%88%90/index.xml" rel="self" type="application/rss+xml" />
     <description>持续集成</description>
     <generator>Wowchemy (https://wowchemy.com)</generator><language>en-us</language><lastBuildDate>Fri, 20 Dec 2019 13:36:16 +0800</lastBuildDate>
     <image>
-      <url>/media/icon_hue03491371183284312b8b116a73ae5ab_79511_512x512_fill_lanczos_center_3.png</url>
+      <url>https://spacetimelab.cn/media/icon_hue03491371183284312b8b116a73ae5ab_79511_512x512_fill_lanczos_center_3.png</url>
       <title>持续集成</title>
-      <link>/tag/%E6%8C%81%E7%BB%AD%E9%9B%86%E6%88%90/</link>
+      <link>https://spacetimelab.cn/tag/%E6%8C%81%E7%BB%AD%E9%9B%86%E6%88%90/</link>
     </image>
     
     <item>
       <title>初步认识自动化测试</title>
-      <link>/post/automated-testing-startup/</link>
+      <link>https://spacetimelab.cn/post/automated-testing-startup/</link>
       <pubDate>Fri, 20 Dec 2019 13:36:16 +0800</pubDate>
-      <guid>/post/automated-testing-startup/</guid>
+      <guid>https://spacetimelab.cn/post/automated-testing-startup/</guid>
       <description>&lt;h2 id=&#34;前言&#34;&gt;前言&lt;/h2&gt;
 &lt;p&gt;前段时间的参与了自动化测试平台的开发，本文就进行一些梳理，简单总结以下要点：&lt;/p&gt;
 &lt;ul&gt;
@@ -75,7 +75,7 @@
                /post/automated-testing-startup/images/fig1_huc8fb813a2a1073acbc8c445fda94c81c_108164_e531c188662c0335c179d4ee88bbc9e0.webp 400w,
                /post/automated-testing-startup/images/fig1_huc8fb813a2a1073acbc8c445fda94c81c_108164_277eea6068241e111149792aacfc44b1.webp 760w,
                /post/automated-testing-startup/images/fig1_huc8fb813a2a1073acbc8c445fda94c81c_108164_1200x1200_fit_q75_h2_lanczos_3.webp 1200w&#34;
-               src=&#34;/post/automated-testing-startup/images/fig1_huc8fb813a2a1073acbc8c445fda94c81c_108164_e531c188662c0335c179d4ee88bbc9e0.webp&#34;
+               src=&#34;https://spacetimelab.cn/post/automated-testing-startup/images/fig1_huc8fb813a2a1073acbc8c445fda94c81c_108164_e531c188662c0335c179d4ee88bbc9e0.webp&#34;
                width=&#34;760&#34;
                height=&#34;173&#34;
                loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
@@ -127,7 +127,7 @@
                /post/automated-testing-startup/images/ci_huc0289b525ea73dd66f73d66e09f056e4_211874_5b3df4f070a7dc3249c107a2f1d07cb6.webp 400w,
                /post/automated-testing-startup/images/ci_huc0289b525ea73dd66f73d66e09f056e4_211874_51f73c72f4a0488bee2267b3c2b62a9f.webp 760w,
                /post/automated-testing-startup/images/ci_huc0289b525ea73dd66f73d66e09f056e4_211874_1200x1200_fit_q75_h2_lanczos_3.webp 1200w&#34;
-               src=&#34;/post/automated-testing-startup/images/ci_huc0289b525ea73dd66f73d66e09f056e4_211874_5b3df4f070a7dc3249c107a2f1d07cb6.webp&#34;
+               src=&#34;https://spacetimelab.cn/post/automated-testing-startup/images/ci_huc0289b525ea73dd66f73d66e09f056e4_211874_5b3df4f070a7dc3249c107a2f1d07cb6.webp&#34;
                width=&#34;760&#34;
                height=&#34;470&#34;
                loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
@@ -172,7 +172,7 @@
                /post/automated-testing-startup/images/jenkins_build_hu0bb8539fbb06c6e778abdc71f21a2928_556219_04454082b2657124f1a00c32b55e7e6b.webp 400w,
                /post/automated-testing-startup/images/jenkins_build_hu0bb8539fbb06c6e778abdc71f21a2928_556219_8ed73e4aeb5b5696daa5636ffd8de744.webp 760w,
                /post/automated-testing-startup/images/jenkins_build_hu0bb8539fbb06c6e778abdc71f21a2928_556219_1200x1200_fit_q75_h2_lanczos_3.webp 1200w&#34;
-               src=&#34;/post/automated-testing-startup/images/jenkins_build_hu0bb8539fbb06c6e778abdc71f21a2928_556219_04454082b2657124f1a00c32b55e7e6b.webp&#34;
+               src=&#34;https://spacetimelab.cn/post/automated-testing-startup/images/jenkins_build_hu0bb8539fbb06c6e778abdc71f21a2928_556219_04454082b2657124f1a00c32b55e7e6b.webp&#34;
                width=&#34;760&#34;
                height=&#34;512&#34;
                loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;

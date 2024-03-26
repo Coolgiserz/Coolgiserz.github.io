@@ -1,22 +1,22 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>自注意力 | CoolCats</title>
-    <link>/tag/%E8%87%AA%E6%B3%A8%E6%84%8F%E5%8A%9B/</link>
-      <atom:link href="/tag/%E8%87%AA%E6%B3%A8%E6%84%8F%E5%8A%9B/index.xml" rel="self" type="application/rss+xml" />
+    <title>自注意力 | NullSpace</title>
+    <link>https://spacetimelab.cn/tag/%E8%87%AA%E6%B3%A8%E6%84%8F%E5%8A%9B/</link>
+      <atom:link href="https://spacetimelab.cn/tag/%E8%87%AA%E6%B3%A8%E6%84%8F%E5%8A%9B/index.xml" rel="self" type="application/rss+xml" />
     <description>自注意力</description>
     <generator>Wowchemy (https://wowchemy.com)</generator><language>en-us</language><lastBuildDate>Mon, 28 Dec 2020 17:08:58 +0800</lastBuildDate>
     <image>
-      <url>/media/icon_hue03491371183284312b8b116a73ae5ab_79511_512x512_fill_lanczos_center_3.png</url>
+      <url>https://spacetimelab.cn/media/icon_hue03491371183284312b8b116a73ae5ab_79511_512x512_fill_lanczos_center_3.png</url>
       <title>自注意力</title>
-      <link>/tag/%E8%87%AA%E6%B3%A8%E6%84%8F%E5%8A%9B/</link>
+      <link>https://spacetimelab.cn/tag/%E8%87%AA%E6%B3%A8%E6%84%8F%E5%8A%9B/</link>
     </image>
     
     <item>
       <title>「论文翻译」-使用Transformer捕捉交通流时间序列的邻近及周期特征</title>
-      <link>/publication/traffic-transformer-capturing-the-continuity-and-periodicity-of-time-series-for-traffic-forecasting/</link>
+      <link>https://spacetimelab.cn/publication/traffic-transformer-capturing-the-continuity-and-periodicity-of-time-series-for-traffic-forecasting/</link>
       <pubDate>Mon, 28 Dec 2020 17:08:58 +0800</pubDate>
-      <guid>/publication/traffic-transformer-capturing-the-continuity-and-periodicity-of-time-series-for-traffic-forecasting/</guid>
+      <guid>https://spacetimelab.cn/publication/traffic-transformer-capturing-the-continuity-and-periodicity-of-time-series-for-traffic-forecasting/</guid>
       <description>&lt;h2 id=&#34;文章分析&#34;&gt;文章分析&lt;/h2&gt;
 &lt;h3 id=&#34;引言&#34;&gt;引言&lt;/h3&gt;
 &lt;p&gt;交通预测是指通过分析历史交通状况和模式，估计未来的交通状况(如车辆密度和速度)，从而预测未来的事件(如拥堵或旅行时间)。高精度的预测可以为决策者提供指导，为市民提供安全和便利，并减少环境影响。&lt;/p&gt;
@@ -62,7 +62,7 @@
                /publication/traffic-transformer-capturing-the-continuity-and-periodicity-of-time-series-for-traffic-forecasting/images/fig1_2_hu655a9f6e780fdcc68b904a9a208df016_256246_c02688f12dab712adf05cb11f956b9a3.webp 400w,
                /publication/traffic-transformer-capturing-the-continuity-and-periodicity-of-time-series-for-traffic-forecasting/images/fig1_2_hu655a9f6e780fdcc68b904a9a208df016_256246_6a057ac98f80f5102799c979c06fbbf3.webp 760w,
                /publication/traffic-transformer-capturing-the-continuity-and-periodicity-of-time-series-for-traffic-forecasting/images/fig1_2_hu655a9f6e780fdcc68b904a9a208df016_256246_1200x1200_fit_q75_h2_lanczos_3.webp 1200w&#34;
-               src=&#34;/publication/traffic-transformer-capturing-the-continuity-and-periodicity-of-time-series-for-traffic-forecasting/images/fig1_2_hu655a9f6e780fdcc68b904a9a208df016_256246_c02688f12dab712adf05cb11f956b9a3.webp&#34;
+               src=&#34;https://spacetimelab.cn/publication/traffic-transformer-capturing-the-continuity-and-periodicity-of-time-series-for-traffic-forecasting/images/fig1_2_hu655a9f6e780fdcc68b904a9a208df016_256246_c02688f12dab712adf05cb11f956b9a3.webp&#34;
                width=&#34;576&#34;
                height=&#34;760&#34;
                loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
@@ -97,7 +97,7 @@
                /publication/traffic-transformer-capturing-the-continuity-and-periodicity-of-time-series-for-traffic-forecasting/images/table3_huba3c8cc26c3b195d8c12a5a5f07e283a_361209_f5c8e4b46cbb10c404dd3dd4128ee9fa.webp 400w,
                /publication/traffic-transformer-capturing-the-continuity-and-periodicity-of-time-series-for-traffic-forecasting/images/table3_huba3c8cc26c3b195d8c12a5a5f07e283a_361209_5da33119675c2e44e2cd6f012ac65036.webp 760w,
                /publication/traffic-transformer-capturing-the-continuity-and-periodicity-of-time-series-for-traffic-forecasting/images/table3_huba3c8cc26c3b195d8c12a5a5f07e283a_361209_1200x1200_fit_q75_h2_lanczos_3.webp 1200w&#34;
-               src=&#34;/publication/traffic-transformer-capturing-the-continuity-and-periodicity-of-time-series-for-traffic-forecasting/images/table3_huba3c8cc26c3b195d8c12a5a5f07e283a_361209_f5c8e4b46cbb10c404dd3dd4128ee9fa.webp&#34;
+               src=&#34;https://spacetimelab.cn/publication/traffic-transformer-capturing-the-continuity-and-periodicity-of-time-series-for-traffic-forecasting/images/table3_huba3c8cc26c3b195d8c12a5a5f07e283a_361209_f5c8e4b46cbb10c404dd3dd4128ee9fa.webp&#34;
                width=&#34;760&#34;
                height=&#34;623&#34;
                loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
@@ -125,7 +125,7 @@
                /publication/traffic-transformer-capturing-the-continuity-and-periodicity-of-time-series-for-traffic-forecasting/images/fig3_huf796215b0981881d50826aee2155516e_367786_56e04901f0a9033bdb505ad55bd06722.webp 400w,
                /publication/traffic-transformer-capturing-the-continuity-and-periodicity-of-time-series-for-traffic-forecasting/images/fig3_huf796215b0981881d50826aee2155516e_367786_a5fc9d031d100d56d5ba8b8e85c3f770.webp 760w,
                /publication/traffic-transformer-capturing-the-continuity-and-periodicity-of-time-series-for-traffic-forecasting/images/fig3_huf796215b0981881d50826aee2155516e_367786_1200x1200_fit_q75_h2_lanczos_3.webp 1200w&#34;
-               src=&#34;/publication/traffic-transformer-capturing-the-continuity-and-periodicity-of-time-series-for-traffic-forecasting/images/fig3_huf796215b0981881d50826aee2155516e_367786_56e04901f0a9033bdb505ad55bd06722.webp&#34;
+               src=&#34;https://spacetimelab.cn/publication/traffic-transformer-capturing-the-continuity-and-periodicity-of-time-series-for-traffic-forecasting/images/fig3_huf796215b0981881d50826aee2155516e_367786_56e04901f0a9033bdb505ad55bd06722.webp&#34;
                width=&#34;515&#34;
                height=&#34;760&#34;
                loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;

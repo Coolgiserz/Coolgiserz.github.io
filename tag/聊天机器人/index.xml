@@ -1,22 +1,22 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>聊天机器人 | CoolCats</title>
-    <link>/tag/%E8%81%8A%E5%A4%A9%E6%9C%BA%E5%99%A8%E4%BA%BA/</link>
-      <atom:link href="/tag/%E8%81%8A%E5%A4%A9%E6%9C%BA%E5%99%A8%E4%BA%BA/index.xml" rel="self" type="application/rss+xml" />
+    <title>聊天机器人 | NullSpace</title>
+    <link>https://spacetimelab.cn/tag/%E8%81%8A%E5%A4%A9%E6%9C%BA%E5%99%A8%E4%BA%BA/</link>
+      <atom:link href="https://spacetimelab.cn/tag/%E8%81%8A%E5%A4%A9%E6%9C%BA%E5%99%A8%E4%BA%BA/index.xml" rel="self" type="application/rss+xml" />
     <description>聊天机器人</description>
     <generator>Wowchemy (https://wowchemy.com)</generator><language>en-us</language><lastBuildDate>Fri, 22 Mar 2024 21:01:42 +0800</lastBuildDate>
     <image>
-      <url>/media/icon_hue03491371183284312b8b116a73ae5ab_79511_512x512_fill_lanczos_center_3.png</url>
+      <url>https://spacetimelab.cn/media/icon_hue03491371183284312b8b116a73ae5ab_79511_512x512_fill_lanczos_center_3.png</url>
       <title>聊天机器人</title>
-      <link>/tag/%E8%81%8A%E5%A4%A9%E6%9C%BA%E5%99%A8%E4%BA%BA/</link>
+      <link>https://spacetimelab.cn/tag/%E8%81%8A%E5%A4%A9%E6%9C%BA%E5%99%A8%E4%BA%BA/</link>
     </image>
     
     <item>
       <title>前端低代码框架Gradio，快速构建可交互原型</title>
-      <link>/post/python-gradio-frontend-lightly/</link>
+      <link>https://spacetimelab.cn/post/python-gradio-frontend-lightly/</link>
       <pubDate>Fri, 22 Mar 2024 21:01:42 +0800</pubDate>
-      <guid>/post/python-gradio-frontend-lightly/</guid>
+      <guid>https://spacetimelab.cn/post/python-gradio-frontend-lightly/</guid>
       <description>&lt;h2 id=&#34;前言&#34;&gt;前言&lt;/h2&gt;
 &lt;p&gt;Gradio 是一个用于创建机器学习模型交互式界面的 Python 库。它提供了一系列的预定义组件，使得开发者可以快速地构建出美观且功能丰富的界面，而无需深入了解复杂的前端技术。&lt;/p&gt;
 &lt;p&gt;官方文档：&lt;/p&gt;
@@ -47,7 +47,7 @@
                /post/python-gradio-frontend-lightly/images/demo/chatbot/lean_people_hu69402b9aeea7b8a75eb649910abe2d05_475136_6a3215073a34e8dd78462c2450d1dcad.webp 400w,
                /post/python-gradio-frontend-lightly/images/demo/chatbot/lean_people_hu69402b9aeea7b8a75eb649910abe2d05_475136_3301312eba5c372e4e2367ee9ee8f8ae.webp 760w,
                /post/python-gradio-frontend-lightly/images/demo/chatbot/lean_people_hu69402b9aeea7b8a75eb649910abe2d05_475136_1200x1200_fit_q75_h2_lanczos_3.webp 1200w&#34;
-               src=&#34;/post/python-gradio-frontend-lightly/images/demo/chatbot/lean_people_hu69402b9aeea7b8a75eb649910abe2d05_475136_6a3215073a34e8dd78462c2450d1dcad.webp&#34;
+               src=&#34;https://spacetimelab.cn/post/python-gradio-frontend-lightly/images/demo/chatbot/lean_people_hu69402b9aeea7b8a75eb649910abe2d05_475136_6a3215073a34e8dd78462c2450d1dcad.webp&#34;
                width=&#34;760&#34;
                height=&#34;381&#34;
                loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
@@ -118,7 +118,7 @@
                /post/python-gradio-frontend-lightly/images/demo/chatbot/jianghu_hu85624ac5fa4e14c1b4a48d011feaaf37_452094_d91b5d416c5d85d56225099f70299308.webp 400w,
                /post/python-gradio-frontend-lightly/images/demo/chatbot/jianghu_hu85624ac5fa4e14c1b4a48d011feaaf37_452094_8e0c14bf2e5128e2d5b656610744c792.webp 760w,
                /post/python-gradio-frontend-lightly/images/demo/chatbot/jianghu_hu85624ac5fa4e14c1b4a48d011feaaf37_452094_1200x1200_fit_q75_h2_lanczos_3.webp 1200w&#34;
-               src=&#34;/post/python-gradio-frontend-lightly/images/demo/chatbot/jianghu_hu85624ac5fa4e14c1b4a48d011feaaf37_452094_d91b5d416c5d85d56225099f70299308.webp&#34;
+               src=&#34;https://spacetimelab.cn/post/python-gradio-frontend-lightly/images/demo/chatbot/jianghu_hu85624ac5fa4e14c1b4a48d011feaaf37_452094_d91b5d416c5d85d56225099f70299308.webp&#34;
                width=&#34;760&#34;
                height=&#34;352&#34;
                loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
@@ -146,10 +146,10 @@
 &lt;figure  &gt;
   &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
     &lt;div class=&#34;w-100&#34; &gt;&lt;img alt=&#34;&#34; srcset=&#34;
-               /post/python-gradio-frontend-lightly/images/demo/chatbot/jianghu1_hu955434195db7c656d3bdaaf9a52687c2_627071_f117eb1f4f8e84f4764383bf466c6e2c.webp 400w,
+               /post/python-gradio-frontend-lightly/images/demo/chatbot/jianghu1_hu955434195db7c656d3bdaaf9a52687c2_627071_74c612821031be78bdf879c285f41b17.webp 400w,
                /post/python-gradio-frontend-lightly/images/demo/chatbot/jianghu1_hu955434195db7c656d3bdaaf9a52687c2_627071_311bead0a76bd687ac87a85f402ae8d0.webp 760w,
                /post/python-gradio-frontend-lightly/images/demo/chatbot/jianghu1_hu955434195db7c656d3bdaaf9a52687c2_627071_1200x1200_fit_q75_h2_lanczos_3.webp 1200w&#34;
-               src=&#34;/post/python-gradio-frontend-lightly/images/demo/chatbot/jianghu1_hu955434195db7c656d3bdaaf9a52687c2_627071_f117eb1f4f8e84f4764383bf466c6e2c.webp&#34;
+               src=&#34;https://spacetimelab.cn/post/python-gradio-frontend-lightly/images/demo/chatbot/jianghu1_hu955434195db7c656d3bdaaf9a52687c2_627071_74c612821031be78bdf879c285f41b17.webp&#34;
                width=&#34;760&#34;
                height=&#34;408&#34;
                loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
@@ -177,10 +177,10 @@
 &lt;figure  &gt;
   &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
     &lt;div class=&#34;w-100&#34; &gt;&lt;img alt=&#34;&#34; srcset=&#34;
-               /post/python-gradio-frontend-lightly/images/demo/chatbot/mean_people_hu4dc5c79a6505af6886c82da1b6c83e13_397518_f1e5fac37de047b89914365217f8794c.webp 400w,
+               /post/python-gradio-frontend-lightly/images/demo/chatbot/mean_people_hu4dc5c79a6505af6886c82da1b6c83e13_397518_173a07ffb08716ebf592747d5216691f.webp 400w,
                /post/python-gradio-frontend-lightly/images/demo/chatbot/mean_people_hu4dc5c79a6505af6886c82da1b6c83e13_397518_df18a747d64b800709d6a2eb8ec7acdd.webp 760w,
                /post/python-gradio-frontend-lightly/images/demo/chatbot/mean_people_hu4dc5c79a6505af6886c82da1b6c83e13_397518_1200x1200_fit_q75_h2_lanczos_3.webp 1200w&#34;
-               src=&#34;/post/python-gradio-frontend-lightly/images/demo/chatbot/mean_people_hu4dc5c79a6505af6886c82da1b6c83e13_397518_f1e5fac37de047b89914365217f8794c.webp&#34;
+               src=&#34;https://spacetimelab.cn/post/python-gradio-frontend-lightly/images/demo/chatbot/mean_people_hu4dc5c79a6505af6886c82da1b6c83e13_397518_173a07ffb08716ebf592747d5216691f.webp&#34;
                width=&#34;760&#34;
                height=&#34;369&#34;
                loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;

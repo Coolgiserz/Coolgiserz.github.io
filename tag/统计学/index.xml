@@ -1,22 +1,22 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>统计学 | CoolCats</title>
-    <link>/tag/%E7%BB%9F%E8%AE%A1%E5%AD%A6/</link>
-      <atom:link href="/tag/%E7%BB%9F%E8%AE%A1%E5%AD%A6/index.xml" rel="self" type="application/rss+xml" />
+    <title>统计学 | NullSpace</title>
+    <link>https://spacetimelab.cn/tag/%E7%BB%9F%E8%AE%A1%E5%AD%A6/</link>
+      <atom:link href="https://spacetimelab.cn/tag/%E7%BB%9F%E8%AE%A1%E5%AD%A6/index.xml" rel="self" type="application/rss+xml" />
     <description>统计学</description>
     <generator>Wowchemy (https://wowchemy.com)</generator><language>en-us</language><lastBuildDate>Mon, 16 May 2022 20:31:34 +0800</lastBuildDate>
     <image>
-      <url>/media/icon_hue03491371183284312b8b116a73ae5ab_79511_512x512_fill_lanczos_center_3.png</url>
+      <url>https://spacetimelab.cn/media/icon_hue03491371183284312b8b116a73ae5ab_79511_512x512_fill_lanczos_center_3.png</url>
       <title>统计学</title>
-      <link>/tag/%E7%BB%9F%E8%AE%A1%E5%AD%A6/</link>
+      <link>https://spacetimelab.cn/tag/%E7%BB%9F%E8%AE%A1%E5%AD%A6/</link>
     </image>
     
     <item>
       <title>关于回归模型及其评价方法的一些问题</title>
-      <link>/post/rethinking-regression-model-and-its-evaluations/</link>
+      <link>https://spacetimelab.cn/post/rethinking-regression-model-and-its-evaluations/</link>
       <pubDate>Mon, 16 May 2022 20:31:34 +0800</pubDate>
-      <guid>/post/rethinking-regression-model-and-its-evaluations/</guid>
+      <guid>https://spacetimelab.cn/post/rethinking-regression-model-and-its-evaluations/</guid>
       <description>&lt;p&gt;促使我写这篇文章的原因是某项实验中发现一些先进的预测模型尽管在MAE、MAPE、RMSE指标上的表现远超其他模型，但却具有非常低的R2和EVAR值，再加上对实际数据与预测数据的观察，让我对「什么是”好“的回归模型」以及「各项回归评价指标具体能告诉你什么信息」蒙上了一层疑问。所以写这篇文章整理一下思路。&lt;/p&gt;
 &lt;h2 id=&#34;0x00-回归分析溯源&#34;&gt;0x00 回归分析溯源&lt;/h2&gt;
 &lt;h3 id=&#34;何时应该使用回归分析回归分析可以做什么&#34;&gt;何时应该使用回归分析？回归分析可以做什么？&lt;/h3&gt;
