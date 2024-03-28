@@ -1077,6 +1077,146 @@ scrapy自带的item exporter，源码位于scrapy.exporters中，有各种类型
 &lt;/ul&gt;
 &lt;h4 id=&#34;item-loader及数据入库&#34;&gt;Item Loader及数据入库&lt;/h4&gt;
 &lt;p&gt;拉勾网目前会根据user-agent判断是否为爬虫，在chrome浏览器输入about:version可获得User-Agent信息。下面这个网站也可直接返回当前user-agent： &lt;a href=&#34;https://helloacm.com/api/user-agent/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;https://helloacm.com/api/user-agent/&lt;/a&gt;&lt;/p&gt;
+&lt;h3 id=&#34;实战3--知嘟嘟专利爬虫&#34;&gt;实战3&amp;ndash;知嘟嘟专利爬虫&lt;/h3&gt;
+&lt;p&gt;redis存储的中间结果：&lt;/p&gt;
+&lt;p&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure  &gt;
+  &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img alt=&#34;&#34; srcset=&#34;
+               /post/scrapy-for-distributed-spider-summary/images/project3/items_hu5edac16d24d307f4289ecaac4539ffb3_247900_ee5935e707c9ee788af7bc03f119beed.webp 400w,
+               /post/scrapy-for-distributed-spider-summary/images/project3/items_hu5edac16d24d307f4289ecaac4539ffb3_247900_e0740221b3b02b5b7715f1afdac54c48.webp 760w,
+               /post/scrapy-for-distributed-spider-summary/images/project3/items_hu5edac16d24d307f4289ecaac4539ffb3_247900_1200x1200_fit_q75_h2_lanczos_3.webp 1200w&#34;
+               src=&#34;https://spacetimelab.cn/post/scrapy-for-distributed-spider-summary/images/project3/items_hu5edac16d24d307f4289ecaac4539ffb3_247900_ee5935e707c9ee788af7bc03f119beed.webp&#34;
+               width=&#34;760&#34;
+               height=&#34;453&#34;
+               loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+  &lt;/div&gt;&lt;/figure&gt;
+&lt;/p&gt;
+&lt;p&gt;入库成果：&lt;/p&gt;
+&lt;p&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure  &gt;
+  &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img alt=&#34;&#34; srcset=&#34;
+               /post/scrapy-for-distributed-spider-summary/images/project3/iprdb-demo_huce532c391a2d57024ac15195dae48a48_1991292_0a367125b85463975905ac2c3deae4da.webp 400w,
+               /post/scrapy-for-distributed-spider-summary/images/project3/iprdb-demo_huce532c391a2d57024ac15195dae48a48_1991292_3e4ae5a1945bce983048e7e6b256e27a.webp 760w,
+               /post/scrapy-for-distributed-spider-summary/images/project3/iprdb-demo_huce532c391a2d57024ac15195dae48a48_1991292_1200x1200_fit_q75_h2_lanczos_3.webp 1200w&#34;
+               src=&#34;https://spacetimelab.cn/post/scrapy-for-distributed-spider-summary/images/project3/iprdb-demo_huce532c391a2d57024ac15195dae48a48_1991292_0a367125b85463975905ac2c3deae4da.webp&#34;
+               width=&#34;760&#34;
+               height=&#34;476&#34;
+               loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+  &lt;/div&gt;&lt;/figure&gt;
+&lt;/p&gt;
+&lt;p&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure  &gt;
+  &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img alt=&#34;&#34; srcset=&#34;
+               /post/scrapy-for-distributed-spider-summary/images/project3/demo-qcc_hud7404f8b37d450a0ec9fdeef064443e6_1959741_0fdb75a483f23dfc1ab739bb5b9b439c.webp 400w,
+               /post/scrapy-for-distributed-spider-summary/images/project3/demo-qcc_hud7404f8b37d450a0ec9fdeef064443e6_1959741_fff1412cc25e59d990f45df0b05c50ab.webp 760w,
+               /post/scrapy-for-distributed-spider-summary/images/project3/demo-qcc_hud7404f8b37d450a0ec9fdeef064443e6_1959741_1200x1200_fit_q75_h2_lanczos_3.webp 1200w&#34;
+               src=&#34;https://spacetimelab.cn/post/scrapy-for-distributed-spider-summary/images/project3/demo-qcc_hud7404f8b37d450a0ec9fdeef064443e6_1959741_0fdb75a483f23dfc1ab739bb5b9b439c.webp&#34;
+               width=&#34;760&#34;
+               height=&#34;440&#34;
+               loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+  &lt;/div&gt;&lt;/figure&gt;
+&lt;/p&gt;
+&lt;h2 id=&#34;相关拓展&#34;&gt;相关拓展&lt;/h2&gt;
+&lt;h3 id=&#34;scrapy-redis&#34;&gt;scrapy-redis&lt;/h3&gt;
+&lt;p&gt;Redis可以作为scrapy的任务队列，对数据爬取任务进行去重和持久化，方便多进程/多节点协作的分布式爬虫。&lt;/p&gt;
+&lt;p&gt;相关配置示例：&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-python&#34; data-lang=&#34;python&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;# 启用调度&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;SCHEDULER&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;scrapy_redis.scheduler.Scheduler&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;# 重复过滤&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;DUPEFILTER_CLASS&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;scrapy_redis.dupefilter.RFPDupeFilter&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;# Configure item pipelines&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;# See https://docs.scrapy.org/en/latest/topics/item-pipeline.html&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;ITEM_PIPELINES&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;s2&#34;&gt;&amp;#34;scrapy_redis.pipelines.RedisPipeline&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;400&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;s2&#34;&gt;&amp;#34;iprdb.pipelines.PatentListPreprocessPipeline&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;300&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;REDIS_HOST&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;s1&#34;&gt;&amp;#39;YOUR_IP_OR_DOMAIN&amp;#39;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;REDIS_PORT&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;YOUR_PORT&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;REDIS_PARAMS&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;s2&#34;&gt;&amp;#34;password&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;PASSWORD&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;SCHEDULER_PERSIST&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;kc&#34;&gt;True&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;code&gt;RFPDupeFilter&lt;/code&gt; 利用 Redis 的集合（set）数据类型来存储已经爬取的请求的指纹（即 URL 的某种哈希值）。当 Scrapy 爬虫尝试处理一个请求时，&lt;code&gt;RFPDupeFilter&lt;/code&gt; 会计算该请求的指纹，并检查这个指纹是否已经存在于 Redis 集合中。如果指纹已存在，说明该请求已经被处理过，爬虫将不会再次爬取该 URL；如果指纹不存在，爬虫将继续处理请求，并将指纹添加到 Redis 集合中，以便将来的请求可以进行去重。&lt;/p&gt;
+&lt;p&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure  &gt;
+  &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img alt=&#34;&#34; srcset=&#34;
+               /post/scrapy-for-distributed-spider-summary/images/project3/dupefilter_hub5eb01c4f7c0e5d49ab889579565cb6c_243355_e3c18590c357adefee9603eb0c45070b.webp 400w,
+               /post/scrapy-for-distributed-spider-summary/images/project3/dupefilter_hub5eb01c4f7c0e5d49ab889579565cb6c_243355_adad276ce44c959b3e27c4976afcb99d.webp 760w,
+               /post/scrapy-for-distributed-spider-summary/images/project3/dupefilter_hub5eb01c4f7c0e5d49ab889579565cb6c_243355_1200x1200_fit_q75_h2_lanczos_3.webp 1200w&#34;
+               src=&#34;https://spacetimelab.cn/post/scrapy-for-distributed-spider-summary/images/project3/dupefilter_hub5eb01c4f7c0e5d49ab889579565cb6c_243355_e3c18590c357adefee9603eb0c45070b.webp&#34;
+               width=&#34;760&#34;
+               height=&#34;406&#34;
+               loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+  &lt;/div&gt;&lt;/figure&gt;
+&lt;/p&gt;
 </description>
     </item>
     

@@ -1233,6 +1233,37 @@ user: 公司去年销量最好的产品是xxx，请分析xxx产品在xxxxxx市�
 &lt;li&gt;
 &lt;p&gt;素问智能&lt;/p&gt;
 &lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;知嘟嘟-专利搜索引擎&lt;/p&gt;
+&lt;p&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure  &gt;
+  &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img alt=&#34;&#34; srcset=&#34;
+               /post/bigmodel-business-analysis/images/market/iprdb_hue89aa99b3773e722a25bb1c1beddcf8c_1676832_eca5752b59c11ae5213aadfafb5710f5.webp 400w,
+               /post/bigmodel-business-analysis/images/market/iprdb_hue89aa99b3773e722a25bb1c1beddcf8c_1676832_2f32e21fe66cd7fecc3134c5cfc0d0ea.webp 760w,
+               /post/bigmodel-business-analysis/images/market/iprdb_hue89aa99b3773e722a25bb1c1beddcf8c_1676832_1200x1200_fit_q75_h2_lanczos_3.webp 1200w&#34;
+               src=&#34;https://spacetimelab.cn/post/bigmodel-business-analysis/images/market/iprdb_hue89aa99b3773e722a25bb1c1beddcf8c_1676832_eca5752b59c11ae5213aadfafb5710f5.webp&#34;
+               width=&#34;760&#34;
+               height=&#34;418&#34;
+               loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+  &lt;/div&gt;&lt;/figure&gt;
+&lt;/p&gt;
+&lt;/li&gt;
 &lt;/ul&gt;
 &lt;h2 id=&#34;相关专利&#34;&gt;相关专利&lt;/h2&gt;
 &lt;h3 id=&#34;产业链图谱绘制相关&#34;&gt;产业链图谱绘制相关&lt;/h3&gt;
@@ -3003,27 +3034,27 @@ PASSED                               [100%]ChatResponse(code=1, message=学习Sp
 &lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;&lt;/span&gt;        &lt;span class=&#34;c1&#34;&gt;#如果未在此处配置HTTPS的默认访问端口，可能会造成Nginx无法启动。
 &lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;&lt;/span&gt;        &lt;span class=&#34;kn&#34;&gt;listen&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;443&lt;/span&gt; &lt;span class=&#34;s&#34;&gt;ssl&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        &lt;span class=&#34;c1&#34;&gt;#填写证书绑定的域名
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;&lt;/span&gt;        &lt;span class=&#34;kn&#34;&gt;server_name&lt;/span&gt; &lt;span class=&#34;s&#34;&gt;&amp;lt;yourdomain&amp;gt;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;		
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;&lt;/span&gt;        &lt;span class=&#34;kn&#34;&gt;server_name&lt;/span&gt; &lt;span class=&#34;s&#34;&gt;&amp;lt;yourdomain&amp;gt;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;        
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        &lt;span class=&#34;c1&#34;&gt;#填写证书文件绝对路径
 &lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;&lt;/span&gt;        &lt;span class=&#34;kn&#34;&gt;ssl_certificate&lt;/span&gt;      &lt;span class=&#34;s&#34;&gt;&amp;#34;/etc/nginx/conf.d/cert/cert.pem&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        &lt;span class=&#34;c1&#34;&gt;#填写证书私钥文件绝对路径 
 &lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;&lt;/span&gt;        &lt;span class=&#34;kn&#34;&gt;ssl_certificate_key&lt;/span&gt;  &lt;span class=&#34;s&#34;&gt;&amp;#34;/etc/nginx/conf.d/cert/cert.key&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt; 
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        &lt;span class=&#34;kn&#34;&gt;ssl_session_cache&lt;/span&gt;    &lt;span class=&#34;s&#34;&gt;shared:SSL:1m&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        &lt;span class=&#34;kn&#34;&gt;ssl_session_timeout&lt;/span&gt;  &lt;span class=&#34;mi&#34;&gt;5m&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;		
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        &lt;span class=&#34;c1&#34;&gt;#默认加密套件
 &lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;&lt;/span&gt;        &lt;span class=&#34;kn&#34;&gt;ssl_ciphers&lt;/span&gt;  &lt;span class=&#34;s&#34;&gt;HIGH:!aNULL:!MD5&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;		
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        &lt;span class=&#34;c1&#34;&gt;#自定义设置使用的TLS协议的类型以及加密套件（以下为配置示例，请您自行评估是否需要配置）
 &lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;&lt;/span&gt;        &lt;span class=&#34;c1&#34;&gt;#TLS协议版本越高，HTTPS通信的安全性越高，但是相较于低版本TLS协议，高版本TLS协议对浏览器的兼容性较差。
 &lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;&lt;/span&gt;        &lt;span class=&#34;c1&#34;&gt;#ssl_ciphers ECDHE-RSA-AES128-GCM-SHA256:ECDHE:ECDH:AES:HIGH:!NULL:!aNULL:!MD5:!ADH:!RC4;
 &lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;&lt;/span&gt;        &lt;span class=&#34;c1&#34;&gt;#ssl_protocols TLSv1.1 TLSv1.2 TLSv1.3;
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;&lt;/span&gt;		
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        &lt;span class=&#34;c1&#34;&gt;#表示优先使用服务端加密套件。默认开启
 &lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;&lt;/span&gt;        &lt;span class=&#34;kn&#34;&gt;ssl_prefer_server_ciphers&lt;/span&gt;  &lt;span class=&#34;no&#34;&gt;on&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt; 
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        &lt;span class=&#34;kn&#34;&gt;location&lt;/span&gt; &lt;span class=&#34;s&#34;&gt;/&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;            &lt;span class=&#34;kn&#34;&gt;root&lt;/span&gt;   &lt;span class=&#34;s&#34;&gt;html&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;            &lt;span class=&#34;kn&#34;&gt;index&lt;/span&gt;  &lt;span class=&#34;s&#34;&gt;index.html&lt;/span&gt; &lt;span class=&#34;s&#34;&gt;index.htm&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
@@ -3166,6 +3197,241 @@ PASSED                               [100%]ChatResponse(code=1, message=学习Sp
   &lt;/div&gt;&lt;/figure&gt;
 &lt;/p&gt;
 &lt;p&gt;至此无问题，编译安装过程也没报错，说明pgsql正常安装完成。后续还需编译安装postgis插件，更改postgres配置项提高安全性，此处暂略。&lt;/p&gt;
+&lt;h4 id=&#34;redis&#34;&gt;Redis&lt;/h4&gt;
+&lt;h5 id=&#34;redis服务安装&#34;&gt;Redis服务安装&lt;/h5&gt;
+&lt;p&gt;&lt;a href=&#34;https://redis.io/docs/install/install-redis/install-redis-on-linux/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Install Redis on Linux | Redis&lt;/a&gt;&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;sudo snap install redis
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;常见redis配置文件位置：/etc/redis/redis.conf&lt;/p&gt;
+&lt;p&gt;默认日志文件位置：/var/log/redis&lt;/p&gt;
+&lt;p&gt;注意：使用不同方式安装的redis配置文件位置不同，具体的可以通过命令查看。&lt;/p&gt;
+&lt;p&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure  &gt;
+  &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img alt=&#34;&#34; srcset=&#34;
+               /post/aliyun-cloud-server-envionment-prepare/images/envs/databases/redis/redis-conf-info-server_huffab14c89983d31fa3b20fa6150f0144_152737_4be70aca3b5356a79bfb2a3a7558889d.webp 400w,
+               /post/aliyun-cloud-server-envionment-prepare/images/envs/databases/redis/redis-conf-info-server_huffab14c89983d31fa3b20fa6150f0144_152737_ef2b27a19f2d85ab39124e7bdb772cf9.webp 760w,
+               /post/aliyun-cloud-server-envionment-prepare/images/envs/databases/redis/redis-conf-info-server_huffab14c89983d31fa3b20fa6150f0144_152737_1200x1200_fit_q75_h2_lanczos_3.webp 1200w&#34;
+               src=&#34;https://spacetimelab.cn/post/aliyun-cloud-server-envionment-prepare/images/envs/databases/redis/redis-conf-info-server_huffab14c89983d31fa3b20fa6150f0144_152737_4be70aca3b5356a79bfb2a3a7558889d.webp&#34;
+               width=&#34;685&#34;
+               height=&#34;760&#34;
+               loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+  &lt;/div&gt;&lt;/figure&gt;
+&lt;/p&gt;
+&lt;h5 id=&#34;通过redis&#34;&gt;通过redis&lt;/h5&gt;
+&lt;h5 id=&#34;redis客户端工具安装&#34;&gt;Redis客户端工具安装&lt;/h5&gt;
+&lt;p&gt;redis-tools包含一些常用的Redis工具集合，提供很多命令来管理和操作Redis，执行客户端操作：如发送命令、查看服务状态、故障排除等。&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;sudo apt install redis-tools
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure  &gt;
+  &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img alt=&#34;&#34; srcset=&#34;
+               /post/aliyun-cloud-server-envionment-prepare/images/envs/databases/redis/redis-tools_hu2e586fb08de1fb3b1f02bd1c3e8c6d12_47481_f18bac24172c54ce9021409b075602b7.webp 400w,
+               /post/aliyun-cloud-server-envionment-prepare/images/envs/databases/redis/redis-tools_hu2e586fb08de1fb3b1f02bd1c3e8c6d12_47481_46506b1825ebcb156c847088de35b275.webp 760w,
+               /post/aliyun-cloud-server-envionment-prepare/images/envs/databases/redis/redis-tools_hu2e586fb08de1fb3b1f02bd1c3e8c6d12_47481_1200x1200_fit_q75_h2_lanczos_3.webp 1200w&#34;
+               src=&#34;https://spacetimelab.cn/post/aliyun-cloud-server-envionment-prepare/images/envs/databases/redis/redis-tools_hu2e586fb08de1fb3b1f02bd1c3e8c6d12_47481_f18bac24172c54ce9021409b075602b7.webp&#34;
+               width=&#34;760&#34;
+               height=&#34;141&#34;
+               loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+  &lt;/div&gt;&lt;/figure&gt;
+&lt;/p&gt;
+&lt;h6 id=&#34;redis-cli常用方式&#34;&gt;redis-cli常用方式&lt;/h6&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;连接远程redis&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;redis-cli -h host -p port -a password
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;发送命令&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;redis-cli &lt;span class=&#34;nb&#34;&gt;set&lt;/span&gt; &lt;span class=&#34;nb&#34;&gt;test&lt;/span&gt; &lt;span class=&#34;m&#34;&gt;1&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;redis-cli get &lt;span class=&#34;nb&#34;&gt;test&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure  &gt;
+  &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img alt=&#34;&#34; srcset=&#34;
+               /post/aliyun-cloud-server-envionment-prepare/images/envs/databases/redis/redis-cli-command_hu0a53e0366d24672e73e2a435c2658a78_34356_7a9b0d9e0186d04737f0bb0ea762a45c.webp 400w,
+               /post/aliyun-cloud-server-envionment-prepare/images/envs/databases/redis/redis-cli-command_hu0a53e0366d24672e73e2a435c2658a78_34356_e2dca701832f2d45996503151cae9de2.webp 760w,
+               /post/aliyun-cloud-server-envionment-prepare/images/envs/databases/redis/redis-cli-command_hu0a53e0366d24672e73e2a435c2658a78_34356_1200x1200_fit_q75_h2_lanczos_3.webp 1200w&#34;
+               src=&#34;https://spacetimelab.cn/post/aliyun-cloud-server-envionment-prepare/images/envs/databases/redis/redis-cli-command_hu0a53e0366d24672e73e2a435c2658a78_34356_7a9b0d9e0186d04737f0bb0ea762a45c.webp&#34;
+               width=&#34;760&#34;
+               height=&#34;84&#34;
+               loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+  &lt;/div&gt;&lt;/figure&gt;
+&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;修改密码&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;CONFIG SET requirepass YOUR_PASSWORD
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure  &gt;
+  &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img alt=&#34;&#34; srcset=&#34;
+               /post/aliyun-cloud-server-envionment-prepare/images/envs/databases/redis/redis-cli-change-password_hub8d9c6c6ed8fbfc2077a4e2ec1243eb3_126738_5e6055a9fb13df6cc394d90e4c25e89a.webp 400w,
+               /post/aliyun-cloud-server-envionment-prepare/images/envs/databases/redis/redis-cli-change-password_hub8d9c6c6ed8fbfc2077a4e2ec1243eb3_126738_8f8432363b1b14024820653e2b13c024.webp 760w,
+               /post/aliyun-cloud-server-envionment-prepare/images/envs/databases/redis/redis-cli-change-password_hub8d9c6c6ed8fbfc2077a4e2ec1243eb3_126738_1200x1200_fit_q75_h2_lanczos_3.webp 1200w&#34;
+               src=&#34;https://spacetimelab.cn/post/aliyun-cloud-server-envionment-prepare/images/envs/databases/redis/redis-cli-change-password_hub8d9c6c6ed8fbfc2077a4e2ec1243eb3_126738_5e6055a9fb13df6cc394d90e4c25e89a.webp&#34;
+               width=&#34;760&#34;
+               height=&#34;243&#34;
+               loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+  &lt;/div&gt;&lt;/figure&gt;
+&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&amp;hellip;&amp;hellip;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h5 id=&#34;redis默认服务端口修改&#34;&gt;redis默认服务端口修改&lt;/h5&gt;
+&lt;p&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure  &gt;
+  &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img alt=&#34;&#34; srcset=&#34;
+               /post/aliyun-cloud-server-envionment-prepare/images/envs/databases/redis/redis-conf-port_hu92f71e94ad025b1ddbdbeff1f7db696f_247523_177458913257d4031bd6182d3b681d7d.webp 400w,
+               /post/aliyun-cloud-server-envionment-prepare/images/envs/databases/redis/redis-conf-port_hu92f71e94ad025b1ddbdbeff1f7db696f_247523_71b763ed8935231994c3dfa83858a645.webp 760w,
+               /post/aliyun-cloud-server-envionment-prepare/images/envs/databases/redis/redis-conf-port_hu92f71e94ad025b1ddbdbeff1f7db696f_247523_1200x1200_fit_q75_h2_lanczos_3.webp 1200w&#34;
+               src=&#34;https://spacetimelab.cn/post/aliyun-cloud-server-envionment-prepare/images/envs/databases/redis/redis-conf-port_hu92f71e94ad025b1ddbdbeff1f7db696f_247523_177458913257d4031bd6182d3b681d7d.webp&#34;
+               width=&#34;760&#34;
+               height=&#34;653&#34;
+               loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+  &lt;/div&gt;&lt;/figure&gt;
+&lt;/p&gt;
+&lt;p&gt;配置文件、客户端ip白名单等均可在配置文件中修改。&lt;/p&gt;
+&lt;p&gt;重启redis后生效&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;systemctl restart redis
+&lt;/code&gt;&lt;/pre&gt;&lt;h5 id=&#34;acl访问控制列表&#34;&gt;ACL（访问控制列表）&lt;/h5&gt;
+&lt;p&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure  &gt;
+  &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img alt=&#34;&#34; srcset=&#34;
+               /post/aliyun-cloud-server-envionment-prepare/images/envs/databases/redis/acl_hu2567b1ebd74873c8ee7e521784b07c92_127580_607f616aca4eb9b47e7c4a758acf8fe9.webp 400w,
+               /post/aliyun-cloud-server-envionment-prepare/images/envs/databases/redis/acl_hu2567b1ebd74873c8ee7e521784b07c92_127580_a251eba9063e7425a47e06dbc15b39f3.webp 760w,
+               /post/aliyun-cloud-server-envionment-prepare/images/envs/databases/redis/acl_hu2567b1ebd74873c8ee7e521784b07c92_127580_1200x1200_fit_q75_h2_lanczos_3.webp 1200w&#34;
+               src=&#34;https://spacetimelab.cn/post/aliyun-cloud-server-envionment-prepare/images/envs/databases/redis/acl_hu2567b1ebd74873c8ee7e521784b07c92_127580_607f616aca4eb9b47e7c4a758acf8fe9.webp&#34;
+               width=&#34;760&#34;
+               height=&#34;277&#34;
+               loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+  &lt;/div&gt;&lt;/figure&gt;
+&lt;/p&gt;
+&lt;h6 id=&#34;创建用户&#34;&gt;创建用户&lt;/h6&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;ACL setuser USER
+ACL setuser USER on
+ACL setuser USER &amp;gt;PASSWORD
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure  &gt;
+  &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img alt=&#34;&#34; srcset=&#34;
+               /post/aliyun-cloud-server-envionment-prepare/images/envs/databases/redis/acl-cat_huce027c75fe374b6b7fa3dca1f1dafa43_105574_b2fdef21162ea9cf89ef876214baada0.webp 400w,
+               /post/aliyun-cloud-server-envionment-prepare/images/envs/databases/redis/acl-cat_huce027c75fe374b6b7fa3dca1f1dafa43_105574_15574fe1974a6e3350db945144411da8.webp 760w,
+               /post/aliyun-cloud-server-envionment-prepare/images/envs/databases/redis/acl-cat_huce027c75fe374b6b7fa3dca1f1dafa43_105574_1200x1200_fit_q75_h2_lanczos_3.webp 1200w&#34;
+               src=&#34;https://spacetimelab.cn/post/aliyun-cloud-server-envionment-prepare/images/envs/databases/redis/acl-cat_huce027c75fe374b6b7fa3dca1f1dafa43_105574_b2fdef21162ea9cf89ef876214baada0.webp&#34;
+               width=&#34;760&#34;
+               height=&#34;511&#34;
+               loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+  &lt;/div&gt;&lt;/figure&gt;
+&lt;/p&gt;
 &lt;h3 id=&#34;七其他&#34;&gt;七、其他&lt;/h3&gt;
 &lt;ul&gt;
 &lt;li&gt;
@@ -3178,6 +3444,7 @@ PASSED                               [100%]ChatResponse(code=1, message=学习Sp
 &lt;p&gt;&amp;hellip;&amp;hellip;&lt;/p&gt;
 &lt;/li&gt;
 &lt;/ul&gt;
+&lt;h4 id=&#34;gitlab&#34;&gt;Gitlab&lt;/h4&gt;
 </description>
     </item>
     
@@ -27421,6 +27688,146 @@ scrapy自带的item exporter，源码位于scrapy.exporters中，有各种类型
 &lt;/ul&gt;
 &lt;h4 id=&#34;item-loader及数据入库&#34;&gt;Item Loader及数据入库&lt;/h4&gt;
 &lt;p&gt;拉勾网目前会根据user-agent判断是否为爬虫，在chrome浏览器输入about:version可获得User-Agent信息。下面这个网站也可直接返回当前user-agent： &lt;a href=&#34;https://helloacm.com/api/user-agent/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;https://helloacm.com/api/user-agent/&lt;/a&gt;&lt;/p&gt;
+&lt;h3 id=&#34;实战3--知嘟嘟专利爬虫&#34;&gt;实战3&amp;ndash;知嘟嘟专利爬虫&lt;/h3&gt;
+&lt;p&gt;redis存储的中间结果：&lt;/p&gt;
+&lt;p&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure  &gt;
+  &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img alt=&#34;&#34; srcset=&#34;
+               /post/scrapy-for-distributed-spider-summary/images/project3/items_hu5edac16d24d307f4289ecaac4539ffb3_247900_ee5935e707c9ee788af7bc03f119beed.webp 400w,
+               /post/scrapy-for-distributed-spider-summary/images/project3/items_hu5edac16d24d307f4289ecaac4539ffb3_247900_e0740221b3b02b5b7715f1afdac54c48.webp 760w,
+               /post/scrapy-for-distributed-spider-summary/images/project3/items_hu5edac16d24d307f4289ecaac4539ffb3_247900_1200x1200_fit_q75_h2_lanczos_3.webp 1200w&#34;
+               src=&#34;https://spacetimelab.cn/post/scrapy-for-distributed-spider-summary/images/project3/items_hu5edac16d24d307f4289ecaac4539ffb3_247900_ee5935e707c9ee788af7bc03f119beed.webp&#34;
+               width=&#34;760&#34;
+               height=&#34;453&#34;
+               loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+  &lt;/div&gt;&lt;/figure&gt;
+&lt;/p&gt;
+&lt;p&gt;入库成果：&lt;/p&gt;
+&lt;p&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure  &gt;
+  &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img alt=&#34;&#34; srcset=&#34;
+               /post/scrapy-for-distributed-spider-summary/images/project3/iprdb-demo_huce532c391a2d57024ac15195dae48a48_1991292_0a367125b85463975905ac2c3deae4da.webp 400w,
+               /post/scrapy-for-distributed-spider-summary/images/project3/iprdb-demo_huce532c391a2d57024ac15195dae48a48_1991292_3e4ae5a1945bce983048e7e6b256e27a.webp 760w,
+               /post/scrapy-for-distributed-spider-summary/images/project3/iprdb-demo_huce532c391a2d57024ac15195dae48a48_1991292_1200x1200_fit_q75_h2_lanczos_3.webp 1200w&#34;
+               src=&#34;https://spacetimelab.cn/post/scrapy-for-distributed-spider-summary/images/project3/iprdb-demo_huce532c391a2d57024ac15195dae48a48_1991292_0a367125b85463975905ac2c3deae4da.webp&#34;
+               width=&#34;760&#34;
+               height=&#34;476&#34;
+               loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+  &lt;/div&gt;&lt;/figure&gt;
+&lt;/p&gt;
+&lt;p&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure  &gt;
+  &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img alt=&#34;&#34; srcset=&#34;
+               /post/scrapy-for-distributed-spider-summary/images/project3/demo-qcc_hud7404f8b37d450a0ec9fdeef064443e6_1959741_0fdb75a483f23dfc1ab739bb5b9b439c.webp 400w,
+               /post/scrapy-for-distributed-spider-summary/images/project3/demo-qcc_hud7404f8b37d450a0ec9fdeef064443e6_1959741_fff1412cc25e59d990f45df0b05c50ab.webp 760w,
+               /post/scrapy-for-distributed-spider-summary/images/project3/demo-qcc_hud7404f8b37d450a0ec9fdeef064443e6_1959741_1200x1200_fit_q75_h2_lanczos_3.webp 1200w&#34;
+               src=&#34;https://spacetimelab.cn/post/scrapy-for-distributed-spider-summary/images/project3/demo-qcc_hud7404f8b37d450a0ec9fdeef064443e6_1959741_0fdb75a483f23dfc1ab739bb5b9b439c.webp&#34;
+               width=&#34;760&#34;
+               height=&#34;440&#34;
+               loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+  &lt;/div&gt;&lt;/figure&gt;
+&lt;/p&gt;
+&lt;h2 id=&#34;相关拓展&#34;&gt;相关拓展&lt;/h2&gt;
+&lt;h3 id=&#34;scrapy-redis&#34;&gt;scrapy-redis&lt;/h3&gt;
+&lt;p&gt;Redis可以作为scrapy的任务队列，对数据爬取任务进行去重和持久化，方便多进程/多节点协作的分布式爬虫。&lt;/p&gt;
+&lt;p&gt;相关配置示例：&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-python&#34; data-lang=&#34;python&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;# 启用调度&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;SCHEDULER&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;scrapy_redis.scheduler.Scheduler&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;# 重复过滤&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;DUPEFILTER_CLASS&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;scrapy_redis.dupefilter.RFPDupeFilter&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;# Configure item pipelines&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;# See https://docs.scrapy.org/en/latest/topics/item-pipeline.html&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;ITEM_PIPELINES&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;s2&#34;&gt;&amp;#34;scrapy_redis.pipelines.RedisPipeline&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;400&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;s2&#34;&gt;&amp;#34;iprdb.pipelines.PatentListPreprocessPipeline&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;300&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;REDIS_HOST&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;s1&#34;&gt;&amp;#39;YOUR_IP_OR_DOMAIN&amp;#39;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;REDIS_PORT&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;YOUR_PORT&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;REDIS_PARAMS&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;s2&#34;&gt;&amp;#34;password&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;PASSWORD&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;SCHEDULER_PERSIST&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;kc&#34;&gt;True&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;code&gt;RFPDupeFilter&lt;/code&gt; 利用 Redis 的集合（set）数据类型来存储已经爬取的请求的指纹（即 URL 的某种哈希值）。当 Scrapy 爬虫尝试处理一个请求时，&lt;code&gt;RFPDupeFilter&lt;/code&gt; 会计算该请求的指纹，并检查这个指纹是否已经存在于 Redis 集合中。如果指纹已存在，说明该请求已经被处理过，爬虫将不会再次爬取该 URL；如果指纹不存在，爬虫将继续处理请求，并将指纹添加到 Redis 集合中，以便将来的请求可以进行去重。&lt;/p&gt;
+&lt;p&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure  &gt;
+  &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img alt=&#34;&#34; srcset=&#34;
+               /post/scrapy-for-distributed-spider-summary/images/project3/dupefilter_hub5eb01c4f7c0e5d49ab889579565cb6c_243355_e3c18590c357adefee9603eb0c45070b.webp 400w,
+               /post/scrapy-for-distributed-spider-summary/images/project3/dupefilter_hub5eb01c4f7c0e5d49ab889579565cb6c_243355_adad276ce44c959b3e27c4976afcb99d.webp 760w,
+               /post/scrapy-for-distributed-spider-summary/images/project3/dupefilter_hub5eb01c4f7c0e5d49ab889579565cb6c_243355_1200x1200_fit_q75_h2_lanczos_3.webp 1200w&#34;
+               src=&#34;https://spacetimelab.cn/post/scrapy-for-distributed-spider-summary/images/project3/dupefilter_hub5eb01c4f7c0e5d49ab889579565cb6c_243355_e3c18590c357adefee9603eb0c45070b.webp&#34;
+               width=&#34;760&#34;
+               height=&#34;406&#34;
+               loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+  &lt;/div&gt;&lt;/figure&gt;
+&lt;/p&gt;
 </description>
     </item>
     
