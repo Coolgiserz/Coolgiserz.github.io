@@ -329,7 +329,7 @@
     <meta property="twitter:image" content="https://spacetimelab.cn/media/icon_hue03491371183284312b8b116a73ae5ab_79511_512x512_fill_lanczos_center_3.png" /><meta property="og:locale" content="en-us" />
   
     
-      <meta property="og:updated_time" content="2024-03-22T21:01:42&#43;08:00" />
+      <meta property="og:updated_time" content="2024-04-01T21:28:38&#43;08:00" />
     
   
 
@@ -719,6 +719,63 @@
   
 
   
+  
+    
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+  
+
+
+<div class="media stream-item view-compact">
+  <div class="media-body">
+
+    <div class="section-subheading article-title mb-0 mt-0">
+      <a href="/project/patent_crawler_iprdb/" >专利数据定时获取简单实现</a>
+    </div>
+
+    
+    <a href="/project/patent_crawler_iprdb/"  class="summary-link">
+      <div class="article-style">
+        爬取内容 专利基本信息、摘要、专利说明书等。
+技术架构 爬虫框架：Scrapy
+URL队列：Redis
+数据库：PostgreSQL（patent_detail表、patent_task表）
+运行方式 手动或定时将patent_task表中的关键词构造成专利URL，并加入redis队列中
+定时启动爬虫（支持分布式），從redis队列中获取待爬取url，自动获取指定关键词最新/相关度最高/专利评级最高的专利信息，写入数据库。
+         数据成果示例  北京大学的专利      其他     反爬处理   随机User-Agent（浏览器）
+      </div>
+    </a>
+    
+
+    <div class="stream-meta article-metadata">
+
+      
+
+      
+    </div>
+
+    
+
+  </div>
+  <div class="ml-3">
+    
+    
+  </div>
+</div>
+
   
     
 
@@ -1561,99 +1618,17 @@
 </div>
 
   
-    
-
-
-
-
-
-
-
-
-
-
-
-
 
   
-
-
-<div class="media stream-item view-compact">
-  <div class="media-body">
-
-    <div class="section-subheading article-title mb-0 mt-0">
-      <a href="/post/python-core-programming-reading-note-1/" >Python Core Programming Startup &amp;&amp; ChatGPT based Python Learning</a>
-    </div>
-
-    
-    <a href="/post/python-core-programming-reading-note-1/"  class="summary-link">
-      <div class="article-style">
-        Python核心编程第三版阅读笔记1&ndash;Python学习路线及资源
-      </div>
-    </a>
-    
-
-    <div class="stream-meta article-metadata">
-
-      
-
-      
-        
-
-
-<div class="article-metadata">
-
-  
-  
-
-  
-  <span class="article-date">
+<nav class="mt-1">
+  <ul class="pagination justify-content-center">
     
     
-      
+    <li class="page-item"><a class="page-link" href="/category/python/page/2/">&raquo;</a></li>
     
-    Mar 8, 2023
-  </span>
-  
+  </ul>
+</nav>
 
-  
-
-  
-  <span class="middot-divider"></span>
-  <span class="article-reading-time">
-    1 min read
-  </span>
-  
-
-  
-  
-  
-  
-
-  
-  
-  <span class="middot-divider"></span>
-  <span class="article-categories">
-    <i class="fas fa-folder mr-1"></i><a href="/category/python/">Python</a></span>
-  
-
-</div>
-
-      
-    </div>
-
-    
-
-  </div>
-  <div class="ml-3">
-    
-    
-  </div>
-</div>
-
-  
-
-  
 
 </div>
   </div>

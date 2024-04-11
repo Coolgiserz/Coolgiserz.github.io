@@ -1167,10 +1167,10 @@ user: 公司去年销量最好的产品是xxx，请分析xxx产品在xxxxxx市�
 &lt;figure  &gt;
   &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
     &lt;div class=&#34;w-100&#34; &gt;&lt;img alt=&#34;&#34; srcset=&#34;
-               /post/bigmodel-business-analysis/images/market/iprdb_hue89aa99b3773e722a25bb1c1beddcf8c_1676832_eca5752b59c11ae5213aadfafb5710f5.webp 400w,
+               /post/bigmodel-business-analysis/images/market/iprdb_hue89aa99b3773e722a25bb1c1beddcf8c_1676832_92b19fab0313de65896dd7f697a8d739.webp 400w,
                /post/bigmodel-business-analysis/images/market/iprdb_hue89aa99b3773e722a25bb1c1beddcf8c_1676832_2f32e21fe66cd7fecc3134c5cfc0d0ea.webp 760w,
                /post/bigmodel-business-analysis/images/market/iprdb_hue89aa99b3773e722a25bb1c1beddcf8c_1676832_1200x1200_fit_q75_h2_lanczos_3.webp 1200w&#34;
-               src=&#34;https://spacetimelab.cn/post/bigmodel-business-analysis/images/market/iprdb_hue89aa99b3773e722a25bb1c1beddcf8c_1676832_eca5752b59c11ae5213aadfafb5710f5.webp&#34;
+               src=&#34;https://spacetimelab.cn/post/bigmodel-business-analysis/images/market/iprdb_hue89aa99b3773e722a25bb1c1beddcf8c_1676832_92b19fab0313de65896dd7f697a8d739.webp&#34;
                width=&#34;760&#34;
                height=&#34;418&#34;
                loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
@@ -2695,6 +2695,40 @@ PASSED                               [100%]ChatResponse(code=1, message=学习Sp
   &lt;/div&gt;&lt;/figure&gt;
 &lt;/p&gt;
 &lt;p&gt;至此无问题，编译安装过程也没报错，说明pgsql正常安装完成。后续还需编译安装postgis插件，更改postgres配置项提高安全性，此处暂略。&lt;/p&gt;
+&lt;h5 id=&#34;关于常见配置&#34;&gt;关于常见配置&lt;/h5&gt;
+&lt;h6 id=&#34;服务端口&#34;&gt;服务端口&lt;/h6&gt;
+&lt;p&gt;要更改服务端口，仅需修改配置文件再重启服务。&lt;/p&gt;
+&lt;p&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure  &gt;
+  &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img alt=&#34;&#34; srcset=&#34;
+               /post/aliyun-cloud-server-envionment-prepare/images/envs/databases/pgsql/conf/postgresql_conf_hu520560861abbf6a3f3a7556d251481ee_257709_cdc64edca718ee8f4a3ab67ffd30b174.webp 400w,
+               /post/aliyun-cloud-server-envionment-prepare/images/envs/databases/pgsql/conf/postgresql_conf_hu520560861abbf6a3f3a7556d251481ee_257709_8adce5cc4346cee4b52107f64cd3eed0.webp 760w,
+               /post/aliyun-cloud-server-envionment-prepare/images/envs/databases/pgsql/conf/postgresql_conf_hu520560861abbf6a3f3a7556d251481ee_257709_1200x1200_fit_q75_h2_lanczos_3.webp 1200w&#34;
+               src=&#34;https://spacetimelab.cn/post/aliyun-cloud-server-envionment-prepare/images/envs/databases/pgsql/conf/postgresql_conf_hu520560861abbf6a3f3a7556d251481ee_257709_cdc64edca718ee8f4a3ab67ffd30b174.webp&#34;
+               width=&#34;760&#34;
+               height=&#34;612&#34;
+               loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+  &lt;/div&gt;&lt;/figure&gt;
+&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;pg_ctl -D /data/postgresql restart
+&lt;/code&gt;&lt;/pre&gt;&lt;h6 id=&#34;远程连接ip&#34;&gt;远程连接IP&lt;/h6&gt;
+&lt;p&gt;pg_hba.conf, postgresql.conf&lt;/p&gt;
 &lt;h4 id=&#34;redis&#34;&gt;Redis&lt;/h4&gt;
 &lt;h5 id=&#34;redis服务安装&#34;&gt;Redis服务安装&lt;/h5&gt;
 &lt;p&gt;&lt;a href=&#34;https://redis.io/docs/install/install-redis/install-redis-on-linux/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Install Redis on Linux | Redis&lt;/a&gt;&lt;/p&gt;
@@ -2930,6 +2964,68 @@ ACL setuser USER &amp;gt;PASSWORD
                loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
   &lt;/div&gt;&lt;/figure&gt;
 &lt;/p&gt;
+&lt;h4 id=&#34;es&#34;&gt;ES&lt;/h4&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;docker network create elastic
+docker pull docker.elastic.co/elasticsearch/elasticsearch:8.13.0
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure  &gt;
+  &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img alt=&#34;&#34; srcset=&#34;
+               /post/aliyun-cloud-server-envionment-prepare/images/envs/databases/es_huc3dcb53c6c8cf874b2a9a10c5b65f285_148831_8d65ce86b06997e25174db3172275089.webp 400w,
+               /post/aliyun-cloud-server-envionment-prepare/images/envs/databases/es_huc3dcb53c6c8cf874b2a9a10c5b65f285_148831_ebb37e601169bb80cd2363af2dfaa2ff.webp 760w,
+               /post/aliyun-cloud-server-envionment-prepare/images/envs/databases/es_huc3dcb53c6c8cf874b2a9a10c5b65f285_148831_1200x1200_fit_q75_h2_lanczos_3.webp 1200w&#34;
+               src=&#34;https://spacetimelab.cn/post/aliyun-cloud-server-envionment-prepare/images/envs/databases/es_huc3dcb53c6c8cf874b2a9a10c5b65f285_148831_8d65ce86b06997e25174db3172275089.webp&#34;
+               width=&#34;760&#34;
+               height=&#34;204&#34;
+               loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+  &lt;/div&gt;&lt;/figure&gt;
+&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;docker run --name es01 --net elastic -p 9200:9200 -it -m 1GB docker.elastic.co/elasticsearch/elasticsearch:8.13.0
+sudo docker run --name es01 --net elastic -p 9200:9200 -it -d  elasticsearch:8.13.0
+&lt;/code&gt;&lt;/pre&gt;&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;sudo docker pull kibana:8.13.0
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure  &gt;
+  &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img alt=&#34;&#34; srcset=&#34;
+               /post/aliyun-cloud-server-envionment-prepare/images/envs/databases/kibana_hu0300d17b34b2417f0f715adf21de28b3_161869_fffd24cca49ad7a0ffe2b7274c671a2c.webp 400w,
+               /post/aliyun-cloud-server-envionment-prepare/images/envs/databases/kibana_hu0300d17b34b2417f0f715adf21de28b3_161869_101a3218bafd2eb247a76f5c176e4f06.webp 760w,
+               /post/aliyun-cloud-server-envionment-prepare/images/envs/databases/kibana_hu0300d17b34b2417f0f715adf21de28b3_161869_1200x1200_fit_q75_h2_lanczos_3.webp 1200w&#34;
+               src=&#34;https://spacetimelab.cn/post/aliyun-cloud-server-envionment-prepare/images/envs/databases/kibana_hu0300d17b34b2417f0f715adf21de28b3_161869_fffd24cca49ad7a0ffe2b7274c671a2c.webp&#34;
+               width=&#34;760&#34;
+               height=&#34;376&#34;
+               loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+  &lt;/div&gt;&lt;/figure&gt;
+&lt;/p&gt;
 &lt;h3 id=&#34;七其他&#34;&gt;七、其他&lt;/h3&gt;
 &lt;ul&gt;
 &lt;li&gt;
@@ -2943,6 +3039,115 @@ ACL setuser USER &amp;gt;PASSWORD
 &lt;/li&gt;
 &lt;/ul&gt;
 &lt;h4 id=&#34;gitlab&#34;&gt;Gitlab&lt;/h4&gt;
+&lt;p&gt;配置不足以启动Gitlab&lt;/p&gt;
+&lt;h4 id=&#34;spark&#34;&gt;Spark&lt;/h4&gt;
+&lt;p&gt;&lt;a href=&#34;https://spark.apache.org/downloads.html&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;https://spark.apache.org/downloads.html&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Apache Spark 是一个用于大规模数据处理的统一分析引擎。它提供了 Scala、Java、Python 和 R 的高级 API，并且拥有一个优化的引擎，支持用于数据分析的通用计算图。此外，Spark 还支持一系列丰富的高级工具，包括用于 SQL 和 DataFrames 的 Spark SQL，用于 pandas 工作负载的 pandas API，用于机器学习的 MLlib，用于图处理的 GraphX，以及用于流处理的 Structured Streaming。&lt;/p&gt;
+&lt;h5 id=&#34;ubuntu下安装spark&#34;&gt;Ubuntu下安装Spark&lt;/h5&gt;
+&lt;p&gt;先安装java环境，简单起见可以：&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;sudo apt install default-jre
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;直接从官网下载https://dlcdn.apache.org/spark/spark-3.5.1/spark-3.5.1-bin-hadoop3.tgz&lt;/p&gt;
+&lt;p&gt;进行解压：&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;tar -xvf spark-3.5.1-bin-hadoop3.tar
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;配置环境变量：&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nb&#34;&gt;export&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;SPARK_HOME&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;/path/to/spark
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nb&#34;&gt;export&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;PATH&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;$PATH&lt;/span&gt;:&lt;span class=&#34;nv&#34;&gt;$SPARK_HOME&lt;/span&gt;/bin:&lt;span class=&#34;nv&#34;&gt;$SPARK_HOME&lt;/span&gt;/sbin
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;使环境变量生效:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nb&#34;&gt;source&lt;/span&gt; ~/.bashrc
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h5 id=&#34;spark配置&#34;&gt;Spark配置&lt;/h5&gt;
+&lt;p&gt;默认情况下，conf目录下有相关配置文件的模板：&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;fairscheduler.xml.template
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;log4j2.properties.templat
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;metrics.properties.template
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;spark-defaults.conf.template 
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;spark-env.sh.template
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;workers.template
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;spark-env.sh&lt;/p&gt;
+&lt;p&gt;这个文件用于设置 Spark 环境变量。你可以在这个文件中配置 JVM 选项、内存设置、以及其他与环境相关的配置。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;spark-defaults.conf&lt;/p&gt;
+&lt;p&gt;默认配置。&lt;/p&gt;
+&lt;p&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure  &gt;
+  &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img alt=&#34;&#34; srcset=&#34;
+               /post/aliyun-cloud-server-envionment-prepare/images/envs/analysis/spark/conf/spark-default_hu5f1265cca81969b43ced887c4a904357_260588_c3fd2f348d72174b014114bd3d898d29.webp 400w,
+               /post/aliyun-cloud-server-envionment-prepare/images/envs/analysis/spark/conf/spark-default_hu5f1265cca81969b43ced887c4a904357_260588_c89d7f4161533e5d13d0ed8a8d8938ec.webp 760w,
+               /post/aliyun-cloud-server-envionment-prepare/images/envs/analysis/spark/conf/spark-default_hu5f1265cca81969b43ced887c4a904357_260588_1200x1200_fit_q75_h2_lanczos_3.webp 1200w&#34;
+               src=&#34;https://spacetimelab.cn/post/aliyun-cloud-server-envionment-prepare/images/envs/analysis/spark/conf/spark-default_hu5f1265cca81969b43ced887c4a904357_260588_c3fd2f348d72174b014114bd3d898d29.webp&#34;
+               width=&#34;760&#34;
+               height=&#34;363&#34;
+               loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+  &lt;/div&gt;&lt;/figure&gt;
+&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;workers&lt;/p&gt;
+&lt;p&gt;列出集群中所有Worker节点的主机名或IP地址。每个主机名或 IP 地址应该占一行。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;log4j2.properties&lt;/p&gt;
+&lt;p&gt;配置Spark的日志记录行为。你可以在这个文件中设置日志级别、日志格式、日志输出位置等。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;metrics.properties.template&lt;/p&gt;
+&lt;p&gt;设置 Spark 应用程序的指标收集和报告。这个文件的目的是定义如何收集和导出应用程序的度量信息，例如任务执行时间、内存使用情况、垃圾回收信息等。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&amp;hellip;&amp;hellip;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h5 id=&#34;pyspark&#34;&gt;PySpark&lt;/h5&gt;
+&lt;p&gt;&lt;a href=&#34;https://pypi.org/project/pyspark/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;pyspark · PyPI&lt;/a&gt;&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;pip install pyspark -i https://mirror.baidu.com/pypi/simple
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure  &gt;
+  &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img alt=&#34;&#34; srcset=&#34;
+               /post/aliyun-cloud-server-envionment-prepare/images/envs/analysis/spark/pyspark-installation_hufc0b34e9d02a6ae0a90f741e8f7f47bb_398766_c0c14f79e1a8479cc3575203e94173ab.webp 400w,
+               /post/aliyun-cloud-server-envionment-prepare/images/envs/analysis/spark/pyspark-installation_hufc0b34e9d02a6ae0a90f741e8f7f47bb_398766_64bb91c0fa77549b070dfb59ae75bc44.webp 760w,
+               /post/aliyun-cloud-server-envionment-prepare/images/envs/analysis/spark/pyspark-installation_hufc0b34e9d02a6ae0a90f741e8f7f47bb_398766_1200x1200_fit_q75_h2_lanczos_3.webp 1200w&#34;
+               src=&#34;https://spacetimelab.cn/post/aliyun-cloud-server-envionment-prepare/images/envs/analysis/spark/pyspark-installation_hufc0b34e9d02a6ae0a90f741e8f7f47bb_398766_c0c14f79e1a8479cc3575203e94173ab.webp&#34;
+               width=&#34;760&#34;
+               height=&#34;418&#34;
+               loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+  &lt;/div&gt;&lt;/figure&gt;
+&lt;/p&gt;
+&lt;h5 id=&#34;mllib&#34;&gt;&lt;strong&gt;MLlib&lt;/strong&gt;&lt;/h5&gt;
+&lt;h5 id=&#34;graphx&#34;&gt;GraphX&lt;/h5&gt;
 </description>
     </item>
     
@@ -20068,10 +20273,10 @@ scrapy自带的item exporter，源码位于scrapy.exporters中，有各种类型
 &lt;figure  &gt;
   &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
     &lt;div class=&#34;w-100&#34; &gt;&lt;img alt=&#34;&#34; srcset=&#34;
-               /post/scrapy-for-distributed-spider-summary/images/project3/items_hu5edac16d24d307f4289ecaac4539ffb3_247900_ee5935e707c9ee788af7bc03f119beed.webp 400w,
+               /post/scrapy-for-distributed-spider-summary/images/project3/items_hu5edac16d24d307f4289ecaac4539ffb3_247900_21c35945582c5b0e9f32e65fe4722e1b.webp 400w,
                /post/scrapy-for-distributed-spider-summary/images/project3/items_hu5edac16d24d307f4289ecaac4539ffb3_247900_e0740221b3b02b5b7715f1afdac54c48.webp 760w,
                /post/scrapy-for-distributed-spider-summary/images/project3/items_hu5edac16d24d307f4289ecaac4539ffb3_247900_1200x1200_fit_q75_h2_lanczos_3.webp 1200w&#34;
-               src=&#34;https://spacetimelab.cn/post/scrapy-for-distributed-spider-summary/images/project3/items_hu5edac16d24d307f4289ecaac4539ffb3_247900_ee5935e707c9ee788af7bc03f119beed.webp&#34;
+               src=&#34;https://spacetimelab.cn/post/scrapy-for-distributed-spider-summary/images/project3/items_hu5edac16d24d307f4289ecaac4539ffb3_247900_21c35945582c5b0e9f32e65fe4722e1b.webp&#34;
                width=&#34;760&#34;
                height=&#34;453&#34;
                loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;

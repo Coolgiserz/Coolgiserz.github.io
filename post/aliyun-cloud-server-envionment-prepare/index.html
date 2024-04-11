@@ -1274,6 +1274,40 @@
   </div></figure>
 </p>
 <p>至此无问题，编译安装过程也没报错，说明pgsql正常安装完成。后续还需编译安装postgis插件，更改postgres配置项提高安全性，此处暂略。</p>
+<h5 id="关于常见配置">关于常见配置</h5>
+<h6 id="服务端口">服务端口</h6>
+<p>要更改服务端口，仅需修改配置文件再重启服务。</p>
+<p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<figure  >
+  <div class="d-flex justify-content-center">
+    <div class="w-100" ><img alt="" srcset="
+               /post/aliyun-cloud-server-envionment-prepare/images/envs/databases/pgsql/conf/postgresql_conf_hu520560861abbf6a3f3a7556d251481ee_257709_cdc64edca718ee8f4a3ab67ffd30b174.webp 400w,
+               /post/aliyun-cloud-server-envionment-prepare/images/envs/databases/pgsql/conf/postgresql_conf_hu520560861abbf6a3f3a7556d251481ee_257709_8adce5cc4346cee4b52107f64cd3eed0.webp 760w,
+               /post/aliyun-cloud-server-envionment-prepare/images/envs/databases/pgsql/conf/postgresql_conf_hu520560861abbf6a3f3a7556d251481ee_257709_1200x1200_fit_q75_h2_lanczos_3.webp 1200w"
+               src="/post/aliyun-cloud-server-envionment-prepare/images/envs/databases/pgsql/conf/postgresql_conf_hu520560861abbf6a3f3a7556d251481ee_257709_cdc64edca718ee8f4a3ab67ffd30b174.webp"
+               width="760"
+               height="612"
+               loading="lazy" data-zoomable /></div>
+  </div></figure>
+</p>
+<pre tabindex="0"><code>pg_ctl -D /data/postgresql restart
+</code></pre><h6 id="远程连接ip">远程连接IP</h6>
+<p>pg_hba.conf, postgresql.conf</p>
 <h4 id="redis">Redis</h4>
 <h5 id="redis服务安装">Redis服务安装</h5>
 <p><a href="https://redis.io/docs/install/install-redis/install-redis-on-linux/" target="_blank" rel="noopener">Install Redis on Linux | Redis</a></p>
@@ -1509,6 +1543,68 @@ ACL setuser USER &gt;PASSWORD
                loading="lazy" data-zoomable /></div>
   </div></figure>
 </p>
+<h4 id="es">ES</h4>
+<pre tabindex="0"><code>docker network create elastic
+docker pull docker.elastic.co/elasticsearch/elasticsearch:8.13.0
+</code></pre><p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<figure  >
+  <div class="d-flex justify-content-center">
+    <div class="w-100" ><img alt="" srcset="
+               /post/aliyun-cloud-server-envionment-prepare/images/envs/databases/es_huc3dcb53c6c8cf874b2a9a10c5b65f285_148831_8d65ce86b06997e25174db3172275089.webp 400w,
+               /post/aliyun-cloud-server-envionment-prepare/images/envs/databases/es_huc3dcb53c6c8cf874b2a9a10c5b65f285_148831_ebb37e601169bb80cd2363af2dfaa2ff.webp 760w,
+               /post/aliyun-cloud-server-envionment-prepare/images/envs/databases/es_huc3dcb53c6c8cf874b2a9a10c5b65f285_148831_1200x1200_fit_q75_h2_lanczos_3.webp 1200w"
+               src="/post/aliyun-cloud-server-envionment-prepare/images/envs/databases/es_huc3dcb53c6c8cf874b2a9a10c5b65f285_148831_8d65ce86b06997e25174db3172275089.webp"
+               width="760"
+               height="204"
+               loading="lazy" data-zoomable /></div>
+  </div></figure>
+</p>
+<pre tabindex="0"><code>docker run --name es01 --net elastic -p 9200:9200 -it -m 1GB docker.elastic.co/elasticsearch/elasticsearch:8.13.0
+sudo docker run --name es01 --net elastic -p 9200:9200 -it -d  elasticsearch:8.13.0
+</code></pre><pre tabindex="0"><code>sudo docker pull kibana:8.13.0
+</code></pre><p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<figure  >
+  <div class="d-flex justify-content-center">
+    <div class="w-100" ><img alt="" srcset="
+               /post/aliyun-cloud-server-envionment-prepare/images/envs/databases/kibana_hu0300d17b34b2417f0f715adf21de28b3_161869_fffd24cca49ad7a0ffe2b7274c671a2c.webp 400w,
+               /post/aliyun-cloud-server-envionment-prepare/images/envs/databases/kibana_hu0300d17b34b2417f0f715adf21de28b3_161869_101a3218bafd2eb247a76f5c176e4f06.webp 760w,
+               /post/aliyun-cloud-server-envionment-prepare/images/envs/databases/kibana_hu0300d17b34b2417f0f715adf21de28b3_161869_1200x1200_fit_q75_h2_lanczos_3.webp 1200w"
+               src="/post/aliyun-cloud-server-envionment-prepare/images/envs/databases/kibana_hu0300d17b34b2417f0f715adf21de28b3_161869_fffd24cca49ad7a0ffe2b7274c671a2c.webp"
+               width="760"
+               height="376"
+               loading="lazy" data-zoomable /></div>
+  </div></figure>
+</p>
 <h3 id="七其他">七、其他</h3>
 <ul>
 <li>
@@ -1522,6 +1618,115 @@ ACL setuser USER &gt;PASSWORD
 </li>
 </ul>
 <h4 id="gitlab">Gitlab</h4>
+<p>配置不足以启动Gitlab</p>
+<h4 id="spark">Spark</h4>
+<p><a href="https://spark.apache.org/downloads.html" target="_blank" rel="noopener">https://spark.apache.org/downloads.html</a></p>
+<p>Apache Spark 是一个用于大规模数据处理的统一分析引擎。它提供了 Scala、Java、Python 和 R 的高级 API，并且拥有一个优化的引擎，支持用于数据分析的通用计算图。此外，Spark 还支持一系列丰富的高级工具，包括用于 SQL 和 DataFrames 的 Spark SQL，用于 pandas 工作负载的 pandas API，用于机器学习的 MLlib，用于图处理的 GraphX，以及用于流处理的 Structured Streaming。</p>
+<h5 id="ubuntu下安装spark">Ubuntu下安装Spark</h5>
+<p>先安装java环境，简单起见可以：</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">sudo apt install default-jre
+</span></span></code></pre></div><p>直接从官网下载https://dlcdn.apache.org/spark/spark-3.5.1/spark-3.5.1-bin-hadoop3.tgz</p>
+<p>进行解压：</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">tar -xvf spark-3.5.1-bin-hadoop3.tar
+</span></span></code></pre></div><p>配置环境变量：</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl"><span class="nb">export</span> <span class="nv">SPARK_HOME</span><span class="o">=</span>/path/to/spark
+</span></span><span class="line"><span class="cl"><span class="nb">export</span> <span class="nv">PATH</span><span class="o">=</span><span class="nv">$PATH</span>:<span class="nv">$SPARK_HOME</span>/bin:<span class="nv">$SPARK_HOME</span>/sbin
+</span></span></code></pre></div><p>使环境变量生效:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl"><span class="nb">source</span> ~/.bashrc
+</span></span></code></pre></div><h5 id="spark配置">Spark配置</h5>
+<p>默认情况下，conf目录下有相关配置文件的模板：</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">fairscheduler.xml.template
+</span></span><span class="line"><span class="cl">log4j2.properties.templat
+</span></span><span class="line"><span class="cl">metrics.properties.template
+</span></span><span class="line"><span class="cl">spark-defaults.conf.template 
+</span></span><span class="line"><span class="cl">spark-env.sh.template
+</span></span><span class="line"><span class="cl">workers.template
+</span></span></code></pre></div><ul>
+<li>
+<p>spark-env.sh</p>
+<p>这个文件用于设置 Spark 环境变量。你可以在这个文件中配置 JVM 选项、内存设置、以及其他与环境相关的配置。</p>
+</li>
+<li>
+<p>spark-defaults.conf</p>
+<p>默认配置。</p>
+<p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<figure  >
+  <div class="d-flex justify-content-center">
+    <div class="w-100" ><img alt="" srcset="
+               /post/aliyun-cloud-server-envionment-prepare/images/envs/analysis/spark/conf/spark-default_hu5f1265cca81969b43ced887c4a904357_260588_c3fd2f348d72174b014114bd3d898d29.webp 400w,
+               /post/aliyun-cloud-server-envionment-prepare/images/envs/analysis/spark/conf/spark-default_hu5f1265cca81969b43ced887c4a904357_260588_c89d7f4161533e5d13d0ed8a8d8938ec.webp 760w,
+               /post/aliyun-cloud-server-envionment-prepare/images/envs/analysis/spark/conf/spark-default_hu5f1265cca81969b43ced887c4a904357_260588_1200x1200_fit_q75_h2_lanczos_3.webp 1200w"
+               src="/post/aliyun-cloud-server-envionment-prepare/images/envs/analysis/spark/conf/spark-default_hu5f1265cca81969b43ced887c4a904357_260588_c3fd2f348d72174b014114bd3d898d29.webp"
+               width="760"
+               height="363"
+               loading="lazy" data-zoomable /></div>
+  </div></figure>
+</p>
+</li>
+<li>
+<p>workers</p>
+<p>列出集群中所有Worker节点的主机名或IP地址。每个主机名或 IP 地址应该占一行。</p>
+</li>
+<li>
+<p>log4j2.properties</p>
+<p>配置Spark的日志记录行为。你可以在这个文件中设置日志级别、日志格式、日志输出位置等。</p>
+</li>
+<li>
+<p>metrics.properties.template</p>
+<p>设置 Spark 应用程序的指标收集和报告。这个文件的目的是定义如何收集和导出应用程序的度量信息，例如任务执行时间、内存使用情况、垃圾回收信息等。</p>
+</li>
+<li>
+<p>&hellip;&hellip;</p>
+</li>
+</ul>
+<h5 id="pyspark">PySpark</h5>
+<p><a href="https://pypi.org/project/pyspark/" target="_blank" rel="noopener">pyspark · PyPI</a></p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">pip install pyspark -i https://mirror.baidu.com/pypi/simple
+</span></span></code></pre></div><p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<figure  >
+  <div class="d-flex justify-content-center">
+    <div class="w-100" ><img alt="" srcset="
+               /post/aliyun-cloud-server-envionment-prepare/images/envs/analysis/spark/pyspark-installation_hufc0b34e9d02a6ae0a90f741e8f7f47bb_398766_c0c14f79e1a8479cc3575203e94173ab.webp 400w,
+               /post/aliyun-cloud-server-envionment-prepare/images/envs/analysis/spark/pyspark-installation_hufc0b34e9d02a6ae0a90f741e8f7f47bb_398766_64bb91c0fa77549b070dfb59ae75bc44.webp 760w,
+               /post/aliyun-cloud-server-envionment-prepare/images/envs/analysis/spark/pyspark-installation_hufc0b34e9d02a6ae0a90f741e8f7f47bb_398766_1200x1200_fit_q75_h2_lanczos_3.webp 1200w"
+               src="/post/aliyun-cloud-server-envionment-prepare/images/envs/analysis/spark/pyspark-installation_hufc0b34e9d02a6ae0a90f741e8f7f47bb_398766_c0c14f79e1a8479cc3575203e94173ab.webp"
+               width="760"
+               height="418"
+               loading="lazy" data-zoomable /></div>
+  </div></figure>
+</p>
+<h5 id="mllib"><strong>MLlib</strong></h5>
+<h5 id="graphx">GraphX</h5>
 
     </div>
 
