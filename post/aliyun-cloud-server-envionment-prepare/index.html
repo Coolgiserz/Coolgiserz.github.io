@@ -781,7 +781,7 @@
   
   <span class="middot-divider"></span>
   <span class="article-reading-time">
-    2 min read
+    3 min read
   </span>
   
 
@@ -938,7 +938,59 @@
                loading="lazy" data-zoomable /></div>
   </div></figure>
 </p>
-<h3 id="heading"></h3>
+<h3 id="ssh密钥登录服务器">ssh密钥登录服务器</h3>
+<ol>
+<li>在本地生成密钥对</li>
+</ol>
+<pre tabindex="0"><code>ssh-keygen
+</code></pre><p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<figure  >
+  <div class="d-flex justify-content-center">
+    <div class="w-100" ><img alt="" srcset="
+               /post/aliyun-cloud-server-envionment-prepare/images/connection/ssh-keygen/demo_hu9ee4fd1f49ed67be0a8d5d561ffe7bb4_68466_1b910d82656b740f786fb46542e2c03f.webp 400w,
+               /post/aliyun-cloud-server-envionment-prepare/images/connection/ssh-keygen/demo_hu9ee4fd1f49ed67be0a8d5d561ffe7bb4_68466_a9ee1caf2eb43d13bac4ecd4130dd351.webp 760w,
+               /post/aliyun-cloud-server-envionment-prepare/images/connection/ssh-keygen/demo_hu9ee4fd1f49ed67be0a8d5d561ffe7bb4_68466_1200x1200_fit_q75_h2_lanczos_3.webp 1200w"
+               src="/post/aliyun-cloud-server-envionment-prepare/images/connection/ssh-keygen/demo_hu9ee4fd1f49ed67be0a8d5d561ffe7bb4_68466_1b910d82656b740f786fb46542e2c03f.webp"
+               width="760"
+               height="235"
+               loading="lazy" data-zoomable /></div>
+  </div></figure>
+</p>
+<p>安全起见，创建密钥对时设置密钥口令。</p>
+<ol start="2">
+<li>
+<p>将公钥(xxx.pub)上传到服务器</p>
+<p>参考命令：cat id_rsa.pub &raquo; ~/.ssh/authorized_keys</p>
+</li>
+<li>
+<p>服务器端配置允许RSA密钥登录</p>
+<p>在配置文件/etc/ssh/sshd_config中添加如下配置：</p>
+<pre tabindex="0"><code>RSAAuthentication yes
+PubkeyAuthentication yes
+</code></pre></li>
+<li>
+<p>(可选)禁用密码登录</p>
+</li>
+<li>
+<p>重启SSH服务</p>
+<pre tabindex="0"><code>service sshd restart
+</code></pre></li>
+</ol>
 <h3 id="二用户和组">二、用户和组</h3>
 <p>新建组</p>
 <pre tabindex="0"><code>groupadd -g 1314 testgroup
@@ -1296,10 +1348,10 @@
 <figure  >
   <div class="d-flex justify-content-center">
     <div class="w-100" ><img alt="" srcset="
-               /post/aliyun-cloud-server-envionment-prepare/images/envs/databases/pgsql/conf/postgresql_conf_hu520560861abbf6a3f3a7556d251481ee_257709_cdc64edca718ee8f4a3ab67ffd30b174.webp 400w,
+               /post/aliyun-cloud-server-envionment-prepare/images/envs/databases/pgsql/conf/postgresql_conf_hu520560861abbf6a3f3a7556d251481ee_257709_4445aa49d77defe884686e7334383519.webp 400w,
                /post/aliyun-cloud-server-envionment-prepare/images/envs/databases/pgsql/conf/postgresql_conf_hu520560861abbf6a3f3a7556d251481ee_257709_8adce5cc4346cee4b52107f64cd3eed0.webp 760w,
                /post/aliyun-cloud-server-envionment-prepare/images/envs/databases/pgsql/conf/postgresql_conf_hu520560861abbf6a3f3a7556d251481ee_257709_1200x1200_fit_q75_h2_lanczos_3.webp 1200w"
-               src="/post/aliyun-cloud-server-envionment-prepare/images/envs/databases/pgsql/conf/postgresql_conf_hu520560861abbf6a3f3a7556d251481ee_257709_cdc64edca718ee8f4a3ab67ffd30b174.webp"
+               src="/post/aliyun-cloud-server-envionment-prepare/images/envs/databases/pgsql/conf/postgresql_conf_hu520560861abbf6a3f3a7556d251481ee_257709_4445aa49d77defe884686e7334383519.webp"
                width="760"
                height="612"
                loading="lazy" data-zoomable /></div>
