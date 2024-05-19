@@ -869,6 +869,162 @@
 <p>TODO</p>
 <h2 id="0x02-类级别以上的语法最佳实践">0x02 类级别以上的语法最佳实践</h2>
 <p>TODO</p>
+<h2 id="0x03-优化技术">0x03 优化技术</h2>
+<p>可能会降低程序运行速度的情况：</p>
+<ul>
+<li>
+<p>基本内置类型使用不当</p>
+</li>
+<li>
+<p>硬件资源使用模式与执行环境不匹配</p>
+</li>
+<li>
+<p>过于长时间地等待来自第三方API或后台服务的响应</p>
+</li>
+</ul>
+<h3 id="概率型数据结构">概率型数据结构</h3>
+<p>常用于键/值存储系统中加速键查找。</p>
+<p>一些流行的概率型数据结构：</p>
+<ul>
+<li>
+<p>近似成员查询（AMQ， Approximate membership query）</p>
+</li>
+<li>
+<p>布隆过滤器（Bloom Filter）</p>
+</li>
+<li>
+<p>HyperLogLog</p>
+</li>
+</ul>
+<h3 id="缓存技术">缓存技术</h3>
+<h4 id="技术概念">技术概念</h4>
+<ul>
+<li>
+<p>确定性缓存：针对确定性函数，给定完全相同的输入，确定性函数总是返回相同的值。</p>
+</li>
+<li>
+<p>非确定性缓存: 针对非确定性函数（每次执行可能给出不同的结果），需要判断缓存值的有效时间，在定义的时间段过去后所存储的结果被认为是陈旧的，需要刷新缓存值。</p>
+</li>
+</ul>
+<h5 id="适合使用缓存的场景">适合使用缓存的场景</h5>
+<ul>
+<li>
+<p>查询数据库的可调用项的结果</p>
+</li>
+<li>
+<p>渲染为静态值的可调用项的结果：如文件内容、Web请求、PDF渲染</p>
+</li>
+<li>
+<p>执行复杂计算的确定性可调用对象的结果</p>
+</li>
+<li>
+<p>全局映射，用于跟踪到期时间的值，如Web会话对象</p>
+</li>
+<li>
+<p>需要经常和快速访问的结果</p>
+</li>
+<li>
+<p>保存通过Web服务获得的第三方API的结果，减少网络延迟，提高性能并且节省费用。</p>
+</li>
+</ul>
+<h4 id="如何缓存">如何缓存</h4>
+<p>简单的方法：进程空间中保存的全局数据结构，如dict</p>
+<p>复杂：设置专门的缓存服务</p>
+<h5 id="内置函数">内置函数</h5>
+<p>functools.lru_cache</p>
+<p><a href="https://docs.python.org/3/library/functools.html" target="_blank" rel="noopener">functools — Higher-order functions and operations on callable objects — Python 3.12.3 documentation</a></p>
+<h6 id="代码示例">代码示例</h6>
+<p>以递归计算斐波那契数列的函数为例，不实用缓存时，平均每次运算耗时0.12s</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="kn">from</span> <span class="nn">time</span> <span class="kn">import</span> <span class="n">perf_counter</span>
+</span></span><span class="line"><span class="cl"><span class="k">def</span> <span class="nf">fib</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">    <span class="k">if</span> <span class="n">n</span> <span class="o">&lt;=</span> <span class="mi">1</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="n">n</span>
+</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="n">fib</span><span class="p">(</span><span class="n">n</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span> <span class="o">+</span> <span class="n">fib</span><span class="p">(</span><span class="n">n</span><span class="o">-</span><span class="mi">2</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">    <span class="n">count</span> <span class="o">=</span> <span class="mi">10</span>
+</span></span><span class="line"><span class="cl">    <span class="n">start</span> <span class="o">=</span> <span class="n">perf_counter</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">    <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">count</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">        <span class="nb">print</span><span class="p">(</span><span class="n">fib</span><span class="p">(</span><span class="mi">30</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl">    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&#34;Time: </span><span class="si">{</span><span class="p">(</span><span class="n">perf_counter</span><span class="p">()</span> <span class="o">-</span> <span class="n">start</span><span class="p">)</span><span class="o">/</span><span class="n">count</span><span class="si">}</span><span class="s2">&#34;</span><span class="p">)</span>
+</span></span></code></pre></div><p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<figure  >
+  <div class="d-flex justify-content-center">
+    <div class="w-100" ><img alt="" srcset="
+               /post/expert-python-programming-notes/images/cache/functools/demo_fib_no_cache_hu72898c4548f199a736061dbdfdbaf6cf_47161_38d71578c08e3fad81a7e7c80503df4a.webp 400w,
+               /post/expert-python-programming-notes/images/cache/functools/demo_fib_no_cache_hu72898c4548f199a736061dbdfdbaf6cf_47161_11b6e7051390e916a1fed9e64b0dda9a.webp 760w,
+               /post/expert-python-programming-notes/images/cache/functools/demo_fib_no_cache_hu72898c4548f199a736061dbdfdbaf6cf_47161_1200x1200_fit_q75_h2_lanczos_3.webp 1200w"
+               src="/post/expert-python-programming-notes/images/cache/functools/demo_fib_no_cache_hu72898c4548f199a736061dbdfdbaf6cf_47161_38d71578c08e3fad81a7e7c80503df4a.webp"
+               width="760"
+               height="358"
+               loading="lazy" data-zoomable /></div>
+  </div></figure>
+</p>
+<p>若使用lru_cache(最近最少使用缓存，LRU)，由于避免了多次耗时的重复计算，效率大幅提高</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="c1"># @Author: weirdgiser</span>
+</span></span><span class="line"><span class="cl"><span class="c1"># @Time: 2024/5/19</span>
+</span></span><span class="line"><span class="cl"><span class="c1"># @Function:</span>
+</span></span><span class="line"><span class="cl"><span class="kn">from</span> <span class="nn">functools</span> <span class="kn">import</span> <span class="n">lru_cache</span>
+</span></span><span class="line"><span class="cl"><span class="kn">from</span> <span class="nn">time</span> <span class="kn">import</span> <span class="n">perf_counter</span>
+</span></span><span class="line"><span class="cl"><span class="nd">@lru_cache</span><span class="p">(</span><span class="n">maxsize</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="k">def</span> <span class="nf">fib</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">    <span class="k">if</span> <span class="n">n</span> <span class="o">&lt;=</span> <span class="mi">1</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="n">n</span>
+</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="n">fib</span><span class="p">(</span><span class="n">n</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span> <span class="o">+</span> <span class="n">fib</span><span class="p">(</span><span class="n">n</span><span class="o">-</span><span class="mi">2</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">    <span class="n">count</span> <span class="o">=</span> <span class="mi">10</span>
+</span></span><span class="line"><span class="cl">    <span class="n">start</span> <span class="o">=</span> <span class="n">perf_counter</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">    <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">count</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">        <span class="nb">print</span><span class="p">(</span><span class="n">fib</span><span class="p">(</span><span class="mi">30</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl">    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&#34;Time: </span><span class="si">{</span><span class="p">(</span><span class="n">perf_counter</span><span class="p">()</span> <span class="o">-</span> <span class="n">start</span><span class="p">)</span><span class="o">/</span><span class="n">count</span><span class="si">}</span><span class="s2">&#34;</span><span class="p">)</span>
+</span></span></code></pre></div><p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<figure  >
+  <div class="d-flex justify-content-center">
+    <div class="w-100" ><img alt="" srcset="
+               /post/expert-python-programming-notes/images/cache/functools/demo_fib_lru_cache_hu2ccd4ce5da4769ab5e6cbbf627eb15c3_47506_73e89b02e443da9852905d21db344286.webp 400w,
+               /post/expert-python-programming-notes/images/cache/functools/demo_fib_lru_cache_hu2ccd4ce5da4769ab5e6cbbf627eb15c3_47506_62a055f864c1e656086dfcecc9145be5.webp 760w,
+               /post/expert-python-programming-notes/images/cache/functools/demo_fib_lru_cache_hu2ccd4ce5da4769ab5e6cbbf627eb15c3_47506_1200x1200_fit_q75_h2_lanczos_3.webp 1200w"
+               src="/post/expert-python-programming-notes/images/cache/functools/demo_fib_lru_cache_hu2ccd4ce5da4769ab5e6cbbf627eb15c3_47506_73e89b02e443da9852905d21db344286.webp"
+               width="760"
+               height="392"
+               loading="lazy" data-zoomable /></div>
+  </div></figure>
+</p>
+<h5 id="缓存服务">缓存服务</h5>
+<ul>
+<li>Memcached</li>
+</ul>
 
     </div>
 
