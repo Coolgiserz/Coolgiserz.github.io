@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Whoosh | NullSpace</title>
+    <link>https://spacetimelab.cn/tag/whoosh/</link>
+      <atom:link href="https://spacetimelab.cn/tag/whoosh/index.xml" rel="self" type="application/rss+xml" />
+    <description>Whoosh</description>
+    <generator>Wowchemy (https://wowchemy.com)</generator><language>en-us</language><lastBuildDate>Mon, 20 May 2024 22:39:15 +0800</lastBuildDate>
+    <image>
+      <url>https://spacetimelab.cn/media/icon_hue03491371183284312b8b116a73ae5ab_79511_512x512_fill_lanczos_center_3.png</url>
+      <title>Whoosh</title>
+      <link>https://spacetimelab.cn/tag/whoosh/</link>
+    </image>
+    
+    <item>
+      <title>Python Search Engine Library</title>
+      <link>https://spacetimelab.cn/post/python-search-engine-library/</link>
+      <pubDate>Mon, 20 May 2024 22:39:15 +0800</pubDate>
+      <guid>https://spacetimelab.cn/post/python-search-engine-library/</guid>
+      <description>&lt;h2 id=&#34;一览&#34;&gt;一览&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://whoosh.readthedocs.io/en/latest/intro.html&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Introduction to Whoosh — Whoosh 2.7.4 documentation&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;术语&#34;&gt;术语&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;分析（Analysis）、分词&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;语料（Corpus）&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;文档（Documents）&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;字段（Fields）&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;检索（Postings）&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;正排索引（Forward index）&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;索引构建（Indexing）&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;倒排索引（Reverse Index）&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;模式（Schema）&lt;/p&gt;
+&lt;p&gt;Schema指定被索引文档所具有的字段&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;词向量（Term vector）&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

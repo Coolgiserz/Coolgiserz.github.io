@@ -1,0 +1,238 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Redis | NullSpace</title>
+    <link>https://spacetimelab.cn/tag/redis/</link>
+      <atom:link href="https://spacetimelab.cn/tag/redis/index.xml" rel="self" type="application/rss+xml" />
+    <description>Redis</description>
+    <generator>Wowchemy (https://wowchemy.com)</generator><language>en-us</language><lastBuildDate>Wed, 13 Jul 2022 17:39:06 +0800</lastBuildDate>
+    <image>
+      <url>https://spacetimelab.cn/media/icon_hue03491371183284312b8b116a73ae5ab_79511_512x512_fill_lanczos_center_3.png</url>
+      <title>Redis</title>
+      <link>https://spacetimelab.cn/tag/redis/</link>
+    </image>
+    
+    <item>
+      <title>Redis基本使用总结</title>
+      <link>https://spacetimelab.cn/post/hello-redis-basic/</link>
+      <pubDate>Wed, 13 Jul 2022 17:39:06 +0800</pubDate>
+      <guid>https://spacetimelab.cn/post/hello-redis-basic/</guid>
+      <description>&lt;h2 id=&#34;redis简介&#34;&gt;Redis简介&lt;/h2&gt;
+&lt;h3 id=&#34;数据类型&#34;&gt;数据类型&lt;/h3&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;String&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;List&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Set&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Hash&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Sorted Set&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h3 id=&#34;应用场景&#34;&gt;应用场景&lt;/h3&gt;
+&lt;p&gt;作为高性能的内存数据库系统，Redis广泛多种场景：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;缓存：提高数据访问速度；&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;会话管理：在Web应用中，Redis可以用于存储用户会话信息，减少数据库负载；&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;分布式锁：Redis可用于实现分布式锁，进行并发控制&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;计数器：利用Redis的字符串类型，可以实现计数器功能，如商品库存、点赞数、密码重试次数等&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;限流：通过设置键值对的过期时间，Redis可以用作限流工具。如锁定密码错误次数超过一定次数的用户&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;消息队列：Redis支持发布/订阅模式，可以用作消息队列系统&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;全局ID生成：Redis可以生成全局唯一ID，适用于分布式系统中的ID生成&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;数据共享：在分布式系统中，Redis可以用于数据共享和同步&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&#34;会话管理&#34;&gt;会话管理&lt;/h4&gt;
+&lt;p&gt;&lt;a href=&#34;https://help.aliyun.com/zh/redis/use-cases/manage-sessions-in-web-applications&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;使用Redis在Web应用中实现会话管理最佳实践_云数据库 Redis 版(Redis)-阿里云帮助中心&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;https://juejin.cn/post/7314211417396084762&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Redis入门实战：使用Redis实现会话管理 - 掘金&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure  &gt;
+  &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img alt=&#34;&#34; srcset=&#34;
+               /post/hello-redis-basic/images/applications/session-manage/proce_hua363acaaab8f7c8337a42a8f3e06e1c4_310071_452febe20efa2aa1fc77d8cdf9221889.webp 400w,
+               /post/hello-redis-basic/images/applications/session-manage/proce_hua363acaaab8f7c8337a42a8f3e06e1c4_310071_e33294a1b9c6b479b6ad42f20e5f2252.webp 760w,
+               /post/hello-redis-basic/images/applications/session-manage/proce_hua363acaaab8f7c8337a42a8f3e06e1c4_310071_1200x1200_fit_q75_h2_lanczos_3.webp 1200w&#34;
+               src=&#34;https://spacetimelab.cn/post/hello-redis-basic/images/applications/session-manage/proce_hua363acaaab8f7c8337a42a8f3e06e1c4_310071_452febe20efa2aa1fc77d8cdf9221889.webp&#34;
+               width=&#34;760&#34;
+               height=&#34;371&#34;
+               loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+  &lt;/div&gt;&lt;/figure&gt;
+&lt;/p&gt;
+&lt;h4 id=&#34;分布式锁&#34;&gt;分布式锁&lt;/h4&gt;
+&lt;p&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure  &gt;
+  &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img alt=&#34;&#34; srcset=&#34;
+               /post/hello-redis-basic/images/applications/dist-lock/ar_huee51c675ea149baaf09670be85165273_331986_ed3abd74540d3fdfe1274f819f950aa9.webp 400w,
+               /post/hello-redis-basic/images/applications/dist-lock/ar_huee51c675ea149baaf09670be85165273_331986_9ddf6dd02ccd9f8de30bda27016a8b1e.webp 760w,
+               /post/hello-redis-basic/images/applications/dist-lock/ar_huee51c675ea149baaf09670be85165273_331986_1200x1200_fit_q75_h2_lanczos_3.webp 1200w&#34;
+               src=&#34;https://spacetimelab.cn/post/hello-redis-basic/images/applications/dist-lock/ar_huee51c675ea149baaf09670be85165273_331986_ed3abd74540d3fdfe1274f819f950aa9.webp&#34;
+               width=&#34;760&#34;
+               height=&#34;460&#34;
+               loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+  &lt;/div&gt;&lt;/figure&gt;
+&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;https://juejin.cn/post/6844903830442737671&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;基于Redis的分布式锁实现 - 掘金&lt;/a&gt;&lt;/p&gt;
+&lt;h4 id=&#34;全局id生成&#34;&gt;全局ID生成&lt;/h4&gt;
+&lt;p&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure  &gt;
+  &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img alt=&#34;&#34; srcset=&#34;
+               /post/hello-redis-basic/images/applications/global-id/feat_hue2977936752afbc3c08859a68363be63_147852_10e47b263aee27f90dd7fd35227598a9.webp 400w,
+               /post/hello-redis-basic/images/applications/global-id/feat_hue2977936752afbc3c08859a68363be63_147852_fc265f76e5dee2d54ac7ecd02a9b874e.webp 760w,
+               /post/hello-redis-basic/images/applications/global-id/feat_hue2977936752afbc3c08859a68363be63_147852_1200x1200_fit_q75_h2_lanczos_3.webp 1200w&#34;
+               src=&#34;https://spacetimelab.cn/post/hello-redis-basic/images/applications/global-id/feat_hue2977936752afbc3c08859a68363be63_147852_10e47b263aee27f90dd7fd35227598a9.webp&#34;
+               width=&#34;760&#34;
+               height=&#34;320&#34;
+               loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+  &lt;/div&gt;&lt;/figure&gt;
+&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;https://developer.aliyun.com/article/1223910&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Redis 实现全局唯一id-阿里云开发者社区&lt;/a&gt;&lt;/p&gt;
+&lt;h2 id=&#34;redis-部署模式&#34;&gt;Redis 部署模式&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;单机模式&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;主从模式&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;哨兵模式&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;集群模式&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;redis性能优化策略&#34;&gt;Redis性能优化策略&lt;/h2&gt;
+&lt;p&gt;（TODO）&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;缩短键值对的长度&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;过期时间&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;限制Redis内存大小&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;选择合适的淘汰策略&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;命令优化&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;持久化和备份策略&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;监控和日志记录&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;redis内存淘汰策略&#34;&gt;Redis内存淘汰策略&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;volatile-lru&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;allkeys-lru&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;volatile-lfu&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&amp;hellip;&amp;hellip;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;redis持久化策略&#34;&gt;Redis持久化策略&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;定期&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;关闭时&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;文档&#34;&gt;文档&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a href=&#34;https://www.runoob.com/w3cnote/python-redis-intro.html&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Python redis 使用介绍 | 菜鸟教程&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a href=&#34;https://cloud.tencent.com/developer/article/2046352&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;推荐几款 Redis 可视化工具-腾讯云开发者社区-腾讯云&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a href=&#34;https://segmentfault.com/a/1190000043544891&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;【Redis】四种部署模式的介绍及其优缺点&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

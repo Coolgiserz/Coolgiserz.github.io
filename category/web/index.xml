@@ -1,37 +1,67 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Web | CoolCats</title>
-    <link>/category/web/</link>
-      <atom:link href="/category/web/index.xml" rel="self" type="application/rss+xml" />
+    <title>Web | NullSpace</title>
+    <link>https://spacetimelab.cn/category/web/</link>
+      <atom:link href="https://spacetimelab.cn/category/web/index.xml" rel="self" type="application/rss+xml" />
     <description>Web</description>
-    <generator>Wowchemy (https://wowchemy.com)</generator><language>en-us</language><lastBuildDate>Tue, 05 Mar 2024 23:05:28 +0800</lastBuildDate>
+    <generator>Wowchemy (https://wowchemy.com)</generator><language>en-us</language><lastBuildDate>Sat, 20 Apr 2024 20:59:13 +0800</lastBuildDate>
     <image>
-      <url>/media/icon_hue03491371183284312b8b116a73ae5ab_79511_512x512_fill_lanczos_center_3.png</url>
+      <url>https://spacetimelab.cn/media/icon_hue03491371183284312b8b116a73ae5ab_79511_512x512_fill_lanczos_center_3.png</url>
       <title>Web</title>
-      <link>/category/web/</link>
+      <link>https://spacetimelab.cn/category/web/</link>
     </image>
     
     <item>
-      <title>Web Security Testcase and Defense</title>
-      <link>/post/web-security-testcase-and-defense/</link>
-      <pubDate>Tue, 05 Mar 2024 23:05:28 +0800</pubDate>
-      <guid>/post/web-security-testcase-and-defense/</guid>
-      <description>&lt;h2 id=&#34;测试用例&#34;&gt;测试用例&lt;/h2&gt;
+      <title>Web安全设计</title>
+      <link>https://spacetimelab.cn/post/web-security-collection/</link>
+      <pubDate>Sat, 20 Apr 2024 20:59:13 +0800</pubDate>
+      <guid>https://spacetimelab.cn/post/web-security-collection/</guid>
+      <description>&lt;h2 id=&#34;前端安全&#34;&gt;前端安全&lt;/h2&gt;
 &lt;ul&gt;
 &lt;li&gt;
-&lt;p&gt;注销功能漏洞&lt;/p&gt;
+&lt;p&gt;CSRF攻击&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;https://tech.meituan.com/2018/10/11/fe-security-csrf.html&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;前端安全系列（二）：如何防止CSRF攻击？ - 美团技术团队&lt;/a&gt;&lt;/p&gt;
 &lt;/li&gt;
 &lt;li&gt;
-&lt;p&gt;最终认证是否在服务端&lt;/p&gt;
+&lt;p&gt;XSS攻击&lt;/p&gt;
 &lt;/li&gt;
 &lt;li&gt;
-&lt;p&gt;会话标识是否唯一&lt;/p&gt;
+&lt;p&gt;&amp;hellip;&amp;hellip;&lt;/p&gt;
 &lt;/li&gt;
 &lt;/ul&gt;
-&lt;h2 id=&#34;参考资料&#34;&gt;参考资料&lt;/h2&gt;
+&lt;h2 id=&#34;后端安全&#34;&gt;后端安全&lt;/h2&gt;
+&lt;p&gt;永远不要相信用户的输入&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;文件上传&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;SQL注入&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;越权攻击&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;任意命令执行&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;数据传输安全&#34;&gt;数据传输安全&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;密码应加密传输&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;使用安全传输协议，HTTPS&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;资料&#34;&gt;资料&lt;/h2&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;a href=&#34;https://websec.readthedocs.io/zh/latest/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Web安全学习笔记 — Web安全学习笔记 1.0 文档&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;认证安全&#34;&gt;认证安全&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://cloud.tencent.com/developer/article/1802761&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;安全攻防 | JWT认知与攻击-腾讯云开发者社区-腾讯云&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 </description>
     </item>

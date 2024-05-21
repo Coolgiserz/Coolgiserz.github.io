@@ -5,12 +5,157 @@
     <link>https://spacetimelab.cn/post/</link>
       <atom:link href="https://spacetimelab.cn/post/index.xml" rel="self" type="application/rss+xml" />
     <description>博客</description>
-    <generator>Wowchemy (https://wowchemy.com)</generator><language>en-us</language><lastBuildDate>Tue, 02 Apr 2024 21:33:18 +0800</lastBuildDate>
+    <generator>Wowchemy (https://wowchemy.com)</generator><language>en-us</language><lastBuildDate>Mon, 20 May 2024 22:39:15 +0800</lastBuildDate>
     <image>
       <url>https://spacetimelab.cn/media/icon_hue03491371183284312b8b116a73ae5ab_79511_512x512_fill_lanczos_center_3.png</url>
       <title>博客</title>
       <link>https://spacetimelab.cn/post/</link>
     </image>
+    
+    <item>
+      <title>Python Search Engine Library</title>
+      <link>https://spacetimelab.cn/post/python-search-engine-library/</link>
+      <pubDate>Mon, 20 May 2024 22:39:15 +0800</pubDate>
+      <guid>https://spacetimelab.cn/post/python-search-engine-library/</guid>
+      <description>&lt;h2 id=&#34;一览&#34;&gt;一览&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://whoosh.readthedocs.io/en/latest/intro.html&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Introduction to Whoosh — Whoosh 2.7.4 documentation&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;术语&#34;&gt;术语&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;分析（Analysis）、分词&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;语料（Corpus）&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;文档（Documents）&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;字段（Fields）&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;检索（Postings）&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;正排索引（Forward index）&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;索引构建（Indexing）&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;倒排索引（Reverse Index）&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;模式（Schema）&lt;/p&gt;
+&lt;p&gt;Schema指定被索引文档所具有的字段&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;词向量（Term vector）&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Postgresql vs Mysql</title>
+      <link>https://spacetimelab.cn/post/postgresql-vs-mysql/</link>
+      <pubDate>Mon, 20 May 2024 20:55:41 +0800</pubDate>
+      <guid>https://spacetimelab.cn/post/postgresql-vs-mysql/</guid>
+      <description>&lt;h2 id=&#34;资料&#34;&gt;资料&lt;/h2&gt;
+&lt;h3 id=&#34;postgres&#34;&gt;Postgres&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a href=&#34;https://www.modb.pro/graph/353&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;PostgreSQL知识图谱 - 墨天轮知识图谱&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a href=&#34;https://www.modb.pro/db/474769&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;PostgreSQL 到底有多强？ - 墨天轮&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&amp;hellip;&amp;hellip;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;mysql&#34;&gt;MySQL&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a href=&#34;https://www.modb.pro/doc/24001&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;MySQL介绍及性能优化.ppt - 墨天轮文档&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&amp;hellip;&amp;hellip;.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;一些说法&#34;&gt;一些说法&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;Oracle有才无德&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;MySQL才浅德薄&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;PostgreSQL德才兼备&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;概念&#34;&gt;概念&lt;/h2&gt;
+&lt;h3 id=&#34;对象关系型数据库&#34;&gt;对象关系型数据库&lt;/h3&gt;
+&lt;p&gt;面向对象的特性&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Web安全设计</title>
+      <link>https://spacetimelab.cn/post/web-security-collection/</link>
+      <pubDate>Sat, 20 Apr 2024 20:59:13 +0800</pubDate>
+      <guid>https://spacetimelab.cn/post/web-security-collection/</guid>
+      <description>&lt;h2 id=&#34;前端安全&#34;&gt;前端安全&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;CSRF攻击&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;https://tech.meituan.com/2018/10/11/fe-security-csrf.html&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;前端安全系列（二）：如何防止CSRF攻击？ - 美团技术团队&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;XSS攻击&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&amp;hellip;&amp;hellip;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;后端安全&#34;&gt;后端安全&lt;/h2&gt;
+&lt;p&gt;永远不要相信用户的输入&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;文件上传&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;SQL注入&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;越权攻击&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;任意命令执行&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;数据传输安全&#34;&gt;数据传输安全&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;密码应加密传输&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;使用安全传输协议，HTTPS&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;资料&#34;&gt;资料&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://websec.readthedocs.io/zh/latest/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Web安全学习笔记 — Web安全学习笔记 1.0 文档&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;认证安全&#34;&gt;认证安全&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://cloud.tencent.com/developer/article/1802761&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;安全攻防 | JWT认知与攻击-腾讯云开发者社区-腾讯云&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
     
     <item>
       <title>Postgres基础操作备忘录</title>
@@ -4320,6 +4465,11 @@ DBSCAN，此法更是妙哉，它不在乎数据的密度，只在乎邻里之�
 &lt;h2 id=&#34;智能体&#34;&gt;智能体&lt;/h2&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;a href=&#34;https://www.doubao.com/chat&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;豆包&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;智谱清言&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;智能搜索&#34;&gt;智能搜索&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://metaso.cn/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;秘塔AI&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 &lt;h2 id=&#34;参考文章&#34;&gt;参考文章&lt;/h2&gt;
 &lt;ul&gt;
@@ -4385,21 +4535,37 @@ DBSCAN，此法更是妙哉，它不在乎数据的密度，只在乎邻里之�
 &lt;p&gt;Web服务中的某些请求可能耗时颇长，并且我们难以控制响应时间时间，比如我们调用了第三方的服务（如电子邮件服务、文档解析服务等），我们无法加快第三方服务的返回同时也不能简单地跳过/忽略这些调用。&lt;/p&gt;
 &lt;p&gt;这种需要执行耗时不确定的操作的场景，我们可以将任务添加到消息/任务队列中，并立即响应用户，由另外的“消费者”进程/线程去处理耗时任务。&lt;/p&gt;
 &lt;h2 id=&#34;celery&#34;&gt;Celery&lt;/h2&gt;
+&lt;h3 id=&#34;特性&#34;&gt;特性&lt;/h3&gt;
 &lt;p&gt;Python开发社区中最受欢迎的任务队列框架为&lt;a href=&#34;https://github.com/celery/celery&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Celery&lt;/a&gt;，其具有很多优点：&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;
-&lt;p&gt;易于使用&lt;/p&gt;
+&lt;p&gt;高效率：官方介绍，Celery单进程可在一分钟内处理百万级的任务&lt;/p&gt;
 &lt;/li&gt;
 &lt;li&gt;
-&lt;p&gt;功能多：支持多个消息服务器、允许计划执行任务（替代crontab）。&lt;/p&gt;
+&lt;p&gt;分布式执行：Celery支持将任务分发到多个计算机上，以实现分布式执行，从而提高处理能力和性能&lt;/p&gt;
 &lt;/li&gt;
 &lt;li&gt;
-&lt;p&gt;效率高：官方介绍，Celery单进程可在一分钟内处理百万级的任务&lt;/p&gt;
+&lt;p&gt;生产者-消费者模型：Celery采用典型的生产者和消费者模型。生产者发送任务到消息队列，消费者从消息队列中取任务进行执行。&lt;/p&gt;
 &lt;/li&gt;
 &lt;li&gt;
-&lt;p&gt;拓展性强&lt;/p&gt;
+&lt;p&gt;异步任务处理：通过将任务放入队列中，Celery可以实现任务的异步执行，避免阻塞主应用程序的进程&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;支持计划执行任务（替代crontab）&lt;/p&gt;
 &lt;/li&gt;
 &lt;/ul&gt;
+&lt;h3 id=&#34;架构&#34;&gt;架构&lt;/h3&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;消息中间件（Broker）：用于存储和传递任务消息。常用的中间件有RabbitMQ、Redis等。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;任务执行单元（Worker）：负责从消息队列中获取任务并执行它们。通常使用多线程技术如Eventlet、gevent等来提高并发性能。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;任务结果存储（Task Result Store）：用于存储任务执行的结果，确保任务结果可以被查询和回调。可选Redis/RebbitMQ/MySQL/&amp;hellip;&amp;hellip;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
 &lt;h3 id=&#34;使用前置条件&#34;&gt;使用前置条件&lt;/h3&gt;
 &lt;ul&gt;
 &lt;li&gt;
@@ -15778,6 +15944,228 @@ F: 致命错误，pylint无法运行
 &lt;p&gt;A Transformer-based Framework for Multivariate Time Series Representation Learning. &lt;a href=&#34;http://brown.edu/Research/AI/files/pubs/kdd21.pdf&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;[paper]&lt;/a&gt;&lt;a href=&#34;https://github.com/gzerveas/mvts_transformer&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;[code]&lt;/a&gt;&lt;/p&gt;
 &lt;/li&gt;
 &lt;/ol&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Redis基本使用总结</title>
+      <link>https://spacetimelab.cn/post/hello-redis-basic/</link>
+      <pubDate>Wed, 13 Jul 2022 17:39:06 +0800</pubDate>
+      <guid>https://spacetimelab.cn/post/hello-redis-basic/</guid>
+      <description>&lt;h2 id=&#34;redis简介&#34;&gt;Redis简介&lt;/h2&gt;
+&lt;h3 id=&#34;数据类型&#34;&gt;数据类型&lt;/h3&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;String&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;List&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Set&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Hash&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Sorted Set&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h3 id=&#34;应用场景&#34;&gt;应用场景&lt;/h3&gt;
+&lt;p&gt;作为高性能的内存数据库系统，Redis广泛多种场景：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;缓存：提高数据访问速度；&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;会话管理：在Web应用中，Redis可以用于存储用户会话信息，减少数据库负载；&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;分布式锁：Redis可用于实现分布式锁，进行并发控制&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;计数器：利用Redis的字符串类型，可以实现计数器功能，如商品库存、点赞数、密码重试次数等&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;限流：通过设置键值对的过期时间，Redis可以用作限流工具。如锁定密码错误次数超过一定次数的用户&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;消息队列：Redis支持发布/订阅模式，可以用作消息队列系统&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;全局ID生成：Redis可以生成全局唯一ID，适用于分布式系统中的ID生成&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;数据共享：在分布式系统中，Redis可以用于数据共享和同步&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&#34;会话管理&#34;&gt;会话管理&lt;/h4&gt;
+&lt;p&gt;&lt;a href=&#34;https://help.aliyun.com/zh/redis/use-cases/manage-sessions-in-web-applications&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;使用Redis在Web应用中实现会话管理最佳实践_云数据库 Redis 版(Redis)-阿里云帮助中心&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;https://juejin.cn/post/7314211417396084762&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Redis入门实战：使用Redis实现会话管理 - 掘金&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure  &gt;
+  &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img alt=&#34;&#34; srcset=&#34;
+               /post/hello-redis-basic/images/applications/session-manage/proce_hua363acaaab8f7c8337a42a8f3e06e1c4_310071_452febe20efa2aa1fc77d8cdf9221889.webp 400w,
+               /post/hello-redis-basic/images/applications/session-manage/proce_hua363acaaab8f7c8337a42a8f3e06e1c4_310071_e33294a1b9c6b479b6ad42f20e5f2252.webp 760w,
+               /post/hello-redis-basic/images/applications/session-manage/proce_hua363acaaab8f7c8337a42a8f3e06e1c4_310071_1200x1200_fit_q75_h2_lanczos_3.webp 1200w&#34;
+               src=&#34;https://spacetimelab.cn/post/hello-redis-basic/images/applications/session-manage/proce_hua363acaaab8f7c8337a42a8f3e06e1c4_310071_452febe20efa2aa1fc77d8cdf9221889.webp&#34;
+               width=&#34;760&#34;
+               height=&#34;371&#34;
+               loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+  &lt;/div&gt;&lt;/figure&gt;
+&lt;/p&gt;
+&lt;h4 id=&#34;分布式锁&#34;&gt;分布式锁&lt;/h4&gt;
+&lt;p&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure  &gt;
+  &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img alt=&#34;&#34; srcset=&#34;
+               /post/hello-redis-basic/images/applications/dist-lock/ar_huee51c675ea149baaf09670be85165273_331986_ed3abd74540d3fdfe1274f819f950aa9.webp 400w,
+               /post/hello-redis-basic/images/applications/dist-lock/ar_huee51c675ea149baaf09670be85165273_331986_9ddf6dd02ccd9f8de30bda27016a8b1e.webp 760w,
+               /post/hello-redis-basic/images/applications/dist-lock/ar_huee51c675ea149baaf09670be85165273_331986_1200x1200_fit_q75_h2_lanczos_3.webp 1200w&#34;
+               src=&#34;https://spacetimelab.cn/post/hello-redis-basic/images/applications/dist-lock/ar_huee51c675ea149baaf09670be85165273_331986_ed3abd74540d3fdfe1274f819f950aa9.webp&#34;
+               width=&#34;760&#34;
+               height=&#34;460&#34;
+               loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+  &lt;/div&gt;&lt;/figure&gt;
+&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;https://juejin.cn/post/6844903830442737671&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;基于Redis的分布式锁实现 - 掘金&lt;/a&gt;&lt;/p&gt;
+&lt;h4 id=&#34;全局id生成&#34;&gt;全局ID生成&lt;/h4&gt;
+&lt;p&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure  &gt;
+  &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img alt=&#34;&#34; srcset=&#34;
+               /post/hello-redis-basic/images/applications/global-id/feat_hue2977936752afbc3c08859a68363be63_147852_10e47b263aee27f90dd7fd35227598a9.webp 400w,
+               /post/hello-redis-basic/images/applications/global-id/feat_hue2977936752afbc3c08859a68363be63_147852_fc265f76e5dee2d54ac7ecd02a9b874e.webp 760w,
+               /post/hello-redis-basic/images/applications/global-id/feat_hue2977936752afbc3c08859a68363be63_147852_1200x1200_fit_q75_h2_lanczos_3.webp 1200w&#34;
+               src=&#34;https://spacetimelab.cn/post/hello-redis-basic/images/applications/global-id/feat_hue2977936752afbc3c08859a68363be63_147852_10e47b263aee27f90dd7fd35227598a9.webp&#34;
+               width=&#34;760&#34;
+               height=&#34;320&#34;
+               loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+  &lt;/div&gt;&lt;/figure&gt;
+&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;https://developer.aliyun.com/article/1223910&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Redis 实现全局唯一id-阿里云开发者社区&lt;/a&gt;&lt;/p&gt;
+&lt;h2 id=&#34;redis-部署模式&#34;&gt;Redis 部署模式&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;单机模式&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;主从模式&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;哨兵模式&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;集群模式&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;redis性能优化策略&#34;&gt;Redis性能优化策略&lt;/h2&gt;
+&lt;p&gt;（TODO）&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;缩短键值对的长度&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;过期时间&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;限制Redis内存大小&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;选择合适的淘汰策略&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;命令优化&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;持久化和备份策略&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;监控和日志记录&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;redis内存淘汰策略&#34;&gt;Redis内存淘汰策略&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;volatile-lru&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;allkeys-lru&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;volatile-lfu&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&amp;hellip;&amp;hellip;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;redis持久化策略&#34;&gt;Redis持久化策略&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;定期&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;关闭时&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;文档&#34;&gt;文档&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a href=&#34;https://www.runoob.com/w3cnote/python-redis-intro.html&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Python redis 使用介绍 | 菜鸟教程&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a href=&#34;https://cloud.tencent.com/developer/article/2046352&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;推荐几款 Redis 可视化工具-腾讯云开发者社区-腾讯云&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a href=&#34;https://segmentfault.com/a/1190000043544891&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;【Redis】四种部署模式的介绍及其优缺点&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
 </description>
     </item>
     
