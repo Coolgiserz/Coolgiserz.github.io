@@ -14799,6 +14799,12 @@ os.spawn*
 &lt;p&gt;&lt;a href=&#34;https://www.modb.pro/doc/24001&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;MySQL介绍及性能优化.ppt - 墨天轮文档&lt;/a&gt;&lt;/p&gt;
 &lt;/li&gt;
 &lt;li&gt;
+&lt;p&gt;&lt;a href=&#34;https://pdai.tech/md/db/sql-mysql/sql-mysql-overview.html&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;♥MySQL知识体系详解♥ | Java 全栈知识体系&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a href=&#34;https://www.xiaolincoding.com/mysql/index/why_index_chose_bpuls_tree.html#_3%e3%80%81%e8%8c%83%e5%9b%b4%e6%9f%a5%e8%af%a2&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;为什么 MySQL 采用 B+ 树作为索引？ | 小林coding&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
 &lt;p&gt;&amp;hellip;&amp;hellip;.&lt;/p&gt;
 &lt;/li&gt;
 &lt;/ul&gt;
@@ -14817,6 +14823,152 @@ os.spawn*
 &lt;h2 id=&#34;概念&#34;&gt;概念&lt;/h2&gt;
 &lt;h3 id=&#34;对象关系型数据库&#34;&gt;对象关系型数据库&lt;/h3&gt;
 &lt;p&gt;面向对象的特性&lt;/p&gt;
+&lt;h2 id=&#34;关于mysql&#34;&gt;关于MySQL&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;MySQL有哪几种存储引擎？各自有什么优缺点？适用场景是？&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;MySQL索引的工作机制&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;MySQL性能优化方式&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;MySQL分库分表&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;SQL执行过程&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;索引&#34;&gt;索引&lt;/h3&gt;
+&lt;p&gt;索引是为了加速数据查询的数据结构，让我们能够以尽可能少的操作次数查到想要的数据。现实中的字典可按拼音/部首查字，拼音表、部首表就是字典中的索引。对于数据库查询而言，什么样的数据结构能够让我们查找数据时尽可能减少磁盘IO次数呢？一种经典的思路就是将数据通过平衡的多路搜索树进行组织，比如B-Tree（Balance Tree）、B+Tree。&lt;/p&gt;
+&lt;h4 id=&#34;b-tree&#34;&gt;B-Tree&lt;/h4&gt;
+&lt;p&gt;B-Tree即平衡树，是所有的叶子节点都在同一层的多路查找树。&lt;/p&gt;
+&lt;h4 id=&#34;btree&#34;&gt;B+Tree&lt;/h4&gt;
+&lt;p&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure  &gt;
+  &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img alt=&#34;&#34; srcset=&#34;
+               /post/postgresql-vs-mysql/images/index/b&amp;#43;tree_hue8cc87086862a0c14949fde5ec4b0418_661275_1b8510fdd46a7336c3647bd4267e5bfd.webp 400w,
+               /post/postgresql-vs-mysql/images/index/b&amp;#43;tree_hue8cc87086862a0c14949fde5ec4b0418_661275_940a38e7c9b4a129c6fad181d853b218.webp 760w,
+               /post/postgresql-vs-mysql/images/index/b&amp;#43;tree_hue8cc87086862a0c14949fde5ec4b0418_661275_1200x1200_fit_q75_h2_lanczos_3.webp 1200w&#34;
+               src=&#34;https://spacetimelab.cn/post/postgresql-vs-mysql/images/index/b&amp;#43;tree_hue8cc87086862a0c14949fde5ec4b0418_661275_1b8510fdd46a7336c3647bd4267e5bfd.webp&#34;
+               width=&#34;760&#34;
+               height=&#34;353&#34;
+               loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+  &lt;/div&gt;&lt;/figure&gt;
+B+Tree具有B-Tree的平衡性，但相比B-Tree，其把所有数据存放到叶子节点，并且在相邻叶子节点之间建立指针，提高范围查询的效率。&lt;/p&gt;
+&lt;h5 id=&#34;b树的查找过程&#34;&gt;B+树的查找过程&lt;/h5&gt;
+&lt;p&gt;先读取根节点磁盘块到内存中，通过二分查找确定待查找数据项在哪个子节点磁盘块中，然后将对应子节点磁盘块加载到内存中进行二分查找缩小范围，依此类推，直到在某个叶子节点磁盘块中找到目标，结束查询。&lt;/p&gt;
+&lt;p&gt;所以需要的磁盘IO次数就是树的高度。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;为什么要把数据放到叶子节点？&lt;/p&gt;
+&lt;p&gt;非叶子节点可以存放更多索引，数据量相同的情况下，B+树结构会比B树更加“矮胖”，提高查询效率。删除数据时不会引起树结构的复杂变形。&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h5 id=&#34;b树与b树的性能对比&#34;&gt;B+树与B树的性能对比&lt;/h5&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;单数据查询&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;插入、删除效率&lt;/p&gt;
+&lt;p&gt;B树删除根节点时，可能导致树发生很大的变形&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;范围查询&lt;/p&gt;
+&lt;p&gt;由于B树的数据可能在非叶子节点中，要实现范围查询只能通过树的遍历，涉及多个磁盘IO操作；而B+树的数据存在叶子节点中，叶子节点间又通过指针构成了有序双向链表，因此范围查询效率更高。&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h4 id=&#34;索引的建立原则&#34;&gt;索引的建立原则&lt;/h4&gt;
+&lt;p&gt;对区分度高的字段建立索引,区分度公式:count(distinct FIELD)/count(*)&lt;/p&gt;
+&lt;h4 id=&#34;索引在什么情况下可能失效&#34;&gt;索引在什么情况下可能失效&lt;/h4&gt;
+&lt;p&gt;&lt;a href=&#34;https://www.xiaolincoding.com/mysql/index/index_lose.html#%e5%af%b9%e7%b4%a2%e5%bc%95%e4%bd%bf%e7%94%a8%e5%b7%a6%e6%88%96%e8%80%85%e5%b7%a6%e5%8f%b3%e6%a8%a1%e7%b3%8a%e5%8c%b9%e9%85%8d&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;索引失效有哪些？ | 小林coding&lt;/a&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;对索引使用左或左右模糊匹配&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;对索引使用函数&lt;/p&gt;
+&lt;p&gt;索引指对数据原始值建立索引，而非对数据经函数处理后的结果建立索引。MySQL8.0之后支持函数索引特性，可以针对函数计算后的值建立索引。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;对索引进行表达式计算&lt;/p&gt;
+&lt;p&gt;原理与对索引使用函数类似。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;对索引进行隐式类型转换&lt;/p&gt;
+&lt;p&gt;分情况讨论，如果索引字段是字符串类型，但条件查询中的输入参数是整型，会走全表扫描。&lt;/p&gt;
+&lt;p&gt;如果索引字段是整型，条件查询中输入参数是字符串类型时，索引不会失效，因为MySQL会将字符串转为整型。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;联合索引非最左匹配&lt;/p&gt;
+&lt;p&gt;对主键字段建立的索引叫聚簇索引，对普通字段建立的索引叫二级索引。多个普通字段组合在一起建立的索引叫联合索引/组合索引。&lt;/p&gt;
+&lt;p&gt;联合索引的建立顺序会影响查询性能，因为联合索引是按照最左优先的顺序进行索引匹配。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;WHERE子句中的OR&lt;/p&gt;
+&lt;p&gt;如果存在OR查询，其中一个条件的字段没有建立索引，那么数据库会走全表扫描，因为OR查询意味着需要查询OR连接的两个条件的结果集的并集。&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;事务&#34;&gt;事务&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;事务的隔离级别如何实现？&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;事务有哪些特性？&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;并行事务会引发什么问题？&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;sql执行过程&#34;&gt;SQL执行过程&lt;/h3&gt;
+&lt;p&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure  &gt;
+  &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img alt=&#34;&#34; srcset=&#34;
+               /post/postgresql-vs-mysql/images/sql/prop_hua369ba4a10fdf10e494973b7cc6387c3_520018_e42de4b76010cd337ee534c584e11d36.webp 400w,
+               /post/postgresql-vs-mysql/images/sql/prop_hua369ba4a10fdf10e494973b7cc6387c3_520018_18555f45e6081d1c9b66ff655bc60eed.webp 760w,
+               /post/postgresql-vs-mysql/images/sql/prop_hua369ba4a10fdf10e494973b7cc6387c3_520018_1200x1200_fit_q75_h2_lanczos_3.webp 1200w&#34;
+               src=&#34;https://spacetimelab.cn/post/postgresql-vs-mysql/images/sql/prop_hua369ba4a10fdf10e494973b7cc6387c3_520018_e42de4b76010cd337ee534c584e11d36.webp&#34;
+               width=&#34;760&#34;
+               height=&#34;447&#34;
+               loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+  &lt;/div&gt;&lt;/figure&gt;
+&lt;/p&gt;
 </description>
     </item>
     

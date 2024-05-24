@@ -68,8 +68,7 @@
   PostgreSQL 到底有多强？ - 墨天轮
   &hellip;&hellip;
   MySQL   MySQL介绍及性能优化.ppt - 墨天轮文档
-  &hellip;&hellip;.
-  一些说法   Oracle有才无德" />
+  ♥MySQL知识体系详解♥ | Java 全栈知识体系" />
 
   
   <link rel="alternate" hreflang="en-us" href="https://spacetimelab.cn/post/postgresql-vs-mysql/" />
@@ -332,8 +331,7 @@
   PostgreSQL 到底有多强？ - 墨天轮
   &hellip;&hellip;
   MySQL   MySQL介绍及性能优化.ppt - 墨天轮文档
-  &hellip;&hellip;.
-  一些说法   Oracle有才无德" /><meta property="og:image" content="https://spacetimelab.cn/media/icon_hue03491371183284312b8b116a73ae5ab_79511_512x512_fill_lanczos_center_3.png" />
+  ♥MySQL知识体系详解♥ | Java 全栈知识体系" /><meta property="og:image" content="https://spacetimelab.cn/media/icon_hue03491371183284312b8b116a73ae5ab_79511_512x512_fill_lanczos_center_3.png" />
     <meta property="twitter:image" content="https://spacetimelab.cn/media/icon_hue03491371183284312b8b116a73ae5ab_79511_512x512_fill_lanczos_center_3.png" /><meta property="og:locale" content="en-us" />
   
     
@@ -386,7 +384,7 @@
       "url": "https://spacetimelab.cn/media/icon_hue03491371183284312b8b116a73ae5ab_79511_192x192_fill_lanczos_center_3.png"
     }
   },
-  "description": "资料 Postgres   PostgreSQL知识图谱 - 墨天轮知识图谱\n  PostgreSQL 到底有多强？ - 墨天轮\n  \u0026hellip;\u0026hellip;\n  MySQL   MySQL介绍及性能优化.ppt - 墨天轮文档\n  \u0026hellip;\u0026hellip;.\n  一些说法   Oracle有才无德"
+  "description": "资料 Postgres   PostgreSQL知识图谱 - 墨天轮知识图谱\n  PostgreSQL 到底有多强？ - 墨天轮\n  \u0026hellip;\u0026hellip;\n  MySQL   MySQL介绍及性能优化.ppt - 墨天轮文档\n  ♥MySQL知识体系详解♥ | Java 全栈知识体系"
 }
 </script>
 
@@ -842,6 +840,12 @@
 <p><a href="https://www.modb.pro/doc/24001" target="_blank" rel="noopener">MySQL介绍及性能优化.ppt - 墨天轮文档</a></p>
 </li>
 <li>
+<p><a href="https://pdai.tech/md/db/sql-mysql/sql-mysql-overview.html" target="_blank" rel="noopener">♥MySQL知识体系详解♥ | Java 全栈知识体系</a></p>
+</li>
+<li>
+<p><a href="https://www.xiaolincoding.com/mysql/index/why_index_chose_bpuls_tree.html#_3%e3%80%81%e8%8c%83%e5%9b%b4%e6%9f%a5%e8%af%a2" target="_blank" rel="noopener">为什么 MySQL 采用 B+ 树作为索引？ | 小林coding</a></p>
+</li>
+<li>
 <p>&hellip;&hellip;.</p>
 </li>
 </ul>
@@ -860,6 +864,152 @@
 <h2 id="概念">概念</h2>
 <h3 id="对象关系型数据库">对象关系型数据库</h3>
 <p>面向对象的特性</p>
+<h2 id="关于mysql">关于MySQL</h2>
+<ul>
+<li>
+<p>MySQL有哪几种存储引擎？各自有什么优缺点？适用场景是？</p>
+</li>
+<li>
+<p>MySQL索引的工作机制</p>
+</li>
+<li>
+<p>MySQL性能优化方式</p>
+</li>
+<li>
+<p>MySQL分库分表</p>
+</li>
+<li>
+<p>SQL执行过程</p>
+</li>
+</ul>
+<h3 id="索引">索引</h3>
+<p>索引是为了加速数据查询的数据结构，让我们能够以尽可能少的操作次数查到想要的数据。现实中的字典可按拼音/部首查字，拼音表、部首表就是字典中的索引。对于数据库查询而言，什么样的数据结构能够让我们查找数据时尽可能减少磁盘IO次数呢？一种经典的思路就是将数据通过平衡的多路搜索树进行组织，比如B-Tree（Balance Tree）、B+Tree。</p>
+<h4 id="b-tree">B-Tree</h4>
+<p>B-Tree即平衡树，是所有的叶子节点都在同一层的多路查找树。</p>
+<h4 id="btree">B+Tree</h4>
+<p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<figure  >
+  <div class="d-flex justify-content-center">
+    <div class="w-100" ><img alt="" srcset="
+               /post/postgresql-vs-mysql/images/index/b&#43;tree_hue8cc87086862a0c14949fde5ec4b0418_661275_1b8510fdd46a7336c3647bd4267e5bfd.webp 400w,
+               /post/postgresql-vs-mysql/images/index/b&#43;tree_hue8cc87086862a0c14949fde5ec4b0418_661275_940a38e7c9b4a129c6fad181d853b218.webp 760w,
+               /post/postgresql-vs-mysql/images/index/b&#43;tree_hue8cc87086862a0c14949fde5ec4b0418_661275_1200x1200_fit_q75_h2_lanczos_3.webp 1200w"
+               src="/post/postgresql-vs-mysql/images/index/b&#43;tree_hue8cc87086862a0c14949fde5ec4b0418_661275_1b8510fdd46a7336c3647bd4267e5bfd.webp"
+               width="760"
+               height="353"
+               loading="lazy" data-zoomable /></div>
+  </div></figure>
+B+Tree具有B-Tree的平衡性，但相比B-Tree，其把所有数据存放到叶子节点，并且在相邻叶子节点之间建立指针，提高范围查询的效率。</p>
+<h5 id="b树的查找过程">B+树的查找过程</h5>
+<p>先读取根节点磁盘块到内存中，通过二分查找确定待查找数据项在哪个子节点磁盘块中，然后将对应子节点磁盘块加载到内存中进行二分查找缩小范围，依此类推，直到在某个叶子节点磁盘块中找到目标，结束查询。</p>
+<p>所以需要的磁盘IO次数就是树的高度。</p>
+<ul>
+<li>
+<p>为什么要把数据放到叶子节点？</p>
+<p>非叶子节点可以存放更多索引，数据量相同的情况下，B+树结构会比B树更加“矮胖”，提高查询效率。删除数据时不会引起树结构的复杂变形。</p>
+</li>
+</ul>
+<h5 id="b树与b树的性能对比">B+树与B树的性能对比</h5>
+<ol>
+<li>
+<p>单数据查询</p>
+</li>
+<li>
+<p>插入、删除效率</p>
+<p>B树删除根节点时，可能导致树发生很大的变形</p>
+</li>
+<li>
+<p>范围查询</p>
+<p>由于B树的数据可能在非叶子节点中，要实现范围查询只能通过树的遍历，涉及多个磁盘IO操作；而B+树的数据存在叶子节点中，叶子节点间又通过指针构成了有序双向链表，因此范围查询效率更高。</p>
+</li>
+</ol>
+<h4 id="索引的建立原则">索引的建立原则</h4>
+<p>对区分度高的字段建立索引,区分度公式:count(distinct FIELD)/count(*)</p>
+<h4 id="索引在什么情况下可能失效">索引在什么情况下可能失效</h4>
+<p><a href="https://www.xiaolincoding.com/mysql/index/index_lose.html#%e5%af%b9%e7%b4%a2%e5%bc%95%e4%bd%bf%e7%94%a8%e5%b7%a6%e6%88%96%e8%80%85%e5%b7%a6%e5%8f%b3%e6%a8%a1%e7%b3%8a%e5%8c%b9%e9%85%8d" target="_blank" rel="noopener">索引失效有哪些？ | 小林coding</a></p>
+<ul>
+<li>
+<p>对索引使用左或左右模糊匹配</p>
+</li>
+<li>
+<p>对索引使用函数</p>
+<p>索引指对数据原始值建立索引，而非对数据经函数处理后的结果建立索引。MySQL8.0之后支持函数索引特性，可以针对函数计算后的值建立索引。</p>
+</li>
+<li>
+<p>对索引进行表达式计算</p>
+<p>原理与对索引使用函数类似。</p>
+</li>
+<li>
+<p>对索引进行隐式类型转换</p>
+<p>分情况讨论，如果索引字段是字符串类型，但条件查询中的输入参数是整型，会走全表扫描。</p>
+<p>如果索引字段是整型，条件查询中输入参数是字符串类型时，索引不会失效，因为MySQL会将字符串转为整型。</p>
+</li>
+<li>
+<p>联合索引非最左匹配</p>
+<p>对主键字段建立的索引叫聚簇索引，对普通字段建立的索引叫二级索引。多个普通字段组合在一起建立的索引叫联合索引/组合索引。</p>
+<p>联合索引的建立顺序会影响查询性能，因为联合索引是按照最左优先的顺序进行索引匹配。</p>
+</li>
+<li>
+<p>WHERE子句中的OR</p>
+<p>如果存在OR查询，其中一个条件的字段没有建立索引，那么数据库会走全表扫描，因为OR查询意味着需要查询OR连接的两个条件的结果集的并集。</p>
+</li>
+</ul>
+<h3 id="事务">事务</h3>
+<ul>
+<li>
+<p>事务的隔离级别如何实现？</p>
+</li>
+<li>
+<p>事务有哪些特性？</p>
+</li>
+<li>
+<p>并行事务会引发什么问题？</p>
+</li>
+</ul>
+<h3 id="sql执行过程">SQL执行过程</h3>
+<p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<figure  >
+  <div class="d-flex justify-content-center">
+    <div class="w-100" ><img alt="" srcset="
+               /post/postgresql-vs-mysql/images/sql/prop_hua369ba4a10fdf10e494973b7cc6387c3_520018_e42de4b76010cd337ee534c584e11d36.webp 400w,
+               /post/postgresql-vs-mysql/images/sql/prop_hua369ba4a10fdf10e494973b7cc6387c3_520018_18555f45e6081d1c9b66ff655bc60eed.webp 760w,
+               /post/postgresql-vs-mysql/images/sql/prop_hua369ba4a10fdf10e494973b7cc6387c3_520018_1200x1200_fit_q75_h2_lanczos_3.webp 1200w"
+               src="/post/postgresql-vs-mysql/images/sql/prop_hua369ba4a10fdf10e494973b7cc6387c3_520018_e42de4b76010cd337ee534c584e11d36.webp"
+               width="760"
+               height="447"
+               loading="lazy" data-zoomable /></div>
+  </div></figure>
+</p>
 
     </div>
 
