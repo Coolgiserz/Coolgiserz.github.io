@@ -3519,6 +3519,17 @@ sudo docker run --name es01 --net elastic -p 9200:9200 -it -d  elasticsearch:8.1
     </item>
     
     <item>
+      <title>Docker部署英伟达GPU应用</title>
+      <link>https://spacetimelab.cn/post/docker-nvidia-gpu/</link>
+      <pubDate>Wed, 28 Feb 2024 21:15:56 +0800</pubDate>
+      <guid>https://spacetimelab.cn/post/docker-nvidia-gpu/</guid>
+      <description>&lt;h2 id=&#34;英伟达官方解决方案&#34;&gt;英伟达官方解决方案&lt;/h2&gt;
+&lt;p&gt;安装&lt;a href=&#34;https://docs.nvidia.com/datacenter/cloud-native/container-toolkit/latest/install-guide.html&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Nvidia Container Toolkit&lt;/a&gt;，配置docker运行时，使容器可以使用Nvidia Container运行时。构建容器镜像时指定nvidia运行时、gpu（可选）即可。&lt;/p&gt;
+&lt;p&gt;通过在容器中执行nvidia-smi命令可以检测容器环境中cuda是否可用。&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
       <title>PostgreSQL使用过程中遇到的一些问题分析和注意事项笔记</title>
       <link>https://spacetimelab.cn/post/postgres-usage-issues-notes/</link>
       <pubDate>Mon, 22 Jan 2024 16:40:26 +0800</pubDate>
@@ -14644,6 +14655,30 @@ YES&amp;#39;,&amp;#39;YES&amp;#39;);
     </item>
     
     <item>
+      <title>Python Encrypto Library</title>
+      <link>https://spacetimelab.cn/post/python-encrypto-library/</link>
+      <pubDate>Sat, 27 May 2023 21:11:31 +0800</pubDate>
+      <guid>https://spacetimelab.cn/post/python-encrypto-library/</guid>
+      <description>&lt;h2 id=&#34;fernet&#34;&gt;Fernet&lt;/h2&gt;
+&lt;p&gt;对称加解密&lt;/p&gt;
+&lt;h3 id=&#34;生成密钥&#34;&gt;生成密钥&lt;/h3&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-python&#34; data-lang=&#34;python&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;kdf&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;PBKDF2HMAC&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;n&#34;&gt;algorithm&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;hashes&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;SHA256&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(),&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;n&#34;&gt;length&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;32&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;n&#34;&gt;salt&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;salt&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;n&#34;&gt;iterations&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;390000&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;key&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;base64&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;urlsafe_b64encode&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;kdf&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;derive&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;password&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;))&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nb&#34;&gt;print&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;key&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;加解密&#34;&gt;加解密&lt;/h3&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-python&#34; data-lang=&#34;python&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;password_encrypt&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;Fernet&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;key&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;encrypt&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;password&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nb&#34;&gt;print&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;password_encrypt&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;password_decrypt&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;Fernet&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;key&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;decrypt&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;password_encrypt&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;decode&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;()&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nb&#34;&gt;print&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;password_decrypt&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</description>
+    </item>
+    
+    <item>
       <title>Python执行系统命令的几种方法</title>
       <link>https://spacetimelab.cn/post/execute-system-command-in_python/</link>
       <pubDate>Thu, 25 May 2023 21:14:36 +0800</pubDate>
@@ -14960,10 +14995,10 @@ B+Tree具有B-Tree的平衡性，但相比B-Tree，其把所有数据存放到�
 &lt;figure  &gt;
   &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
     &lt;div class=&#34;w-100&#34; &gt;&lt;img alt=&#34;&#34; srcset=&#34;
-               /post/postgresql-vs-mysql/images/sql/prop_hua369ba4a10fdf10e494973b7cc6387c3_520018_e42de4b76010cd337ee534c584e11d36.webp 400w,
+               /post/postgresql-vs-mysql/images/sql/prop_hua369ba4a10fdf10e494973b7cc6387c3_520018_87870fcc7c24bf2a10f080a6b5fa0b53.webp 400w,
                /post/postgresql-vs-mysql/images/sql/prop_hua369ba4a10fdf10e494973b7cc6387c3_520018_18555f45e6081d1c9b66ff655bc60eed.webp 760w,
                /post/postgresql-vs-mysql/images/sql/prop_hua369ba4a10fdf10e494973b7cc6387c3_520018_1200x1200_fit_q75_h2_lanczos_3.webp 1200w&#34;
-               src=&#34;https://spacetimelab.cn/post/postgresql-vs-mysql/images/sql/prop_hua369ba4a10fdf10e494973b7cc6387c3_520018_e42de4b76010cd337ee534c584e11d36.webp&#34;
+               src=&#34;https://spacetimelab.cn/post/postgresql-vs-mysql/images/sql/prop_hua369ba4a10fdf10e494973b7cc6387c3_520018_87870fcc7c24bf2a10f080a6b5fa0b53.webp&#34;
                width=&#34;760&#34;
                height=&#34;447&#34;
                loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;

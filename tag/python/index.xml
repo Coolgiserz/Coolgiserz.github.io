@@ -6367,11 +6367,126 @@ os.spawn*
     </item>
     
     <item>
-      <title>《Python软件架构》知识点练习代码</title>
+      <title>《Python软件架构》读后随笔</title>
       <link>https://spacetimelab.cn/project/python-software-architecture-practice/</link>
       <pubDate>Sat, 20 May 2023 23:49:19 +0800</pubDate>
       <guid>https://spacetimelab.cn/project/python-software-architecture-practice/</guid>
-      <description>&lt;p&gt;Python软件架构知识点练习代码&lt;/p&gt;
+      <description>&lt;h2 id=&#34;代码的评价标准&#34;&gt;代码的评价标准&lt;/h2&gt;
+&lt;p&gt;什么是好代码？坏代码？可以从哪些维度评价？&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;可维护性&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;易维护的代码：能在不修改原有代码设计、不引入新bug的情况下修改或添加代码。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;可测试性&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;可扩展性&lt;/strong&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;可读性&lt;/strong&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;可复用性&lt;/p&gt;
+&lt;p&gt;减少重复代码的编写，尽量复用已有代码。&lt;/p&gt;
+&lt;p&gt;面向对象中继承、多态的目的之一就是提高代码的可复用性。&lt;/p&gt;
+&lt;p&gt;很多设计模式所要达到的最终效果就是可复用性。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;简洁性&lt;/p&gt;
+&lt;p&gt;KISS原则：Keep It Simple、Stupid&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;以上评价指标往往不是独立的评价维度，而是会互相影响，如可读性好、可扩展性好的代码相对可维护性强。但有时候为了提高代码的可复用性、可扩展性，对代码进行多种层次的抽象可能会降低代码的可读性。&lt;/p&gt;
+&lt;h2 id=&#34;编程的范式&#34;&gt;编程的范式&lt;/h2&gt;
+&lt;p&gt;如何写出高质量代码？掌握细化、能落地的方法论&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;面向对象设计思想&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;设计原则&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;设计模式&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;编码规范&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;重构技巧&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure  &gt;
+  &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img alt=&#34;&#34; srcset=&#34;
+               /project/python-software-architecture-practice/images/tutorial/oop_hufc0dae7e2013aace7972a789dd9396ac_383960_66b6173cbf219b1b32eca19e645e8175.webp 400w,
+               /project/python-software-architecture-practice/images/tutorial/oop_hufc0dae7e2013aace7972a789dd9396ac_383960_4f0cdeb827e477a847bd7c3755db6f72.webp 760w,
+               /project/python-software-architecture-practice/images/tutorial/oop_hufc0dae7e2013aace7972a789dd9396ac_383960_1200x1200_fit_q75_h2_lanczos_3.webp 1200w&#34;
+               src=&#34;https://spacetimelab.cn/project/python-software-architecture-practice/images/tutorial/oop_hufc0dae7e2013aace7972a789dd9396ac_383960_66b6173cbf219b1b32eca19e645e8175.webp&#34;
+               width=&#34;760&#34;
+               height=&#34;657&#34;
+               loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+  &lt;/div&gt;&lt;/figure&gt;
+&lt;/p&gt;
+&lt;h3 id=&#34;关于编程方法论的一些问题&#34;&gt;关于编程方法论的一些问题&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;如何理解面向过程、面向对象、函数式编程这几种编程思想&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;面向对象编程、设计原则、设计模式、编程规范和代码重构的关系&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;面向过程编程和面向对象编程的区别和联系&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;接口和抽象类的区别以及各自的应用场景&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;组合和继承孰优孰劣？&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;如何理解基于接口而非实现编程？&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&#34;q如何理解面向过程面向对象函数式编程这几种编程思想&#34;&gt;Q：如何理解面向过程、面向对象、函数式编程这几种编程思想&lt;/h4&gt;
+&lt;h5 id=&#34;面向对象编程&#34;&gt;面向对象编程&lt;/h5&gt;
+&lt;p&gt;提出了一种编程风格/范式，建议以“类”或“对象”构建代码的基本单元，以封装、继承、抽象、多态四个特性作为代码设计的基石。目前，大部分语言都是面向对象编程的语言（支持类和对象、以及各种面向对象特性），如Java、C++、Go、Python、Scala、PHP等。&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;Tips: Smalltalk是世界上第一个面向对象编程语言。
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;那么为什么要将“类”、“对象”作为代码的基本单元呢？这其实是一种归类的思想，编程本质上可以认为是对问题进行建模并得出程序化的工具，如果我们能将一组行为相似的实体归为一类，这一类实体具有相似的属性或行为，那么在处理这些实体时就（大概率）可以用同样的代码完成实现逻辑，所以基于这种设计思想写出的代码会具有较高的可复用性，因为它抽象出了同一类不同实体的属性、行为的共同点，于是可通过同一套逻辑（或者相差不大）实现对具有这些共同点的实体/对象的处理。&lt;/p&gt;
+&lt;p&gt;考虑到不同类之间既具有共同点又具有差异性的情况，人们提出了“继承”的概念，某一个类可以通过“继承”另一个类以复用被继承者（父类）的代码，同时也可以通过重写实现跟父类不同的行为。（相当于子承父业，但可以青出于蓝胜于蓝）。&lt;/p&gt;
+&lt;h6 id=&#34;关于继承的争议&#34;&gt;关于继承的争议&lt;/h6&gt;
+&lt;p&gt;随着实践经验的增多、工程师们发现继承在一些场合可能存在问题，于是开始反思继承本身存在的必要性以及可替代性。现代编程语言Go就摒弃了“继承”这一代码设计思想，提倡“组合优于继承”。&lt;/p&gt;
+&lt;h6 id=&#34;关于面向对象分析面向对象设计面向对象编程的区别&#34;&gt;关于面向对象分析、面向对象设计、面向对象编程的区别&lt;/h6&gt;
+&lt;p&gt;做什么（程序被拆分成哪些类、类有哪些属性）、怎么做（类与类之间怎么交互）、做（写代码，将面向对象的设计进行落地）。&lt;/p&gt;
+&lt;h4 id=&#34;q面向对象编程设计原则设计模式编程规范和代码重构的关系&#34;&gt;Q：面向对象编程、设计原则、设计模式、编程规范和代码重构的关系&lt;/h4&gt;
+&lt;p&gt;面向对象编程是一种编程思想，核心特性包括封装、继承、多态，核心理念是“抽象”，主要解决代码的可复用性问题。基于这种编程思想可以实现很多复杂的设计模式。&lt;/p&gt;
+&lt;p&gt;设计原则是指导代码设计的经验总结。&lt;/p&gt;
+&lt;p&gt;设计模式是有经验的工程师针对特定代码设计问题总结出的经验性解决方案或设计思路，主要解决代码的可扩展性问题；设计模式比设计原则更具体，设计原则比设计模式更抽象。（或者说，面向对象和设计原则偏向内功心法「如九阳真经、易筋经」、设计模式是具体招式「如降龙十八掌」、编程规范是基本武术动作，代码重构是在动作“变形”后的纠编操作）&lt;/p&gt;
+&lt;p&gt;编程规范是关于代码编写细节的可落地的具体规范，主要解决代码可读性的问题。&lt;/p&gt;
+&lt;p&gt;没有强大的内功基础，无法练就降龙十八掌；若只会内功不通招式，难以克敌制胜。&lt;/p&gt;
+&lt;h2 id=&#34;相关阅读&#34;&gt;相关阅读&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;《设计模式：可复用面向对象软件的基础》Design Patterns: Elements of Reusable Object-Oriented Software&lt;/li&gt;
+&lt;/ul&gt;
 </description>
     </item>
     

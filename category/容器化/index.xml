@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>容器化 | NullSpace</title>
+    <link>https://spacetimelab.cn/category/%E5%AE%B9%E5%99%A8%E5%8C%96/</link>
+      <atom:link href="https://spacetimelab.cn/category/%E5%AE%B9%E5%99%A8%E5%8C%96/index.xml" rel="self" type="application/rss+xml" />
+    <description>容器化</description>
+    <generator>Wowchemy (https://wowchemy.com)</generator><language>en-us</language><lastBuildDate>Wed, 28 Feb 2024 21:15:56 +0800</lastBuildDate>
+    <image>
+      <url>https://spacetimelab.cn/media/icon_hue03491371183284312b8b116a73ae5ab_79511_512x512_fill_lanczos_center_3.png</url>
+      <title>容器化</title>
+      <link>https://spacetimelab.cn/category/%E5%AE%B9%E5%99%A8%E5%8C%96/</link>
+    </image>
+    
+    <item>
+      <title>Docker部署英伟达GPU应用</title>
+      <link>https://spacetimelab.cn/post/docker-nvidia-gpu/</link>
+      <pubDate>Wed, 28 Feb 2024 21:15:56 +0800</pubDate>
+      <guid>https://spacetimelab.cn/post/docker-nvidia-gpu/</guid>
+      <description>&lt;h2 id=&#34;英伟达官方解决方案&#34;&gt;英伟达官方解决方案&lt;/h2&gt;
+&lt;p&gt;安装&lt;a href=&#34;https://docs.nvidia.com/datacenter/cloud-native/container-toolkit/latest/install-guide.html&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Nvidia Container Toolkit&lt;/a&gt;，配置docker运行时，使容器可以使用Nvidia Container运行时。构建容器镜像时指定nvidia运行时、gpu（可选）即可。&lt;/p&gt;
+&lt;p&gt;通过在容器中执行nvidia-smi命令可以检测容器环境中cuda是否可用。&lt;/p&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

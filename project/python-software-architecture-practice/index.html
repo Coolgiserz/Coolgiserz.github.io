@@ -64,7 +64,19 @@
   
     
   
-  <meta name="description" content="Python软件架构知识点练习代码" />
+  <meta name="description" content="代码的评价标准 什么是好代码？坏代码？可以从哪些维度评价？
+  可维护性
+易维护的代码：能在不修改原有代码设计、不引入新bug的情况下修改或添加代码。
+  可测试性
+  可扩展性
+  可读性
+  可复用性
+减少重复代码的编写，尽量复用已有代码。
+面向对象中继承、多态的目的之一就是提高代码的可复用性。
+很多设计模式所要达到的最终效果就是可复用性。
+  简洁性
+KISS原则：Keep It Simple、Stupid
+  以上评价指标往往不是独立的评价维度，而是会互相影响，如可读性好、可扩展性好的代码相对可维护性强。但有时候为了提高代码的可复用性、可扩展性，对代码进行多种层次的抽象可能会降低代码的可读性。" />
 
   
   <link rel="alternate" hreflang="en-us" href="https://spacetimelab.cn/project/python-software-architecture-practice/" />
@@ -322,8 +334,20 @@
   
   <meta property="og:site_name" content="NullSpace" />
   <meta property="og:url" content="https://spacetimelab.cn/project/python-software-architecture-practice/" />
-  <meta property="og:title" content="《Python软件架构》知识点练习代码 | NullSpace" />
-  <meta property="og:description" content="Python软件架构知识点练习代码" /><meta property="og:image" content="https://spacetimelab.cn/media/icon_hue03491371183284312b8b116a73ae5ab_79511_512x512_fill_lanczos_center_3.png" />
+  <meta property="og:title" content="《Python软件架构》读后随笔 | NullSpace" />
+  <meta property="og:description" content="代码的评价标准 什么是好代码？坏代码？可以从哪些维度评价？
+  可维护性
+易维护的代码：能在不修改原有代码设计、不引入新bug的情况下修改或添加代码。
+  可测试性
+  可扩展性
+  可读性
+  可复用性
+减少重复代码的编写，尽量复用已有代码。
+面向对象中继承、多态的目的之一就是提高代码的可复用性。
+很多设计模式所要达到的最终效果就是可复用性。
+  简洁性
+KISS原则：Keep It Simple、Stupid
+  以上评价指标往往不是独立的评价维度，而是会互相影响，如可读性好、可扩展性好的代码相对可维护性强。但有时候为了提高代码的可复用性、可扩展性，对代码进行多种层次的抽象可能会降低代码的可读性。" /><meta property="og:image" content="https://spacetimelab.cn/media/icon_hue03491371183284312b8b116a73ae5ab_79511_512x512_fill_lanczos_center_3.png" />
     <meta property="twitter:image" content="https://spacetimelab.cn/media/icon_hue03491371183284312b8b116a73ae5ab_79511_512x512_fill_lanczos_center_3.png" /><meta property="og:locale" content="en-us" />
   
     
@@ -356,7 +380,7 @@
     "@type": "WebPage",
     "@id": "https://spacetimelab.cn/project/python-software-architecture-practice/"
   },
-  "headline": "《Python软件架构》知识点练习代码",
+  "headline": "《Python软件架构》读后随笔",
   
   "datePublished": "2023-05-20T23:49:19+08:00",
   "dateModified": "2023-05-20T23:49:19+08:00",
@@ -374,7 +398,7 @@
       "url": "https://spacetimelab.cn/media/icon_hue03491371183284312b8b116a73ae5ab_79511_192x192_fill_lanczos_center_3.png"
     }
   },
-  "description": "Python软件架构知识点练习代码"
+  "description": "代码的评价标准 什么是好代码？坏代码？可以从哪些维度评价？\n  可维护性\n易维护的代码：能在不修改原有代码设计、不引入新bug的情况下修改或添加代码。\n  可测试性\n  可扩展性\n  可读性\n  可复用性\n减少重复代码的编写，尽量复用已有代码。\n面向对象中继承、多态的目的之一就是提高代码的可复用性。\n很多设计模式所要达到的最终效果就是可复用性。\n  简洁性\nKISS原则：Keep It Simple、Stupid\n  以上评价指标往往不是独立的评价维度，而是会互相影响，如可读性好、可扩展性好的代码相对可维护性强。但有时候为了提高代码的可复用性、可扩展性，对代码进行多种层次的抽象可能会降低代码的可读性。"
 }
 </script>
 
@@ -390,7 +414,7 @@
 
 
 
-  <title>《Python软件架构》知识点练习代码 | NullSpace</title>
+  <title>《Python软件架构》读后随笔 | NullSpace</title>
 </head>
 
 
@@ -751,7 +775,7 @@
   
   
 <div class="article-container pt-3">
-  <h1>《Python软件架构》知识点练习代码</h1>
+  <h1>《Python软件架构》读后随笔</h1>
 
   
 
@@ -853,7 +877,122 @@
   <div class="article-container">
 
     <div class="article-style">
-      <p>Python软件架构知识点练习代码</p>
+      <h2 id="代码的评价标准">代码的评价标准</h2>
+<p>什么是好代码？坏代码？可以从哪些维度评价？</p>
+<ul>
+<li>
+<p><strong>可维护性</strong></p>
+<p>易维护的代码：能在不修改原有代码设计、不引入新bug的情况下修改或添加代码。</p>
+</li>
+<li>
+<p>可测试性</p>
+</li>
+<li>
+<p><strong>可扩展性</strong></p>
+</li>
+<li>
+<p><strong>可读性</strong></p>
+</li>
+<li>
+<p>可复用性</p>
+<p>减少重复代码的编写，尽量复用已有代码。</p>
+<p>面向对象中继承、多态的目的之一就是提高代码的可复用性。</p>
+<p>很多设计模式所要达到的最终效果就是可复用性。</p>
+</li>
+<li>
+<p>简洁性</p>
+<p>KISS原则：Keep It Simple、Stupid</p>
+</li>
+</ul>
+<p>以上评价指标往往不是独立的评价维度，而是会互相影响，如可读性好、可扩展性好的代码相对可维护性强。但有时候为了提高代码的可复用性、可扩展性，对代码进行多种层次的抽象可能会降低代码的可读性。</p>
+<h2 id="编程的范式">编程的范式</h2>
+<p>如何写出高质量代码？掌握细化、能落地的方法论</p>
+<ul>
+<li>
+<p>面向对象设计思想</p>
+</li>
+<li>
+<p>设计原则</p>
+</li>
+<li>
+<p>设计模式</p>
+</li>
+<li>
+<p>编码规范</p>
+</li>
+<li>
+<p>重构技巧</p>
+</li>
+</ul>
+<p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<figure  >
+  <div class="d-flex justify-content-center">
+    <div class="w-100" ><img alt="" srcset="
+               /project/python-software-architecture-practice/images/tutorial/oop_hufc0dae7e2013aace7972a789dd9396ac_383960_66b6173cbf219b1b32eca19e645e8175.webp 400w,
+               /project/python-software-architecture-practice/images/tutorial/oop_hufc0dae7e2013aace7972a789dd9396ac_383960_4f0cdeb827e477a847bd7c3755db6f72.webp 760w,
+               /project/python-software-architecture-practice/images/tutorial/oop_hufc0dae7e2013aace7972a789dd9396ac_383960_1200x1200_fit_q75_h2_lanczos_3.webp 1200w"
+               src="/project/python-software-architecture-practice/images/tutorial/oop_hufc0dae7e2013aace7972a789dd9396ac_383960_66b6173cbf219b1b32eca19e645e8175.webp"
+               width="760"
+               height="657"
+               loading="lazy" data-zoomable /></div>
+  </div></figure>
+</p>
+<h3 id="关于编程方法论的一些问题">关于编程方法论的一些问题</h3>
+<ul>
+<li>
+<p>如何理解面向过程、面向对象、函数式编程这几种编程思想</p>
+</li>
+<li>
+<p>面向对象编程、设计原则、设计模式、编程规范和代码重构的关系</p>
+</li>
+<li>
+<p>面向过程编程和面向对象编程的区别和联系</p>
+</li>
+<li>
+<p>接口和抽象类的区别以及各自的应用场景</p>
+</li>
+<li>
+<p>组合和继承孰优孰劣？</p>
+</li>
+<li>
+<p>如何理解基于接口而非实现编程？</p>
+</li>
+</ul>
+<h4 id="q如何理解面向过程面向对象函数式编程这几种编程思想">Q：如何理解面向过程、面向对象、函数式编程这几种编程思想</h4>
+<h5 id="面向对象编程">面向对象编程</h5>
+<p>提出了一种编程风格/范式，建议以“类”或“对象”构建代码的基本单元，以封装、继承、抽象、多态四个特性作为代码设计的基石。目前，大部分语言都是面向对象编程的语言（支持类和对象、以及各种面向对象特性），如Java、C++、Go、Python、Scala、PHP等。</p>
+<pre tabindex="0"><code>Tips: Smalltalk是世界上第一个面向对象编程语言。
+</code></pre><p>那么为什么要将“类”、“对象”作为代码的基本单元呢？这其实是一种归类的思想，编程本质上可以认为是对问题进行建模并得出程序化的工具，如果我们能将一组行为相似的实体归为一类，这一类实体具有相似的属性或行为，那么在处理这些实体时就（大概率）可以用同样的代码完成实现逻辑，所以基于这种设计思想写出的代码会具有较高的可复用性，因为它抽象出了同一类不同实体的属性、行为的共同点，于是可通过同一套逻辑（或者相差不大）实现对具有这些共同点的实体/对象的处理。</p>
+<p>考虑到不同类之间既具有共同点又具有差异性的情况，人们提出了“继承”的概念，某一个类可以通过“继承”另一个类以复用被继承者（父类）的代码，同时也可以通过重写实现跟父类不同的行为。（相当于子承父业，但可以青出于蓝胜于蓝）。</p>
+<h6 id="关于继承的争议">关于继承的争议</h6>
+<p>随着实践经验的增多、工程师们发现继承在一些场合可能存在问题，于是开始反思继承本身存在的必要性以及可替代性。现代编程语言Go就摒弃了“继承”这一代码设计思想，提倡“组合优于继承”。</p>
+<h6 id="关于面向对象分析面向对象设计面向对象编程的区别">关于面向对象分析、面向对象设计、面向对象编程的区别</h6>
+<p>做什么（程序被拆分成哪些类、类有哪些属性）、怎么做（类与类之间怎么交互）、做（写代码，将面向对象的设计进行落地）。</p>
+<h4 id="q面向对象编程设计原则设计模式编程规范和代码重构的关系">Q：面向对象编程、设计原则、设计模式、编程规范和代码重构的关系</h4>
+<p>面向对象编程是一种编程思想，核心特性包括封装、继承、多态，核心理念是“抽象”，主要解决代码的可复用性问题。基于这种编程思想可以实现很多复杂的设计模式。</p>
+<p>设计原则是指导代码设计的经验总结。</p>
+<p>设计模式是有经验的工程师针对特定代码设计问题总结出的经验性解决方案或设计思路，主要解决代码的可扩展性问题；设计模式比设计原则更具体，设计原则比设计模式更抽象。（或者说，面向对象和设计原则偏向内功心法「如九阳真经、易筋经」、设计模式是具体招式「如降龙十八掌」、编程规范是基本武术动作，代码重构是在动作“变形”后的纠编操作）</p>
+<p>编程规范是关于代码编写细节的可落地的具体规范，主要解决代码可读性的问题。</p>
+<p>没有强大的内功基础，无法练就降龙十八掌；若只会内功不通招式，难以克敌制胜。</p>
+<h2 id="相关阅读">相关阅读</h2>
+<ul>
+<li>《设计模式：可复用面向对象软件的基础》Design Patterns: Elements of Reusable Object-Oriented Software</li>
+</ul>
 
     </div>
 
@@ -881,7 +1020,7 @@
       
       
       <li>
-        <a href="https://twitter.com/intent/tweet?url=https://spacetimelab.cn/project/python-software-architecture-practice/&amp;text=%e3%80%8aPython%e8%bd%af%e4%bb%b6%e6%9e%b6%e6%9e%84%e3%80%8b%e7%9f%a5%e8%af%86%e7%82%b9%e7%bb%83%e4%b9%a0%e4%bb%a3%e7%a0%81" target="_blank" rel="noopener" class="share-btn-twitter" aria-label="twitter">
+        <a href="https://twitter.com/intent/tweet?url=https://spacetimelab.cn/project/python-software-architecture-practice/&amp;text=%e3%80%8aPython%e8%bd%af%e4%bb%b6%e6%9e%b6%e6%9e%84%e3%80%8b%e8%af%bb%e5%90%8e%e9%9a%8f%e7%ac%94" target="_blank" rel="noopener" class="share-btn-twitter" aria-label="twitter">
           <i class="fab fa-twitter"></i>
         </a>
       </li>
@@ -894,7 +1033,7 @@
       
       
       <li>
-        <a href="https://www.facebook.com/sharer.php?u=https://spacetimelab.cn/project/python-software-architecture-practice/&amp;t=%e3%80%8aPython%e8%bd%af%e4%bb%b6%e6%9e%b6%e6%9e%84%e3%80%8b%e7%9f%a5%e8%af%86%e7%82%b9%e7%bb%83%e4%b9%a0%e4%bb%a3%e7%a0%81" target="_blank" rel="noopener" class="share-btn-facebook" aria-label="facebook">
+        <a href="https://www.facebook.com/sharer.php?u=https://spacetimelab.cn/project/python-software-architecture-practice/&amp;t=%e3%80%8aPython%e8%bd%af%e4%bb%b6%e6%9e%b6%e6%9e%84%e3%80%8b%e8%af%bb%e5%90%8e%e9%9a%8f%e7%ac%94" target="_blank" rel="noopener" class="share-btn-facebook" aria-label="facebook">
           <i class="fab fa-facebook"></i>
         </a>
       </li>
@@ -907,7 +1046,7 @@
       
       
       <li>
-        <a href="mailto:?subject=%e3%80%8aPython%e8%bd%af%e4%bb%b6%e6%9e%b6%e6%9e%84%e3%80%8b%e7%9f%a5%e8%af%86%e7%82%b9%e7%bb%83%e4%b9%a0%e4%bb%a3%e7%a0%81&amp;body=https://spacetimelab.cn/project/python-software-architecture-practice/" target="_blank" rel="noopener" class="share-btn-email" aria-label="envelope">
+        <a href="mailto:?subject=%e3%80%8aPython%e8%bd%af%e4%bb%b6%e6%9e%b6%e6%9e%84%e3%80%8b%e8%af%bb%e5%90%8e%e9%9a%8f%e7%ac%94&amp;body=https://spacetimelab.cn/project/python-software-architecture-practice/" target="_blank" rel="noopener" class="share-btn-email" aria-label="envelope">
           <i class="fas fa-envelope"></i>
         </a>
       </li>
@@ -920,7 +1059,7 @@
       
       
       <li>
-        <a href="https://www.linkedin.com/shareArticle?url=https://spacetimelab.cn/project/python-software-architecture-practice/&amp;title=%e3%80%8aPython%e8%bd%af%e4%bb%b6%e6%9e%b6%e6%9e%84%e3%80%8b%e7%9f%a5%e8%af%86%e7%82%b9%e7%bb%83%e4%b9%a0%e4%bb%a3%e7%a0%81" target="_blank" rel="noopener" class="share-btn-linkedin" aria-label="linkedin-in">
+        <a href="https://www.linkedin.com/shareArticle?url=https://spacetimelab.cn/project/python-software-architecture-practice/&amp;title=%e3%80%8aPython%e8%bd%af%e4%bb%b6%e6%9e%b6%e6%9e%84%e3%80%8b%e8%af%bb%e5%90%8e%e9%9a%8f%e7%ac%94" target="_blank" rel="noopener" class="share-btn-linkedin" aria-label="linkedin-in">
           <i class="fab fa-linkedin-in"></i>
         </a>
       </li>
@@ -933,7 +1072,7 @@
       
       
       <li>
-        <a href="whatsapp://send?text=%e3%80%8aPython%e8%bd%af%e4%bb%b6%e6%9e%b6%e6%9e%84%e3%80%8b%e7%9f%a5%e8%af%86%e7%82%b9%e7%bb%83%e4%b9%a0%e4%bb%a3%e7%a0%81%20https://spacetimelab.cn/project/python-software-architecture-practice/" target="_blank" rel="noopener" class="share-btn-whatsapp" aria-label="whatsapp">
+        <a href="whatsapp://send?text=%e3%80%8aPython%e8%bd%af%e4%bb%b6%e6%9e%b6%e6%9e%84%e3%80%8b%e8%af%bb%e5%90%8e%e9%9a%8f%e7%ac%94%20https://spacetimelab.cn/project/python-software-architecture-practice/" target="_blank" rel="noopener" class="share-btn-whatsapp" aria-label="whatsapp">
           <i class="fab fa-whatsapp"></i>
         </a>
       </li>
@@ -946,7 +1085,7 @@
       
       
       <li>
-        <a href="https://service.weibo.com/share/share.php?url=https://spacetimelab.cn/project/python-software-architecture-practice/&amp;title=%e3%80%8aPython%e8%bd%af%e4%bb%b6%e6%9e%b6%e6%9e%84%e3%80%8b%e7%9f%a5%e8%af%86%e7%82%b9%e7%bb%83%e4%b9%a0%e4%bb%a3%e7%a0%81" target="_blank" rel="noopener" class="share-btn-weibo" aria-label="weibo">
+        <a href="https://service.weibo.com/share/share.php?url=https://spacetimelab.cn/project/python-software-architecture-practice/&amp;title=%e3%80%8aPython%e8%bd%af%e4%bb%b6%e6%9e%b6%e6%9e%84%e3%80%8b%e8%af%bb%e5%90%8e%e9%9a%8f%e7%ac%94" target="_blank" rel="noopener" class="share-btn-weibo" aria-label="weibo">
           <i class="fab fa-weibo"></i>
         </a>
       </li>
