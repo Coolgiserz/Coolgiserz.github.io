@@ -781,7 +781,7 @@
   
   <span class="middot-divider"></span>
   <span class="article-reading-time">
-    2 min read
+    3 min read
   </span>
   
 
@@ -1301,10 +1301,11 @@ https://github.com/rocky/python-uncompyle6/issues/216
 </ul>
 <h2 id="0x02-nuitka">0x02 Nuitka</h2>
 <p><a href="https://github.com/Nuitka/Nuitka" target="_blank" rel="noopener">Github地址</a></p>
-<p>有网友推荐Nuitka，反馈其效率比pyinstaller更高。
-nuitka安装方法</p>
+<p>有网友推荐Nuitka，反馈其效率比pyinstaller更高。</p>
+<p>nuitka安装方法</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">pip install nuitka
-</span></span></code></pre></div><p>基本使用方法：</p>
+</span></span></code></pre></div><h3 id="生成可执行文件">生成可执行文件</h3>
+<p>基本使用方法：</p>
 <pre tabindex="0"><code>python -m nuitka main.py
 </code></pre><p>打包后生成一个main.build文件夹，其中可发现nuitka已经将python模块及扩展转换成了c层次的代码。
 Nuitka使用C编译器将转换后的代码编译为可执行文件。生成的目标文件通常具有&quot;.o&quot;或&quot;.obj&quot;的扩展名（取决于使用的操作系统和编译器。）</p>
@@ -1435,7 +1436,7 @@ Nuitka使用C编译器将转换后的代码编译为可执行文件。生成的�
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl"><span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&#34;__main__&#34;</span><span class="p">:</span>
-</span></span><span class="line"><span class="cl">    <span class="k">pass</span>
+</span></span><span class="line"><span class="cl">    <span class="n">say_hello</span><span class="p">()</span>
 </span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="c1"># setup.py</span>
 </span></span><span class="line"><span class="cl"><span class="kn">from</span> <span class="nn">distutils.core</span> <span class="kn">import</span> <span class="n">setup</span>
 </span></span><span class="line"><span class="cl"><span class="kn">from</span> <span class="nn">Cython.Build</span> <span class="kn">import</span> <span class="n">cythonize</span>
@@ -1472,11 +1473,252 @@ Nuitka使用C编译器将转换后的代码编译为可执行文件。生成的�
                loading="lazy" data-zoomable /></div>
   </div></figure>
 </p>
+<h2 id="0x04-cx_freeze">0x04 Cx_Freeze</h2>
+<p><a href="https://cx-freeze.readthedocs.io/en/stable/" target="_blank" rel="noopener">cx_Freeze 7.2.0 documentation</a></p>
+<p>特点：跨平台，支持python3.8-3.12</p>
+<h3 id="简单使用方法">简单使用方法</h3>
+<h4 id="示例1单源码文件示例">示例1：单源码文件示例</h4>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="c1"># main.py</span>
+</span></span><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">sys</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">def</span> <span class="nf">say_hello</span><span class="p">():</span>
+</span></span><span class="line"><span class="cl">    <span class="nb">print</span><span class="p">(</span><span class="s2">&#34;Hello&#34;</span><span class="p">,</span> <span class="n">sys</span><span class="o">.</span><span class="n">argv</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&#34;__main__&#34;</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">    <span class="n">say_hello</span><span class="p">()</span>
+</span></span></code></pre></div><p>使用cxfreeze打包</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">cxfreeze --script main.py --target-name dist
+</span></span></code></pre></div><p>得到打包目录：</p>
+<p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<figure  >
+  <div class="d-flex justify-content-center">
+    <div class="w-100" ><img alt="" srcset="
+               /post/python-distribute-executable-program/images/cxfreeze/case01-dist_hu47043e53a89366778750ff9077617a48_187772_797b1948eb2671ebf11e7c9f60b8ebdd.webp 400w,
+               /post/python-distribute-executable-program/images/cxfreeze/case01-dist_hu47043e53a89366778750ff9077617a48_187772_5a4d248a354ec8982d1732f169691b44.webp 760w,
+               /post/python-distribute-executable-program/images/cxfreeze/case01-dist_hu47043e53a89366778750ff9077617a48_187772_1200x1200_fit_q75_h2_lanczos_3.webp 1200w"
+               src="/post/python-distribute-executable-program/images/cxfreeze/case01-dist_hu47043e53a89366778750ff9077617a48_187772_797b1948eb2671ebf11e7c9f60b8ebdd.webp"
+               width="760"
+               height="295"
+               loading="lazy" data-zoomable /></div>
+  </div></figure>
+</p>
+<p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<figure  >
+  <div class="d-flex justify-content-center">
+    <div class="w-100" ><img alt="" srcset="
+               /post/python-distribute-executable-program/images/cxfreeze/case01_hu3456bcb9b57e17012875b64f52bfebc4_105694_4345401e486bd1e24df0f4bc6f463c46.webp 400w,
+               /post/python-distribute-executable-program/images/cxfreeze/case01_hu3456bcb9b57e17012875b64f52bfebc4_105694_39e365965bacd4dc06d0d979832dd36b.webp 760w,
+               /post/python-distribute-executable-program/images/cxfreeze/case01_hu3456bcb9b57e17012875b64f52bfebc4_105694_1200x1200_fit_q75_h2_lanczos_3.webp 1200w"
+               src="/post/python-distribute-executable-program/images/cxfreeze/case01_hu3456bcb9b57e17012875b64f52bfebc4_105694_4345401e486bd1e24df0f4bc6f463c46.webp"
+               width="760"
+               height="199"
+               loading="lazy" data-zoomable /></div>
+  </div></figure>
+</p>
+<p>注：打包得到的build/lib目录下有一个压缩包library，包含所有涉及的.pyc文件，删除library.zip后生成的可执行文件将无法运行。</p>
+<p>可以使用uncompley反编译得到源码。</p>
+<p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<figure  >
+  <div class="d-flex justify-content-center">
+    <div class="w-100" ><img alt="" srcset="
+               /post/python-distribute-executable-program/images/cxfreeze/case01-uncompyle6_hu1ba852fcb6df55ac8c23738fa2a0925a_135073_a59bba3d81720342648417004643003a.webp 400w,
+               /post/python-distribute-executable-program/images/cxfreeze/case01-uncompyle6_hu1ba852fcb6df55ac8c23738fa2a0925a_135073_8c022b68bc2ff0912fec079f05733526.webp 760w,
+               /post/python-distribute-executable-program/images/cxfreeze/case01-uncompyle6_hu1ba852fcb6df55ac8c23738fa2a0925a_135073_1200x1200_fit_q75_h2_lanczos_3.webp 1200w"
+               src="/post/python-distribute-executable-program/images/cxfreeze/case01-uncompyle6_hu1ba852fcb6df55ac8c23738fa2a0925a_135073_a59bba3d81720342648417004643003a.webp"
+               width="760"
+               height="265"
+               loading="lazy" data-zoomable /></div>
+  </div></figure>
+</p>
+<h4 id="示例2读取外部配置文件">示例2：读取外部配置文件</h4>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="c1"># main.py</span>
+</span></span><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">json</span>
+</span></span><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">os</span>
+</span></span><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">argparse</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">def</span> <span class="nf">main</span><span class="p">(</span><span class="n">config</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">    <span class="k">if</span> <span class="ow">not</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="n">config</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&#34;config file </span><span class="si">{</span><span class="n">config</span><span class="si">}</span><span class="s2"> not found&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="k">return</span>
+</span></span><span class="line"><span class="cl">    <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">config</span><span class="p">,</span> <span class="s2">&#34;r&#34;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">        <span class="n">data</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">f</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="nb">print</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&#34;__main__&#34;</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">    <span class="n">parser</span> <span class="o">=</span> <span class="n">argparse</span><span class="o">.</span><span class="n">ArgumentParser</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">    <span class="n">parser</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s2">&#34;--config&#34;</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="s2">&#34;config.json&#34;</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="nb">str</span><span class="p">,</span> <span class="n">help</span><span class="o">=</span><span class="s2">&#34;your config file&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="n">args</span> <span class="o">=</span> <span class="n">parser</span><span class="o">.</span><span class="n">parse_args</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">    <span class="n">main</span><span class="p">(</span><span class="n">args</span><span class="o">.</span><span class="n">config</span><span class="p">)</span>
+</span></span></code></pre></div><p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<figure  >
+  <div class="d-flex justify-content-center">
+    <div class="w-100" ><img alt="" srcset="
+               /post/python-distribute-executable-program/images/cxfreeze/case02-dist_hu7d42c5d7c719e279693aabf7aacf5e05_71690_f82098edbcf6f00839a5ab920c9015ec.webp 400w,
+               /post/python-distribute-executable-program/images/cxfreeze/case02-dist_hu7d42c5d7c719e279693aabf7aacf5e05_71690_d98fe7bd3985463c5d1efac012bb36aa.webp 760w,
+               /post/python-distribute-executable-program/images/cxfreeze/case02-dist_hu7d42c5d7c719e279693aabf7aacf5e05_71690_1200x1200_fit_q75_h2_lanczos_3.webp 1200w"
+               src="/post/python-distribute-executable-program/images/cxfreeze/case02-dist_hu7d42c5d7c719e279693aabf7aacf5e05_71690_f82098edbcf6f00839a5ab920c9015ec.webp"
+               width="760"
+               height="99"
+               loading="lazy" data-zoomable /></div>
+  </div></figure>
+</p>
+<p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<figure  >
+  <div class="d-flex justify-content-center">
+    <div class="w-100" ><img alt="" srcset="
+               /post/python-distribute-executable-program/images/cxfreeze/case02-dist-2_hu66c71611f0456b17cbf383d6450c672a_79446_1840a8bd3b0b2876b2ec8ed40820107d.webp 400w,
+               /post/python-distribute-executable-program/images/cxfreeze/case02-dist-2_hu66c71611f0456b17cbf383d6450c672a_79446_30893662ad3f97794b25f1596e4042c0.webp 760w,
+               /post/python-distribute-executable-program/images/cxfreeze/case02-dist-2_hu66c71611f0456b17cbf383d6450c672a_79446_1200x1200_fit_q75_h2_lanczos_3.webp 1200w"
+               src="/post/python-distribute-executable-program/images/cxfreeze/case02-dist-2_hu66c71611f0456b17cbf383d6450c672a_79446_1840a8bd3b0b2876b2ec8ed40820107d.webp"
+               width="760"
+               height="135"
+               loading="lazy" data-zoomable /></div>
+  </div></figure>
+</p>
+<h3 id="示例3-cxfreeze-quickstart">示例3: cxfreeze-quickstart</h3>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="c1"># main.py</span>
+</span></span><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">json</span>
+</span></span><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">logging</span>
+</span></span><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">os</span>
+</span></span><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">argparse</span>
+</span></span><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">def</span> <span class="nf">main</span><span class="p">(</span><span class="n">config_path</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">    <span class="n">size</span> <span class="o">=</span> <span class="kc">None</span>
+</span></span><span class="line"><span class="cl">    <span class="k">if</span> <span class="ow">not</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="n">config_path</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">        <span class="n">logging</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="sa">f</span><span class="s2">&#34;config file </span><span class="si">{</span><span class="n">config_path</span><span class="si">}</span><span class="s2"> not found&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="k">else</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">        <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">config_path</span><span class="p">,</span> <span class="s2">&#34;r&#34;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">            <span class="n">config</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">f</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="n">size</span> <span class="o">=</span> <span class="n">config</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&#34;size&#34;</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="k">if</span> <span class="n">size</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">        <span class="nb">print</span><span class="p">(</span><span class="s2">&#34;size not set, using default size 3&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="n">size</span> <span class="o">=</span> <span class="mi">3</span>
+</span></span><span class="line"><span class="cl">    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&#34;size </span><span class="si">{</span><span class="n">size</span><span class="si">}</span><span class="s2">&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">rand</span><span class="p">(</span><span class="n">size</span><span class="p">,</span><span class="n">size</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&#34;__main__&#34;</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">    <span class="n">parser</span> <span class="o">=</span> <span class="n">argparse</span><span class="o">.</span><span class="n">ArgumentParser</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">    <span class="n">parser</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s2">&#34;--config_path&#34;</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="s2">&#34;config.json&#34;</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="nb">str</span><span class="p">,</span> <span class="n">help</span><span class="o">=</span><span class="s2">&#34;your config file&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="n">args</span> <span class="o">=</span> <span class="n">parser</span><span class="o">.</span><span class="n">parse_args</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">    <span class="n">res</span> <span class="o">=</span> <span class="n">main</span><span class="p">(</span><span class="n">args</span><span class="o">.</span><span class="n">config_path</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="nb">print</span><span class="p">(</span><span class="n">res</span><span class="p">)</span>
+</span></span></code></pre></div><p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<figure  >
+  <div class="d-flex justify-content-center">
+    <div class="w-100" ><img alt="" srcset="
+               /post/python-distribute-executable-program/images/cxfreeze/case03-quickstart_hu059ba64d7ada92002ae86217baa99ee6_107373_2c08a0f0c96b60f0e258835584d479af.webp 400w,
+               /post/python-distribute-executable-program/images/cxfreeze/case03-quickstart_hu059ba64d7ada92002ae86217baa99ee6_107373_51574aa5b74405ffb492bd8c4b50c6ab.webp 760w,
+               /post/python-distribute-executable-program/images/cxfreeze/case03-quickstart_hu059ba64d7ada92002ae86217baa99ee6_107373_1200x1200_fit_q75_h2_lanczos_3.webp 1200w"
+               src="/post/python-distribute-executable-program/images/cxfreeze/case03-quickstart_hu059ba64d7ada92002ae86217baa99ee6_107373_2c08a0f0c96b60f0e258835584d479af.webp"
+               width="760"
+               height="303"
+               loading="lazy" data-zoomable /></div>
+  </div></figure>
+</p>
+<h3 id="示例4-跨平台程序打包">示例4: 跨平台程序打包</h3>
+<h2 id="打包程序反编译">打包程序反编译</h2>
+<ul>
+<li>uncompyle6</li>
+</ul>
 <h2 id="参考文章--拓展阅读">参考文章 &amp;&amp; 拓展阅读</h2>
 <ul>
 <li><a href="https://docs.fileformat.com/zh/programming/" target="_blank" rel="noopener">FileFormat</a></li>
 <li><a href="http://py2exe.org/" target="_blank" rel="noopener">py2exe</a></li>
 <li><a href="https://zhuanlan.zhihu.com/p/54296517" target="_blank" rel="noopener">如何保护你的 Python 代码 （一）—— 现有加密方案</a></li>
+<li><a href="https://blog.eswlnk.com/1692.html" target="_blank" rel="noopener">逆向分析之破解和解压Python打包工具</a></li>
 </ul>
 
     </div>
