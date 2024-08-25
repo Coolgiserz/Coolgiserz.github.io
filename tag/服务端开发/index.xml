@@ -19,6 +19,17 @@
       <guid>https://spacetimelab.cn/post/django-core-techs-notes/</guid>
       <description>&lt;h2 id=&#34;0x00-django核心技术栈&#34;&gt;0x00 Django核心技术栈&lt;/h2&gt;
 &lt;h3 id=&#34;django的能力&#34;&gt;Django的能力&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;快速搭建管理后台&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;生态完善，具有很多插件，有助于快速实现功能完善的后端系统&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;简洁的中间件机制&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
 &lt;h4 id=&#34;url路由配置和管理&#34;&gt;Url路由配置和管理&lt;/h4&gt;
 &lt;p&gt;&lt;a href=&#34;https://docs.djangoproject.com/en/4.2/topics/http/urls/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;https://docs.djangoproject.com/en/4.2/topics/http/urls/&lt;/a&gt;&lt;/p&gt;
 &lt;h4 id=&#34;数据库迁移migrations&#34;&gt;数据库迁移（Migrations）&lt;/h4&gt;

@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>编码规范 | NullSpace</title>
+    <link>https://spacetimelab.cn/tag/%E7%BC%96%E7%A0%81%E8%A7%84%E8%8C%83/</link>
+      <atom:link href="https://spacetimelab.cn/tag/%E7%BC%96%E7%A0%81%E8%A7%84%E8%8C%83/index.xml" rel="self" type="application/rss+xml" />
+    <description>编码规范</description>
+    <generator>Wowchemy (https://wowchemy.com)</generator><language>en-us</language><lastBuildDate>Sat, 23 Mar 2024 22:01:40 +0800</lastBuildDate>
+    <image>
+      <url>https://spacetimelab.cn/media/icon_hue03491371183284312b8b116a73ae5ab_79511_512x512_fill_lanczos_center_3.png</url>
+      <title>编码规范</title>
+      <link>https://spacetimelab.cn/tag/%E7%BC%96%E7%A0%81%E8%A7%84%E8%8C%83/</link>
+    </image>
+    
+    <item>
+      <title>Coding Standard: Improve Code Quality</title>
+      <link>https://spacetimelab.cn/post/coding-standard-improve-code-quality/</link>
+      <pubDate>Sat, 23 Mar 2024 22:01:40 +0800</pubDate>
+      <guid>https://spacetimelab.cn/post/coding-standard-improve-code-quality/</guid>
+      <description>&lt;h2 id=&#34;代码的质量&#34;&gt;代码的质量&lt;/h2&gt;
+&lt;p&gt;提高代码质量的途径有：合理应用设计原则和设计模式，按照编码规范提高代码细节层面的质量。&lt;/p&gt;
+&lt;h2 id=&#34;编码规范&#34;&gt;编码规范&lt;/h2&gt;
+&lt;p&gt;编码规范大体分为三个部分：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;命名与注释：Naming and Comments&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;代码风格：Code Style&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;编程技巧：Coding Tips&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;命名与注释&#34;&gt;命名与注释&lt;/h3&gt;
+&lt;h4 id=&#34;命名的标准&#34;&gt;命名的标准&lt;/h4&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;长度&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;利用上下文简化命名&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;可读&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;与团队风格一致&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;接口的常见命名风格：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;IxxxService/xxxService&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;xxxService/xxxServiceImpl&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;抽象类的常见命名风格：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;AbstractXxxxx/Xxxxx&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&#34;注释的必要性&#34;&gt;注释的必要性&lt;/h4&gt;
+&lt;p&gt;是否好的变量命名可以替代注释？&lt;/p&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

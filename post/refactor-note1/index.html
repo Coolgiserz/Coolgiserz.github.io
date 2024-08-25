@@ -806,6 +806,10 @@
 
   
   
+  <span class="middot-divider"></span>
+  <span class="article-categories">
+    <i class="fas fa-folder mr-1"></i><a href="/category/%E9%87%8D%E6%9E%84/">重构</a></span>
+  
 
 </div>
 
@@ -896,6 +900,131 @@
 <p>误区：代码烂到一定程度再集中重构</p>
 <p>正解：持续重构，将重构作为开发的一部分</p>
 <p>如同身体的健康需要持续地关注、保持，而非等到重病时才寻求治疗；代码的质量也应该持续关注和保持，而非胡乱堆砌代码到问题爆发才尝试集中解决。</p>
+<h4 id="如何判定代码是否需要解耦">如何判定代码是否需要解耦？</h4>
+<ul>
+<li>
+<p>看修改代码会不会牵一发而动全身</p>
+</li>
+<li>
+<p>可视化模块与模块间、类与类间的依赖关系，根据依赖关系图的复杂性判断是否需要解耦重构</p>
+</li>
+</ul>
+<h3 id="q重构之道">Q：重构之“道”</h3>
+<h4 id="如何给代码解耦">如何给代码解耦？</h4>
+<h5 id="基本思想">基本思想</h5>
+<ol>
+<li>
+<p>封装与抽象</p>
+<p>隐藏实现的复杂性和易变形，提供稳定、易用的抽象接口</p>
+</li>
+<li>
+<p>中间层</p>
+<p>简化模块或类之间的依赖关系，让依赖关系从“网状”变成“星状”</p>
+</li>
+<li>
+<p>模块化</p>
+</li>
+</ol>
+<h5 id="基本设计原则">基本设计原则</h5>
+<ul>
+<li>
+<p>基于接口而非实现编程</p>
+</li>
+<li>
+<p>依赖注入</p>
+<p>无法将有依赖关系的两个类解耦成无依赖关系，但可以将强依赖关系解耦成弱依赖关系，让被依赖类具有可插拔、易替换的特性。</p>
+</li>
+<li>
+<p>迪米特法则</p>
+</li>
+</ul>
+<h5 id="小例子报告生成功能代码的重构思路">小例子：报告生成功能代码的重构思路</h5>
+<p>假设应用A具有一个自助AI报告生成的功能，用户可以在平台中选择相应的数据源，并根据一定的筛选条件对数据源中的数据进行筛选，筛选完数据后用户点击“生成报告”按钮就可以触发自助报告生成的流程。</p>
+<p>下面给出一段该功能的伪代码实现.其中payload是客户端发送请求时附带的参数，用于检索数据，并提供用户期望生成的报告主题、报告类型等信息。</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="c1"># Implement 1</span>
+</span></span><span class="line"><span class="cl"><span class="k">class</span> <span class="nc">GenerateTask</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">    <span class="k">def</span> <span class="nf">run</span><span class="p">(</span><span class="n">payload</span><span class="p">:</span> <span class="nb">dict</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">TaskResult</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">       <span class="c1"># 校验参数</span>
+</span></span><span class="line"><span class="cl">       <span class="n">ok</span> <span class="o">=</span> <span class="n">check</span><span class="p">(</span><span class="n">payload</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">       <span class="k">if</span> <span class="ow">not</span> <span class="n">ok</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">          <span class="k">return</span> 
+</span></span><span class="line"><span class="cl">       <span class="c1"># 检索用于报告生成的数据</span>
+</span></span><span class="line"><span class="cl">       <span class="n">data</span> <span class="o">=</span> <span class="o">...</span>
+</span></span><span class="line"><span class="cl">       <span class="c1"># FIXME ...判断数据量是否足够生成报告</span>
+</span></span><span class="line"><span class="cl">       <span class="c1"># 实例化报告生成类</span>
+</span></span><span class="line"><span class="cl">       <span class="n">generator</span> <span class="o">=</span> <span class="n">ReportGenerator</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">       <span class="n">result</span> <span class="o">=</span> <span class="n">generator</span><span class="o">.</span><span class="n">generate</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">       <span class="c1"># 保存结果</span>
+</span></span><span class="line"><span class="cl">       <span class="n">save_result</span><span class="p">(</span><span class="n">result</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">       <span class="k">return</span> <span class="n">result</span>
+</span></span><span class="line"><span class="cl">       
+</span></span><span class="line"><span class="cl"><span class="k">class</span> <span class="nc">ReportGenerateService</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">    <span class="k">def</span> <span class="nf">post</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">request</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">       <span class="n">payload</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">loads</span><span class="p">(</span><span class="n">request</span><span class="o">.</span><span class="n">body</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">       <span class="n">result</span> <span class="o">=</span> <span class="n">GenerateTask</span><span class="p">()</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">payload</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">       <span class="k">return</span> <span class="n">Response</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">result</span><span class="p">)</span>
+</span></span></code></pre></div><p>从简单原型的角度来看，上述伪代码的做法可以说五脏俱全，足以跑通功能，但是问题也很明显：</p>
+<ul>
+<li>
+<p>问题1: GenerateTask类承担了较多职责，内聚性不强，违背单一职责原则</p>
+</li>
+<li>
+<p>问题2: GenerateTask对ReportGenerator类具有强依赖关系，不符合“松耦合”原则</p>
+</li>
+</ul>
+<p>上面描述的问题主要是从设计原则的角度评判代码设计存在的问题，从实践角度来评判，问题1会导致代码的可测试性较差，当测试人员想对自助生成报告这一包含多个流程的功能进行白盒测试时，难以对其中的每个子流程进行测试，而且即便测试完整的报告生成流程，由于难以将数据检索这一依赖数据库/网络的流程拆分开或数据mock，也会大大降低测试效率。</p>
+<p>问题2会导致当我们想要引入一个新版本新特性（如支持用户自定义报告大纲）的报告生成类时，代码改造麻烦（需要修改GenerateTask.run方法，而这个方法的修改会导致其他本不该被影响的部分（数据检索、结果保存）也要被测试一遍。</p>
+<p>基于上述分析，可以考虑对代码进行如下重构：</p>
+<ol>
+<li>
+<p>将报告生成中的数据检索参数校验、数据检索逻辑拆分出来</p>
+</li>
+<li>
+<p>报告生成器ReportGenerator对象的创建放在GeneratorTask.run外，通过依赖注入的方式让GeneratorTask使用报告生成器对象的功能</p>
+</li>
+</ol>
+<p>根据上述重构思路，给出重构后的伪代码：</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="c1"># Implement 2</span>
+</span></span><span class="line"><span class="cl"><span class="k">class</span> <span class="nc">ReportConfig</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">    <span class="n">title</span><span class="p">:</span> <span class="nb">str</span>
+</span></span><span class="line"><span class="cl">    <span class="nb">type</span><span class="p">:</span> <span class="nb">str</span>
+</span></span><span class="line"><span class="cl">    <span class="n">topic_word</span><span class="p">:</span> <span class="nb">str</span>
+</span></span><span class="line"><span class="cl">    <span class="n">keyword_list</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span>
+</span></span><span class="line"><span class="cl">    <span class="n">time_range</span><span class="p">:</span> <span class="n">Tuple</span><span class="p">[</span><span class="n">datetime</span><span class="p">]</span>  
+</span></span><span class="line"><span class="cl">    <span class="n">outline</span><span class="p">:</span> <span class="n">ReportTemplate</span>  
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">class</span> <span class="nc">GenerateTask</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">    <span class="k">def</span> <span class="nf">run</span><span class="p">(</span><span class="n">report_config</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="n">generator</span><span class="p">:</span> <span class="n">ReportGenerator</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">TaskResult</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">     
+</span></span><span class="line"><span class="cl">       <span class="n">result</span> <span class="o">=</span> <span class="n">generator</span><span class="o">.</span><span class="n">generate</span><span class="p">(</span><span class="n">report_config</span><span class="p">,</span> <span class="n">data</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">       <span class="c1"># 保存结果</span>
+</span></span><span class="line"><span class="cl">       <span class="n">save_result</span><span class="p">(</span><span class="n">result</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">       <span class="k">return</span> <span class="n">result</span>
+</span></span><span class="line"><span class="cl">       
+</span></span><span class="line"><span class="cl"><span class="k">class</span> <span class="nc">ReportGenerateService</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">    <span class="k">def</span> <span class="nf">post</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">request</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">       <span class="n">payload</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">loads</span><span class="p">(</span><span class="n">request</span><span class="o">.</span><span class="n">body</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">       <span class="c1"># 校验参数</span>
+</span></span><span class="line"><span class="cl">       <span class="n">ok</span> <span class="o">=</span> <span class="n">check</span><span class="p">(</span><span class="n">payload</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">       <span class="k">if</span> <span class="ow">not</span> <span class="n">ok</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">          <span class="k">return</span> 
+</span></span><span class="line"><span class="cl">       <span class="c1"># 检索用于报告生成的数据</span>
+</span></span><span class="line"><span class="cl">       <span class="n">data</span> <span class="o">=</span> <span class="o">...</span>
+</span></span><span class="line"><span class="cl">       <span class="c1"># FIXME ...判断数据量是否足够生成报告</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">       <span class="c1"># 实例化报告生成类</span>
+</span></span><span class="line"><span class="cl">       <span class="n">generator</span> <span class="o">=</span> <span class="n">ReportGenerator</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">       <span class="n">result</span> <span class="o">=</span> <span class="n">GenerateTask</span><span class="p">()</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">report_config</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="n">generator</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">       <span class="k">return</span> <span class="n">Response</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">result</span><span class="p">)</span>
+</span></span></code></pre></div><h3 id="q有哪些开发场景实际上蕴涵了解耦的思想">Q：有哪些开发场景实际上蕴涵了解耦的思想？</h3>
+<ul>
+<li>
+<p>ORM框架</p>
+</li>
+<li>
+<p>中间件</p>
+</li>
+</ul>
 <h3 id="q如何保证重构的质量">Q：如何保证重构的质量？</h3>
 <p>单元测试。</p>
 <h2 id="资源清单">资源清单</h2>
@@ -939,6 +1068,12 @@
 
 
 
+
+<div class="article-tags">
+  
+  <a class="badge badge-light" href="/tag/%E9%87%8D%E6%9E%84/">重构</a>
+  
+</div>
 
 
 
