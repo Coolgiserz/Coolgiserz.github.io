@@ -63,6 +63,41 @@
 &lt;/ul&gt;
 &lt;h4 id=&#34;注释的必要性&#34;&gt;注释的必要性&lt;/h4&gt;
 &lt;p&gt;是否好的变量命名可以替代注释？&lt;/p&gt;
+&lt;h3 id=&#34;编程技巧&#34;&gt;编程技巧&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;把代码分割成更小的单元块&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;避免函数参数过多&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;尽量不要用函数参数来控制逻辑&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;函数设计要职责单一&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;移除过深的嵌套层次&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;使用解释性变量&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;知名编码风格与规范&#34;&gt;知名编码风格与规范&lt;/h2&gt;
+&lt;h3 id=&#34;python&#34;&gt;Python&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a href=&#34;https://zh-google-styleguide.readthedocs.io/en/latest/google-python-styleguide/python_style_rules.html&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Python风格规范 — Google 开源项目风格指南&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a href=&#34;https://peps.python.org/pep-0008/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;PEP 8 – Style Guide for Python Code | peps.python.org&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;java&#34;&gt;Java&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://zh-google-styleguide.readthedocs.io/en/latest/google-java-styleguide/contents.html&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Java 风格指南 - 内容目录 — Google 开源项目风格指南&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
 </description>
     </item>
     

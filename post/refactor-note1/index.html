@@ -795,7 +795,7 @@
   
   <span class="middot-divider"></span>
   <span class="article-reading-time">
-    1 min read
+    2 min read
   </span>
   
 
@@ -957,7 +957,7 @@
 </span></span><span class="line"><span class="cl">       <span class="c1"># 保存结果</span>
 </span></span><span class="line"><span class="cl">       <span class="n">save_result</span><span class="p">(</span><span class="n">result</span><span class="p">)</span>
 </span></span><span class="line"><span class="cl">       <span class="k">return</span> <span class="n">result</span>
-</span></span><span class="line"><span class="cl">       
+</span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl"><span class="k">class</span> <span class="nc">ReportGenerateService</span><span class="p">:</span>
 </span></span><span class="line"><span class="cl">    <span class="k">def</span> <span class="nf">post</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">request</span><span class="p">):</span>
 </span></span><span class="line"><span class="cl">       <span class="n">payload</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">loads</span><span class="p">(</span><span class="n">request</span><span class="o">.</span><span class="n">body</span><span class="p">)</span>
@@ -995,12 +995,12 @@
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl"><span class="k">class</span> <span class="nc">GenerateTask</span><span class="p">:</span>
 </span></span><span class="line"><span class="cl">    <span class="k">def</span> <span class="nf">run</span><span class="p">(</span><span class="n">report_config</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="n">generator</span><span class="p">:</span> <span class="n">ReportGenerator</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">TaskResult</span><span class="p">:</span>
-</span></span><span class="line"><span class="cl">     
+</span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl">       <span class="n">result</span> <span class="o">=</span> <span class="n">generator</span><span class="o">.</span><span class="n">generate</span><span class="p">(</span><span class="n">report_config</span><span class="p">,</span> <span class="n">data</span><span class="p">)</span>
 </span></span><span class="line"><span class="cl">       <span class="c1"># 保存结果</span>
 </span></span><span class="line"><span class="cl">       <span class="n">save_result</span><span class="p">(</span><span class="n">result</span><span class="p">)</span>
 </span></span><span class="line"><span class="cl">       <span class="k">return</span> <span class="n">result</span>
-</span></span><span class="line"><span class="cl">       
+</span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl"><span class="k">class</span> <span class="nc">ReportGenerateService</span><span class="p">:</span>
 </span></span><span class="line"><span class="cl">    <span class="k">def</span> <span class="nf">post</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">request</span><span class="p">):</span>
 </span></span><span class="line"><span class="cl">       <span class="n">payload</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">loads</span><span class="p">(</span><span class="n">request</span><span class="o">.</span><span class="n">body</span><span class="p">)</span>
@@ -1023,6 +1023,55 @@
 </li>
 <li>
 <p>中间件</p>
+</li>
+</ul>
+<h3 id="q如何发现代码质量问题">Q：如何发现代码质量问题</h3>
+<p>Checklist：</p>
+<ul>
+<li>
+<p>目录设置、模块划分、代码结构</p>
+</li>
+<li>
+<p>是否遵循经典设计原则和设计思想？（SOLID、DRY、KISS、YAGNI、LOD）</p>
+</li>
+<li>
+<p>设计模式是否合理运用？是否过度设计？</p>
+</li>
+<li>
+<p>是否易扩展？</p>
+</li>
+<li>
+<p>是否可复用</p>
+</li>
+<li>
+<p>是否易测试</p>
+</li>
+<li>
+<p>是否易读？</p>
+</li>
+</ul>
+<p>业务：</p>
+<ul>
+<li>
+<p>是否实现预期业务需求？</p>
+</li>
+<li>
+<p>逻辑是否正确？是否处理异常情况？</p>
+</li>
+<li>
+<p>日志打印是否恰当？</p>
+</li>
+<li>
+<p>接口是否易用</p>
+</li>
+<li>
+<p>代码是否存在并发问题？</p>
+</li>
+<li>
+<p>性能是否有优化空间</p>
+</li>
+<li>
+<p>是否有安全漏洞？</p>
 </li>
 </ul>
 <h3 id="q如何保证重构的质量">Q：如何保证重构的质量？</h3>
