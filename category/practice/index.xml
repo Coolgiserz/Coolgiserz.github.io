@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>practice | NullSpace</title>
+    <link>https://spacetimelab.cn/category/practice/</link>
+      <atom:link href="https://spacetimelab.cn/category/practice/index.xml" rel="self" type="application/rss+xml" />
+    <description>practice</description>
+    <generator>Wowchemy (https://wowchemy.com)</generator><language>en-us</language><lastBuildDate>Thu, 01 Sep 2022 23:08:07 +0800</lastBuildDate>
+    <image>
+      <url>https://spacetimelab.cn/media/icon_hue03491371183284312b8b116a73ae5ab_79511_512x512_fill_lanczos_center_3.png</url>
+      <title>practice</title>
+      <link>https://spacetimelab.cn/category/practice/</link>
+    </image>
+    
+    <item>
+      <title>Hello Practices</title>
+      <link>https://spacetimelab.cn/post/practices/hello-practices/</link>
+      <pubDate>Thu, 01 Sep 2022 23:08:07 +0800</pubDate>
+      <guid>https://spacetimelab.cn/post/practices/hello-practices/</guid>
+      <description>&lt;h2 id=&#34;示例&#34;&gt;示例&lt;/h2&gt;
+&lt;p&gt;创建LeetCode练习：&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;hugo new post/practices/leetcode/alg&lt;span class=&#34;o&#34;&gt;{&lt;/span&gt;NUM&lt;span class=&#34;o&#34;&gt;}&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</description>
+    </item>
+    
+  </channel>
+</rss>

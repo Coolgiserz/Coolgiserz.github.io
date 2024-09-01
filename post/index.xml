@@ -5,12 +5,32 @@
     <link>https://spacetimelab.cn/post/</link>
       <atom:link href="https://spacetimelab.cn/post/index.xml" rel="self" type="application/rss+xml" />
     <description>博客</description>
-    <generator>Wowchemy (https://wowchemy.com)</generator><language>en-us</language><lastBuildDate>Wed, 28 Aug 2024 20:57:33 +0800</lastBuildDate>
+    <generator>Wowchemy (https://wowchemy.com)</generator><language>en-us</language><lastBuildDate>Sun, 01 Sep 2024 21:15:44 +0800</lastBuildDate>
     <image>
       <url>https://spacetimelab.cn/media/icon_hue03491371183284312b8b116a73ae5ab_79511_512x512_fill_lanczos_center_3.png</url>
       <title>博客</title>
       <link>https://spacetimelab.cn/post/</link>
     </image>
+    
+    <item>
+      <title>《脉络-小我与大势》阅读随笔</title>
+      <link>https://spacetimelab.cn/post/sequence-of-thought-wujun-reading/</link>
+      <pubDate>Sun, 01 Sep 2024 21:15:44 +0800</pubDate>
+      <guid>https://spacetimelab.cn/post/sequence-of-thought-wujun-reading/</guid>
+      <description>&lt;h2 id=&#34;关于历史观&#34;&gt;关于历史观&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;是英雄创造了历史还是大众创造了历史？还是说，两者都不是？&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;什么是真正有意义的历史？&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;历史上知名的人物真的对历史有贡献吗？贡献大吗？比如秦皇汉武、唐宗宋祖？&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
     
     <item>
       <title>Python内存管理基础及性能优化技巧</title>
@@ -47,10 +67,10 @@
 &lt;figure  &gt;
   &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
     &lt;div class=&#34;w-100&#34; &gt;&lt;img alt=&#34;&#34; srcset=&#34;
-               /post/python-memory-management/images/pymalloc/hierarchical-model_huf11bcf9410ff60a7574fda47eef88ef3_147013_90c8c0bbdccd8545c99974bd7a3217ff.webp 400w,
-               /post/python-memory-management/images/pymalloc/hierarchical-model_huf11bcf9410ff60a7574fda47eef88ef3_147013_6fc82f755b4ca9fdd79a6199b23befe4.webp 760w,
+               /post/python-memory-management/images/pymalloc/hierarchical-model_huf11bcf9410ff60a7574fda47eef88ef3_147013_20079b0b7ffbb3167d53a1c80e5aa300.webp 400w,
+               /post/python-memory-management/images/pymalloc/hierarchical-model_huf11bcf9410ff60a7574fda47eef88ef3_147013_e473b24ef8ff0c7fc4fd8274aa581088.webp 760w,
                /post/python-memory-management/images/pymalloc/hierarchical-model_huf11bcf9410ff60a7574fda47eef88ef3_147013_1200x1200_fit_q75_h2_lanczos_3.webp 1200w&#34;
-               src=&#34;https://spacetimelab.cn/post/python-memory-management/images/pymalloc/hierarchical-model_huf11bcf9410ff60a7574fda47eef88ef3_147013_90c8c0bbdccd8545c99974bd7a3217ff.webp&#34;
+               src=&#34;https://spacetimelab.cn/post/python-memory-management/images/pymalloc/hierarchical-model_huf11bcf9410ff60a7574fda47eef88ef3_147013_20079b0b7ffbb3167d53a1c80e5aa300.webp&#34;
                width=&#34;696&#34;
                height=&#34;760&#34;
                loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
@@ -112,7 +132,7 @@
 &lt;p&gt;使用合适的算法&lt;/p&gt;
 &lt;/li&gt;
 &lt;/ul&gt;
-&lt;h3 id=&#34;示例通过单例减少内存资源消耗&#34;&gt;示例：通过单例减少内存资源消耗&lt;/h3&gt;
+&lt;h3 id=&#34;a-idexample示例通过单例减少内存资源消耗a&#34;&gt;&lt;a id=&#34;example&#34;&gt;示例：通过单例减少内存资源消耗&lt;/a&gt;&lt;/h3&gt;
 &lt;p&gt;假设在应用中需要加载参数量大小约为1G的深度学习模型用于完成某些预测任务或文本生成，由于资源消耗较多我们不希望对模型进行多次实例化，只希望进程中维持一份模型实例，单例模式在这种场景下就可以派上用场了。&lt;/p&gt;
 &lt;p&gt;最简单的做法是将模型的实例化在模块级别完成，相当于饿汉式的单例，如下所示：&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-python&#34; data-lang=&#34;python&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;model_name&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;BAAI/bge-large-zh-v1.5&amp;#34;&lt;/span&gt;
@@ -188,10 +208,10 @@
 &lt;figure  &gt;
   &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
     &lt;div class=&#34;w-100&#34; &gt;&lt;img alt=&#34;&#34; srcset=&#34;
-               /post/python-memory-management/images/singleton/non-singleton_hu95200fc8776bcafeb8bcd97c8905ae9c_294981_193a9edabc850555f2121facd383a042.webp 400w,
-               /post/python-memory-management/images/singleton/non-singleton_hu95200fc8776bcafeb8bcd97c8905ae9c_294981_75024e4a3be59308781fc398c96f82da.webp 760w,
+               /post/python-memory-management/images/singleton/non-singleton_hu95200fc8776bcafeb8bcd97c8905ae9c_294981_5f714371c70d01fb21c2b41219564a9f.webp 400w,
+               /post/python-memory-management/images/singleton/non-singleton_hu95200fc8776bcafeb8bcd97c8905ae9c_294981_c7a4d0d8edbd70d17241abe4de99fc60.webp 760w,
                /post/python-memory-management/images/singleton/non-singleton_hu95200fc8776bcafeb8bcd97c8905ae9c_294981_1200x1200_fit_q75_h2_lanczos_3.webp 1200w&#34;
-               src=&#34;https://spacetimelab.cn/post/python-memory-management/images/singleton/non-singleton_hu95200fc8776bcafeb8bcd97c8905ae9c_294981_193a9edabc850555f2121facd383a042.webp&#34;
+               src=&#34;https://spacetimelab.cn/post/python-memory-management/images/singleton/non-singleton_hu95200fc8776bcafeb8bcd97c8905ae9c_294981_5f714371c70d01fb21c2b41219564a9f.webp&#34;
                width=&#34;760&#34;
                height=&#34;355&#34;
                loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
@@ -269,10 +289,10 @@
 &lt;figure  &gt;
   &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
     &lt;div class=&#34;w-100&#34; &gt;&lt;img alt=&#34;&#34; srcset=&#34;
-               /post/python-memory-management/images/singleton/singeton_hu680f2d9872707be542a3280b861af69f_288229_44c7aa835fbbaac5a48ab05a826e51ea.webp 400w,
-               /post/python-memory-management/images/singleton/singeton_hu680f2d9872707be542a3280b861af69f_288229_b1e8915932e3917971da3207ebd747f4.webp 760w,
+               /post/python-memory-management/images/singleton/singeton_hu680f2d9872707be542a3280b861af69f_288229_7936ecc4b17a5cd5a9b4e945bbc4d308.webp 400w,
+               /post/python-memory-management/images/singleton/singeton_hu680f2d9872707be542a3280b861af69f_288229_7460f1de96cc169f75bf5738cc50def0.webp 760w,
                /post/python-memory-management/images/singleton/singeton_hu680f2d9872707be542a3280b861af69f_288229_1200x1200_fit_q75_h2_lanczos_3.webp 1200w&#34;
-               src=&#34;https://spacetimelab.cn/post/python-memory-management/images/singleton/singeton_hu680f2d9872707be542a3280b861af69f_288229_44c7aa835fbbaac5a48ab05a826e51ea.webp&#34;
+               src=&#34;https://spacetimelab.cn/post/python-memory-management/images/singleton/singeton_hu680f2d9872707be542a3280b861af69f_288229_7936ecc4b17a5cd5a9b4e945bbc4d308.webp&#34;
                width=&#34;760&#34;
                height=&#34;355&#34;
                loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
@@ -18671,6 +18691,17 @@ F: 致命错误，pylint无法运行
 &lt;li&gt;&lt;a href=&#34;https://snacknation.com/blog/virtual-birthday-party/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;44 Memorable Fun Virtual Birthday Party Ideas, Games, &amp;amp; Activities For Celebrating In 2022&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 </description>
+    </item>
+    
+    <item>
+      <title>Hello Practices</title>
+      <link>https://spacetimelab.cn/post/practices/hello-practices/</link>
+      <pubDate>Thu, 01 Sep 2022 23:08:07 +0800</pubDate>
+      <guid>https://spacetimelab.cn/post/practices/hello-practices/</guid>
+      <description>&lt;h2 id=&#34;示例&#34;&gt;示例&lt;/h2&gt;
+&lt;p&gt;创建LeetCode练习：&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;hugo new post/practices/leetcode/alg&lt;span class=&#34;o&#34;&gt;{&lt;/span&gt;NUM&lt;span class=&#34;o&#34;&gt;}&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</description>
     </item>
     
     <item>

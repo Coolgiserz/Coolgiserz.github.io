@@ -591,7 +591,7 @@
           
 
           <li class="nav-item">
-            <a class="nav-link " href="/contact"><span>联系</span></a>
+            <a class="nav-link " href="/category/practice/"><span>练习</span></a>
           </li>
 
           
@@ -621,7 +621,35 @@
           
 
           <li class="nav-item">
-            <a class="nav-link " href="/media/files/cv"><span>简历</span></a>
+            <a class="nav-link " href="/contact"><span>联系</span></a>
+          </li>
+
+          
+          
+
+          
+
+          
+          
+          
+
+          
+
+          
+          
+          
+          
+
+          
+            
+              
+              
+            
+            
+          
+
+          <li class="nav-item">
+            <a class="nav-link " href="/tags"><span>归档</span></a>
           </li>
 
           
@@ -747,18 +775,7 @@
     
     <a href="/post/python-memory-management/"  class="summary-link">
       <div class="article-style">
-        Python内存管理机制 python解释器在系统级内存分配器和C语言内存分配器之上封装了自己的内存分配器，包括：
-  一个底层的对象分配器（raw memory allocator）进行底层的内存管理。
-  对象特定的内存分配器
-对于特定的对象，如int、dict、list等会使用对象特定的内存分配器；对于自定义对象和一些不具有特定对象分配器的对象，会使用通用的python对象分配器分配内存。
-     Python中的垃圾回收是如何完成的？ 以引用计数为主，标记-清除、分代回收为辅。
-  引用计数
-python虚拟机会为每个对象维护一个引用计数，当你对对象创建了新的引用（比如赋值、参数传递、添加到容器中），引用计数会增加。将对象作为参数传递给函数时，会增加临时引用。当引用被销毁时（如通过del删除引用），引用计数会减少，当对象的引用计数为0时，垃圾回收器会立即回收对象所占资源。
-通过sys.getrefcount可以获取对象的引用计数。
-  标记-清除
-引用计数无法处理循环引用的问题，因此python还会通过标记-清除算法清理具有循环引用的“垃圾”对象。基本原理如下：垃圾回收模块会定期扫描python中的对象，“标记”阶段会从根对象开始遍历，找到所有“可达”对象，如果发现对象间存在循环引用现象，则会为循环引用的对象引用计数减1，标记阶段结束后，仍然存在引用的对象称为“可达”对象，可以理解为存活对象，有用的对象。
-清除阶段会将未被标记为“可达”的对象进行清理和内存回收。
-  分代回收
+        一文总结python中的内存管理机制及性能优化技巧
       </div>
     </a>
     
