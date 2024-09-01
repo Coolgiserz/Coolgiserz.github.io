@@ -64,11 +64,18 @@
   
     
   
-  <meta name="description" content="Python内存管理机制 内存管理
-垃圾回收
-内存优化方式
-内存优化方式 单例模式
-参考文档  内存管理 — Python 3.11.8 文档  " />
+  <meta name="description" content="Python内存管理机制 python解释器在系统级内存分配器和C语言内存分配器之上封装了自己的内存分配器，包括：
+  一个底层的对象分配器（raw memory allocator）进行底层的内存管理。
+  对象特定的内存分配器
+对于特定的对象，如int、dict、list等会使用对象特定的内存分配器；对于自定义对象和一些不具有特定对象分配器的对象，会使用通用的python对象分配器分配内存。
+     Python中的垃圾回收是如何完成的？ 以引用计数为主，标记-清除、分代回收为辅。
+  引用计数
+python虚拟机会为每个对象维护一个引用计数，当你对对象创建了新的引用（比如赋值、参数传递、添加到容器中），引用计数会增加。将对象作为参数传递给函数时，会增加临时引用。当引用被销毁时（如通过del删除引用），引用计数会减少，当对象的引用计数为0时，垃圾回收器会立即回收对象所占资源。
+通过sys.getrefcount可以获取对象的引用计数。
+  标记-清除
+引用计数无法处理循环引用的问题，因此python还会通过标记-清除算法清理具有循环引用的“垃圾”对象。基本原理如下：垃圾回收模块会定期扫描python中的对象，“标记”阶段会从根对象开始遍历，找到所有“可达”对象，如果发现对象间存在循环引用现象，则会为循环引用的对象引用计数减1，标记阶段结束后，仍然存在引用的对象称为“可达”对象，可以理解为存活对象，有用的对象。
+清除阶段会将未被标记为“可达”的对象进行清理和内存回收。
+  分代回收" />
 
   
   <link rel="alternate" hreflang="en-us" href="https://spacetimelab.cn/post/python-memory-management/" />
@@ -326,21 +333,28 @@
   
   <meta property="og:site_name" content="NullSpace" />
   <meta property="og:url" content="https://spacetimelab.cn/post/python-memory-management/" />
-  <meta property="og:title" content="Python内存管理 | NullSpace" />
-  <meta property="og:description" content="Python内存管理机制 内存管理
-垃圾回收
-内存优化方式
-内存优化方式 单例模式
-参考文档  内存管理 — Python 3.11.8 文档  " /><meta property="og:image" content="https://spacetimelab.cn/media/icon_hue03491371183284312b8b116a73ae5ab_79511_512x512_fill_lanczos_center_3.png" />
+  <meta property="og:title" content="Python内存管理基础及性能优化技巧 | NullSpace" />
+  <meta property="og:description" content="Python内存管理机制 python解释器在系统级内存分配器和C语言内存分配器之上封装了自己的内存分配器，包括：
+  一个底层的对象分配器（raw memory allocator）进行底层的内存管理。
+  对象特定的内存分配器
+对于特定的对象，如int、dict、list等会使用对象特定的内存分配器；对于自定义对象和一些不具有特定对象分配器的对象，会使用通用的python对象分配器分配内存。
+     Python中的垃圾回收是如何完成的？ 以引用计数为主，标记-清除、分代回收为辅。
+  引用计数
+python虚拟机会为每个对象维护一个引用计数，当你对对象创建了新的引用（比如赋值、参数传递、添加到容器中），引用计数会增加。将对象作为参数传递给函数时，会增加临时引用。当引用被销毁时（如通过del删除引用），引用计数会减少，当对象的引用计数为0时，垃圾回收器会立即回收对象所占资源。
+通过sys.getrefcount可以获取对象的引用计数。
+  标记-清除
+引用计数无法处理循环引用的问题，因此python还会通过标记-清除算法清理具有循环引用的“垃圾”对象。基本原理如下：垃圾回收模块会定期扫描python中的对象，“标记”阶段会从根对象开始遍历，找到所有“可达”对象，如果发现对象间存在循环引用现象，则会为循环引用的对象引用计数减1，标记阶段结束后，仍然存在引用的对象称为“可达”对象，可以理解为存活对象，有用的对象。
+清除阶段会将未被标记为“可达”的对象进行清理和内存回收。
+  分代回收" /><meta property="og:image" content="https://spacetimelab.cn/media/icon_hue03491371183284312b8b116a73ae5ab_79511_512x512_fill_lanczos_center_3.png" />
     <meta property="twitter:image" content="https://spacetimelab.cn/media/icon_hue03491371183284312b8b116a73ae5ab_79511_512x512_fill_lanczos_center_3.png" /><meta property="og:locale" content="en-us" />
   
     
       <meta
         property="article:published_time"
-        content="2024-08-29T20:57:33&#43;08:00"
+        content="2024-08-28T20:57:33&#43;08:00"
       />
     
-    <meta property="article:modified_time" content="2024-08-29T20:57:33&#43;08:00">
+    <meta property="article:modified_time" content="2024-08-28T20:57:33&#43;08:00">
   
 
   
@@ -366,10 +380,10 @@
     "@type": "WebPage",
     "@id": "https://spacetimelab.cn/post/python-memory-management/"
   },
-  "headline": "Python内存管理",
+  "headline": "Python内存管理基础及性能优化技巧",
   
-  "datePublished": "2024-08-29T20:57:33+08:00",
-  "dateModified": "2024-08-29T20:57:33+08:00",
+  "datePublished": "2024-08-28T20:57:33+08:00",
+  "dateModified": "2024-08-28T20:57:33+08:00",
   
   "author": {
     "@type": "Person",
@@ -384,7 +398,7 @@
       "url": "https://spacetimelab.cn/media/icon_hue03491371183284312b8b116a73ae5ab_79511_192x192_fill_lanczos_center_3.png"
     }
   },
-  "description": "Python内存管理机制 内存管理\n垃圾回收\n内存优化方式\n内存优化方式 单例模式\n参考文档  内存管理 — Python 3.11.8 文档  "
+  "description": "Python内存管理机制 python解释器在系统级内存分配器和C语言内存分配器之上封装了自己的内存分配器，包括：\n  一个底层的对象分配器（raw memory allocator）进行底层的内存管理。\n  对象特定的内存分配器\n对于特定的对象，如int、dict、list等会使用对象特定的内存分配器；对于自定义对象和一些不具有特定对象分配器的对象，会使用通用的python对象分配器分配内存。\n     Python中的垃圾回收是如何完成的？ 以引用计数为主，标记-清除、分代回收为辅。\n  引用计数\npython虚拟机会为每个对象维护一个引用计数，当你对对象创建了新的引用（比如赋值、参数传递、添加到容器中），引用计数会增加。将对象作为参数传递给函数时，会增加临时引用。当引用被销毁时（如通过del删除引用），引用计数会减少，当对象的引用计数为0时，垃圾回收器会立即回收对象所占资源。\n通过sys.getrefcount可以获取对象的引用计数。\n  标记-清除\n引用计数无法处理循环引用的问题，因此python还会通过标记-清除算法清理具有循环引用的“垃圾”对象。基本原理如下：垃圾回收模块会定期扫描python中的对象，“标记”阶段会从根对象开始遍历，找到所有“可达”对象，如果发现对象间存在循环引用现象，则会为循环引用的对象引用计数减1，标记阶段结束后，仍然存在引用的对象称为“可达”对象，可以理解为存活对象，有用的对象。\n清除阶段会将未被标记为“可达”的对象进行清理和内存回收。\n  分代回收"
 }
 </script>
 
@@ -400,7 +414,7 @@
 
 
 
-  <title>Python内存管理 | NullSpace</title>
+  <title>Python内存管理基础及性能优化技巧 | NullSpace</title>
 </head>
 
 
@@ -761,7 +775,7 @@
   
   
 <div class="article-container pt-3">
-  <h1>Python内存管理</h1>
+  <h1>Python内存管理基础及性能优化技巧</h1>
 
   
 
@@ -780,7 +794,7 @@
     
       
     
-    Aug 29, 2024
+    Aug 28, 2024
   </span>
   
 
@@ -789,7 +803,7 @@
   
   <span class="middot-divider"></span>
   <span class="article-reading-time">
-    1 min read
+    2 min read
   </span>
   
 
@@ -799,6 +813,10 @@
   
 
   
+  
+  <span class="middot-divider"></span>
+  <span class="article-categories">
+    <i class="fas fa-folder mr-1"></i><a href="/category/python/">Python</a></span>
   
 
 </div>
@@ -818,14 +836,287 @@
 
     <div class="article-style">
       <h2 id="python内存管理机制">Python内存管理机制</h2>
-<p>内存管理</p>
-<p>垃圾回收</p>
-<p>内存优化方式</p>
+<p>python解释器在系统级内存分配器和C语言内存分配器之上封装了自己的内存分配器，包括：</p>
+<ul>
+<li>
+<p>一个底层的对象分配器（raw memory allocator）进行底层的内存管理。</p>
+</li>
+<li>
+<p>对象特定的内存分配器</p>
+<p>对于特定的对象，如int、dict、list等会使用对象特定的内存分配器；对于自定义对象和一些不具有特定对象分配器的对象，会使用通用的python对象分配器分配内存。</p>
+</li>
+</ul>
+<p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<figure  >
+  <div class="d-flex justify-content-center">
+    <div class="w-100" ><img alt="" srcset="
+               /post/python-memory-management/images/pymalloc/hierarchical-model_huf11bcf9410ff60a7574fda47eef88ef3_147013_90c8c0bbdccd8545c99974bd7a3217ff.webp 400w,
+               /post/python-memory-management/images/pymalloc/hierarchical-model_huf11bcf9410ff60a7574fda47eef88ef3_147013_6fc82f755b4ca9fdd79a6199b23befe4.webp 760w,
+               /post/python-memory-management/images/pymalloc/hierarchical-model_huf11bcf9410ff60a7574fda47eef88ef3_147013_1200x1200_fit_q75_h2_lanczos_3.webp 1200w"
+               src="/post/python-memory-management/images/pymalloc/hierarchical-model_huf11bcf9410ff60a7574fda47eef88ef3_147013_90c8c0bbdccd8545c99974bd7a3217ff.webp"
+               width="696"
+               height="760"
+               loading="lazy" data-zoomable /></div>
+  </div></figure>
+</p>
+<h2 id="python中的垃圾回收是如何完成的">Python中的垃圾回收是如何完成的？</h2>
+<p>以引用计数为主，标记-清除、分代回收为辅。</p>
+<ul>
+<li>
+<p>引用计数</p>
+<p>python虚拟机会为每个对象维护一个引用计数，当你对对象创建了新的引用（比如赋值、参数传递、添加到容器中），引用计数会增加。将对象作为参数传递给函数时，会增加临时引用。当引用被销毁时（如通过del删除引用），引用计数会减少，当对象的引用计数为0时，垃圾回收器会立即回收对象所占资源。</p>
+<p>通过sys.getrefcount可以获取对象的引用计数。</p>
+</li>
+<li>
+<p>标记-清除</p>
+<p>引用计数无法处理循环引用的问题，因此python还会通过标记-清除算法清理具有循环引用的“垃圾”对象。基本原理如下：垃圾回收模块会定期扫描python中的对象，“标记”阶段会从根对象开始遍历，找到所有“可达”对象，如果发现对象间存在循环引用现象，则会为循环引用的对象引用计数减1，标记阶段结束后，仍然存在引用的对象称为“可达”对象，可以理解为存活对象，有用的对象。</p>
+<p>清除阶段会将未被标记为“可达”的对象进行清理和内存回收。</p>
+</li>
+<li>
+<p>分代回收</p>
+<p>虽然标记-清除解决了循环引用的问题，但效率较低，且可能造成大量内存碎片。python还引入了分代回收提升垃圾回收的性能和效率。</p>
+<p>所谓分代回收，即python按照对象的存活时间将内存分为若干代：年轻代（0代）、中年代（1代）、老年代（2代），并对不同代的对象采用不同的垃圾回收策略（如不同的垃圾回收频率）。此处有一个朴素的假设：存活时间越长的对象越不可能是“垃圾”。所以在垃圾回收频率方面：老年代&lt;中年代&lt;年轻代。</p>
+</li>
+</ul>
+<p>那垃圾回收器如何为对象分代呢？为对象维护一个年龄计数器，当对象的年龄计数超过一定阈值，则进行“代”的晋升。</p>
+<p>gc.collect()提供了一个参数generation用于进行指定代的“垃圾”回收。</p>
 <h2 id="内存优化方式">内存优化方式</h2>
-<p>单例模式</p>
+<ul>
+<li>
+<p>手动管理内存来优化程序性能，例如使用del关键字手动释放不再使用的对象</p>
+</li>
+<li>
+<p>控制资源的数量，如使用单例模式/多例模式限制类的实例化，尤其是耗时、耗资源的类（如实例化一个机器学习模型，见<a href="#example">示例</a>）</p>
+</li>
+<li>
+<p>弱引用</p>
+</li>
+<li>
+<p>延迟加载</p>
+</li>
+<li>
+<p>使用__slots__减少类实例的大小</p>
+</li>
+<li>
+<p>选用合适的数据结构</p>
+<ul>
+<li>
+<p>使用迭代器而非列表遍历</p>
+</li>
+<li>
+<p>使用生成器</p>
+</li>
+<li>
+<p>tuple比list节省内存</p>
+</li>
+</ul>
+</li>
+<li>
+<p>使用合适的算法</p>
+</li>
+</ul>
+<h3 id="示例通过单例减少内存资源消耗">示例：通过单例减少内存资源消耗</h3>
+<p>假设在应用中需要加载参数量大小约为1G的深度学习模型用于完成某些预测任务或文本生成，由于资源消耗较多我们不希望对模型进行多次实例化，只希望进程中维持一份模型实例，单例模式在这种场景下就可以派上用场了。</p>
+<p>最简单的做法是将模型的实例化在模块级别完成，相当于饿汉式的单例，如下所示：</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="n">model_name</span> <span class="o">=</span> <span class="s2">&#34;BAAI/bge-large-zh-v1.5&#34;</span>
+</span></span><span class="line"><span class="cl"><span class="n">model</span> <span class="o">=</span> <span class="n">SentenceTransformer</span><span class="p">(</span><span class="n">model_name</span><span class="p">)</span> 
+</span></span></code></pre></div><p>假如我们还需要延迟加载，那么就需要使用懒汉式单例模式或者双重检测的单例模式。如下所示是一种基于双重检测的实现，ModelManager类会维护模型的实例且一个进程中对于同一个模型（按照name来唯一标识）最多只会维护一个实例。</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="k">class</span> <span class="nc">ModelManager</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">    <span class="s2">&#34;&#34;&#34;
+</span></span></span><span class="line"><span class="cl"><span class="s2">    模型管理器
+</span></span></span><span class="line"><span class="cl"><span class="s2">    &#34;&#34;&#34;</span>
+</span></span><span class="line"><span class="cl">    <span class="n">_models</span> <span class="o">=</span> <span class="p">{}</span>
+</span></span><span class="line"><span class="cl">    <span class="n">_model</span> <span class="o">=</span> <span class="kc">None</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="k">def</span> <span class="fm">__new__</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">        <span class="n">model_name</span> <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&#34;model_name&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="k">if</span> <span class="n">model_name</span> <span class="ow">not</span> <span class="ow">in</span> <span class="bp">cls</span><span class="o">.</span><span class="n">_models</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">            <span class="k">with</span> <span class="n">_lock</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">                <span class="k">if</span> <span class="ow">not</span> <span class="n">model_name</span> <span class="ow">not</span> <span class="ow">in</span> <span class="bp">cls</span><span class="o">.</span><span class="n">_models</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">                    <span class="bp">cls</span><span class="o">.</span><span class="n">_models</span><span class="p">[</span><span class="n">model_name</span><span class="p">]</span> <span class="o">=</span>  <span class="n">SentenceTransformer</span><span class="p">(</span><span class="n">model_name</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="bp">cls</span><span class="o">.</span><span class="n">_models</span><span class="p">[</span><span class="n">model_name</span><span class="p">]</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="nd">@classmethod</span>
+</span></span><span class="line"><span class="cl">    <span class="k">def</span> <span class="nf">get_model</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">model_name</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="bp">cls</span><span class="o">.</span><span class="fm">__new__</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">model_name</span><span class="o">=</span><span class="n">model_name</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">def</span> <span class="nf">get_model</span><span class="p">(</span><span class="n">model_name</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">    <span class="n">model</span> <span class="o">=</span> <span class="n">ModelManager</span><span class="o">.</span><span class="n">get_model</span><span class="p">(</span><span class="n">model_name</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="n">model</span>
+</span></span></code></pre></div><p>我们可以对比采用了单例模式加载多次模型和不采用单例模式加载多次模型的资源消耗。</p>
+<h4 id="不采用单例模式">不采用单例模式</h4>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">os</span>
+</span></span><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">time</span>
+</span></span><span class="line"><span class="cl"><span class="kn">from</span> <span class="nn">memory_profiler</span> <span class="kn">import</span> <span class="n">profile</span>
+</span></span><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">psutil</span>
+</span></span><span class="line"><span class="cl"><span class="n">process</span> <span class="o">=</span> <span class="n">psutil</span><span class="o">.</span><span class="n">Process</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">getpid</span><span class="p">())</span>
+</span></span><span class="line"><span class="cl"><span class="kn">from</span> <span class="nn">sentence_transformers</span> <span class="kn">import</span> <span class="n">SentenceTransformer</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">model_path</span> <span class="o">=</span> <span class="sa">r</span><span class="s2">&#34;/Users/weirdgiser/文稿/Projects/Models/languges/bge-large-zh-v1.5&#34;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nd">@profile</span>
+</span></span><span class="line"><span class="cl"><span class="k">def</span> <span class="nf">main</span><span class="p">():</span>
+</span></span><span class="line"><span class="cl">    <span class="n">start_time</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">    <span class="n">model1</span> <span class="o">=</span> <span class="n">SentenceTransformer</span><span class="p">(</span><span class="n">model_name_or_path</span><span class="o">=</span><span class="n">model_path</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&#34;加载model1后内存占用：&#34;</span><span class="p">,</span> <span class="n">process</span><span class="o">.</span><span class="n">memory_info</span><span class="p">()</span><span class="o">.</span><span class="n">rss</span> <span class="o">/</span> <span class="mi">1024</span> <span class="o">/</span> <span class="mi">1024</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="n">model2</span> <span class="o">=</span> <span class="n">SentenceTransformer</span><span class="p">(</span><span class="n">model_name_or_path</span><span class="o">=</span><span class="n">model_path</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&#34;加载model2后内存占用：&#34;</span><span class="p">,</span> <span class="n">process</span><span class="o">.</span><span class="n">memory_info</span><span class="p">()</span><span class="o">.</span><span class="n">rss</span> <span class="o">/</span> <span class="mi">1024</span> <span class="o">/</span> <span class="mi">1024</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="nb">print</span><span class="p">(</span><span class="n">model1</span> <span class="ow">is</span> <span class="n">model2</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="n">end_time</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">    <span class="k">del</span> <span class="n">model1</span>
+</span></span><span class="line"><span class="cl">    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&#34;删除model1后内存占用：&#34;</span><span class="p">,</span> <span class="n">process</span><span class="o">.</span><span class="n">memory_info</span><span class="p">()</span><span class="o">.</span><span class="n">rss</span> <span class="o">/</span> <span class="mi">1024</span> <span class="o">/</span> <span class="mi">1024</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="k">del</span> <span class="n">model2</span>
+</span></span><span class="line"><span class="cl">    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&#34;删除model2后内存占用：&#34;</span><span class="p">,</span> <span class="n">process</span><span class="o">.</span><span class="n">memory_info</span><span class="p">()</span><span class="o">.</span><span class="n">rss</span> <span class="o">/</span> <span class="mi">1024</span> <span class="o">/</span> <span class="mi">1024</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="nb">print</span><span class="p">(</span><span class="s2">&#34;耗时：&#34;</span><span class="p">,</span> <span class="n">end_time</span><span class="o">-</span><span class="n">start_time</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&#34;__main__&#34;</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">    <span class="n">main</span><span class="p">()</span>
+</span></span></code></pre></div><p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<figure  >
+  <div class="d-flex justify-content-center">
+    <div class="w-100" ><img alt="" srcset="
+               /post/python-memory-management/images/singleton/non-singleton_hu95200fc8776bcafeb8bcd97c8905ae9c_294981_193a9edabc850555f2121facd383a042.webp 400w,
+               /post/python-memory-management/images/singleton/non-singleton_hu95200fc8776bcafeb8bcd97c8905ae9c_294981_75024e4a3be59308781fc398c96f82da.webp 760w,
+               /post/python-memory-management/images/singleton/non-singleton_hu95200fc8776bcafeb8bcd97c8905ae9c_294981_1200x1200_fit_q75_h2_lanczos_3.webp 1200w"
+               src="/post/python-memory-management/images/singleton/non-singleton_hu95200fc8776bcafeb8bcd97c8905ae9c_294981_193a9edabc850555f2121facd383a042.webp"
+               width="760"
+               height="355"
+               loading="lazy" data-zoomable /></div>
+  </div></figure>
+</p>
+<h4 id="采用单例模式">采用单例模式</h4>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">time</span>
+</span></span><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">os</span>
+</span></span><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">threading</span>
+</span></span><span class="line"><span class="cl"><span class="kn">from</span> <span class="nn">memory_profiler</span> <span class="kn">import</span> <span class="n">profile</span>
+</span></span><span class="line"><span class="cl"><span class="kn">from</span> <span class="nn">sentence_transformers</span> <span class="kn">import</span> <span class="n">SentenceTransformer</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">model_path</span> <span class="o">=</span> <span class="sa">r</span><span class="s2">&#34;/Users/weirdgiser/文稿/Projects/Models/languges/bge-large-zh-v1.5&#34;</span>
+</span></span><span class="line"><span class="cl"><span class="n">_lock</span> <span class="o">=</span> <span class="n">threading</span><span class="o">.</span><span class="n">RLock</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">psutil</span>
+</span></span><span class="line"><span class="cl"><span class="n">process</span> <span class="o">=</span> <span class="n">psutil</span><span class="o">.</span><span class="n">Process</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">getpid</span><span class="p">())</span>
+</span></span><span class="line"><span class="cl"><span class="k">class</span> <span class="nc">ModelManager</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">    <span class="s2">&#34;&#34;&#34;
+</span></span></span><span class="line"><span class="cl"><span class="s2">    模型管理器
+</span></span></span><span class="line"><span class="cl"><span class="s2">    &#34;&#34;&#34;</span>
+</span></span><span class="line"><span class="cl">    <span class="n">_models</span> <span class="o">=</span> <span class="p">{}</span>
+</span></span><span class="line"><span class="cl">    <span class="n">_model</span> <span class="o">=</span> <span class="kc">None</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="k">def</span> <span class="fm">__new__</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">        <span class="n">model_name</span> <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&#34;model_name&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="k">if</span> <span class="n">model_name</span> <span class="ow">not</span> <span class="ow">in</span> <span class="bp">cls</span><span class="o">.</span><span class="n">_models</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">            <span class="k">with</span> <span class="n">_lock</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">                <span class="k">if</span> <span class="n">model_name</span> <span class="ow">not</span> <span class="ow">in</span> <span class="bp">cls</span><span class="o">.</span><span class="n">_models</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">                    <span class="bp">cls</span><span class="o">.</span><span class="n">_models</span><span class="p">[</span><span class="n">model_name</span><span class="p">]</span> <span class="o">=</span>  <span class="n">SentenceTransformer</span><span class="p">(</span><span class="n">model_name</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="bp">cls</span><span class="o">.</span><span class="n">_models</span><span class="p">[</span><span class="n">model_name</span><span class="p">]</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="nd">@classmethod</span>
+</span></span><span class="line"><span class="cl">    <span class="k">def</span> <span class="nf">get_model</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">model_name</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="bp">cls</span><span class="o">.</span><span class="fm">__new__</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">model_name</span><span class="o">=</span><span class="n">model_name</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">def</span> <span class="nf">get_model</span><span class="p">(</span><span class="n">model_name</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">    <span class="n">model</span> <span class="o">=</span> <span class="n">ModelManager</span><span class="o">.</span><span class="n">get_model</span><span class="p">(</span><span class="n">model_name</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="n">model</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nd">@profile</span>
+</span></span><span class="line"><span class="cl"><span class="k">def</span> <span class="nf">main</span><span class="p">():</span>
+</span></span><span class="line"><span class="cl">    <span class="n">start_time</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">    <span class="n">model1</span> <span class="o">=</span> <span class="n">get_model</span><span class="p">(</span><span class="n">model_path</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&#34;加载model1后内存占用：&#34;</span><span class="p">,</span> <span class="n">process</span><span class="o">.</span><span class="n">memory_info</span><span class="p">()</span><span class="o">.</span><span class="n">rss</span> <span class="o">/</span> <span class="mi">1024</span> <span class="o">/</span> <span class="mi">1024</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="n">model2</span> <span class="o">=</span> <span class="n">get_model</span><span class="p">(</span><span class="n">model_path</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&#34;加载model2后内存占用：&#34;</span><span class="p">,</span> <span class="n">process</span><span class="o">.</span><span class="n">memory_info</span><span class="p">()</span><span class="o">.</span><span class="n">rss</span> <span class="o">/</span> <span class="mi">1024</span> <span class="o">/</span> <span class="mi">1024</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="nb">print</span><span class="p">(</span><span class="n">model1</span> <span class="ow">is</span> <span class="n">model2</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="n">end_time</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">    <span class="k">del</span> <span class="n">model1</span>
+</span></span><span class="line"><span class="cl">    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&#34;删除model1后内存占用：&#34;</span><span class="p">,</span> <span class="n">process</span><span class="o">.</span><span class="n">memory_info</span><span class="p">()</span><span class="o">.</span><span class="n">rss</span> <span class="o">/</span> <span class="mi">1024</span> <span class="o">/</span> <span class="mi">1024</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="k">del</span> <span class="n">model2</span>
+</span></span><span class="line"><span class="cl">    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&#34;删除model2后内存占用：&#34;</span><span class="p">,</span> <span class="n">process</span><span class="o">.</span><span class="n">memory_info</span><span class="p">()</span><span class="o">.</span><span class="n">rss</span> <span class="o">/</span> <span class="mi">1024</span> <span class="o">/</span> <span class="mi">1024</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="nb">print</span><span class="p">(</span><span class="s2">&#34;耗时：&#34;</span><span class="p">,</span> <span class="n">end_time</span><span class="o">-</span><span class="n">start_time</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&#34;__main__&#34;</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">    <span class="n">main</span><span class="p">()</span>
+</span></span></code></pre></div><p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<figure  >
+  <div class="d-flex justify-content-center">
+    <div class="w-100" ><img alt="" srcset="
+               /post/python-memory-management/images/singleton/singeton_hu680f2d9872707be542a3280b861af69f_288229_44c7aa835fbbaac5a48ab05a826e51ea.webp 400w,
+               /post/python-memory-management/images/singleton/singeton_hu680f2d9872707be542a3280b861af69f_288229_b1e8915932e3917971da3207ebd747f4.webp 760w,
+               /post/python-memory-management/images/singleton/singeton_hu680f2d9872707be542a3280b861af69f_288229_1200x1200_fit_q75_h2_lanczos_3.webp 1200w"
+               src="/post/python-memory-management/images/singleton/singeton_hu680f2d9872707be542a3280b861af69f_288229_44c7aa835fbbaac5a48ab05a826e51ea.webp"
+               width="760"
+               height="355"
+               loading="lazy" data-zoomable /></div>
+  </div></figure>
+</p>
+<h2 id="内存管理和调试工具">内存管理和调试工具</h2>
+<ul>
+<li>
+<p>psutils</p>
+</li>
+<li>
+<p>memory_profiler</p>
+</li>
+<li>
+<p>tracemalloc</p>
+</li>
+</ul>
 <h2 id="参考文档">参考文档</h2>
 <ul>
 <li><a href="https://docs.python.org/zh-cn/3.11/c-api/memory.html" target="_blank" rel="noopener">内存管理 — Python 3.11.8 文档</a></li>
+<li><a href="https://rushter.com/blog/python-garbage-collector/" target="_blank" rel="noopener">Garbage collection in Python: things you need to know | Artem Golubin</a></li>
+<li><a href="https://rushter.com/blog/python-memory-managment/" target="_blank" rel="noopener">Memory management in Python | Artem Golubin</a></li>
+<li><a href="https://juejin.cn/post/6856235545220415496" target="_blank" rel="noopener">Python内存管理机制</a></li>
+<li><a href="https://www.cnblogs.com/wuyanzu123/p/14698070.html" target="_blank" rel="noopener">Python内存管理看我这一篇就完事了！！！！ - 一直飞的无脚鸟 - 博客园</a></li>
+<li><a href="https://metaso.cn/s/1okrBNz" target="_blank" rel="noopener">秘塔AI搜索-Python内存管理</a></li>
+<li><a href="https://huggingface.co/collections/BAAI/bge-66797a74476eb1f085c7446d" target="_blank" rel="noopener">Hugging Face: BAAI&rsquo;s Collections</a></li>
 </ul>
 
     </div>
@@ -834,6 +1125,16 @@
 
 
 
+
+<div class="article-tags">
+  
+  <a class="badge badge-light" href="/tag/%E5%86%85%E5%AD%98%E7%AE%A1%E7%90%86/">内存管理</a>
+  
+  <a class="badge badge-light" href="/tag/%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96/">性能优化</a>
+  
+  <a class="badge badge-light" href="/tag/python/">Python</a>
+  
+</div>
 
 
 
@@ -848,7 +1149,7 @@
       
       
       <li>
-        <a href="https://twitter.com/intent/tweet?url=https://spacetimelab.cn/post/python-memory-management/&amp;text=Python%e5%86%85%e5%ad%98%e7%ae%a1%e7%90%86" target="_blank" rel="noopener" class="share-btn-twitter" aria-label="twitter">
+        <a href="https://twitter.com/intent/tweet?url=https://spacetimelab.cn/post/python-memory-management/&amp;text=Python%e5%86%85%e5%ad%98%e7%ae%a1%e7%90%86%e5%9f%ba%e7%a1%80%e5%8f%8a%e6%80%a7%e8%83%bd%e4%bc%98%e5%8c%96%e6%8a%80%e5%b7%a7" target="_blank" rel="noopener" class="share-btn-twitter" aria-label="twitter">
           <i class="fab fa-twitter"></i>
         </a>
       </li>
@@ -861,7 +1162,7 @@
       
       
       <li>
-        <a href="https://www.facebook.com/sharer.php?u=https://spacetimelab.cn/post/python-memory-management/&amp;t=Python%e5%86%85%e5%ad%98%e7%ae%a1%e7%90%86" target="_blank" rel="noopener" class="share-btn-facebook" aria-label="facebook">
+        <a href="https://www.facebook.com/sharer.php?u=https://spacetimelab.cn/post/python-memory-management/&amp;t=Python%e5%86%85%e5%ad%98%e7%ae%a1%e7%90%86%e5%9f%ba%e7%a1%80%e5%8f%8a%e6%80%a7%e8%83%bd%e4%bc%98%e5%8c%96%e6%8a%80%e5%b7%a7" target="_blank" rel="noopener" class="share-btn-facebook" aria-label="facebook">
           <i class="fab fa-facebook"></i>
         </a>
       </li>
@@ -874,7 +1175,7 @@
       
       
       <li>
-        <a href="mailto:?subject=Python%e5%86%85%e5%ad%98%e7%ae%a1%e7%90%86&amp;body=https://spacetimelab.cn/post/python-memory-management/" target="_blank" rel="noopener" class="share-btn-email" aria-label="envelope">
+        <a href="mailto:?subject=Python%e5%86%85%e5%ad%98%e7%ae%a1%e7%90%86%e5%9f%ba%e7%a1%80%e5%8f%8a%e6%80%a7%e8%83%bd%e4%bc%98%e5%8c%96%e6%8a%80%e5%b7%a7&amp;body=https://spacetimelab.cn/post/python-memory-management/" target="_blank" rel="noopener" class="share-btn-email" aria-label="envelope">
           <i class="fas fa-envelope"></i>
         </a>
       </li>
@@ -887,7 +1188,7 @@
       
       
       <li>
-        <a href="https://www.linkedin.com/shareArticle?url=https://spacetimelab.cn/post/python-memory-management/&amp;title=Python%e5%86%85%e5%ad%98%e7%ae%a1%e7%90%86" target="_blank" rel="noopener" class="share-btn-linkedin" aria-label="linkedin-in">
+        <a href="https://www.linkedin.com/shareArticle?url=https://spacetimelab.cn/post/python-memory-management/&amp;title=Python%e5%86%85%e5%ad%98%e7%ae%a1%e7%90%86%e5%9f%ba%e7%a1%80%e5%8f%8a%e6%80%a7%e8%83%bd%e4%bc%98%e5%8c%96%e6%8a%80%e5%b7%a7" target="_blank" rel="noopener" class="share-btn-linkedin" aria-label="linkedin-in">
           <i class="fab fa-linkedin-in"></i>
         </a>
       </li>
@@ -900,7 +1201,7 @@
       
       
       <li>
-        <a href="whatsapp://send?text=Python%e5%86%85%e5%ad%98%e7%ae%a1%e7%90%86%20https://spacetimelab.cn/post/python-memory-management/" target="_blank" rel="noopener" class="share-btn-whatsapp" aria-label="whatsapp">
+        <a href="whatsapp://send?text=Python%e5%86%85%e5%ad%98%e7%ae%a1%e7%90%86%e5%9f%ba%e7%a1%80%e5%8f%8a%e6%80%a7%e8%83%bd%e4%bc%98%e5%8c%96%e6%8a%80%e5%b7%a7%20https://spacetimelab.cn/post/python-memory-management/" target="_blank" rel="noopener" class="share-btn-whatsapp" aria-label="whatsapp">
           <i class="fab fa-whatsapp"></i>
         </a>
       </li>
@@ -913,7 +1214,7 @@
       
       
       <li>
-        <a href="https://service.weibo.com/share/share.php?url=https://spacetimelab.cn/post/python-memory-management/&amp;title=Python%e5%86%85%e5%ad%98%e7%ae%a1%e7%90%86" target="_blank" rel="noopener" class="share-btn-weibo" aria-label="weibo">
+        <a href="https://service.weibo.com/share/share.php?url=https://spacetimelab.cn/post/python-memory-management/&amp;title=Python%e5%86%85%e5%ad%98%e7%ae%a1%e7%90%86%e5%9f%ba%e7%a1%80%e5%8f%8a%e6%80%a7%e8%83%bd%e4%bc%98%e5%8c%96%e6%8a%80%e5%b7%a7" target="_blank" rel="noopener" class="share-btn-weibo" aria-label="weibo">
           <i class="fab fa-weibo"></i>
         </a>
       </li>

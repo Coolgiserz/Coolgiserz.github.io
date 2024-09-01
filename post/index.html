@@ -329,7 +329,7 @@
     <meta property="twitter:image" content="https://spacetimelab.cn/media/icon_hue03491371183284312b8b116a73ae5ab_79511_512x512_fill_lanczos_center_3.png" /><meta property="og:locale" content="en-us" />
   
     
-      <meta property="og:updated_time" content="2024-07-18T16:19:58&#43;08:00" />
+      <meta property="og:updated_time" content="2024-08-28T20:57:33&#43;08:00" />
     
   
 
@@ -720,6 +720,108 @@
   
 
   
+  
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+<div class="media stream-item view-compact">
+  <div class="media-body">
+
+    <div class="section-subheading article-title mb-0 mt-0">
+      <a href="/post/python-memory-management/" >Python内存管理基础及性能优化技巧</a>
+    </div>
+
+    
+    <a href="/post/python-memory-management/"  class="summary-link">
+      <div class="article-style">
+        Python内存管理机制 python解释器在系统级内存分配器和C语言内存分配器之上封装了自己的内存分配器，包括：
+  一个底层的对象分配器（raw memory allocator）进行底层的内存管理。
+  对象特定的内存分配器
+对于特定的对象，如int、dict、list等会使用对象特定的内存分配器；对于自定义对象和一些不具有特定对象分配器的对象，会使用通用的python对象分配器分配内存。
+     Python中的垃圾回收是如何完成的？ 以引用计数为主，标记-清除、分代回收为辅。
+  引用计数
+python虚拟机会为每个对象维护一个引用计数，当你对对象创建了新的引用（比如赋值、参数传递、添加到容器中），引用计数会增加。将对象作为参数传递给函数时，会增加临时引用。当引用被销毁时（如通过del删除引用），引用计数会减少，当对象的引用计数为0时，垃圾回收器会立即回收对象所占资源。
+通过sys.getrefcount可以获取对象的引用计数。
+  标记-清除
+引用计数无法处理循环引用的问题，因此python还会通过标记-清除算法清理具有循环引用的“垃圾”对象。基本原理如下：垃圾回收模块会定期扫描python中的对象，“标记”阶段会从根对象开始遍历，找到所有“可达”对象，如果发现对象间存在循环引用现象，则会为循环引用的对象引用计数减1，标记阶段结束后，仍然存在引用的对象称为“可达”对象，可以理解为存活对象，有用的对象。
+清除阶段会将未被标记为“可达”的对象进行清理和内存回收。
+  分代回收
+      </div>
+    </a>
+    
+
+    <div class="stream-meta article-metadata">
+
+      
+
+      
+        
+
+
+<div class="article-metadata">
+
+  
+  
+
+  
+  <span class="article-date">
+    
+    
+      
+    
+    Aug 28, 2024
+  </span>
+  
+
+  
+
+  
+  <span class="middot-divider"></span>
+  <span class="article-reading-time">
+    2 min read
+  </span>
+  
+
+  
+  
+  
+  
+
+  
+  
+  <span class="middot-divider"></span>
+  <span class="article-categories">
+    <i class="fas fa-folder mr-1"></i><a href="/category/python/">Python</a></span>
+  
+
+</div>
+
+      
+    </div>
+
+    
+
+  </div>
+  <div class="ml-3">
+    
+    
+  </div>
+</div>
+
   
     
 
@@ -1540,93 +1642,6 @@ Text2SQL: A Powerful Tool for Querying Databases with Natural Language
   <span class="middot-divider"></span>
   <span class="article-categories">
     <i class="fas fa-folder mr-1"></i><a href="/category/%E6%88%98%E7%95%A5%E5%88%86%E6%9E%90/">战略分析</a></span>
-  
-
-</div>
-
-      
-    </div>
-
-    
-
-  </div>
-  <div class="ml-3">
-    
-    
-  </div>
-</div>
-
-  
-    
-
-
-
-
-
-
-
-
-
-
-
-
-
-  
-
-
-<div class="media stream-item view-compact">
-  <div class="media-body">
-
-    <div class="section-subheading article-title mb-0 mt-0">
-      <a href="/post/bigmodel-api-usage-notes/" >关于大语言模型使用技巧与API工具使用的个人笔记</a>
-    </div>
-
-    
-    <a href="/post/bigmodel-api-usage-notes/"  class="summary-link">
-      <div class="article-style">
-        如何与大模型交互？真否？全否？有理否？可行否？
-      </div>
-    </a>
-    
-
-    <div class="stream-meta article-metadata">
-
-      
-
-      
-        
-
-
-<div class="article-metadata">
-
-  
-  
-
-  
-  <span class="article-date">
-    
-    
-      
-    
-    Mar 2, 2024
-  </span>
-  
-
-  
-
-  
-  <span class="middot-divider"></span>
-  <span class="article-reading-time">
-    3 min read
-  </span>
-  
-
-  
-  
-  
-  
-
-  
   
 
 </div>
