@@ -872,6 +872,16 @@
 <li>Apple M2芯片如何构建docker Linux镜像？</li>
 </ul>
 <p><a href="https://stackoverflow.com/questions/66920645/exec-format-error-when-running-containers-build-with-apple-m1-chip-arm-based" target="_blank" rel="noopener">docker - &quot;exec format error&quot; when running containers build with Apple M1 Chip (ARM based systems) - Stack Overflow</a></p>
+<ul>
+<li>
+<p>运行docker build命令出现ERROR: failed to solve: knowledge_graph_component:latest: failed to resolve source metadata for docker.io/library/knowledge_graph_component:latest: failed to authorize: failed to fetch anonymous token</p>
+<p>命令行登录docker后该问题不再出现</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">docker login
+</span></span></code></pre></div></li>
+<li>
+<p>本地存在基础镜像A，但基于镜像A构造另一个镜像时，docker尝试从远程拉取（不存在）并失败。</p>
+</li>
+</ul>
 
     </div>
 

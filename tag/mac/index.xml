@@ -52,6 +52,16 @@
 &lt;li&gt;Apple M2芯片如何构建docker Linux镜像？&lt;/li&gt;
 &lt;/ul&gt;
 &lt;p&gt;&lt;a href=&#34;https://stackoverflow.com/questions/66920645/exec-format-error-when-running-containers-build-with-apple-m1-chip-arm-based&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;docker - &amp;quot;exec format error&amp;quot; when running containers build with Apple M1 Chip (ARM based systems) - Stack Overflow&lt;/a&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;运行docker build命令出现ERROR: failed to solve: knowledge_graph_component:latest: failed to resolve source metadata for docker.io/library/knowledge_graph_component:latest: failed to authorize: failed to fetch anonymous token&lt;/p&gt;
+&lt;p&gt;命令行登录docker后该问题不再出现&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;docker login
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;本地存在基础镜像A，但基于镜像A构造另一个镜像时，docker尝试从远程拉取（不存在）并失败。&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
 </description>
     </item>
     

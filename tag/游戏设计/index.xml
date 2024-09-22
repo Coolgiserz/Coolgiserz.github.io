@@ -1,0 +1,230 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>游戏设计 | NullSpace</title>
+    <link>https://spacetimelab.cn/tag/%E6%B8%B8%E6%88%8F%E8%AE%BE%E8%AE%A1/</link>
+      <atom:link href="https://spacetimelab.cn/tag/%E6%B8%B8%E6%88%8F%E8%AE%BE%E8%AE%A1/index.xml" rel="self" type="application/rss+xml" />
+    <description>游戏设计</description>
+    <generator>Wowchemy (https://wowchemy.com)</generator><language>en-us</language><lastBuildDate>Sat, 21 Sep 2024 13:22:48 +0800</lastBuildDate>
+    <image>
+      <url>https://spacetimelab.cn/media/icon_hue03491371183284312b8b116a73ae5ab_79511_512x512_fill_lanczos_center_3.png</url>
+      <title>游戏设计</title>
+      <link>https://spacetimelab.cn/tag/%E6%B8%B8%E6%88%8F%E8%AE%BE%E8%AE%A1/</link>
+    </image>
+    
+    <item>
+      <title>卡牌游戏概念设计：以《权皇》桌游为例</title>
+      <link>https://spacetimelab.cn/post/card-game-design-analysis-imperior-power/</link>
+      <pubDate>Sat, 21 Sep 2024 13:22:48 +0800</pubDate>
+      <guid>https://spacetimelab.cn/post/card-game-design-analysis-imperior-power/</guid>
+      <description>&lt;h2 id=&#34;游戏简介&#34;&gt;游戏简介&lt;/h2&gt;
+&lt;p&gt;《权皇》是基于《风声》改进的一款阵营对抗类桌游。&lt;/p&gt;
+&lt;h2 id=&#34;游戏核心要素&#34;&gt;游戏核心要素&lt;/h2&gt;
+&lt;h3 id=&#34;阵营&#34;&gt;阵营&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;共有3类阵营：心道、王道、霸道&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;一局游戏中至少有2个敌对阵营&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;王道玩家属于同一阵营、霸道玩家属于同一阵营、心道各自为营&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;角色&#34;&gt;角色&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;不同角色具有一定技能，技能可能对其他玩家或卡牌产生效果。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;角色技能触发时机：出牌后、密函接收前、密函接收成功后、濒死阶段&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;角色状态：暴露或隐藏&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;玩家&#34;&gt;玩家&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;一局游戏有若干个玩家（一般3-9人）&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;每个玩家会属于某个阵营&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;玩家具有一定数量的手牌&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;每个玩家都会绑定一个角色&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;玩家接收成功的密函列表（若干某种颜色的密函）&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;玩家具有状态：正常、异常（禁止出牌、强制接收、濒死、可能宣胜等）、阵营可见性&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;卡牌手牌&#34;&gt;卡牌/手牌&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;卡牌效用：功能或情报，情报对影响玩家阵营的胜利或出局；功能影响玩家在回合中的状态或其它卡牌产生效果。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;卡牌功能作用范围：功能牌可能只能作用于某些特定的牌或者特定状态的玩家。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;卡牌状态：全部玩家可见/部分玩家可见/不可见&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;卡牌效果结算规则（结算时机、优先级）&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;卡牌上限&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;回合&#34;&gt;回合&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;回合阶段&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;出牌阶段：玩家可以打功能牌&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;功能牌响应阶段&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;传递密函&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;密函响应阶段&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;响应顺序&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;密函接收阶段&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;回合时间上限&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;回合结算&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;e.g. 玩家A的回合：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;摸牌&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;玩家A打功能牌（可选）&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;其它玩家响应（可选），对其他玩家施加效果或影响被响应功能牌效果；&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;卡牌效果结算&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;传递密函&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;密函响应（可选）&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;密函被玩家B接收或传回玩家A强制接收&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;弃牌（可选），手牌超过上限可摸牌&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;玩家A回合结束&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h3 id=&#34;牌堆&#34;&gt;牌堆&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;牌堆&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;牌堆底&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;牌堆顶&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;弃牌堆&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;胜利判定&#34;&gt;胜利判定&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;不同阵营玩家具有一定胜利条件&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;心道玩家具有独特隐藏胜利条件，与角色相关&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;游戏核心资源&#34;&gt;游戏核心资源&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;美工&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;卡牌&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;角色&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;音乐&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;音效&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;网游要素&#34;&gt;网游要素&lt;/h2&gt;
+&lt;h3 id=&#34;功能性游戏引力&#34;&gt;功能性（游戏引力）&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;匹配&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;自定义房间&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;标记功能&lt;/p&gt;
+&lt;p&gt;每个玩家可以标记其他玩家的阵营&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;积分、段位&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;排名&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;对局回放&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;容错性游戏体验&#34;&gt;容错性（游戏体验）&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;玩家退出，AI托管&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;玩家断线重连&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

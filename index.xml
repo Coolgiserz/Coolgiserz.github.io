@@ -5,12 +5,345 @@
     <link>https://spacetimelab.cn/</link>
       <atom:link href="https://spacetimelab.cn/index.xml" rel="self" type="application/rss+xml" />
     <description>NullSpace</description>
-    <generator>Wowchemy (https://wowchemy.com)</generator><language>en-us</language><lastBuildDate>Sun, 01 Sep 2024 22:00:39 +0800</lastBuildDate>
+    <generator>Wowchemy (https://wowchemy.com)</generator><language>en-us</language><lastBuildDate>Sun, 22 Sep 2024 09:26:46 +0800</lastBuildDate>
     <image>
       <url>https://spacetimelab.cn/media/icon_hue03491371183284312b8b116a73ae5ab_79511_512x512_fill_lanczos_center_3.png</url>
       <title>NullSpace</title>
       <link>https://spacetimelab.cn/</link>
     </image>
+    
+    <item>
+      <title>Docker部署Neo4j</title>
+      <link>https://spacetimelab.cn/post/docker-deploy-neo4j/</link>
+      <pubDate>Sun, 22 Sep 2024 09:26:46 +0800</pubDate>
+      <guid>https://spacetimelab.cn/post/docker-deploy-neo4j/</guid>
+      <description>&lt;h2 id=&#34;部署&#34;&gt;部署&lt;/h2&gt;
+&lt;h3 id=&#34;基础镜像&#34;&gt;基础镜像&lt;/h3&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;docker pull neo4j:5.23.0-community
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;启动容器&#34;&gt;启动容器&lt;/h3&gt;
+&lt;p&gt;编写docker-compose.yml文件，设置数据挂载目录、端口映射。&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-yaml&#34; data-lang=&#34;yaml&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nt&#34;&gt;version&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;s1&#34;&gt;&amp;#39;3&amp;#39;&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;w&#34;&gt;&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;services&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;w&#34;&gt;    &lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;neo4j-community&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;w&#34;&gt;        &lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;image&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;l&#34;&gt;neo4j:5.23.0-community&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;w&#34;&gt;        &lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;container_name&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;l&#34;&gt;neo4j_5.23&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;w&#34;&gt;        &lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;volumes&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;w&#34;&gt;          &lt;/span&gt;- &lt;span class=&#34;s2&#34;&gt;&amp;#34;./data:/data:rw&amp;#34;&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;w&#34;&gt;          &lt;/span&gt;- &lt;span class=&#34;s2&#34;&gt;&amp;#34;./conf:/var/lib/neo4j/conf&amp;#34;&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;w&#34;&gt;        &lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;ports&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;w&#34;&gt;          &lt;/span&gt;- &lt;span class=&#34;s2&#34;&gt;&amp;#34;17474:7474&amp;#34;&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;w&#34;&gt;          &lt;/span&gt;- &lt;span class=&#34;s2&#34;&gt;&amp;#34;17687:7687&amp;#34;&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;w&#34;&gt;        
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;启动容器&lt;/p&gt;
+&lt;p&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure  &gt;
+  &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img alt=&#34;&#34; srcset=&#34;
+               /post/docker-deploy-neo4j/images/http/docker-compose-up_hu5973c501397ad84dbd3d2f35a1a8381d_199503_e5a4aaae878eb3098dff0ba3e81b9ac7.webp 400w,
+               /post/docker-deploy-neo4j/images/http/docker-compose-up_hu5973c501397ad84dbd3d2f35a1a8381d_199503_934b6c47228a922f4895428df192a127.webp 760w,
+               /post/docker-deploy-neo4j/images/http/docker-compose-up_hu5973c501397ad84dbd3d2f35a1a8381d_199503_1200x1200_fit_q75_h2_lanczos_3.webp 1200w&#34;
+               src=&#34;https://spacetimelab.cn/post/docker-deploy-neo4j/images/http/docker-compose-up_hu5973c501397ad84dbd3d2f35a1a8381d_199503_e5a4aaae878eb3098dff0ba3e81b9ac7.webp&#34;
+               width=&#34;760&#34;
+               height=&#34;190&#34;
+               loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+  &lt;/div&gt;&lt;/figure&gt;
+&lt;/p&gt;
+&lt;p&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure  &gt;
+  &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img alt=&#34;&#34; srcset=&#34;
+               /post/docker-deploy-neo4j/images/http/browser_huf91bf4655cbcd712f0e7f3b6e697d59c_198975_86745c9feb5ab9dcc7b411d45e82dd06.webp 400w,
+               /post/docker-deploy-neo4j/images/http/browser_huf91bf4655cbcd712f0e7f3b6e697d59c_198975_48e2c558a9f105afe62719886ef89d07.webp 760w,
+               /post/docker-deploy-neo4j/images/http/browser_huf91bf4655cbcd712f0e7f3b6e697d59c_198975_1200x1200_fit_q75_h2_lanczos_3.webp 1200w&#34;
+               src=&#34;https://spacetimelab.cn/post/docker-deploy-neo4j/images/http/browser_huf91bf4655cbcd712f0e7f3b6e697d59c_198975_86745c9feb5ab9dcc7b411d45e82dd06.webp&#34;
+               width=&#34;760&#34;
+               height=&#34;446&#34;
+               loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+  &lt;/div&gt;&lt;/figure&gt;
+&lt;/p&gt;
+&lt;h2 id=&#34;数据库操作&#34;&gt;数据库操作&lt;/h2&gt;
+&lt;p&gt;重置密码&lt;/p&gt;
+&lt;p&gt;示例：&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;brenda-demand-orchid-period-coconut-6273
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;创建用户&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code class=&#34;language-cypher&#34; data-lang=&#34;cypher&#34;&gt;create user weird_client set password &amp;#39;FpNRX8UtCN]8v5D.?Tr]!=)nBHZo-V1s2H)YYfFw91&amp;gt;8RL&amp;#39; change not required
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;导入数据&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;neo4j-admin database load neo4j --from-path&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;/data/
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;导入数据要求neo4j是停止状态，然而默认情况下在容器中停止neo4j会使容器停止.
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;解决办法：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;以交互模式启动容器A，覆盖默认启动neo4j的命令，进入容器后neo4j未启动。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;通过neo4j-admin命令导入dump文件&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;sb&#34;&gt;```&lt;/span&gt;shell
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;neo4j-admin database load neo4j --from-path&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;/data/ --overwrite-destination&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;nb&#34;&gt;true&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;退出容器A&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;正常启动容器B，此时neo4j库中已经有neo4j.dumo的数据。&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;docker run \
+--publish=17474:7474 \
+--publish=17687:7687 \
+--volume=./data:/data \
+--ulimit=nofile=40000:40000 \
+-it \
+neo4j:5.23.0-community \
+/bin/bash
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;参考链接：&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;https://serverfault.com/questions/835092/how-do-you-perform-a-dump-of-a-neo4j-database-within-a-docker-container&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;How do you perform a dump of a Neo4j database within a Docker container? - Server Fault&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;https://stackoverflow.com/questions/52758820/problem-loading-neo4j-dump-in-docker-container&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;https://stackoverflow.com/questions/52758820/problem-loading-neo4j-dump-in-docker-container&lt;/a&gt;&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>卡牌游戏概念设计：以《权皇》桌游为例</title>
+      <link>https://spacetimelab.cn/post/card-game-design-analysis-imperior-power/</link>
+      <pubDate>Sat, 21 Sep 2024 13:22:48 +0800</pubDate>
+      <guid>https://spacetimelab.cn/post/card-game-design-analysis-imperior-power/</guid>
+      <description>&lt;h2 id=&#34;游戏简介&#34;&gt;游戏简介&lt;/h2&gt;
+&lt;p&gt;《权皇》是基于《风声》改进的一款阵营对抗类桌游。&lt;/p&gt;
+&lt;h2 id=&#34;游戏核心要素&#34;&gt;游戏核心要素&lt;/h2&gt;
+&lt;h3 id=&#34;阵营&#34;&gt;阵营&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;共有3类阵营：心道、王道、霸道&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;一局游戏中至少有2个敌对阵营&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;王道玩家属于同一阵营、霸道玩家属于同一阵营、心道各自为营&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;角色&#34;&gt;角色&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;不同角色具有一定技能，技能可能对其他玩家或卡牌产生效果。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;角色技能触发时机：出牌后、密函接收前、密函接收成功后、濒死阶段&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;角色状态：暴露或隐藏&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;玩家&#34;&gt;玩家&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;一局游戏有若干个玩家（一般3-9人）&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;每个玩家会属于某个阵营&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;玩家具有一定数量的手牌&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;每个玩家都会绑定一个角色&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;玩家接收成功的密函列表（若干某种颜色的密函）&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;玩家具有状态：正常、异常（禁止出牌、强制接收、濒死、可能宣胜等）、阵营可见性&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;卡牌手牌&#34;&gt;卡牌/手牌&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;卡牌效用：功能或情报，情报对影响玩家阵营的胜利或出局；功能影响玩家在回合中的状态或其它卡牌产生效果。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;卡牌功能作用范围：功能牌可能只能作用于某些特定的牌或者特定状态的玩家。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;卡牌状态：全部玩家可见/部分玩家可见/不可见&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;卡牌效果结算规则（结算时机、优先级）&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;卡牌上限&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;回合&#34;&gt;回合&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;回合阶段&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;出牌阶段：玩家可以打功能牌&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;功能牌响应阶段&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;传递密函&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;密函响应阶段&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;响应顺序&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;密函接收阶段&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;回合时间上限&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;回合结算&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;e.g. 玩家A的回合：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;摸牌&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;玩家A打功能牌（可选）&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;其它玩家响应（可选），对其他玩家施加效果或影响被响应功能牌效果；&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;卡牌效果结算&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;传递密函&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;密函响应（可选）&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;密函被玩家B接收或传回玩家A强制接收&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;弃牌（可选），手牌超过上限可摸牌&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;玩家A回合结束&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h3 id=&#34;牌堆&#34;&gt;牌堆&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;牌堆&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;牌堆底&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;牌堆顶&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;弃牌堆&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;胜利判定&#34;&gt;胜利判定&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;不同阵营玩家具有一定胜利条件&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;心道玩家具有独特隐藏胜利条件，与角色相关&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;游戏核心资源&#34;&gt;游戏核心资源&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;美工&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;卡牌&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;角色&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;音乐&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;音效&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;网游要素&#34;&gt;网游要素&lt;/h2&gt;
+&lt;h3 id=&#34;功能性游戏引力&#34;&gt;功能性（游戏引力）&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;匹配&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;自定义房间&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;标记功能&lt;/p&gt;
+&lt;p&gt;每个玩家可以标记其他玩家的阵营&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;积分、段位&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;排名&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;对局回放&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;容错性游戏体验&#34;&gt;容错性（游戏体验）&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;玩家退出，AI托管&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;玩家断线重连&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
     
     <item>
       <title>Text Summary Algorithms Collection</title>
@@ -31,11 +364,168 @@
 &lt;p&gt;是英雄创造了历史还是大众创造了历史？还是说，两者都不是？&lt;/p&gt;
 &lt;/li&gt;
 &lt;li&gt;
-&lt;p&gt;什么是真正有意义的历史？&lt;/p&gt;
+&lt;p&gt;什么是真正有意义的历史？历史由什么构成？&lt;/p&gt;
 &lt;/li&gt;
 &lt;li&gt;
 &lt;p&gt;历史上知名的人物真的对历史有贡献吗？贡献大吗？比如秦皇汉武、唐宗宋祖？&lt;/p&gt;
 &lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;人类文明史上，最重要的事件是什么？&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;如何评判人类的进步&#34;&gt;如何评判人类的进步？&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;经济发展水平&lt;/p&gt;
+&lt;p&gt;人均GDP、能量总量、能量利用水平&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;社会发展水平&lt;/p&gt;
+&lt;p&gt;人均寿命、受教育程度、劳动强度、工作时间&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;人与人的关系&lt;/p&gt;
+&lt;p&gt;法律平等性&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;思维方式和方法论&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;什么人物能被称为是划时代的&#34;&gt;什么人物能被称为是划时代的？&lt;/h3&gt;
+&lt;p&gt;孔子？老子？&lt;/p&gt;
+&lt;p&gt;秦始皇？汉武帝？&lt;/p&gt;
+&lt;p&gt;牛顿？爱因斯坦？&lt;/p&gt;
+&lt;p&gt;古登堡？&lt;/p&gt;
+&lt;h3 id=&#34;哪些事件可以认为是划时代的&#34;&gt;哪些事件可以认为是划时代的？&lt;/h3&gt;
+&lt;p&gt;牛顿——开启理性时代&lt;/p&gt;
+&lt;p&gt;玻意耳机械论——否定了神秘主义和不可知论&lt;/p&gt;
+&lt;p&gt;文艺复兴&lt;/p&gt;
+&lt;p&gt;宗教改革&lt;/p&gt;
+&lt;p&gt;造纸术和印刷术的发明——通过记录信息、复制信息、传播信息加速文明进程&lt;/p&gt;
+&lt;p&gt;铅活字印刷的推广——摧毁了一个文化上封闭、技术上停滞的旧世界&lt;/p&gt;
+&lt;p&gt;《大宪章》&lt;/p&gt;
+&lt;p&gt;大航海&lt;/p&gt;
+&lt;h3 id=&#34;历史的真相是残酷占比更多还是幸福占比更多&#34;&gt;历史的真相是残酷占比更多还是幸福占比更多？&lt;/h3&gt;
+&lt;p&gt;梦回唐朝、梦回大汉、梦回三国大概率能看到什么样的景象？&lt;/p&gt;
+&lt;h3 id=&#34;历史和当下的联系&#34;&gt;历史和当下的联系&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;过去值得怀念吗？&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;过去的想法能解决今天的问题吗？&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;今天的价值观强加于过去合适吗？&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;过去的规律适用于当下吗？&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;关于当下&#34;&gt;关于当下&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;今天比古代好吗？好了多少？&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;现代化的目的和结果是什么？&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;财富的本质是什么？&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;什么是财富&#34;&gt;什么是财富？&lt;/h3&gt;
+&lt;p&gt;过去：土地？房产？珠宝？金银？&lt;/p&gt;
+&lt;p&gt;今天：预期（盈利能力）、调动资源的能力&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;资产的价值如何衡量？&lt;/p&gt;
+&lt;p&gt;劳动价值论，必要劳动时间？&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;如何解释比特币的价格？&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;影响价值的因素有哪些？&lt;/p&gt;
+&lt;p&gt;共识、信仰。&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&#34;对个人而言什么是财富&#34;&gt;对个人而言什么是财富？&lt;/h4&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;时间&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;个人能力和能调动资源的数量&lt;/p&gt;
+&lt;p&gt;有形资产：现金或其它有形资产&lt;/p&gt;
+&lt;p&gt;无形资产：创造财富的能力、让财富保值的能力&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h3 id=&#34;教育的公平性可否解决&#34;&gt;教育的公平性可否解决？&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;高考制度能做到公平吗？&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;教育资源分配有可能做到公平吗？&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;让人均创造更多财富的地区支持人均创造财富更少的地区的教育支出是否公平？可能解决教育不公平问题吗？&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;有哪些常见的对教育的错误期望&#34;&gt;有哪些常见的对教育的错误期望？&lt;/h3&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;以为人的幸福感源自自己拥有他人所没有的东西&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;觉得教育要让每个人都能享受同样的、最大限度的自由&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;觉得既然制度有不合理的地方，就应该把制度推翻&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h3 id=&#34;如何理性地面对教育中存在的问题&#34;&gt;如何理性地面对教育中存在的问题？&lt;/h3&gt;
+&lt;h4 id=&#34;杜波依斯的建议&#34;&gt;杜波依斯的建议&lt;/h4&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;明白教育的平等来自整个社会的平等，特别是社会分工的平等。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;回到最根本的教育理念：孩子必须接受教育，知道世界是什么样的、存在什么、如何运转。&lt;/p&gt;
+&lt;p&gt;应该明白学生要在学校里学什么：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;理解世界&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;学会运用知识&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;明白学习的意义&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;一切教育的对象是孩子本身，而非成绩。教育不等同于它所要成就的东西。&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h3 id=&#34;人类需要信仰吗&#34;&gt;人类需要信仰吗？&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;信仰在社会和历史中扮演什么角色？&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;文明为何会发生冲突？&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;文明间的冲突可以避免吗？&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;不同信仰的人应该生活在一起吗？&lt;/p&gt;
+&lt;p&gt;道不同不相为谋？&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;/li&gt;
 &lt;/ul&gt;
 </description>
     </item>
@@ -1154,6 +1644,35 @@
                loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
   &lt;/div&gt;&lt;/figure&gt;
 &lt;/p&gt;
+&lt;h4 id=&#34;产业大数据解决方案_清博指数_清博大数据httpswwwgsdatacnsolutioncydata&#34;&gt;&lt;a href=&#34;https://www.gsdata.cn/solution/cydata&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;产业大数据解决方案_清博指数_清博大数据&lt;/a&gt;&lt;/h4&gt;
+&lt;p&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure  &gt;
+  &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img alt=&#34;&#34; srcset=&#34;
+               /post/competitiion-intelligence-review/images/tools/gsdata_cydata_huf8c20fd793b0fd028553c2d183937278_974579_f839c1a140cf1e903de597a63c8522fc.webp 400w,
+               /post/competitiion-intelligence-review/images/tools/gsdata_cydata_huf8c20fd793b0fd028553c2d183937278_974579_85ff8f10d52dfe7990499c37b04d970c.webp 760w,
+               /post/competitiion-intelligence-review/images/tools/gsdata_cydata_huf8c20fd793b0fd028553c2d183937278_974579_1200x1200_fit_q75_h2_lanczos_3.webp 1200w&#34;
+               src=&#34;https://spacetimelab.cn/post/competitiion-intelligence-review/images/tools/gsdata_cydata_huf8c20fd793b0fd028553c2d183937278_974579_f839c1a140cf1e903de597a63c8522fc.webp&#34;
+               width=&#34;760&#34;
+               height=&#34;390&#34;
+               loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+  &lt;/div&gt;&lt;/figure&gt;
+&lt;/p&gt;
 &lt;h3 id=&#34;其它官方平台&#34;&gt;其它官方平台&lt;/h3&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;a href=&#34;http://www.istis.sh.cn&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;上海情报服务平台&lt;/a&gt;&lt;/li&gt;
@@ -1193,6 +1712,9 @@
 &lt;/li&gt;
 &lt;li&gt;
 &lt;p&gt;企查查&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;清博智能&lt;/p&gt;
 &lt;/li&gt;
 &lt;/ul&gt;
 &lt;h2 id=&#34;未来趋势&#34;&gt;未来趋势&lt;/h2&gt;
@@ -7998,6 +8520,16 @@ DBSCAN，此法更是妙哉，它不在乎数据的密度，只在乎邻里之�
 &lt;li&gt;Apple M2芯片如何构建docker Linux镜像？&lt;/li&gt;
 &lt;/ul&gt;
 &lt;p&gt;&lt;a href=&#34;https://stackoverflow.com/questions/66920645/exec-format-error-when-running-containers-build-with-apple-m1-chip-arm-based&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;docker - &amp;quot;exec format error&amp;quot; when running containers build with Apple M1 Chip (ARM based systems) - Stack Overflow&lt;/a&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;运行docker build命令出现ERROR: failed to solve: knowledge_graph_component:latest: failed to resolve source metadata for docker.io/library/knowledge_graph_component:latest: failed to authorize: failed to fetch anonymous token&lt;/p&gt;
+&lt;p&gt;命令行登录docker后该问题不再出现&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;docker login
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;本地存在基础镜像A，但基于镜像A构造另一个镜像时，docker尝试从远程拉取（不存在）并失败。&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
 </description>
     </item>
     
@@ -11168,6 +11700,219 @@ True
     </item>
     
     <item>
+      <title>Docker常用命令</title>
+      <link>https://spacetimelab.cn/post/docker-basic-command/</link>
+      <pubDate>Thu, 21 Sep 2023 12:44:29 +0800</pubDate>
+      <guid>https://spacetimelab.cn/post/docker-basic-command/</guid>
+      <description>&lt;h2 id=&#34;dockerfile文件编写&#34;&gt;Dockerfile文件编写&lt;/h2&gt;
+&lt;h3 id=&#34;语法基本介绍&#34;&gt;语法基本介绍&lt;/h3&gt;
+&lt;p&gt;注释、命令、参数&lt;/p&gt;
+&lt;h4 id=&#34;命令&#34;&gt;命令&lt;/h4&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;FROM&lt;/p&gt;
+&lt;p&gt;指定基于哪个基础镜像。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;MAINTAINER&lt;/p&gt;
+&lt;p&gt;作者信息。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;RUN&lt;/p&gt;
+&lt;p&gt;操作指令。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;CMD&lt;/p&gt;
+&lt;p&gt;指定容器启动时用到的命令。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;EXPOSE&lt;/p&gt;
+&lt;p&gt;暴露端口&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;ENV&lt;/p&gt;
+&lt;p&gt;定义环境变量。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;ADD&lt;/p&gt;
+&lt;p&gt;可以将本地文件或目录添加到容器中。也可以通过url指定文件&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;COPY&lt;/p&gt;
+&lt;p&gt;类似ADD，但不支持URL&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;VOLUME&lt;/p&gt;
+&lt;p&gt;指定挂载点。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;USER&lt;/p&gt;
+&lt;p&gt;指定运行容器的用户。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;WORKDIR&lt;/p&gt;
+&lt;p&gt;指定命令的工作目录&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;ENTRYPOINT&lt;/p&gt;
+&lt;p&gt;指定容器启动时要执行的命令，且不能被docker run覆盖。&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;示例&#34;&gt;示例&lt;/h3&gt;
+&lt;p&gt;Python项目运行环境构建&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-dockerfile&#34; data-lang=&#34;dockerfile&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c&#34;&gt;# 拉去python3.10的基础镜像&lt;/span&gt;&lt;span class=&#34;err&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;err&#34;&gt;&lt;/span&gt;&lt;span class=&#34;k&#34;&gt;FROM&lt;/span&gt;&lt;span class=&#34;s&#34;&gt; python:3.10&lt;/span&gt;&lt;span class=&#34;err&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;err&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;err&#34;&gt;&lt;/span&gt;&lt;span class=&#34;c&#34;&gt;# 将requirements.txt添加到容器中&lt;/span&gt;&lt;span class=&#34;err&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;err&#34;&gt;&lt;/span&gt;&lt;span class=&#34;k&#34;&gt;ADD&lt;/span&gt; requirements.txt /env&lt;span class=&#34;err&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;err&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;err&#34;&gt;&lt;/span&gt;&lt;span class=&#34;c&#34;&gt;# 指定工作目录为requirements.txt所在目录&lt;/span&gt;&lt;span class=&#34;err&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;err&#34;&gt;&lt;/span&gt;&lt;span class=&#34;k&#34;&gt;WORKDIR&lt;/span&gt;&lt;span class=&#34;s&#34;&gt; /env&lt;/span&gt;&lt;span class=&#34;err&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;err&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;err&#34;&gt;&lt;/span&gt;&lt;span class=&#34;c&#34;&gt;# 运行命令安装环境&lt;/span&gt;&lt;span class=&#34;err&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;err&#34;&gt;&lt;/span&gt;&lt;span class=&#34;k&#34;&gt;RUN&lt;/span&gt; pip install -r requirements.txt&lt;span class=&#34;err&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id=&#34;docker常用命令&#34;&gt;docker常用命令&lt;/h2&gt;
+&lt;h3 id=&#34;构建镜像&#34;&gt;构建镜像&lt;/h3&gt;
+&lt;p&gt;在Dockerfile所在目录&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;docker build -t &amp;lt;IMAGE_NAME&amp;gt;:&amp;lt;TAG&amp;gt; .
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;导出镜像&#34;&gt;导出镜像&lt;/h3&gt;
+&lt;p&gt;按镜像名称及标签导出&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;docker save -o &amp;lt;TARFILE&amp;gt; &amp;lt;IMAGE_NAME&amp;gt;:&amp;lt;TAG&amp;gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;按镜像ID导出&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;docker save -o &amp;lt;TARFILE&amp;gt; &amp;lt;IMAGE_ID&amp;gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;导入镜像&#34;&gt;导入镜像&lt;/h3&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;docker load -i &amp;lt;IMAGE_NAME_TAR_PATH&amp;gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure  &gt;
+  &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img alt=&#34;&#34; srcset=&#34;
+               /post/docker-basic-command/images/docker-cheetsheet/docker-load_hu8d0066ea4e3b8460ec21bd3631891fa0_115723_acca6b263a17753cb47961d6d22d6f01.webp 400w,
+               /post/docker-basic-command/images/docker-cheetsheet/docker-load_hu8d0066ea4e3b8460ec21bd3631891fa0_115723_c7b68d050ddf39dabace949a5ff9f7dd.webp 760w,
+               /post/docker-basic-command/images/docker-cheetsheet/docker-load_hu8d0066ea4e3b8460ec21bd3631891fa0_115723_1200x1200_fit_q75_h2_lanczos_3.webp 1200w&#34;
+               src=&#34;https://spacetimelab.cn/post/docker-basic-command/images/docker-cheetsheet/docker-load_hu8d0066ea4e3b8460ec21bd3631891fa0_115723_acca6b263a17753cb47961d6d22d6f01.webp&#34;
+               width=&#34;760&#34;
+               height=&#34;109&#34;
+               loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+  &lt;/div&gt;&lt;/figure&gt;
+&lt;/p&gt;
+&lt;h3 id=&#34;heading&#34;&gt;&lt;/h3&gt;
+&lt;h3 id=&#34;查看镜像&#34;&gt;查看镜像&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;列举所有镜像&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;docker image ls
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;删除镜像&#34;&gt;删除镜像&lt;/h3&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;docker rmi &amp;lt;IMAGE_ID&amp;gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;重命名镜像&#34;&gt;重命名镜像&lt;/h3&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;docker tag &amp;lt;NEW_IMAGE_NANE&amp;gt;:&amp;lt;NEW_IMAGE_TAG&amp;gt; &amp;lt;IMAGE_ID&amp;gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;查看容器&#34;&gt;查看容器&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;查看运行中的容器&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;docker ps
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;查看单个容器详细信息&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;docker inspect &amp;lt;IMAGE_ID&amp;gt;###  
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;查看所有容器&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;docker ps -a
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;查看容器日志&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;docker logs -n &amp;lt;LINE&amp;gt; &amp;lt;CONTAINER_ID&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;docker-composeyml文件&#34;&gt;docker-compose.yml文件&lt;/h2&gt;
+&lt;h3 id=&#34;基本介绍&#34;&gt;基本介绍&lt;/h3&gt;
+&lt;p&gt;&lt;code&gt;Compose&lt;/code&gt; 项目是 Docker 官方的开源项目，负责实现对 Docker 容器集群的快速编排。使用场景为需要多个容器相互配合来完成某项任务的情况。例如要实现一个 Web 项目，除了 Web 服务前后端容器本身，可能还需要再加上后端的数据库服务容器，甚至还包括负载均衡容器等。&lt;/p&gt;
+&lt;h3 id=&#34;基本命令&#34;&gt;基本命令&lt;/h3&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-yaml&#34; data-lang=&#34;yaml&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nt&#34;&gt;version&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;s1&#34;&gt;&amp;#39;3&amp;#39;&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;w&#34;&gt;&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;services&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;w&#34;&gt;  &lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;web&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;w&#34;&gt;    &lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;build&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;l&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;w&#34;&gt;    &lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;ports&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;w&#34;&gt;     &lt;/span&gt;- &lt;span class=&#34;s2&#34;&gt;&amp;#34;5000:5000&amp;#34;&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;w&#34;&gt;    &lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;depends_on&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;w&#34;&gt;     &lt;/span&gt;- &lt;span class=&#34;l&#34;&gt;redis&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;w&#34;&gt;  &lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;redis&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;w&#34;&gt;    &lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;image&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;redis:alpine&amp;#34;&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;build: 指定 &lt;code&gt;Dockerfile&lt;/code&gt; 所在文件夹的路径（可以是绝对路径，或者相对 docker-compose.yml 文件的路径）。 &lt;code&gt;Compose&lt;/code&gt; 将会利用它自动构建这个镜像，然后使用这个镜像。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;command: 覆盖容器启动后默认执行的命令。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;container_name: 指定容器名称。默认将会使用 &lt;code&gt;项目名称_服务名称_序号&lt;/code&gt; 这样的格式。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;depends_on: 解决容器的依赖、启动先后的问题。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;expose: 暴露端口，但不映射到宿主机，只被连接的服务访问。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;image: 指定为镜像名称或镜像 ID。如果镜像在本地不存在，&lt;code&gt;Compose&lt;/code&gt; 将会尝试拉取这个镜像。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;ports: 暴露端口信息。&lt;/p&gt;
+&lt;p&gt;使用宿主端口：容器端口 &lt;code&gt;(HOST:CONTAINER)&lt;/code&gt; 格式，或者仅仅指定容器的端口（宿主将会随机选择端口）都可以。&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;docker-compose常用命令&#34;&gt;docker-compose常用命令&lt;/h2&gt;
+&lt;h3 id=&#34;可用参数&#34;&gt;可用参数&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;-f, &amp;ndash;file FILE 指定使用的compose文件，默认为docker-compose.yml文件&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;-p, &amp;ndash;project-name NAME 指定项目名称&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&amp;ndash;verbose 输出调试信息&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;-v 打印版本&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;启动容器&#34;&gt;启动容器&lt;/h3&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;docker-compose up
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;后台启动&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;docker-compose up -d
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;重启容器&#34;&gt;重启容器&lt;/h3&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;docker-compose restart
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;删除容器&#34;&gt;删除容器&lt;/h3&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;docker-compose rm
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id=&#34;拓展阅读&#34;&gt;拓展阅读&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://yeasy.gitbook.io/docker_practice/compose/introduction&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Docker-从入门到实践&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
+    
+    <item>
       <title>Neo4j基本使用与Cypher语言基础</title>
       <link>https://spacetimelab.cn/post/neo4j-basic-usage/</link>
       <pubDate>Wed, 20 Sep 2023 21:57:38 +0800</pubDate>
@@ -12121,8 +12866,41 @@ DELETE r, n
 &lt;p&gt;下载器调度管理&lt;/p&gt;
 &lt;/li&gt;
 &lt;/ol&gt;
+&lt;h2 id=&#34;基本架构&#34;&gt;基本架构&lt;/h2&gt;
+&lt;p&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure  &gt;
+  &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img alt=&#34;&#34; srcset=&#34;
+               /project/remote-sensing-data-collect/images/arch/flow_hu16b3b9f50d246c9318ac70deead55c8a_124689_5d8a9af8f48ec5b3fd5a8f9d22b9c403.webp 400w,
+               /project/remote-sensing-data-collect/images/arch/flow_hu16b3b9f50d246c9318ac70deead55c8a_124689_2a59ba57af36e6861cec584fe489eb12.webp 760w,
+               /project/remote-sensing-data-collect/images/arch/flow_hu16b3b9f50d246c9318ac70deead55c8a_124689_1200x1200_fit_q75_h2_lanczos_3.webp 1200w&#34;
+               src=&#34;https://spacetimelab.cn/project/remote-sensing-data-collect/images/arch/flow_hu16b3b9f50d246c9318ac70deead55c8a_124689_5d8a9af8f48ec5b3fd5a8f9d22b9c403.webp&#34;
+               width=&#34;760&#34;
+               height=&#34;735&#34;
+               loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+  &lt;/div&gt;&lt;/figure&gt;
+&lt;/p&gt;
 &lt;h2 id=&#34;状态&#34;&gt;状态&lt;/h2&gt;
 &lt;p&gt;已投入使用。&lt;/p&gt;
+&lt;h2 id=&#34;相关项目&#34;&gt;相关项目&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://www.aliyun.com/product/rsimganalys&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;AI Earth 数知地球_遥感影像分析_地球科学_云计算_人工智能-阿里云&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
 </description>
     </item>
     
