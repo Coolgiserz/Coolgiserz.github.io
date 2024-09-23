@@ -64,7 +64,7 @@
   
     
   
-  <meta name="description" content="Docker部署Neo4" />
+  <meta name="description" content="Docker容器化部署Neo4j" />
 
   
   <link rel="alternate" hreflang="en-us" href="https://spacetimelab.cn/post/docker-deploy-neo4j/" />
@@ -323,7 +323,7 @@
   <meta property="og:site_name" content="NullSpace" />
   <meta property="og:url" content="https://spacetimelab.cn/post/docker-deploy-neo4j/" />
   <meta property="og:title" content="Docker部署Neo4j | NullSpace" />
-  <meta property="og:description" content="Docker部署Neo4" /><meta property="og:image" content="https://spacetimelab.cn/media/icon_hue03491371183284312b8b116a73ae5ab_79511_512x512_fill_lanczos_center_3.png" />
+  <meta property="og:description" content="Docker容器化部署Neo4j" /><meta property="og:image" content="https://spacetimelab.cn/media/icon_hue03491371183284312b8b116a73ae5ab_79511_512x512_fill_lanczos_center_3.png" />
     <meta property="twitter:image" content="https://spacetimelab.cn/media/icon_hue03491371183284312b8b116a73ae5ab_79511_512x512_fill_lanczos_center_3.png" /><meta property="og:locale" content="en-us" />
   
     
@@ -376,7 +376,7 @@
       "url": "https://spacetimelab.cn/media/icon_hue03491371183284312b8b116a73ae5ab_79511_192x192_fill_lanczos_center_3.png"
     }
   },
-  "description": "Docker部署Neo4"
+  "description": "Docker容器化部署Neo4j"
 }
 </script>
 
@@ -853,7 +853,6 @@
 </span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="nt">ports</span><span class="p">:</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">          </span>- <span class="s2">&#34;17474:7474&#34;</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">          </span>- <span class="s2">&#34;17687:7687&#34;</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">        
 </span></span></span></code></pre></div><p>启动容器</p>
 <p>
 
@@ -924,6 +923,15 @@
 <ol>
 <li>
 <p>以交互模式启动容器A，覆盖默认启动neo4j的命令，进入容器后neo4j未启动。</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">docker run <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>--publish<span class="o">=</span>17474:7474 <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>--publish<span class="o">=</span>17687:7687 <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>--volume<span class="o">=</span>&lt;DATA_DIR&gt;:/data <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>--ulimit<span class="o">=</span><span class="nv">nofile</span><span class="o">=</span>40000:40000 <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>-it <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>neo4j:5.23.0-community <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>/bin/bash
+</span></span></code></pre></div><p>注意：&lt;DATA_DIR&gt;最好填写绝对路径，否则在windows系统中可能无法正确挂载。</p>
 </li>
 <li>
 <p>通过neo4j-admin命令导入dump文件</p>
@@ -934,18 +942,11 @@
 <p>退出容器A</p>
 </li>
 <li>
-<p>正常启动容器B，此时neo4j库中已经有neo4j.dumo的数据。</p>
+<p>正常启动容器B，此时neo4j库中已经有neo4j.dump的数据。</p>
+<p>启动容器B时，挂载的数据目录需要与上述&lt;DATA_DIR&gt;相同。</p>
 </li>
 </ol>
-<pre tabindex="0"><code>docker run \
---publish=17474:7474 \
---publish=17687:7687 \
---volume=./data:/data \
---ulimit=nofile=40000:40000 \
--it \
-neo4j:5.23.0-community \
-/bin/bash
-</code></pre><p>参考链接：</p>
+<p>参考链接：</p>
 <p><a href="https://serverfault.com/questions/835092/how-do-you-perform-a-dump-of-a-neo4j-database-within-a-docker-container" target="_blank" rel="noopener">How do you perform a dump of a Neo4j database within a Docker container? - Server Fault</a></p>
 <p><a href="https://stackoverflow.com/questions/52758820/problem-loading-neo4j-dump-in-docker-container" target="_blank" rel="noopener">https://stackoverflow.com/questions/52758820/problem-loading-neo4j-dump-in-docker-container</a></p>
 

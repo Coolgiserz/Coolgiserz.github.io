@@ -33,7 +33,6 @@
 &lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;w&#34;&gt;        &lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;ports&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;w&#34;&gt;          &lt;/span&gt;- &lt;span class=&#34;s2&#34;&gt;&amp;#34;17474:7474&amp;#34;&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;w&#34;&gt;          &lt;/span&gt;- &lt;span class=&#34;s2&#34;&gt;&amp;#34;17687:7687&amp;#34;&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;w&#34;&gt;        
 &lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;启动容器&lt;/p&gt;
 &lt;p&gt;
 
@@ -104,6 +103,15 @@
 &lt;ol&gt;
 &lt;li&gt;
 &lt;p&gt;以交互模式启动容器A，覆盖默认启动neo4j的命令，进入容器后neo4j未启动。&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;docker run &lt;span class=&#34;se&#34;&gt;\
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;se&#34;&gt;&lt;/span&gt;--publish&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;17474:7474 &lt;span class=&#34;se&#34;&gt;\
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;se&#34;&gt;&lt;/span&gt;--publish&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;17687:7687 &lt;span class=&#34;se&#34;&gt;\
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;se&#34;&gt;&lt;/span&gt;--volume&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&amp;lt;DATA_DIR&amp;gt;:/data &lt;span class=&#34;se&#34;&gt;\
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;se&#34;&gt;&lt;/span&gt;--ulimit&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;nofile&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;40000:40000 &lt;span class=&#34;se&#34;&gt;\
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;se&#34;&gt;&lt;/span&gt;-it &lt;span class=&#34;se&#34;&gt;\
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;se&#34;&gt;&lt;/span&gt;neo4j:5.23.0-community &lt;span class=&#34;se&#34;&gt;\
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;se&#34;&gt;&lt;/span&gt;/bin/bash
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;注意：&amp;lt;DATA_DIR&amp;gt;最好填写绝对路径，否则在windows系统中可能无法正确挂载。&lt;/p&gt;
 &lt;/li&gt;
 &lt;li&gt;
 &lt;p&gt;通过neo4j-admin命令导入dump文件&lt;/p&gt;
@@ -114,18 +122,11 @@
 &lt;p&gt;退出容器A&lt;/p&gt;
 &lt;/li&gt;
 &lt;li&gt;
-&lt;p&gt;正常启动容器B，此时neo4j库中已经有neo4j.dumo的数据。&lt;/p&gt;
+&lt;p&gt;正常启动容器B，此时neo4j库中已经有neo4j.dump的数据。&lt;/p&gt;
+&lt;p&gt;启动容器B时，挂载的数据目录需要与上述&amp;lt;DATA_DIR&amp;gt;相同。&lt;/p&gt;
 &lt;/li&gt;
 &lt;/ol&gt;
-&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;docker run \
---publish=17474:7474 \
---publish=17687:7687 \
---volume=./data:/data \
---ulimit=nofile=40000:40000 \
--it \
-neo4j:5.23.0-community \
-/bin/bash
-&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;参考链接：&lt;/p&gt;
+&lt;p&gt;参考链接：&lt;/p&gt;
 &lt;p&gt;&lt;a href=&#34;https://serverfault.com/questions/835092/how-do-you-perform-a-dump-of-a-neo4j-database-within-a-docker-container&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;How do you perform a dump of a Neo4j database within a Docker container? - Server Fault&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;&lt;a href=&#34;https://stackoverflow.com/questions/52758820/problem-loading-neo4j-dump-in-docker-container&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;https://stackoverflow.com/questions/52758820/problem-loading-neo4j-dump-in-docker-container&lt;/a&gt;&lt;/p&gt;
 </description>
