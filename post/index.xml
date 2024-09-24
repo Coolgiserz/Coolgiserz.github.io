@@ -107,6 +107,7 @@
 &lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;se&#34;&gt;&lt;/span&gt;--publish&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;17474:7474 &lt;span class=&#34;se&#34;&gt;\
 &lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;se&#34;&gt;&lt;/span&gt;--publish&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;17687:7687 &lt;span class=&#34;se&#34;&gt;\
 &lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;se&#34;&gt;&lt;/span&gt;--volume&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&amp;lt;DATA_DIR&amp;gt;:/data &lt;span class=&#34;se&#34;&gt;\
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;se&#34;&gt;&lt;/span&gt;--volume&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&amp;lt;IMPORT_DIR&amp;gt;:/import &lt;span class=&#34;se&#34;&gt;\
 &lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;se&#34;&gt;&lt;/span&gt;--ulimit&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;nofile&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;40000:40000 &lt;span class=&#34;se&#34;&gt;\
 &lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;se&#34;&gt;&lt;/span&gt;-it &lt;span class=&#34;se&#34;&gt;\
 &lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;se&#34;&gt;&lt;/span&gt;neo4j:5.23.0-community &lt;span class=&#34;se&#34;&gt;\
@@ -117,7 +118,35 @@
 &lt;p&gt;通过neo4j-admin命令导入dump文件&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;sb&#34;&gt;```&lt;/span&gt;shell
 &lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;neo4j-admin database load neo4j --from-path&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;/data/ --overwrite-destination&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;nb&#34;&gt;true&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure  &gt;
+  &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img alt=&#34;&#34; srcset=&#34;
+               /post/docker-deploy-neo4j/images/http/neo4j-admin-load_hua642f2de7db532eafb2e7e518467f37a_54035_17553f15a7b289a51c6581e23661270c.webp 400w,
+               /post/docker-deploy-neo4j/images/http/neo4j-admin-load_hua642f2de7db532eafb2e7e518467f37a_54035_372e0653d803eb7519fdd65c81e10804.webp 760w,
+               /post/docker-deploy-neo4j/images/http/neo4j-admin-load_hua642f2de7db532eafb2e7e518467f37a_54035_1200x1200_fit_q75_h2_lanczos_3.webp 1200w&#34;
+               src=&#34;https://spacetimelab.cn/post/docker-deploy-neo4j/images/http/neo4j-admin-load_hua642f2de7db532eafb2e7e518467f37a_54035_17553f15a7b289a51c6581e23661270c.webp&#34;
+               width=&#34;760&#34;
+               height=&#34;82&#34;
+               loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+  &lt;/div&gt;&lt;/figure&gt;
+&lt;/p&gt;
+&lt;/li&gt;
 &lt;li&gt;
 &lt;p&gt;退出容器A&lt;/p&gt;
 &lt;/li&gt;
@@ -6273,8 +6302,128 @@ DBSCAN，此法更是妙哉，它不在乎数据的密度，只在乎邻里之�
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/li&gt;
 &lt;li&gt;
 &lt;p&gt;本地存在基础镜像A，但基于镜像A构造另一个镜像时，docker尝试从远程拉取（不存在）并失败。&lt;/p&gt;
+&lt;p&gt;失败命令：&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt; sudo docker build -t knowledge_graph_component_backend_app-sso:latest .
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;失败报错信息：&lt;/p&gt;
+&lt;p&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure  &gt;
+  &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img alt=&#34;&#34; srcset=&#34;
+               /post/docker-mac-containers-build-issues/images/fail-case_huca402fee868759863d1f3b51ed814e97_117815_a65de4217e02a25eee031c19bdd80671.webp 400w,
+               /post/docker-mac-containers-build-issues/images/fail-case_huca402fee868759863d1f3b51ed814e97_117815_81d40e20b9e5fdf646114d1ec410f6d5.webp 760w,
+               /post/docker-mac-containers-build-issues/images/fail-case_huca402fee868759863d1f3b51ed814e97_117815_1200x1200_fit_q75_h2_lanczos_3.webp 1200w&#34;
+               src=&#34;https://spacetimelab.cn/post/docker-mac-containers-build-issues/images/fail-case_huca402fee868759863d1f3b51ed814e97_117815_a65de4217e02a25eee031c19bdd80671.webp&#34;
+               width=&#34;760&#34;
+               height=&#34;141&#34;
+               loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+  &lt;/div&gt;&lt;/figure&gt;
+&lt;/p&gt;
+&lt;p&gt;成功命令：&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt; sudo docker build --platform&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;linux/amd64 -t knowledge_graph_component_backend_app-sso:latest .
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure  &gt;
+  &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img alt=&#34;&#34; srcset=&#34;
+               /post/docker-mac-containers-build-issues/images/docker_build_local_image_hub81370bbbc0fe2814419092c2b8e4040_242434_e84f89c9a0b7bea9acad12c822476544.webp 400w,
+               /post/docker-mac-containers-build-issues/images/docker_build_local_image_hub81370bbbc0fe2814419092c2b8e4040_242434_cf6796d428e75bf0c7bbd6132d7ecf60.webp 760w,
+               /post/docker-mac-containers-build-issues/images/docker_build_local_image_hub81370bbbc0fe2814419092c2b8e4040_242434_1200x1200_fit_q75_h2_lanczos_3.webp 1200w&#34;
+               src=&#34;https://spacetimelab.cn/post/docker-mac-containers-build-issues/images/docker_build_local_image_hub81370bbbc0fe2814419092c2b8e4040_242434_e84f89c9a0b7bea9acad12c822476544.webp&#34;
+               width=&#34;760&#34;
+               height=&#34;278&#34;
+               loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+  &lt;/div&gt;&lt;/figure&gt;
+&lt;/p&gt;
 &lt;/li&gt;
 &lt;/ul&gt;
+&lt;p&gt;失败原因：基础镜像是在AMD架构的机器上构建的（docker build默认会构建本机架构的镜像）。通过docker desktop可以查看镜像的平台架构是否与本机有冲突：&lt;/p&gt;
+&lt;p&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure  &gt;
+  &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img alt=&#34;&#34; srcset=&#34;
+               /post/docker-mac-containers-build-issues/images/docker-image-arch_hud3e7cfd582723acb7e57e0a1210868f6_97663_006bd6c560fb9530cfeb3ee8b4f6f3ea.webp 400w,
+               /post/docker-mac-containers-build-issues/images/docker-image-arch_hud3e7cfd582723acb7e57e0a1210868f6_97663_671447a49225df189bf1cc31e608429e.webp 760w,
+               /post/docker-mac-containers-build-issues/images/docker-image-arch_hud3e7cfd582723acb7e57e0a1210868f6_97663_1200x1200_fit_q75_h2_lanczos_3.webp 1200w&#34;
+               src=&#34;https://spacetimelab.cn/post/docker-mac-containers-build-issues/images/docker-image-arch_hud3e7cfd582723acb7e57e0a1210868f6_97663_006bd6c560fb9530cfeb3ee8b4f6f3ea.webp&#34;
+               width=&#34;760&#34;
+               height=&#34;209&#34;
+               loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+  &lt;/div&gt;&lt;/figure&gt;
+&lt;/p&gt;
+&lt;p&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure  &gt;
+  &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img alt=&#34;&#34; srcset=&#34;
+               /post/docker-mac-containers-build-issues/images/local-arch_hu8c7923629ff4cf732975405172add46e_15654_ee8aac7e0eb5876d00d76453fd1e790c.webp 400w,
+               /post/docker-mac-containers-build-issues/images/local-arch_hu8c7923629ff4cf732975405172add46e_15654_9fc8a9af848278d7720bac56e4a8a503.webp 760w,
+               /post/docker-mac-containers-build-issues/images/local-arch_hu8c7923629ff4cf732975405172add46e_15654_1200x1200_fit_q75_h2_lanczos_3.webp 1200w&#34;
+               src=&#34;https://spacetimelab.cn/post/docker-mac-containers-build-issues/images/local-arch_hu8c7923629ff4cf732975405172add46e_15654_ee8aac7e0eb5876d00d76453fd1e790c.webp&#34;
+               width=&#34;760&#34;
+               height=&#34;73&#34;
+               loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+  &lt;/div&gt;&lt;/figure&gt;
+&lt;/p&gt;
+&lt;h2 id=&#34;参考链接&#34;&gt;参考链接&lt;/h2&gt;
+&lt;p&gt;&lt;a href=&#34;https://stackoverflow.com/questions/56512769/unable-to-find-docker-image-locally&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;https://stackoverflow.com/questions/56512769/unable-to-find-docker-image-locally&lt;/a&gt;&lt;/p&gt;
 </description>
     </item>
     
@@ -8569,8 +8718,9 @@ True
 &lt;h3 id=&#34;删除镜像&#34;&gt;删除镜像&lt;/h3&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;docker rmi &amp;lt;IMAGE_ID&amp;gt;
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;重命名镜像&#34;&gt;重命名镜像&lt;/h3&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;docker tag &amp;lt;NEW_IMAGE_NANE&amp;gt;:&amp;lt;NEW_IMAGE_TAG&amp;gt; &amp;lt;IMAGE_ID&amp;gt;
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;查看容器&#34;&gt;查看容器&lt;/h3&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;docker tag &amp;lt;IMAGE_ID&amp;gt; &amp;lt;NEW_IMAGE_NANE&amp;gt;:&amp;lt;NEW_IMAGE_TAG&amp;gt; 
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;heading-1&#34;&gt;&lt;/h3&gt;
+&lt;h3 id=&#34;查看容器&#34;&gt;查看容器&lt;/h3&gt;
 &lt;ul&gt;
 &lt;li&gt;
 &lt;p&gt;查看运行中的容器&lt;/p&gt;
@@ -8589,6 +8739,36 @@ True
 &lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;docker logs -n &amp;lt;LINE&amp;gt; &amp;lt;CONTAINER_ID&amp;gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
 &lt;/ul&gt;
+&lt;h3 id=&#34;拉取远程镜像&#34;&gt;拉取远程镜像&lt;/h3&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;docker pull &amp;lt;IMAGE_NAME&amp;gt;:&amp;lt;TAG&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure  &gt;
+  &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img alt=&#34;&#34; srcset=&#34;
+               /post/docker-basic-command/images/docker-cheetsheet/docker-pull_huaf441c60df3303d8b9d99596465cda35_115703_a1c7f3fe03c3fc5caffa0bc574df9c07.webp 400w,
+               /post/docker-basic-command/images/docker-cheetsheet/docker-pull_huaf441c60df3303d8b9d99596465cda35_115703_bbcdd1ce1d48624783bd93b8e80497cd.webp 760w,
+               /post/docker-basic-command/images/docker-cheetsheet/docker-pull_huaf441c60df3303d8b9d99596465cda35_115703_1200x1200_fit_q75_h2_lanczos_3.webp 1200w&#34;
+               src=&#34;https://spacetimelab.cn/post/docker-basic-command/images/docker-cheetsheet/docker-pull_huaf441c60df3303d8b9d99596465cda35_115703_a1c7f3fe03c3fc5caffa0bc574df9c07.webp&#34;
+               width=&#34;760&#34;
+               height=&#34;248&#34;
+               loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+  &lt;/div&gt;&lt;/figure&gt;
+&lt;/p&gt;
 &lt;h2 id=&#34;docker-composeyml文件&#34;&gt;docker-compose.yml文件&lt;/h2&gt;
 &lt;h3 id=&#34;基本介绍&#34;&gt;基本介绍&lt;/h3&gt;
 &lt;p&gt;&lt;code&gt;Compose&lt;/code&gt; 项目是 Docker 官方的开源项目，负责实现对 Docker 容器集群的快速编排。使用场景为需要多个容器相互配合来完成某项任务的情况。例如要实现一个 Web 项目，除了 Web 服务前后端容器本身，可能还需要再加上后端的数据库服务容器，甚至还包括负载均衡容器等。&lt;/p&gt;
@@ -8653,7 +8833,38 @@ True
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;docker-compose restart
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;删除容器&#34;&gt;删除容器&lt;/h3&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;docker-compose rm
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id=&#34;拓展阅读&#34;&gt;拓展阅读&lt;/h2&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;注：Mac系统最新docker的compose命令用法为：&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;docker compose 
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;示例：&lt;/p&gt;
+&lt;p&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure  &gt;
+  &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img alt=&#34;&#34; srcset=&#34;
+               /post/docker-basic-command/images/docker-compose/up_hu4824193a0a63f9afa41e1b3adee9d2b0_122171_88b0a6c7f8ce50c38182430c67fb8fc2.webp 400w,
+               /post/docker-basic-command/images/docker-compose/up_hu4824193a0a63f9afa41e1b3adee9d2b0_122171_0a7cc869f7a8d03fa5a86e00d995fead.webp 760w,
+               /post/docker-basic-command/images/docker-compose/up_hu4824193a0a63f9afa41e1b3adee9d2b0_122171_1200x1200_fit_q75_h2_lanczos_3.webp 1200w&#34;
+               src=&#34;https://spacetimelab.cn/post/docker-basic-command/images/docker-compose/up_hu4824193a0a63f9afa41e1b3adee9d2b0_122171_88b0a6c7f8ce50c38182430c67fb8fc2.webp&#34;
+               width=&#34;760&#34;
+               height=&#34;90&#34;
+               loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+  &lt;/div&gt;&lt;/figure&gt;
+&lt;/p&gt;
+&lt;h2 id=&#34;拓展阅读&#34;&gt;拓展阅读&lt;/h2&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;a href=&#34;https://yeasy.gitbook.io/docker_practice/compose/introduction&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Docker-从入门到实践&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;

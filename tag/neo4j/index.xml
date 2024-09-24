@@ -107,6 +107,7 @@
 &lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;se&#34;&gt;&lt;/span&gt;--publish&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;17474:7474 &lt;span class=&#34;se&#34;&gt;\
 &lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;se&#34;&gt;&lt;/span&gt;--publish&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;17687:7687 &lt;span class=&#34;se&#34;&gt;\
 &lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;se&#34;&gt;&lt;/span&gt;--volume&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&amp;lt;DATA_DIR&amp;gt;:/data &lt;span class=&#34;se&#34;&gt;\
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;se&#34;&gt;&lt;/span&gt;--volume&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&amp;lt;IMPORT_DIR&amp;gt;:/import &lt;span class=&#34;se&#34;&gt;\
 &lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;se&#34;&gt;&lt;/span&gt;--ulimit&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;nofile&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;40000:40000 &lt;span class=&#34;se&#34;&gt;\
 &lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;se&#34;&gt;&lt;/span&gt;-it &lt;span class=&#34;se&#34;&gt;\
 &lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;se&#34;&gt;&lt;/span&gt;neo4j:5.23.0-community &lt;span class=&#34;se&#34;&gt;\
@@ -117,7 +118,35 @@
 &lt;p&gt;通过neo4j-admin命令导入dump文件&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;sb&#34;&gt;```&lt;/span&gt;shell
 &lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;neo4j-admin database load neo4j --from-path&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;/data/ --overwrite-destination&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;nb&#34;&gt;true&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure  &gt;
+  &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img alt=&#34;&#34; srcset=&#34;
+               /post/docker-deploy-neo4j/images/http/neo4j-admin-load_hua642f2de7db532eafb2e7e518467f37a_54035_17553f15a7b289a51c6581e23661270c.webp 400w,
+               /post/docker-deploy-neo4j/images/http/neo4j-admin-load_hua642f2de7db532eafb2e7e518467f37a_54035_372e0653d803eb7519fdd65c81e10804.webp 760w,
+               /post/docker-deploy-neo4j/images/http/neo4j-admin-load_hua642f2de7db532eafb2e7e518467f37a_54035_1200x1200_fit_q75_h2_lanczos_3.webp 1200w&#34;
+               src=&#34;https://spacetimelab.cn/post/docker-deploy-neo4j/images/http/neo4j-admin-load_hua642f2de7db532eafb2e7e518467f37a_54035_17553f15a7b289a51c6581e23661270c.webp&#34;
+               width=&#34;760&#34;
+               height=&#34;82&#34;
+               loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+  &lt;/div&gt;&lt;/figure&gt;
+&lt;/p&gt;
+&lt;/li&gt;
 &lt;li&gt;
 &lt;p&gt;退出容器A&lt;/p&gt;
 &lt;/li&gt;

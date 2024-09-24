@@ -984,8 +984,9 @@
 <h3 id="删除镜像">删除镜像</h3>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">docker rmi &lt;IMAGE_ID&gt;
 </span></span></code></pre></div><h3 id="重命名镜像">重命名镜像</h3>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">docker tag &lt;NEW_IMAGE_NANE&gt;:&lt;NEW_IMAGE_TAG&gt; &lt;IMAGE_ID&gt;
-</span></span></code></pre></div><h3 id="查看容器">查看容器</h3>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">docker tag &lt;IMAGE_ID&gt; &lt;NEW_IMAGE_NANE&gt;:&lt;NEW_IMAGE_TAG&gt; 
+</span></span></code></pre></div><h3 id="heading-1"></h3>
+<h3 id="查看容器">查看容器</h3>
 <ul>
 <li>
 <p>查看运行中的容器</p>
@@ -1004,6 +1005,36 @@
 <pre tabindex="0"><code>docker logs -n &lt;LINE&gt; &lt;CONTAINER_ID&gt;
 </code></pre></li>
 </ul>
+<h3 id="拉取远程镜像">拉取远程镜像</h3>
+<pre tabindex="0"><code>docker pull &lt;IMAGE_NAME&gt;:&lt;TAG&gt;
+</code></pre><p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<figure  >
+  <div class="d-flex justify-content-center">
+    <div class="w-100" ><img alt="" srcset="
+               /post/docker-basic-command/images/docker-cheetsheet/docker-pull_huaf441c60df3303d8b9d99596465cda35_115703_a1c7f3fe03c3fc5caffa0bc574df9c07.webp 400w,
+               /post/docker-basic-command/images/docker-cheetsheet/docker-pull_huaf441c60df3303d8b9d99596465cda35_115703_bbcdd1ce1d48624783bd93b8e80497cd.webp 760w,
+               /post/docker-basic-command/images/docker-cheetsheet/docker-pull_huaf441c60df3303d8b9d99596465cda35_115703_1200x1200_fit_q75_h2_lanczos_3.webp 1200w"
+               src="/post/docker-basic-command/images/docker-cheetsheet/docker-pull_huaf441c60df3303d8b9d99596465cda35_115703_a1c7f3fe03c3fc5caffa0bc574df9c07.webp"
+               width="760"
+               height="248"
+               loading="lazy" data-zoomable /></div>
+  </div></figure>
+</p>
 <h2 id="docker-composeyml文件">docker-compose.yml文件</h2>
 <h3 id="基本介绍">基本介绍</h3>
 <p><code>Compose</code> 项目是 Docker 官方的开源项目，负责实现对 Docker 容器集群的快速编排。使用场景为需要多个容器相互配合来完成某项任务的情况。例如要实现一个 Web 项目，除了 Web 服务前后端容器本身，可能还需要再加上后端的数据库服务容器，甚至还包括负载均衡容器等。</p>
@@ -1068,7 +1099,38 @@
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">docker-compose restart
 </span></span></code></pre></div><h3 id="删除容器">删除容器</h3>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">docker-compose rm
-</span></span></code></pre></div><h2 id="拓展阅读">拓展阅读</h2>
+</span></span></code></pre></div><p>注：Mac系统最新docker的compose命令用法为：</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">docker compose 
+</span></span></code></pre></div><p>示例：</p>
+<p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<figure  >
+  <div class="d-flex justify-content-center">
+    <div class="w-100" ><img alt="" srcset="
+               /post/docker-basic-command/images/docker-compose/up_hu4824193a0a63f9afa41e1b3adee9d2b0_122171_88b0a6c7f8ce50c38182430c67fb8fc2.webp 400w,
+               /post/docker-basic-command/images/docker-compose/up_hu4824193a0a63f9afa41e1b3adee9d2b0_122171_0a7cc869f7a8d03fa5a86e00d995fead.webp 760w,
+               /post/docker-basic-command/images/docker-compose/up_hu4824193a0a63f9afa41e1b3adee9d2b0_122171_1200x1200_fit_q75_h2_lanczos_3.webp 1200w"
+               src="/post/docker-basic-command/images/docker-compose/up_hu4824193a0a63f9afa41e1b3adee9d2b0_122171_88b0a6c7f8ce50c38182430c67fb8fc2.webp"
+               width="760"
+               height="90"
+               loading="lazy" data-zoomable /></div>
+  </div></figure>
+</p>
+<h2 id="拓展阅读">拓展阅读</h2>
 <ul>
 <li><a href="https://yeasy.gitbook.io/docker_practice/compose/introduction" target="_blank" rel="noopener">Docker-从入门到实践</a></li>
 </ul>

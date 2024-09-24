@@ -927,6 +927,7 @@
 </span></span></span><span class="line"><span class="cl"><span class="se"></span>--publish<span class="o">=</span>17474:7474 <span class="se">\
 </span></span></span><span class="line"><span class="cl"><span class="se"></span>--publish<span class="o">=</span>17687:7687 <span class="se">\
 </span></span></span><span class="line"><span class="cl"><span class="se"></span>--volume<span class="o">=</span>&lt;DATA_DIR&gt;:/data <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>--volume<span class="o">=</span>&lt;IMPORT_DIR&gt;:/import <span class="se">\
 </span></span></span><span class="line"><span class="cl"><span class="se"></span>--ulimit<span class="o">=</span><span class="nv">nofile</span><span class="o">=</span>40000:40000 <span class="se">\
 </span></span></span><span class="line"><span class="cl"><span class="se"></span>-it <span class="se">\
 </span></span></span><span class="line"><span class="cl"><span class="se"></span>neo4j:5.23.0-community <span class="se">\
@@ -937,7 +938,35 @@
 <p>通过neo4j-admin命令导入dump文件</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl"><span class="sb">```</span>shell
 </span></span><span class="line"><span class="cl">neo4j-admin database load neo4j --from-path<span class="o">=</span>/data/ --overwrite-destination<span class="o">=</span><span class="nb">true</span>
-</span></span></code></pre></div><pre tabindex="0"><code></code></pre></li>
+</span></span></code></pre></div><p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<figure  >
+  <div class="d-flex justify-content-center">
+    <div class="w-100" ><img alt="" srcset="
+               /post/docker-deploy-neo4j/images/http/neo4j-admin-load_hua642f2de7db532eafb2e7e518467f37a_54035_17553f15a7b289a51c6581e23661270c.webp 400w,
+               /post/docker-deploy-neo4j/images/http/neo4j-admin-load_hua642f2de7db532eafb2e7e518467f37a_54035_372e0653d803eb7519fdd65c81e10804.webp 760w,
+               /post/docker-deploy-neo4j/images/http/neo4j-admin-load_hua642f2de7db532eafb2e7e518467f37a_54035_1200x1200_fit_q75_h2_lanczos_3.webp 1200w"
+               src="/post/docker-deploy-neo4j/images/http/neo4j-admin-load_hua642f2de7db532eafb2e7e518467f37a_54035_17553f15a7b289a51c6581e23661270c.webp"
+               width="760"
+               height="82"
+               loading="lazy" data-zoomable /></div>
+  </div></figure>
+</p>
+</li>
 <li>
 <p>退出容器A</p>
 </li>
