@@ -1035,6 +1035,9 @@
 <p>通过depends_on设置容器间依赖关系，决定容器启动顺序</p>
 </li>
 <li>
+<p>图数据库设置对外服务的端口（可视情况关闭或在防火墙限制）</p>
+</li>
+<li>
 <p>在docker_frontend服务中设置对外暴露的端口</p>
 </li>
 </ul>
@@ -1053,6 +1056,8 @@
 </span></span></span><span class="line"><span class="cl"><span class="w">      </span>- <span class="s2">&#34;/project/programs/graph_database/server/data:/data:rw&#34;</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">      </span>- <span class="s2">&#34;/project/programs/graph_database/server/conf:/conf:rw&#34;</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">      </span>- <span class="s2">&#34;/project/programs/graph_database/server/import:/import:ro&#34;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="c"># 对于示例的nginx配置而言，此处映射端口不是必须的</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">ports</span><span class="p">:</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">      </span>- <span class="s2">&#34;17473:7473&#34;</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">      </span>- <span class="s2">&#34;17474:7474&#34;</span><span class="w">
