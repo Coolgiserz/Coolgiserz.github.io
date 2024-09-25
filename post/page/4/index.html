@@ -329,7 +329,7 @@
     <meta property="twitter:image" content="https://spacetimelab.cn/media/icon_hue03491371183284312b8b116a73ae5ab_79511_512x512_fill_lanczos_center_3.png" /><meta property="og:locale" content="en-us" />
   
     
-      <meta property="og:updated_time" content="2024-09-22T09:26:46&#43;08:00" />
+      <meta property="og:updated_time" content="2024-09-23T21:28:45&#43;08:00" />
     
   
 
@@ -748,6 +748,96 @@
   
 
   
+  
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+<div class="media stream-item view-compact">
+  <div class="media-body">
+
+    <div class="section-subheading article-title mb-0 mt-0">
+      <a href="/post/mac-hanlp-jdk-not-found-error/" >Mac M2 芯片安装Pyhanlp后Jdk Not Found Error问题解决</a>
+    </div>
+
+    
+    <a href="/post/mac-hanlp-jdk-not-found-error/"  class="summary-link">
+      <div class="article-style">
+        问题背景 pyhanlp需要依赖java环境，本人电脑已经安装了java环境，但由于pyhanlp所加载的动态依赖库是2019年安装的Intel芯片版本，导致导入失败，并且报错：FileNotFoundError: [Errno 2] JVM DLL not found: /Library/Java/JavaVirtualMachines/jdk-11.0.4.jdk/Contents/Home/lib/jli/libjli.dylib （实际上该路径存在）。
+   解决办法 安装最新的Arm64版本的Jdk并将其作为默认jdk搜索路径即可解决问题。
+Java Downloads | Oracle
+   
+      </div>
+    </a>
+    
+
+    <div class="stream-meta article-metadata">
+
+      
+
+      
+        
+
+
+<div class="article-metadata">
+
+  
+  
+
+  
+  <span class="article-date">
+    
+    
+      
+    
+    Aug 3, 2023
+  </span>
+  
+
+  
+
+  
+  <span class="middot-divider"></span>
+  <span class="article-reading-time">
+    1 min read
+  </span>
+  
+
+  
+  
+  
+  
+
+  
+  
+
+</div>
+
+      
+    </div>
+
+    
+
+  </div>
+  <div class="ml-3">
+    
+    
+  </div>
+</div>
+
   
     
 
@@ -1550,98 +1640,6 @@
   
 
   
-  
-
-</div>
-
-      
-    </div>
-
-    
-
-  </div>
-  <div class="ml-3">
-    
-    
-  </div>
-</div>
-
-  
-    
-
-
-
-
-
-
-
-
-
-
-
-
-
-  
-
-
-<div class="media stream-item view-compact">
-  <div class="media-body">
-
-    <div class="section-subheading article-title mb-0 mt-0">
-      <a href="/post/python-encrypto-library/" >Python Encrypto Library</a>
-    </div>
-
-    
-    <a href="/post/python-encrypto-library/"  class="summary-link">
-      <div class="article-style">
-        Fernet 对称加解密
-生成密钥 kdf = PBKDF2HMAC( algorithm=hashes.SHA256(), length=32, salt=salt, iterations=390000, ) key = base64.urlsafe_b64encode(kdf.derive(password)) print(key) 加解密 password_encrypt = Fernet(key).encrypt(password) print(password_encrypt) password_decrypt = Fernet(key).decrypt(password_encrypt).decode() print(password_decrypt) 
-      </div>
-    </a>
-    
-
-    <div class="stream-meta article-metadata">
-
-      
-
-      
-        
-
-
-<div class="article-metadata">
-
-  
-  
-
-  
-  <span class="article-date">
-    
-    
-      
-    
-    May 27, 2023
-  </span>
-  
-
-  
-
-  
-  <span class="middot-divider"></span>
-  <span class="article-reading-time">
-    1 min read
-  </span>
-  
-
-  
-  
-  
-  
-
-  
-  
-  <span class="middot-divider"></span>
-  <span class="article-categories">
-    <i class="fas fa-folder mr-1"></i><a href="/category/%E5%AF%86%E7%A0%81%E5%AD%A6/">密码学</a></span>
   
 
 </div>
