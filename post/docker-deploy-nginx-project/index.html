@@ -940,14 +940,14 @@
 </span></span><span class="line"><span class="cl">        <span class="kn">gzip</span>            <span class="no">on</span><span class="p">;</span>
 </span></span><span class="line"><span class="cl">        <span class="kn">gzip_types</span>      <span class="s">text/plain</span> <span class="s">application/xml</span> <span class="s">text/css</span> <span class="s">application/javascript</span><span class="p">;</span>
 </span></span><span class="line"><span class="cl">        <span class="kn">gzip_min_length</span> <span class="mi">1000</span><span class="p">;</span>
-</span></span><span class="line"><span class="cl">	<span class="kn">location</span> <span class="p">=</span> <span class="s">/oauth</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="kn">location</span> <span class="p">=</span> <span class="s">/oauth</span> <span class="p">{</span>
 </span></span><span class="line"><span class="cl">                <span class="kn">internal</span><span class="p">;</span>
 </span></span><span class="line"><span class="cl">                <span class="kn">proxy_pass</span> <span class="s">http://backend/auth/token</span><span class="p">;</span>
 </span></span><span class="line"><span class="cl">                <span class="kn">proxy_pass_request_body</span> <span class="no">off</span><span class="p">;</span>
 </span></span><span class="line"><span class="cl">                <span class="kn">proxy_set_header</span> <span class="s">Content-Length</span> <span class="s">&#34;&#34;</span><span class="p">;</span>
 </span></span><span class="line"><span class="cl">                <span class="kn">proxy_set_header</span> <span class="s">X-Original-URI</span> <span class="nv">$request_uri</span><span class="p">;</span>
 </span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">	<span class="p">}</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
 </span></span><span class="line"><span class="cl">        <span class="c1"># 后端API
 </span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="kn">location</span> <span class="s">/project/service/</span> <span class="p">{</span>
 </span></span><span class="line"><span class="cl">                <span class="kn">auth_request</span> <span class="s">/oauth</span><span class="p">;</span>
@@ -971,8 +971,8 @@
 </span></span><span class="line"><span class="cl">             <span class="p">}</span>
 </span></span><span class="line"><span class="cl">             <span class="kn">alias</span> <span class="s">/opt/code/project/</span><span class="p">;</span>
 </span></span><span class="line"><span class="cl">             <span class="kn">try_files</span> <span class="nv">$uri</span> <span class="nv">$uri/</span> <span class="s">/project/index.html</span><span class="p">;</span> 
-</span></span><span class="line"><span class="cl">			 
-</span></span><span class="line"><span class="cl">		<span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">        <span class="p">}</span>
 </span></span><span class="line"><span class="cl">        <span class="c1"># 图数据库浏览器
 </span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="kn">location</span> <span class="s">/graph/</span> <span class="p">{</span>
 </span></span><span class="line"><span class="cl">             <span class="kn">auth_request</span> <span class="s">/oauth</span><span class="p">;</span>
@@ -994,8 +994,8 @@
 </span></span><span class="line"><span class="cl">             <span class="kn">proxy_read_timeout</span> <span class="s">300s</span><span class="p">;</span>
 </span></span><span class="line"><span class="cl">             <span class="kn">proxy_send_timeout</span> <span class="s">300s</span><span class="p">;</span>
 </span></span><span class="line"><span class="cl">             <span class="kn">send_timeout</span> <span class="mi">60</span><span class="p">;</span>
-</span></span><span class="line"><span class="cl">			 
-</span></span><span class="line"><span class="cl">	<span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
 </span></span><span class="line"><span class="cl">        <span class="c1"># Neo4j数据库服务
 </span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="kn">location</span> <span class="s">/</span> <span class="p">{</span>
 </span></span><span class="line"><span class="cl">            <span class="kn">auth_request</span> <span class="s">/oauth</span><span class="p">;</span>
@@ -1012,14 +1012,14 @@
 </span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="kn">location</span> <span class="s">@error401</span><span class="p">{</span>
 </span></span><span class="line"><span class="cl">                <span class="kn">internal</span><span class="p">;</span>
 </span></span><span class="line"><span class="cl">                <span class="kn">return</span> <span class="mi">302</span> <span class="s">http://www.spacetimelab.cn/?login=false</span><span class="p">;</span>
-</span></span><span class="line"><span class="cl">	<span class="p">}</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl">        <span class="kn">location</span> <span class="s">@error401_api</span><span class="p">{</span>
 </span></span><span class="line"><span class="cl">                <span class="kn">internal</span><span class="p">;</span>
 </span></span><span class="line"><span class="cl">                <span class="kn">default_type</span> <span class="s">application/json</span><span class="p">;</span>
 </span></span><span class="line"><span class="cl">                <span class="kn">return</span> <span class="mi">401</span> <span class="s">&#39;</span><span class="p">{</span><span class="kn">&#34;msg&#34;:&#34;Not</span> <span class="s">Authorized.</span> <span class="s">Please</span> <span class="s">login</span> <span class="s">first.&#34;</span><span class="err">}</span><span class="s">&#39;</span><span class="p">;</span>
 </span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">	<span class="p">}</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl"><span class="p">}</span>
 </span></span></code></pre></div><h3 id="编排容器示例">编排容器示例</h3>
@@ -1041,8 +1041,7 @@
 <p>在docker_frontend服务中设置对外暴露的端口</p>
 </li>
 </ul>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-yaml" data-lang="yaml"><span class="line"><span class="cl"><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nt">services</span><span class="p">:</span><span class="w">
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-yaml" data-lang="yaml"><span class="line"><span class="cl"><span class="nt">services</span><span class="p">:</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">docker_backend</span><span class="p">:</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">restart</span><span class="p">:</span><span class="w"> </span><span class="l">always</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l">docker_backend-sso:latest</span><span class="w">
