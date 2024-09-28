@@ -1762,7 +1762,10 @@ Nuitka使用C编译器将转换后的代码编译为可执行文件。生成的�
   &lt;/div&gt;&lt;/figure&gt;
 &lt;/p&gt;
 &lt;h3 id=&#34;示例5-跨平台程序打包&#34;&gt;示例5: 跨平台程序打包&lt;/h3&gt;
-&lt;h2 id=&#34;打包程序反编译&#34;&gt;打包程序反编译&lt;/h2&gt;
+&lt;h2 id=&#34;0x04-pyarmor&#34;&gt;0x04 pyarmor&lt;/h2&gt;
+&lt;p&gt;python源码加密混淆库，并且集成了pyinstaller，可以在加密混淆后将项目源码打包成可执行文件。&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;pyarmor gen -O dist src
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id=&#34;打包程序反编译&#34;&gt;打包程序反编译&lt;/h2&gt;
 &lt;ul&gt;
 &lt;li&gt;uncompyle6&lt;/li&gt;
 &lt;/ul&gt;

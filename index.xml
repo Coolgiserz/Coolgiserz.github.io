@@ -1108,7 +1108,8 @@
       <link>https://spacetimelab.cn/talk/%E8%89%B3%E9%98%B3%E5%A4%A9%E7%99%BB%E6%A2%A7%E6%A1%90%E5%B1%B1-2024/</link>
       <pubDate>Sat, 03 Aug 2024 00:06:38 +0800</pubDate>
       <guid>https://spacetimelab.cn/talk/%E8%89%B3%E9%98%B3%E5%A4%A9%E7%99%BB%E6%A2%A7%E6%A1%90%E5%B1%B1-2024/</guid>
-      <description>&lt;h2 id=&#34;好汉坡&#34;&gt;好汉坡&lt;/h2&gt;
+      <description>&lt;iframe frameborder=&#34;no&#34; border=&#34;0&#34; marginwidth=&#34;0&#34; marginheight=&#34;0&#34; width=330 height=86 src=&#34;//music.163.com/outchain/player?type=2&amp;id=1392990601&amp;auto=1&amp;height=66&#34;&gt;&lt;/iframe&gt;
+&lt;h2 id=&#34;好汉坡&#34;&gt;好汉坡&lt;/h2&gt;
 &lt;p&gt;
 
 
@@ -2036,7 +2037,8 @@
       <link>https://spacetimelab.cn/talk/%E6%B7%B1%E5%9C%B3%E6%B5%B7%E5%B2%B8%E5%9F%8E-%E6%B5%B7%E4%B8%8A%E4%B8%96%E7%95%8C/</link>
       <pubDate>Sat, 13 Jul 2024 14:05:24 +0800</pubDate>
       <guid>https://spacetimelab.cn/talk/%E6%B7%B1%E5%9C%B3%E6%B5%B7%E5%B2%B8%E5%9F%8E-%E6%B5%B7%E4%B8%8A%E4%B8%96%E7%95%8C/</guid>
-      <description>&lt;h2 id=&#34;海岸城&#34;&gt;海岸城&lt;/h2&gt;
+      <description>&lt;iframe frameborder=&#34;no&#34; border=&#34;0&#34; marginwidth=&#34;0&#34; marginheight=&#34;0&#34; width=330 height=86 src=&#34;//music.163.com/outchain/player?type=2&amp;id=300222&amp;auto=1&amp;height=66&#34;&gt;&lt;/iframe&gt;
+&lt;h2 id=&#34;海岸城&#34;&gt;海岸城&lt;/h2&gt;
 &lt;p&gt;
 
 
@@ -6686,7 +6688,8 @@ sudo docker run --name es01 --net elastic -p 9200:9200 -it -d  elasticsearch:8.1
       <link>https://spacetimelab.cn/talk/%E5%B9%BF%E5%B7%9E%E7%99%BD%E6%B0%B4%E5%AF%A8%E7%80%91%E5%B8%83%E6%98%A5%E5%AD%A3%E8%B8%8F%E9%9D%92/</link>
       <pubDate>Fri, 16 Feb 2024 00:01:10 +0800</pubDate>
       <guid>https://spacetimelab.cn/talk/%E5%B9%BF%E5%B7%9E%E7%99%BD%E6%B0%B4%E5%AF%A8%E7%80%91%E5%B8%83%E6%98%A5%E5%AD%A3%E8%B8%8F%E9%9D%92/</guid>
-      <description>&lt;p&gt;
+      <description>&lt;iframe frameborder=&#34;no&#34; border=&#34;0&#34; marginwidth=&#34;0&#34; marginheight=&#34;0&#34; width=330 height=86 src=&#34;//music.163.com/outchain/player?type=2&amp;id=300371&amp;auto=1&amp;height=66&#34;&gt;&lt;/iframe&gt;
+&lt;p&gt;
 
 
 
@@ -16546,7 +16549,10 @@ Nuitka使用C编译器将转换后的代码编译为可执行文件。生成的�
   &lt;/div&gt;&lt;/figure&gt;
 &lt;/p&gt;
 &lt;h3 id=&#34;示例5-跨平台程序打包&#34;&gt;示例5: 跨平台程序打包&lt;/h3&gt;
-&lt;h2 id=&#34;打包程序反编译&#34;&gt;打包程序反编译&lt;/h2&gt;
+&lt;h2 id=&#34;0x04-pyarmor&#34;&gt;0x04 pyarmor&lt;/h2&gt;
+&lt;p&gt;python源码加密混淆库，并且集成了pyinstaller，可以在加密混淆后将项目源码打包成可执行文件。&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;pyarmor gen -O dist src
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id=&#34;打包程序反编译&#34;&gt;打包程序反编译&lt;/h2&gt;
 &lt;ul&gt;
 &lt;li&gt;uncompyle6&lt;/li&gt;
 &lt;/ul&gt;
