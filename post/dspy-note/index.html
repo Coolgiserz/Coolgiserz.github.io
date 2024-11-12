@@ -1,0 +1,1629 @@
+<!DOCTYPE html><html lang="en-us" >
+
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  
+  
+  
+    <meta name="generator" content="Wowchemy 5.5.0 for Hugo" />
+  
+
+  
+  
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+  
+  
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  
+
+  
+  
+  
+    
+      
+      <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Roboto+Mono&family=Roboto:wght@400;700&display=swap">
+      <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Roboto+Mono&family=Roboto:wght@400;700&display=swap" media="print" onload="this.media='all'">
+    
+  
+
+  
+  
+  
+  
+  
+    
+    
+    
+  
+  
+
+  <meta name="author" content="CoolCats" />
+
+  
+  
+  
+    
+  
+  <meta name="description" content="声明式、自优化的提示工程" />
+
+  
+  <link rel="alternate" hreflang="en-us" href="https://spacetimelab.cn/post/dspy-note/" />
+
+  
+  
+  
+    <meta name="theme-color" content="#1565c0" />
+  
+
+  
+  
+    
+    <script src="/js/mathjax-config.js"></script>
+  
+
+  
+
+  <link rel="stylesheet" href="/css/vendor-bundle.min.c7b8d9abd591ba2253ea42747e3ac3f5.css" media="print" onload="this.media='all'">
+
+  
+  
+  
+    
+    
+      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/academicons@1.9.1/css/academicons.min.css" integrity="sha512-W0xM4mr6dEP9nREo7Z9z+9X70wytKvMGeDsj7ps2+xg5QPrEBXC8tAW1IFnzjR6eoJ90JmCnFzerQJTLzIEHjA==" crossorigin="anonymous" media="print" onload="this.media='all'">
+    
+
+    
+    
+    
+    
+      
+      
+    
+    
+    
+
+    
+    
+    
+      
+    
+    
+      
+      
+        
+          <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@10.2.1/build/styles/github.min.css" crossorigin="anonymous" title="hl-light" media="print" onload="this.media='all'">
+          <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@10.2.1/build/styles/dracula.min.css" crossorigin="anonymous" title="hl-dark" media="print" onload="this.media='all'" disabled>
+        
+      
+    
+
+    
+    
+    
+      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.7.1/dist/leaflet.min.css" integrity="" crossorigin="anonymous" media="print" onload="this.media='all'">
+    
+
+    
+
+    
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js" integrity="" crossorigin="anonymous" async></script>
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+  
+
+  
+  
+  
+  
+  
+  <link rel="stylesheet" href="/css/wowchemy.1052fab8b7700a3dc49ee23683097d66.css" />
+
+  
+
+
+
+  
+
+
+  
+
+
+  
+
+
+  <script>
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?51ae6db546b05b91d4053193ba49123d";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+  
+  
+  
+
+  
+
+  
+
+  <link rel="icon" type="image/png" href="/media/icon_hue03491371183284312b8b116a73ae5ab_79511_32x32_fill_lanczos_center_3.png" />
+  <link rel="apple-touch-icon" type="image/png" href="/media/icon_hue03491371183284312b8b116a73ae5ab_79511_180x180_fill_lanczos_center_3.png" />
+
+  <link rel="canonical" href="https://spacetimelab.cn/post/dspy-note/" />
+
+  
+  
+  
+  
+  
+  
+  
+  
+    
+    
+  
+  
+
+  
+  
+    
+    
+  
+  <meta property="twitter:card" content="summary" />
+  
+    <meta property="twitter:site" content="@wowchemy" />
+    <meta property="twitter:creator" content="@wowchemy" />
+  
+  <meta property="og:site_name" content="NullSpace" />
+  <meta property="og:url" content="https://spacetimelab.cn/post/dspy-note/" />
+  <meta property="og:title" content="DSPy框架 | NullSpace" />
+  <meta property="og:description" content="声明式、自优化的提示工程" /><meta property="og:image" content="https://spacetimelab.cn/media/icon_hue03491371183284312b8b116a73ae5ab_79511_512x512_fill_lanczos_center_3.png" />
+    <meta property="twitter:image" content="https://spacetimelab.cn/media/icon_hue03491371183284312b8b116a73ae5ab_79511_512x512_fill_lanczos_center_3.png" /><meta property="og:locale" content="en-us" />
+  
+    
+      <meta
+        property="article:published_time"
+        content="2024-11-09T20:18:29&#43;08:00"
+      />
+    
+    <meta property="article:modified_time" content="2024-11-09T20:18:29&#43;08:00">
+  
+
+  
+
+
+    
+
+
+
+
+
+
+  
+
+
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://spacetimelab.cn/post/dspy-note/"
+  },
+  "headline": "DSPy框架",
+  
+  "datePublished": "2024-11-09T20:18:29+08:00",
+  "dateModified": "2024-11-09T20:18:29+08:00",
+  
+  "author": {
+    "@type": "Person",
+    "name": "CoolCats"
+  },
+  
+  "publisher": {
+    "@type": "Organization",
+    "name": "NullSpace",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://spacetimelab.cn/media/icon_hue03491371183284312b8b116a73ae5ab_79511_192x192_fill_lanczos_center_3.png"
+    }
+  },
+  "description": "声明式、自优化的提示工程"
+}
+</script>
+
+  
+
+  
+
+  
+
+  
+
+
+
+
+
+  <title>DSPy框架 | NullSpace</title>
+</head>
+
+
+<body id="top" data-spy="scroll" data-offset="70" data-target="#TableOfContents" class="page-wrapper   " data-wc-page-id="c896c8ea6d36b5626573824b27f36ed4" >
+
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  <script src="/js/wowchemy-init.min.2ed908358299dd7ab553faae685c746c.js"></script>
+
+  
+
+
+<aside class="search-modal" id="search">
+  <div class="container">
+    <section class="search-header">
+
+      <div class="row no-gutters justify-content-between mb-3">
+        <div class="col-6">
+          <h1>Search</h1>
+        </div>
+        <div class="col-6 col-search-close">
+          <a class="js-search" href="#" aria-label="Close"><i class="fas fa-times-circle text-muted" aria-hidden="true"></i></a>
+        </div>
+      </div>
+
+      <div id="search-box">
+        
+        <input name="q" id="search-query" placeholder="Search..." autocapitalize="off"
+        autocomplete="off" autocorrect="off" spellcheck="false" type="search" class="form-control"
+        aria-label="Search...">
+        
+      </div>
+
+      
+      
+
+      
+
+    </section>
+    <section class="section-search-results">
+
+      <div id="search-hits">
+        
+      </div>
+
+    </section>
+  </div>
+</aside>
+
+
+
+  <div class="page-header">
+    
+
+
+
+
+
+
+
+
+
+
+
+
+<header class="header--fixed">
+  <nav class="navbar navbar-expand-lg navbar-light compensate-for-scrollbar" id="navbar-main">
+    <div class="container-xl">
+
+      
+      <div class="d-none d-lg-inline-flex">
+        <a class="navbar-brand" href="/">NullSpace</a>
+      </div>
+      
+
+      
+      <button type="button" class="navbar-toggler" data-toggle="collapse"
+              data-target="#navbar-content" aria-controls="navbar-content" aria-expanded="false" aria-label="Toggle navigation">
+      <span><i class="fas fa-bars"></i></span>
+      </button>
+      
+
+      
+      <div class="navbar-brand-mobile-wrapper d-inline-flex d-lg-none">
+        <a class="navbar-brand" href="/">NullSpace</a>
+      </div>
+      
+
+      
+      
+      <div class="navbar-collapse main-menu-item collapse justify-content-start" id="navbar-content">
+
+        
+        <ul class="navbar-nav d-md-inline-flex">
+          
+
+          
+
+          
+          
+          
+
+          
+
+          
+          
+          
+          
+
+          
+            
+              
+              
+            
+            
+          
+
+          <li class="nav-item">
+            <a class="nav-link  active" href="/post"><span>博客</span></a>
+          </li>
+
+          
+          
+
+          
+
+          
+          
+          
+            
+          
+
+          
+
+          
+          
+          
+          
+
+          
+            
+              
+              
+            
+            
+          
+
+          <li class="nav-item">
+            <a class="nav-link " href="/event"><span>趣事</span></a>
+          </li>
+
+          
+          
+
+          
+
+          
+          
+          
+            
+          
+
+          
+
+          
+          
+          
+          
+
+          
+            
+              
+              
+            
+            
+          
+
+          <li class="nav-item">
+            <a class="nav-link " href="/project"><span>项目</span></a>
+          </li>
+
+          
+          
+
+          
+
+          
+          
+          
+            
+          
+
+          
+
+          
+          
+          
+          
+
+          
+            
+              
+              
+            
+            
+          
+
+          <li class="nav-item">
+            <a class="nav-link " href="/publication"><span>论文</span></a>
+          </li>
+
+          
+          
+
+          
+
+          
+          
+          
+            
+          
+
+          
+
+          
+          
+          
+          
+
+          
+            
+              
+              
+            
+            
+          
+
+          <li class="nav-item">
+            <a class="nav-link " href="/category/practice/"><span>练习</span></a>
+          </li>
+
+          
+          
+
+          
+
+          
+          
+          
+            
+          
+
+          
+
+          
+          
+          
+          
+
+          
+            
+              
+              
+            
+            
+          
+
+          <li class="nav-item">
+            <a class="nav-link " href="/contact"><span>联系</span></a>
+          </li>
+
+          
+          
+
+          
+
+          
+          
+          
+
+          
+
+          
+          
+          
+          
+
+          
+            
+              
+              
+            
+            
+          
+
+          <li class="nav-item">
+            <a class="nav-link " href="/tags"><span>归档</span></a>
+          </li>
+
+          
+          
+
+        
+
+          
+        </ul>
+      </div>
+
+      <ul class="nav-icons navbar-nav flex-row ml-auto d-flex pl-md-2">
+
+        
+        
+          
+        
+
+        
+        
+        <li class="nav-item">
+          <a class="nav-link js-search" href="#" aria-label="Search"><i class="fas fa-search" aria-hidden="true"></i></a>
+        </li>
+        
+
+        
+        
+        
+        <li class="nav-item dropdown theme-dropdown">
+          <a href="#" class="nav-link" data-toggle="dropdown" aria-haspopup="true" aria-label="Display preferences">
+            <i class="fas fa-moon" aria-hidden="true"></i>
+          </a>
+          <div class="dropdown-menu">
+            <a href="#" class="dropdown-item js-set-theme-light">
+              <span>Light</span>
+            </a>
+            <a href="#" class="dropdown-item js-set-theme-dark">
+              <span>Dark</span>
+            </a>
+            <a href="#" class="dropdown-item js-set-theme-auto">
+              <span>Automatic</span>
+            </a>
+          </div>
+        </li>
+        
+
+        
+        
+
+      </ul>
+
+    </div>
+  </nav>
+</header>
+
+
+  </div>
+
+  <div class="page-body">
+    
+    
+    
+
+    <article class="article">
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+  
+  
+<div class="article-container pt-3">
+  <h1>DSPy框架</h1>
+
+  
+
+  
+    
+
+
+<div class="article-metadata">
+
+  
+  
+
+  
+  <span class="article-date">
+    
+    
+      
+    
+    Nov 9, 2024
+  </span>
+  
+
+  
+
+  
+  <span class="middot-divider"></span>
+  <span class="article-reading-time">
+    4 min read
+  </span>
+  
+
+  
+  
+  
+  
+
+  
+  
+
+</div>
+
+    
+
+
+
+
+
+  
+</div>
+
+
+
+  <div class="article-container">
+
+    <div class="article-style">
+      <h2 id="动机">动机</h2>
+<p>通过声明式，而非手工调优提示词</p>
+<h2 id="官方文档">官方文档</h2>
+<p><a href="https://github.com/stanfordnlp/dspy" target="_blank" rel="noopener">https://github.com/stanfordnlp/dspy</a></p>
+<h2 id="示例测试">示例测试</h2>
+<h3 id="基本问答">基本问答</h3>
+<h4 id="示例1">示例1</h4>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">dspy</span>
+</span></span><span class="line"><span class="cl"><span class="kn">from</span> <span class="nn">openai</span> <span class="kn">import</span> <span class="n">OpenAI</span><span class="p">,</span> <span class="n">api_key</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">API_KEY</span> <span class="o">=</span> <span class="s2">&#34;YOUR_API_KEY&#34;</span>
+</span></span><span class="line"><span class="cl"><span class="n">API_BASE_URL</span> <span class="o">=</span> <span class="s2">&#34;https://api.chatanywhere.tech/v1&#34;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">lm</span> <span class="o">=</span> <span class="n">dspy</span><span class="o">.</span><span class="n">LM</span><span class="p">(</span><span class="s1">&#39;openai/gpt-4o-mini&#39;</span><span class="p">,</span> <span class="n">api_key</span><span class="o">=</span><span class="n">API_KEY</span><span class="p">,</span> <span class="n">api_base</span><span class="o">=</span><span class="n">API_BASE_URL</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">dspy</span><span class="o">.</span><span class="n">configure</span><span class="p">(</span><span class="n">lm</span><span class="o">=</span><span class="n">lm</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">qa</span> <span class="o">=</span> <span class="n">dspy</span><span class="o">.</span><span class="n">Predict</span><span class="p">(</span><span class="s1">&#39;question: str -&gt; response: str&#39;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">def</span> <span class="nf">get_response</span><span class="p">(</span><span class="n">question</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">    <span class="nb">print</span><span class="p">(</span><span class="s2">&#34;question:&#34;</span><span class="p">,</span> <span class="n">question</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="n">res</span> <span class="o">=</span> <span class="n">qa</span><span class="p">(</span><span class="n">question</span><span class="o">=</span><span class="n">question</span><span class="p">)</span><span class="o">.</span><span class="n">response</span>
+</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="n">res</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nb">print</span><span class="p">(</span><span class="s2">&#34;--Answer:&#34;</span><span class="p">,</span> <span class="n">get_response</span><span class="p">(</span><span class="s2">&#34;艾尔登法环最差的结局是什么？&#34;</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl"><span class="nb">print</span><span class="p">(</span><span class="n">dspy</span><span class="o">.</span><span class="n">inspect_history</span><span class="p">(</span><span class="n">n</span><span class="o">=</span><span class="mi">1</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl"><span class="nb">print</span><span class="p">(</span><span class="s2">&#34;--Answer:&#34;</span><span class="p">,</span> <span class="n">get_response</span><span class="p">(</span><span class="s2">&#34;What&#39;s the worst ending of Elden Ring?&#34;</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl"><span class="nb">print</span><span class="p">(</span><span class="n">dspy</span><span class="o">.</span><span class="n">inspect_history</span><span class="p">(</span><span class="n">n</span><span class="o">=</span><span class="mi">1</span><span class="p">))</span>
+</span></span></code></pre></div><p>dspy.inspect_history(n=1)可以查看最近1次交互</p>
+<p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<figure  >
+  <div class="d-flex justify-content-center">
+    <div class="w-100" ><img alt="" srcset="
+               /post/dspy-note/images/demo/qa/demo1_hu4a800bbba4c4c2779677a9c2211ebf36_128482_edb0fce803717bb0d75ee628ef7b9c1c.webp 400w,
+               /post/dspy-note/images/demo/qa/demo1_hu4a800bbba4c4c2779677a9c2211ebf36_128482_5ad335f864c9cef191b95886da694489.webp 760w,
+               /post/dspy-note/images/demo/qa/demo1_hu4a800bbba4c4c2779677a9c2211ebf36_128482_1200x1200_fit_q75_h2_lanczos_3.webp 1200w"
+               src="/post/dspy-note/images/demo/qa/demo1_hu4a800bbba4c4c2779677a9c2211ebf36_128482_edb0fce803717bb0d75ee628ef7b9c1c.webp"
+               width="760"
+               height="345"
+               loading="lazy" data-zoomable /></div>
+  </div></figure>
+</p>
+<p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<figure  >
+  <div class="d-flex justify-content-center">
+    <div class="w-100" ><img alt="" srcset="
+               /post/dspy-note/images/demo/qa/demo1-1_huee41847c03f0d61efefc2f16e8dd1aca_78831_48e81a30b7ef1f8106685c44c2972856.webp 400w,
+               /post/dspy-note/images/demo/qa/demo1-1_huee41847c03f0d61efefc2f16e8dd1aca_78831_1175b55fe8ccb2c71709f7afe9ead563.webp 760w,
+               /post/dspy-note/images/demo/qa/demo1-1_huee41847c03f0d61efefc2f16e8dd1aca_78831_1200x1200_fit_q75_h2_lanczos_3.webp 1200w"
+               src="/post/dspy-note/images/demo/qa/demo1-1_huee41847c03f0d61efefc2f16e8dd1aca_78831_48e81a30b7ef1f8106685c44c2972856.webp"
+               width="760"
+               height="193"
+               loading="lazy" data-zoomable /></div>
+  </div></figure>
+</p>
+<p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<figure  >
+  <div class="d-flex justify-content-center">
+    <div class="w-100" ><img alt="" srcset="
+               /post/dspy-note/images/demo/qa/demo1-2_hu854b2066ef2b544235ef427bdcbe2de3_141236_71243e1994d675051f62a422efb31210.webp 400w,
+               /post/dspy-note/images/demo/qa/demo1-2_hu854b2066ef2b544235ef427bdcbe2de3_141236_35f4d8f84fa4261a95cef3a42066c1d4.webp 760w,
+               /post/dspy-note/images/demo/qa/demo1-2_hu854b2066ef2b544235ef427bdcbe2de3_141236_1200x1200_fit_q75_h2_lanczos_3.webp 1200w"
+               src="/post/dspy-note/images/demo/qa/demo1-2_hu854b2066ef2b544235ef427bdcbe2de3_141236_71243e1994d675051f62a422efb31210.webp"
+               width="760"
+               height="327"
+               loading="lazy" data-zoomable /></div>
+  </div></figure>
+</p>
+<h3 id="思维链">思维链</h3>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">dspy</span>
+</span></span><span class="line"><span class="cl"><span class="kn">from</span> <span class="nn">openai</span> <span class="kn">import</span> <span class="n">OpenAI</span><span class="p">,</span> <span class="n">api_key</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">API_KEY</span> <span class="o">=</span> <span class="s2">&#34;YOUR_API_KEY&#34;</span>
+</span></span><span class="line"><span class="cl"><span class="n">API_BASE_URL</span> <span class="o">=</span> <span class="s2">&#34;https://api.chatanywhere.tech/v1&#34;</span>
+</span></span><span class="line"><span class="cl"><span class="n">lm</span> <span class="o">=</span> <span class="n">dspy</span><span class="o">.</span><span class="n">LM</span><span class="p">(</span><span class="s1">&#39;openai/gpt-4o-mini&#39;</span><span class="p">,</span> <span class="n">api_key</span><span class="o">=</span><span class="n">API_KEY</span><span class="p">,</span> <span class="n">api_base</span><span class="o">=</span><span class="n">API_BASE_URL</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">dspy</span><span class="o">.</span><span class="n">configure</span><span class="p">(</span><span class="n">lm</span><span class="o">=</span><span class="n">lm</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">cot</span> <span class="o">=</span> <span class="n">dspy</span><span class="o">.</span><span class="n">ChainOfThought</span><span class="p">(</span><span class="s1">&#39;question: str -&gt; response: str&#39;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">def</span> <span class="nf">get_response</span><span class="p">(</span><span class="n">question</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">    <span class="nb">print</span><span class="p">(</span><span class="s2">&#34;question:&#34;</span><span class="p">,</span> <span class="n">question</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="n">res</span> <span class="o">=</span> <span class="n">cot</span><span class="p">(</span><span class="n">question</span><span class="o">=</span><span class="n">question</span><span class="p">)</span><span class="o">.</span><span class="n">response</span>
+</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="n">res</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nb">print</span><span class="p">(</span><span class="s2">&#34;--Answer:&#34;</span><span class="p">,</span> <span class="n">get_response</span><span class="p">(</span><span class="s2">&#34;In what order would you recommend the new player to explore the map in the game Elden Ring？&#34;</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl"><span class="n">dspy</span><span class="o">.</span><span class="n">inspect_history</span><span class="p">(</span><span class="n">n</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+</span></span></code></pre></div><p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<figure  >
+  <div class="d-flex justify-content-center">
+    <div class="w-100" ><img alt="" srcset="
+               /post/dspy-note/images/demo/cot/demo1_hu1c37f72fdc47a1dc65eb6d7fb0f093cb_135122_a6525f0917be34f273911e59a7aba462.webp 400w,
+               /post/dspy-note/images/demo/cot/demo1_hu1c37f72fdc47a1dc65eb6d7fb0f093cb_135122_51a19297472e0908d2c97db6cafdae66.webp 760w,
+               /post/dspy-note/images/demo/cot/demo1_hu1c37f72fdc47a1dc65eb6d7fb0f093cb_135122_1200x1200_fit_q75_h2_lanczos_3.webp 1200w"
+               src="/post/dspy-note/images/demo/cot/demo1_hu1c37f72fdc47a1dc65eb6d7fb0f093cb_135122_a6525f0917be34f273911e59a7aba462.webp"
+               width="760"
+               height="156"
+               loading="lazy" data-zoomable /></div>
+  </div></figure>
+</p>
+<p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<figure  >
+  <div class="d-flex justify-content-center">
+    <div class="w-100" ><img alt="" srcset="
+               /post/dspy-note/images/demo/cot/demo1-1_hufe72aa7600881cd0d74599b68c4c33d4_324509_c82aac0c8e91090ec231c6e24fd87fa2.webp 400w,
+               /post/dspy-note/images/demo/cot/demo1-1_hufe72aa7600881cd0d74599b68c4c33d4_324509_963955222bae9ac3c8d3f92aa1dfdaff.webp 760w,
+               /post/dspy-note/images/demo/cot/demo1-1_hufe72aa7600881cd0d74599b68c4c33d4_324509_1200x1200_fit_q75_h2_lanczos_3.webp 1200w"
+               src="/post/dspy-note/images/demo/cot/demo1-1_hufe72aa7600881cd0d74599b68c4c33d4_324509_c82aac0c8e91090ec231c6e24fd87fa2.webp"
+               width="760"
+               height="375"
+               loading="lazy" data-zoomable /></div>
+  </div></figure>
+</p>
+<p>输出：</p>
+<pre tabindex="0"><code>[[ ## reasoning ## ]]
+In Elden Ring, the map is vast and filled with various regions that present different challenges and enemies. For a new player, it&#39;s essential to explore in a way that gradually increases their understanding of the game mechanics, combat, and lore. A recommended order would be to start in the starting area, Limgrave, which serves as a tutorial zone. From there, players can move to the Weeping Peninsula, which is relatively easier and offers valuable resources. After that, exploring the Stormveil Castle will introduce players to more complex gameplay elements. Following Stormveil, players can venture into the Liurnia of the Lakes, which provides a mix of exploration and combat challenges. Finally, players can tackle the Caelid region, which is more difficult and requires a better understanding of the game. This progression allows players to build their skills and gear before facing tougher enemies.
+
+[[ ## response ## ]]
+I recommend that new players explore the map in the following order: 
+
+1. **Limgrave** - Start here to get familiar with the game mechanics and combat.
+2. **Weeping Peninsula** - This area is relatively easier and offers valuable resources.
+3. **Stormveil Castle** - A step up in difficulty that introduces more complex gameplay elements.
+4. **Liurnia of the Lakes** - A mix of exploration and combat challenges that will test your skills.
+5. **Caelid** - This region is more difficult and should be approached after gaining experience and better gear.
+
+This order will help you gradually build your skills and prepare for tougher challenges ahead.
+
+[[ ## completed ## ]]
+</code></pre><p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<figure  >
+  <div class="d-flex justify-content-center">
+    <div class="w-100" ><img alt="" srcset="
+               /post/dspy-note/images/demo/cot/demo1-2_hu9748b817fe2d774628dc2c15028dc278_241703_9c305c62f57ae43651fcb7e4a355284c.webp 400w,
+               /post/dspy-note/images/demo/cot/demo1-2_hu9748b817fe2d774628dc2c15028dc278_241703_96f4dfd084a005c7b182f7189a263c8a.webp 760w,
+               /post/dspy-note/images/demo/cot/demo1-2_hu9748b817fe2d774628dc2c15028dc278_241703_1200x1200_fit_q75_h2_lanczos_3.webp 1200w"
+               src="/post/dspy-note/images/demo/cot/demo1-2_hu9748b817fe2d774628dc2c15028dc278_241703_9c305c62f57ae43651fcb7e4a355284c.webp"
+               width="760"
+               height="236"
+               loading="lazy" data-zoomable /></div>
+  </div></figure>
+</p>
+<p>输出:</p>
+<pre tabindex="0"><code>Response:
+[[ ## reasoning ## ]]
+鲍鱼是一种海鲜，清洗时需要特别注意，以去除表面的沙子和杂质。首先，鲍鱼的外壳上可能会有泥沙和海藻，因此需要用刷子轻轻刷洗外壳。其次，鲍鱼的肉质部分也需要清洗，以去除可能的沙粒和腥味。最后，清洗时要小心，不要损伤鲍鱼的肉质。
+[[ ## response ## ]]
+清洗鲍鱼的步骤如下：
+1. 用刷子轻轻刷洗鲍鱼的外壳，去除泥沙和海藻。
+2. 将鲍鱼放入清水中，轻轻搓洗肉质部分，确保去除沙粒和杂质。
+3. 如果有必要，可以用少量盐水浸泡几分钟，以进一步去腥。
+4. 最后，用清水冲洗干净，确保没有残留的盐和杂质。
+[[ ## completed ## ]]
+</code></pre><h3 id="句子分类">句子分类</h3>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="c1"># @Author: weirdgiser</span>
+</span></span><span class="line"><span class="cl"><span class="c1"># @Time: 2024/11/13</span>
+</span></span><span class="line"><span class="cl"><span class="c1"># @Function: 示例：分类</span>
+</span></span><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">dspy</span>
+</span></span><span class="line"><span class="cl"><span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">Literal</span>
+</span></span><span class="line"><span class="cl"><span class="kn">from</span> <span class="nn">setting</span> <span class="kn">import</span> <span class="n">API_KEY</span><span class="p">,</span> <span class="n">API_BASE_URL</span>
+</span></span><span class="line"><span class="cl"><span class="n">lm</span> <span class="o">=</span> <span class="n">dspy</span><span class="o">.</span><span class="n">LM</span><span class="p">(</span><span class="s1">&#39;openai/gpt-4o-mini&#39;</span><span class="p">,</span> <span class="n">api_key</span><span class="o">=</span><span class="n">API_KEY</span><span class="p">,</span> <span class="n">api_base</span><span class="o">=</span><span class="n">API_BASE_URL</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">dspy</span><span class="o">.</span><span class="n">configure</span><span class="p">(</span><span class="n">lm</span><span class="o">=</span><span class="n">lm</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="k">class</span> <span class="nc">Labeling</span><span class="p">(</span><span class="n">dspy</span><span class="o">.</span><span class="n">Signature</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">    <span class="s2">&#34;&#34;&#34;Classify.&#34;&#34;&#34;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="n">sentence</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="n">dspy</span><span class="o">.</span><span class="n">InputField</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">    <span class="n">label</span><span class="p">:</span> <span class="n">Literal</span><span class="p">[</span><span class="s1">&#39;技术创新&#39;</span><span class="p">,</span><span class="s1">&#39;新品发布&#39;</span><span class="p">,</span> <span class="s1">&#39;投资收购&#39;</span><span class="p">,</span> <span class="s1">&#39;战略合作&#39;</span><span class="p">,</span> <span class="s1">&#39;消费者活动&#39;</span><span class="p">,</span> <span class="s1">&#39;产能变化&#39;</span><span class="p">,</span> <span class="s1">&#39;经营指标&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">dspy</span><span class="o">.</span><span class="n">OutputField</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">sentences</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&#34;双十一大促销&#34;</span><span class="p">,</span> <span class="s2">&#34;华为三折叠引爆全场&#34;</span><span class="p">,</span> <span class="s1">&#39;小米15pro发布会即将开始&#39;</span><span class="p">,</span> <span class="s1">&#39;苹果收购特斯拉&#39;</span><span class="p">,</span> <span class="s1">&#39;比亚迪财报亮眼&#39;</span><span class="p">,</span> <span class="s1">&#39;特斯拉产能扩大&#39;</span><span class="p">,</span> <span class="s1">&#39;小米营收增长&#39;</span><span class="p">]</span>
+</span></span><span class="line"><span class="cl"><span class="n">classify</span> <span class="o">=</span> <span class="n">dspy</span><span class="o">.</span><span class="n">Predict</span><span class="p">(</span><span class="n">Labeling</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="k">for</span> <span class="n">sentence</span> <span class="ow">in</span> <span class="n">sentences</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">    <span class="n">res</span> <span class="o">=</span> <span class="n">classify</span><span class="p">(</span><span class="n">sentence</span><span class="o">=</span><span class="n">sentence</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="nb">print</span><span class="p">(</span><span class="n">res</span><span class="o">.</span><span class="n">label</span><span class="p">,</span> <span class="n">sentence</span><span class="p">)</span>
+</span></span></code></pre></div><p>输出：</p>
+<p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<figure  >
+  <div class="d-flex justify-content-center">
+    <div class="w-100" ><img alt="" srcset="
+               /post/dspy-note/images/demo/classification/demo1_hub13ba387f92c127994308a1649af8427_83650_aa0032bba8bfdcb943eebe1878a7eff2.webp 400w,
+               /post/dspy-note/images/demo/classification/demo1_hub13ba387f92c127994308a1649af8427_83650_9e4de8cb903a476e13bc8f58fbdc0c97.webp 760w,
+               /post/dspy-note/images/demo/classification/demo1_hub13ba387f92c127994308a1649af8427_83650_1200x1200_fit_q75_h2_lanczos_3.webp 1200w"
+               src="/post/dspy-note/images/demo/classification/demo1_hub13ba387f92c127994308a1649af8427_83650_aa0032bba8bfdcb943eebe1878a7eff2.webp"
+               width="760"
+               height="394"
+               loading="lazy" data-zoomable /></div>
+  </div></figure>
+</p>
+<p>底层prompt及响应：</p>
+<pre tabindex="0"><code>
+System message:
+
+Your input fields are:
+1. `sentence` (str)
+
+Your output fields are:
+1. `label` (Literal[技术创新, 新品发布, 投资收购, 战略合作, 消费者活动, 产能变化, 经营指标])
+
+All interactions will be structured in the following way, with the appropriate values filled in.
+
+[[ ## sentence ## ]]
+{sentence}
+
+[[ ## label ## ]]
+{label}        # note: the value you produce must be one of: 技术创新; 新品发布; 投资收购; 战略合作; 消费者活动; 产能变化; 经营指标
+
+[[ ## completed ## ]]
+
+In adhering to this structure, your objective is: 
+        Classify.
+
+
+User message:
+
+[[ ## sentence ## ]]
+小米发布新款手机，售价不到1000元
+
+Respond with the corresponding output fields, starting with the field `[[ ## label ## ]]` (must be formatted as a valid Python Literal[技术创新, 新品发布, 投资收购, 战略合作, 消费者活动, 产能变化, 经营指标]), and then ending with the marker for `[[ ## completed ## ]]`.
+
+
+Response:
+
+[[ ## label ## ]]
+新品发布
+
+[[ ## completed ## ]]
+</code></pre><h3 id="rag检索增强生成">RAG：检索增强生成</h3>
+<p>（暂略）</p>
+<h3 id="小结">小结</h3>
+<p>定义任务和优化目标，准备一些示例输入</p>
+<ol>
+<li>
+<p>定义任务</p>
+<p>预期的输入/输出行为：基于私有化数据的聊天机器人？从文本中抽取信息？翻译系统？总结信息并附带引用？</p>
+<p>质量和预算。</p>
+</li>
+<li>
+<p>定义工作流程</p>
+</li>
+<li>
+<p>给出示例场景</p>
+</li>
+<li>
+<p>定义数据</p>
+<p>正式声明训练数据和验证数据，用于验证和优化。</p>
+</li>
+<li>
+<p>定义指标</p>
+<p>定义好的输出、坏的输出的特征。如果无法定义指标，将难以评估和提升。</p>
+</li>
+<li>
+<p>收集初步评估结果</p>
+</li>
+<li>
+<p>使用优化器编译</p>
+</li>
+<li>
+<p>迭代</p>
+</li>
+</ol>
+<h2 id="源码分析">源码分析</h2>
+<h2 id="相关文章">相关文章</h2>
+<h3 id="dspy相关">DSPy相关</h3>
+<p><a href="https://mp.weixin.qq.com/s/s4WnzwdopsMEYDk8TXodEg" target="_blank" rel="noopener">告别提示词工程, 斯坦福重新定义LLM开发范式，DSPy框架已获18.4K Star！</a></p>
+<p>论文: <a href="files/2310.03714v1.pdf">DSPY: COMPILING DECLARATIVE LANGUAGE MODEL CALLS INTO SELF-IMPROVING PIPELINES</a></p>
+<h3 id="api-key相关">API Key相关</h3>
+<p><a href="https://github.com/chatanywhere/GPT_API_free?tab=readme-ov-file" target="_blank" rel="noopener">GitHub - chatanywhere/GPT_API_free: Free ChatGPT API Key，免费ChatGPT API，支持GPT4 API（免费），ChatGPT国内可用免费转发API，直连无需代理。可以搭配ChatBox等软件/插件使用，极大降低接口使用成本。国内即可无限制畅快聊天。</a></p>
+
+    </div>
+
+    
+
+
+
+
+<div class="article-tags">
+  
+  <a class="badge badge-light" href="/tag/%E5%A4%A7%E6%A8%A1%E5%9E%8B/">大模型</a>
+  
+  <a class="badge badge-light" href="/tag/%E6%8F%90%E7%A4%BA%E5%B7%A5%E7%A8%8B/">提示工程</a>
+  
+</div>
+
+
+
+<div class="share-box">
+  <ul class="share">
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="https://twitter.com/intent/tweet?url=https://spacetimelab.cn/post/dspy-note/&amp;text=DSPy%e6%a1%86%e6%9e%b6" target="_blank" rel="noopener" class="share-btn-twitter" aria-label="twitter">
+          <i class="fab fa-twitter"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="https://www.facebook.com/sharer.php?u=https://spacetimelab.cn/post/dspy-note/&amp;t=DSPy%e6%a1%86%e6%9e%b6" target="_blank" rel="noopener" class="share-btn-facebook" aria-label="facebook">
+          <i class="fab fa-facebook"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="mailto:?subject=DSPy%e6%a1%86%e6%9e%b6&amp;body=https://spacetimelab.cn/post/dspy-note/" target="_blank" rel="noopener" class="share-btn-email" aria-label="envelope">
+          <i class="fas fa-envelope"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="https://www.linkedin.com/shareArticle?url=https://spacetimelab.cn/post/dspy-note/&amp;title=DSPy%e6%a1%86%e6%9e%b6" target="_blank" rel="noopener" class="share-btn-linkedin" aria-label="linkedin-in">
+          <i class="fab fa-linkedin-in"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="whatsapp://send?text=DSPy%e6%a1%86%e6%9e%b6%20https://spacetimelab.cn/post/dspy-note/" target="_blank" rel="noopener" class="share-btn-whatsapp" aria-label="whatsapp">
+          <i class="fab fa-whatsapp"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="https://service.weibo.com/share/share.php?url=https://spacetimelab.cn/post/dspy-note/&amp;title=DSPy%e6%a1%86%e6%9e%b6" target="_blank" rel="noopener" class="share-btn-weibo" aria-label="weibo">
+          <i class="fab fa-weibo"></i>
+        </a>
+      </li>
+    
+  </ul>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+
+
+
+  
+  
+  
+  
+  
+  <div class="media author-card content-widget-hr">
+    
+      
+      <a href="/authors/admin/"><img class="avatar mr-3 avatar-circle" src="/authors/admin/avatar_hu55194f19033f85038196a23353ffe543_580100_270x270_fill_q75_lanczos_center.jpg" alt="CoolCats"></a>
+    
+
+    <div class="media-body">
+      <h5 class="card-title"><a href="/authors/admin/">CoolCats</a></h5>
+      <h6 class="card-subtitle">理学学士</h6>
+      <p class="card-text">我的研究兴趣是时空数据分析、知识图谱、自然语言处理与服务端开发</p>
+      <ul class="network-icon" aria-hidden="true">
+  
+    
+    
+    
+      
+    
+    
+    
+    
+    
+    <li>
+      <a href="mailto:2811159909@qq.com" >
+        <i class="fas fa-envelope"></i>
+      </a>
+    </li>
+  
+    
+    
+    
+      
+    
+    
+    
+    
+    
+      
+    
+    <li>
+      <a href="https://github.com/Coolgiserz" target="_blank" rel="noopener">
+        <i class="fab fa-github"></i>
+      </a>
+    </li>
+  
+</ul>
+
+    </div>
+  </div>
+
+
+
+
+
+
+
+
+
+  
+  
+  
+
+  
+
+  
+
+
+
+
+
+
+
+
+
+
+  </div>
+</article>
+  </div>
+
+  <div class="page-footer">
+    
+    
+    <div class="container">
+      <footer class="site-footer">
+
+  
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+
+
+
+
+
+  
+  
+  
+
+  
+  
+    
+  
+  
+    
+  
+
+  
+
+  
+  <p class="powered-by copyright-license-text">
+    © 2024 Weirdgiser &amp; <a href="https://beian.miit.gov.cn" target="_blank" rel="noopener">粤ICP备2024213180号</a>
+  </p>
+  
+
+  <p class="powered-by footer-license-icons">
+    <a href="https://creativecommons.org/licenses/by-nc-nd/4.0" rel="noopener noreferrer" target="_blank" aria-label="Creative Commons">
+      <i class="fab fa-creative-commons fa-2x" aria-hidden="true"></i>
+      <i class="fab fa-creative-commons-by fa-2x" aria-hidden="true"></i>
+      
+        <i class="fab fa-creative-commons-nc fa-2x" aria-hidden="true"></i>
+      
+      
+        <i class="fab fa-creative-commons-nd fa-2x" aria-hidden="true"></i>
+      
+    </a>
+  </p>
+
+
+
+
+  <p class="powered-by">
+    
+    
+    
+      
+      
+      
+      
+      
+      
+      Published with <a href="https://wowchemy.com/?utm_campaign=poweredby" target="_blank" rel="noopener">Wowchemy</a> — the free, <a href="https://github.com/wowchemy/wowchemy-hugo-themes" target="_blank" rel="noopener">open source</a> website builder that empowers creators.
+    
+  </p>
+</footer>
+
+    </div>
+    
+  </div>
+
+      
+
+    
+    <script src="/js/vendor-bundle.min.fab8b449b814cc9f95b22fcf2e45f05b.js"></script>
+
+    
+    
+    
+      
+
+      
+      
+
+      
+
+      
+        
+        <script src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@10.2.1/build/highlight.min.js" integrity="sha512-Ypjm0o7jOxAd4hpdoppSEN0TQOC19UtPAqD+4s5AlXmUvbmmS/YMxYqAqarQYyxTnB6/rqip9qcxlNB/3U9Wdg==" crossorigin="anonymous"></script>
+        
+        
+        <script src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@10.2.1/build/languages/r.min.js" crossorigin="anonymous"></script>
+        
+        <script src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@10.2.1/build/languages/latex.min.js" crossorigin="anonymous"></script>
+        
+      
+
+    
+
+    
+    
+    
+      <script src="https://cdn.jsdelivr.net/npm/leaflet@1.7.1/dist/leaflet.min.js" integrity="" crossorigin="anonymous"></script>
+    
+
+    
+    
+
+    
+    
+    
+      
+      <script id="search-hit-fuse-template" type="text/x-template">
+        <div class="search-hit" id="summary-{{key}}">
+          <div class="search-hit-content">
+            <div class="search-hit-name">
+              <a href="{{relpermalink}}">{{title}}</a>
+              <div class="article-metadata search-hit-type">{{type}}</div>
+              <p class="search-hit-description">{{snippet}}</p>
+            </div>
+          </div>
+        </div>
+      </script>
+      
+        <script src="https://cdn.jsdelivr.net/gh/krisk/Fuse@v3.2.1/dist/fuse.min.js" integrity="sha512-o38bmzBGX+hD3JHWUFCDA09btWaqrNmoJ3RXLlrysA7PP01Kgs4UlE4MhelE1v5dJR3+cxlR4qQlotsW7jKsnw==" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/gh/julmot/mark.js@8.11.1/dist/jquery.mark.min.js" integrity="sha512-mhbv5DqBMgrWL+32MmsDOt/OAvqr/cHimk6B8y/bx/xS88MVkYGPiVv2ixKVrkywF2qHplNRUvFsAHUdxZ3Krg==" crossorigin="anonymous"></script>
+      
+    
+
+    
+    
+
+    
+    
+    
+    
+      <script id="dsq-count-scr" src="https://weirdgiser.disqus.com/count.js" async></script>
+    
+
+    
+    
+      
+      
+      
+      
+      
+      
+      
+    
+
+    
+
+    
+    
+    
+    <script id="page-data" type="application/json">{"use_headroom":true}</script>
+
+    
+    
+      <script src="/js/wowchemy-headroom.c251366b4128fd5e6b046d4c97a62a51.js" type="module"></script>
+    
+    
+    
+    
+    
+    
+    
+      
+      
+    
+    
+    <script src="/en/js/wowchemy.min.ab2f2890dbe3e2e83579366d3d6e8fd9.js"></script>
+
+    
+    
+      <script src="/js/wowchemy-map.a26e9d2f7238ba5b868384f1c5bc6477.js" type="module"></script>
+    
+    
+    
+    
+      
+<div id="modal" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Cite</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <pre><code class="tex hljs"></code></pre>
+      </div>
+      <div class="modal-footer">
+        <a class="btn btn-outline-primary my-1 js-copy-cite" href="#" target="_blank">
+          <i class="fas fa-copy"></i> Copy
+        </a>
+        <a class="btn btn-outline-primary my-1 js-download-cite" href="#" target="_blank">
+          <i class="fas fa-download"></i> Download
+        </a>
+        <div id="modal-error"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+      <script src="/js/wowchemy-publication.68f8d7090562ca65fc6d3cb3f8f2d2cb.js" type="module"></script>
+
+
+
+
+
+
+</body>
+</html>

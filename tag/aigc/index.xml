@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>AIGC | NullSpace</title>
+    <link>https://spacetimelab.cn/tag/aigc/</link>
+      <atom:link href="https://spacetimelab.cn/tag/aigc/index.xml" rel="self" type="application/rss+xml" />
+    <description>AIGC</description>
+    <generator>Wowchemy (https://wowchemy.com)</generator><language>en-us</language><lastBuildDate>Mon, 04 Nov 2024 22:25:32 +0800</lastBuildDate>
+    <image>
+      <url>https://spacetimelab.cn/media/icon_hue03491371183284312b8b116a73ae5ab_79511_512x512_fill_lanczos_center_3.png</url>
+      <title>AIGC</title>
+      <link>https://spacetimelab.cn/tag/aigc/</link>
+    </image>
+    
+    <item>
+      <title>行业报告撰写逻辑及结合AI的自动化技术</title>
+      <link>https://spacetimelab.cn/post/ai-industry-report-writing/</link>
+      <pubDate>Mon, 04 Nov 2024 22:25:32 +0800</pubDate>
+      <guid>https://spacetimelab.cn/post/ai-industry-report-writing/</guid>
+      <description>&lt;h2 id=&#34;相关搜索结果&#34;&gt;相关搜索结果&lt;/h2&gt;
+&lt;p&gt;&lt;a href=&#34;https://www.waytoagi.com/question/29464&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;如何通过ai进行行业报告研究-WayToAGI&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;https://pdf.dfcfw.com/pdf/H3_AP202304051585160882_1.pdf?1680802561000.pdf&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;2022年中国AIGC行业研究报告&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;https://patents.google.com/patent/CN114490778A/zh&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;一种金融研报自动生成系统及方法&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;https://www.sensetime.com/cn/news-detail/51167440?categoryId=72&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;用AI写研报哪家强？沙利文《2023中国大模型行研能力评测报告》商汤日日新·商量获评第一&lt;/a&gt;&lt;/p&gt;
+&lt;h2 id=&#34;行业报告场景细分&#34;&gt;行业报告场景细分&lt;/h2&gt;
+&lt;h3 id=&#34;应用场景&#34;&gt;应用场景&lt;/h3&gt;
+&lt;p&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure  &gt;
+  &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img alt=&#34;&#34; srcset=&#34;
+               /post/ai-industry-report-writing/images/applications/scene_hu19e088077d4a815c7b855d934569526b_696322_0af6b240ecef0e86ca7da64472256cc1.webp 400w,
+               /post/ai-industry-report-writing/images/applications/scene_hu19e088077d4a815c7b855d934569526b_696322_bd8751bdddb156fc691c04efb0301a24.webp 760w,
+               /post/ai-industry-report-writing/images/applications/scene_hu19e088077d4a815c7b855d934569526b_696322_1200x1200_fit_q75_h2_lanczos_3.webp 1200w&#34;
+               src=&#34;https://spacetimelab.cn/post/ai-industry-report-writing/images/applications/scene_hu19e088077d4a815c7b855d934569526b_696322_0af6b240ecef0e86ca7da64472256cc1.webp&#34;
+               width=&#34;760&#34;
+               height=&#34;543&#34;
+               loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+  &lt;/div&gt;&lt;/figure&gt;
+&lt;/p&gt;
+&lt;h3 id=&#34;写作逻辑&#34;&gt;写作逻辑&lt;/h3&gt;
+&lt;p&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure  &gt;
+  &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img alt=&#34;&#34; srcset=&#34;
+               /post/ai-industry-report-writing/images/judgement/8d_hu6fee52dd247c78d69b9ca68ecc25b58e_298586_2ab8815de4bbd851593afe3f301cfc88.webp 400w,
+               /post/ai-industry-report-writing/images/judgement/8d_hu6fee52dd247c78d69b9ca68ecc25b58e_298586_9a21c07c2bac64793ee2bc47580145ea.webp 760w,
+               /post/ai-industry-report-writing/images/judgement/8d_hu6fee52dd247c78d69b9ca68ecc25b58e_298586_1200x1200_fit_q75_h2_lanczos_3.webp 1200w&#34;
+               src=&#34;https://spacetimelab.cn/post/ai-industry-report-writing/images/judgement/8d_hu6fee52dd247c78d69b9ca68ecc25b58e_298586_2ab8815de4bbd851593afe3f301cfc88.webp&#34;
+               width=&#34;760&#34;
+               height=&#34;480&#34;
+               loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+  &lt;/div&gt;&lt;/figure&gt;
+&lt;/p&gt;
+&lt;h2 id=&#34;算法架构设计思路&#34;&gt;算法架构设计思路&lt;/h2&gt;
+&lt;h3 id=&#34;模型思考方式&#34;&gt;模型思考方式&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;先思考再行动&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;    风格/产品形态：预设大纲，写“命题”作文&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;边思考边行动&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;    风格/产品形态：预设主题，不限制结构，由模型输出“最优”结构。&lt;/p&gt;
+&lt;h3 id=&#34;输入是什么模型应该具有哪些知识&#34;&gt;输入是什么？模型应该具有哪些知识？&lt;/h3&gt;
+&lt;h4 id=&#34;基础知识&#34;&gt;基础知识&lt;/h4&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;产业链结构&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;市场规律（如价格变动/人员变动/某种投资布局会带来什么影响）&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&#34;行业动态&#34;&gt;行业动态&lt;/h4&gt;
+&lt;p&gt;来自多种数据源的行业动态：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;媒体新闻&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;知识产权（专利）&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;市场数据（产品销量等）&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;研究报告（来自权威研究机构）【可能涉及版权，有商务风险】&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;输出是什么&#34;&gt;输出是什么？&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;结构化的报告，章节、样式可定制。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;符合业界行业分析风格&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;如何评价并量化报告质量&#34;&gt;如何评价并量化报告质量？&lt;/h3&gt;
+&lt;p&gt;测试用例：预设问题&lt;/p&gt;
+&lt;p&gt;基本问题：是否存在自相矛盾？表述是否合理？&lt;/p&gt;
+&lt;p&gt;根据生成的报告总结提纲，判断提纲与初始预设提纲的吻合度？&lt;/p&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>
