@@ -192,10 +192,10 @@
 &lt;figure  &gt;
   &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
     &lt;div class=&#34;w-100&#34; &gt;&lt;img alt=&#34;&#34; srcset=&#34;
-               /post/dspy-note/images/demo/cot/demo1-1_hufe72aa7600881cd0d74599b68c4c33d4_324509_c82aac0c8e91090ec231c6e24fd87fa2.webp 400w,
-               /post/dspy-note/images/demo/cot/demo1-1_hufe72aa7600881cd0d74599b68c4c33d4_324509_963955222bae9ac3c8d3f92aa1dfdaff.webp 760w,
-               /post/dspy-note/images/demo/cot/demo1-1_hufe72aa7600881cd0d74599b68c4c33d4_324509_1200x1200_fit_q75_h2_lanczos_3.webp 1200w&#34;
-               src=&#34;https://spacetimelab.cn/post/dspy-note/images/demo/cot/demo1-1_hufe72aa7600881cd0d74599b68c4c33d4_324509_c82aac0c8e91090ec231c6e24fd87fa2.webp&#34;
+               /post/dspy-note/images/demo/cot/demo1-1_hu1588e71bc42ebd8f03ee53a54c5300f5_325185_cbe12de47b489811c4ce77cf2eb4aea5.webp 400w,
+               /post/dspy-note/images/demo/cot/demo1-1_hu1588e71bc42ebd8f03ee53a54c5300f5_325185_0400761cc3d7d201165c1bfe23fb0fbc.webp 760w,
+               /post/dspy-note/images/demo/cot/demo1-1_hu1588e71bc42ebd8f03ee53a54c5300f5_325185_1200x1200_fit_q75_h2_lanczos_3.webp 1200w&#34;
+               src=&#34;https://spacetimelab.cn/post/dspy-note/images/demo/cot/demo1-1_hu1588e71bc42ebd8f03ee53a54c5300f5_325185_cbe12de47b489811c4ce77cf2eb4aea5.webp&#34;
                width=&#34;760&#34;
                height=&#34;375&#34;
                loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
@@ -236,10 +236,10 @@ This order will help you gradually build your skills and prepare for tougher cha
 &lt;figure  &gt;
   &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
     &lt;div class=&#34;w-100&#34; &gt;&lt;img alt=&#34;&#34; srcset=&#34;
-               /post/dspy-note/images/demo/cot/demo1-2_hu9748b817fe2d774628dc2c15028dc278_241703_9c305c62f57ae43651fcb7e4a355284c.webp 400w,
-               /post/dspy-note/images/demo/cot/demo1-2_hu9748b817fe2d774628dc2c15028dc278_241703_96f4dfd084a005c7b182f7189a263c8a.webp 760w,
-               /post/dspy-note/images/demo/cot/demo1-2_hu9748b817fe2d774628dc2c15028dc278_241703_1200x1200_fit_q75_h2_lanczos_3.webp 1200w&#34;
-               src=&#34;https://spacetimelab.cn/post/dspy-note/images/demo/cot/demo1-2_hu9748b817fe2d774628dc2c15028dc278_241703_9c305c62f57ae43651fcb7e4a355284c.webp&#34;
+               /post/dspy-note/images/demo/cot/demo1-2_hu2465e3dba9bb138cf9548f8a1a144295_215964_8ee83b84c479b1ae6794ccb416ab85d2.webp 400w,
+               /post/dspy-note/images/demo/cot/demo1-2_hu2465e3dba9bb138cf9548f8a1a144295_215964_0dbb55f469418bc8af2d2d9750ac409a.webp 760w,
+               /post/dspy-note/images/demo/cot/demo1-2_hu2465e3dba9bb138cf9548f8a1a144295_215964_1200x1200_fit_q75_h2_lanczos_3.webp 1200w&#34;
+               src=&#34;https://spacetimelab.cn/post/dspy-note/images/demo/cot/demo1-2_hu2465e3dba9bb138cf9548f8a1a144295_215964_8ee83b84c479b1ae6794ccb416ab85d2.webp&#34;
                width=&#34;760&#34;
                height=&#34;236&#34;
                loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
@@ -256,7 +256,44 @@ This order will help you gradually build your skills and prepare for tougher cha
 3. 如果有必要，可以用少量盐水浸泡几分钟，以进一步去腥。
 4. 最后，用清水冲洗干净，确保没有残留的盐和杂质。
 [[ ## completed ## ]]
-&lt;/code&gt;&lt;/pre&gt;&lt;h3 id=&#34;句子分类&#34;&gt;句子分类&lt;/h3&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;h4 id=&#34;附带参数&#34;&gt;附带参数&lt;/h4&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-python&#34; data-lang=&#34;python&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;kn&#34;&gt;import&lt;/span&gt; &lt;span class=&#34;nn&#34;&gt;dspy&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;kn&#34;&gt;from&lt;/span&gt; &lt;span class=&#34;nn&#34;&gt;pprint&lt;/span&gt; &lt;span class=&#34;kn&#34;&gt;import&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;pprint&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;kn&#34;&gt;from&lt;/span&gt; &lt;span class=&#34;nn&#34;&gt;setting&lt;/span&gt; &lt;span class=&#34;kn&#34;&gt;import&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;API_KEY&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;API_BASE_URL&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;lm&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;dspy&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;LM&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s1&#34;&gt;&amp;#39;openai/gpt-4o-mini&amp;#39;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;api_key&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;API_KEY&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;api_base&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;API_BASE_URL&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;dspy&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;configure&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;lm&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;lm&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;cot&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;dspy&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;ChainOfThought&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s1&#34;&gt;&amp;#39;question: str -&amp;gt; answer: str&amp;#39;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;n&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;10&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;response&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;cot&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;question&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;击败满月女王蕾娜拉之后应该去哪里？&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;pprint&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;response&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;completions&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;answer&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure  &gt;
+  &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img alt=&#34;&#34; srcset=&#34;
+               /post/dspy-note/images/demo/cot/demo2_hu657446c13a84d6f295e9a71ecfcd593a_145590_8ae35152c4479ca45aa21be06cf6967b.webp 400w,
+               /post/dspy-note/images/demo/cot/demo2_hu657446c13a84d6f295e9a71ecfcd593a_145590_47ea47513161effc4dc55b3d8d408327.webp 760w,
+               /post/dspy-note/images/demo/cot/demo2_hu657446c13a84d6f295e9a71ecfcd593a_145590_1200x1200_fit_q75_h2_lanczos_3.webp 1200w&#34;
+               src=&#34;https://spacetimelab.cn/post/dspy-note/images/demo/cot/demo2_hu657446c13a84d6f295e9a71ecfcd593a_145590_8ae35152c4479ca45aa21be06cf6967b.webp&#34;
+               width=&#34;760&#34;
+               height=&#34;212&#34;
+               loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+  &lt;/div&gt;&lt;/figure&gt;
+&lt;/p&gt;
+&lt;h3 id=&#34;句子分类&#34;&gt;句子分类&lt;/h3&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-python&#34; data-lang=&#34;python&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;# @Author: weirdgiser&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;# @Time: 2024/11/13&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;# @Function: 示例：分类&lt;/span&gt;
@@ -377,7 +414,86 @@ Response:
 &lt;p&gt;迭代&lt;/p&gt;
 &lt;/li&gt;
 &lt;/ol&gt;
+&lt;h2 id=&#34;模块&#34;&gt;模块&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;Predict&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;ChainOfThought&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;ChainOfThoughtWithHint&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;ReAct&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;MultiChainComparison&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;ProgramOfThought&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Retrieve&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;dspy模块的特性&#34;&gt;DSPy模块的特性&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;抽象了LLM提示技巧（如思维链和ReAct）&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;具有&lt;strong&gt;可学习的参数&lt;/strong&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;多个模块可以组成更大的模块。与PyTorch框架中的NN模块类似，只是应用在LM编程领域。&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;官方文档：https://dspy.ai/building-blocks/3-modules&lt;/p&gt;
+&lt;h2 id=&#34;模型支持&#34;&gt;模型支持&lt;/h2&gt;
+&lt;h3 id=&#34;相关issues&#34;&gt;相关Issues&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://github.com/BerriAI/litellm/issues/1297&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;[Feature]: Too few models are supported · Issue #1297 · BerriAI/litellm · GitHub&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
 &lt;h2 id=&#34;源码分析&#34;&gt;源码分析&lt;/h2&gt;
+&lt;h3 id=&#34;相关依赖&#34;&gt;相关依赖&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a href=&#34;https://github.com/BerriAI/litellm&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;litellm&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure  &gt;
+  &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img alt=&#34;&#34; srcset=&#34;
+               /post/dspy-note/images/source_code/dependence/litellm_huf2bc3507062903474217da5e63fe8e8f_340130_d77306eb27160e09ee9be3c805743148.webp 400w,
+               /post/dspy-note/images/source_code/dependence/litellm_huf2bc3507062903474217da5e63fe8e8f_340130_de7a4538a30ab9783a921ab18a259b33.webp 760w,
+               /post/dspy-note/images/source_code/dependence/litellm_huf2bc3507062903474217da5e63fe8e8f_340130_1200x1200_fit_q75_h2_lanczos_3.webp 1200w&#34;
+               src=&#34;https://spacetimelab.cn/post/dspy-note/images/source_code/dependence/litellm_huf2bc3507062903474217da5e63fe8e8f_340130_d77306eb27160e09ee9be3c805743148.webp&#34;
+               width=&#34;760&#34;
+               height=&#34;519&#34;
+               loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+  &lt;/div&gt;&lt;/figure&gt;
+&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&amp;hellip;&amp;hellip;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
 &lt;h2 id=&#34;相关文章&#34;&gt;相关文章&lt;/h2&gt;
 &lt;h3 id=&#34;dspy相关&#34;&gt;DSPy相关&lt;/h3&gt;
 &lt;p&gt;&lt;a href=&#34;https://mp.weixin.qq.com/s/s4WnzwdopsMEYDk8TXodEg&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;告别提示词工程, 斯坦福重新定义LLM开发范式，DSPy框架已获18.4K Star！&lt;/a&gt;&lt;/p&gt;

@@ -1012,10 +1012,10 @@
 <figure  >
   <div class="d-flex justify-content-center">
     <div class="w-100" ><img alt="" srcset="
-               /post/dspy-note/images/demo/cot/demo1-1_hufe72aa7600881cd0d74599b68c4c33d4_324509_c82aac0c8e91090ec231c6e24fd87fa2.webp 400w,
-               /post/dspy-note/images/demo/cot/demo1-1_hufe72aa7600881cd0d74599b68c4c33d4_324509_963955222bae9ac3c8d3f92aa1dfdaff.webp 760w,
-               /post/dspy-note/images/demo/cot/demo1-1_hufe72aa7600881cd0d74599b68c4c33d4_324509_1200x1200_fit_q75_h2_lanczos_3.webp 1200w"
-               src="/post/dspy-note/images/demo/cot/demo1-1_hufe72aa7600881cd0d74599b68c4c33d4_324509_c82aac0c8e91090ec231c6e24fd87fa2.webp"
+               /post/dspy-note/images/demo/cot/demo1-1_hu1588e71bc42ebd8f03ee53a54c5300f5_325185_cbe12de47b489811c4ce77cf2eb4aea5.webp 400w,
+               /post/dspy-note/images/demo/cot/demo1-1_hu1588e71bc42ebd8f03ee53a54c5300f5_325185_0400761cc3d7d201165c1bfe23fb0fbc.webp 760w,
+               /post/dspy-note/images/demo/cot/demo1-1_hu1588e71bc42ebd8f03ee53a54c5300f5_325185_1200x1200_fit_q75_h2_lanczos_3.webp 1200w"
+               src="/post/dspy-note/images/demo/cot/demo1-1_hu1588e71bc42ebd8f03ee53a54c5300f5_325185_cbe12de47b489811c4ce77cf2eb4aea5.webp"
                width="760"
                height="375"
                loading="lazy" data-zoomable /></div>
@@ -1056,10 +1056,10 @@ This order will help you gradually build your skills and prepare for tougher cha
 <figure  >
   <div class="d-flex justify-content-center">
     <div class="w-100" ><img alt="" srcset="
-               /post/dspy-note/images/demo/cot/demo1-2_hu9748b817fe2d774628dc2c15028dc278_241703_9c305c62f57ae43651fcb7e4a355284c.webp 400w,
-               /post/dspy-note/images/demo/cot/demo1-2_hu9748b817fe2d774628dc2c15028dc278_241703_96f4dfd084a005c7b182f7189a263c8a.webp 760w,
-               /post/dspy-note/images/demo/cot/demo1-2_hu9748b817fe2d774628dc2c15028dc278_241703_1200x1200_fit_q75_h2_lanczos_3.webp 1200w"
-               src="/post/dspy-note/images/demo/cot/demo1-2_hu9748b817fe2d774628dc2c15028dc278_241703_9c305c62f57ae43651fcb7e4a355284c.webp"
+               /post/dspy-note/images/demo/cot/demo1-2_hu2465e3dba9bb138cf9548f8a1a144295_215964_8ee83b84c479b1ae6794ccb416ab85d2.webp 400w,
+               /post/dspy-note/images/demo/cot/demo1-2_hu2465e3dba9bb138cf9548f8a1a144295_215964_0dbb55f469418bc8af2d2d9750ac409a.webp 760w,
+               /post/dspy-note/images/demo/cot/demo1-2_hu2465e3dba9bb138cf9548f8a1a144295_215964_1200x1200_fit_q75_h2_lanczos_3.webp 1200w"
+               src="/post/dspy-note/images/demo/cot/demo1-2_hu2465e3dba9bb138cf9548f8a1a144295_215964_8ee83b84c479b1ae6794ccb416ab85d2.webp"
                width="760"
                height="236"
                loading="lazy" data-zoomable /></div>
@@ -1076,7 +1076,44 @@ This order will help you gradually build your skills and prepare for tougher cha
 3. 如果有必要，可以用少量盐水浸泡几分钟，以进一步去腥。
 4. 最后，用清水冲洗干净，确保没有残留的盐和杂质。
 [[ ## completed ## ]]
-</code></pre><h3 id="句子分类">句子分类</h3>
+</code></pre><h4 id="附带参数">附带参数</h4>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">dspy</span>
+</span></span><span class="line"><span class="cl"><span class="kn">from</span> <span class="nn">pprint</span> <span class="kn">import</span> <span class="n">pprint</span>
+</span></span><span class="line"><span class="cl"><span class="kn">from</span> <span class="nn">setting</span> <span class="kn">import</span> <span class="n">API_KEY</span><span class="p">,</span> <span class="n">API_BASE_URL</span>
+</span></span><span class="line"><span class="cl"><span class="n">lm</span> <span class="o">=</span> <span class="n">dspy</span><span class="o">.</span><span class="n">LM</span><span class="p">(</span><span class="s1">&#39;openai/gpt-4o-mini&#39;</span><span class="p">,</span> <span class="n">api_key</span><span class="o">=</span><span class="n">API_KEY</span><span class="p">,</span> <span class="n">api_base</span><span class="o">=</span><span class="n">API_BASE_URL</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">dspy</span><span class="o">.</span><span class="n">configure</span><span class="p">(</span><span class="n">lm</span><span class="o">=</span><span class="n">lm</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">cot</span> <span class="o">=</span> <span class="n">dspy</span><span class="o">.</span><span class="n">ChainOfThought</span><span class="p">(</span><span class="s1">&#39;question: str -&gt; answer: str&#39;</span><span class="p">,</span> <span class="n">n</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">response</span> <span class="o">=</span> <span class="n">cot</span><span class="p">(</span><span class="n">question</span><span class="o">=</span><span class="s2">&#34;击败满月女王蕾娜拉之后应该去哪里？&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">pprint</span><span class="p">(</span><span class="n">response</span><span class="o">.</span><span class="n">completions</span><span class="o">.</span><span class="n">answer</span><span class="p">)</span>
+</span></span></code></pre></div><p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<figure  >
+  <div class="d-flex justify-content-center">
+    <div class="w-100" ><img alt="" srcset="
+               /post/dspy-note/images/demo/cot/demo2_hu657446c13a84d6f295e9a71ecfcd593a_145590_8ae35152c4479ca45aa21be06cf6967b.webp 400w,
+               /post/dspy-note/images/demo/cot/demo2_hu657446c13a84d6f295e9a71ecfcd593a_145590_47ea47513161effc4dc55b3d8d408327.webp 760w,
+               /post/dspy-note/images/demo/cot/demo2_hu657446c13a84d6f295e9a71ecfcd593a_145590_1200x1200_fit_q75_h2_lanczos_3.webp 1200w"
+               src="/post/dspy-note/images/demo/cot/demo2_hu657446c13a84d6f295e9a71ecfcd593a_145590_8ae35152c4479ca45aa21be06cf6967b.webp"
+               width="760"
+               height="212"
+               loading="lazy" data-zoomable /></div>
+  </div></figure>
+</p>
+<h3 id="句子分类">句子分类</h3>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="c1"># @Author: weirdgiser</span>
 </span></span><span class="line"><span class="cl"><span class="c1"># @Time: 2024/11/13</span>
 </span></span><span class="line"><span class="cl"><span class="c1"># @Function: 示例：分类</span>
@@ -1197,7 +1234,86 @@ Response:
 <p>迭代</p>
 </li>
 </ol>
+<h2 id="模块">模块</h2>
+<ul>
+<li>
+<p>Predict</p>
+</li>
+<li>
+<p>ChainOfThought</p>
+</li>
+<li>
+<p>ChainOfThoughtWithHint</p>
+</li>
+<li>
+<p>ReAct</p>
+</li>
+<li>
+<p>MultiChainComparison</p>
+</li>
+<li>
+<p>ProgramOfThought</p>
+</li>
+<li>
+<p>Retrieve</p>
+</li>
+</ul>
+<h3 id="dspy模块的特性">DSPy模块的特性</h3>
+<ul>
+<li>
+<p>抽象了LLM提示技巧（如思维链和ReAct）</p>
+</li>
+<li>
+<p>具有<strong>可学习的参数</strong></p>
+</li>
+<li>
+<p>多个模块可以组成更大的模块。与PyTorch框架中的NN模块类似，只是应用在LM编程领域。</p>
+</li>
+</ul>
+<p>官方文档：https://dspy.ai/building-blocks/3-modules</p>
+<h2 id="模型支持">模型支持</h2>
+<h3 id="相关issues">相关Issues</h3>
+<ul>
+<li><a href="https://github.com/BerriAI/litellm/issues/1297" target="_blank" rel="noopener">[Feature]: Too few models are supported · Issue #1297 · BerriAI/litellm · GitHub</a></li>
+</ul>
 <h2 id="源码分析">源码分析</h2>
+<h3 id="相关依赖">相关依赖</h3>
+<ul>
+<li>
+<p><a href="https://github.com/BerriAI/litellm" target="_blank" rel="noopener">litellm</a></p>
+<p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<figure  >
+  <div class="d-flex justify-content-center">
+    <div class="w-100" ><img alt="" srcset="
+               /post/dspy-note/images/source_code/dependence/litellm_huf2bc3507062903474217da5e63fe8e8f_340130_d77306eb27160e09ee9be3c805743148.webp 400w,
+               /post/dspy-note/images/source_code/dependence/litellm_huf2bc3507062903474217da5e63fe8e8f_340130_de7a4538a30ab9783a921ab18a259b33.webp 760w,
+               /post/dspy-note/images/source_code/dependence/litellm_huf2bc3507062903474217da5e63fe8e8f_340130_1200x1200_fit_q75_h2_lanczos_3.webp 1200w"
+               src="/post/dspy-note/images/source_code/dependence/litellm_huf2bc3507062903474217da5e63fe8e8f_340130_d77306eb27160e09ee9be3c805743148.webp"
+               width="760"
+               height="519"
+               loading="lazy" data-zoomable /></div>
+  </div></figure>
+</p>
+</li>
+<li>
+<p>&hellip;&hellip;</p>
+</li>
+</ul>
 <h2 id="相关文章">相关文章</h2>
 <h3 id="dspy相关">DSPy相关</h3>
 <p><a href="https://mp.weixin.qq.com/s/s4WnzwdopsMEYDk8TXodEg" target="_blank" rel="noopener">告别提示词工程, 斯坦福重新定义LLM开发范式，DSPy框架已获18.4K Star！</a></p>
