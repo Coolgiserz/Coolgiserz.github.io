@@ -1,0 +1,1504 @@
+<!DOCTYPE html><html lang="en-us" >
+
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  
+  
+  
+    <meta name="generator" content="Wowchemy 5.5.0 for Hugo" />
+  
+
+  
+  
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+  
+  
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  
+
+  
+  
+  
+    
+      
+      <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Roboto+Mono&family=Roboto:wght@400;700&display=swap">
+      <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Roboto+Mono&family=Roboto:wght@400;700&display=swap" media="print" onload="this.media='all'">
+    
+  
+
+  
+  
+  
+  
+  
+    
+    
+    
+  
+  
+
+  <meta name="author" content="CoolCats" />
+
+  
+  
+  
+    
+  
+  <meta name="description" content="斯坦福研究团队开源的辅助写作框架" />
+
+  
+  <link rel="alternate" hreflang="en-us" href="https://spacetimelab.cn/post/storm-article-generation-framework/" />
+
+  
+  
+  
+    <meta name="theme-color" content="#1565c0" />
+  
+
+  
+  
+    
+    <script src="/js/mathjax-config.js"></script>
+  
+
+  
+
+  <link rel="stylesheet" href="/css/vendor-bundle.min.c7b8d9abd591ba2253ea42747e3ac3f5.css" media="print" onload="this.media='all'">
+
+  
+  
+  
+    
+    
+      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/academicons@1.9.1/css/academicons.min.css" integrity="sha512-W0xM4mr6dEP9nREo7Z9z+9X70wytKvMGeDsj7ps2+xg5QPrEBXC8tAW1IFnzjR6eoJ90JmCnFzerQJTLzIEHjA==" crossorigin="anonymous" media="print" onload="this.media='all'">
+    
+
+    
+    
+    
+    
+      
+      
+    
+    
+    
+
+    
+    
+    
+      
+    
+    
+      
+      
+        
+          <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@10.2.1/build/styles/github.min.css" crossorigin="anonymous" title="hl-light" media="print" onload="this.media='all'">
+          <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@10.2.1/build/styles/dracula.min.css" crossorigin="anonymous" title="hl-dark" media="print" onload="this.media='all'" disabled>
+        
+      
+    
+
+    
+    
+    
+      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.7.1/dist/leaflet.min.css" integrity="" crossorigin="anonymous" media="print" onload="this.media='all'">
+    
+
+    
+
+    
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js" integrity="" crossorigin="anonymous" async></script>
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+  
+
+  
+  
+  
+  
+  
+  <link rel="stylesheet" href="/css/wowchemy.1052fab8b7700a3dc49ee23683097d66.css" />
+
+  
+
+
+
+  
+
+
+  
+
+
+  
+
+
+  <script>
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?51ae6db546b05b91d4053193ba49123d";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+  
+  
+  
+
+  
+
+  
+
+  <link rel="icon" type="image/png" href="/media/icon_hue03491371183284312b8b116a73ae5ab_79511_32x32_fill_lanczos_center_3.png" />
+  <link rel="apple-touch-icon" type="image/png" href="/media/icon_hue03491371183284312b8b116a73ae5ab_79511_180x180_fill_lanczos_center_3.png" />
+
+  <link rel="canonical" href="https://spacetimelab.cn/post/storm-article-generation-framework/" />
+
+  
+  
+  
+  
+  
+  
+  
+  
+    
+    
+  
+  
+
+  
+  
+    
+    
+  
+  <meta property="twitter:card" content="summary" />
+  
+    <meta property="twitter:site" content="@wowchemy" />
+    <meta property="twitter:creator" content="@wowchemy" />
+  
+  <meta property="og:site_name" content="NullSpace" />
+  <meta property="og:url" content="https://spacetimelab.cn/post/storm-article-generation-framework/" />
+  <meta property="og:title" content="Storm Article Generation Framework | NullSpace" />
+  <meta property="og:description" content="斯坦福研究团队开源的辅助写作框架" /><meta property="og:image" content="https://spacetimelab.cn/media/icon_hue03491371183284312b8b116a73ae5ab_79511_512x512_fill_lanczos_center_3.png" />
+    <meta property="twitter:image" content="https://spacetimelab.cn/media/icon_hue03491371183284312b8b116a73ae5ab_79511_512x512_fill_lanczos_center_3.png" /><meta property="og:locale" content="en-us" />
+  
+    
+      <meta
+        property="article:published_time"
+        content="2024-11-14T23:14:57&#43;08:00"
+      />
+    
+    <meta property="article:modified_time" content="2024-11-14T23:14:57&#43;08:00">
+  
+
+  
+
+
+    
+
+
+
+
+
+
+  
+
+
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://spacetimelab.cn/post/storm-article-generation-framework/"
+  },
+  "headline": "Storm Article Generation Framework",
+  
+  "datePublished": "2024-11-14T23:14:57+08:00",
+  "dateModified": "2024-11-14T23:14:57+08:00",
+  
+  "author": {
+    "@type": "Person",
+    "name": "CoolCats"
+  },
+  
+  "publisher": {
+    "@type": "Organization",
+    "name": "NullSpace",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://spacetimelab.cn/media/icon_hue03491371183284312b8b116a73ae5ab_79511_192x192_fill_lanczos_center_3.png"
+    }
+  },
+  "description": "斯坦福研究团队开源的辅助写作框架"
+}
+</script>
+
+  
+
+  
+
+  
+
+  
+
+
+
+
+
+  <title>Storm Article Generation Framework | NullSpace</title>
+</head>
+
+
+<body id="top" data-spy="scroll" data-offset="70" data-target="#TableOfContents" class="page-wrapper   " data-wc-page-id="41c86d8d313b7ffd65db5dbeaee6b70d" >
+
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  <script src="/js/wowchemy-init.min.2ed908358299dd7ab553faae685c746c.js"></script>
+
+  
+
+
+<aside class="search-modal" id="search">
+  <div class="container">
+    <section class="search-header">
+
+      <div class="row no-gutters justify-content-between mb-3">
+        <div class="col-6">
+          <h1>Search</h1>
+        </div>
+        <div class="col-6 col-search-close">
+          <a class="js-search" href="#" aria-label="Close"><i class="fas fa-times-circle text-muted" aria-hidden="true"></i></a>
+        </div>
+      </div>
+
+      <div id="search-box">
+        
+        <input name="q" id="search-query" placeholder="Search..." autocapitalize="off"
+        autocomplete="off" autocorrect="off" spellcheck="false" type="search" class="form-control"
+        aria-label="Search...">
+        
+      </div>
+
+      
+      
+
+      
+
+    </section>
+    <section class="section-search-results">
+
+      <div id="search-hits">
+        
+      </div>
+
+    </section>
+  </div>
+</aside>
+
+
+
+  <div class="page-header">
+    
+
+
+
+
+
+
+
+
+
+
+
+
+<header class="header--fixed">
+  <nav class="navbar navbar-expand-lg navbar-light compensate-for-scrollbar" id="navbar-main">
+    <div class="container-xl">
+
+      
+      <div class="d-none d-lg-inline-flex">
+        <a class="navbar-brand" href="/">NullSpace</a>
+      </div>
+      
+
+      
+      <button type="button" class="navbar-toggler" data-toggle="collapse"
+              data-target="#navbar-content" aria-controls="navbar-content" aria-expanded="false" aria-label="Toggle navigation">
+      <span><i class="fas fa-bars"></i></span>
+      </button>
+      
+
+      
+      <div class="navbar-brand-mobile-wrapper d-inline-flex d-lg-none">
+        <a class="navbar-brand" href="/">NullSpace</a>
+      </div>
+      
+
+      
+      
+      <div class="navbar-collapse main-menu-item collapse justify-content-start" id="navbar-content">
+
+        
+        <ul class="navbar-nav d-md-inline-flex">
+          
+
+          
+
+          
+          
+          
+
+          
+
+          
+          
+          
+          
+
+          
+            
+              
+              
+            
+            
+          
+
+          <li class="nav-item">
+            <a class="nav-link  active" href="/post"><span>博客</span></a>
+          </li>
+
+          
+          
+
+          
+
+          
+          
+          
+            
+          
+
+          
+
+          
+          
+          
+          
+
+          
+            
+              
+              
+            
+            
+          
+
+          <li class="nav-item">
+            <a class="nav-link " href="/event"><span>趣事</span></a>
+          </li>
+
+          
+          
+
+          
+
+          
+          
+          
+            
+          
+
+          
+
+          
+          
+          
+          
+
+          
+            
+              
+              
+            
+            
+          
+
+          <li class="nav-item">
+            <a class="nav-link " href="/project"><span>项目</span></a>
+          </li>
+
+          
+          
+
+          
+
+          
+          
+          
+            
+          
+
+          
+
+          
+          
+          
+          
+
+          
+            
+              
+              
+            
+            
+          
+
+          <li class="nav-item">
+            <a class="nav-link " href="/publication"><span>论文</span></a>
+          </li>
+
+          
+          
+
+          
+
+          
+          
+          
+            
+          
+
+          
+
+          
+          
+          
+          
+
+          
+            
+              
+              
+            
+            
+          
+
+          <li class="nav-item">
+            <a class="nav-link " href="/category/practice/"><span>练习</span></a>
+          </li>
+
+          
+          
+
+          
+
+          
+          
+          
+            
+          
+
+          
+
+          
+          
+          
+          
+
+          
+            
+              
+              
+            
+            
+          
+
+          <li class="nav-item">
+            <a class="nav-link " href="/contact"><span>联系</span></a>
+          </li>
+
+          
+          
+
+          
+
+          
+          
+          
+
+          
+
+          
+          
+          
+          
+
+          
+            
+              
+              
+            
+            
+          
+
+          <li class="nav-item">
+            <a class="nav-link " href="/tags"><span>归档</span></a>
+          </li>
+
+          
+          
+
+        
+
+          
+        </ul>
+      </div>
+
+      <ul class="nav-icons navbar-nav flex-row ml-auto d-flex pl-md-2">
+
+        
+        
+          
+        
+
+        
+        
+        <li class="nav-item">
+          <a class="nav-link js-search" href="#" aria-label="Search"><i class="fas fa-search" aria-hidden="true"></i></a>
+        </li>
+        
+
+        
+        
+        
+        <li class="nav-item dropdown theme-dropdown">
+          <a href="#" class="nav-link" data-toggle="dropdown" aria-haspopup="true" aria-label="Display preferences">
+            <i class="fas fa-moon" aria-hidden="true"></i>
+          </a>
+          <div class="dropdown-menu">
+            <a href="#" class="dropdown-item js-set-theme-light">
+              <span>Light</span>
+            </a>
+            <a href="#" class="dropdown-item js-set-theme-dark">
+              <span>Dark</span>
+            </a>
+            <a href="#" class="dropdown-item js-set-theme-auto">
+              <span>Automatic</span>
+            </a>
+          </div>
+        </li>
+        
+
+        
+        
+
+      </ul>
+
+    </div>
+  </nav>
+</header>
+
+
+  </div>
+
+  <div class="page-body">
+    
+    
+    
+
+    <article class="article">
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+  
+  
+<div class="article-container pt-3">
+  <h1>Storm Article Generation Framework</h1>
+
+  
+
+  
+    
+
+
+<div class="article-metadata">
+
+  
+  
+
+  
+  <span class="article-date">
+    
+    
+      
+    
+    Nov 14, 2024
+  </span>
+  
+
+  
+
+  
+  <span class="middot-divider"></span>
+  <span class="article-reading-time">
+    20 min read
+  </span>
+  
+
+  
+  
+  
+  
+
+  
+  
+
+</div>
+
+    
+
+
+
+
+
+  
+</div>
+
+
+
+  <div class="article-container">
+
+    <div class="article-style">
+      <h2 id="流程">流程</h2>
+<ol>
+<li>
+<p>输入意图</p>
+</li>
+<li>
+<p>生成若干视角下的问题</p>
+</li>
+<li>
+<p>检索并浏览、总结相关网页</p>
+</li>
+<li>
+<p>生成文章</p>
+</li>
+</ol>
+<h3 id="示例1-关于艾尔登法环的新人引导文章">示例1: 关于艾尔登法环的新人引导文章</h3>
+<h4 id="输入">输入</h4>
+<p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<figure  >
+  <div class="d-flex justify-content-center">
+    <div class="w-100" ><img alt="" srcset="
+               /post/storm-article-generation-framework/images/demo-elden-ring/input_hu1b1bc6ce2dc177c2718bde7727e0f572_56387_ae3b9e2055478a69e3abb8c6da7886ff.webp 400w,
+               /post/storm-article-generation-framework/images/demo-elden-ring/input_hu1b1bc6ce2dc177c2718bde7727e0f572_56387_ca9d858c28b2088b91545e854126d3bd.webp 760w,
+               /post/storm-article-generation-framework/images/demo-elden-ring/input_hu1b1bc6ce2dc177c2718bde7727e0f572_56387_1200x1200_fit_q75_h2_lanczos_3.webp 1200w"
+               src="/post/storm-article-generation-framework/images/demo-elden-ring/input_hu1b1bc6ce2dc177c2718bde7727e0f572_56387_ae3b9e2055478a69e3abb8c6da7886ff.webp"
+               width="567"
+               height="323"
+               loading="lazy" data-zoomable /></div>
+  </div></figure>
+</p>
+<h4 id="检索">检索</h4>
+<p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<figure  >
+  <div class="d-flex justify-content-center">
+    <div class="w-100" ><img alt="" srcset="
+               /post/storm-article-generation-framework/images/demo-elden-ring/retrieve_hu192505dfbfb93e2c0aeba6da369dbc3b_416728_fe825244c6c741553f2876466d58bd2a.webp 400w,
+               /post/storm-article-generation-framework/images/demo-elden-ring/retrieve_hu192505dfbfb93e2c0aeba6da369dbc3b_416728_de7ab8ea7b3656ce455438960c9246ac.webp 760w,
+               /post/storm-article-generation-framework/images/demo-elden-ring/retrieve_hu192505dfbfb93e2c0aeba6da369dbc3b_416728_1200x1200_fit_q75_h2_lanczos_3.webp 1200w"
+               src="/post/storm-article-generation-framework/images/demo-elden-ring/retrieve_hu192505dfbfb93e2c0aeba6da369dbc3b_416728_fe825244c6c741553f2876466d58bd2a.webp"
+               width="760"
+               height="700"
+               loading="lazy" data-zoomable /></div>
+  </div></figure>
+</p>
+<p>这个过程，如何知道应该检索哪些数据源？依赖搜索引擎的排名的权威性？</p>
+<h4 id="头脑风暴">头脑风暴</h4>
+<p>从四类人的视角看问题：</p>
+<ul>
+<li>
+<p>传奇故事爱好者</p>
+</li>
+<li>
+<p>玩家社区代表</p>
+</li>
+<li>
+<p>基本事实写作者</p>
+</li>
+<li>
+<p>游戏设计者</p>
+</li>
+</ul>
+<h5 id="传奇故事爱好者">传奇故事爱好者</h5>
+<pre tabindex="0"><code>A devoted fan of the game’s narrative, this editor will delve into the lore of Elden Ring, examining its setting, characters, and story elements. They will compare it to the lore in previous FromSoftware games and highlight the connections and thematic continuity.
+</code></pre><ul>
+<li>
+<p>如何解读艾尔登法环中的传说故事的主旨，ta与FromSoftware社以前的游戏作品有何不同？</p>
+<pre tabindex="0"><code>The lore of Elden Ring, much like previous FromSoftware games, is rich, intricate, and often shrouded in mystery, requiring players to piece together the story from item descriptions, dialogues, and environmental storytelling [5]. This approach is a hallmark of director Hidetaka Miyazaki&#39;s narrative style, which can be seen across the Dark Souls series, Bloodborne, and Sekiro: Shadows Die Twice [1]. One of the central themes in Elden Ring is the concept of power and its corruptive influence. Players take on the role of a Tarnished, a character who must traverse the Lands Between to collect Great Runes and reforge the Elden Ring in order to become the Elden Lord [2]. This journey involves confronting demigods who have been driven to madness and corruption by their own power, reflecting a recurring theme in FromSoftware games where the pursuit of power often leads to ruin and despair [1]. The theme of fire and its origins is another prevalent narrative device in Elden Ring, echoing motifs from the Dark Souls series, where the Age of Fire and the cycles of light and dark play a significant role [1]. This reuse of thematic elements provides a sense of continuity across FromSoftware&#39;s body of work, despite each game having its own unique setting and story. Additionally, the lore of Elden Ring is heavily influenced by Norse mythology, contributing to the game&#39;s depth and complexity. This mythological underpinning shapes the world and its characters, adding layers to the narrative that players can explore [4]. Compared to previous games, Elden Ring&#39;s story is more expansive, involving a larger world with numerous interwoven tales and a rich history that players can uncover through exploration and curiosity [6]. This complexity has led to mixed reactions from the community, with some praising the depth and others finding it challenging to follow [3]. The collaboration between Miyazaki and renowned fantasy author George R. R. Martin has also brought a new dimension to the lore, infusing it with Martin&#39;s intricate world-building and character-driven storytelling [7]. This partnership has contributed to the game&#39;s vast and detailed mythos, making it a standout entry in FromSoftware&#39;s catalog. In summary, the main themes of Elden Ring&#39;s lore—power and corruption, fire and its origins, and mythological influences—are consistent with those in previous FromSoftware games. However, the collaborative effort with George R. R.
+</code></pre></li>
+<li>
+<p>能否阐述艾尔登法环中的关键角色及其对故事的重要性？</p>
+<pre tabindex="0"><code>Certainly! Elden Ring, developed by FromSoftware, boasts a rich tapestry of characters integral to its lore. The game’s setting, the Lands Between, is teeming with powerful beings that the player, assuming the role of the Tarnished, interacts with during their quest to become Elden Lord. One of the most critical characters is **Queen Marika**, the goddess whose actions set the game&#39;s events into motion. Marika&#39;s shattering of the Elden Ring led to the disarray in the Lands Between, making her a pivotal figure in understanding the world&#39;s current state [1][4]. Another key character is **Dragonlord Placidusax**, a powerful dragon and one of the game&#39;s lore’s most potent beings. His presence underscores the ancient and mythic nature of the challenges the Tarnished faces [1]. **Malenia, Blade of Miquella**, is another significant figure. Despite being one of the game&#39;s most difficult bosses, her backstory involving the Scarlet Rot and her devotion to her brother Miquella enriches the narrative profoundly [3]. Her struggles and eventual descent are emblematic of the larger themes of decay and struggle in the game. **Mohg, Lord of Blood**, represents another tier of significant characters. His dark ambitions and connections to the blood-soaked rituals add another layer of depth to the lore, emphasizing the different power dynamics at play in the Lands Between [3]. The Shadow of the Erdtree DLC expands on these existing characters while introducing new ones like **Romina** and **the Hornsent**. These characters provide further insights into critical aspects such as the origins of the Scarlet Rot and the Omens, thereby enriching the player’s understanding of the game’s universe [2]. Elden Ring’s family tree and relationships among characters are intricate. For instance, understanding the connections between Marika, her offspring, and their factions is crucial for grasping the complex political and divine struggles within the game. This relational web is essential for players to fully appreciate the motivations and conflicts driving the narrative [5]. In summary, Elden Ring&#39;s key characters, from demigods like Malenia to mythic figures like Dragonlord Placidusax and essential lore-bearers introduced in the DLC, create a layered and immersive story.
+</code></pre></li>
+<li>
+<p>艾尔登法环的背景故事和关键角色间的关系如何增强游戏的叙事性和玩家体验？</p>
+<pre tabindex="0"><code>The backstories and relationships between key characters in Elden Ring significantly enhance the game&#39;s narrative and player experience by adding layers of depth and complexity to the world of The Lands Between. Elden Ring&#39;s storytelling style, a collaboration between FromSoftware&#39;s Hidetaka Miyazaki and George R. R. Martin, employs subtlety and nuance, often requiring players to piece together information from various dialogues, item descriptions, and environmental cues [1][7]. A major element of the game&#39;s narrative is the intricate family tree of its characters, which influences much of the storyline. The characters&#39; relationships, often shrouded in mystery and revealed through exploration and interaction, create a compelling backdrop that motivates players to delve deeper into the lore [1]. For example, understanding the connections between characters like Queen Marika, Godfrey, and their demigod offspring can provide players with insight into their motivations and the larger narrative forces at play. The subtlety of the storytelling also means that players must engage actively with the game to uncover its secrets. This approach sparks a sense of curiosity and encourages exploration, as players gather lore from defeated enemies and conversations with NPCs [3][6]. The detailed backstories of characters such as the Night of the Black Knives or the House of the Moon, which are meticulously explained by lore experts like YouTube creator VaatiVidya, further enrich the narrative and provide a more comprehensive understanding of the game&#39;s events [4]. Furthermore, the cryptic nature of the story has been a point of both acclaim and criticism. While some argue that the ambiguous narrative makes it difficult to follow [2], others appreciate the depth it adds, making the discovery of each story element feel rewarding. This complexity also fosters community engagement, as players collaborate to piece together the lore and share their findings, creating a shared experience that extends beyond individual gameplay [3]. Overall, the interwoven backstories and relationships in Elden Ring enhance the narrative by creating a richly textured world that rewards exploration and active engagement. This storytelling method not only captivates players but also ensures that each playthrough can reveal new insights, making the game an enduring and immersive experience.
+</code></pre></li>
+</ul>
+<h5 id="玩家社区代表">玩家社区代表</h5>
+<pre tabindex="0"><code>This editor will focus on player experiences and community engagement surrounding Elden Ring. They will cover multiplayer features, player-created content, and community discussions, showcasing how the game has fostered a unique social environment.
+</code></pre><ul>
+<li>
+<p>艾尔登法环的多玩家特性如何冲击玩家群体间的“约玩”和协作？</p>
+<pre tabindex="0"><code>The multiplayer features in Elden Ring have had a significant impact on player engagement and collaboration within the community, enhancing the overall gaming experience. Elden Ring maintains the core cooperative play mechanics familiar to fans of FromSoftware&#39;s games, such as summoning other players to assist with challenging areas or boss fights. However, Elden Ring has made this process more accessible compared to its predecessors, such as Dark Souls and Demon&#39;s Souls, by removing the need for rare items to summon help (Source [2]). The game allows players to create a summoning sign using the Tarnished&#39;s Furled Finger, enabling them to join others&#39; games and provide assistance (Source [1]). This streamlined approach to multiplayer functionality has encouraged more players to engage in cooperative play, as they can more reliably and consistently summon allies or join other players&#39; sessions without worrying about depleting precious resources. Additionally, Elden Ring includes a dedicated multiplayer menu where players can easily manage their multiplayer activities, whether it’s cooperating with friends, random players, or engaging in PvP invasions (Source [3]). This user-friendly interface makes it easier for players to navigate the multiplayer aspects, thus promoting more frequent and meaningful interactions within the community. The inclusion of tools to ease summoning woes, such as multiplayer passwords and effigies, further facilitates a smoother cooperative experience, reducing the barriers to engaging with other players (Source [1], [7]). Moreover, the complex and challenging nature of Elden Ring&#39;s world encourages collaboration. Many players find that tackling the game&#39;s toughest challenges is more manageable and enjoyable when done with friends or allies, enhancing the sense of community and shared adventure (Source [4], [6]). While Elden Ring does not currently support crossplay between different platforms, the multiplayer features available have still managed to foster a robust and active player community, allowing for extensive cooperative gameplay and dynamic PvP encounters (Source [5]). Overall, the multiplayer features in Elden Ring have positively impacted player engagement by making cooperative play more accessible, encouraging collaboration, and providing a variety of tools and systems to enhance the multiplayer experience. This has led to a more connected and supportive player community, where adventurers in The Lands Between can join forces to overcome the game&#39;s formidable challenges.
+</code></pre></li>
+<li>
+<p>玩家自定义内容（如模组和自定义建筑）如何影响社区活力和玩家互动？</p>
+<pre tabindex="0"><code>Player-created content, such as mods and custom builds, has significantly influenced community dynamics and interactions among players in Elden Ring. The modding community has introduced various modifications that enhance and diversify the gaming experience, impacting how players engage with both the game and each other. One notable example is the &#34;Seamless Co-op&#34; mod developed by LukeYui. This mod addresses the shortcomings of Elden Ring’s original cooperative play system, which was criticized for its complex item requirements, frequent disconnects, and restrictive gameplay (Source [4]). By providing a more user-friendly and stable co-op experience, the Seamless Co-op mod has facilitated smoother interactions among players, enabling them to explore the game’s vast world together without the frustration of technical difficulties (Source [4]). Moreover, mods such as &#34;Elden Ring Reborn&#34; have brought comprehensive overhauls to the game, touching nearly every aspect of it in meaningful ways (Source [3]). These extensive modifications, which include new skills, balance adjustments, and even randomized gameplay elements, cater to a variety of player preferences and playstyles (Source [1], Source [5]). As a result, players can customize their experience to suit their individual tastes, leading to a more personalized and engaging community dynamic. Additionally, the introduction of various mods has fostered a collaborative environment among modders and players. For example, the &#34;Elden Ring Reborn&#34; mod credits multiple contributors who assisted in different aspects of the mod’s development, showcasing the collaborative spirit within the modding community (Source [3]). This collaboration not only enhances the quality and diversity of mods available but also strengthens the bonds between community members as they work together to improve the game. Furthermore, mods like &#34;Easy Mode&#34; and &#34;No Rune Loss&#34; offer accessibility options for players who may find the game’s difficulty too challenging (Source [8]). By lowering the barrier to entry, these mods enable a wider range of players to participate in the Elden Ring community, fostering inclusivity and encouraging more interactions among diverse player groups. Overall, player-created content has significantly shaped the community dynamics in Elden Ring by enhancing cooperative play, providing diverse gameplay options, and fostering a collaborative and inclusive environment. The modding community continues to be a driving force in evolving the game, ensuring that players have new and exciting ways to experience The Lands Between.
+</code></pre></li>
+<li>
+<p>玩家如何参与关于艾尔登法环游玩策略和经验的讨论？哪些平台对于玩家互动而言最为流行？</p>
+<pre tabindex="0"><code>Players typically engage in discussions about strategies and experiences related to Elden Ring on various platforms and forums. One of the most popular platforms is Steam, where the community section provides a space for players to share tips, ask for help, and discuss game mechanics [1][2]. Another significant platform is social media, as Elden Ring itself has been described as an &#34;entire social media platform unto itself,&#34; where players can leave messages, bloodstains, and summon signs to communicate indirectly within the game world [4]. This feature allows players to share hints, warnings, and jokes, fostering a unique in-game community. Online multiplayer engagement is a central aspect of the Elden Ring experience. Players can summon or be summoned for cooperative play to help defeat bosses or engage in PvP combat. This is facilitated by items like the Tarnished&#39;s Furled Finger and by activating the Effigies of the Martyr, allowing for both co-op and PvP interactions [5][6]. Additionally, players use multiplayer passwords to join friends or specific communities, ensuring they can play together despite the asynchronous nature of the game&#39;s multiplayer system [6]. Despite some clunkiness in the cooperative play setup, these various in-game and external platforms help create a robust community where players can share their strategies, experiences, and insights into the game [5]. I cannot answer this question based on the available information about platform-specific performance comparisons for playing Elden Ring, as this does not relate to community discussions and forums. These platforms and systems collectively support a rich and engaging community experience for Elden Ring player
+</code></pre></li>
+</ul>
+<h5 id="基本事实写作者">基本事实写作者</h5>
+<pre tabindex="0"><code>Basic fact writer focusing on broadly covering the basic facts about the topic.
+</code></pre><ul>
+<li>
+<p>能否对艾尔登法环幕后开发过程的整体情况进行介绍？</p>
+<pre tabindex="0"><code>Certainly! Here is an overview of the development process behind &#34;Elden Ring,&#34; including key individuals and studios involved: &#34;Elden Ring&#34; is a 2022 action role-playing game developed by FromSoftware, a Japanese game development studio. The game was directed by Hidetaka Miyazaki, who is renowned for his work on other FromSoftware titles such as Dark Souls, Bloodborne, and Sekiro: Shadows Die Twice. The worldbuilding for Elden Ring was provided by American fantasy writer George R. R. Martin, best known for his &#34;A Song of Ice and Fire&#34; series, which was adapted into the television series &#34;Game of Thrones&#34; [1][4]. The development of Elden Ring marked FromSoftware&#39;s first foray into the open-world genre. This ambitious project involved a significant departure from the studio&#39;s previous games, which were known for their interconnected but more linear worlds. The game&#39;s development ran parallel to that of Sekiro: Shadows Die Twice, although there was limited direct feedback between the two projects [2][7]. Miyazaki has described the development process as a blend of leveraging FromSoftware’s extensive experience with challenging gameplay and incorporating new elements such as a vast, explorable landscape. This open-world design offered players the freedom to explore, a significant shift from the more structured environments of earlier FromSoftware titles [2][4]. During the development, Miyazaki and his team faced numerous challenges, especially as the game approached its launch. The pressure was high, as expectations were significant due to the involvement of high-profile figures like Miyazaki and Martin. The final stages of development were intense, with the team working hard to meet the launch deadlines [3]. Elden Ring was published by FromSoftware in Japan and internationally by Bandai Namco Entertainment. The game was released on February 25, 2022, for multiple platforms including PlayStation 4, PlayStation 5, Windows, Xbox One, and Xbox Series X/S [1][5]. In summary, the development of Elden Ring was a complex and highly collaborative process involving FromSoftware, Hidetaka Miyazaki, and George R. R. Martin. It represented a significant evolution for FromSoftware as they ventured into the open-world genre, combining their signature challenging gameplay with expansive worldbuilding.
+</code></pre></li>
+<li>
+<p>能否详细阐述游戏的主要叙事和主题，与前作相比有何差异？</p>
+<pre tabindex="0"><code>&#34;Elden Ring&#34; presents a deep and intricate narrative, rooted in a fantastical world known as the Lands Between. The game&#39;s story, a collaboration between Hidetaka Miyazaki and George R. R. Martin, is both rich and complex, following the tradition of previous FromSoftware titles but with distinct differences in themes and storytelling. In &#34;Elden Ring,&#34; players assume the role of a Tarnished, an individual who has lost the golden glow in their eyes, symbolizing the grace of the Erdtree. This giant, golden tree is central to the game&#39;s lore, as it radiates grace and power across the Lands Between [4]. The Tarnished are tasked with obtaining the Elden Ring, a powerful artifact, and ascending to the status of Elden Lord by defeating various demigods and claiming their powers [1][3]. The overarching narrative involves understanding the history and fallout of the Lands Between, particularly an event known as the Shattering, which fragmented the world and its rulers. This event and its consequences are pieced together through exploration, dialogues with NPCs, and item descriptions, a storytelling method that echoes the cryptic narrative style of the Soulsborne series [5][6]. Unlike more straightforward narratives, &#34;Elden Ring&#34; requires players to be curious and actively seek out lore to fully grasp the story [5]. Thematically, &#34;Elden Ring&#34; explores ideas of power, loss, and the cyclical nature of ambition and destruction. The Tarnished, much like the protagonists in previous FromSoftware games, embark on a journey filled with peril and uncertainty, seeking to restore or reshape a broken world. However, the inclusion of George R. R. Martin&#39;s influence brings a layered complexity to the world&#39;s history and character motivations, infusing the game with intricate mythological and political underpinnings [7]. One of the significant differences between &#34;Elden Ring&#34; and earlier FromSoftware games, such as the Dark Souls series, is its open-world structure. This vast, interconnected environment offers players unprecedented freedom to explore and uncover the story at their own pace, rather than following a more linear path [2]. Despite the expansive setting, the game maintains the studio&#39;s signature difficulty and atmospheric storytelling, blending accessibility with the challenge that long-time fans expect [8]. In summary, &#34;Elden Ring&#34; continues FromSoftware&#39;s tradition of deep, enigmatic storytelling, enhanced by George R. R. Martin&#39;s world-building.
+</code></pre></li>
+<li>
+<p>艾尔登法环的关键游戏机制是什么？与前作相比，如何增强玩家体验？</p>
+<pre tabindex="0"><code>&#34;Elden Ring,&#34; developed by FromSoftware, incorporates a blend of familiar and novel gameplay mechanics that significantly enhance the player experience, setting it apart from previous titles by the same developer. One of the standout features of &#34;Elden Ring&#34; is its expansive open-world design, a departure from the more linear pathways of the Dark Souls series and Bloodborne.
+</code></pre></li>
+</ul>
+<h5 id="游戏设计者">游戏设计者</h5>
+<pre tabindex="0"><code>This editor will focus on the development process of Elden Ring, exploring its mechanics and design philosophies in relation to other titles by FromSoftware. They will analyze how Elden Ring innovates within the action role-playing game genre and its impact on game design trends.
+</code></pre><ul>
+<li>
+<p>能否阐述指导法环开发的关键设计哲学？特别是与前作相比有何差异？</p>
+<pre tabindex="0"><code>Certainly! The development of Elden Ring by FromSoftware, under the direction of Hidetaka Miyazaki, is guided by several key design philosophies that both build upon and innovate the elements seen in previous FromSoftware games, particularly the Dark Souls series. Firstly, **Elden Ring expands upon the core mechanics familiar to Dark Souls fans**. This includes weighty combat, character mechanics, and the overall dark-fantasy atmosphere. According to [3], the game retains the successful foundations of the Dark Souls trilogy but revolutionizes the subgenre with open-world traversal, expanded combat mechanics, and enhanced character customization. One of the most significant changes is the **transition to an open-world format**, which provides areas with a greater sense of scale and exploration freedom, as noted in [3]. This design choice marks a departure from the more linear progression found in Dark Souls, giving players the ability to explore the Lands Between more freely and encounter a variety of challenges and secrets along the way. Another fundamental shift in design is **the inclusion of more dramatic changes and additions to the established mechanics**. While the core gameplay may feel familiar, Elden Ring introduces substantial innovations. According to [2], these changes are more dramatic than those seen across the three Dark Souls games. For example, the terminology has been updated—experience points, traditionally called &#34;souls,&#34; are now referred to as &#34;runes,&#34; as stated in [4]. The design philosophy of **&#34;freedom of failure&#34;** is also a cornerstone of FromSoftware&#39;s approach, as articulated by Miyazaki. This principle encourages creative freedom and risk-taking within the development team, fostering an environment where innovative ideas can thrive without the fear of failure. This is highlighted in [8], where Miyazaki&#39;s stance on development emphasizes that allowing freedom in making mistakes ultimately leads to better and more creative games. Additionally, the collaboration with **George R.R. Martin** for the game&#39;s mythos adds a rich narrative layer that differentiates Elden Ring from its predecessors while still maintaining the dark, immersive storytelling that fans expect. This collaboration is confirmed in [5], where Martin&#39;s involvement is mentioned in developing the game&#39;s mythos. In summary, the key design philosophies guiding Elden Ring&#39;s development include maintaining the core mechanics that fans love from the Dark Souls series while introducing significant innovations such as an expansive open-world format, updated mechanics, and a narrative collaboration with George R.R. Martin.
+</code></pre></li>
+<li>
+<p>相比黑暗之魂系列，艾尔登法环引入了哪些新的游戏机制和特性？</p>
+<pre tabindex="0"><code>Elden Ring introduces several new gameplay mechanics and features that set it apart from the Dark Souls series while still retaining the familiar elements that fans of FromSoftware&#39;s games will recognize. Here are some of the key differentiators: 1. **Open-World Exploration**: Unlike the relatively linear structure of the Dark Souls games, Elden Ring features a vast open-world environment known as the Lands Between. This open-world format provides players with greater freedom to explore diverse landscapes and uncover hidden secrets at their own pace, enhancing the sense of scale and immersion ([8]). 2. **Day and Night Cycle**: One of the notable new mechanics in Elden Ring is the inclusion of a dynamic day and night cycle. This cycle can affect enemy behavior and visibility, adding another layer of strategy to exploration and combat ([5]). 3. **Mounted Combat and Traversal**: Elden Ring introduces mounted combat, allowing players to fight enemies while riding a spectral steed. This new mechanic adds a layer of tactical depth to engagements and facilitates quicker travel across the expansive game world ([2]). 4. **Stealth Mechanics**: Borrowing from FromSoftware&#39;s previous title, Sekiro: Shadows Die Twice, Elden Ring incorporates stealth mechanics. Players can crouch, hide in tall grass, and perform stealth attacks on unsuspecting enemies, providing alternative approaches to combat situations ([5]). 5. **Jumping and Verticality**: Unlike the Dark Souls series, Elden Ring allows players to jump freely, which enhances vertical exploration and platforming elements. This new mechanic encourages players to explore the environment in three dimensions, searching for hidden paths and treasures ([5]). 6. **Spirit Summons**: A unique addition to Elden Ring is the ability to summon spirits to aid in combat. These spirits, which can be collected and upgraded, provide valuable assistance in battles, offering support and strategic advantages ([5]). 7. **Enhanced Character Customization**: Elden Ring builds on the character mechanics seen in Dark Souls but offers more extensive customization options. Players can tailor their character&#39;s abilities, appearance, and playstyle to a greater degree, making the experience more personalized ([8]). 8. **Improved Map and Navigation**: Elden Ring features a more detailed map system that helps players navigate the expansive world. Map fragments can be collected to reveal new areas, and markers can be placed to highlight points of interest, making exploration more manageable ([1]).
+</code></pre></li>
+<li>
+<p>新的游戏机制如何影响玩家策略和游戏在社区整体的受欢迎度？</p>
+<pre tabindex="0"><code>The introduction of new gameplay mechanics in Elden Ring has significantly influenced player strategies and the overall reception of the game among the gaming community. One of the most notable additions is the day and night cycle, which affects gameplay by altering visibility and enemy behavior. For instance, certain enemies only appear at night, and both players and enemies have reduced visibility during these hours, making encounters more unpredictable and strategic (Sources [1], [5]). This mechanic encourages players to plan their actions according to the time of day, adding a layer of depth and immersion to the game. Dynamic weather is another new feature that influences how players approach combat and exploration. Weather conditions such as heavy wind or rain can obscure sounds, making it easier or harder for players to sneak up on enemies or avoid detection (Source [5]). This dynamic environment requires players to constantly adapt their strategies based on the weather, adding complexity to their decision-making process. Mounted combat and the ability to summon spirit familiars are additional mechanics that have expanded the range of tactical options available to players. Mounted combat allows for greater mobility and new attack strategies, while summoning spirits can provide support in difficult battles, making it possible for players to tackle challenging foes with additional aid (Sources [1], [5], [8]). The game&#39;s open-world design also plays a crucial role in shaping player strategies. Unlike the more linear progression of previous FromSoftware titles, Elden Ring&#39;s expansive world invites exploration and offers multiple pathways to approach objectives. This flexibility allows players to engage with the game at their own pace and choose their battles, fostering a more personalized gaming experience (Sources [1], [4]). The reception of these new mechanics among the gaming community has been largely positive. Players have appreciated the increased freedom and variety in gameplay, which builds on the challenging and rewarding core mechanics that FromSoftware is known for. The introduction of new features like dynamic weather, day and night cycles, and mounted combat have been praised for adding depth and variety to the gameplay, enhancing the overall experience (Sources [3], [6], [9]). In conclusion, the new gameplay mechanics in Elden Ring have not only influenced player strategies by adding layers of complexity and adaptability but have also been well-received for enriching the game&#39;s depth and replayability. These innovations demonstrate FromSoftware&#39;s commitment to evolving its established action RPG formula, keeping the gameplay fresh and engaging for both veteran players and newcomers alike.
+</code></pre></li>
+</ul>
+<h4 id="文章结果">文章结果</h4>
+<p>生成了大纲和文章，并可导出<a href="files/Elden-Ring.pdf">PDF</a>。</p>
+<p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<figure  >
+  <div class="d-flex justify-content-center">
+    <div class="w-100" ><img alt="" srcset="
+               /post/storm-article-generation-framework/images/demo-elden-ring/article-result_hu6c4bbb9b32b2cd6bbc3ab822a9394c54_915952_5bbd1c27f427d028e39f720c4de1dd29.webp 400w,
+               /post/storm-article-generation-framework/images/demo-elden-ring/article-result_hu6c4bbb9b32b2cd6bbc3ab822a9394c54_915952_de950ee01aa5eb134044b00dd2b340d4.webp 760w,
+               /post/storm-article-generation-framework/images/demo-elden-ring/article-result_hu6c4bbb9b32b2cd6bbc3ab822a9394c54_915952_1200x1200_fit_q75_h2_lanczos_3.webp 1200w"
+               src="/post/storm-article-generation-framework/images/demo-elden-ring/article-result_hu6c4bbb9b32b2cd6bbc3ab822a9394c54_915952_5bbd1c27f427d028e39f720c4de1dd29.webp"
+               width="760"
+               height="439"
+               loading="lazy" data-zoomable /></div>
+  </div></figure>
+</p>
+<p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<figure  >
+  <div class="d-flex justify-content-center">
+    <div class="w-100" ><img alt="" srcset="
+               /post/storm-article-generation-framework/images/demo-elden-ring/reference_hu5e3fcf4827dca5bdaf1cfeabdb1dde7f_801290_2c561dad527dca3275f06fc2dad0ed32.webp 400w,
+               /post/storm-article-generation-framework/images/demo-elden-ring/reference_hu5e3fcf4827dca5bdaf1cfeabdb1dde7f_801290_a940925107a110c7032617b754fe3fd4.webp 760w,
+               /post/storm-article-generation-framework/images/demo-elden-ring/reference_hu5e3fcf4827dca5bdaf1cfeabdb1dde7f_801290_1200x1200_fit_q75_h2_lanczos_3.webp 1200w"
+               src="/post/storm-article-generation-framework/images/demo-elden-ring/reference_hu5e3fcf4827dca5bdaf1cfeabdb1dde7f_801290_2c561dad527dca3275f06fc2dad0ed32.webp"
+               width="760"
+               height="457"
+               loading="lazy" data-zoomable /></div>
+  </div></figure>
+</p>
+<h4 id="反馈通用">反馈（通用）</h4>
+<p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<figure  >
+  <div class="d-flex justify-content-center">
+    <div class="w-100" ><img alt="" srcset="
+               /post/storm-article-generation-framework/images/demo-elden-ring/feedback-form_hu35d99d5fa78e1818180b0957c431adf5_101061_95b361d3e3b8067143e70b5767a2455d.webp 400w,
+               /post/storm-article-generation-framework/images/demo-elden-ring/feedback-form_hu35d99d5fa78e1818180b0957c431adf5_101061_2ea6db61df7ab19e8b4ed319989fc997.webp 760w,
+               /post/storm-article-generation-framework/images/demo-elden-ring/feedback-form_hu35d99d5fa78e1818180b0957c431adf5_101061_1200x1200_fit_q75_h2_lanczos_3.webp 1200w"
+               src="/post/storm-article-generation-framework/images/demo-elden-ring/feedback-form_hu35d99d5fa78e1818180b0957c431adf5_101061_95b361d3e3b8067143e70b5767a2455d.webp"
+               width="567"
+               height="518"
+               loading="lazy" data-zoomable /></div>
+  </div></figure>
+</p>
+
+    </div>
+
+    
+
+
+
+
+<div class="article-tags">
+  
+  <a class="badge badge-light" href="/tag/%E6%96%87%E7%AB%A0%E7%94%9F%E6%88%90/">文章生成</a>
+  
+  <a class="badge badge-light" href="/tag/%E8%89%BE%E5%B0%94%E7%99%BB%E6%B3%95%E7%8E%AF/">艾尔登法环</a>
+  
+</div>
+
+
+
+<div class="share-box">
+  <ul class="share">
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="https://twitter.com/intent/tweet?url=https://spacetimelab.cn/post/storm-article-generation-framework/&amp;text=Storm%20Article%20Generation%20Framework" target="_blank" rel="noopener" class="share-btn-twitter" aria-label="twitter">
+          <i class="fab fa-twitter"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="https://www.facebook.com/sharer.php?u=https://spacetimelab.cn/post/storm-article-generation-framework/&amp;t=Storm%20Article%20Generation%20Framework" target="_blank" rel="noopener" class="share-btn-facebook" aria-label="facebook">
+          <i class="fab fa-facebook"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="mailto:?subject=Storm%20Article%20Generation%20Framework&amp;body=https://spacetimelab.cn/post/storm-article-generation-framework/" target="_blank" rel="noopener" class="share-btn-email" aria-label="envelope">
+          <i class="fas fa-envelope"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="https://www.linkedin.com/shareArticle?url=https://spacetimelab.cn/post/storm-article-generation-framework/&amp;title=Storm%20Article%20Generation%20Framework" target="_blank" rel="noopener" class="share-btn-linkedin" aria-label="linkedin-in">
+          <i class="fab fa-linkedin-in"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="whatsapp://send?text=Storm%20Article%20Generation%20Framework%20https://spacetimelab.cn/post/storm-article-generation-framework/" target="_blank" rel="noopener" class="share-btn-whatsapp" aria-label="whatsapp">
+          <i class="fab fa-whatsapp"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="https://service.weibo.com/share/share.php?url=https://spacetimelab.cn/post/storm-article-generation-framework/&amp;title=Storm%20Article%20Generation%20Framework" target="_blank" rel="noopener" class="share-btn-weibo" aria-label="weibo">
+          <i class="fab fa-weibo"></i>
+        </a>
+      </li>
+    
+  </ul>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+
+
+
+  
+  
+  
+  
+  
+  <div class="media author-card content-widget-hr">
+    
+      
+      <a href="/authors/admin/"><img class="avatar mr-3 avatar-circle" src="/authors/admin/avatar_hu55194f19033f85038196a23353ffe543_580100_270x270_fill_q75_lanczos_center.jpg" alt="CoolCats"></a>
+    
+
+    <div class="media-body">
+      <h5 class="card-title"><a href="/authors/admin/">CoolCats</a></h5>
+      <h6 class="card-subtitle">理学学士</h6>
+      <p class="card-text">我的研究兴趣是时空数据分析、知识图谱、自然语言处理与服务端开发</p>
+      <ul class="network-icon" aria-hidden="true">
+  
+    
+    
+    
+      
+    
+    
+    
+    
+    
+    <li>
+      <a href="mailto:2811159909@qq.com" >
+        <i class="fas fa-envelope"></i>
+      </a>
+    </li>
+  
+    
+    
+    
+      
+    
+    
+    
+    
+    
+      
+    
+    <li>
+      <a href="https://github.com/Coolgiserz" target="_blank" rel="noopener">
+        <i class="fab fa-github"></i>
+      </a>
+    </li>
+  
+</ul>
+
+    </div>
+  </div>
+
+
+
+
+
+
+
+
+
+  
+  
+  
+
+  
+
+  
+
+
+
+
+
+
+
+
+
+
+  </div>
+</article>
+  </div>
+
+  <div class="page-footer">
+    
+    
+    <div class="container">
+      <footer class="site-footer">
+
+  
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+
+
+
+
+
+  
+  
+  
+
+  
+  
+    
+  
+  
+    
+  
+
+  
+
+  
+  <p class="powered-by copyright-license-text">
+    © 2024 Weirdgiser &amp; <a href="https://beian.miit.gov.cn" target="_blank" rel="noopener">粤ICP备2024213180号</a>
+  </p>
+  
+
+  <p class="powered-by footer-license-icons">
+    <a href="https://creativecommons.org/licenses/by-nc-nd/4.0" rel="noopener noreferrer" target="_blank" aria-label="Creative Commons">
+      <i class="fab fa-creative-commons fa-2x" aria-hidden="true"></i>
+      <i class="fab fa-creative-commons-by fa-2x" aria-hidden="true"></i>
+      
+        <i class="fab fa-creative-commons-nc fa-2x" aria-hidden="true"></i>
+      
+      
+        <i class="fab fa-creative-commons-nd fa-2x" aria-hidden="true"></i>
+      
+    </a>
+  </p>
+
+
+
+
+  <p class="powered-by">
+    
+    
+    
+      
+      
+      
+      
+      
+      
+      Published with <a href="https://wowchemy.com/?utm_campaign=poweredby" target="_blank" rel="noopener">Wowchemy</a> — the free, <a href="https://github.com/wowchemy/wowchemy-hugo-themes" target="_blank" rel="noopener">open source</a> website builder that empowers creators.
+    
+  </p>
+</footer>
+
+    </div>
+    
+  </div>
+
+      
+
+    
+    <script src="/js/vendor-bundle.min.fab8b449b814cc9f95b22fcf2e45f05b.js"></script>
+
+    
+    
+    
+      
+
+      
+      
+
+      
+
+      
+        
+        <script src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@10.2.1/build/highlight.min.js" integrity="sha512-Ypjm0o7jOxAd4hpdoppSEN0TQOC19UtPAqD+4s5AlXmUvbmmS/YMxYqAqarQYyxTnB6/rqip9qcxlNB/3U9Wdg==" crossorigin="anonymous"></script>
+        
+        
+        <script src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@10.2.1/build/languages/r.min.js" crossorigin="anonymous"></script>
+        
+        <script src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@10.2.1/build/languages/latex.min.js" crossorigin="anonymous"></script>
+        
+      
+
+    
+
+    
+    
+    
+      <script src="https://cdn.jsdelivr.net/npm/leaflet@1.7.1/dist/leaflet.min.js" integrity="" crossorigin="anonymous"></script>
+    
+
+    
+    
+
+    
+    
+    
+      
+      <script id="search-hit-fuse-template" type="text/x-template">
+        <div class="search-hit" id="summary-{{key}}">
+          <div class="search-hit-content">
+            <div class="search-hit-name">
+              <a href="{{relpermalink}}">{{title}}</a>
+              <div class="article-metadata search-hit-type">{{type}}</div>
+              <p class="search-hit-description">{{snippet}}</p>
+            </div>
+          </div>
+        </div>
+      </script>
+      
+        <script src="https://cdn.jsdelivr.net/gh/krisk/Fuse@v3.2.1/dist/fuse.min.js" integrity="sha512-o38bmzBGX+hD3JHWUFCDA09btWaqrNmoJ3RXLlrysA7PP01Kgs4UlE4MhelE1v5dJR3+cxlR4qQlotsW7jKsnw==" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/gh/julmot/mark.js@8.11.1/dist/jquery.mark.min.js" integrity="sha512-mhbv5DqBMgrWL+32MmsDOt/OAvqr/cHimk6B8y/bx/xS88MVkYGPiVv2ixKVrkywF2qHplNRUvFsAHUdxZ3Krg==" crossorigin="anonymous"></script>
+      
+    
+
+    
+    
+
+    
+    
+    
+    
+      <script id="dsq-count-scr" src="https://weirdgiser.disqus.com/count.js" async></script>
+    
+
+    
+    
+      
+      
+      
+      
+      
+      
+      
+    
+
+    
+
+    
+    
+    
+    <script id="page-data" type="application/json">{"use_headroom":true}</script>
+
+    
+    
+      <script src="/js/wowchemy-headroom.c251366b4128fd5e6b046d4c97a62a51.js" type="module"></script>
+    
+    
+    
+    
+    
+    
+    
+      
+      
+    
+    
+    <script src="/en/js/wowchemy.min.ab2f2890dbe3e2e83579366d3d6e8fd9.js"></script>
+
+    
+    
+      <script src="/js/wowchemy-map.a26e9d2f7238ba5b868384f1c5bc6477.js" type="module"></script>
+    
+    
+    
+    
+      
+<div id="modal" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Cite</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <pre><code class="tex hljs"></code></pre>
+      </div>
+      <div class="modal-footer">
+        <a class="btn btn-outline-primary my-1 js-copy-cite" href="#" target="_blank">
+          <i class="fas fa-copy"></i> Copy
+        </a>
+        <a class="btn btn-outline-primary my-1 js-download-cite" href="#" target="_blank">
+          <i class="fas fa-download"></i> Download
+        </a>
+        <div id="modal-error"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+      <script src="/js/wowchemy-publication.68f8d7090562ca65fc6d3cb3f8f2d2cb.js" type="module"></script>
+
+
+
+
+
+
+</body>
+</html>
