@@ -13,14 +13,14 @@
     </image>
     
     <item>
-      <title>Storm Article Generation Framework</title>
+      <title>一个辅助写作框架：Storm</title>
       <link>https://spacetimelab.cn/post/storm-article-generation-framework/</link>
       <pubDate>Thu, 14 Nov 2024 23:14:57 +0800</pubDate>
       <guid>https://spacetimelab.cn/post/storm-article-generation-framework/</guid>
-      <description>&lt;h2 id=&#34;流程&#34;&gt;流程&lt;/h2&gt;
+      <description>&lt;h2 id=&#34;辅助写作的流程业务&#34;&gt;辅助写作的流程/业务&lt;/h2&gt;
 &lt;ol&gt;
 &lt;li&gt;
-&lt;p&gt;输入意图&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;输入：用户意图（主题、描述）&lt;/strong&gt;&lt;/p&gt;
 &lt;/li&gt;
 &lt;li&gt;
 &lt;p&gt;生成若干视角下的问题&lt;/p&gt;
@@ -29,7 +29,7 @@
 &lt;p&gt;检索并浏览、总结相关网页&lt;/p&gt;
 &lt;/li&gt;
 &lt;li&gt;
-&lt;p&gt;生成文章&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;生成文章&lt;/strong&gt;&lt;/p&gt;
 &lt;/li&gt;
 &lt;/ol&gt;
 &lt;h3 id=&#34;示例1-关于艾尔登法环的新人引导文章&#34;&gt;示例1: 关于艾尔登法环的新人引导文章&lt;/h3&gt;
@@ -259,6 +259,334 @@
                loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
   &lt;/div&gt;&lt;/figure&gt;
 &lt;/p&gt;
+&lt;h2 id=&#34;原理&#34;&gt;原理&lt;/h2&gt;
+&lt;h3 id=&#34;论文速读assisting-in-writing-wikipedia-like-articles-from-scratch-with-large-language-models&#34;&gt;论文速读：《Assisting in Writing Wikipedia-like Articles From Scratch with Large Language Models》&lt;/h3&gt;
+&lt;p&gt;文章地址: &lt;a href=&#34;files/2402.14207v2.pdf&#34;&gt;链接&lt;/a&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;工作：应用大语言模型从头开始撰写蕾丝维基百科页面那样兼具广度和深度、同时有依据的（grounded）和有条理的（organized）长篇文章。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;挑战：预写作阶段（pre-writing stage），包括如何对文章主题进行调研以及在写作前准备一个大纲。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;成果：提出STORM写作系统，通过检索和多视角问题回答生成主题大纲（Synthesis of Topic Outlines through Retrieval and Multi-perspective Question Asking）&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;STORM基本流程：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;视角发掘：发现关于给定主题的多种视角&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;模拟对话：写作者抛出多种不同视角下的问题与主题专家对话，主题专家的回答基于&lt;strong&gt;可信互联网&lt;/strong&gt;信息源。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;组织文章：将收集到的信息组织起来生成一个提纲&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;如何验证：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;构建FreshWiki，高质量的维基百科文章数据集&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;提纲评价指标&lt;/strong&gt;用于评估预写作阶段的效果。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;获取有经验的维基百科编辑者的反馈&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;效果&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;1️⃣提纲驱动（outline-driven）与检索增强（retrieval-augumented）的方法作为基准，大部份STORM生成的文章更有条理（25%+），而且覆盖面更广（10%+）。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;新的挑战&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;数据源偏见（source bias）&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;对无关事实的过度联想&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&#34;导图&#34;&gt;导图&lt;/h4&gt;
+&lt;p&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure  &gt;
+  &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img alt=&#34;&#34; srcset=&#34;
+               /post/storm-article-generation-framework/images/paper-reading/storm/figure1_hu451c7c0400954985d1a217e9d5e196bb_400268_4e7d853765a2bed3f484ee30ed378bb7.webp 400w,
+               /post/storm-article-generation-framework/images/paper-reading/storm/figure1_hu451c7c0400954985d1a217e9d5e196bb_400268_023b6e3a42b516b0c281c91c546af24c.webp 760w,
+               /post/storm-article-generation-framework/images/paper-reading/storm/figure1_hu451c7c0400954985d1a217e9d5e196bb_400268_1200x1200_fit_q75_h2_lanczos_3.webp 1200w&#34;
+               src=&#34;https://spacetimelab.cn/post/storm-article-generation-framework/images/paper-reading/storm/figure1_hu451c7c0400954985d1a217e9d5e196bb_400268_4e7d853765a2bed3f484ee30ed378bb7.webp&#34;
+               width=&#34;468&#34;
+               height=&#34;760&#34;
+               loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+  &lt;/div&gt;&lt;/figure&gt;
+&lt;/p&gt;
+&lt;h4 id=&#34;相关工作及问题&#34;&gt;相关工作及问题&lt;/h4&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;预先准备好引用文献或预先准备大纲&lt;/p&gt;
+&lt;p&gt;难以泛化。对专业知识要求高：识别、评估、组织外部数据源，对于专业作者来说也有挑战。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;直接依赖大模型的参数知识生成每篇文章的提纲。&lt;/p&gt;
+&lt;p&gt;受限于缺乏细节和大模型幻觉。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;知识获取：Asking effective question。基于指令优化的模型尽管可以生成一些“问题”，，但往往只是基本的“What”、“When”、“Where”，通常只能处理关于主题的表面、浅层的事实性问题&amp;hellip;&amp;hellip;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure  &gt;
+  &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img alt=&#34;&#34; srcset=&#34;
+               /post/storm-article-generation-framework/images/paper-reading/storm/table1_hubd48973b1bc3a15df14a502e7948b082_92545_8dd5b862646780913902985088cff47a.webp 400w,
+               /post/storm-article-generation-framework/images/paper-reading/storm/table1_hubd48973b1bc3a15df14a502e7948b082_92545_b567b584698371bec44c858fd3c7fac0.webp 760w,
+               /post/storm-article-generation-framework/images/paper-reading/storm/table1_hubd48973b1bc3a15df14a502e7948b082_92545_1200x1200_fit_q75_h2_lanczos_3.webp 1200w&#34;
+               src=&#34;https://spacetimelab.cn/post/storm-article-generation-framework/images/paper-reading/storm/table1_hubd48973b1bc3a15df14a502e7948b082_92545_8dd5b862646780913902985088cff47a.webp&#34;
+               width=&#34;567&#34;
+               height=&#34;342&#34;
+               loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+  &lt;/div&gt;&lt;/figure&gt;
+&lt;/p&gt;
+&lt;h5 id=&#34;storm的基本假设&#34;&gt;STORM的基本假设&lt;/h5&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;多种视角可以得到多样的问题（Diverse perspectives lead to varied questions）&lt;/p&gt;
+&lt;p&gt;如前面的示例，撰写一份艾尔登法环新人指引，分别从故事爱好者、玩家代表、故事写作者、游戏设计者四类人的视角提问。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;提出有深度的问题需要迭代式调查（Formulating in-depth questions requires iterative research）&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;基于上述假设，STORM采用多阶段方法。&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;首先，通过检索和分析维基百科的相似主题的文章进行视角发现。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;然后，让LLM以拟人化的方式就特定视角进行提问&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;引出后续（follow-up）问题用于迭代式调研&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;模拟多轮对话使得答案有理有据（引用互联网内容）&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;最后，基于LLM内部知识和收集到的信息，构建题纲，一章一章撰写形成类似维基百科文章的全文。&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;问题抽象化表述：给定主题t，找到一组引用集合$R$并生成完整的文章$S=s_{1}s_{2}&amp;hellip;s_{n}$，其中每个句子$s_{i}$引用R中的一部份。（注：具体实践上，S也包括一些不要求引用的文章结构性要素，如章节标题、子章节标题）&lt;/p&gt;
+&lt;h5 id=&#34;主要贡献&#34;&gt;主要贡献&lt;/h5&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;构建数据集FreshWiki和评价标准，可用于提纲质量评价和文章质量评价&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;提出STORM，一个新型自动化写作系统，使用LLM对主题进行调研、构建提纲和检索互联网上的可信数据源&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;自动化和人工评价的方式证明方法的有效性。&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;Remark：
+
+数据集构建的原则是什么？
+
+针对提纲和文章的自动化评价标准分别是什么？
+
+人工评价如何做到客观性？
+
+如何判断数据源是否可信？
+&lt;/code&gt;&lt;/pre&gt;&lt;h5 id=&#34;freshwiki数据集&#34;&gt;FreshWIki数据集&lt;/h5&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;如何确保日期标准：2022年2月到2023年11月的文章中，编辑次数最多的页面。选择top-100编辑次数最多的页面。&lt;/p&gt;
+&lt;p&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure  &gt;
+  &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img alt=&#34;&#34; srcset=&#34;
+               /post/storm-article-generation-framework/images/paper-reading/storm/figure5_hue7e15218077488df96080ba2f3fd3ac6_89052_42e9ac72a9193e2995f86a5d4f6f5299.webp 400w,
+               /post/storm-article-generation-framework/images/paper-reading/storm/figure5_hue7e15218077488df96080ba2f3fd3ac6_89052_e1594262f309a69e1ece393f55686468.webp 760w,
+               /post/storm-article-generation-framework/images/paper-reading/storm/figure5_hue7e15218077488df96080ba2f3fd3ac6_89052_1200x1200_fit_q75_h2_lanczos_3.webp 1200w&#34;
+               src=&#34;https://spacetimelab.cn/post/storm-article-generation-framework/images/paper-reading/storm/figure5_hue7e15218077488df96080ba2f3fd3ac6_89052_42e9ac72a9193e2995f86a5d4f6f5299.webp&#34;
+               width=&#34;760&#34;
+               height=&#34;561&#34;
+               loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+  &lt;/div&gt;&lt;/figure&gt;
+&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;如何确保引用的高质量：根据&lt;a href=&#34;https://www.mediawiki.org/wiki/ORES&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;ORES&lt;/a&gt;的评估结果，只保留B-class或以上质量评级的文章。&lt;/p&gt;
+&lt;p&gt;评级说明：&lt;a href=&#34;https://en.wikipedia.org/wiki/Wikipedia:Content_assessment&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Wikipedia:Content assessment - Wikipedia&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;简化任务&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;排除列举型文章(&lt;a href=&#34;https://en.wikipedia.org/wiki/Wikipedia:Stand-alone_lists&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Wikipedia:Stand-alone lists&lt;/a&gt;)&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;只考虑纯文本的文章&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;ORES: Objective Revision Evaluation Service: 客观修订评估服务
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure  &gt;
+  &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img alt=&#34;&#34; srcset=&#34;
+               /post/storm-article-generation-framework/images/paper-reading/storm/ORES_hu2cb93d5a24fc9629b8851ed98f4db384_375287_2c6673ef20c915d83202c6e67de82efb.webp 400w,
+               /post/storm-article-generation-framework/images/paper-reading/storm/ORES_hu2cb93d5a24fc9629b8851ed98f4db384_375287_967b979480033fd7457c5bf1cc24af21.webp 760w,
+               /post/storm-article-generation-framework/images/paper-reading/storm/ORES_hu2cb93d5a24fc9629b8851ed98f4db384_375287_1200x1200_fit_q75_h2_lanczos_3.webp 1200w&#34;
+               src=&#34;https://spacetimelab.cn/post/storm-article-generation-framework/images/paper-reading/storm/ORES_hu2cb93d5a24fc9629b8851ed98f4db384_375287_2c6673ef20c915d83202c6e67de82efb.webp&#34;
+               width=&#34;760&#34;
+               height=&#34;567&#34;
+               loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+  &lt;/div&gt;&lt;/figure&gt;
+&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;通常高质量的文章包含结构化数据（如表格）并且是多模态的。
+&lt;/code&gt;&lt;/pre&gt;&lt;h5 id=&#34;提纲创建和评估&#34;&gt;提纲创建和评估&lt;/h5&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;任务拆解：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;Pre-Writing Stage：生成提纲O。&lt;/p&gt;
+&lt;p&gt;如何表示提纲？添加#表示章节标题、##表示子章节标题。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Writing Stage：给定主题t、参考文献R和提纲O，生成完整文章S。&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;评估提纲的覆盖率&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;Heading soft recall：对标题的嵌入向量进行余弦相似性的计算。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Heading entity recall： 标题中命名实体的百分比&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&#34;方法&#34;&gt;方法&lt;/h4&gt;
+&lt;p&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure  &gt;
+  &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img alt=&#34;&#34; srcset=&#34;
+               /post/storm-article-generation-framework/images/paper-reading/storm/figure2_hu0fc8ea07031d5bbe48b83882a44065ed_251306_0d7edf396fba56200933932cb627613f.webp 400w,
+               /post/storm-article-generation-framework/images/paper-reading/storm/figure2_hu0fc8ea07031d5bbe48b83882a44065ed_251306_a974be8477efa83e9aa17ad336b67c38.webp 760w,
+               /post/storm-article-generation-framework/images/paper-reading/storm/figure2_hu0fc8ea07031d5bbe48b83882a44065ed_251306_1200x1200_fit_q75_h2_lanczos_3.webp 1200w&#34;
+               src=&#34;https://spacetimelab.cn/post/storm-article-generation-framework/images/paper-reading/storm/figure2_hu0fc8ea07031d5bbe48b83882a44065ed_251306_0d7edf396fba56200933932cb627613f.webp&#34;
+               width=&#34;760&#34;
+               height=&#34;320&#34;
+               loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+  &lt;/div&gt;&lt;/figure&gt;
+&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;Perpective-Guided Question Asking&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Simulating Converations&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Creating the Article Outline&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Writing the Full-Length Article&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
 </description>
     </item>
     

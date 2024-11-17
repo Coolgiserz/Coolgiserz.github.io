@@ -1,0 +1,594 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>辅助写作 | NullSpace</title>
+    <link>https://spacetimelab.cn/tag/%E8%BE%85%E5%8A%A9%E5%86%99%E4%BD%9C/</link>
+      <atom:link href="https://spacetimelab.cn/tag/%E8%BE%85%E5%8A%A9%E5%86%99%E4%BD%9C/index.xml" rel="self" type="application/rss+xml" />
+    <description>辅助写作</description>
+    <generator>Wowchemy (https://wowchemy.com)</generator><language>en-us</language><lastBuildDate>Thu, 14 Nov 2024 23:14:57 +0800</lastBuildDate>
+    <image>
+      <url>https://spacetimelab.cn/media/icon_hue03491371183284312b8b116a73ae5ab_79511_512x512_fill_lanczos_center_3.png</url>
+      <title>辅助写作</title>
+      <link>https://spacetimelab.cn/tag/%E8%BE%85%E5%8A%A9%E5%86%99%E4%BD%9C/</link>
+    </image>
+    
+    <item>
+      <title>一个辅助写作框架：Storm</title>
+      <link>https://spacetimelab.cn/post/storm-article-generation-framework/</link>
+      <pubDate>Thu, 14 Nov 2024 23:14:57 +0800</pubDate>
+      <guid>https://spacetimelab.cn/post/storm-article-generation-framework/</guid>
+      <description>&lt;h2 id=&#34;辅助写作的流程业务&#34;&gt;辅助写作的流程/业务&lt;/h2&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;输入：用户意图（主题、描述）&lt;/strong&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;生成若干视角下的问题&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;检索并浏览、总结相关网页&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;生成文章&lt;/strong&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h3 id=&#34;示例1-关于艾尔登法环的新人引导文章&#34;&gt;示例1: 关于艾尔登法环的新人引导文章&lt;/h3&gt;
+&lt;h4 id=&#34;输入&#34;&gt;输入&lt;/h4&gt;
+&lt;p&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure  &gt;
+  &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img alt=&#34;&#34; srcset=&#34;
+               /post/storm-article-generation-framework/images/demo-elden-ring/input_hu1b1bc6ce2dc177c2718bde7727e0f572_56387_ae3b9e2055478a69e3abb8c6da7886ff.webp 400w,
+               /post/storm-article-generation-framework/images/demo-elden-ring/input_hu1b1bc6ce2dc177c2718bde7727e0f572_56387_ca9d858c28b2088b91545e854126d3bd.webp 760w,
+               /post/storm-article-generation-framework/images/demo-elden-ring/input_hu1b1bc6ce2dc177c2718bde7727e0f572_56387_1200x1200_fit_q75_h2_lanczos_3.webp 1200w&#34;
+               src=&#34;https://spacetimelab.cn/post/storm-article-generation-framework/images/demo-elden-ring/input_hu1b1bc6ce2dc177c2718bde7727e0f572_56387_ae3b9e2055478a69e3abb8c6da7886ff.webp&#34;
+               width=&#34;567&#34;
+               height=&#34;323&#34;
+               loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+  &lt;/div&gt;&lt;/figure&gt;
+&lt;/p&gt;
+&lt;h4 id=&#34;检索&#34;&gt;检索&lt;/h4&gt;
+&lt;p&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure  &gt;
+  &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img alt=&#34;&#34; srcset=&#34;
+               /post/storm-article-generation-framework/images/demo-elden-ring/retrieve_hu192505dfbfb93e2c0aeba6da369dbc3b_416728_fe825244c6c741553f2876466d58bd2a.webp 400w,
+               /post/storm-article-generation-framework/images/demo-elden-ring/retrieve_hu192505dfbfb93e2c0aeba6da369dbc3b_416728_de7ab8ea7b3656ce455438960c9246ac.webp 760w,
+               /post/storm-article-generation-framework/images/demo-elden-ring/retrieve_hu192505dfbfb93e2c0aeba6da369dbc3b_416728_1200x1200_fit_q75_h2_lanczos_3.webp 1200w&#34;
+               src=&#34;https://spacetimelab.cn/post/storm-article-generation-framework/images/demo-elden-ring/retrieve_hu192505dfbfb93e2c0aeba6da369dbc3b_416728_fe825244c6c741553f2876466d58bd2a.webp&#34;
+               width=&#34;760&#34;
+               height=&#34;700&#34;
+               loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+  &lt;/div&gt;&lt;/figure&gt;
+&lt;/p&gt;
+&lt;p&gt;这个过程，如何知道应该检索哪些数据源？依赖搜索引擎的排名的权威性？&lt;/p&gt;
+&lt;h4 id=&#34;头脑风暴&#34;&gt;头脑风暴&lt;/h4&gt;
+&lt;p&gt;从四类人的视角看问题：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;传奇故事爱好者&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;玩家社区代表&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;基本事实写作者&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;游戏设计者&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h5 id=&#34;传奇故事爱好者&#34;&gt;传奇故事爱好者&lt;/h5&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;A devoted fan of the game’s narrative, this editor will delve into the lore of Elden Ring, examining its setting, characters, and story elements. They will compare it to the lore in previous FromSoftware games and highlight the connections and thematic continuity.
+&lt;/code&gt;&lt;/pre&gt;&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;如何解读艾尔登法环中的传说故事的主旨，ta与FromSoftware社以前的游戏作品有何不同？&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;The lore of Elden Ring, much like previous FromSoftware games, is rich, intricate, and often shrouded in mystery, requiring players to piece together the story from item descriptions, dialogues, and environmental storytelling [5]. This approach is a hallmark of director Hidetaka Miyazaki&amp;#39;s narrative style, which can be seen across the Dark Souls series, Bloodborne, and Sekiro: Shadows Die Twice [1]. One of the central themes in Elden Ring is the concept of power and its corruptive influence. Players take on the role of a Tarnished, a character who must traverse the Lands Between to collect Great Runes and reforge the Elden Ring in order to become the Elden Lord [2]. This journey involves confronting demigods who have been driven to madness and corruption by their own power, reflecting a recurring theme in FromSoftware games where the pursuit of power often leads to ruin and despair [1]. The theme of fire and its origins is another prevalent narrative device in Elden Ring, echoing motifs from the Dark Souls series, where the Age of Fire and the cycles of light and dark play a significant role [1]. This reuse of thematic elements provides a sense of continuity across FromSoftware&amp;#39;s body of work, despite each game having its own unique setting and story. Additionally, the lore of Elden Ring is heavily influenced by Norse mythology, contributing to the game&amp;#39;s depth and complexity. This mythological underpinning shapes the world and its characters, adding layers to the narrative that players can explore [4]. Compared to previous games, Elden Ring&amp;#39;s story is more expansive, involving a larger world with numerous interwoven tales and a rich history that players can uncover through exploration and curiosity [6]. This complexity has led to mixed reactions from the community, with some praising the depth and others finding it challenging to follow [3]. The collaboration between Miyazaki and renowned fantasy author George R. R. Martin has also brought a new dimension to the lore, infusing it with Martin&amp;#39;s intricate world-building and character-driven storytelling [7]. This partnership has contributed to the game&amp;#39;s vast and detailed mythos, making it a standout entry in FromSoftware&amp;#39;s catalog. In summary, the main themes of Elden Ring&amp;#39;s lore—power and corruption, fire and its origins, and mythological influences—are consistent with those in previous FromSoftware games. However, the collaborative effort with George R. R.
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;能否阐述艾尔登法环中的关键角色及其对故事的重要性？&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;Certainly! Elden Ring, developed by FromSoftware, boasts a rich tapestry of characters integral to its lore. The game’s setting, the Lands Between, is teeming with powerful beings that the player, assuming the role of the Tarnished, interacts with during their quest to become Elden Lord. One of the most critical characters is **Queen Marika**, the goddess whose actions set the game&amp;#39;s events into motion. Marika&amp;#39;s shattering of the Elden Ring led to the disarray in the Lands Between, making her a pivotal figure in understanding the world&amp;#39;s current state [1][4]. Another key character is **Dragonlord Placidusax**, a powerful dragon and one of the game&amp;#39;s lore’s most potent beings. His presence underscores the ancient and mythic nature of the challenges the Tarnished faces [1]. **Malenia, Blade of Miquella**, is another significant figure. Despite being one of the game&amp;#39;s most difficult bosses, her backstory involving the Scarlet Rot and her devotion to her brother Miquella enriches the narrative profoundly [3]. Her struggles and eventual descent are emblematic of the larger themes of decay and struggle in the game. **Mohg, Lord of Blood**, represents another tier of significant characters. His dark ambitions and connections to the blood-soaked rituals add another layer of depth to the lore, emphasizing the different power dynamics at play in the Lands Between [3]. The Shadow of the Erdtree DLC expands on these existing characters while introducing new ones like **Romina** and **the Hornsent**. These characters provide further insights into critical aspects such as the origins of the Scarlet Rot and the Omens, thereby enriching the player’s understanding of the game’s universe [2]. Elden Ring’s family tree and relationships among characters are intricate. For instance, understanding the connections between Marika, her offspring, and their factions is crucial for grasping the complex political and divine struggles within the game. This relational web is essential for players to fully appreciate the motivations and conflicts driving the narrative [5]. In summary, Elden Ring&amp;#39;s key characters, from demigods like Malenia to mythic figures like Dragonlord Placidusax and essential lore-bearers introduced in the DLC, create a layered and immersive story.
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;艾尔登法环的背景故事和关键角色间的关系如何增强游戏的叙事性和玩家体验？&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;The backstories and relationships between key characters in Elden Ring significantly enhance the game&amp;#39;s narrative and player experience by adding layers of depth and complexity to the world of The Lands Between. Elden Ring&amp;#39;s storytelling style, a collaboration between FromSoftware&amp;#39;s Hidetaka Miyazaki and George R. R. Martin, employs subtlety and nuance, often requiring players to piece together information from various dialogues, item descriptions, and environmental cues [1][7]. A major element of the game&amp;#39;s narrative is the intricate family tree of its characters, which influences much of the storyline. The characters&amp;#39; relationships, often shrouded in mystery and revealed through exploration and interaction, create a compelling backdrop that motivates players to delve deeper into the lore [1]. For example, understanding the connections between characters like Queen Marika, Godfrey, and their demigod offspring can provide players with insight into their motivations and the larger narrative forces at play. The subtlety of the storytelling also means that players must engage actively with the game to uncover its secrets. This approach sparks a sense of curiosity and encourages exploration, as players gather lore from defeated enemies and conversations with NPCs [3][6]. The detailed backstories of characters such as the Night of the Black Knives or the House of the Moon, which are meticulously explained by lore experts like YouTube creator VaatiVidya, further enrich the narrative and provide a more comprehensive understanding of the game&amp;#39;s events [4]. Furthermore, the cryptic nature of the story has been a point of both acclaim and criticism. While some argue that the ambiguous narrative makes it difficult to follow [2], others appreciate the depth it adds, making the discovery of each story element feel rewarding. This complexity also fosters community engagement, as players collaborate to piece together the lore and share their findings, creating a shared experience that extends beyond individual gameplay [3]. Overall, the interwoven backstories and relationships in Elden Ring enhance the narrative by creating a richly textured world that rewards exploration and active engagement. This storytelling method not only captivates players but also ensures that each playthrough can reveal new insights, making the game an enduring and immersive experience.
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h5 id=&#34;玩家社区代表&#34;&gt;玩家社区代表&lt;/h5&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;This editor will focus on player experiences and community engagement surrounding Elden Ring. They will cover multiplayer features, player-created content, and community discussions, showcasing how the game has fostered a unique social environment.
+&lt;/code&gt;&lt;/pre&gt;&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;艾尔登法环的多玩家特性如何冲击玩家群体间的“约玩”和协作？&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;The multiplayer features in Elden Ring have had a significant impact on player engagement and collaboration within the community, enhancing the overall gaming experience. Elden Ring maintains the core cooperative play mechanics familiar to fans of FromSoftware&amp;#39;s games, such as summoning other players to assist with challenging areas or boss fights. However, Elden Ring has made this process more accessible compared to its predecessors, such as Dark Souls and Demon&amp;#39;s Souls, by removing the need for rare items to summon help (Source [2]). The game allows players to create a summoning sign using the Tarnished&amp;#39;s Furled Finger, enabling them to join others&amp;#39; games and provide assistance (Source [1]). This streamlined approach to multiplayer functionality has encouraged more players to engage in cooperative play, as they can more reliably and consistently summon allies or join other players&amp;#39; sessions without worrying about depleting precious resources. Additionally, Elden Ring includes a dedicated multiplayer menu where players can easily manage their multiplayer activities, whether it’s cooperating with friends, random players, or engaging in PvP invasions (Source [3]). This user-friendly interface makes it easier for players to navigate the multiplayer aspects, thus promoting more frequent and meaningful interactions within the community. The inclusion of tools to ease summoning woes, such as multiplayer passwords and effigies, further facilitates a smoother cooperative experience, reducing the barriers to engaging with other players (Source [1], [7]). Moreover, the complex and challenging nature of Elden Ring&amp;#39;s world encourages collaboration. Many players find that tackling the game&amp;#39;s toughest challenges is more manageable and enjoyable when done with friends or allies, enhancing the sense of community and shared adventure (Source [4], [6]). While Elden Ring does not currently support crossplay between different platforms, the multiplayer features available have still managed to foster a robust and active player community, allowing for extensive cooperative gameplay and dynamic PvP encounters (Source [5]). Overall, the multiplayer features in Elden Ring have positively impacted player engagement by making cooperative play more accessible, encouraging collaboration, and providing a variety of tools and systems to enhance the multiplayer experience. This has led to a more connected and supportive player community, where adventurers in The Lands Between can join forces to overcome the game&amp;#39;s formidable challenges.
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;玩家自定义内容（如模组和自定义建筑）如何影响社区活力和玩家互动？&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;Player-created content, such as mods and custom builds, has significantly influenced community dynamics and interactions among players in Elden Ring. The modding community has introduced various modifications that enhance and diversify the gaming experience, impacting how players engage with both the game and each other. One notable example is the &amp;#34;Seamless Co-op&amp;#34; mod developed by LukeYui. This mod addresses the shortcomings of Elden Ring’s original cooperative play system, which was criticized for its complex item requirements, frequent disconnects, and restrictive gameplay (Source [4]). By providing a more user-friendly and stable co-op experience, the Seamless Co-op mod has facilitated smoother interactions among players, enabling them to explore the game’s vast world together without the frustration of technical difficulties (Source [4]). Moreover, mods such as &amp;#34;Elden Ring Reborn&amp;#34; have brought comprehensive overhauls to the game, touching nearly every aspect of it in meaningful ways (Source [3]). These extensive modifications, which include new skills, balance adjustments, and even randomized gameplay elements, cater to a variety of player preferences and playstyles (Source [1], Source [5]). As a result, players can customize their experience to suit their individual tastes, leading to a more personalized and engaging community dynamic. Additionally, the introduction of various mods has fostered a collaborative environment among modders and players. For example, the &amp;#34;Elden Ring Reborn&amp;#34; mod credits multiple contributors who assisted in different aspects of the mod’s development, showcasing the collaborative spirit within the modding community (Source [3]). This collaboration not only enhances the quality and diversity of mods available but also strengthens the bonds between community members as they work together to improve the game. Furthermore, mods like &amp;#34;Easy Mode&amp;#34; and &amp;#34;No Rune Loss&amp;#34; offer accessibility options for players who may find the game’s difficulty too challenging (Source [8]). By lowering the barrier to entry, these mods enable a wider range of players to participate in the Elden Ring community, fostering inclusivity and encouraging more interactions among diverse player groups. Overall, player-created content has significantly shaped the community dynamics in Elden Ring by enhancing cooperative play, providing diverse gameplay options, and fostering a collaborative and inclusive environment. The modding community continues to be a driving force in evolving the game, ensuring that players have new and exciting ways to experience The Lands Between.
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;玩家如何参与关于艾尔登法环游玩策略和经验的讨论？哪些平台对于玩家互动而言最为流行？&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;Players typically engage in discussions about strategies and experiences related to Elden Ring on various platforms and forums. One of the most popular platforms is Steam, where the community section provides a space for players to share tips, ask for help, and discuss game mechanics [1][2]. Another significant platform is social media, as Elden Ring itself has been described as an &amp;#34;entire social media platform unto itself,&amp;#34; where players can leave messages, bloodstains, and summon signs to communicate indirectly within the game world [4]. This feature allows players to share hints, warnings, and jokes, fostering a unique in-game community. Online multiplayer engagement is a central aspect of the Elden Ring experience. Players can summon or be summoned for cooperative play to help defeat bosses or engage in PvP combat. This is facilitated by items like the Tarnished&amp;#39;s Furled Finger and by activating the Effigies of the Martyr, allowing for both co-op and PvP interactions [5][6]. Additionally, players use multiplayer passwords to join friends or specific communities, ensuring they can play together despite the asynchronous nature of the game&amp;#39;s multiplayer system [6]. Despite some clunkiness in the cooperative play setup, these various in-game and external platforms help create a robust community where players can share their strategies, experiences, and insights into the game [5]. I cannot answer this question based on the available information about platform-specific performance comparisons for playing Elden Ring, as this does not relate to community discussions and forums. These platforms and systems collectively support a rich and engaging community experience for Elden Ring player
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h5 id=&#34;基本事实写作者&#34;&gt;基本事实写作者&lt;/h5&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;Basic fact writer focusing on broadly covering the basic facts about the topic.
+&lt;/code&gt;&lt;/pre&gt;&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;能否对艾尔登法环幕后开发过程的整体情况进行介绍？&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;Certainly! Here is an overview of the development process behind &amp;#34;Elden Ring,&amp;#34; including key individuals and studios involved: &amp;#34;Elden Ring&amp;#34; is a 2022 action role-playing game developed by FromSoftware, a Japanese game development studio. The game was directed by Hidetaka Miyazaki, who is renowned for his work on other FromSoftware titles such as Dark Souls, Bloodborne, and Sekiro: Shadows Die Twice. The worldbuilding for Elden Ring was provided by American fantasy writer George R. R. Martin, best known for his &amp;#34;A Song of Ice and Fire&amp;#34; series, which was adapted into the television series &amp;#34;Game of Thrones&amp;#34; [1][4]. The development of Elden Ring marked FromSoftware&amp;#39;s first foray into the open-world genre. This ambitious project involved a significant departure from the studio&amp;#39;s previous games, which were known for their interconnected but more linear worlds. The game&amp;#39;s development ran parallel to that of Sekiro: Shadows Die Twice, although there was limited direct feedback between the two projects [2][7]. Miyazaki has described the development process as a blend of leveraging FromSoftware’s extensive experience with challenging gameplay and incorporating new elements such as a vast, explorable landscape. This open-world design offered players the freedom to explore, a significant shift from the more structured environments of earlier FromSoftware titles [2][4]. During the development, Miyazaki and his team faced numerous challenges, especially as the game approached its launch. The pressure was high, as expectations were significant due to the involvement of high-profile figures like Miyazaki and Martin. The final stages of development were intense, with the team working hard to meet the launch deadlines [3]. Elden Ring was published by FromSoftware in Japan and internationally by Bandai Namco Entertainment. The game was released on February 25, 2022, for multiple platforms including PlayStation 4, PlayStation 5, Windows, Xbox One, and Xbox Series X/S [1][5]. In summary, the development of Elden Ring was a complex and highly collaborative process involving FromSoftware, Hidetaka Miyazaki, and George R. R. Martin. It represented a significant evolution for FromSoftware as they ventured into the open-world genre, combining their signature challenging gameplay with expansive worldbuilding.
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;能否详细阐述游戏的主要叙事和主题，与前作相比有何差异？&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;&amp;#34;Elden Ring&amp;#34; presents a deep and intricate narrative, rooted in a fantastical world known as the Lands Between. The game&amp;#39;s story, a collaboration between Hidetaka Miyazaki and George R. R. Martin, is both rich and complex, following the tradition of previous FromSoftware titles but with distinct differences in themes and storytelling. In &amp;#34;Elden Ring,&amp;#34; players assume the role of a Tarnished, an individual who has lost the golden glow in their eyes, symbolizing the grace of the Erdtree. This giant, golden tree is central to the game&amp;#39;s lore, as it radiates grace and power across the Lands Between [4]. The Tarnished are tasked with obtaining the Elden Ring, a powerful artifact, and ascending to the status of Elden Lord by defeating various demigods and claiming their powers [1][3]. The overarching narrative involves understanding the history and fallout of the Lands Between, particularly an event known as the Shattering, which fragmented the world and its rulers. This event and its consequences are pieced together through exploration, dialogues with NPCs, and item descriptions, a storytelling method that echoes the cryptic narrative style of the Soulsborne series [5][6]. Unlike more straightforward narratives, &amp;#34;Elden Ring&amp;#34; requires players to be curious and actively seek out lore to fully grasp the story [5]. Thematically, &amp;#34;Elden Ring&amp;#34; explores ideas of power, loss, and the cyclical nature of ambition and destruction. The Tarnished, much like the protagonists in previous FromSoftware games, embark on a journey filled with peril and uncertainty, seeking to restore or reshape a broken world. However, the inclusion of George R. R. Martin&amp;#39;s influence brings a layered complexity to the world&amp;#39;s history and character motivations, infusing the game with intricate mythological and political underpinnings [7]. One of the significant differences between &amp;#34;Elden Ring&amp;#34; and earlier FromSoftware games, such as the Dark Souls series, is its open-world structure. This vast, interconnected environment offers players unprecedented freedom to explore and uncover the story at their own pace, rather than following a more linear path [2]. Despite the expansive setting, the game maintains the studio&amp;#39;s signature difficulty and atmospheric storytelling, blending accessibility with the challenge that long-time fans expect [8]. In summary, &amp;#34;Elden Ring&amp;#34; continues FromSoftware&amp;#39;s tradition of deep, enigmatic storytelling, enhanced by George R. R. Martin&amp;#39;s world-building.
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;艾尔登法环的关键游戏机制是什么？与前作相比，如何增强玩家体验？&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;&amp;#34;Elden Ring,&amp;#34; developed by FromSoftware, incorporates a blend of familiar and novel gameplay mechanics that significantly enhance the player experience, setting it apart from previous titles by the same developer. One of the standout features of &amp;#34;Elden Ring&amp;#34; is its expansive open-world design, a departure from the more linear pathways of the Dark Souls series and Bloodborne.
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h5 id=&#34;游戏设计者&#34;&gt;游戏设计者&lt;/h5&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;This editor will focus on the development process of Elden Ring, exploring its mechanics and design philosophies in relation to other titles by FromSoftware. They will analyze how Elden Ring innovates within the action role-playing game genre and its impact on game design trends.
+&lt;/code&gt;&lt;/pre&gt;&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;能否阐述指导法环开发的关键设计哲学？特别是与前作相比有何差异？&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;Certainly! The development of Elden Ring by FromSoftware, under the direction of Hidetaka Miyazaki, is guided by several key design philosophies that both build upon and innovate the elements seen in previous FromSoftware games, particularly the Dark Souls series. Firstly, **Elden Ring expands upon the core mechanics familiar to Dark Souls fans**. This includes weighty combat, character mechanics, and the overall dark-fantasy atmosphere. According to [3], the game retains the successful foundations of the Dark Souls trilogy but revolutionizes the subgenre with open-world traversal, expanded combat mechanics, and enhanced character customization. One of the most significant changes is the **transition to an open-world format**, which provides areas with a greater sense of scale and exploration freedom, as noted in [3]. This design choice marks a departure from the more linear progression found in Dark Souls, giving players the ability to explore the Lands Between more freely and encounter a variety of challenges and secrets along the way. Another fundamental shift in design is **the inclusion of more dramatic changes and additions to the established mechanics**. While the core gameplay may feel familiar, Elden Ring introduces substantial innovations. According to [2], these changes are more dramatic than those seen across the three Dark Souls games. For example, the terminology has been updated—experience points, traditionally called &amp;#34;souls,&amp;#34; are now referred to as &amp;#34;runes,&amp;#34; as stated in [4]. The design philosophy of **&amp;#34;freedom of failure&amp;#34;** is also a cornerstone of FromSoftware&amp;#39;s approach, as articulated by Miyazaki. This principle encourages creative freedom and risk-taking within the development team, fostering an environment where innovative ideas can thrive without the fear of failure. This is highlighted in [8], where Miyazaki&amp;#39;s stance on development emphasizes that allowing freedom in making mistakes ultimately leads to better and more creative games. Additionally, the collaboration with **George R.R. Martin** for the game&amp;#39;s mythos adds a rich narrative layer that differentiates Elden Ring from its predecessors while still maintaining the dark, immersive storytelling that fans expect. This collaboration is confirmed in [5], where Martin&amp;#39;s involvement is mentioned in developing the game&amp;#39;s mythos. In summary, the key design philosophies guiding Elden Ring&amp;#39;s development include maintaining the core mechanics that fans love from the Dark Souls series while introducing significant innovations such as an expansive open-world format, updated mechanics, and a narrative collaboration with George R.R. Martin.
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;相比黑暗之魂系列，艾尔登法环引入了哪些新的游戏机制和特性？&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;Elden Ring introduces several new gameplay mechanics and features that set it apart from the Dark Souls series while still retaining the familiar elements that fans of FromSoftware&amp;#39;s games will recognize. Here are some of the key differentiators: 1. **Open-World Exploration**: Unlike the relatively linear structure of the Dark Souls games, Elden Ring features a vast open-world environment known as the Lands Between. This open-world format provides players with greater freedom to explore diverse landscapes and uncover hidden secrets at their own pace, enhancing the sense of scale and immersion ([8]). 2. **Day and Night Cycle**: One of the notable new mechanics in Elden Ring is the inclusion of a dynamic day and night cycle. This cycle can affect enemy behavior and visibility, adding another layer of strategy to exploration and combat ([5]). 3. **Mounted Combat and Traversal**: Elden Ring introduces mounted combat, allowing players to fight enemies while riding a spectral steed. This new mechanic adds a layer of tactical depth to engagements and facilitates quicker travel across the expansive game world ([2]). 4. **Stealth Mechanics**: Borrowing from FromSoftware&amp;#39;s previous title, Sekiro: Shadows Die Twice, Elden Ring incorporates stealth mechanics. Players can crouch, hide in tall grass, and perform stealth attacks on unsuspecting enemies, providing alternative approaches to combat situations ([5]). 5. **Jumping and Verticality**: Unlike the Dark Souls series, Elden Ring allows players to jump freely, which enhances vertical exploration and platforming elements. This new mechanic encourages players to explore the environment in three dimensions, searching for hidden paths and treasures ([5]). 6. **Spirit Summons**: A unique addition to Elden Ring is the ability to summon spirits to aid in combat. These spirits, which can be collected and upgraded, provide valuable assistance in battles, offering support and strategic advantages ([5]). 7. **Enhanced Character Customization**: Elden Ring builds on the character mechanics seen in Dark Souls but offers more extensive customization options. Players can tailor their character&amp;#39;s abilities, appearance, and playstyle to a greater degree, making the experience more personalized ([8]). 8. **Improved Map and Navigation**: Elden Ring features a more detailed map system that helps players navigate the expansive world. Map fragments can be collected to reveal new areas, and markers can be placed to highlight points of interest, making exploration more manageable ([1]).
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;新的游戏机制如何影响玩家策略和游戏在社区整体的受欢迎度？&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;The introduction of new gameplay mechanics in Elden Ring has significantly influenced player strategies and the overall reception of the game among the gaming community. One of the most notable additions is the day and night cycle, which affects gameplay by altering visibility and enemy behavior. For instance, certain enemies only appear at night, and both players and enemies have reduced visibility during these hours, making encounters more unpredictable and strategic (Sources [1], [5]). This mechanic encourages players to plan their actions according to the time of day, adding a layer of depth and immersion to the game. Dynamic weather is another new feature that influences how players approach combat and exploration. Weather conditions such as heavy wind or rain can obscure sounds, making it easier or harder for players to sneak up on enemies or avoid detection (Source [5]). This dynamic environment requires players to constantly adapt their strategies based on the weather, adding complexity to their decision-making process. Mounted combat and the ability to summon spirit familiars are additional mechanics that have expanded the range of tactical options available to players. Mounted combat allows for greater mobility and new attack strategies, while summoning spirits can provide support in difficult battles, making it possible for players to tackle challenging foes with additional aid (Sources [1], [5], [8]). The game&amp;#39;s open-world design also plays a crucial role in shaping player strategies. Unlike the more linear progression of previous FromSoftware titles, Elden Ring&amp;#39;s expansive world invites exploration and offers multiple pathways to approach objectives. This flexibility allows players to engage with the game at their own pace and choose their battles, fostering a more personalized gaming experience (Sources [1], [4]). The reception of these new mechanics among the gaming community has been largely positive. Players have appreciated the increased freedom and variety in gameplay, which builds on the challenging and rewarding core mechanics that FromSoftware is known for. The introduction of new features like dynamic weather, day and night cycles, and mounted combat have been praised for adding depth and variety to the gameplay, enhancing the overall experience (Sources [3], [6], [9]). In conclusion, the new gameplay mechanics in Elden Ring have not only influenced player strategies by adding layers of complexity and adaptability but have also been well-received for enriching the game&amp;#39;s depth and replayability. These innovations demonstrate FromSoftware&amp;#39;s commitment to evolving its established action RPG formula, keeping the gameplay fresh and engaging for both veteran players and newcomers alike.
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&#34;文章结果&#34;&gt;文章结果&lt;/h4&gt;
+&lt;p&gt;生成了大纲和文章，并可导出&lt;a href=&#34;files/Elden-Ring.pdf&#34;&gt;PDF&lt;/a&gt;。&lt;/p&gt;
+&lt;p&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure  &gt;
+  &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img alt=&#34;&#34; srcset=&#34;
+               /post/storm-article-generation-framework/images/demo-elden-ring/article-result_hu6c4bbb9b32b2cd6bbc3ab822a9394c54_915952_5bbd1c27f427d028e39f720c4de1dd29.webp 400w,
+               /post/storm-article-generation-framework/images/demo-elden-ring/article-result_hu6c4bbb9b32b2cd6bbc3ab822a9394c54_915952_de950ee01aa5eb134044b00dd2b340d4.webp 760w,
+               /post/storm-article-generation-framework/images/demo-elden-ring/article-result_hu6c4bbb9b32b2cd6bbc3ab822a9394c54_915952_1200x1200_fit_q75_h2_lanczos_3.webp 1200w&#34;
+               src=&#34;https://spacetimelab.cn/post/storm-article-generation-framework/images/demo-elden-ring/article-result_hu6c4bbb9b32b2cd6bbc3ab822a9394c54_915952_5bbd1c27f427d028e39f720c4de1dd29.webp&#34;
+               width=&#34;760&#34;
+               height=&#34;439&#34;
+               loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+  &lt;/div&gt;&lt;/figure&gt;
+&lt;/p&gt;
+&lt;p&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure  &gt;
+  &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img alt=&#34;&#34; srcset=&#34;
+               /post/storm-article-generation-framework/images/demo-elden-ring/reference_hu5e3fcf4827dca5bdaf1cfeabdb1dde7f_801290_2c561dad527dca3275f06fc2dad0ed32.webp 400w,
+               /post/storm-article-generation-framework/images/demo-elden-ring/reference_hu5e3fcf4827dca5bdaf1cfeabdb1dde7f_801290_a940925107a110c7032617b754fe3fd4.webp 760w,
+               /post/storm-article-generation-framework/images/demo-elden-ring/reference_hu5e3fcf4827dca5bdaf1cfeabdb1dde7f_801290_1200x1200_fit_q75_h2_lanczos_3.webp 1200w&#34;
+               src=&#34;https://spacetimelab.cn/post/storm-article-generation-framework/images/demo-elden-ring/reference_hu5e3fcf4827dca5bdaf1cfeabdb1dde7f_801290_2c561dad527dca3275f06fc2dad0ed32.webp&#34;
+               width=&#34;760&#34;
+               height=&#34;457&#34;
+               loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+  &lt;/div&gt;&lt;/figure&gt;
+&lt;/p&gt;
+&lt;h4 id=&#34;反馈通用&#34;&gt;反馈（通用）&lt;/h4&gt;
+&lt;p&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure  &gt;
+  &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img alt=&#34;&#34; srcset=&#34;
+               /post/storm-article-generation-framework/images/demo-elden-ring/feedback-form_hu35d99d5fa78e1818180b0957c431adf5_101061_95b361d3e3b8067143e70b5767a2455d.webp 400w,
+               /post/storm-article-generation-framework/images/demo-elden-ring/feedback-form_hu35d99d5fa78e1818180b0957c431adf5_101061_2ea6db61df7ab19e8b4ed319989fc997.webp 760w,
+               /post/storm-article-generation-framework/images/demo-elden-ring/feedback-form_hu35d99d5fa78e1818180b0957c431adf5_101061_1200x1200_fit_q75_h2_lanczos_3.webp 1200w&#34;
+               src=&#34;https://spacetimelab.cn/post/storm-article-generation-framework/images/demo-elden-ring/feedback-form_hu35d99d5fa78e1818180b0957c431adf5_101061_95b361d3e3b8067143e70b5767a2455d.webp&#34;
+               width=&#34;567&#34;
+               height=&#34;518&#34;
+               loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+  &lt;/div&gt;&lt;/figure&gt;
+&lt;/p&gt;
+&lt;h2 id=&#34;原理&#34;&gt;原理&lt;/h2&gt;
+&lt;h3 id=&#34;论文速读assisting-in-writing-wikipedia-like-articles-from-scratch-with-large-language-models&#34;&gt;论文速读：《Assisting in Writing Wikipedia-like Articles From Scratch with Large Language Models》&lt;/h3&gt;
+&lt;p&gt;文章地址: &lt;a href=&#34;files/2402.14207v2.pdf&#34;&gt;链接&lt;/a&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;工作：应用大语言模型从头开始撰写蕾丝维基百科页面那样兼具广度和深度、同时有依据的（grounded）和有条理的（organized）长篇文章。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;挑战：预写作阶段（pre-writing stage），包括如何对文章主题进行调研以及在写作前准备一个大纲。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;成果：提出STORM写作系统，通过检索和多视角问题回答生成主题大纲（Synthesis of Topic Outlines through Retrieval and Multi-perspective Question Asking）&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;STORM基本流程：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;视角发掘：发现关于给定主题的多种视角&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;模拟对话：写作者抛出多种不同视角下的问题与主题专家对话，主题专家的回答基于&lt;strong&gt;可信互联网&lt;/strong&gt;信息源。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;组织文章：将收集到的信息组织起来生成一个提纲&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;如何验证：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;构建FreshWiki，高质量的维基百科文章数据集&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;提纲评价指标&lt;/strong&gt;用于评估预写作阶段的效果。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;获取有经验的维基百科编辑者的反馈&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;效果&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;1️⃣提纲驱动（outline-driven）与检索增强（retrieval-augumented）的方法作为基准，大部份STORM生成的文章更有条理（25%+），而且覆盖面更广（10%+）。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;新的挑战&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;数据源偏见（source bias）&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;对无关事实的过度联想&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&#34;导图&#34;&gt;导图&lt;/h4&gt;
+&lt;p&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure  &gt;
+  &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img alt=&#34;&#34; srcset=&#34;
+               /post/storm-article-generation-framework/images/paper-reading/storm/figure1_hu451c7c0400954985d1a217e9d5e196bb_400268_4e7d853765a2bed3f484ee30ed378bb7.webp 400w,
+               /post/storm-article-generation-framework/images/paper-reading/storm/figure1_hu451c7c0400954985d1a217e9d5e196bb_400268_023b6e3a42b516b0c281c91c546af24c.webp 760w,
+               /post/storm-article-generation-framework/images/paper-reading/storm/figure1_hu451c7c0400954985d1a217e9d5e196bb_400268_1200x1200_fit_q75_h2_lanczos_3.webp 1200w&#34;
+               src=&#34;https://spacetimelab.cn/post/storm-article-generation-framework/images/paper-reading/storm/figure1_hu451c7c0400954985d1a217e9d5e196bb_400268_4e7d853765a2bed3f484ee30ed378bb7.webp&#34;
+               width=&#34;468&#34;
+               height=&#34;760&#34;
+               loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+  &lt;/div&gt;&lt;/figure&gt;
+&lt;/p&gt;
+&lt;h4 id=&#34;相关工作及问题&#34;&gt;相关工作及问题&lt;/h4&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;预先准备好引用文献或预先准备大纲&lt;/p&gt;
+&lt;p&gt;难以泛化。对专业知识要求高：识别、评估、组织外部数据源，对于专业作者来说也有挑战。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;直接依赖大模型的参数知识生成每篇文章的提纲。&lt;/p&gt;
+&lt;p&gt;受限于缺乏细节和大模型幻觉。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;知识获取：Asking effective question。基于指令优化的模型尽管可以生成一些“问题”，，但往往只是基本的“What”、“When”、“Where”，通常只能处理关于主题的表面、浅层的事实性问题&amp;hellip;&amp;hellip;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure  &gt;
+  &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img alt=&#34;&#34; srcset=&#34;
+               /post/storm-article-generation-framework/images/paper-reading/storm/table1_hubd48973b1bc3a15df14a502e7948b082_92545_8dd5b862646780913902985088cff47a.webp 400w,
+               /post/storm-article-generation-framework/images/paper-reading/storm/table1_hubd48973b1bc3a15df14a502e7948b082_92545_b567b584698371bec44c858fd3c7fac0.webp 760w,
+               /post/storm-article-generation-framework/images/paper-reading/storm/table1_hubd48973b1bc3a15df14a502e7948b082_92545_1200x1200_fit_q75_h2_lanczos_3.webp 1200w&#34;
+               src=&#34;https://spacetimelab.cn/post/storm-article-generation-framework/images/paper-reading/storm/table1_hubd48973b1bc3a15df14a502e7948b082_92545_8dd5b862646780913902985088cff47a.webp&#34;
+               width=&#34;567&#34;
+               height=&#34;342&#34;
+               loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+  &lt;/div&gt;&lt;/figure&gt;
+&lt;/p&gt;
+&lt;h5 id=&#34;storm的基本假设&#34;&gt;STORM的基本假设&lt;/h5&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;多种视角可以得到多样的问题（Diverse perspectives lead to varied questions）&lt;/p&gt;
+&lt;p&gt;如前面的示例，撰写一份艾尔登法环新人指引，分别从故事爱好者、玩家代表、故事写作者、游戏设计者四类人的视角提问。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;提出有深度的问题需要迭代式调查（Formulating in-depth questions requires iterative research）&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;基于上述假设，STORM采用多阶段方法。&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;首先，通过检索和分析维基百科的相似主题的文章进行视角发现。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;然后，让LLM以拟人化的方式就特定视角进行提问&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;引出后续（follow-up）问题用于迭代式调研&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;模拟多轮对话使得答案有理有据（引用互联网内容）&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;最后，基于LLM内部知识和收集到的信息，构建题纲，一章一章撰写形成类似维基百科文章的全文。&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;问题抽象化表述：给定主题t，找到一组引用集合$R$并生成完整的文章$S=s_{1}s_{2}&amp;hellip;s_{n}$，其中每个句子$s_{i}$引用R中的一部份。（注：具体实践上，S也包括一些不要求引用的文章结构性要素，如章节标题、子章节标题）&lt;/p&gt;
+&lt;h5 id=&#34;主要贡献&#34;&gt;主要贡献&lt;/h5&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;构建数据集FreshWiki和评价标准，可用于提纲质量评价和文章质量评价&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;提出STORM，一个新型自动化写作系统，使用LLM对主题进行调研、构建提纲和检索互联网上的可信数据源&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;自动化和人工评价的方式证明方法的有效性。&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;Remark：
+
+数据集构建的原则是什么？
+
+针对提纲和文章的自动化评价标准分别是什么？
+
+人工评价如何做到客观性？
+
+如何判断数据源是否可信？
+&lt;/code&gt;&lt;/pre&gt;&lt;h5 id=&#34;freshwiki数据集&#34;&gt;FreshWIki数据集&lt;/h5&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;如何确保日期标准：2022年2月到2023年11月的文章中，编辑次数最多的页面。选择top-100编辑次数最多的页面。&lt;/p&gt;
+&lt;p&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure  &gt;
+  &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img alt=&#34;&#34; srcset=&#34;
+               /post/storm-article-generation-framework/images/paper-reading/storm/figure5_hue7e15218077488df96080ba2f3fd3ac6_89052_42e9ac72a9193e2995f86a5d4f6f5299.webp 400w,
+               /post/storm-article-generation-framework/images/paper-reading/storm/figure5_hue7e15218077488df96080ba2f3fd3ac6_89052_e1594262f309a69e1ece393f55686468.webp 760w,
+               /post/storm-article-generation-framework/images/paper-reading/storm/figure5_hue7e15218077488df96080ba2f3fd3ac6_89052_1200x1200_fit_q75_h2_lanczos_3.webp 1200w&#34;
+               src=&#34;https://spacetimelab.cn/post/storm-article-generation-framework/images/paper-reading/storm/figure5_hue7e15218077488df96080ba2f3fd3ac6_89052_42e9ac72a9193e2995f86a5d4f6f5299.webp&#34;
+               width=&#34;760&#34;
+               height=&#34;561&#34;
+               loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+  &lt;/div&gt;&lt;/figure&gt;
+&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;如何确保引用的高质量：根据&lt;a href=&#34;https://www.mediawiki.org/wiki/ORES&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;ORES&lt;/a&gt;的评估结果，只保留B-class或以上质量评级的文章。&lt;/p&gt;
+&lt;p&gt;评级说明：&lt;a href=&#34;https://en.wikipedia.org/wiki/Wikipedia:Content_assessment&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Wikipedia:Content assessment - Wikipedia&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;简化任务&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;排除列举型文章(&lt;a href=&#34;https://en.wikipedia.org/wiki/Wikipedia:Stand-alone_lists&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Wikipedia:Stand-alone lists&lt;/a&gt;)&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;只考虑纯文本的文章&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;ORES: Objective Revision Evaluation Service: 客观修订评估服务
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure  &gt;
+  &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img alt=&#34;&#34; srcset=&#34;
+               /post/storm-article-generation-framework/images/paper-reading/storm/ORES_hu2cb93d5a24fc9629b8851ed98f4db384_375287_2c6673ef20c915d83202c6e67de82efb.webp 400w,
+               /post/storm-article-generation-framework/images/paper-reading/storm/ORES_hu2cb93d5a24fc9629b8851ed98f4db384_375287_967b979480033fd7457c5bf1cc24af21.webp 760w,
+               /post/storm-article-generation-framework/images/paper-reading/storm/ORES_hu2cb93d5a24fc9629b8851ed98f4db384_375287_1200x1200_fit_q75_h2_lanczos_3.webp 1200w&#34;
+               src=&#34;https://spacetimelab.cn/post/storm-article-generation-framework/images/paper-reading/storm/ORES_hu2cb93d5a24fc9629b8851ed98f4db384_375287_2c6673ef20c915d83202c6e67de82efb.webp&#34;
+               width=&#34;760&#34;
+               height=&#34;567&#34;
+               loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+  &lt;/div&gt;&lt;/figure&gt;
+&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;通常高质量的文章包含结构化数据（如表格）并且是多模态的。
+&lt;/code&gt;&lt;/pre&gt;&lt;h5 id=&#34;提纲创建和评估&#34;&gt;提纲创建和评估&lt;/h5&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;任务拆解：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;Pre-Writing Stage：生成提纲O。&lt;/p&gt;
+&lt;p&gt;如何表示提纲？添加#表示章节标题、##表示子章节标题。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Writing Stage：给定主题t、参考文献R和提纲O，生成完整文章S。&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;评估提纲的覆盖率&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;Heading soft recall：对标题的嵌入向量进行余弦相似性的计算。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Heading entity recall： 标题中命名实体的百分比&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&#34;方法&#34;&gt;方法&lt;/h4&gt;
+&lt;p&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure  &gt;
+  &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img alt=&#34;&#34; srcset=&#34;
+               /post/storm-article-generation-framework/images/paper-reading/storm/figure2_hu0fc8ea07031d5bbe48b83882a44065ed_251306_0d7edf396fba56200933932cb627613f.webp 400w,
+               /post/storm-article-generation-framework/images/paper-reading/storm/figure2_hu0fc8ea07031d5bbe48b83882a44065ed_251306_a974be8477efa83e9aa17ad336b67c38.webp 760w,
+               /post/storm-article-generation-framework/images/paper-reading/storm/figure2_hu0fc8ea07031d5bbe48b83882a44065ed_251306_1200x1200_fit_q75_h2_lanczos_3.webp 1200w&#34;
+               src=&#34;https://spacetimelab.cn/post/storm-article-generation-framework/images/paper-reading/storm/figure2_hu0fc8ea07031d5bbe48b83882a44065ed_251306_0d7edf396fba56200933932cb627613f.webp&#34;
+               width=&#34;760&#34;
+               height=&#34;320&#34;
+               loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+  &lt;/div&gt;&lt;/figure&gt;
+&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;Perpective-Guided Question Asking&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Simulating Converations&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Creating the Article Outline&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Writing the Full-Length Article&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

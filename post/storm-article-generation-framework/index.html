@@ -322,7 +322,7 @@
   
   <meta property="og:site_name" content="NullSpace" />
   <meta property="og:url" content="https://spacetimelab.cn/post/storm-article-generation-framework/" />
-  <meta property="og:title" content="Storm Article Generation Framework | NullSpace" />
+  <meta property="og:title" content="一个辅助写作框架：Storm | NullSpace" />
   <meta property="og:description" content="斯坦福研究团队开源的辅助写作框架" /><meta property="og:image" content="https://spacetimelab.cn/media/icon_hue03491371183284312b8b116a73ae5ab_79511_512x512_fill_lanczos_center_3.png" />
     <meta property="twitter:image" content="https://spacetimelab.cn/media/icon_hue03491371183284312b8b116a73ae5ab_79511_512x512_fill_lanczos_center_3.png" /><meta property="og:locale" content="en-us" />
   
@@ -358,7 +358,7 @@
     "@type": "WebPage",
     "@id": "https://spacetimelab.cn/post/storm-article-generation-framework/"
   },
-  "headline": "Storm Article Generation Framework",
+  "headline": "一个辅助写作框架：Storm",
   
   "datePublished": "2024-11-14T23:14:57+08:00",
   "dateModified": "2024-11-14T23:14:57+08:00",
@@ -392,7 +392,7 @@
 
 
 
-  <title>Storm Article Generation Framework | NullSpace</title>
+  <title>一个辅助写作框架：Storm | NullSpace</title>
 </head>
 
 
@@ -781,7 +781,7 @@
   
   
 <div class="article-container pt-3">
-  <h1>Storm Article Generation Framework</h1>
+  <h1>一个辅助写作框架：Storm</h1>
 
   
 
@@ -809,7 +809,7 @@
   
   <span class="middot-divider"></span>
   <span class="article-reading-time">
-    20 min read
+    21 min read
   </span>
   
 
@@ -837,10 +837,10 @@
   <div class="article-container">
 
     <div class="article-style">
-      <h2 id="流程">流程</h2>
+      <h2 id="辅助写作的流程业务">辅助写作的流程/业务</h2>
 <ol>
 <li>
-<p>输入意图</p>
+<p><strong>输入：用户意图（主题、描述）</strong></p>
 </li>
 <li>
 <p>生成若干视角下的问题</p>
@@ -849,7 +849,7 @@
 <p>检索并浏览、总结相关网页</p>
 </li>
 <li>
-<p>生成文章</p>
+<p><strong>生成文章</strong></p>
 </li>
 </ol>
 <h3 id="示例1-关于艾尔登法环的新人引导文章">示例1: 关于艾尔登法环的新人引导文章</h3>
@@ -1079,6 +1079,334 @@
                loading="lazy" data-zoomable /></div>
   </div></figure>
 </p>
+<h2 id="原理">原理</h2>
+<h3 id="论文速读assisting-in-writing-wikipedia-like-articles-from-scratch-with-large-language-models">论文速读：《Assisting in Writing Wikipedia-like Articles From Scratch with Large Language Models》</h3>
+<p>文章地址: <a href="files/2402.14207v2.pdf">链接</a></p>
+<ul>
+<li>
+<p>工作：应用大语言模型从头开始撰写蕾丝维基百科页面那样兼具广度和深度、同时有依据的（grounded）和有条理的（organized）长篇文章。</p>
+</li>
+<li>
+<p>挑战：预写作阶段（pre-writing stage），包括如何对文章主题进行调研以及在写作前准备一个大纲。</p>
+</li>
+<li>
+<p>成果：提出STORM写作系统，通过检索和多视角问题回答生成主题大纲（Synthesis of Topic Outlines through Retrieval and Multi-perspective Question Asking）</p>
+</li>
+<li>
+<p>STORM基本流程：</p>
+<ol>
+<li>
+<p>视角发掘：发现关于给定主题的多种视角</p>
+</li>
+<li>
+<p>模拟对话：写作者抛出多种不同视角下的问题与主题专家对话，主题专家的回答基于<strong>可信互联网</strong>信息源。</p>
+</li>
+<li>
+<p>组织文章：将收集到的信息组织起来生成一个提纲</p>
+</li>
+</ol>
+</li>
+<li>
+<p>如何验证：</p>
+<ul>
+<li>
+<p>构建FreshWiki，高质量的维基百科文章数据集</p>
+</li>
+<li>
+<p><strong>提纲评价指标</strong>用于评估预写作阶段的效果。</p>
+</li>
+<li>
+<p>获取有经验的维基百科编辑者的反馈</p>
+</li>
+</ul>
+</li>
+<li>
+<p>效果</p>
+<ul>
+<li>1️⃣提纲驱动（outline-driven）与检索增强（retrieval-augumented）的方法作为基准，大部份STORM生成的文章更有条理（25%+），而且覆盖面更广（10%+）。</li>
+</ul>
+</li>
+<li>
+<p>新的挑战</p>
+<ul>
+<li>
+<p>数据源偏见（source bias）</p>
+</li>
+<li>
+<p>对无关事实的过度联想</p>
+</li>
+</ul>
+</li>
+</ul>
+<h4 id="导图">导图</h4>
+<p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<figure  >
+  <div class="d-flex justify-content-center">
+    <div class="w-100" ><img alt="" srcset="
+               /post/storm-article-generation-framework/images/paper-reading/storm/figure1_hu451c7c0400954985d1a217e9d5e196bb_400268_4e7d853765a2bed3f484ee30ed378bb7.webp 400w,
+               /post/storm-article-generation-framework/images/paper-reading/storm/figure1_hu451c7c0400954985d1a217e9d5e196bb_400268_023b6e3a42b516b0c281c91c546af24c.webp 760w,
+               /post/storm-article-generation-framework/images/paper-reading/storm/figure1_hu451c7c0400954985d1a217e9d5e196bb_400268_1200x1200_fit_q75_h2_lanczos_3.webp 1200w"
+               src="/post/storm-article-generation-framework/images/paper-reading/storm/figure1_hu451c7c0400954985d1a217e9d5e196bb_400268_4e7d853765a2bed3f484ee30ed378bb7.webp"
+               width="468"
+               height="760"
+               loading="lazy" data-zoomable /></div>
+  </div></figure>
+</p>
+<h4 id="相关工作及问题">相关工作及问题</h4>
+<ul>
+<li>
+<p>预先准备好引用文献或预先准备大纲</p>
+<p>难以泛化。对专业知识要求高：识别、评估、组织外部数据源，对于专业作者来说也有挑战。</p>
+</li>
+<li>
+<p>直接依赖大模型的参数知识生成每篇文章的提纲。</p>
+<p>受限于缺乏细节和大模型幻觉。</p>
+</li>
+<li>
+<p>知识获取：Asking effective question。基于指令优化的模型尽管可以生成一些“问题”，，但往往只是基本的“What”、“When”、“Where”，通常只能处理关于主题的表面、浅层的事实性问题&hellip;&hellip;</p>
+</li>
+</ul>
+<p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<figure  >
+  <div class="d-flex justify-content-center">
+    <div class="w-100" ><img alt="" srcset="
+               /post/storm-article-generation-framework/images/paper-reading/storm/table1_hubd48973b1bc3a15df14a502e7948b082_92545_8dd5b862646780913902985088cff47a.webp 400w,
+               /post/storm-article-generation-framework/images/paper-reading/storm/table1_hubd48973b1bc3a15df14a502e7948b082_92545_b567b584698371bec44c858fd3c7fac0.webp 760w,
+               /post/storm-article-generation-framework/images/paper-reading/storm/table1_hubd48973b1bc3a15df14a502e7948b082_92545_1200x1200_fit_q75_h2_lanczos_3.webp 1200w"
+               src="/post/storm-article-generation-framework/images/paper-reading/storm/table1_hubd48973b1bc3a15df14a502e7948b082_92545_8dd5b862646780913902985088cff47a.webp"
+               width="567"
+               height="342"
+               loading="lazy" data-zoomable /></div>
+  </div></figure>
+</p>
+<h5 id="storm的基本假设">STORM的基本假设</h5>
+<ul>
+<li>
+<p>多种视角可以得到多样的问题（Diverse perspectives lead to varied questions）</p>
+<p>如前面的示例，撰写一份艾尔登法环新人指引，分别从故事爱好者、玩家代表、故事写作者、游戏设计者四类人的视角提问。</p>
+</li>
+<li>
+<p>提出有深度的问题需要迭代式调查（Formulating in-depth questions requires iterative research）</p>
+</li>
+</ul>
+<p>基于上述假设，STORM采用多阶段方法。</p>
+<ol>
+<li>
+<p>首先，通过检索和分析维基百科的相似主题的文章进行视角发现。</p>
+</li>
+<li>
+<p>然后，让LLM以拟人化的方式就特定视角进行提问</p>
+</li>
+<li>
+<p>引出后续（follow-up）问题用于迭代式调研</p>
+</li>
+<li>
+<p>模拟多轮对话使得答案有理有据（引用互联网内容）</p>
+</li>
+<li>
+<p>最后，基于LLM内部知识和收集到的信息，构建题纲，一章一章撰写形成类似维基百科文章的全文。</p>
+</li>
+</ol>
+<p>问题抽象化表述：给定主题t，找到一组引用集合$R$并生成完整的文章$S=s_{1}s_{2}&hellip;s_{n}$，其中每个句子$s_{i}$引用R中的一部份。（注：具体实践上，S也包括一些不要求引用的文章结构性要素，如章节标题、子章节标题）</p>
+<h5 id="主要贡献">主要贡献</h5>
+<ul>
+<li>
+<p>构建数据集FreshWiki和评价标准，可用于提纲质量评价和文章质量评价</p>
+</li>
+<li>
+<p>提出STORM，一个新型自动化写作系统，使用LLM对主题进行调研、构建提纲和检索互联网上的可信数据源</p>
+</li>
+<li>
+<p>自动化和人工评价的方式证明方法的有效性。</p>
+</li>
+</ul>
+<pre tabindex="0"><code>Remark：
+
+数据集构建的原则是什么？
+
+针对提纲和文章的自动化评价标准分别是什么？
+
+人工评价如何做到客观性？
+
+如何判断数据源是否可信？
+</code></pre><h5 id="freshwiki数据集">FreshWIki数据集</h5>
+<ul>
+<li>
+<p>如何确保日期标准：2022年2月到2023年11月的文章中，编辑次数最多的页面。选择top-100编辑次数最多的页面。</p>
+<p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<figure  >
+  <div class="d-flex justify-content-center">
+    <div class="w-100" ><img alt="" srcset="
+               /post/storm-article-generation-framework/images/paper-reading/storm/figure5_hue7e15218077488df96080ba2f3fd3ac6_89052_42e9ac72a9193e2995f86a5d4f6f5299.webp 400w,
+               /post/storm-article-generation-framework/images/paper-reading/storm/figure5_hue7e15218077488df96080ba2f3fd3ac6_89052_e1594262f309a69e1ece393f55686468.webp 760w,
+               /post/storm-article-generation-framework/images/paper-reading/storm/figure5_hue7e15218077488df96080ba2f3fd3ac6_89052_1200x1200_fit_q75_h2_lanczos_3.webp 1200w"
+               src="/post/storm-article-generation-framework/images/paper-reading/storm/figure5_hue7e15218077488df96080ba2f3fd3ac6_89052_42e9ac72a9193e2995f86a5d4f6f5299.webp"
+               width="760"
+               height="561"
+               loading="lazy" data-zoomable /></div>
+  </div></figure>
+</p>
+</li>
+<li>
+<p>如何确保引用的高质量：根据<a href="https://www.mediawiki.org/wiki/ORES" target="_blank" rel="noopener">ORES</a>的评估结果，只保留B-class或以上质量评级的文章。</p>
+<p>评级说明：<a href="https://en.wikipedia.org/wiki/Wikipedia:Content_assessment" target="_blank" rel="noopener">Wikipedia:Content assessment - Wikipedia</a></p>
+</li>
+<li>
+<p>简化任务</p>
+<ul>
+<li>
+<p>排除列举型文章(<a href="https://en.wikipedia.org/wiki/Wikipedia:Stand-alone_lists" target="_blank" rel="noopener">Wikipedia:Stand-alone lists</a>)</p>
+</li>
+<li>
+<p>只考虑纯文本的文章</p>
+</li>
+</ul>
+</li>
+</ul>
+<pre tabindex="0"><code>ORES: Objective Revision Evaluation Service: 客观修订评估服务
+</code></pre><p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<figure  >
+  <div class="d-flex justify-content-center">
+    <div class="w-100" ><img alt="" srcset="
+               /post/storm-article-generation-framework/images/paper-reading/storm/ORES_hu2cb93d5a24fc9629b8851ed98f4db384_375287_2c6673ef20c915d83202c6e67de82efb.webp 400w,
+               /post/storm-article-generation-framework/images/paper-reading/storm/ORES_hu2cb93d5a24fc9629b8851ed98f4db384_375287_967b979480033fd7457c5bf1cc24af21.webp 760w,
+               /post/storm-article-generation-framework/images/paper-reading/storm/ORES_hu2cb93d5a24fc9629b8851ed98f4db384_375287_1200x1200_fit_q75_h2_lanczos_3.webp 1200w"
+               src="/post/storm-article-generation-framework/images/paper-reading/storm/ORES_hu2cb93d5a24fc9629b8851ed98f4db384_375287_2c6673ef20c915d83202c6e67de82efb.webp"
+               width="760"
+               height="567"
+               loading="lazy" data-zoomable /></div>
+  </div></figure>
+</p>
+<pre tabindex="0"><code>通常高质量的文章包含结构化数据（如表格）并且是多模态的。
+</code></pre><h5 id="提纲创建和评估">提纲创建和评估</h5>
+<ul>
+<li>
+<p>任务拆解：</p>
+<ul>
+<li>
+<p>Pre-Writing Stage：生成提纲O。</p>
+<p>如何表示提纲？添加#表示章节标题、##表示子章节标题。</p>
+</li>
+<li>
+<p>Writing Stage：给定主题t、参考文献R和提纲O，生成完整文章S。</p>
+</li>
+</ul>
+</li>
+<li>
+<p>评估提纲的覆盖率</p>
+<ul>
+<li>
+<p>Heading soft recall：对标题的嵌入向量进行余弦相似性的计算。</p>
+</li>
+<li>
+<p>Heading entity recall： 标题中命名实体的百分比</p>
+</li>
+</ul>
+</li>
+</ul>
+<h4 id="方法">方法</h4>
+<p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<figure  >
+  <div class="d-flex justify-content-center">
+    <div class="w-100" ><img alt="" srcset="
+               /post/storm-article-generation-framework/images/paper-reading/storm/figure2_hu0fc8ea07031d5bbe48b83882a44065ed_251306_0d7edf396fba56200933932cb627613f.webp 400w,
+               /post/storm-article-generation-framework/images/paper-reading/storm/figure2_hu0fc8ea07031d5bbe48b83882a44065ed_251306_a974be8477efa83e9aa17ad336b67c38.webp 760w,
+               /post/storm-article-generation-framework/images/paper-reading/storm/figure2_hu0fc8ea07031d5bbe48b83882a44065ed_251306_1200x1200_fit_q75_h2_lanczos_3.webp 1200w"
+               src="/post/storm-article-generation-framework/images/paper-reading/storm/figure2_hu0fc8ea07031d5bbe48b83882a44065ed_251306_0d7edf396fba56200933932cb627613f.webp"
+               width="760"
+               height="320"
+               loading="lazy" data-zoomable /></div>
+  </div></figure>
+</p>
+<ul>
+<li>
+<p>Perpective-Guided Question Asking</p>
+</li>
+<li>
+<p>Simulating Converations</p>
+</li>
+<li>
+<p>Creating the Article Outline</p>
+</li>
+<li>
+<p>Writing the Full-Length Article</p>
+</li>
+</ul>
 
     </div>
 
@@ -1089,9 +1417,15 @@
 
 <div class="article-tags">
   
+  <a class="badge badge-light" href="/tag/%E8%BE%85%E5%8A%A9%E5%86%99%E4%BD%9C/">辅助写作</a>
+  
   <a class="badge badge-light" href="/tag/%E6%96%87%E7%AB%A0%E7%94%9F%E6%88%90/">文章生成</a>
   
   <a class="badge badge-light" href="/tag/%E8%89%BE%E5%B0%94%E7%99%BB%E6%B3%95%E7%8E%AF/">艾尔登法环</a>
+  
+  <a class="badge badge-light" href="/tag/storm/">STORM</a>
+  
+  <a class="badge badge-light" href="/tag/aigc/">AIGC</a>
   
 </div>
 
@@ -1108,7 +1442,7 @@
       
       
       <li>
-        <a href="https://twitter.com/intent/tweet?url=https://spacetimelab.cn/post/storm-article-generation-framework/&amp;text=Storm%20Article%20Generation%20Framework" target="_blank" rel="noopener" class="share-btn-twitter" aria-label="twitter">
+        <a href="https://twitter.com/intent/tweet?url=https://spacetimelab.cn/post/storm-article-generation-framework/&amp;text=%e4%b8%80%e4%b8%aa%e8%be%85%e5%8a%a9%e5%86%99%e4%bd%9c%e6%a1%86%e6%9e%b6%ef%bc%9aStorm" target="_blank" rel="noopener" class="share-btn-twitter" aria-label="twitter">
           <i class="fab fa-twitter"></i>
         </a>
       </li>
@@ -1121,7 +1455,7 @@
       
       
       <li>
-        <a href="https://www.facebook.com/sharer.php?u=https://spacetimelab.cn/post/storm-article-generation-framework/&amp;t=Storm%20Article%20Generation%20Framework" target="_blank" rel="noopener" class="share-btn-facebook" aria-label="facebook">
+        <a href="https://www.facebook.com/sharer.php?u=https://spacetimelab.cn/post/storm-article-generation-framework/&amp;t=%e4%b8%80%e4%b8%aa%e8%be%85%e5%8a%a9%e5%86%99%e4%bd%9c%e6%a1%86%e6%9e%b6%ef%bc%9aStorm" target="_blank" rel="noopener" class="share-btn-facebook" aria-label="facebook">
           <i class="fab fa-facebook"></i>
         </a>
       </li>
@@ -1134,7 +1468,7 @@
       
       
       <li>
-        <a href="mailto:?subject=Storm%20Article%20Generation%20Framework&amp;body=https://spacetimelab.cn/post/storm-article-generation-framework/" target="_blank" rel="noopener" class="share-btn-email" aria-label="envelope">
+        <a href="mailto:?subject=%e4%b8%80%e4%b8%aa%e8%be%85%e5%8a%a9%e5%86%99%e4%bd%9c%e6%a1%86%e6%9e%b6%ef%bc%9aStorm&amp;body=https://spacetimelab.cn/post/storm-article-generation-framework/" target="_blank" rel="noopener" class="share-btn-email" aria-label="envelope">
           <i class="fas fa-envelope"></i>
         </a>
       </li>
@@ -1147,7 +1481,7 @@
       
       
       <li>
-        <a href="https://www.linkedin.com/shareArticle?url=https://spacetimelab.cn/post/storm-article-generation-framework/&amp;title=Storm%20Article%20Generation%20Framework" target="_blank" rel="noopener" class="share-btn-linkedin" aria-label="linkedin-in">
+        <a href="https://www.linkedin.com/shareArticle?url=https://spacetimelab.cn/post/storm-article-generation-framework/&amp;title=%e4%b8%80%e4%b8%aa%e8%be%85%e5%8a%a9%e5%86%99%e4%bd%9c%e6%a1%86%e6%9e%b6%ef%bc%9aStorm" target="_blank" rel="noopener" class="share-btn-linkedin" aria-label="linkedin-in">
           <i class="fab fa-linkedin-in"></i>
         </a>
       </li>
@@ -1160,7 +1494,7 @@
       
       
       <li>
-        <a href="whatsapp://send?text=Storm%20Article%20Generation%20Framework%20https://spacetimelab.cn/post/storm-article-generation-framework/" target="_blank" rel="noopener" class="share-btn-whatsapp" aria-label="whatsapp">
+        <a href="whatsapp://send?text=%e4%b8%80%e4%b8%aa%e8%be%85%e5%8a%a9%e5%86%99%e4%bd%9c%e6%a1%86%e6%9e%b6%ef%bc%9aStorm%20https://spacetimelab.cn/post/storm-article-generation-framework/" target="_blank" rel="noopener" class="share-btn-whatsapp" aria-label="whatsapp">
           <i class="fab fa-whatsapp"></i>
         </a>
       </li>
@@ -1173,7 +1507,7 @@
       
       
       <li>
-        <a href="https://service.weibo.com/share/share.php?url=https://spacetimelab.cn/post/storm-article-generation-framework/&amp;title=Storm%20Article%20Generation%20Framework" target="_blank" rel="noopener" class="share-btn-weibo" aria-label="weibo">
+        <a href="https://service.weibo.com/share/share.php?url=https://spacetimelab.cn/post/storm-article-generation-framework/&amp;title=%e4%b8%80%e4%b8%aa%e8%be%85%e5%8a%a9%e5%86%99%e4%bd%9c%e6%a1%86%e6%9e%b6%ef%bc%9aStorm" target="_blank" rel="noopener" class="share-btn-weibo" aria-label="weibo">
           <i class="fab fa-weibo"></i>
         </a>
       </li>
