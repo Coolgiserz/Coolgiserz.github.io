@@ -322,7 +322,7 @@
   
   <meta property="og:site_name" content="NullSpace" />
   <meta property="og:url" content="https://spacetimelab.cn/project/fixed-outline-report-generation/" />
-  <meta property="og:title" content="基于AIGC的自动化报告生成——舆情分析报告 | NullSpace" />
+  <meta property="og:title" content="基于LLM的自动化报告生成——舆情分析报告 | NullSpace" />
   <meta property="og:description" content="固定提纲的自动化报告生成" /><meta property="og:image" content="https://spacetimelab.cn/media/icon_hue03491371183284312b8b116a73ae5ab_79511_512x512_fill_lanczos_center_3.png" />
     <meta property="twitter:image" content="https://spacetimelab.cn/media/icon_hue03491371183284312b8b116a73ae5ab_79511_512x512_fill_lanczos_center_3.png" /><meta property="og:locale" content="en-us" />
   
@@ -356,7 +356,7 @@
     "@type": "WebPage",
     "@id": "https://spacetimelab.cn/project/fixed-outline-report-generation/"
   },
-  "headline": "基于AIGC的自动化报告生成——舆情分析报告",
+  "headline": "基于LLM的自动化报告生成——舆情分析报告",
   
   "datePublished": "2024-12-14T23:13:25+08:00",
   "dateModified": "2024-12-14T23:13:25+08:00",
@@ -390,7 +390,7 @@
 
 
 
-  <title>基于AIGC的自动化报告生成——舆情分析报告 | NullSpace</title>
+  <title>基于LLM的自动化报告生成——舆情分析报告 | NullSpace</title>
 </head>
 
 
@@ -779,7 +779,7 @@
   
   
 <div class="article-container pt-3">
-  <h1>基于AIGC的自动化报告生成——舆情分析报告</h1>
+  <h1>基于LLM的自动化报告生成——舆情分析报告</h1>
 
   
 
@@ -1531,7 +1531,7 @@
   </div></figure>
 </p>
 <h3 id="输入数据质量问题">输入数据质量问题</h3>
-<h4 id="q信息量少">Q：信息量少</h4>
+<h4 id="q数据源信息量少">Q：数据源信息量少</h4>
 <ul>
 <li>
 <p>部分新闻完全是图片，对于文本模型而言这类输入没有什么信息量。</p>
@@ -1540,9 +1540,74 @@
 <p>部分网络新闻在获取时包含较多噪音</p>
 </li>
 </ul>
+<h4 id="q输入信息不全面">Q：输入信息不全面</h4>
+<ul>
+<li>
+<p>输入给LLM的数据主要是新闻摘要，如果新闻摘要本身反映原文的信息较少，会影响报告效果（用户兴趣信息召回率）</p>
+<p>实践中，有一些新闻正文本身就是信息罗列型的，可能每一段都是不应被忽略的信息，大部份重点关注头部和尾部的摘要算法处理此类文本效果不理想。示例数据和结果如下：</p>
+<p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<figure  >
+  <div class="d-flex justify-content-center">
+    <div class="w-100" ><img alt="" srcset="
+               /project/fixed-outline-report-generation/images/aigc/industry_report/issues/news_abstract_type_hu98b29581314fc229e402f9bcd8e6c221_771574_b5d9dae45e7574fa5f36b460de2ab777.webp 400w,
+               /project/fixed-outline-report-generation/images/aigc/industry_report/issues/news_abstract_type_hu98b29581314fc229e402f9bcd8e6c221_771574_6652fb1399b0931277e3402bbdd248ae.webp 760w,
+               /project/fixed-outline-report-generation/images/aigc/industry_report/issues/news_abstract_type_hu98b29581314fc229e402f9bcd8e6c221_771574_1200x1200_fit_q75_h2_lanczos_3.webp 1200w"
+               src="/project/fixed-outline-report-generation/images/aigc/industry_report/issues/news_abstract_type_hu98b29581314fc229e402f9bcd8e6c221_771574_b5d9dae45e7574fa5f36b460de2ab777.webp"
+               width="603"
+               height="760"
+               loading="lazy" data-zoomable /></div>
+  </div></figure>
+</p>
+</li>
+</ul>
+<p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<figure  >
+  <div class="d-flex justify-content-center">
+    <div class="w-100" ><img alt="" srcset="
+               /project/fixed-outline-report-generation/images/aigc/industry_report/issues/news_abstract_type_result_hu0aa3111267156edda4400e783f2a9b1b_184744_536c32bbbf1194ce88e3eaefe1505225.webp 400w,
+               /project/fixed-outline-report-generation/images/aigc/industry_report/issues/news_abstract_type_result_hu0aa3111267156edda4400e783f2a9b1b_184744_32fa113f796d70f42718acd915c06823.webp 760w,
+               /project/fixed-outline-report-generation/images/aigc/industry_report/issues/news_abstract_type_result_hu0aa3111267156edda4400e783f2a9b1b_184744_1200x1200_fit_q75_h2_lanczos_3.webp 1200w"
+               src="/project/fixed-outline-report-generation/images/aigc/industry_report/issues/news_abstract_type_result_hu0aa3111267156edda4400e783f2a9b1b_184744_536c32bbbf1194ce88e3eaefe1505225.webp"
+               width="760"
+               height="453"
+               loading="lazy" data-zoomable /></div>
+  </div></figure>
+</p>
 <h2 id="0x04-外部资源">0x04 外部资源</h2>
 <h3 id="特征抽取模型">特征抽取模型</h3>
 <ul>
+<li>bge-large-zh</li>
+<li><a href="https://huggingface.co/BAAI/bge-m3" target="_blank" rel="noopener">BAAI/bge-m3</a></li>
 <li><a href="https://huggingface.co/jinaai/jina-embeddings-v3/tree/main/onnx" target="_blank" rel="noopener">jina-embeddings-v3</a></li>
 </ul>
 
@@ -1561,6 +1626,8 @@
   
   <a class="badge badge-light" href="/tag/%E8%88%86%E6%83%85%E5%88%86%E6%9E%90/">舆情分析</a>
   
+  <a class="badge badge-light" href="/tag/llm/">LLM</a>
+  
 </div>
 
 
@@ -1576,7 +1643,7 @@
       
       
       <li>
-        <a href="https://twitter.com/intent/tweet?url=https://spacetimelab.cn/project/fixed-outline-report-generation/&amp;text=%e5%9f%ba%e4%ba%8eAIGC%e7%9a%84%e8%87%aa%e5%8a%a8%e5%8c%96%e6%8a%a5%e5%91%8a%e7%94%9f%e6%88%90%e2%80%94%e2%80%94%e8%88%86%e6%83%85%e5%88%86%e6%9e%90%e6%8a%a5%e5%91%8a" target="_blank" rel="noopener" class="share-btn-twitter" aria-label="twitter">
+        <a href="https://twitter.com/intent/tweet?url=https://spacetimelab.cn/project/fixed-outline-report-generation/&amp;text=%e5%9f%ba%e4%ba%8eLLM%e7%9a%84%e8%87%aa%e5%8a%a8%e5%8c%96%e6%8a%a5%e5%91%8a%e7%94%9f%e6%88%90%e2%80%94%e2%80%94%e8%88%86%e6%83%85%e5%88%86%e6%9e%90%e6%8a%a5%e5%91%8a" target="_blank" rel="noopener" class="share-btn-twitter" aria-label="twitter">
           <i class="fab fa-twitter"></i>
         </a>
       </li>
@@ -1589,7 +1656,7 @@
       
       
       <li>
-        <a href="https://www.facebook.com/sharer.php?u=https://spacetimelab.cn/project/fixed-outline-report-generation/&amp;t=%e5%9f%ba%e4%ba%8eAIGC%e7%9a%84%e8%87%aa%e5%8a%a8%e5%8c%96%e6%8a%a5%e5%91%8a%e7%94%9f%e6%88%90%e2%80%94%e2%80%94%e8%88%86%e6%83%85%e5%88%86%e6%9e%90%e6%8a%a5%e5%91%8a" target="_blank" rel="noopener" class="share-btn-facebook" aria-label="facebook">
+        <a href="https://www.facebook.com/sharer.php?u=https://spacetimelab.cn/project/fixed-outline-report-generation/&amp;t=%e5%9f%ba%e4%ba%8eLLM%e7%9a%84%e8%87%aa%e5%8a%a8%e5%8c%96%e6%8a%a5%e5%91%8a%e7%94%9f%e6%88%90%e2%80%94%e2%80%94%e8%88%86%e6%83%85%e5%88%86%e6%9e%90%e6%8a%a5%e5%91%8a" target="_blank" rel="noopener" class="share-btn-facebook" aria-label="facebook">
           <i class="fab fa-facebook"></i>
         </a>
       </li>
@@ -1602,7 +1669,7 @@
       
       
       <li>
-        <a href="mailto:?subject=%e5%9f%ba%e4%ba%8eAIGC%e7%9a%84%e8%87%aa%e5%8a%a8%e5%8c%96%e6%8a%a5%e5%91%8a%e7%94%9f%e6%88%90%e2%80%94%e2%80%94%e8%88%86%e6%83%85%e5%88%86%e6%9e%90%e6%8a%a5%e5%91%8a&amp;body=https://spacetimelab.cn/project/fixed-outline-report-generation/" target="_blank" rel="noopener" class="share-btn-email" aria-label="envelope">
+        <a href="mailto:?subject=%e5%9f%ba%e4%ba%8eLLM%e7%9a%84%e8%87%aa%e5%8a%a8%e5%8c%96%e6%8a%a5%e5%91%8a%e7%94%9f%e6%88%90%e2%80%94%e2%80%94%e8%88%86%e6%83%85%e5%88%86%e6%9e%90%e6%8a%a5%e5%91%8a&amp;body=https://spacetimelab.cn/project/fixed-outline-report-generation/" target="_blank" rel="noopener" class="share-btn-email" aria-label="envelope">
           <i class="fas fa-envelope"></i>
         </a>
       </li>
@@ -1615,7 +1682,7 @@
       
       
       <li>
-        <a href="https://www.linkedin.com/shareArticle?url=https://spacetimelab.cn/project/fixed-outline-report-generation/&amp;title=%e5%9f%ba%e4%ba%8eAIGC%e7%9a%84%e8%87%aa%e5%8a%a8%e5%8c%96%e6%8a%a5%e5%91%8a%e7%94%9f%e6%88%90%e2%80%94%e2%80%94%e8%88%86%e6%83%85%e5%88%86%e6%9e%90%e6%8a%a5%e5%91%8a" target="_blank" rel="noopener" class="share-btn-linkedin" aria-label="linkedin-in">
+        <a href="https://www.linkedin.com/shareArticle?url=https://spacetimelab.cn/project/fixed-outline-report-generation/&amp;title=%e5%9f%ba%e4%ba%8eLLM%e7%9a%84%e8%87%aa%e5%8a%a8%e5%8c%96%e6%8a%a5%e5%91%8a%e7%94%9f%e6%88%90%e2%80%94%e2%80%94%e8%88%86%e6%83%85%e5%88%86%e6%9e%90%e6%8a%a5%e5%91%8a" target="_blank" rel="noopener" class="share-btn-linkedin" aria-label="linkedin-in">
           <i class="fab fa-linkedin-in"></i>
         </a>
       </li>
@@ -1628,7 +1695,7 @@
       
       
       <li>
-        <a href="whatsapp://send?text=%e5%9f%ba%e4%ba%8eAIGC%e7%9a%84%e8%87%aa%e5%8a%a8%e5%8c%96%e6%8a%a5%e5%91%8a%e7%94%9f%e6%88%90%e2%80%94%e2%80%94%e8%88%86%e6%83%85%e5%88%86%e6%9e%90%e6%8a%a5%e5%91%8a%20https://spacetimelab.cn/project/fixed-outline-report-generation/" target="_blank" rel="noopener" class="share-btn-whatsapp" aria-label="whatsapp">
+        <a href="whatsapp://send?text=%e5%9f%ba%e4%ba%8eLLM%e7%9a%84%e8%87%aa%e5%8a%a8%e5%8c%96%e6%8a%a5%e5%91%8a%e7%94%9f%e6%88%90%e2%80%94%e2%80%94%e8%88%86%e6%83%85%e5%88%86%e6%9e%90%e6%8a%a5%e5%91%8a%20https://spacetimelab.cn/project/fixed-outline-report-generation/" target="_blank" rel="noopener" class="share-btn-whatsapp" aria-label="whatsapp">
           <i class="fab fa-whatsapp"></i>
         </a>
       </li>
@@ -1641,7 +1708,7 @@
       
       
       <li>
-        <a href="https://service.weibo.com/share/share.php?url=https://spacetimelab.cn/project/fixed-outline-report-generation/&amp;title=%e5%9f%ba%e4%ba%8eAIGC%e7%9a%84%e8%87%aa%e5%8a%a8%e5%8c%96%e6%8a%a5%e5%91%8a%e7%94%9f%e6%88%90%e2%80%94%e2%80%94%e8%88%86%e6%83%85%e5%88%86%e6%9e%90%e6%8a%a5%e5%91%8a" target="_blank" rel="noopener" class="share-btn-weibo" aria-label="weibo">
+        <a href="https://service.weibo.com/share/share.php?url=https://spacetimelab.cn/project/fixed-outline-report-generation/&amp;title=%e5%9f%ba%e4%ba%8eLLM%e7%9a%84%e8%87%aa%e5%8a%a8%e5%8c%96%e6%8a%a5%e5%91%8a%e7%94%9f%e6%88%90%e2%80%94%e2%80%94%e8%88%86%e6%83%85%e5%88%86%e6%9e%90%e6%8a%a5%e5%91%8a" target="_blank" rel="noopener" class="share-btn-weibo" aria-label="weibo">
           <i class="fab fa-weibo"></i>
         </a>
       </li>

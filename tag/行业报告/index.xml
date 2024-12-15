@@ -13,7 +13,7 @@
     </image>
     
     <item>
-      <title>基于AIGC的自动化报告生成——舆情分析报告</title>
+      <title>基于LLM的自动化报告生成——舆情分析报告</title>
       <link>https://spacetimelab.cn/project/fixed-outline-report-generation/</link>
       <pubDate>Sat, 14 Dec 2024 23:13:25 +0800</pubDate>
       <guid>https://spacetimelab.cn/project/fixed-outline-report-generation/</guid>
@@ -714,7 +714,7 @@
   &lt;/div&gt;&lt;/figure&gt;
 &lt;/p&gt;
 &lt;h3 id=&#34;输入数据质量问题&#34;&gt;输入数据质量问题&lt;/h3&gt;
-&lt;h4 id=&#34;q信息量少&#34;&gt;Q：信息量少&lt;/h4&gt;
+&lt;h4 id=&#34;q数据源信息量少&#34;&gt;Q：数据源信息量少&lt;/h4&gt;
 &lt;ul&gt;
 &lt;li&gt;
 &lt;p&gt;部分新闻完全是图片，对于文本模型而言这类输入没有什么信息量。&lt;/p&gt;
@@ -723,9 +723,74 @@
 &lt;p&gt;部分网络新闻在获取时包含较多噪音&lt;/p&gt;
 &lt;/li&gt;
 &lt;/ul&gt;
+&lt;h4 id=&#34;q输入信息不全面&#34;&gt;Q：输入信息不全面&lt;/h4&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;输入给LLM的数据主要是新闻摘要，如果新闻摘要本身反映原文的信息较少，会影响报告效果（用户兴趣信息召回率）&lt;/p&gt;
+&lt;p&gt;实践中，有一些新闻正文本身就是信息罗列型的，可能每一段都是不应被忽略的信息，大部份重点关注头部和尾部的摘要算法处理此类文本效果不理想。示例数据和结果如下：&lt;/p&gt;
+&lt;p&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure  &gt;
+  &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img alt=&#34;&#34; srcset=&#34;
+               /project/fixed-outline-report-generation/images/aigc/industry_report/issues/news_abstract_type_hu98b29581314fc229e402f9bcd8e6c221_771574_b5d9dae45e7574fa5f36b460de2ab777.webp 400w,
+               /project/fixed-outline-report-generation/images/aigc/industry_report/issues/news_abstract_type_hu98b29581314fc229e402f9bcd8e6c221_771574_6652fb1399b0931277e3402bbdd248ae.webp 760w,
+               /project/fixed-outline-report-generation/images/aigc/industry_report/issues/news_abstract_type_hu98b29581314fc229e402f9bcd8e6c221_771574_1200x1200_fit_q75_h2_lanczos_3.webp 1200w&#34;
+               src=&#34;https://spacetimelab.cn/project/fixed-outline-report-generation/images/aigc/industry_report/issues/news_abstract_type_hu98b29581314fc229e402f9bcd8e6c221_771574_b5d9dae45e7574fa5f36b460de2ab777.webp&#34;
+               width=&#34;603&#34;
+               height=&#34;760&#34;
+               loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+  &lt;/div&gt;&lt;/figure&gt;
+&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure  &gt;
+  &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img alt=&#34;&#34; srcset=&#34;
+               /project/fixed-outline-report-generation/images/aigc/industry_report/issues/news_abstract_type_result_hu0aa3111267156edda4400e783f2a9b1b_184744_536c32bbbf1194ce88e3eaefe1505225.webp 400w,
+               /project/fixed-outline-report-generation/images/aigc/industry_report/issues/news_abstract_type_result_hu0aa3111267156edda4400e783f2a9b1b_184744_32fa113f796d70f42718acd915c06823.webp 760w,
+               /project/fixed-outline-report-generation/images/aigc/industry_report/issues/news_abstract_type_result_hu0aa3111267156edda4400e783f2a9b1b_184744_1200x1200_fit_q75_h2_lanczos_3.webp 1200w&#34;
+               src=&#34;https://spacetimelab.cn/project/fixed-outline-report-generation/images/aigc/industry_report/issues/news_abstract_type_result_hu0aa3111267156edda4400e783f2a9b1b_184744_536c32bbbf1194ce88e3eaefe1505225.webp&#34;
+               width=&#34;760&#34;
+               height=&#34;453&#34;
+               loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+  &lt;/div&gt;&lt;/figure&gt;
+&lt;/p&gt;
 &lt;h2 id=&#34;0x04-外部资源&#34;&gt;0x04 外部资源&lt;/h2&gt;
 &lt;h3 id=&#34;特征抽取模型&#34;&gt;特征抽取模型&lt;/h3&gt;
 &lt;ul&gt;
+&lt;li&gt;bge-large-zh&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://huggingface.co/BAAI/bge-m3&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;BAAI/bge-m3&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;https://huggingface.co/jinaai/jina-embeddings-v3/tree/main/onnx&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;jina-embeddings-v3&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 </description>
