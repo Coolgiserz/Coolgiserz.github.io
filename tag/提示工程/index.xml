@@ -343,8 +343,7 @@ This order will help you gradually build your skills and prepare for tougher cha
   &lt;/div&gt;&lt;/figure&gt;
 &lt;/p&gt;
 &lt;p&gt;底层prompt及响应：&lt;/p&gt;
-&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;
-System message:
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;System message:
 
 Your input fields are:
 1. `sentence` (str)
@@ -452,7 +451,10 @@ Response:
 &lt;/ul&gt;
 &lt;p&gt;官方文档：https://dspy.ai/building-blocks/3-modules&lt;/p&gt;
 &lt;h2 id=&#34;模型支持&#34;&gt;模型支持&lt;/h2&gt;
-&lt;h3 id=&#34;相关issues&#34;&gt;相关Issues&lt;/h3&gt;
+&lt;p&gt;可以快速接入兼容OpenAI Chat接口的大模型。&lt;/p&gt;
+&lt;h3 id=&#34;国产大模型支持&#34;&gt;国产大模型支持&lt;/h3&gt;
+&lt;h4 id=&#34;示例通义千问&#34;&gt;示例：通义千问&lt;/h4&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;&lt;/code&gt;&lt;/pre&gt;&lt;h3 id=&#34;相关issues&#34;&gt;相关Issues&lt;/h3&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;a href=&#34;https://github.com/BerriAI/litellm/issues/1297&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;[Feature]: Too few models are supported · Issue #1297 · BerriAI/litellm · GitHub&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;

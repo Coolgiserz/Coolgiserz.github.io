@@ -5,12 +5,57 @@
     <link>https://spacetimelab.cn/tag/%E6%90%9C%E7%B4%A2%E5%BC%95%E6%93%8E/</link>
       <atom:link href="https://spacetimelab.cn/tag/%E6%90%9C%E7%B4%A2%E5%BC%95%E6%93%8E/index.xml" rel="self" type="application/rss+xml" />
     <description>搜索引擎</description>
-    <generator>Wowchemy (https://wowchemy.com)</generator><language>en-us</language><lastBuildDate>Sun, 17 Dec 2023 00:12:22 +0800</lastBuildDate>
+    <generator>Wowchemy (https://wowchemy.com)</generator><language>en-us</language><lastBuildDate>Sun, 17 Nov 2024 15:17:28 +0800</lastBuildDate>
     <image>
       <url>https://spacetimelab.cn/media/icon_hue03491371183284312b8b116a73ae5ab_79511_512x512_fill_lanczos_center_3.png</url>
       <title>搜索引擎</title>
       <link>https://spacetimelab.cn/tag/%E6%90%9C%E7%B4%A2%E5%BC%95%E6%93%8E/</link>
     </image>
+    
+    <item>
+      <title>Search Engine Web API</title>
+      <link>https://spacetimelab.cn/post/search-engine-web-api/</link>
+      <pubDate>Sun, 17 Nov 2024 15:17:28 +0800</pubDate>
+      <guid>https://spacetimelab.cn/post/search-engine-web-api/</guid>
+      <description>&lt;h2 id=&#34;搜索引擎api类别&#34;&gt;搜索引擎API类别&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;通用搜索API&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;Google Search API&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a href=&#34;https://www.microsoft.com/en-us/bing/apis&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Bing Search API&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;图像搜索API&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://yandex.com&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Yandex Image Search API&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;地理位置搜索&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;高德地图API&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;百度地图API&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&amp;hellip;&amp;hellip;.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;自定义搜索API（Customizable Search APIs）&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
     
     <item>
       <title>「论文阅读」The Anatomy of a Large Scale Hypertextual Web Search Engine</title>

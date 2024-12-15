@@ -1,0 +1,1988 @@
+<!DOCTYPE html><html lang="en-us" >
+
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  
+  
+  
+    <meta name="generator" content="Wowchemy 5.5.0 for Hugo" />
+  
+
+  
+  
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+  
+  
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  
+
+  
+  
+  
+    
+      
+      <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Roboto+Mono&family=Roboto:wght@400;700&display=swap">
+      <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Roboto+Mono&family=Roboto:wght@400;700&display=swap" media="print" onload="this.media='all'">
+    
+  
+
+  
+  
+  
+  
+  
+    
+    
+    
+  
+  
+
+  <meta name="author" content="CoolCats" />
+
+  
+  
+  
+    
+  
+  <meta name="description" content="固定提纲的自动化报告生成" />
+
+  
+  <link rel="alternate" hreflang="en-us" href="https://spacetimelab.cn/project/fixed-outline-report-generation/" />
+
+  
+  
+  
+    <meta name="theme-color" content="#1565c0" />
+  
+
+  
+  
+    
+    <script src="/js/mathjax-config.js"></script>
+  
+
+  
+
+  <link rel="stylesheet" href="/css/vendor-bundle.min.c7b8d9abd591ba2253ea42747e3ac3f5.css" media="print" onload="this.media='all'">
+
+  
+  
+  
+    
+    
+      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/academicons@1.9.1/css/academicons.min.css" integrity="sha512-W0xM4mr6dEP9nREo7Z9z+9X70wytKvMGeDsj7ps2+xg5QPrEBXC8tAW1IFnzjR6eoJ90JmCnFzerQJTLzIEHjA==" crossorigin="anonymous" media="print" onload="this.media='all'">
+    
+
+    
+    
+    
+    
+      
+      
+    
+    
+    
+
+    
+    
+    
+      
+    
+    
+      
+      
+        
+          <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@10.2.1/build/styles/github.min.css" crossorigin="anonymous" title="hl-light" media="print" onload="this.media='all'">
+          <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@10.2.1/build/styles/dracula.min.css" crossorigin="anonymous" title="hl-dark" media="print" onload="this.media='all'" disabled>
+        
+      
+    
+
+    
+    
+    
+      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.7.1/dist/leaflet.min.css" integrity="" crossorigin="anonymous" media="print" onload="this.media='all'">
+    
+
+    
+
+    
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js" integrity="" crossorigin="anonymous" async></script>
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+  
+
+  
+  
+  
+  
+  
+  <link rel="stylesheet" href="/css/wowchemy.1052fab8b7700a3dc49ee23683097d66.css" />
+
+  
+
+
+
+  
+
+
+  
+
+
+  
+
+
+  <script>
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?51ae6db546b05b91d4053193ba49123d";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+  
+  
+  
+
+  
+
+  
+
+  <link rel="icon" type="image/png" href="/media/icon_hue03491371183284312b8b116a73ae5ab_79511_32x32_fill_lanczos_center_3.png" />
+  <link rel="apple-touch-icon" type="image/png" href="/media/icon_hue03491371183284312b8b116a73ae5ab_79511_180x180_fill_lanczos_center_3.png" />
+
+  <link rel="canonical" href="https://spacetimelab.cn/project/fixed-outline-report-generation/" />
+
+  
+  
+  
+  
+  
+  
+  
+  
+    
+    
+  
+  
+
+  
+  
+    
+    
+  
+  <meta property="twitter:card" content="summary" />
+  
+    <meta property="twitter:site" content="@wowchemy" />
+    <meta property="twitter:creator" content="@wowchemy" />
+  
+  <meta property="og:site_name" content="NullSpace" />
+  <meta property="og:url" content="https://spacetimelab.cn/project/fixed-outline-report-generation/" />
+  <meta property="og:title" content="基于AIGC的自动化报告生成——舆情分析报告 | NullSpace" />
+  <meta property="og:description" content="固定提纲的自动化报告生成" /><meta property="og:image" content="https://spacetimelab.cn/media/icon_hue03491371183284312b8b116a73ae5ab_79511_512x512_fill_lanczos_center_3.png" />
+    <meta property="twitter:image" content="https://spacetimelab.cn/media/icon_hue03491371183284312b8b116a73ae5ab_79511_512x512_fill_lanczos_center_3.png" /><meta property="og:locale" content="en-us" />
+  
+    
+      <meta
+        property="article:published_time"
+        content="2024-12-14T23:13:25&#43;08:00"
+      />
+    
+    <meta property="article:modified_time" content="2024-12-14T23:13:25&#43;08:00">
+  
+
+  
+
+
+    
+
+
+
+
+
+
+
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://spacetimelab.cn/project/fixed-outline-report-generation/"
+  },
+  "headline": "基于AIGC的自动化报告生成——舆情分析报告",
+  
+  "datePublished": "2024-12-14T23:13:25+08:00",
+  "dateModified": "2024-12-14T23:13:25+08:00",
+  
+  "author": {
+    "@type": "Person",
+    "name": "CoolCats"
+  },
+  
+  "publisher": {
+    "@type": "Organization",
+    "name": "NullSpace",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://spacetimelab.cn/media/icon_hue03491371183284312b8b116a73ae5ab_79511_192x192_fill_lanczos_center_3.png"
+    }
+  },
+  "description": "固定提纲的自动化报告生成"
+}
+</script>
+
+  
+
+  
+
+  
+
+  
+
+
+
+
+
+  <title>基于AIGC的自动化报告生成——舆情分析报告 | NullSpace</title>
+</head>
+
+
+<body id="top" data-spy="scroll" data-offset="70" data-target="#TableOfContents" class="page-wrapper   " data-wc-page-id="4aaa6ef47bfa97e7f0dd8ee6b96adc30" >
+
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  <script src="/js/wowchemy-init.min.2ed908358299dd7ab553faae685c746c.js"></script>
+
+  
+
+
+<aside class="search-modal" id="search">
+  <div class="container">
+    <section class="search-header">
+
+      <div class="row no-gutters justify-content-between mb-3">
+        <div class="col-6">
+          <h1>Search</h1>
+        </div>
+        <div class="col-6 col-search-close">
+          <a class="js-search" href="#" aria-label="Close"><i class="fas fa-times-circle text-muted" aria-hidden="true"></i></a>
+        </div>
+      </div>
+
+      <div id="search-box">
+        
+        <input name="q" id="search-query" placeholder="Search..." autocapitalize="off"
+        autocomplete="off" autocorrect="off" spellcheck="false" type="search" class="form-control"
+        aria-label="Search...">
+        
+      </div>
+
+      
+      
+
+      
+
+    </section>
+    <section class="section-search-results">
+
+      <div id="search-hits">
+        
+      </div>
+
+    </section>
+  </div>
+</aside>
+
+
+
+  <div class="page-header">
+    
+
+
+
+
+
+
+
+
+
+
+
+
+<header class="header--fixed">
+  <nav class="navbar navbar-expand-lg navbar-light compensate-for-scrollbar" id="navbar-main">
+    <div class="container-xl">
+
+      
+      <div class="d-none d-lg-inline-flex">
+        <a class="navbar-brand" href="/">NullSpace</a>
+      </div>
+      
+
+      
+      <button type="button" class="navbar-toggler" data-toggle="collapse"
+              data-target="#navbar-content" aria-controls="navbar-content" aria-expanded="false" aria-label="Toggle navigation">
+      <span><i class="fas fa-bars"></i></span>
+      </button>
+      
+
+      
+      <div class="navbar-brand-mobile-wrapper d-inline-flex d-lg-none">
+        <a class="navbar-brand" href="/">NullSpace</a>
+      </div>
+      
+
+      
+      
+      <div class="navbar-collapse main-menu-item collapse justify-content-start" id="navbar-content">
+
+        
+        <ul class="navbar-nav d-md-inline-flex">
+          
+
+          
+
+          
+          
+          
+
+          
+
+          
+          
+          
+          
+
+          
+            
+              
+              
+            
+            
+          
+
+          <li class="nav-item">
+            <a class="nav-link " href="/post"><span>博客</span></a>
+          </li>
+
+          
+          
+
+          
+
+          
+          
+          
+            
+          
+
+          
+
+          
+          
+          
+          
+
+          
+            
+              
+              
+            
+            
+          
+
+          <li class="nav-item">
+            <a class="nav-link " href="/event"><span>趣事</span></a>
+          </li>
+
+          
+          
+
+          
+
+          
+          
+          
+            
+          
+
+          
+
+          
+          
+          
+          
+
+          
+            
+              
+              
+            
+            
+          
+
+          <li class="nav-item">
+            <a class="nav-link  active" href="/project"><span>项目</span></a>
+          </li>
+
+          
+          
+
+          
+
+          
+          
+          
+            
+          
+
+          
+
+          
+          
+          
+          
+
+          
+            
+              
+              
+            
+            
+          
+
+          <li class="nav-item">
+            <a class="nav-link " href="/publication"><span>论文</span></a>
+          </li>
+
+          
+          
+
+          
+
+          
+          
+          
+            
+          
+
+          
+
+          
+          
+          
+          
+
+          
+            
+              
+              
+            
+            
+          
+
+          <li class="nav-item">
+            <a class="nav-link " href="/category/practice/"><span>练习</span></a>
+          </li>
+
+          
+          
+
+          
+
+          
+          
+          
+            
+          
+
+          
+
+          
+          
+          
+          
+
+          
+            
+              
+              
+            
+            
+          
+
+          <li class="nav-item">
+            <a class="nav-link " href="/contact"><span>联系</span></a>
+          </li>
+
+          
+          
+
+          
+
+          
+          
+          
+
+          
+
+          
+          
+          
+          
+
+          
+            
+              
+              
+            
+            
+          
+
+          <li class="nav-item">
+            <a class="nav-link " href="/tags"><span>归档</span></a>
+          </li>
+
+          
+          
+
+        
+
+          
+        </ul>
+      </div>
+
+      <ul class="nav-icons navbar-nav flex-row ml-auto d-flex pl-md-2">
+
+        
+        
+          
+        
+
+        
+        
+        <li class="nav-item">
+          <a class="nav-link js-search" href="#" aria-label="Search"><i class="fas fa-search" aria-hidden="true"></i></a>
+        </li>
+        
+
+        
+        
+        
+        <li class="nav-item dropdown theme-dropdown">
+          <a href="#" class="nav-link" data-toggle="dropdown" aria-haspopup="true" aria-label="Display preferences">
+            <i class="fas fa-moon" aria-hidden="true"></i>
+          </a>
+          <div class="dropdown-menu">
+            <a href="#" class="dropdown-item js-set-theme-light">
+              <span>Light</span>
+            </a>
+            <a href="#" class="dropdown-item js-set-theme-dark">
+              <span>Dark</span>
+            </a>
+            <a href="#" class="dropdown-item js-set-theme-auto">
+              <span>Automatic</span>
+            </a>
+          </div>
+        </li>
+        
+
+        
+        
+
+      </ul>
+
+    </div>
+  </nav>
+</header>
+
+
+  </div>
+
+  <div class="page-body">
+    
+    
+    
+
+    <article class="article article-project">
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+  
+  
+<div class="article-container pt-3">
+  <h1>基于AIGC的自动化报告生成——舆情分析报告</h1>
+
+  
+
+  
+    
+
+
+<div class="article-metadata">
+
+  
+  
+
+  
+  <span class="article-date">
+    
+    
+      
+    
+    Dec 14, 2024
+  </span>
+  
+
+  
+
+  
+
+  
+  
+  
+  
+
+  
+  
+  <span class="middot-divider"></span>
+  <span class="article-categories">
+    <i class="fas fa-folder mr-1"></i><a href="/category/aigc/">AIGC</a>, <a href="/category/%E8%A1%8C%E4%B8%9A%E5%88%86%E6%9E%90/">行业分析</a></span>
+  
+
+</div>
+
+    
+
+
+
+
+
+  
+</div>
+
+
+
+  <div class="article-container">
+
+    <div class="article-style">
+      <!-- START doctoc generated TOC please keep comment here to allow auto update -->
+<!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
+<h2 id="目录"><strong>目录</strong></h2>
+<ul>
+<li><a href="#0x00-%E9%A1%B9%E7%9B%AE%E6%9E%B6%E6%9E%84">0x00 项目架构</a></li>
+<li><a href="#0x01-%E6%A0%B8%E5%BF%83%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84">0x01 核心数据结构</a>
+<ul>
+<li><a href="#%E6%8A%A5%E5%91%8A%E6%8F%90%E7%BA%B2%E6%A0%91">报告提纲树</a></li>
+<li><a href="#%E6%95%B0%E6%8D%AE%E8%A1%A8">数据表</a></li>
+</ul>
+</li>
+<li><a href="#0x02-%E6%A0%B8%E5%BF%83%E6%B5%81%E7%A8%8B">0x02 核心流程</a></li>
+<li><a href="#0x03-%E6%95%88%E6%9E%9C%E7%A4%BA%E4%BE%8B%E5%8F%8A%E9%97%AE%E9%A2%98">0x03 效果示例及问题</a>
+<ul>
+<li><a href="#%E6%A3%80%E7%B4%A2%E6%95%88%E6%9E%9C">检索效果</a></li>
+<li><a href="#%E6%8A%A5%E5%91%8A%E7%BB%93%E6%9E%9C">报告结果</a></li>
+<li><a href="#%E9%97%AE%E9%A2%98">问题</a></li>
+<li><a href="#%E7%94%9F%E6%88%90%E6%A8%A1%E5%9E%8B%E7%9A%84%E9%97%AE%E9%A2%98">生成模型的问题</a>
+<ul>
+<li><a href="#q%E5%A4%A7%E6%A8%A1%E5%9E%8B%E6%89%A7%E8%A1%8C%E8%BF%9D%E8%83%8C%E6%8C%87%E4%BB%A4">Q：大模型执行违背指令</a></li>
+</ul>
+</li>
+<li><a href="#%E6%A3%80%E7%B4%A2%E6%A8%A1%E5%9E%8B%E7%9A%84%E9%97%AE%E9%A2%98">检索模型的问题</a>
+<ul>
+<li><a href="#q%E9%83%A8%E5%88%86%E6%95%B0%E6%8D%AE%E6%A3%80%E7%B4%A2%E7%9B%B8%E5%85%B3%E6%80%A7%E8%BE%83%E4%BD%8E">Q：部分数据检索相关性较低</a></li>
+</ul>
+</li>
+<li><a href="#%E8%BE%93%E5%85%A5%E6%95%B0%E6%8D%AE%E8%B4%A8%E9%87%8F%E9%97%AE%E9%A2%98">输入数据质量问题</a>
+<ul>
+<li><a href="#q%E4%BF%A1%E6%81%AF%E9%87%8F%E5%B0%91">Q：信息量少</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#0x04-%E5%A4%96%E9%83%A8%E8%B5%84%E6%BA%90">0x04 外部资源</a>
+<ul>
+<li><a href="#%E7%89%B9%E5%BE%81%E6%8A%BD%E5%8F%96%E6%A8%A1%E5%9E%8B">特征抽取模型</a></li>
+</ul>
+</li>
+</ul>
+<!-- END doctoc generated TOC please keep comment here to allow auto update -->
+<h2 id="0x00-项目架构">0x00 项目架构</h2>
+<p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<figure  >
+  <div class="d-flex justify-content-center">
+    <div class="w-100" ><img alt="" srcset="
+               /project/fixed-outline-report-generation/images/architect/design_hud8b36345f44765c8bf60f1ef4f1366fb_99433_7a4dfb3fd96fddcccd24da2dc0db6f7b.webp 400w,
+               /project/fixed-outline-report-generation/images/architect/design_hud8b36345f44765c8bf60f1ef4f1366fb_99433_5168479f1f12377d269e57b82f4e1dc5.webp 760w,
+               /project/fixed-outline-report-generation/images/architect/design_hud8b36345f44765c8bf60f1ef4f1366fb_99433_1200x1200_fit_q75_h2_lanczos_3.webp 1200w"
+               src="/project/fixed-outline-report-generation/images/architect/design_hud8b36345f44765c8bf60f1ef4f1366fb_99433_7a4dfb3fd96fddcccd24da2dc0db6f7b.webp"
+               width="760"
+               height="429"
+               loading="lazy" data-zoomable /></div>
+  </div></figure>
+</p>
+<p><a href="https://o0xk6zkrbao.feishu.cn/wiki/EVySwXk5tiAlKRknPJrc8sLHnsf?from=from_copylink" target="_blank" rel="noopener">在线文档地址</a></p>
+<ul>
+<li>
+<p>数据检索引擎</p>
+<p>给定查询词及其它查询参数，查询出最相关的数据（新闻）。</p>
+</li>
+<li>
+<p>报告生成引擎</p>
+<p>根据给定的报告提纲（含报告主题、各章节标题、也可包含用户对各章节的写作偏好）及其它参数（如偏好报告风格），调用写作器、润色器进行报告撰写</p>
+</li>
+<li>
+<p>大模型服务调度引擎</p>
+<p>对第三方大模型服务提供商的模型进行统一调度。</p>
+</li>
+<li>
+<p>&hellip;&hellip;</p>
+</li>
+</ul>
+<h2 id="0x01-核心数据结构">0x01 核心数据结构</h2>
+<h3 id="报告提纲树">报告提纲树</h3>
+<p>提纲实际上是一棵树，根节点为以报告名称命名的节点，其下面的子节点为子章节，每个子章节又分别是独立的子树。</p>
+<ul>
+<li>
+<p>报告章节节点</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="k">class</span> <span class="nc">ArticleSectionNode</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">    <span class="s2">&#34;&#34;&#34;
+</span></span></span><span class="line"><span class="cl"><span class="s2">    ArticleSectionNode 用于处理文章的章节，包括存储章节正文、定义章节写作偏好.
+</span></span></span><span class="line"><span class="cl"><span class="s2">    &#34;&#34;&#34;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">section_name</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">content</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">        <span class="s2">&#34;&#34;&#34;
+</span></span></span><span class="line"><span class="cl"><span class="s2">        section_name: 字符串形式的章节名称, e.g. 报告观点, 近期动态, etc.
+</span></span></span><span class="line"><span class="cl"><span class="s2">        content: 章节正文内容. 可以是字符串或其它数据结构，取决于你的选择.
+</span></span></span><span class="line"><span class="cl"><span class="s2">        &#34;&#34;&#34;</span>
+</span></span><span class="line"><span class="cl">        <span class="bp">self</span><span class="o">.</span><span class="n">section_name</span> <span class="o">=</span> <span class="n">section_name</span>
+</span></span><span class="line"><span class="cl">        <span class="bp">self</span><span class="o">.</span><span class="n">content</span> <span class="o">=</span> <span class="n">content</span>
+</span></span><span class="line"><span class="cl">        <span class="bp">self</span><span class="o">.</span><span class="n">children</span> <span class="o">=</span> <span class="p">[]</span>
+</span></span><span class="line"><span class="cl">        <span class="bp">self</span><span class="o">.</span><span class="n">preference</span> <span class="o">=</span> <span class="kc">None</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="k">def</span> <span class="nf">add_child</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">new_child_node</span><span class="p">,</span> <span class="n">insert_to_front</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">        <span class="k">if</span> <span class="n">insert_to_front</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">            <span class="bp">self</span><span class="o">.</span><span class="n">children</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">new_child_node</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="k">else</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">            <span class="bp">self</span><span class="o">.</span><span class="n">children</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">new_child_node</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="k">def</span> <span class="nf">remove_child</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">child</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">        <span class="bp">self</span><span class="o">.</span><span class="n">children</span><span class="o">.</span><span class="n">remove</span><span class="p">(</span><span class="n">child</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">class</span> <span class="nc">IndustryAnalysisArticleSection</span><span class="p">(</span><span class="n">ArticleSectionNode</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span>  <span class="n">section_name</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">content</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">description</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">parent_name</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">filter_words</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">query_words</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">section_name</span><span class="p">,</span> <span class="n">content</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="k">if</span> <span class="n">query_words</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">            <span class="bp">self</span><span class="o">.</span><span class="n">query_words</span> <span class="o">=</span> <span class="p">[]</span>
+</span></span><span class="line"><span class="cl">        <span class="k">else</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">            <span class="bp">self</span><span class="o">.</span><span class="n">query_words</span> <span class="o">=</span> <span class="n">query_words</span>
+</span></span><span class="line"><span class="cl">        <span class="bp">self</span><span class="o">.</span><span class="n">description</span> <span class="o">=</span> <span class="n">description</span>
+</span></span><span class="line"><span class="cl">        <span class="bp">self</span><span class="o">.</span><span class="n">parent_name</span> <span class="o">=</span> <span class="n">parent_name</span>
+</span></span><span class="line"><span class="cl">        <span class="k">if</span> <span class="n">filter_words</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">            <span class="n">filter_words</span> <span class="o">=</span> <span class="p">[]</span>
+</span></span><span class="line"><span class="cl">        <span class="bp">self</span><span class="o">.</span><span class="n">filter_words</span> <span class="o">=</span> <span class="n">filter_words</span>
+</span></span></code></pre></div></li>
+<li>
+<p>报告提纲树</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="k">class</span> <span class="nc">Article</span><span class="p">(</span><span class="n">ABC</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">topic_name</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">        <span class="bp">self</span><span class="o">.</span><span class="n">root</span> <span class="o">=</span> <span class="n">ArticleSectionNode</span><span class="p">(</span><span class="n">topic_name</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">class</span> <span class="nc">IndustryAnalysisArticle</span><span class="p">(</span><span class="n">Article</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">   <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">topic_name</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">description</span><span class="p">:</span> <span class="nb">str</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">topic_name</span><span class="o">=</span><span class="n">topic_name</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="bp">self</span><span class="o">.</span><span class="n">description</span> <span class="o">=</span> <span class="n">description</span>
+</span></span><span class="line"><span class="cl">        <span class="bp">self</span><span class="o">.</span><span class="n">summary</span> <span class="o">=</span> <span class="s2">&#34;&#34;</span>
+</span></span><span class="line"><span class="cl">   <span class="k">def</span> <span class="fm">__repr__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="sa">f</span><span class="s2">&#34;</span><span class="si">{</span><span class="vm">__class__</span><span class="si">}</span><span class="s2">(</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">root</span><span class="o">.</span><span class="n">section_name</span><span class="si">}</span><span class="s2">, </span><span class="si">{</span><span class="nb">id</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span><span class="si">}</span><span class="s2">)&#34;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">   <span class="nd">@timer</span>
+</span></span><span class="line"><span class="cl">   <span class="k">def</span> <span class="nf">to_string</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">        <span class="s2">&#34;&#34;&#34;
+</span></span></span><span class="line"><span class="cl"><span class="s2">        将文章以字符串形式输出。
+</span></span></span><span class="line"><span class="cl"><span class="s2">        &#34;&#34;&#34;</span>
+</span></span></code></pre></div></li>
+</ul>
+<h3 id="信息表">信息表</h3>
+<ul>
+<li>舆情信息</li>
+</ul>
+<p>用于维护每条新闻的基本信息（title、abstract等）和便于检索的信息（特征向量、标签）</p>
+<ul>
+<li>舆情信息表</li>
+</ul>
+<p>用于维护一篇报告所依赖的基础数据集，实现数据检索方法（离线、也可以有在线搜索）</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="k">class</span> <span class="nc">NewsInformation</span><span class="p">(</span><span class="n">Information</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">  <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">url</span><span class="p">,</span> <span class="n">description</span><span class="p">,</span>  <span class="n">title</span><span class="p">,</span> <span class="n">meta</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span><span class="n">abstract</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span><span class="n">tags</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">List</span><span class="p">[</span><span class="n">Tag</span><span class="p">]]</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">      <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">description</span><span class="p">,</span> <span class="n">title</span><span class="p">,</span> <span class="n">meta</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">      <span class="bp">self</span><span class="o">.</span><span class="n">abstract</span> <span class="o">=</span> <span class="n">abstract</span>
+</span></span><span class="line"><span class="cl">      <span class="bp">self</span><span class="o">.</span><span class="n">tags</span> <span class="o">=</span> <span class="n">tags</span> <span class="k">if</span> <span class="n">tags</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="k">else</span> <span class="p">[]</span>
+</span></span><span class="line"><span class="cl">      <span class="bp">self</span><span class="o">.</span><span class="n">encoded_title</span> <span class="o">=</span> <span class="kc">None</span>
+</span></span><span class="line"><span class="cl">      <span class="bp">self</span><span class="o">.</span><span class="n">encoded_abstract</span> <span class="o">=</span> <span class="kc">None</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">  <span class="k">def</span> <span class="nf">add_tag</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">tag_type</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">      <span class="bp">self</span><span class="o">.</span><span class="n">tags</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">Tag</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">tag_type</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">  <span class="nd">@property</span>
+</span></span><span class="line"><span class="cl">  <span class="k">def</span> <span class="nf">content</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">      <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">description</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">  <span class="nd">@property</span>
+</span></span><span class="line"><span class="cl">  <span class="k">def</span> <span class="nf">tag_set</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">      <span class="k">return</span> <span class="nb">set</span><span class="p">(</span><span class="n">tag</span><span class="o">.</span><span class="n">name</span> <span class="k">for</span> <span class="n">tag</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">tags</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">  <span class="k">def</span> <span class="nf">get_tags</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">      <span class="k">if</span> <span class="nb">type</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">          <span class="k">return</span> <span class="nb">set</span><span class="p">(</span><span class="n">tag</span><span class="o">.</span><span class="n">name</span> <span class="k">for</span> <span class="n">tag</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">tags</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">      <span class="k">return</span> <span class="nb">set</span><span class="p">(</span><span class="n">tag</span><span class="o">.</span><span class="n">name</span> <span class="k">for</span> <span class="n">tag</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">tags</span> <span class="k">if</span> <span class="n">tag</span><span class="o">.</span><span class="n">type</span> <span class="o">==</span> <span class="nb">type</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">  <span class="k">def</span> <span class="nf">contains_keyword</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">keyword_list</span><span class="p">,</span> <span class="n">title_only</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">      <span class="k">if</span> <span class="n">title_only</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">          <span class="n">text</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">title</span>
+</span></span><span class="line"><span class="cl">      <span class="k">else</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">          <span class="n">text</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&#34;</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">title</span><span class="si">}{</span><span class="bp">self</span><span class="o">.</span><span class="n">content</span><span class="si">}</span><span class="s2">&#34;</span>
+</span></span><span class="line"><span class="cl">      <span class="n">match_result</span> <span class="o">=</span> <span class="n">TextMatchUtil</span><span class="o">.</span><span class="n">contains_keywords</span><span class="p">(</span><span class="n">text</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">                                                     <span class="n">keyword_list</span><span class="o">=</span><span class="n">keyword_list</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">      <span class="k">if</span> <span class="n">match_result</span><span class="o">.</span><span class="n">count</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">          <span class="bp">self</span><span class="o">.</span><span class="n">tags</span> <span class="o">=</span> <span class="p">[</span><span class="n">Tag</span><span class="p">(</span><span class="n">word</span><span class="p">)</span> <span class="k">for</span> <span class="n">word</span> <span class="ow">in</span> <span class="n">match_result</span><span class="o">.</span><span class="n">matched_keywords</span><span class="p">]</span>
+</span></span><span class="line"><span class="cl">          <span class="k">return</span> <span class="kc">True</span>
+</span></span><span class="line"><span class="cl">      <span class="k">return</span> <span class="kc">False</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">class</span> <span class="nc">NewsInformationTable</span><span class="p">(</span><span class="n">InformationTable</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">  <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">news_collection</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="n">NewsInformation</span><span class="p">],</span> <span class="n">filter_words</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">encoder</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">      <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">      <span class="k">if</span> <span class="n">filter_words</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">          <span class="n">filter_words</span> <span class="o">=</span> <span class="p">[]</span>
+</span></span><span class="line"><span class="cl">      <span class="bp">self</span><span class="o">.</span><span class="n">news_collection</span> <span class="o">=</span> <span class="n">news_collection</span>
+</span></span><span class="line"><span class="cl">      <span class="bp">self</span><span class="o">.</span><span class="n">title_to_info</span><span class="p">:</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">NewsInformation</span><span class="p">]</span> <span class="o">=</span> <span class="n">NewsInformationTable</span><span class="o">.</span><span class="n">construct_title_to_info</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">news_collection</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">      <span class="bp">self</span><span class="o">.</span><span class="n">filter_words</span> <span class="o">=</span> <span class="n">filter_words</span>
+</span></span><span class="line"><span class="cl">      <span class="bp">self</span><span class="o">.</span><span class="n">encoder</span> <span class="o">=</span> <span class="n">encoder</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">  <span class="k">def</span> <span class="fm">__len__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">      <span class="k">return</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">title_to_info</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">  <span class="k">def</span> <span class="nf">retrieve_information_plus</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span>  <span class="n">queries</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">],</span> <span class="nb">str</span><span class="p">],</span> <span class="n">search_top_k</span><span class="p">:</span> <span class="nb">int</span><span class="o">=</span><span class="mi">20</span><span class="p">,</span><span class="n">topic</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">                                <span class="n">similarity_threshold</span><span class="p">:</span> <span class="nb">float</span><span class="o">=</span><span class="mf">0.4</span><span class="p">,</span> <span class="n">filter_words</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">                                <span class="n">remove_duplicated</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">List</span><span class="p">[</span><span class="n">NewsInformation</span><span class="p">]:</span>
+</span></span><span class="line"><span class="cl">      <span class="k">pass</span>
+</span></span></code></pre></div><h2 id="0x02-核心流程">0x02 核心流程</h2>
+<p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<figure  >
+  <div class="d-flex justify-content-center">
+    <div class="w-100" ><img alt="" srcset="
+               /project/fixed-outline-report-generation/images/architect/process_hu391e33bffc5ad823d391df5892164e51_174277_282f7e779b7bf027dcb0fd706c0ea256.webp 400w,
+               /project/fixed-outline-report-generation/images/architect/process_hu391e33bffc5ad823d391df5892164e51_174277_6282c06754687d9f2cfdd0efc3d5c2bb.webp 760w,
+               /project/fixed-outline-report-generation/images/architect/process_hu391e33bffc5ad823d391df5892164e51_174277_1200x1200_fit_q75_h2_lanczos_3.webp 1200w"
+               src="/project/fixed-outline-report-generation/images/architect/process_hu391e33bffc5ad823d391df5892164e51_174277_282f7e779b7bf027dcb0fd706c0ea256.webp"
+               width="760"
+               height="635"
+               loading="lazy" data-zoomable /></div>
+  </div></figure>
+</p>
+<h2 id="0x03-效果示例及问题">0x03 效果示例及问题</h2>
+<h3 id="检索效果">检索效果</h3>
+<p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<figure  >
+  <div class="d-flex justify-content-center">
+    <div class="w-100" ><img alt="" srcset="
+               /project/fixed-outline-report-generation/images/retrieve/demo/game-design_hu553ac4a60dab540ae1849446e9678212_118905_cec6553bef8286a24bacef2712c5b60a.webp 400w,
+               /project/fixed-outline-report-generation/images/retrieve/demo/game-design_hu553ac4a60dab540ae1849446e9678212_118905_14b0dc88fe0d4731953593e462cf332f.webp 760w,
+               /project/fixed-outline-report-generation/images/retrieve/demo/game-design_hu553ac4a60dab540ae1849446e9678212_118905_1200x1200_fit_q75_h2_lanczos_3.webp 1200w"
+               src="/project/fixed-outline-report-generation/images/retrieve/demo/game-design_hu553ac4a60dab540ae1849446e9678212_118905_cec6553bef8286a24bacef2712c5b60a.webp"
+               width="709"
+               height="272"
+               loading="lazy" data-zoomable /></div>
+  </div></figure>
+</p>
+<h3 id="报告结果效果">报告结果效果</h3>
+<ul>
+<li>基于事实（受限于参考数据源的权威性）写作，观点附带引用</li>
+<li>具有两种报告风格：全文型（篇幅较长）、事件提要型（较为简洁、事件列举）</li>
+<li>并行生成报告，效率高</li>
+</ul>
+<p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<figure  >
+  <div class="d-flex justify-content-center">
+    <div class="w-100" ><img alt="" srcset="
+               /project/fixed-outline-report-generation/images/aigc/industry_report/ai/result-log_hubd9ca0df1164516c332b734b5b7cdee2_462275_bfa5ec5854ab1c4a300882c87355b255.webp 400w,
+               /project/fixed-outline-report-generation/images/aigc/industry_report/ai/result-log_hubd9ca0df1164516c332b734b5b7cdee2_462275_639be4e703589457d17d969e4bfb50e5.webp 760w,
+               /project/fixed-outline-report-generation/images/aigc/industry_report/ai/result-log_hubd9ca0df1164516c332b734b5b7cdee2_462275_1200x1200_fit_q75_h2_lanczos_3.webp 1200w"
+               src="/project/fixed-outline-report-generation/images/aigc/industry_report/ai/result-log_hubd9ca0df1164516c332b734b5b7cdee2_462275_bfa5ec5854ab1c4a300882c87355b255.webp"
+               width="760"
+               height="555"
+               loading="lazy" data-zoomable /></div>
+  </div></figure>
+</p>
+<h4 id="全文类型报告示例">全文类型报告示例</h4>
+<p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<figure  >
+  <div class="d-flex justify-content-center">
+    <div class="w-100" ><img alt="" srcset="
+               /project/fixed-outline-report-generation/images/aigc/industry_report/ai/tech-novative_hu92f5c5afd8be255fb0d67a79683458da_562287_6e0203ba06cd022b26c8aae6d8b44ae5.webp 400w,
+               /project/fixed-outline-report-generation/images/aigc/industry_report/ai/tech-novative_hu92f5c5afd8be255fb0d67a79683458da_562287_b7adb61c8a2a3ad3d782b2f036e5391b.webp 760w,
+               /project/fixed-outline-report-generation/images/aigc/industry_report/ai/tech-novative_hu92f5c5afd8be255fb0d67a79683458da_562287_1200x1200_fit_q75_h2_lanczos_3.webp 1200w"
+               src="/project/fixed-outline-report-generation/images/aigc/industry_report/ai/tech-novative_hu92f5c5afd8be255fb0d67a79683458da_562287_6e0203ba06cd022b26c8aae6d8b44ae5.webp"
+               width="641"
+               height="760"
+               loading="lazy" data-zoomable /></div>
+  </div></figure>
+</p>
+<p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<figure  >
+  <div class="d-flex justify-content-center">
+    <div class="w-100" ><img alt="" srcset="
+               /project/fixed-outline-report-generation/images/aigc/industry_report/game_market/demo/open-world-0_hu19dd97f8ee702ea34f5c2a6cd22e7de1_289673_30375ed3038202c7a29899114ccff8c3.webp 400w,
+               /project/fixed-outline-report-generation/images/aigc/industry_report/game_market/demo/open-world-0_hu19dd97f8ee702ea34f5c2a6cd22e7de1_289673_3f79436e9f1f1a2c7f8cf88ac73b10b0.webp 760w,
+               /project/fixed-outline-report-generation/images/aigc/industry_report/game_market/demo/open-world-0_hu19dd97f8ee702ea34f5c2a6cd22e7de1_289673_1200x1200_fit_q75_h2_lanczos_3.webp 1200w"
+               src="/project/fixed-outline-report-generation/images/aigc/industry_report/game_market/demo/open-world-0_hu19dd97f8ee702ea34f5c2a6cd22e7de1_289673_30375ed3038202c7a29899114ccff8c3.webp"
+               width="567"
+               height="535"
+               loading="lazy" data-zoomable /></div>
+  </div></figure>
+</p>
+<p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<figure  >
+  <div class="d-flex justify-content-center">
+    <div class="w-100" ><img alt="" srcset="
+               /project/fixed-outline-report-generation/images/aigc/industry_report/game_market/demo/open-world_hu6a11d97951587b54cc2f8a4c396e4686_278048_2a21ebc37dae23abc7b6162107e4a37e.webp 400w,
+               /project/fixed-outline-report-generation/images/aigc/industry_report/game_market/demo/open-world_hu6a11d97951587b54cc2f8a4c396e4686_278048_681e9568ae4fc388e03c4d341907a970.webp 760w,
+               /project/fixed-outline-report-generation/images/aigc/industry_report/game_market/demo/open-world_hu6a11d97951587b54cc2f8a4c396e4686_278048_1200x1200_fit_q75_h2_lanczos_3.webp 1200w"
+               src="/project/fixed-outline-report-generation/images/aigc/industry_report/game_market/demo/open-world_hu6a11d97951587b54cc2f8a4c396e4686_278048_2a21ebc37dae23abc7b6162107e4a37e.webp"
+               width="567"
+               height="525"
+               loading="lazy" data-zoomable /></div>
+  </div></figure>
+</p>
+<p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<figure  >
+  <div class="d-flex justify-content-center">
+    <div class="w-100" ><img alt="" srcset="
+               /project/fixed-outline-report-generation/images/aigc/industry_report/game_market/demo/sim-business_hua207cac4ce827be2cd603bb24e149604_362003_e3e0e397ad99d8147dcdada8a02ba629.webp 400w,
+               /project/fixed-outline-report-generation/images/aigc/industry_report/game_market/demo/sim-business_hua207cac4ce827be2cd603bb24e149604_362003_3dcd14134440677ae48b44ee43fb1750.webp 760w,
+               /project/fixed-outline-report-generation/images/aigc/industry_report/game_market/demo/sim-business_hua207cac4ce827be2cd603bb24e149604_362003_1200x1200_fit_q75_h2_lanczos_3.webp 1200w"
+               src="/project/fixed-outline-report-generation/images/aigc/industry_report/game_market/demo/sim-business_hua207cac4ce827be2cd603bb24e149604_362003_e3e0e397ad99d8147dcdada8a02ba629.webp"
+               width="567"
+               height="624"
+               loading="lazy" data-zoomable /></div>
+  </div></figure>
+</p>
+<h4 id="事件提要类型文章">事件提要类型文章</h4>
+<p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<figure  >
+  <div class="d-flex justify-content-center">
+    <div class="w-100" ><img alt="" srcset="
+               /project/fixed-outline-report-generation/images/aigc/industry_report/game_market/demo/event-list_hu45beba20f5134ab2ecc419ac3bb62215_204035_df413fc9d812467eb83302aacc1d26c2.webp 400w,
+               /project/fixed-outline-report-generation/images/aigc/industry_report/game_market/demo/event-list_hu45beba20f5134ab2ecc419ac3bb62215_204035_de56e47cfd99cca1e3908cbcd18beb4b.webp 760w,
+               /project/fixed-outline-report-generation/images/aigc/industry_report/game_market/demo/event-list_hu45beba20f5134ab2ecc419ac3bb62215_204035_1200x1200_fit_q75_h2_lanczos_3.webp 1200w"
+               src="/project/fixed-outline-report-generation/images/aigc/industry_report/game_market/demo/event-list_hu45beba20f5134ab2ecc419ac3bb62215_204035_df413fc9d812467eb83302aacc1d26c2.webp"
+               width="567"
+               height="492"
+               loading="lazy" data-zoomable /></div>
+  </div></figure>
+</p>
+<h3 id="问题">问题</h3>
+<h3 id="生成模型的问题">生成模型的问题</h3>
+<h4 id="q大模型执行违背指令">Q：大模型执行违背指令</h4>
+<p>如通义千问qwen-plus模型，如果prompt中显式提示不要输出markdown格式，模型反而会输出大量markdown格式文本。</p>
+<pre tabindex="0"><code>- **格式要求：** 使用纯文本格式，不得包含任何Markdown或其他格式符号。
+</code></pre><p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<figure  >
+  <div class="d-flex justify-content-center">
+    <div class="w-100" ><img alt="" srcset="
+               /project/fixed-outline-report-generation/images/aigc/industry_report/game_market/prompts/bad-case-markdown_hu53d9e58c869840c2171c7ebed452c11b_156640_a7dd747a2b7e96063edbb6cce0ed2ef8.webp 400w,
+               /project/fixed-outline-report-generation/images/aigc/industry_report/game_market/prompts/bad-case-markdown_hu53d9e58c869840c2171c7ebed452c11b_156640_441faf6d9afc6eb5b8db1136a77ee1e5.webp 760w,
+               /project/fixed-outline-report-generation/images/aigc/industry_report/game_market/prompts/bad-case-markdown_hu53d9e58c869840c2171c7ebed452c11b_156640_1200x1200_fit_q75_h2_lanczos_3.webp 1200w"
+               src="/project/fixed-outline-report-generation/images/aigc/industry_report/game_market/prompts/bad-case-markdown_hu53d9e58c869840c2171c7ebed452c11b_156640_a7dd747a2b7e96063edbb6cce0ed2ef8.webp"
+               width="567"
+               height="443"
+               loading="lazy" data-zoomable /></div>
+  </div></figure>
+</p>
+<p>如果不额外提示不输出markdown，模型反而在大部份情况下不会输出markdown。输出示例如下图所示：</p>
+<p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<figure  >
+  <div class="d-flex justify-content-center">
+    <div class="w-100" ><img alt="" srcset="
+               /project/fixed-outline-report-generation/images/aigc/industry_report/game_market/prompts/good-case-markdown_hu7c92bf2a286b74efb9fbd9a1ee71b396_267171_b1131549aa859a5d1a91ce5a8b1fe258.webp 400w,
+               /project/fixed-outline-report-generation/images/aigc/industry_report/game_market/prompts/good-case-markdown_hu7c92bf2a286b74efb9fbd9a1ee71b396_267171_b5d899be3364312206c0c34ac6929479.webp 760w,
+               /project/fixed-outline-report-generation/images/aigc/industry_report/game_market/prompts/good-case-markdown_hu7c92bf2a286b74efb9fbd9a1ee71b396_267171_1200x1200_fit_q75_h2_lanczos_3.webp 1200w"
+               src="/project/fixed-outline-report-generation/images/aigc/industry_report/game_market/prompts/good-case-markdown_hu7c92bf2a286b74efb9fbd9a1ee71b396_267171_b1131549aa859a5d1a91ce5a8b1fe258.webp"
+               width="567"
+               height="491"
+               loading="lazy" data-zoomable /></div>
+  </div></figure>
+</p>
+<p>类似地，如果prompt中提示模型不要通过序号分点做法，模型反而会输出大量序号。示例如下:</p>
+<p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<figure  >
+  <div class="d-flex justify-content-center">
+    <div class="w-100" ><img alt="" srcset="
+               /project/fixed-outline-report-generation/images/aigc/industry_report/game_market/prompts/bad-case-number_hub7f6853ad0c37ae5c7c88ef27477ded6_681204_3ee926f4345adb57d45614c9293a0e51.webp 400w,
+               /project/fixed-outline-report-generation/images/aigc/industry_report/game_market/prompts/bad-case-number_hub7f6853ad0c37ae5c7c88ef27477ded6_681204_6870faa1c9e08db77f075a82eab1e126.webp 760w,
+               /project/fixed-outline-report-generation/images/aigc/industry_report/game_market/prompts/bad-case-number_hub7f6853ad0c37ae5c7c88ef27477ded6_681204_1200x1200_fit_q75_h2_lanczos_3.webp 1200w"
+               src="/project/fixed-outline-report-generation/images/aigc/industry_report/game_market/prompts/bad-case-number_hub7f6853ad0c37ae5c7c88ef27477ded6_681204_3ee926f4345adb57d45614c9293a0e51.webp"
+               width="760"
+               height="760"
+               loading="lazy" data-zoomable /></div>
+  </div></figure>
+</p>
+<p>直接提示模型分段输出，模型反而不输出序号：</p>
+<p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<figure  >
+  <div class="d-flex justify-content-center">
+    <div class="w-100" ><img alt="" srcset="
+               /project/fixed-outline-report-generation/images/aigc/industry_report/game_market/prompts/good-case-number_hua2dd98df461b854001087d12e52daa43_629399_91381ee4d45d6abd66e91198e8d4c240.webp 400w,
+               /project/fixed-outline-report-generation/images/aigc/industry_report/game_market/prompts/good-case-number_hua2dd98df461b854001087d12e52daa43_629399_63860ff9245b5967f38e5eeee517ba2f.webp 760w,
+               /project/fixed-outline-report-generation/images/aigc/industry_report/game_market/prompts/good-case-number_hua2dd98df461b854001087d12e52daa43_629399_1200x1200_fit_q75_h2_lanczos_3.webp 1200w"
+               src="/project/fixed-outline-report-generation/images/aigc/industry_report/game_market/prompts/good-case-number_hua2dd98df461b854001087d12e52daa43_629399_91381ee4d45d6abd66e91198e8d4c240.webp"
+               width="760"
+               height="684"
+               loading="lazy" data-zoomable /></div>
+  </div></figure>
+</p>
+<p>说明qwen-plus系列模型（也包括qwen-max-0919）目前对于输入指令中“逻辑非”的理解也处理不到位。</p>
+<p>可以通过规则的方式缓解这一问题，比如通过如下正则表达式：</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl">    <span class="nd">@classmethod</span>
+</span></span><span class="line"><span class="cl">    <span class="k">def</span> <span class="nf">clean_markdown</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">content</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">        <span class="n">content</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;^#{1,6}\s*[\u4e00-\u9fa5、\w]*&#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="n">content</span><span class="p">,</span> <span class="n">flags</span><span class="o">=</span><span class="n">re</span><span class="o">.</span><span class="n">MULTILINE</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="n">content</span>
+</span></span></code></pre></div><h3 id="检索模型的问题">检索模型的问题</h3>
+<h4 id="q部分数据检索相关性较低">Q：部分数据检索相关性较低</h4>
+<p>采用BAAI/bge-reranker-v2-m3，效果较差</p>
+<p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<figure  >
+  <div class="d-flex justify-content-center">
+    <div class="w-100" ><img alt="" srcset="
+               /project/fixed-outline-report-generation/images/aigc/industry_report/game_market/rerank/policy-bge-reranker-v2m3_hue035869bdca5370d14889e4cf9ed9cbf_166548_3de3a3deb57090bcb7854d064422a2d0.webp 400w,
+               /project/fixed-outline-report-generation/images/aigc/industry_report/game_market/rerank/policy-bge-reranker-v2m3_hue035869bdca5370d14889e4cf9ed9cbf_166548_7e4dc273bdc730c22118a20e673b6c74.webp 760w,
+               /project/fixed-outline-report-generation/images/aigc/industry_report/game_market/rerank/policy-bge-reranker-v2m3_hue035869bdca5370d14889e4cf9ed9cbf_166548_1200x1200_fit_q75_h2_lanczos_3.webp 1200w"
+               src="/project/fixed-outline-report-generation/images/aigc/industry_report/game_market/rerank/policy-bge-reranker-v2m3_hue035869bdca5370d14889e4cf9ed9cbf_166548_3de3a3deb57090bcb7854d064422a2d0.webp"
+               width="567"
+               height="390"
+               loading="lazy" data-zoomable /></div>
+  </div></figure>
+</p>
+<p>采用bge-large和bge-m3效果较好，但难以通过阈值排除一些不太相关的信息。</p>
+<p>bge-large-zh, 查询“政策法规”</p>
+<p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<figure  >
+  <div class="d-flex justify-content-center">
+    <div class="w-100" ><img alt="" srcset="
+               /project/fixed-outline-report-generation/images/aigc/industry_report/game_market/rerank/policy-bge_hu1719ef8e73286655b0d3b0658c7b7554_122449_631bd1db325354e320414d18c5474333.webp 400w,
+               /project/fixed-outline-report-generation/images/aigc/industry_report/game_market/rerank/policy-bge_hu1719ef8e73286655b0d3b0658c7b7554_122449_dd9ab5d72f5492f77f9e463c1aaf665d.webp 760w,
+               /project/fixed-outline-report-generation/images/aigc/industry_report/game_market/rerank/policy-bge_hu1719ef8e73286655b0d3b0658c7b7554_122449_1200x1200_fit_q75_h2_lanczos_3.webp 1200w"
+               src="/project/fixed-outline-report-generation/images/aigc/industry_report/game_market/rerank/policy-bge_hu1719ef8e73286655b0d3b0658c7b7554_122449_631bd1db325354e320414d18c5474333.webp"
+               width="567"
+               height="302"
+               loading="lazy" data-zoomable /></div>
+  </div></figure>
+</p>
+<p>bge-m3, 查询“政策法规”</p>
+<p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<figure  >
+  <div class="d-flex justify-content-center">
+    <div class="w-100" ><img alt="" srcset="
+               /project/fixed-outline-report-generation/images/aigc/industry_report/game_market/rerank/policy-bge-m3_hu6610941d281d7930852b129ec21c3499_172473_55aee8ea13174ba55206d6deada47942.webp 400w,
+               /project/fixed-outline-report-generation/images/aigc/industry_report/game_market/rerank/policy-bge-m3_hu6610941d281d7930852b129ec21c3499_172473_4f7a6aed6b0500a868e4de6d69c06834.webp 760w,
+               /project/fixed-outline-report-generation/images/aigc/industry_report/game_market/rerank/policy-bge-m3_hu6610941d281d7930852b129ec21c3499_172473_1200x1200_fit_q75_h2_lanczos_3.webp 1200w"
+               src="/project/fixed-outline-report-generation/images/aigc/industry_report/game_market/rerank/policy-bge-m3_hu6610941d281d7930852b129ec21c3499_172473_55aee8ea13174ba55206d6deada47942.webp"
+               width="709"
+               height="369"
+               loading="lazy" data-zoomable /></div>
+  </div></figure>
+</p>
+<p>bge-large-zh, 查询“DLC”</p>
+<p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<figure  >
+  <div class="d-flex justify-content-center">
+    <div class="w-100" ><img alt="" srcset="
+               /project/fixed-outline-report-generation/images/aigc/industry_report/game_market/rerank/dlc-bge_hu4409b5fd1e476d450ab6834c7985bdac_171715_fb4f12502231464d72c7fd3a5212ce99.webp 400w,
+               /project/fixed-outline-report-generation/images/aigc/industry_report/game_market/rerank/dlc-bge_hu4409b5fd1e476d450ab6834c7985bdac_171715_024175105f031465684853a19f3a9cfe.webp 760w,
+               /project/fixed-outline-report-generation/images/aigc/industry_report/game_market/rerank/dlc-bge_hu4409b5fd1e476d450ab6834c7985bdac_171715_1200x1200_fit_q75_h2_lanczos_3.webp 1200w"
+               src="/project/fixed-outline-report-generation/images/aigc/industry_report/game_market/rerank/dlc-bge_hu4409b5fd1e476d450ab6834c7985bdac_171715_fb4f12502231464d72c7fd3a5212ce99.webp"
+               width="567"
+               height="354"
+               loading="lazy" data-zoomable /></div>
+  </div></figure>
+</p>
+<h3 id="输入数据质量问题">输入数据质量问题</h3>
+<h4 id="q信息量少">Q：信息量少</h4>
+<ul>
+<li>
+<p>部分新闻完全是图片，对于文本模型而言这类输入没有什么信息量。</p>
+</li>
+<li>
+<p>部分网络新闻在获取时包含较多噪音</p>
+</li>
+</ul>
+<h2 id="0x04-外部资源">0x04 外部资源</h2>
+<h3 id="特征抽取模型">特征抽取模型</h3>
+<ul>
+<li><a href="https://huggingface.co/jinaai/jina-embeddings-v3/tree/main/onnx" target="_blank" rel="noopener">jina-embeddings-v3</a></li>
+</ul>
+
+    </div>
+
+    
+
+
+
+
+<div class="article-tags">
+  
+  <a class="badge badge-light" href="/tag/aigc/">AIGC</a>
+  
+  <a class="badge badge-light" href="/tag/%E8%A1%8C%E4%B8%9A%E6%8A%A5%E5%91%8A/">行业报告</a>
+  
+  <a class="badge badge-light" href="/tag/%E8%88%86%E6%83%85%E5%88%86%E6%9E%90/">舆情分析</a>
+  
+</div>
+
+
+
+<div class="share-box">
+  <ul class="share">
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="https://twitter.com/intent/tweet?url=https://spacetimelab.cn/project/fixed-outline-report-generation/&amp;text=%e5%9f%ba%e4%ba%8eAIGC%e7%9a%84%e8%87%aa%e5%8a%a8%e5%8c%96%e6%8a%a5%e5%91%8a%e7%94%9f%e6%88%90%e2%80%94%e2%80%94%e8%88%86%e6%83%85%e5%88%86%e6%9e%90%e6%8a%a5%e5%91%8a" target="_blank" rel="noopener" class="share-btn-twitter" aria-label="twitter">
+          <i class="fab fa-twitter"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="https://www.facebook.com/sharer.php?u=https://spacetimelab.cn/project/fixed-outline-report-generation/&amp;t=%e5%9f%ba%e4%ba%8eAIGC%e7%9a%84%e8%87%aa%e5%8a%a8%e5%8c%96%e6%8a%a5%e5%91%8a%e7%94%9f%e6%88%90%e2%80%94%e2%80%94%e8%88%86%e6%83%85%e5%88%86%e6%9e%90%e6%8a%a5%e5%91%8a" target="_blank" rel="noopener" class="share-btn-facebook" aria-label="facebook">
+          <i class="fab fa-facebook"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="mailto:?subject=%e5%9f%ba%e4%ba%8eAIGC%e7%9a%84%e8%87%aa%e5%8a%a8%e5%8c%96%e6%8a%a5%e5%91%8a%e7%94%9f%e6%88%90%e2%80%94%e2%80%94%e8%88%86%e6%83%85%e5%88%86%e6%9e%90%e6%8a%a5%e5%91%8a&amp;body=https://spacetimelab.cn/project/fixed-outline-report-generation/" target="_blank" rel="noopener" class="share-btn-email" aria-label="envelope">
+          <i class="fas fa-envelope"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="https://www.linkedin.com/shareArticle?url=https://spacetimelab.cn/project/fixed-outline-report-generation/&amp;title=%e5%9f%ba%e4%ba%8eAIGC%e7%9a%84%e8%87%aa%e5%8a%a8%e5%8c%96%e6%8a%a5%e5%91%8a%e7%94%9f%e6%88%90%e2%80%94%e2%80%94%e8%88%86%e6%83%85%e5%88%86%e6%9e%90%e6%8a%a5%e5%91%8a" target="_blank" rel="noopener" class="share-btn-linkedin" aria-label="linkedin-in">
+          <i class="fab fa-linkedin-in"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="whatsapp://send?text=%e5%9f%ba%e4%ba%8eAIGC%e7%9a%84%e8%87%aa%e5%8a%a8%e5%8c%96%e6%8a%a5%e5%91%8a%e7%94%9f%e6%88%90%e2%80%94%e2%80%94%e8%88%86%e6%83%85%e5%88%86%e6%9e%90%e6%8a%a5%e5%91%8a%20https://spacetimelab.cn/project/fixed-outline-report-generation/" target="_blank" rel="noopener" class="share-btn-whatsapp" aria-label="whatsapp">
+          <i class="fab fa-whatsapp"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="https://service.weibo.com/share/share.php?url=https://spacetimelab.cn/project/fixed-outline-report-generation/&amp;title=%e5%9f%ba%e4%ba%8eAIGC%e7%9a%84%e8%87%aa%e5%8a%a8%e5%8c%96%e6%8a%a5%e5%91%8a%e7%94%9f%e6%88%90%e2%80%94%e2%80%94%e8%88%86%e6%83%85%e5%88%86%e6%9e%90%e6%8a%a5%e5%91%8a" target="_blank" rel="noopener" class="share-btn-weibo" aria-label="weibo">
+          <i class="fab fa-weibo"></i>
+        </a>
+      </li>
+    
+  </ul>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+
+
+
+  
+  
+  
+  
+  
+  <div class="media author-card content-widget-hr">
+    
+      
+      <a href="/authors/admin/"><img class="avatar mr-3 avatar-circle" src="/authors/admin/avatar_hu55194f19033f85038196a23353ffe543_580100_270x270_fill_q75_lanczos_center.jpg" alt="CoolCats"></a>
+    
+
+    <div class="media-body">
+      <h5 class="card-title"><a href="/authors/admin/">CoolCats</a></h5>
+      <h6 class="card-subtitle">理学学士</h6>
+      <p class="card-text">我的研究兴趣是时空数据分析、知识图谱、自然语言处理与服务端开发</p>
+      <ul class="network-icon" aria-hidden="true">
+  
+    
+    
+    
+      
+    
+    
+    
+    
+    
+    <li>
+      <a href="mailto:2811159909@qq.com" >
+        <i class="fas fa-envelope"></i>
+      </a>
+    </li>
+  
+    
+    
+    
+      
+    
+    
+    
+    
+    
+      
+    
+    <li>
+      <a href="https://github.com/Coolgiserz" target="_blank" rel="noopener">
+        <i class="fab fa-github"></i>
+      </a>
+    </li>
+  
+</ul>
+
+    </div>
+  </div>
+
+
+
+
+
+
+
+
+
+  
+  
+  
+
+  
+
+  
+
+
+
+
+
+
+
+
+
+
+    <div class="project-related-pages content-widget-hr">
+      
+      
+
+      
+      
+      
+
+      
+      
+      
+
+      
+      
+      
+    </div>
+  </div>
+</article>
+  </div>
+
+  <div class="page-footer">
+    
+    
+    <div class="container">
+      <footer class="site-footer">
+
+  
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+
+
+
+
+
+  
+  
+  
+
+  
+  
+    
+  
+  
+    
+  
+
+  
+
+  
+  <p class="powered-by copyright-license-text">
+    © 2024 Weirdgiser &amp; <a href="https://beian.miit.gov.cn" target="_blank" rel="noopener">粤ICP备2024213180号</a>
+  </p>
+  
+
+  <p class="powered-by footer-license-icons">
+    <a href="https://creativecommons.org/licenses/by-nc-nd/4.0" rel="noopener noreferrer" target="_blank" aria-label="Creative Commons">
+      <i class="fab fa-creative-commons fa-2x" aria-hidden="true"></i>
+      <i class="fab fa-creative-commons-by fa-2x" aria-hidden="true"></i>
+      
+        <i class="fab fa-creative-commons-nc fa-2x" aria-hidden="true"></i>
+      
+      
+        <i class="fab fa-creative-commons-nd fa-2x" aria-hidden="true"></i>
+      
+    </a>
+  </p>
+
+
+
+
+  <p class="powered-by">
+    
+    
+    
+      
+      
+      
+      
+      
+      
+      Published with <a href="https://wowchemy.com/?utm_campaign=poweredby" target="_blank" rel="noopener">Wowchemy</a> — the free, <a href="https://github.com/wowchemy/wowchemy-hugo-themes" target="_blank" rel="noopener">open source</a> website builder that empowers creators.
+    
+  </p>
+</footer>
+
+    </div>
+    
+  </div>
+
+      
+
+    
+    <script src="/js/vendor-bundle.min.fab8b449b814cc9f95b22fcf2e45f05b.js"></script>
+
+    
+    
+    
+      
+
+      
+      
+
+      
+
+      
+        
+        <script src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@10.2.1/build/highlight.min.js" integrity="sha512-Ypjm0o7jOxAd4hpdoppSEN0TQOC19UtPAqD+4s5AlXmUvbmmS/YMxYqAqarQYyxTnB6/rqip9qcxlNB/3U9Wdg==" crossorigin="anonymous"></script>
+        
+        
+        <script src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@10.2.1/build/languages/r.min.js" crossorigin="anonymous"></script>
+        
+        <script src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@10.2.1/build/languages/latex.min.js" crossorigin="anonymous"></script>
+        
+      
+
+    
+
+    
+    
+    
+      <script src="https://cdn.jsdelivr.net/npm/leaflet@1.7.1/dist/leaflet.min.js" integrity="" crossorigin="anonymous"></script>
+    
+
+    
+    
+
+    
+    
+    
+      
+      <script id="search-hit-fuse-template" type="text/x-template">
+        <div class="search-hit" id="summary-{{key}}">
+          <div class="search-hit-content">
+            <div class="search-hit-name">
+              <a href="{{relpermalink}}">{{title}}</a>
+              <div class="article-metadata search-hit-type">{{type}}</div>
+              <p class="search-hit-description">{{snippet}}</p>
+            </div>
+          </div>
+        </div>
+      </script>
+      
+        <script src="https://cdn.jsdelivr.net/gh/krisk/Fuse@v3.2.1/dist/fuse.min.js" integrity="sha512-o38bmzBGX+hD3JHWUFCDA09btWaqrNmoJ3RXLlrysA7PP01Kgs4UlE4MhelE1v5dJR3+cxlR4qQlotsW7jKsnw==" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/gh/julmot/mark.js@8.11.1/dist/jquery.mark.min.js" integrity="sha512-mhbv5DqBMgrWL+32MmsDOt/OAvqr/cHimk6B8y/bx/xS88MVkYGPiVv2ixKVrkywF2qHplNRUvFsAHUdxZ3Krg==" crossorigin="anonymous"></script>
+      
+    
+
+    
+    
+
+    
+    
+    
+    
+      <script id="dsq-count-scr" src="https://weirdgiser.disqus.com/count.js" async></script>
+    
+
+    
+    
+      
+      
+      
+      
+      
+      
+      
+    
+
+    
+
+    
+    
+    
+    <script id="page-data" type="application/json">{"use_headroom":true}</script>
+
+    
+    
+      <script src="/js/wowchemy-headroom.c251366b4128fd5e6b046d4c97a62a51.js" type="module"></script>
+    
+    
+    
+    
+    
+    
+    
+      
+      
+    
+    
+    <script src="/en/js/wowchemy.min.ab2f2890dbe3e2e83579366d3d6e8fd9.js"></script>
+
+    
+    
+      <script src="/js/wowchemy-map.a26e9d2f7238ba5b868384f1c5bc6477.js" type="module"></script>
+    
+    
+    
+    
+      
+<div id="modal" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Cite</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <pre><code class="tex hljs"></code></pre>
+      </div>
+      <div class="modal-footer">
+        <a class="btn btn-outline-primary my-1 js-copy-cite" href="#" target="_blank">
+          <i class="fas fa-copy"></i> Copy
+        </a>
+        <a class="btn btn-outline-primary my-1 js-download-cite" href="#" target="_blank">
+          <i class="fas fa-download"></i> Download
+        </a>
+        <div id="modal-error"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+      <script src="/js/wowchemy-publication.68f8d7090562ca65fc6d3cb3f8f2d2cb.js" type="module"></script>
+
+
+
+
+
+
+</body>
+</html>

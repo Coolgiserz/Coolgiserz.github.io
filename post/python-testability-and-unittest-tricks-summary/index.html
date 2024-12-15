@@ -332,7 +332,7 @@
         content="2023-05-23T23:02:52&#43;08:00"
       />
     
-    <meta property="article:modified_time" content="2023-05-23T23:02:52&#43;08:00">
+    <meta property="article:modified_time" content="2024-12-15T23:02:52&#43;08:00">
   
 
   
@@ -361,7 +361,7 @@
   "headline": "软件可测试性及常用Python测试技巧小结",
   
   "datePublished": "2023-05-23T23:02:52+08:00",
-  "dateModified": "2023-05-23T23:02:52+08:00",
+  "dateModified": "2024-12-15T23:02:52+08:00",
   
   "author": {
     "@type": "Person",
@@ -799,8 +799,10 @@
     
     
       
+          Last updated on
+      
     
-    May 23, 2023
+    Dec 15, 2024
   </span>
   
 
@@ -809,7 +811,7 @@
   
   <span class="middot-divider"></span>
   <span class="article-reading-time">
-    2 min read
+    3 min read
   </span>
   
 
@@ -950,7 +952,8 @@
 </ul>
 <h3 id="常用的软件测试策略">常用的软件测试策略</h3>
 <ul>
-<li>存根</li>
+<li>模拟（mocking）</li>
+<li>存根（stubbing）</li>
 </ul>
 <h3 id="单元测试">单元测试</h3>
 <p>测试一段代码：</p>
@@ -1008,7 +1011,105 @@
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl"><span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
 </span></span><span class="line"><span class="cl">    <span class="n">unittest</span><span class="o">.</span><span class="n">main</span><span class="p">()</span>
-</span></span></code></pre></div><h3 id="代码覆盖率">代码覆盖率</h3>
+</span></span></code></pre></div><h4 id="单元测试中通过模拟高效避开耗时操作">单元测试中通过模拟高效避开耗时操作</h4>
+<p>通过unittest.mock下的patch和MagicMock对象模拟模块中的一些函数（可能耗时较长，但从测试流程上来说需要得到其返回值）。</p>
+<p>示例：下面测试代码片段中test_02_generate_report方法的参数mock_prepare_data对forag.bussiness_rag.engine.ReportGeneratePipeline._prepare_data进行了模拟，模拟对象的返回值设置为self.information_table（实际测试时其可以直接读取固定的一个对象）。这样我们在测试generate_report这个方法时，可以固定且快速得到_prepare_data方法的结果，让我们更专注于测试给定数据下报告生成的效果。</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">unittest</span>
+</span></span><span class="line"><span class="cl"><span class="kn">from</span> <span class="nn">unittest.mock</span> <span class="kn">import</span> <span class="n">patch</span><span class="p">,</span> <span class="n">MagicMock</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nd">@ddt</span>
+</span></span><span class="line"><span class="cl"><span class="k">class</span> <span class="nc">TestBgeLargeEncoder</span><span class="p">(</span><span class="n">unittest</span><span class="o">.</span><span class="n">TestCase</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">    <span class="nd">@classmethod</span>
+</span></span><span class="line"><span class="cl">    <span class="k">def</span> <span class="nf">setUpClass</span><span class="p">(</span><span class="bp">cls</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">        <span class="bp">cls</span><span class="o">.</span><span class="n">pipeline</span> <span class="o">=</span> <span class="n">ReportGeneratePipeline</span><span class="p">(</span><span class="n">article_gen_lm</span><span class="o">=</span><span class="n">article_gen_lm</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">                                               <span class="n">article_summary_lm</span><span class="o">=</span><span class="n">article_summary_lm</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">                                               <span class="n">article_style</span><span class="o">=</span><span class="s2">&#34;bullet&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="bp">cls</span><span class="o">.</span><span class="n">outline_input</span> <span class="o">=</span> <span class="n">get_default_outline</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">        <span class="bp">cls</span><span class="o">.</span><span class="n">information_table</span> <span class="o">=</span> <span class="n">NewsInformationTable</span><span class="p">(</span><span class="n">news_information</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">                                                      <span class="n">encoder</span><span class="o">=</span><span class="n">SentenceTransformer</span><span class="p">(</span><span class="n">DEFAULT_ENCODING_MODEL</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl">        <span class="bp">cls</span><span class="o">.</span><span class="n">information_table</span><span class="o">.</span><span class="n">prepare_table_for_postprocess</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="nd">@data</span><span class="p">(</span><span class="s2">&#34;人工智能&#34;</span><span class="p">,</span> <span class="s2">&#34;AI&#34;</span><span class="p">,</span> <span class="s2">&#34;神经网络&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="k">def</span> <span class="nf">test_01_initialize</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">query</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">        <span class="n">result</span> <span class="o">=</span> <span class="n">TestBgeLargeEncoder</span><span class="o">.</span><span class="n">information_table</span><span class="o">.</span><span class="n">retrieve_information_plus</span><span class="p">([</span><span class="n">query</span><span class="p">])</span>
+</span></span><span class="line"><span class="cl">        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&#34;Query </span><span class="si">{</span><span class="n">query</span><span class="si">}</span><span class="s2">: got </span><span class="si">{</span><span class="p">[</span><span class="n">r</span><span class="o">.</span><span class="n">title</span> <span class="k">for</span> <span class="n">r</span> <span class="ow">in</span> <span class="n">result</span><span class="p">]</span><span class="si">}</span><span class="s2">&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="bp">self</span><span class="o">.</span><span class="n">assertIsInstance</span><span class="p">(</span><span class="n">result</span><span class="p">,</span> <span class="nb">list</span> <span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="nd">@patch</span><span class="p">(</span><span class="s1">&#39;forag.bussiness_rag.engine.ReportGeneratePipeline._prepare_data&#39;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="k">def</span> <span class="nf">test_02_generate_report</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">mock_prepare_data</span><span class="p">:</span> <span class="n">MagicMock</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">        <span class="n">mock_prepare_data</span><span class="o">.</span><span class="n">return_value</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">information_table</span>
+</span></span><span class="line"><span class="cl">        <span class="n">TestBgeLargeEncoder</span><span class="o">.</span><span class="n">pipeline</span><span class="o">.</span><span class="n">_prepare_data</span> <span class="o">=</span> <span class="n">mock_prepare_data</span>
+</span></span><span class="line"><span class="cl">        <span class="n">article_response</span> <span class="o">=</span> <span class="n">TestBgeLargeEncoder</span><span class="o">.</span><span class="n">pipeline</span><span class="o">.</span><span class="n">generate_report</span><span class="p">(</span><span class="n">domain</span><span class="o">=</span><span class="n">domain</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">                                                         <span class="n">outline</span><span class="o">=</span><span class="n">TestBgeLargeEncoder</span><span class="o">.</span><span class="n">outline_input</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">                                                         <span class="n">news_data</span><span class="o">=</span><span class="n">news_data</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&#34;result: </span><span class="si">{</span><span class="n">article_response</span><span class="o">.</span><span class="n">code</span><span class="si">}</span><span class="s2">, </span><span class="si">{</span><span class="n">article_response</span><span class="o">.</span><span class="n">msg</span><span class="si">}</span><span class="s2">&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="n">outputfile</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&#34;</span><span class="si">{</span><span class="n">domain</span><span class="si">}</span><span class="s2">-bullets-</span><span class="si">{</span><span class="n">TestBgeLargeEncoder</span><span class="o">.</span><span class="n">pipeline</span><span class="o">.</span><span class="n">article_gen_lm</span><span class="o">.</span><span class="n">model_type</span><span class="si">}</span><span class="s2">-large-</span><span class="si">{</span><span class="n">datetime</span><span class="o">.</span><span class="n">now</span><span class="p">()</span><span class="o">.</span><span class="n">strftime</span><span class="p">(</span><span class="s1">&#39;%Y%m</span><span class="si">%d</span><span class="s1">-%H%M%S&#39;</span><span class="p">)</span><span class="si">}</span><span class="s2">.md&#34;</span>
+</span></span><span class="line"><span class="cl">        <span class="n">expected_code</span> <span class="o">=</span> <span class="n">FuncResponseCode</span><span class="o">.</span><span class="n">SUCCESS</span>
+</span></span><span class="line"><span class="cl">        <span class="bp">self</span><span class="o">.</span><span class="n">assertEqual</span><span class="p">(</span><span class="n">article_response</span><span class="o">.</span><span class="n">code</span><span class="p">,</span> <span class="n">expected_code</span><span class="p">,</span> <span class="sa">f</span><span class="s2">&#34;Expected </span><span class="si">{</span><span class="n">expected_code</span><span class="si">}</span><span class="s2">, got </span><span class="si">{</span><span class="n">article_response</span><span class="o">.</span><span class="n">code</span><span class="si">}</span><span class="s2">&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">outputfile</span><span class="p">,</span> <span class="s2">&#34;w&#34;</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s2">&#34;utf-8&#34;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">            <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">article_response</span><span class="o">.</span><span class="n">data</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="bp">self</span><span class="o">.</span><span class="n">assertTrue</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="n">outputfile</span><span class="p">),</span> <span class="sa">f</span><span class="s2">&#34;File not found: </span><span class="si">{</span><span class="n">outputfile</span><span class="si">}</span><span class="s2">&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl">  <span class="c1"># forag.bussiness_rag.engine.ReportGeneratePipeline</span>
+</span></span><span class="line"><span class="cl"> <span class="k">class</span> <span class="nc">ReportGeneratePipeline</span><span class="p">():</span> 
+</span></span><span class="line"><span class="cl">    <span class="k">def</span> <span class="nf">generate_report</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">domain</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">outline</span><span class="p">:</span> <span class="nb">dict</span><span class="p">,</span> <span class="n">news_data</span><span class="p">:</span> <span class="nb">list</span><span class="p">,</span> <span class="n">filter_words</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">GeneralResponse</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">        <span class="s2">&#34;&#34;&#34;
+</span></span></span><span class="line"><span class="cl"><span class="s2">
+</span></span></span><span class="line"><span class="cl"><span class="s2">        Parameters
+</span></span></span><span class="line"><span class="cl"><span class="s2">        ----------
+</span></span></span><span class="line"><span class="cl"><span class="s2">        domain
+</span></span></span><span class="line"><span class="cl"><span class="s2">        outline
+</span></span></span><span class="line"><span class="cl"><span class="s2">        news_data
+</span></span></span><span class="line"><span class="cl"><span class="s2">
+</span></span></span><span class="line"><span class="cl"><span class="s2">        Returns
+</span></span></span><span class="line"><span class="cl"><span class="s2">        -------
+</span></span></span><span class="line"><span class="cl"><span class="s2">
+</span></span></span><span class="line"><span class="cl"><span class="s2">        &#34;&#34;&#34;</span>
+</span></span><span class="line"><span class="cl">        <span class="k">try</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">            <span class="n">information_table</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_prepare_data</span><span class="p">(</span><span class="n">news_data</span><span class="p">,</span> <span class="n">filter_words</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">            <span class="n">logger</span><span class="o">.</span><span class="n">warning</span><span class="p">(</span><span class="nb">repr</span><span class="p">(</span><span class="n">e</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl">            <span class="k">return</span> <span class="n">GeneralResponse</span><span class="p">(</span><span class="n">FuncResponseCode</span><span class="o">.</span><span class="n">ERROR</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">e</span><span class="p">,</span> <span class="n">msg</span><span class="o">=</span><span class="s2">&#34;数据加载失败，请稍后重试&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="k">try</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">            <span class="n">article_with_outline</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_prepare_article</span><span class="p">(</span><span class="n">domain</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">                                                         <span class="n">desctiption</span><span class="o">=</span><span class="n">outline</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&#34;desc&#34;</span><span class="p">,</span> <span class="s2">&#34;&#34;</span><span class="p">),</span>
+</span></span><span class="line"><span class="cl">                                                         <span class="n">sections</span><span class="o">=</span><span class="n">outline</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&#34;sections&#34;</span><span class="p">,</span> <span class="p">[]))</span>
+</span></span><span class="line"><span class="cl">            <span class="n">report</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_generate_report</span><span class="p">(</span><span class="n">information_table</span><span class="p">,</span> <span class="n">article_with_outline</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">            <span class="k">return</span> <span class="n">GeneralResponse</span><span class="p">(</span><span class="n">code</span><span class="o">=</span><span class="n">FuncResponseCode</span><span class="o">.</span><span class="n">SUCCESS</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">report</span><span class="p">,</span> <span class="n">msg</span><span class="o">=</span><span class="s2">&#34;报告生成成功，请查看&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">            <span class="n">logger</span><span class="o">.</span><span class="n">warning</span><span class="p">(</span><span class="nb">repr</span><span class="p">(</span><span class="n">e</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl">            <span class="n">logger</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="n">traceback</span><span class="o">.</span><span class="n">format_exc</span><span class="p">())</span>
+</span></span><span class="line"><span class="cl">            <span class="k">return</span> <span class="n">GeneralResponse</span><span class="p">(</span><span class="n">FuncResponseCode</span><span class="o">.</span><span class="n">ERROR</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">e</span><span class="p">,</span> <span class="n">msg</span><span class="o">=</span><span class="s2">&#34;报告生成异常，请稍后重试&#34;</span><span class="p">)</span>
+</span></span></code></pre></div><p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<figure  >
+  <div class="d-flex justify-content-center">
+    <div class="w-100" ><img alt="" srcset="
+               /post/python-testability-and-unittest-tricks-summary/images/report/test_generate_report_hu370c6294b97107f204aba56fa00c2a60_544404_f592ef484f7494546f1fdbf52fbaf906.webp 400w,
+               /post/python-testability-and-unittest-tricks-summary/images/report/test_generate_report_hu370c6294b97107f204aba56fa00c2a60_544404_7c95c19827a7032fb8f949b4ea4be0df.webp 760w,
+               /post/python-testability-and-unittest-tricks-summary/images/report/test_generate_report_hu370c6294b97107f204aba56fa00c2a60_544404_1200x1200_fit_q75_h2_lanczos_3.webp 1200w"
+               src="/post/python-testability-and-unittest-tricks-summary/images/report/test_generate_report_hu370c6294b97107f204aba56fa00c2a60_544404_f592ef484f7494546f1fdbf52fbaf906.webp"
+               width="760"
+               height="345"
+               loading="lazy" data-zoomable /></div>
+  </div></figure>
+</p>
+<h3 id="代码覆盖率">代码覆盖率</h3>
 <h3 id="内联测试">内联测试</h3>
 <p>文档内联测试(doctest)：无需开发或维护单独的测试套件，只需要在函数、类或者模块中组合代码测试即可。示例：</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="k">def</span> <span class="nf">is_anagram</span><span class="p">(</span><span class="n">word</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">other</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span><span class="o">-&gt;</span><span class="nb">bool</span><span class="p">:</span>
@@ -1052,7 +1153,138 @@
   </div></figure>
 </p>
 <h3 id="测试自动化">测试自动化</h3>
+<ul>
+<li>
+<p>数据驱动测试（DDT）</p>
+</li>
+<li>
 <p>测试驱动开发（TDD）</p>
+</li>
+</ul>
+<h4 id="测试报告生成">测试报告生成</h4>
+<p>为了使测试结果更加直观和易于分析，通常会生成测试报告。有一些工具库能让我们快速产出一份测试报告。</p>
+<h5 id="相关框架或库">相关框架或库</h5>
+<ul>
+<li>
+<p><strong>UnitTestReport</strong></p>
+</li>
+<li>
+<p><strong><a href="https://pypi.org/project/BeautifulReport/" target="_blank" rel="noopener">BeautifulReport</a></strong></p>
+</li>
+<li>
+<p><strong>HTMLTestRunner</strong></p>
+<p><a href="https://pypi.org/project/html-testRunner/" target="_blank" rel="noopener">html-testRunner · PyPI</a></p>
+</li>
+</ul>
+<h5 id="测试报告效果">测试报告效果</h5>
+<ul>
+<li>HTMLTestRunner</li>
+</ul>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">    <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s2">&#34;reports/result.html&#34;</span><span class="p">,</span> <span class="s2">&#34;w&#34;</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s2">&#34;utf-8&#34;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">        <span class="n">testrunner</span> <span class="o">=</span> <span class="n">HTMLTestRunner</span><span class="p">(</span><span class="n">verbosity</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">                                    <span class="n">report_name</span><span class="o">=</span><span class="s2">&#34;摘要算法&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">                                    <span class="n">report_title</span><span class="o">=</span><span class="s2">&#34;摘要算法测试结果&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">                                    <span class="n">descriptions</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">                                    <span class="n">stream</span><span class="o">=</span><span class="n">f</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">                                    <span class="n">combine_reports</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="n">unittest</span><span class="o">.</span><span class="n">main</span><span class="p">(</span><span class="n">testRunner</span><span class="o">=</span><span class="n">testrunner</span><span class="p">,</span> <span class="n">verbosity</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+</span></span></code></pre></div><p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<figure  >
+  <div class="d-flex justify-content-center">
+    <div class="w-100" ><img alt="" srcset="
+               /post/python-testability-and-unittest-tricks-summary/images/report/htmlreport_hue34523e494025b4832ddd2d0ade1fcd1_254094_aff9fae831e64be50b2c36b6e6f17581.webp 400w,
+               /post/python-testability-and-unittest-tricks-summary/images/report/htmlreport_hue34523e494025b4832ddd2d0ade1fcd1_254094_cc46d37839c4b4b44eaf56d1f287ddee.webp 760w,
+               /post/python-testability-and-unittest-tricks-summary/images/report/htmlreport_hue34523e494025b4832ddd2d0ade1fcd1_254094_1200x1200_fit_q75_h2_lanczos_3.webp 1200w"
+               src="/post/python-testability-and-unittest-tricks-summary/images/report/htmlreport_hue34523e494025b4832ddd2d0ade1fcd1_254094_aff9fae831e64be50b2c36b6e6f17581.webp"
+               width="760"
+               height="401"
+               loading="lazy" data-zoomable /></div>
+  </div></figure>
+</p>
+<ul>
+<li>BeautifulReport</li>
+</ul>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">        <span class="n">test_suite</span> <span class="o">=</span> <span class="n">unittest</span><span class="o">.</span><span class="n">TestLoader</span><span class="p">()</span><span class="o">.</span><span class="n">discover</span><span class="p">(</span><span class="s2">&#34;test_summarizer&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="n">result</span> <span class="o">=</span> <span class="n">BeautifulReport</span><span class="p">(</span><span class="n">test_suite</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="n">result</span><span class="o">.</span><span class="n">report</span><span class="p">(</span><span class="n">filename</span><span class="o">=</span><span class="s1">&#39;摘要算法测试报告-V2&#39;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">                      <span class="n">description</span><span class="o">=</span><span class="s1">&#39;各类摘要算法比较&#39;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">                      <span class="n">report_dir</span><span class="o">=</span><span class="s1">&#39;report&#39;</span><span class="p">,</span> <span class="n">theme</span><span class="o">=</span><span class="s1">&#39;theme_candy&#39;</span><span class="p">)</span>
+</span></span></code></pre></div><p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<figure  >
+  <div class="d-flex justify-content-center">
+    <div class="w-100" ><img alt="" srcset="
+               /post/python-testability-and-unittest-tricks-summary/images/report/beautifulreport_hu64283ed8b73311e18dd9783be9e10172_180642_40b0bc0c80a6381dde356de20012f65c.webp 400w,
+               /post/python-testability-and-unittest-tricks-summary/images/report/beautifulreport_hu64283ed8b73311e18dd9783be9e10172_180642_68e79f4780cf6bf4f487ca2eca394269.webp 760w,
+               /post/python-testability-and-unittest-tricks-summary/images/report/beautifulreport_hu64283ed8b73311e18dd9783be9e10172_180642_1200x1200_fit_q75_h2_lanczos_3.webp 1200w"
+               src="/post/python-testability-and-unittest-tricks-summary/images/report/beautifulreport_hu64283ed8b73311e18dd9783be9e10172_180642_40b0bc0c80a6381dde356de20012f65c.webp"
+               width="760"
+               height="424"
+               loading="lazy" data-zoomable /></div>
+  </div></figure>
+</p>
+<p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<figure  >
+  <div class="d-flex justify-content-center">
+    <div class="w-100" ><img alt="" srcset="
+               /post/python-testability-and-unittest-tricks-summary/images/report/beautifulreport-detail_hu2c427fcb544096ae7b3fa2eeb9b51674_129573_066aef8d81452982dbe69b1f0432e102.webp 400w,
+               /post/python-testability-and-unittest-tricks-summary/images/report/beautifulreport-detail_hu2c427fcb544096ae7b3fa2eeb9b51674_129573_9b159848ebedc460502b722c235b4fe5.webp 760w,
+               /post/python-testability-and-unittest-tricks-summary/images/report/beautifulreport-detail_hu2c427fcb544096ae7b3fa2eeb9b51674_129573_1200x1200_fit_q75_h2_lanczos_3.webp 1200w"
+               src="/post/python-testability-and-unittest-tricks-summary/images/report/beautifulreport-detail_hu2c427fcb544096ae7b3fa2eeb9b51674_129573_066aef8d81452982dbe69b1f0432e102.webp"
+               width="760"
+               height="268"
+               loading="lazy" data-zoomable /></div>
+  </div></figure>
+</p>
+<ul>
+<li>&hellip;&hellip;</li>
+</ul>
 <h2 id="参考资料">参考资料</h2>
 <ul>
 <li>
@@ -1065,6 +1297,7 @@
 <p><a href="https://time.geekbang.org/column/article/186691" target="_blank" rel="noopener">29 | 理论三：什么是代码的可测试性？如何写出可测试性好的代码？-设计模式之美-极客时间</a></p>
 </li>
 </ul>
+<h2 id="heading"></h2>
 
     </div>
 

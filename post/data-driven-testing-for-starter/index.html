@@ -864,7 +864,129 @@
 <p>读取数据变量，进行测试，保存测试信息。</p>
 </li>
 </ol>
+<h2 id="简单示例">简单示例</h2>
+<h3 id="结合ddt的单元测试">结合ddt的单元测试</h3>
+<h4 id="通过data装饰器对测试数据进行测试">通过@data装饰器对测试数据进行测试</h4>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="kn">from</span> <span class="nn">ddt</span> <span class="kn">import</span> <span class="n">ddt</span><span class="p">,</span> <span class="n">file_data</span>
+</span></span><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">unittest</span><span class="nd">@ddt</span>
+</span></span><span class="line"><span class="cl"><span class="k">class</span> <span class="nc">TestBgeLargeEncoder</span><span class="p">(</span><span class="n">unittest</span><span class="o">.</span><span class="n">TestCase</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">    <span class="nd">@classmethod</span>
+</span></span><span class="line"><span class="cl">    <span class="k">def</span> <span class="nf">setUpClass</span><span class="p">(</span><span class="bp">cls</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">        <span class="bp">cls</span><span class="o">.</span><span class="n">pipeline</span> <span class="o">=</span> <span class="n">ReportGeneratePipeline</span><span class="p">(</span><span class="n">article_gen_lm</span><span class="o">=</span><span class="n">article_gen_lm</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">                                               <span class="n">article_summary_lm</span><span class="o">=</span><span class="n">article_summary_lm</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">                                               <span class="n">article_style</span><span class="o">=</span><span class="s2">&#34;bullet&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="bp">cls</span><span class="o">.</span><span class="n">outline_input</span> <span class="o">=</span> <span class="n">get_default_outline</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">        <span class="bp">cls</span><span class="o">.</span><span class="n">information_table</span> <span class="o">=</span> <span class="n">NewsInformationTable</span><span class="p">(</span><span class="n">news_information</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">                                                      <span class="n">encoder</span><span class="o">=</span><span class="n">SentenceTransformer</span><span class="p">(</span><span class="n">DEFAULT_ENCODING_MODEL</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl">        <span class="bp">cls</span><span class="o">.</span><span class="n">information_table</span><span class="o">.</span><span class="n">prepare_table_for_postprocess</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="nd">@data</span><span class="p">(</span><span class="s2">&#34;人工智能&#34;</span><span class="p">,</span> <span class="s2">&#34;AI&#34;</span><span class="p">,</span> <span class="s2">&#34;神经网络&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="k">def</span> <span class="nf">test_01_initialize</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">query</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">        <span class="n">result</span> <span class="o">=</span> <span class="n">TestBgeLargeEncoder</span><span class="o">.</span><span class="n">information_table</span><span class="o">.</span><span class="n">retrieve_information_plus</span><span class="p">([</span><span class="n">query</span><span class="p">])</span>
+</span></span><span class="line"><span class="cl">        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&#34;Query </span><span class="si">{</span><span class="n">query</span><span class="si">}</span><span class="s2">: got </span><span class="si">{</span><span class="p">[</span><span class="n">r</span><span class="o">.</span><span class="n">title</span> <span class="k">for</span> <span class="n">r</span> <span class="ow">in</span> <span class="n">result</span><span class="p">]</span><span class="si">}</span><span class="s2">&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="bp">self</span><span class="o">.</span><span class="n">assertIsInstance</span><span class="p">(</span><span class="n">result</span><span class="p">,</span> <span class="nb">list</span> <span class="p">)</span>
+</span></span></code></pre></div><p>
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<figure  >
+  <div class="d-flex justify-content-center">
+    <div class="w-100" ><img alt="" srcset="
+               /post/data-driven-testing-for-starter/images/ddt-demo/ddt-data_huc17ccf02389a06ef25a71aa62ff7607e_158983_339d2cd0c18897df498c0d92df44137e.webp 400w,
+               /post/data-driven-testing-for-starter/images/ddt-demo/ddt-data_huc17ccf02389a06ef25a71aa62ff7607e_158983_4e33e324868ae8ced94be7b71cccf580.webp 760w,
+               /post/data-driven-testing-for-starter/images/ddt-demo/ddt-data_huc17ccf02389a06ef25a71aa62ff7607e_158983_1200x1200_fit_q75_h2_lanczos_3.webp 1200w"
+               src="/post/data-driven-testing-for-starter/images/ddt-demo/ddt-data_huc17ccf02389a06ef25a71aa62ff7607e_158983_339d2cd0c18897df498c0d92df44137e.webp"
+               width="760"
+               height="189"
+               loading="lazy" data-zoomable /></div>
+  </div></figure>
+</p>
+<h4 id="通过文件存储测试数据">通过文件存储测试数据</h4>
+<p>示例场景：某同学设计了一个摘要算法，需要用一批新闻数据批量测试摘要算法的效果。</p>
+<p>测试步骤实现：</p>
+<ol>
+<li>
+<p>准备测试数据（比如用json文件组织）</p>
+</li>
+<li>
+<p>准备测试脚本</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="kn">from</span> <span class="nn">ddt</span> <span class="kn">import</span> <span class="n">ddt</span><span class="p">,</span> <span class="n">file_data</span>
+</span></span><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">unittest</span>
+</span></span><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">logging</span>
+</span></span><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">abstract_summary</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">logging</span><span class="o">.</span><span class="n">basicConfig</span><span class="p">(</span>
+</span></span><span class="line"><span class="cl">    <span class="n">level</span><span class="o">=</span><span class="n">logging</span><span class="o">.</span><span class="n">DEBUG</span><span class="p">,</span>  <span class="c1"># 设置日志级别为 DEBUG</span>
+</span></span><span class="line"><span class="cl">    <span class="nb">format</span><span class="o">=</span><span class="s1">&#39;</span><span class="si">%(asctime)s</span><span class="s1"> - </span><span class="si">%(levelname)s</span><span class="s1"> - </span><span class="si">%(threadName)s</span><span class="s1"> - </span><span class="si">%(funcName)s</span><span class="s1">- </span><span class="si">%(lineno)d</span><span class="s1"> - </span><span class="si">%(message)s</span><span class="s1">&#39;</span><span class="p">,</span>  <span class="c1"># 定义日志格式</span>
+</span></span><span class="line"><span class="cl">    <span class="n">datefmt</span><span class="o">=</span><span class="s1">&#39;%Y-%m-</span><span class="si">%d</span><span class="s1"> %H:%M:%S&#39;</span>  <span class="c1"># 定义日期时间格式</span>
+</span></span><span class="line"><span class="cl"><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">logger</span> <span class="o">=</span> <span class="n">logging</span><span class="o">.</span><span class="n">getLogger</span><span class="p">(</span><span class="vm">__file__</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">SENTENCE_COUNT</span> <span class="o">=</span> <span class="mi">3</span>
+</span></span><span class="line"><span class="cl"><span class="n">test_data_path</span> <span class="o">=</span> <span class="s2">&#34;datasource/test.json&#34;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nd">@ddt</span>
+</span></span><span class="line"><span class="cl"><span class="k">class</span> <span class="nc">SummaryTestCase</span><span class="p">(</span><span class="n">unittest</span><span class="o">.</span><span class="n">TestCase</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">    <span class="nd">@file_data</span><span class="p">(</span><span class="n">test_data_path</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="k">def</span> <span class="nf">test_summary_from_files_01</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">title</span><span class="p">,</span> <span class="n">content</span><span class="p">,</span> <span class="n">abstract</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">summrier_proxy</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">            <span class="n">logger</span><span class="o">.</span><span class="n">warning</span><span class="p">(</span><span class="s2">&#34;None summarier&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="k">else</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">            <span class="n">result</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">summrier_proxy</span><span class="o">.</span><span class="n">summarier_text</span><span class="p">(</span><span class="n">content</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">            <span class="n">logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="sa">f</span><span class="s2">&#34;</span><span class="si">{</span><span class="n">title</span><span class="si">}</span><span class="s2">: </span><span class="si">{</span><span class="n">result</span><span class="si">}</span><span class="s2">&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">            <span class="c1"># self.</span>
+</span></span><span class="line"><span class="cl">            <span class="bp">self</span><span class="o">.</span><span class="n">assertIsInstance</span><span class="p">(</span><span class="n">result</span><span class="p">,</span> <span class="nb">str</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">            <span class="bp">self</span><span class="o">.</span><span class="n">abstract</span> <span class="o">=</span> <span class="n">result</span>
+</span></span><span class="line"><span class="cl">            <span class="n">msg</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&#34;&#34;&#34;
+</span></span></span><span class="line"><span class="cl"><span class="s2">            Title: </span><span class="si">{</span><span class="n">title</span><span class="si">}</span><span class="se">\n</span><span class="s2">
+</span></span></span><span class="line"><span class="cl"><span class="s2">
+</span></span></span><span class="line"><span class="cl"><span class="s2">            Abstract: </span><span class="si">{</span><span class="n">result</span><span class="si">}</span><span class="se">\n</span><span class="s2">
+</span></span></span><span class="line"><span class="cl"><span class="s2">
+</span></span></span><span class="line"><span class="cl"><span class="s2">            Current_Abstract: </span><span class="si">{</span><span class="n">abstract</span><span class="si">}</span><span class="s2">
+</span></span></span><span class="line"><span class="cl"><span class="s2">            &#34;&#34;&#34;</span>
+</span></span><span class="line"><span class="cl">            <span class="bp">self</span><span class="o">.</span><span class="n">assertLess</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">abstract</span><span class="p">),</span> <span class="mi">300</span><span class="p">,</span> <span class="sa">f</span><span class="s2">&#34;Abstract length: </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">abstract</span><span class="p">)</span><span class="si">}</span><span class="se">\n</span><span class="si">{</span><span class="n">msg</span><span class="si">}</span><span class="s2">&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">            <span class="bp">self</span><span class="o">.</span><span class="n">assertEqual</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">msg</span><span class="p">)</span>
+</span></span></code></pre></div><p>@ddt
+class LSASummaryTestCase(SummaryTestCase):
+@classmethod
+def setUpClass(cls):
+cls.summarier = abstract_summary.LsaSummarizer()
+cls.summrier_proxy = abstract_summary.TextSummaryProxy(summarier=cls.summarier, sentences_count=SENTENCE_COUNT)</p>
+<p>if <strong>name</strong> == &lsquo;<strong>main</strong>&rsquo;:
+unittest.main()</p>
+</li>
+</ol>
+<pre tabindex="0"><code>3. 运行测试用例
+
+
+
+可以看到，简单地通过@ddt类装饰器可以让TestCase类支持数据驱动的测试，通过@data装饰器可以很方便地使用不同数据执行用例。通过@file_path装饰器可以将文件中的数据作为参数执行测试用例。
+
+![](images/ddt-demo/result-report-list.png)
+
+![](images/ddt-demo/result-report.png)
+
+
+
+## 要点
+
+基于DDT的思想，我们可以将测试数据（包括输入、输出和预期结果）都进行持久化存储，高效地将测试数据送入测试用例中。由于对测试数据和测试代码进行了解耦，测试代码也将更具有可维护性。
+
+## 更多阅读材料
+
+- [数据驱动测试 — Testbase 5.0.0 文档](https://qta-testbase.readthedocs.io/zh/latest/datadrive.html)
+</code></pre>
     </div>
 
     
@@ -874,7 +996,11 @@
 
 <div class="article-tags">
   
+  <a class="badge badge-light" href="/tag/ddt/">DDT</a>
+  
   <a class="badge badge-light" href="/tag/%E6%B5%8B%E8%AF%95/">测试</a>
+  
+  <a class="badge badge-light" href="/tag/%E6%95%B0%E6%8D%AE%E9%A9%B1%E5%8A%A8%E6%B5%8B%E8%AF%95/">数据驱动测试</a>
   
 </div>
 
