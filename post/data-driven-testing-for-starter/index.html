@@ -841,7 +841,7 @@
   <div class="article-container">
 
     <div class="article-style">
-      <h2 id="前言">前言</h2>
+      <h2 id="0x00-前言">0x00 前言</h2>
 <p>之前的文章简单介绍了<a href="../automated-testing-startup/">自动化测试</a>，在自动化测试平台中，有一个重要的组件或概念称为“数据驱动的测试（Data Driven Tests， DDT）”，其目的是将测试脚本与测试数据分离，本质上是测试逻辑的解耦，使得测试流程的代码编写与测试过程中所使用的数据/用例设计可以分别进行。</p>
 <p>数据驱动的测试解决了如下痛点：</p>
 <blockquote>
@@ -864,7 +864,7 @@
 <p>读取数据变量，进行测试，保存测试信息。</p>
 </li>
 </ol>
-<h2 id="简单示例">简单示例</h2>
+<h2 id="0x01-简单示例">0x01 简单示例</h2>
 <h3 id="结合ddt的单元测试">结合ddt的单元测试</h3>
 <h4 id="通过data装饰器对测试数据进行测试">通过@data装饰器对测试数据进行测试</h4>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="kn">from</span> <span class="nn">ddt</span> <span class="kn">import</span> <span class="n">ddt</span><span class="p">,</span> <span class="n">file_data</span>
@@ -957,36 +957,155 @@
 </span></span></span><span class="line"><span class="cl"><span class="s2">            &#34;&#34;&#34;</span>
 </span></span><span class="line"><span class="cl">            <span class="bp">self</span><span class="o">.</span><span class="n">assertLess</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">abstract</span><span class="p">),</span> <span class="mi">300</span><span class="p">,</span> <span class="sa">f</span><span class="s2">&#34;Abstract length: </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">abstract</span><span class="p">)</span><span class="si">}</span><span class="se">\n</span><span class="si">{</span><span class="n">msg</span><span class="si">}</span><span class="s2">&#34;</span><span class="p">)</span>
 </span></span><span class="line"><span class="cl">            <span class="bp">self</span><span class="o">.</span><span class="n">assertEqual</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">msg</span><span class="p">)</span>
-</span></span></code></pre></div><p>@ddt
-class LSASummaryTestCase(SummaryTestCase):
-@classmethod
-def setUpClass(cls):
-cls.summarier = abstract_summary.LsaSummarizer()
-cls.summrier_proxy = abstract_summary.TextSummaryProxy(summarier=cls.summarier, sentences_count=SENTENCE_COUNT)</p>
-<p>if <strong>name</strong> == &lsquo;<strong>main</strong>&rsquo;:
-unittest.main()</p>
+</span></span><span class="line"><span class="cl"><span class="err">```</span><span class="n">python</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nd">@ddt</span>
+</span></span><span class="line"><span class="cl"><span class="k">class</span> <span class="nc">LSASummaryTestCase</span><span class="p">(</span><span class="n">SummaryTestCase</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="nd">@classmethod</span>
+</span></span><span class="line"><span class="cl">    <span class="k">def</span> <span class="nf">setUpClass</span><span class="p">(</span><span class="bp">cls</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">        <span class="bp">cls</span><span class="o">.</span><span class="n">summarier</span> <span class="o">=</span> <span class="n">abstract_summary</span><span class="o">.</span><span class="n">LsaSummarizer</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">        <span class="bp">cls</span><span class="o">.</span><span class="n">summrier_proxy</span> <span class="o">=</span> <span class="n">abstract_summary</span><span class="o">.</span><span class="n">TextSummaryProxy</span><span class="p">(</span><span class="n">summarier</span><span class="o">=</span><span class="bp">cls</span><span class="o">.</span><span class="n">summarier</span><span class="p">,</span> <span class="n">sentences_count</span><span class="o">=</span><span class="n">SENTENCE_COUNT</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="n">unittest</span><span class="o">.</span><span class="n">main</span><span class="p">()</span>
+</span></span></code></pre></div></li>
+<li>
+<p>运行测试用例</p>
 </li>
 </ol>
-<pre tabindex="0"><code>3. 运行测试用例
+<p>可以看到，简单地通过@ddt类装饰器可以让TestCase类支持数据驱动的测试，通过@data装饰器可以很方便地使用不同数据执行用例。通过@file_path装饰器可以将文件中的数据作为参数执行测试用例。</p>
+<p>
 
 
 
-可以看到，简单地通过@ddt类装饰器可以让TestCase类支持数据驱动的测试，通过@data装饰器可以很方便地使用不同数据执行用例。通过@file_path装饰器可以将文件中的数据作为参数执行测试用例。
-
-![](images/ddt-demo/result-report-list.png)
-
-![](images/ddt-demo/result-report.png)
 
 
 
-## 要点
 
-基于DDT的思想，我们可以将测试数据（包括输入、输出和预期结果）都进行持久化存储，高效地将测试数据送入测试用例中。由于对测试数据和测试代码进行了解耦，测试代码也将更具有可维护性。
 
-## 更多阅读材料
 
-- [数据驱动测试 — Testbase 5.0.0 文档](https://qta-testbase.readthedocs.io/zh/latest/datadrive.html)
-</code></pre>
+
+
+
+
+
+
+<figure  >
+  <div class="d-flex justify-content-center">
+    <div class="w-100" ><img alt="" srcset="
+               /post/data-driven-testing-for-starter/images/ddt-demo/result-report-list_hu9735574758ffad7d38136bdf660662de_212011_adbe047f720285274d4e132e94dfd5a6.webp 400w,
+               /post/data-driven-testing-for-starter/images/ddt-demo/result-report-list_hu9735574758ffad7d38136bdf660662de_212011_e98b79943d8c62e896183cc06991017c.webp 760w,
+               /post/data-driven-testing-for-starter/images/ddt-demo/result-report-list_hu9735574758ffad7d38136bdf660662de_212011_1200x1200_fit_q75_h2_lanczos_3.webp 1200w"
+               src="/post/data-driven-testing-for-starter/images/ddt-demo/result-report-list_hu9735574758ffad7d38136bdf660662de_212011_adbe047f720285274d4e132e94dfd5a6.webp"
+               width="760"
+               height="393"
+               loading="lazy" data-zoomable /></div>
+  </div></figure>
+</p>
+<p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<figure  >
+  <div class="d-flex justify-content-center">
+    <div class="w-100" ><img alt="" srcset="
+               /post/data-driven-testing-for-starter/images/ddt-demo/result-report_hu75ffc0067ad2b86526d996d129339014_146073_4630ba04b2536c4d1b762acc3401a66d.webp 400w,
+               /post/data-driven-testing-for-starter/images/ddt-demo/result-report_hu75ffc0067ad2b86526d996d129339014_146073_2fc6657775383ca6cd0323e6930b6c3f.webp 760w,
+               /post/data-driven-testing-for-starter/images/ddt-demo/result-report_hu75ffc0067ad2b86526d996d129339014_146073_1200x1200_fit_q75_h2_lanczos_3.webp 1200w"
+               src="/post/data-driven-testing-for-starter/images/ddt-demo/result-report_hu75ffc0067ad2b86526d996d129339014_146073_4630ba04b2536c4d1b762acc3401a66d.webp"
+               width="760"
+               height="289"
+               loading="lazy" data-zoomable /></div>
+  </div></figure>
+</p>
+<h3 id="ddt结合第三方库生成测试报告">ddt结合第三方库生成测试报告</h3>
+<p>举例来说，可以使用BeautifulReport生成报告。</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="c1"># ...省略...</span>
+</span></span><span class="line"><span class="cl"><span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">    <span class="n">suite</span> <span class="o">=</span> <span class="n">unittest</span><span class="o">.</span><span class="n">TestSuite</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">    <span class="kn">from</span> <span class="nn">.</span> <span class="kn">import</span> <span class="n">test_filter</span>
+</span></span><span class="line"><span class="cl">    <span class="n">tests</span> <span class="o">=</span> <span class="n">unittest</span><span class="o">.</span><span class="n">TestLoader</span><span class="p">()</span><span class="o">.</span><span class="n">loadTestsFromModule</span><span class="p">(</span><span class="n">test_filter</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="n">suite</span><span class="o">.</span><span class="n">addTests</span><span class="p">(</span><span class="n">tests</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="n">report</span> <span class="o">=</span> <span class="n">BeautifulReport</span><span class="p">(</span><span class="n">suite</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="n">report</span><span class="o">.</span><span class="n">report</span><span class="p">(</span><span class="n">description</span><span class="o">=</span><span class="s2">&#34;检索&#34;</span><span class="p">,</span> <span class="n">report_dir</span><span class="o">=</span><span class="s2">&#34;.&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">                  <span class="n">filename</span><span class="o">=</span><span class="sa">f</span><span class="s2">&#34;各类检索策略对比-</span><span class="si">{</span><span class="n">REMOVE_DUP</span><span class="si">}</span><span class="s2">-latest1.html&#34;</span><span class="p">,</span> <span class="n">theme</span><span class="o">=</span><span class="s1">&#39;theme_cyan&#39;</span><span class="p">)</span>
+</span></span></code></pre></div><p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<figure  >
+  <div class="d-flex justify-content-center">
+    <div class="w-100" ><img alt="" srcset="
+               /post/data-driven-testing-for-starter/images/ddt-demo/report-retrieve-summary_hu8be9fc34d03c8d147a152c7e476c401b_98135_c5ab0e3e48d560b80d5fd0b5ddb6e321.webp 400w,
+               /post/data-driven-testing-for-starter/images/ddt-demo/report-retrieve-summary_hu8be9fc34d03c8d147a152c7e476c401b_98135_5675beb98974f3e50d0cbcf127996f49.webp 760w,
+               /post/data-driven-testing-for-starter/images/ddt-demo/report-retrieve-summary_hu8be9fc34d03c8d147a152c7e476c401b_98135_1200x1200_fit_q75_h2_lanczos_3.webp 1200w"
+               src="/post/data-driven-testing-for-starter/images/ddt-demo/report-retrieve-summary_hu8be9fc34d03c8d147a152c7e476c401b_98135_c5ab0e3e48d560b80d5fd0b5ddb6e321.webp"
+               width="760"
+               height="413"
+               loading="lazy" data-zoomable /></div>
+  </div></figure>
+</p>
+<p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<figure  >
+  <div class="d-flex justify-content-center">
+    <div class="w-100" ><img alt="" srcset="
+               /post/data-driven-testing-for-starter/images/ddt-demo/report-retrieve_hu7c9bc97ef8c6773efc67df24fec592f9_121041_ebab8464d199991cdcb24bf5f28c236b.webp 400w,
+               /post/data-driven-testing-for-starter/images/ddt-demo/report-retrieve_hu7c9bc97ef8c6773efc67df24fec592f9_121041_6872f7c9158df4fa12f537978bddd28a.webp 760w,
+               /post/data-driven-testing-for-starter/images/ddt-demo/report-retrieve_hu7c9bc97ef8c6773efc67df24fec592f9_121041_1200x1200_fit_q75_h2_lanczos_3.webp 1200w"
+               src="/post/data-driven-testing-for-starter/images/ddt-demo/report-retrieve_hu7c9bc97ef8c6773efc67df24fec592f9_121041_ebab8464d199991cdcb24bf5f28c236b.webp"
+               width="760"
+               height="373"
+               loading="lazy" data-zoomable /></div>
+  </div></figure>
+</p>
+<h2 id="要点">要点</h2>
+<p>基于DDT的思想，我们可以将测试数据（包括输入、输出和预期结果）都进行持久化存储，高效地将测试数据送入测试用例中。由于对测试数据和测试代码进行了解耦，测试代码也将更具有可维护性。</p>
+<h2 id="更多阅读材料">更多阅读材料</h2>
+<ul>
+<li><a href="https://qta-testbase.readthedocs.io/zh/latest/datadrive.html" target="_blank" rel="noopener">数据驱动测试 — Testbase 5.0.0 文档</a></li>
+</ul>
+
     </div>
 
     

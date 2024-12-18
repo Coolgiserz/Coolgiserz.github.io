@@ -292,6 +292,102 @@
                loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
   &lt;/div&gt;&lt;/figure&gt;
 &lt;/p&gt;
+&lt;h4 id=&#34;几种检索策略对比&#34;&gt;几种检索策略对比&lt;/h4&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;基础策略：向量语义检索&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;向量检索结合标题关键词过滤&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;向量检索结合标题+正文关键词过滤&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure  &gt;
+  &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img alt=&#34;&#34; srcset=&#34;
+               /project/fixed-outline-report-generation/images/retrieve/strategy/no-filter-1_hua22ec239c6e5adeb0d0452644251315e_239670_8d6d61b90a43a90a6d4bb9b66be93b1e.webp 400w,
+               /project/fixed-outline-report-generation/images/retrieve/strategy/no-filter-1_hua22ec239c6e5adeb0d0452644251315e_239670_7bdf061377afc41ea3cd3c2854b45757.webp 760w,
+               /project/fixed-outline-report-generation/images/retrieve/strategy/no-filter-1_hua22ec239c6e5adeb0d0452644251315e_239670_1200x1200_fit_q75_h2_lanczos_3.webp 1200w&#34;
+               src=&#34;https://spacetimelab.cn/project/fixed-outline-report-generation/images/retrieve/strategy/no-filter-1_hua22ec239c6e5adeb0d0452644251315e_239670_8d6d61b90a43a90a6d4bb9b66be93b1e.webp&#34;
+               width=&#34;760&#34;
+               height=&#34;367&#34;
+               loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+  &lt;/div&gt;&lt;/figure&gt;
+&lt;/p&gt;
+&lt;p&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure  &gt;
+  &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img alt=&#34;&#34; srcset=&#34;
+               /project/fixed-outline-report-generation/images/retrieve/strategy/title-only-filter_hu981b895078172d29b402e1a5c8507de0_272611_45eb720837323b29a71e09c009415516.webp 400w,
+               /project/fixed-outline-report-generation/images/retrieve/strategy/title-only-filter_hu981b895078172d29b402e1a5c8507de0_272611_f58e343cbe84806543556237eddeec00.webp 760w,
+               /project/fixed-outline-report-generation/images/retrieve/strategy/title-only-filter_hu981b895078172d29b402e1a5c8507de0_272611_1200x1200_fit_q75_h2_lanczos_3.webp 1200w&#34;
+               src=&#34;https://spacetimelab.cn/project/fixed-outline-report-generation/images/retrieve/strategy/title-only-filter_hu981b895078172d29b402e1a5c8507de0_272611_45eb720837323b29a71e09c009415516.webp&#34;
+               width=&#34;760&#34;
+               height=&#34;367&#34;
+               loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+  &lt;/div&gt;&lt;/figure&gt;
+&lt;/p&gt;
+&lt;p&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure  &gt;
+  &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img alt=&#34;&#34; srcset=&#34;
+               /project/fixed-outline-report-generation/images/retrieve/strategy/global-filter-1_hu0430aa55ceb2e6bd3d8c5bc376ec541c_318208_e76b42a3145211029e472a3b313c4720.webp 400w,
+               /project/fixed-outline-report-generation/images/retrieve/strategy/global-filter-1_hu0430aa55ceb2e6bd3d8c5bc376ec541c_318208_9584ff54eff9322e138c547824f89442.webp 760w,
+               /project/fixed-outline-report-generation/images/retrieve/strategy/global-filter-1_hu0430aa55ceb2e6bd3d8c5bc376ec541c_318208_1200x1200_fit_q75_h2_lanczos_3.webp 1200w&#34;
+               src=&#34;https://spacetimelab.cn/project/fixed-outline-report-generation/images/retrieve/strategy/global-filter-1_hu0430aa55ceb2e6bd3d8c5bc376ec541c_318208_e76b42a3145211029e472a3b313c4720.webp&#34;
+               width=&#34;760&#34;
+               height=&#34;361&#34;
+               loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+  &lt;/div&gt;&lt;/figure&gt;
+&lt;/p&gt;
 &lt;h3 id=&#34;报告结果效果&#34;&gt;报告结果效果&lt;/h3&gt;
 &lt;ul&gt;
 &lt;li&gt;基于事实（受限于参考数据源的权威性）写作，观点附带引用&lt;/li&gt;
@@ -747,10 +843,10 @@
 &lt;figure  &gt;
   &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
     &lt;div class=&#34;w-100&#34; &gt;&lt;img alt=&#34;&#34; srcset=&#34;
-               /project/fixed-outline-report-generation/images/aigc/industry_report/issues/news_abstract_type_hu98b29581314fc229e402f9bcd8e6c221_771574_b5d9dae45e7574fa5f36b460de2ab777.webp 400w,
-               /project/fixed-outline-report-generation/images/aigc/industry_report/issues/news_abstract_type_hu98b29581314fc229e402f9bcd8e6c221_771574_6652fb1399b0931277e3402bbdd248ae.webp 760w,
+               /project/fixed-outline-report-generation/images/aigc/industry_report/issues/news_abstract_type_hu98b29581314fc229e402f9bcd8e6c221_771574_eb71420e1278a21443dfe9d40f58f706.webp 400w,
+               /project/fixed-outline-report-generation/images/aigc/industry_report/issues/news_abstract_type_hu98b29581314fc229e402f9bcd8e6c221_771574_b2355375d95013fc134ba77855239666.webp 760w,
                /project/fixed-outline-report-generation/images/aigc/industry_report/issues/news_abstract_type_hu98b29581314fc229e402f9bcd8e6c221_771574_1200x1200_fit_q75_h2_lanczos_3.webp 1200w&#34;
-               src=&#34;https://spacetimelab.cn/project/fixed-outline-report-generation/images/aigc/industry_report/issues/news_abstract_type_hu98b29581314fc229e402f9bcd8e6c221_771574_b5d9dae45e7574fa5f36b460de2ab777.webp&#34;
+               src=&#34;https://spacetimelab.cn/project/fixed-outline-report-generation/images/aigc/industry_report/issues/news_abstract_type_hu98b29581314fc229e402f9bcd8e6c221_771574_eb71420e1278a21443dfe9d40f58f706.webp&#34;
                width=&#34;603&#34;
                height=&#34;760&#34;
                loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
@@ -777,10 +873,10 @@
 &lt;figure  &gt;
   &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
     &lt;div class=&#34;w-100&#34; &gt;&lt;img alt=&#34;&#34; srcset=&#34;
-               /project/fixed-outline-report-generation/images/aigc/industry_report/issues/news_abstract_type_result_hu0aa3111267156edda4400e783f2a9b1b_184744_536c32bbbf1194ce88e3eaefe1505225.webp 400w,
-               /project/fixed-outline-report-generation/images/aigc/industry_report/issues/news_abstract_type_result_hu0aa3111267156edda4400e783f2a9b1b_184744_32fa113f796d70f42718acd915c06823.webp 760w,
+               /project/fixed-outline-report-generation/images/aigc/industry_report/issues/news_abstract_type_result_hu0aa3111267156edda4400e783f2a9b1b_184744_e32a48b31c9048a24ecf116aa70021cb.webp 400w,
+               /project/fixed-outline-report-generation/images/aigc/industry_report/issues/news_abstract_type_result_hu0aa3111267156edda4400e783f2a9b1b_184744_bd1ca5bcc0642cfe072ab92649ed707f.webp 760w,
                /project/fixed-outline-report-generation/images/aigc/industry_report/issues/news_abstract_type_result_hu0aa3111267156edda4400e783f2a9b1b_184744_1200x1200_fit_q75_h2_lanczos_3.webp 1200w&#34;
-               src=&#34;https://spacetimelab.cn/project/fixed-outline-report-generation/images/aigc/industry_report/issues/news_abstract_type_result_hu0aa3111267156edda4400e783f2a9b1b_184744_536c32bbbf1194ce88e3eaefe1505225.webp&#34;
+               src=&#34;https://spacetimelab.cn/project/fixed-outline-report-generation/images/aigc/industry_report/issues/news_abstract_type_result_hu0aa3111267156edda4400e783f2a9b1b_184744_e32a48b31c9048a24ecf116aa70021cb.webp&#34;
                width=&#34;760&#34;
                height=&#34;453&#34;
                loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
@@ -1364,8 +1460,7 @@
 &lt;p&gt;大体上，企业表的设计需要容纳上一小节所展示的字段，但针对一些类别型属性（如企业规模）会进行一定编码，地理位置型属性（比如注册地址、通信地址）会加入空间数据结构的存储，多单位数额型属性（比如注册资本）会将数值和单位拆分或者统一单位以便于后续统计或排序。&lt;/p&gt;
 &lt;p&gt;另外，为了进行数据入库审计，增加数据入库时间和数据最后更新时间字段便于统计数据增量和变更时间等信息。&lt;/p&gt;
 &lt;p&gt;完整字段说明如下：&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-python&#34; data-lang=&#34;python&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;k&#34;&gt;class&lt;/span&gt; &lt;span class=&#34;nc&#34;&gt;Company&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;Base&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;):&lt;/span&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-python&#34; data-lang=&#34;python&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;k&#34;&gt;class&lt;/span&gt; &lt;span class=&#34;nc&#34;&gt;Company&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;Base&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;):&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;n&#34;&gt;__tablename__&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;s1&#34;&gt;&amp;#39;company&amp;#39;&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;nb&#34;&gt;id&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;Column&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;BigInteger&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;primary_key&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;kc&#34;&gt;True&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;server_default&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;text&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;nextval(&amp;#39;company_id_seq&amp;#39;::regclass)&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;),&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;comment&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;s1&#34;&gt;&amp;#39;自增长ID&amp;#39;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;

@@ -847,7 +847,7 @@
   
     
   
-<a class="btn btn-outline-primary btn-page-header" href="https://github.com/Coolgiserz/Awesome-Data-Tools-Collections/tree/dev/company_info_persisthttps://github.com/Coolgiserz/Awesome-Data-Tools-Collections/tree/dev/company_info_persist" target="_blank" rel="noopener">
+<a class="btn btn-outline-primary btn-page-header" href="https://github.com/Coolgiserz/Awesome-Data-Tools-Collections/tree/dev/company_info_persist" target="_blank" rel="noopener">
   Code
 </a>
 
@@ -1157,8 +1157,7 @@
 <p>大体上，企业表的设计需要容纳上一小节所展示的字段，但针对一些类别型属性（如企业规模）会进行一定编码，地理位置型属性（比如注册地址、通信地址）会加入空间数据结构的存储，多单位数额型属性（比如注册资本）会将数值和单位拆分或者统一单位以便于后续统计或排序。</p>
 <p>另外，为了进行数据入库审计，增加数据入库时间和数据最后更新时间字段便于统计数据增量和变更时间等信息。</p>
 <p>完整字段说明如下：</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="k">class</span> <span class="nc">Company</span><span class="p">(</span><span class="n">Base</span><span class="p">):</span>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="k">class</span> <span class="nc">Company</span><span class="p">(</span><span class="n">Base</span><span class="p">):</span>
 </span></span><span class="line"><span class="cl">    <span class="n">__tablename__</span> <span class="o">=</span> <span class="s1">&#39;company&#39;</span>
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl">    <span class="nb">id</span> <span class="o">=</span> <span class="n">Column</span><span class="p">(</span><span class="n">BigInteger</span><span class="p">,</span> <span class="n">primary_key</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">server_default</span><span class="o">=</span><span class="n">text</span><span class="p">(</span><span class="s2">&#34;nextval(&#39;company_id_seq&#39;::regclass)&#34;</span><span class="p">),</span> <span class="n">comment</span><span class="o">=</span><span class="s1">&#39;自增长ID&#39;</span><span class="p">)</span>
