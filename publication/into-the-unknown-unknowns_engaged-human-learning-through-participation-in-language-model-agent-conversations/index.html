@@ -1,0 +1,1647 @@
+<!DOCTYPE html><html lang="en-us" >
+
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  
+  
+  
+    <meta name="generator" content="Wowchemy 5.5.0 for Hugo" />
+  
+
+  
+  
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+  
+  
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  
+
+  
+  
+  
+    
+      
+      <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Roboto+Mono&family=Roboto:wght@400;700&display=swap">
+      <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Roboto+Mono&family=Roboto:wght@400;700&display=swap" media="print" onload="this.media='all'">
+    
+  
+
+  
+  
+  
+  
+  
+    
+    
+    
+  
+  
+
+  <meta name="author" content="CoolCats" />
+
+  
+  
+  
+    
+  
+  <meta name="description" content="发现未知的未知：参与式人类学习——介入语言模型Agent对话" />
+
+  
+  <link rel="alternate" hreflang="en-us" href="https://spacetimelab.cn/publication/into-the-unknown-unknowns_engaged-human-learning-through-participation-in-language-model-agent-conversations/" />
+
+  
+  
+  
+    <meta name="theme-color" content="#1565c0" />
+  
+
+  
+  
+    
+    <script src="/js/mathjax-config.js"></script>
+  
+
+  
+
+  <link rel="stylesheet" href="/css/vendor-bundle.min.c7b8d9abd591ba2253ea42747e3ac3f5.css" media="print" onload="this.media='all'">
+
+  
+  
+  
+    
+    
+      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/academicons@1.9.1/css/academicons.min.css" integrity="sha512-W0xM4mr6dEP9nREo7Z9z+9X70wytKvMGeDsj7ps2+xg5QPrEBXC8tAW1IFnzjR6eoJ90JmCnFzerQJTLzIEHjA==" crossorigin="anonymous" media="print" onload="this.media='all'">
+    
+
+    
+    
+    
+    
+      
+      
+    
+    
+    
+
+    
+    
+    
+      
+    
+    
+      
+      
+        
+          <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@10.2.1/build/styles/github.min.css" crossorigin="anonymous" title="hl-light" media="print" onload="this.media='all'">
+          <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@10.2.1/build/styles/dracula.min.css" crossorigin="anonymous" title="hl-dark" media="print" onload="this.media='all'" disabled>
+        
+      
+    
+
+    
+    
+    
+      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.7.1/dist/leaflet.min.css" integrity="" crossorigin="anonymous" media="print" onload="this.media='all'">
+    
+
+    
+
+    
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js" integrity="" crossorigin="anonymous" async></script>
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+  
+
+  
+  
+  
+  
+  
+  <link rel="stylesheet" href="/css/wowchemy.1052fab8b7700a3dc49ee23683097d66.css" />
+
+  
+
+
+
+  
+
+
+  
+
+
+  
+
+
+  <script>
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?51ae6db546b05b91d4053193ba49123d";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+  
+  
+  
+
+  
+
+  
+
+  <link rel="icon" type="image/png" href="/media/icon_hue03491371183284312b8b116a73ae5ab_79511_32x32_fill_lanczos_center_3.png" />
+  <link rel="apple-touch-icon" type="image/png" href="/media/icon_hue03491371183284312b8b116a73ae5ab_79511_180x180_fill_lanczos_center_3.png" />
+
+  <link rel="canonical" href="https://spacetimelab.cn/publication/into-the-unknown-unknowns_engaged-human-learning-through-participation-in-language-model-agent-conversations/" />
+
+  
+  
+  
+  
+  
+  
+  
+  
+    
+    
+  
+  
+
+  
+  
+    
+    
+  
+  <meta property="twitter:card" content="summary" />
+  
+    <meta property="twitter:site" content="@wowchemy" />
+    <meta property="twitter:creator" content="@wowchemy" />
+  
+  <meta property="og:site_name" content="NullSpace" />
+  <meta property="og:url" content="https://spacetimelab.cn/publication/into-the-unknown-unknowns_engaged-human-learning-through-participation-in-language-model-agent-conversations/" />
+  <meta property="og:title" content="「论文阅读」-Into the Unknown Unknowns: Engaged Human Learning Through Participation in Language Model Agent Conversations | NullSpace" />
+  <meta property="og:description" content="发现未知的未知：参与式人类学习——介入语言模型Agent对话" /><meta property="og:image" content="https://spacetimelab.cn/media/icon_hue03491371183284312b8b116a73ae5ab_79511_512x512_fill_lanczos_center_3.png" />
+    <meta property="twitter:image" content="https://spacetimelab.cn/media/icon_hue03491371183284312b8b116a73ae5ab_79511_512x512_fill_lanczos_center_3.png" /><meta property="og:locale" content="en-us" />
+  
+    
+      <meta
+        property="article:published_time"
+        content="2024-12-15T15:04:01&#43;08:00"
+      />
+    
+    <meta property="article:modified_time" content="2024-12-15T15:04:01&#43;08:00">
+  
+
+  
+
+
+    
+
+
+
+
+
+
+
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://spacetimelab.cn/publication/into-the-unknown-unknowns_engaged-human-learning-through-participation-in-language-model-agent-conversations/"
+  },
+  "headline": "「论文阅读」-Into the Unknown Unknowns: Engaged Human Learning Through Participation in Language Model Agent Conversations",
+  
+  "datePublished": "2024-12-15T15:04:01+08:00",
+  "dateModified": "2024-12-15T15:04:01+08:00",
+  
+  "author": {
+    "@type": "Person",
+    "name": "CoolCats"
+  },
+  
+  "publisher": {
+    "@type": "Organization",
+    "name": "NullSpace",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://spacetimelab.cn/media/icon_hue03491371183284312b8b116a73ae5ab_79511_192x192_fill_lanczos_center_3.png"
+    }
+  },
+  "description": "发现未知的未知：参与式人类学习——介入语言模型Agent对话"
+}
+</script>
+
+  
+
+  
+
+  
+
+  
+
+
+
+
+
+  <title>「论文阅读」-Into the Unknown Unknowns: Engaged Human Learning Through Participation in Language Model Agent Conversations | NullSpace</title>
+</head>
+
+
+<body id="top" data-spy="scroll" data-offset="70" data-target="#TableOfContents" class="page-wrapper   " data-wc-page-id="4ad305b6744b14e13d4b7424146bcf6f" >
+
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  <script src="/js/wowchemy-init.min.2ed908358299dd7ab553faae685c746c.js"></script>
+
+  
+
+
+<aside class="search-modal" id="search">
+  <div class="container">
+    <section class="search-header">
+
+      <div class="row no-gutters justify-content-between mb-3">
+        <div class="col-6">
+          <h1>Search</h1>
+        </div>
+        <div class="col-6 col-search-close">
+          <a class="js-search" href="#" aria-label="Close"><i class="fas fa-times-circle text-muted" aria-hidden="true"></i></a>
+        </div>
+      </div>
+
+      <div id="search-box">
+        
+        <input name="q" id="search-query" placeholder="Search..." autocapitalize="off"
+        autocomplete="off" autocorrect="off" spellcheck="false" type="search" class="form-control"
+        aria-label="Search...">
+        
+      </div>
+
+      
+      
+
+      
+
+    </section>
+    <section class="section-search-results">
+
+      <div id="search-hits">
+        
+      </div>
+
+    </section>
+  </div>
+</aside>
+
+
+
+  <div class="page-header">
+    
+
+
+
+
+
+
+
+
+
+
+
+
+<header class="header--fixed">
+  <nav class="navbar navbar-expand-lg navbar-light compensate-for-scrollbar" id="navbar-main">
+    <div class="container-xl">
+
+      
+      <div class="d-none d-lg-inline-flex">
+        <a class="navbar-brand" href="/">NullSpace</a>
+      </div>
+      
+
+      
+      <button type="button" class="navbar-toggler" data-toggle="collapse"
+              data-target="#navbar-content" aria-controls="navbar-content" aria-expanded="false" aria-label="Toggle navigation">
+      <span><i class="fas fa-bars"></i></span>
+      </button>
+      
+
+      
+      <div class="navbar-brand-mobile-wrapper d-inline-flex d-lg-none">
+        <a class="navbar-brand" href="/">NullSpace</a>
+      </div>
+      
+
+      
+      
+      <div class="navbar-collapse main-menu-item collapse justify-content-start" id="navbar-content">
+
+        
+        <ul class="navbar-nav d-md-inline-flex">
+          
+
+          
+
+          
+          
+          
+
+          
+
+          
+          
+          
+          
+
+          
+            
+              
+              
+            
+            
+          
+
+          <li class="nav-item">
+            <a class="nav-link " href="/post"><span>博客</span></a>
+          </li>
+
+          
+          
+
+          
+
+          
+          
+          
+            
+          
+
+          
+
+          
+          
+          
+          
+
+          
+            
+              
+              
+            
+            
+          
+
+          <li class="nav-item">
+            <a class="nav-link " href="/event"><span>趣事</span></a>
+          </li>
+
+          
+          
+
+          
+
+          
+          
+          
+            
+          
+
+          
+
+          
+          
+          
+          
+
+          
+            
+              
+              
+            
+            
+          
+
+          <li class="nav-item">
+            <a class="nav-link " href="/project"><span>项目</span></a>
+          </li>
+
+          
+          
+
+          
+
+          
+          
+          
+            
+          
+
+          
+
+          
+          
+          
+          
+
+          
+            
+              
+              
+            
+            
+          
+
+          <li class="nav-item">
+            <a class="nav-link  active" href="/publication"><span>论文</span></a>
+          </li>
+
+          
+          
+
+          
+
+          
+          
+          
+            
+          
+
+          
+
+          
+          
+          
+          
+
+          
+            
+              
+              
+            
+            
+          
+
+          <li class="nav-item">
+            <a class="nav-link " href="/category/practice/"><span>练习</span></a>
+          </li>
+
+          
+          
+
+          
+
+          
+          
+          
+            
+          
+
+          
+
+          
+          
+          
+          
+
+          
+            
+              
+              
+            
+            
+          
+
+          <li class="nav-item">
+            <a class="nav-link " href="/contact"><span>联系</span></a>
+          </li>
+
+          
+          
+
+          
+
+          
+          
+          
+
+          
+
+          
+          
+          
+          
+
+          
+            
+              
+              
+            
+            
+          
+
+          <li class="nav-item">
+            <a class="nav-link " href="/tags"><span>归档</span></a>
+          </li>
+
+          
+          
+
+        
+
+          
+        </ul>
+      </div>
+
+      <ul class="nav-icons navbar-nav flex-row ml-auto d-flex pl-md-2">
+
+        
+        
+          
+        
+
+        
+        
+        <li class="nav-item">
+          <a class="nav-link js-search" href="#" aria-label="Search"><i class="fas fa-search" aria-hidden="true"></i></a>
+        </li>
+        
+
+        
+        
+        
+        <li class="nav-item dropdown theme-dropdown">
+          <a href="#" class="nav-link" data-toggle="dropdown" aria-haspopup="true" aria-label="Display preferences">
+            <i class="fas fa-moon" aria-hidden="true"></i>
+          </a>
+          <div class="dropdown-menu">
+            <a href="#" class="dropdown-item js-set-theme-light">
+              <span>Light</span>
+            </a>
+            <a href="#" class="dropdown-item js-set-theme-dark">
+              <span>Dark</span>
+            </a>
+            <a href="#" class="dropdown-item js-set-theme-auto">
+              <span>Automatic</span>
+            </a>
+          </div>
+        </li>
+        
+
+        
+        
+
+      </ul>
+
+    </div>
+  </nav>
+</header>
+
+
+  </div>
+
+  <div class="page-body">
+    
+    
+    
+
+    
+
+
+
+
+
+
+
+
+<div class="pub">
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+  
+  
+<div class="article-container pt-3">
+  <h1>「论文阅读」-Into the Unknown Unknowns: Engaged Human Learning Through Participation in Language Model Agent Conversations</h1>
+
+  
+
+  
+    
+
+
+<div class="article-metadata">
+
+  
+  
+
+  
+  <span class="article-date">
+    
+    
+      
+    
+    December, 2024
+  </span>
+  
+
+  
+
+  
+
+  
+  
+  
+  
+
+  
+  
+  <span class="middot-divider"></span>
+  <span class="article-categories">
+    <i class="fas fa-folder mr-1"></i><a href="/category/ai/">AI</a></span>
+  
+
+</div>
+
+    
+
+
+
+
+<div class="btn-links mb-3">
+  
+  
+
+
+
+
+
+
+
+
+  
+    
+  
+
+
+
+<a class="btn btn-outline-primary btn-page-header" href="https://cz5waila03cyo0tux1owpyofgoryroob.aminer.cn/FA/73/DE/FA73DEB99A3D3C1CB2776F707A0F68C9.pdf" target="_blank" rel="noopener">
+  PDF
+</a>
+
+
+
+
+  
+  
+    
+  
+<a class="btn btn-outline-primary btn-page-header" href="https://github.com/stanford-oval/storm/tree/main/knowledge_storm/collaborative_storm" target="_blank" rel="noopener">
+  Code
+</a>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</div>
+
+
+  
+</div>
+
+
+
+  <div class="article-container">
+
+    
+    <h3>Abstract</h3>
+    <p class="pub-abstract">No Single, gold query, but queries evolve dynamically towards a goal.</p>
+    
+
+    
+    
+    <div class="row">
+      <div class="col-md-1"></div>
+      <div class="col-md-10">
+        <div class="row">
+          <div class="col-12 col-md-3 pub-row-heading">Type</div>
+          <div class="col-12 col-md-9">
+            <a href="/publication/#1">
+              Conference paper
+            </a>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-1"></div>
+    </div>
+    <div class="d-md-none space-below"></div>
+    
+
+    
+
+    <div class="space-below"></div>
+
+    <div class="article-style"><h2 id="heading"></h2>
+<h2 id="0x00-亮点">0x00 亮点</h2>
+<ul>
+<li>
+<p>提出协作式STORM（Co-STORM）</p>
+</li>
+<li>
+<p>不像QA系统要求用户询问所有问题。Co-STORM让用户观察，允许用户偶尔介入多个LM agents间的对话。</p>
+</li>
+<li>
+<p>agents从用户视角问问题，使用户有可能偶然发现“自己不知道自己不知道”但有价值的观点或事物。</p>
+<pre tabindex="0"><code>allow user to discover the unknown unknowns serendipitously.
+</code></pre></li>
+<li>
+<p>为了提高用户交互的便利性，Co-STORM可以通过将已发现的信息组织成动态思维导图，协助用户回顾谈话的过程，最终会生成一个综合性的报告。</p>
+</li>
+<li>
+<p>在自动化质量评估方面，构建了WildSeek数据集。作者手机了与用户目标相关的真实信息搜集记录</p>
+</li>
+<li>
+<p>作者团队通过实验表明，70%使用者认为Co-STORM比搜索引擎好，78%使用者认为其比RAG机器人好。</p>
+</li>
+</ul>
+<h2 id="0x01-引言">0x01 引言</h2>
+<h3 id="现有复杂信息获取系统的能力">现有复杂信息获取系统的能力</h3>
+<p>传统搜索引擎和信息检索模型可以高效处理known unknowns，也就是说，当用户清楚地知道他们需要的信息时，这些系统可以通过生成直接的响应满足用户需求。</p>
+<p>然而，当面临复杂信息获取场景时，如学术研究、市场分析、决策制定等，系统应该让用户可以发现unknown unknowns以促进知识发现。</p>
+<ul>
+<li>
+<p>什么是unknown unknowns</p>
+<p>最早源自于军事上的概念，指代意料之外的风险（比如从未设想过的被打击方式）。在信息收集的上下文里，意为侥幸得到的发现（surendipitous discovery）。</p>
+<p>Kirzner做过一个概念对比：</p>
+<ul>
+<li>
+<p>Surendipitous discovery</p>
+<p>意识到忽略了在事实上可轻易得到的现成的某种东西.</p>
+<p>&ldquo;the realization that one had overlooked something in fact readily avilable.&rdquo;</p>
+</li>
+<li>
+<p>Successful search</p>
+<p>一个人明确知道缺失的信息的（蓄意）产出</p>
+<p>&ldquo;the deliberate production of information which one know one had lacked&rdquo;</p>
+</li>
+</ul>
+</li>
+<li>
+<p>STORM的能力和局限性</p>
+<p>亮点：将语言模型和搜索引擎结合，对任意主题自动生成高质量的维基百科风格文章。</p>
+<p>然而，STORM不支持用户交互，只能产出静态的报告作为最终结果。这在复杂信息收集场景下不够用，因为不存在单一的完美的查询词，<strong>查询通常会围绕着目标动态地变化</strong>。</p>
+</li>
+<li>
+<p>&hellip;&hellip;</p>
+</li>
+</ul>
+<h3 id="co-storm的特点">Co-STORM的特点</h3>
+<ul>
+<li>
+<p>不同于一问一答的交互，用户可以通过观察和偶尔参与对话进行学习，仿效了一种常见的教育场景。</p>
+</li>
+<li>
+<p>为了促进启发式（thought-provoking）的对话和意外之喜，Co-STORM模拟了两种agent类型：</p>
+<ul>
+<li>
+<p>专家agent：从不同的角度提问或回答。</p>
+</li>
+<li>
+<p>主持人agent：知道如何提出好问题和指引对话。</p>
+<p>用户可以随时插话，引导对话或抛出问题或观点。</p>
+</li>
+</ul>
+</li>
+<li>
+<p>维护一个动态的、层次化的思维导图，确保用户容易理解和参与。</p>
+</li>
+</ul>
+<h3 id="学习和信息获取的范例对比">学习和信息获取的范例对比</h3>
+<p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<figure  >
+  <div class="d-flex justify-content-center">
+    <div class="w-100" ><img alt="" srcset="
+               /publication/into-the-unknown-unknowns_engaged-human-learning-through-participation-in-language-model-agent-conversations/images/intro/fig1_hue40943271d2559b31160c96824ddab34_386279_d9efb359c263ca7ecd4a98d6ff68822a.webp 400w,
+               /publication/into-the-unknown-unknowns_engaged-human-learning-through-participation-in-language-model-agent-conversations/images/intro/fig1_hue40943271d2559b31160c96824ddab34_386279_10e27286c9431ab1870c87705f379706.webp 760w,
+               /publication/into-the-unknown-unknowns_engaged-human-learning-through-participation-in-language-model-agent-conversations/images/intro/fig1_hue40943271d2559b31160c96824ddab34_386279_1200x1200_fit_q75_h2_lanczos_3.webp 1200w"
+               src="/publication/into-the-unknown-unknowns_engaged-human-learning-through-participation-in-language-model-agent-conversations/images/intro/fig1_hue40943271d2559b31160c96824ddab34_386279_d9efb359c263ca7ecd4a98d6ff68822a.webp"
+               width="544"
+               height="760"
+               loading="lazy" data-zoomable /></div>
+  </div></figure>
+</p>
+<ul>
+<li>
+<p>使用搜索引擎</p>
+<p>痛点：需要阅读的东西太多，无法获得意外之喜（Unknown Unknowns）</p>
+</li>
+<li>
+<p>阅读现有报告</p>
+<p>痛点：需要费较大功夫裁剪内容以满足特定需要。不支持交互。</p>
+</li>
+<li>
+<p>与聊天机器人交互</p>
+<p>痛点：用户可能不知道该问什么。</p>
+</li>
+<li>
+<p>与<a href="https://storm.genie.stanford.edu" target="_blank" rel="noopener">Co-STORM</a>交互</p>
+</li>
+</ul>
+<h2 id="0x02-复杂信息搜寻">0x02 复杂信息搜寻</h2>
+<h3 id="问题形式化">问题形式化</h3>
+<p>复杂信息搜寻被Pirolli定义为拓宽认知过程的一部分，包括如下流程：</p>
+<ul>
+<li>
+<p>collecting infomation from large collections</p>
+<p>收集信息</p>
+</li>
+<li>
+<p>sifting</p>
+<p>筛选信息</p>
+</li>
+<li>
+<p>understanding</p>
+<p>理解信息</p>
+</li>
+<li>
+<p>organizing information</p>
+<p>组织信息</p>
+</li>
+</ul>
+<p>这种工作方法流行于：</p>
+<ul>
+<li>
+<p>新闻调研</p>
+</li>
+<li>
+<p>科学研究</p>
+</li>
+<li>
+<p>市场分析</p>
+</li>
+</ul>
+<p>这类任务的属性：</p>
+<ul>
+<li>
+<p>要求从多个数据源中搜寻信息，以构建一个主题下的立体化描述。（不是为了检索出与某个查询词最匹配的一篇文档）</p>
+<p>如研究主题“聚类”，可以从无监督学习、应用场景、聚类公理化探索等方面进行调研和组织内容。</p>
+</li>
+<li>
+<p>涉及用户交互、而不是简单处理一个单一的查询。</p>
+</li>
+<li>
+<p>产出一个报告形式的结果，而非一个简短的答案。</p>
+</li>
+</ul>
+<p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<figure  >
+  <div class="d-flex justify-content-center">
+    <div class="w-100" ><img alt="" srcset="
+               /publication/into-the-unknown-unknowns_engaged-human-learning-through-participation-in-language-model-agent-conversations/images/intro/table1_hubc6565417fd3fe5e949bacf4ee3b84fd_96429_ce7718bc27c57c88a034c97c5427f2ab.webp 400w,
+               /publication/into-the-unknown-unknowns_engaged-human-learning-through-participation-in-language-model-agent-conversations/images/intro/table1_hubc6565417fd3fe5e949bacf4ee3b84fd_96429_e86976dc5edb0ce132401f200192743f.webp 760w,
+               /publication/into-the-unknown-unknowns_engaged-human-learning-through-participation-in-language-model-agent-conversations/images/intro/table1_hubc6565417fd3fe5e949bacf4ee3b84fd_96429_1200x1200_fit_q75_h2_lanczos_3.webp 1200w"
+               src="/publication/into-the-unknown-unknowns_engaged-human-learning-through-participation-in-language-model-agent-conversations/images/intro/table1_hubc6565417fd3fe5e949bacf4ee3b84fd_96429_ce7718bc27c57c88a034c97c5427f2ab.webp"
+               width="760"
+               height="441"
+               loading="lazy" data-zoomable /></div>
+  </div></figure>
+</p>
+<p>问题形式化：</p>
+<p>给定初始兴趣主题$t$、初始目标$g$和信息库$R$，任务是与用户交互并写出一篇符合用户兴趣的长篇报告$S=s_1s_2&hellip;s_n$,每一个句子都引用信息集合$R$中的一个子集$I$</p>
+<h2 id="0x03-方法">0x03 方法</h2>
+<p>本杰明·富兰克林：告诉我的事我会忘记，教我的事情我会记住，亲身参与的事情我会从中学习。</p>
+<pre tabindex="0"><code>Tell me and I forget. Teach me and I remember. Involve me and I learn.
+</code></pre><h3 id="协作式讨论协议collaborative-discourse-protocol">协作式讨论协议（Collaborative Discourse Protocol）</h3>
+<p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<figure  >
+  <div class="d-flex justify-content-center">
+    <div class="w-100" ><img alt="" srcset="
+               /publication/into-the-unknown-unknowns_engaged-human-learning-through-participation-in-language-model-agent-conversations/images/intro/fig2_hudbd3d2bd239c5f651044c36e22bd0bee_726348_de15d378c2d3988eaa90eee49feb0212.webp 400w,
+               /publication/into-the-unknown-unknowns_engaged-human-learning-through-participation-in-language-model-agent-conversations/images/intro/fig2_hudbd3d2bd239c5f651044c36e22bd0bee_726348_1913731c8fd315eb1c9e0db50e479770.webp 760w,
+               /publication/into-the-unknown-unknowns_engaged-human-learning-through-participation-in-language-model-agent-conversations/images/intro/fig2_hudbd3d2bd239c5f651044c36e22bd0bee_726348_1200x1200_fit_q75_h2_lanczos_3.webp 1200w"
+               src="/publication/into-the-unknown-unknowns_engaged-human-learning-through-participation-in-language-model-agent-conversations/images/intro/fig2_hudbd3d2bd239c5f651044c36e22bd0bee_726348_de15d378c2d3988eaa90eee49feb0212.webp"
+               width="760"
+               height="617"
+               loading="lazy" data-zoomable /></div>
+  </div></figure>
+</p>
+<p>协作式讨论可表示为$D={u_1,u_2,&hellip;,u_n}$。</p>
+<p>其中$u_i$是由用户、专家和主持人三类角色其中之一发表的（回合制）文本言论</p>
+<p>讨论由N个专家发起，每个专家（附带独特视角）对主题t发表一轮见解，为接下来的讨论作热身。</p>
+<ul>
+<li>
+<p>言论意图（Utterance Intent）</p>
+<ul>
+<li>
+<p>ORIGINAL QUESTION：提出一个新问题</p>
+</li>
+<li>
+<p>INFORMATION REQUEST：为先前的言论中寻找补充信息</p>
+</li>
+<li>
+<p>POTENTIAL ANSWER：为之前抛出的问题提供一个可能的答案</p>
+</li>
+<li>
+<p>FURTHER DETAILS：对先前的答案提供补充信息</p>
+</li>
+</ul>
+</li>
+<li>
+<p>将ORIGINAL QUESTION和INFORMATION REQUEST统一认定为question-asking，另外两类意图统一认为是question-answering。</p>
+</li>
+<li>
+<p>主动权管理（Initiative Management）</p>
+<p>Co-STORM采用混合主动权方法，当用户积极参与，系统会基于用户的问题或论点继续讨论，产出更精准的讨论。否则系统会自动进行下一轮次。</p>
+</li>
+<li>
+<p>回合管理（Turn Management）</p>
+<p>如果用户在时刻t没有主导谈话，Co-STORM需要决定哪个LM agent应该发表下一个言论：让不同的专家$p_1,&hellip;,p_N$按顺序发表言论，为了避免所有专家仅仅围绕一个论点讨论，在观测到L个连续的POTENTIAL ANSWER或FURTHER DETAILS意图的回答后，系统会让主持人介入对话。</p>
+</li>
+</ul>
+<h3 id="基于思维导图跟踪讨论过程tracking-the-discourse-with-a-mind-map">基于思维导图跟踪讨论过程（Tracking the Discourse with a Mind Map）</h3>
+<p>对于协作而言，有一个共享知识库或共享概念空间十分重要。</p>
+<h3 id="用户参与user-participation">用户参与（User Participation）</h3>
+<p>当用户发表言论$u$，Co-STORM基于$u$检索相关信息用于提示LM“邀请”一个专家团队$P^{&rsquo;}$.随着专家团队更新， 系统转回自动引导模式，专家或主持人根据回合制管理协议轮流发表观点。</p>
+<p>一旦用户对讨论满意，Co-STORM会生成最终的报告$S$。报告的生成会使用思维导图M作为提纲，还会根据每个概念$c$及检索到的相关信息$I^{c}$逐章节生成报告。</p>
+<h3 id="模拟圆桌会议参与者">模拟圆桌会议参与者</h3>
+<h3 id="模拟主持人">模拟主持人</h3>
+<h2 id="0x04-co-storm的实现">0x04 Co-STORM的实现</h2>
+<h2 id="0x05-自动评估">0x05 自动评估</h2>
+<h3 id="baselines">Baselines：</h3>
+<ul>
+<li>
+<p>RAG Chatbot</p>
+</li>
+<li>
+<p>STORM+QA</p>
+</li>
+</ul>
+<h3 id="指标">指标</h3>
+<ul>
+<li>
+<p>报告质量</p>
+<ul>
+<li>
+<p>Relevance</p>
+</li>
+<li>
+<p>Broad Coverage</p>
+</li>
+<li>
+<p>Depth</p>
+</li>
+<li>
+<p>Novelty</p>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="系统体验">系统体验</h2>
+<h3 id="主题2024-年度最佳游戏">主题：2024 年度最佳游戏</h3>
+<p>介入对话：</p>
+<pre tabindex="0"><code>How do you think of Black Myth Wukong. Does it deserve the Game of The Year award?
+</code></pre><h2 id="其他阅读">其他阅读</h2>
+<ul>
+<li><a href="https://www.xinfinite.net/t/topic/6208" target="_blank" rel="noopener">STORM 再进化，推出协作文本工具 Co-STORM：AI 协作学术研究新利器！ - AI资讯 - 冷月清谈</a></li>
+</ul>
+</div>
+
+    
+
+
+
+
+<div class="article-tags">
+  
+  <a class="badge badge-light" href="/tag/llm/">LLM</a>
+  
+</div>
+
+
+
+<div class="share-box">
+  <ul class="share">
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="https://twitter.com/intent/tweet?url=https://spacetimelab.cn/publication/into-the-unknown-unknowns_engaged-human-learning-through-participation-in-language-model-agent-conversations/&amp;text=%e3%80%8c%e8%ae%ba%e6%96%87%e9%98%85%e8%af%bb%e3%80%8d-Into%20the%20Unknown%20Unknowns:%20Engaged%20Human%20Learning%20Through%20Participation%20in%20Language%20Model%20Agent%20Conversations" target="_blank" rel="noopener" class="share-btn-twitter" aria-label="twitter">
+          <i class="fab fa-twitter"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="https://www.facebook.com/sharer.php?u=https://spacetimelab.cn/publication/into-the-unknown-unknowns_engaged-human-learning-through-participation-in-language-model-agent-conversations/&amp;t=%e3%80%8c%e8%ae%ba%e6%96%87%e9%98%85%e8%af%bb%e3%80%8d-Into%20the%20Unknown%20Unknowns:%20Engaged%20Human%20Learning%20Through%20Participation%20in%20Language%20Model%20Agent%20Conversations" target="_blank" rel="noopener" class="share-btn-facebook" aria-label="facebook">
+          <i class="fab fa-facebook"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="mailto:?subject=%e3%80%8c%e8%ae%ba%e6%96%87%e9%98%85%e8%af%bb%e3%80%8d-Into%20the%20Unknown%20Unknowns:%20Engaged%20Human%20Learning%20Through%20Participation%20in%20Language%20Model%20Agent%20Conversations&amp;body=https://spacetimelab.cn/publication/into-the-unknown-unknowns_engaged-human-learning-through-participation-in-language-model-agent-conversations/" target="_blank" rel="noopener" class="share-btn-email" aria-label="envelope">
+          <i class="fas fa-envelope"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="https://www.linkedin.com/shareArticle?url=https://spacetimelab.cn/publication/into-the-unknown-unknowns_engaged-human-learning-through-participation-in-language-model-agent-conversations/&amp;title=%e3%80%8c%e8%ae%ba%e6%96%87%e9%98%85%e8%af%bb%e3%80%8d-Into%20the%20Unknown%20Unknowns:%20Engaged%20Human%20Learning%20Through%20Participation%20in%20Language%20Model%20Agent%20Conversations" target="_blank" rel="noopener" class="share-btn-linkedin" aria-label="linkedin-in">
+          <i class="fab fa-linkedin-in"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="whatsapp://send?text=%e3%80%8c%e8%ae%ba%e6%96%87%e9%98%85%e8%af%bb%e3%80%8d-Into%20the%20Unknown%20Unknowns:%20Engaged%20Human%20Learning%20Through%20Participation%20in%20Language%20Model%20Agent%20Conversations%20https://spacetimelab.cn/publication/into-the-unknown-unknowns_engaged-human-learning-through-participation-in-language-model-agent-conversations/" target="_blank" rel="noopener" class="share-btn-whatsapp" aria-label="whatsapp">
+          <i class="fab fa-whatsapp"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="https://service.weibo.com/share/share.php?url=https://spacetimelab.cn/publication/into-the-unknown-unknowns_engaged-human-learning-through-participation-in-language-model-agent-conversations/&amp;title=%e3%80%8c%e8%ae%ba%e6%96%87%e9%98%85%e8%af%bb%e3%80%8d-Into%20the%20Unknown%20Unknowns:%20Engaged%20Human%20Learning%20Through%20Participation%20in%20Language%20Model%20Agent%20Conversations" target="_blank" rel="noopener" class="share-btn-weibo" aria-label="weibo">
+          <i class="fab fa-weibo"></i>
+        </a>
+      </li>
+    
+  </ul>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+
+
+
+  
+  
+  
+  
+  
+  <div class="media author-card content-widget-hr">
+    
+      
+      <a href="/authors/admin/"><img class="avatar mr-3 avatar-circle" src="/authors/admin/avatar_hu55194f19033f85038196a23353ffe543_580100_270x270_fill_q75_lanczos_center.jpg" alt="CoolCats"></a>
+    
+
+    <div class="media-body">
+      <h5 class="card-title"><a href="/authors/admin/">CoolCats</a></h5>
+      <h6 class="card-subtitle">理学学士</h6>
+      <p class="card-text">我的研究兴趣是时空数据分析、知识图谱、自然语言处理与服务端开发</p>
+      <ul class="network-icon" aria-hidden="true">
+  
+    
+    
+    
+      
+    
+    
+    
+    
+    
+    <li>
+      <a href="mailto:2811159909@qq.com" >
+        <i class="fas fa-envelope"></i>
+      </a>
+    </li>
+  
+    
+    
+    
+      
+    
+    
+    
+    
+    
+      
+    
+    <li>
+      <a href="https://github.com/Coolgiserz" target="_blank" rel="noopener">
+        <i class="fab fa-github"></i>
+      </a>
+    </li>
+  
+</ul>
+
+    </div>
+  </div>
+
+
+
+
+
+
+
+
+
+  
+  
+  
+
+  
+
+  
+
+
+
+
+
+
+
+
+
+
+  </div>
+</div>
+  </div>
+
+  <div class="page-footer">
+    
+    
+    <div class="container">
+      <footer class="site-footer">
+
+  
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+
+
+
+
+
+  
+  
+  
+
+  
+  
+    
+  
+  
+    
+  
+
+  
+
+  
+  <p class="powered-by copyright-license-text">
+    © 2024 Weirdgiser &amp; <a href="https://beian.miit.gov.cn" target="_blank" rel="noopener">粤ICP备2024213180号</a>
+  </p>
+  
+
+  <p class="powered-by footer-license-icons">
+    <a href="https://creativecommons.org/licenses/by-nc-nd/4.0" rel="noopener noreferrer" target="_blank" aria-label="Creative Commons">
+      <i class="fab fa-creative-commons fa-2x" aria-hidden="true"></i>
+      <i class="fab fa-creative-commons-by fa-2x" aria-hidden="true"></i>
+      
+        <i class="fab fa-creative-commons-nc fa-2x" aria-hidden="true"></i>
+      
+      
+        <i class="fab fa-creative-commons-nd fa-2x" aria-hidden="true"></i>
+      
+    </a>
+  </p>
+
+
+
+
+  <p class="powered-by">
+    
+    
+    
+      
+      
+      
+      
+      
+      
+      Published with <a href="https://wowchemy.com/?utm_campaign=poweredby" target="_blank" rel="noopener">Wowchemy</a> — the free, <a href="https://github.com/wowchemy/wowchemy-hugo-themes" target="_blank" rel="noopener">open source</a> website builder that empowers creators.
+    
+  </p>
+</footer>
+
+    </div>
+    
+  </div>
+
+      
+
+    
+    <script src="/js/vendor-bundle.min.fab8b449b814cc9f95b22fcf2e45f05b.js"></script>
+
+    
+    
+    
+      
+
+      
+      
+
+      
+
+      
+        
+        <script src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@10.2.1/build/highlight.min.js" integrity="sha512-Ypjm0o7jOxAd4hpdoppSEN0TQOC19UtPAqD+4s5AlXmUvbmmS/YMxYqAqarQYyxTnB6/rqip9qcxlNB/3U9Wdg==" crossorigin="anonymous"></script>
+        
+        
+        <script src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@10.2.1/build/languages/r.min.js" crossorigin="anonymous"></script>
+        
+        <script src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@10.2.1/build/languages/latex.min.js" crossorigin="anonymous"></script>
+        
+      
+
+    
+
+    
+    
+    
+      <script src="https://cdn.jsdelivr.net/npm/leaflet@1.7.1/dist/leaflet.min.js" integrity="" crossorigin="anonymous"></script>
+    
+
+    
+    
+
+    
+    
+    
+      
+      <script id="search-hit-fuse-template" type="text/x-template">
+        <div class="search-hit" id="summary-{{key}}">
+          <div class="search-hit-content">
+            <div class="search-hit-name">
+              <a href="{{relpermalink}}">{{title}}</a>
+              <div class="article-metadata search-hit-type">{{type}}</div>
+              <p class="search-hit-description">{{snippet}}</p>
+            </div>
+          </div>
+        </div>
+      </script>
+      
+        <script src="https://cdn.jsdelivr.net/gh/krisk/Fuse@v3.2.1/dist/fuse.min.js" integrity="sha512-o38bmzBGX+hD3JHWUFCDA09btWaqrNmoJ3RXLlrysA7PP01Kgs4UlE4MhelE1v5dJR3+cxlR4qQlotsW7jKsnw==" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/gh/julmot/mark.js@8.11.1/dist/jquery.mark.min.js" integrity="sha512-mhbv5DqBMgrWL+32MmsDOt/OAvqr/cHimk6B8y/bx/xS88MVkYGPiVv2ixKVrkywF2qHplNRUvFsAHUdxZ3Krg==" crossorigin="anonymous"></script>
+      
+    
+
+    
+    
+
+    
+    
+    
+    
+      <script id="dsq-count-scr" src="https://weirdgiser.disqus.com/count.js" async></script>
+    
+
+    
+    
+      
+      
+      
+      
+      
+      
+      
+    
+
+    
+
+    
+    
+    
+    <script id="page-data" type="application/json">{"use_headroom":true}</script>
+
+    
+    
+      <script src="/js/wowchemy-headroom.c251366b4128fd5e6b046d4c97a62a51.js" type="module"></script>
+    
+    
+    
+    
+    
+    
+    
+      
+      
+    
+    
+    <script src="/en/js/wowchemy.min.ab2f2890dbe3e2e83579366d3d6e8fd9.js"></script>
+
+    
+    
+      <script src="/js/wowchemy-map.a26e9d2f7238ba5b868384f1c5bc6477.js" type="module"></script>
+    
+    
+    
+    
+      
+<div id="modal" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Cite</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <pre><code class="tex hljs"></code></pre>
+      </div>
+      <div class="modal-footer">
+        <a class="btn btn-outline-primary my-1 js-copy-cite" href="#" target="_blank">
+          <i class="fas fa-copy"></i> Copy
+        </a>
+        <a class="btn btn-outline-primary my-1 js-download-cite" href="#" target="_blank">
+          <i class="fas fa-download"></i> Download
+        </a>
+        <div id="modal-error"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+      <script src="/js/wowchemy-publication.68f8d7090562ca65fc6d3cb3f8f2d2cb.js" type="module"></script>
+
+
+
+
+
+
+</body>
+</html>

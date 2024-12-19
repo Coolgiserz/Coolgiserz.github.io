@@ -5,12 +5,328 @@
     <link>https://spacetimelab.cn/tag/llm/</link>
       <atom:link href="https://spacetimelab.cn/tag/llm/index.xml" rel="self" type="application/rss+xml" />
     <description>LLM</description>
-    <generator>Wowchemy (https://wowchemy.com)</generator><language>en-us</language><lastBuildDate>Sat, 14 Dec 2024 23:13:25 +0800</lastBuildDate>
+    <generator>Wowchemy (https://wowchemy.com)</generator><language>en-us</language><lastBuildDate>Sun, 15 Dec 2024 15:04:01 +0800</lastBuildDate>
     <image>
       <url>https://spacetimelab.cn/media/icon_hue03491371183284312b8b116a73ae5ab_79511_512x512_fill_lanczos_center_3.png</url>
       <title>LLM</title>
       <link>https://spacetimelab.cn/tag/llm/</link>
     </image>
+    
+    <item>
+      <title>「论文阅读」-Into the Unknown Unknowns: Engaged Human Learning Through Participation in Language Model Agent Conversations</title>
+      <link>https://spacetimelab.cn/publication/into-the-unknown-unknowns_engaged-human-learning-through-participation-in-language-model-agent-conversations/</link>
+      <pubDate>Sun, 15 Dec 2024 15:04:01 +0800</pubDate>
+      <guid>https://spacetimelab.cn/publication/into-the-unknown-unknowns_engaged-human-learning-through-participation-in-language-model-agent-conversations/</guid>
+      <description>&lt;h2 id=&#34;heading&#34;&gt;&lt;/h2&gt;
+&lt;h2 id=&#34;0x00-亮点&#34;&gt;0x00 亮点&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;提出协作式STORM（Co-STORM）&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;不像QA系统要求用户询问所有问题。Co-STORM让用户观察，允许用户偶尔介入多个LM agents间的对话。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;agents从用户视角问问题，使用户有可能偶然发现“自己不知道自己不知道”但有价值的观点或事物。&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;allow user to discover the unknown unknowns serendipitously.
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;为了提高用户交互的便利性，Co-STORM可以通过将已发现的信息组织成动态思维导图，协助用户回顾谈话的过程，最终会生成一个综合性的报告。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;在自动化质量评估方面，构建了WildSeek数据集。作者手机了与用户目标相关的真实信息搜集记录&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;作者团队通过实验表明，70%使用者认为Co-STORM比搜索引擎好，78%使用者认为其比RAG机器人好。&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;0x01-引言&#34;&gt;0x01 引言&lt;/h2&gt;
+&lt;h3 id=&#34;现有复杂信息获取系统的能力&#34;&gt;现有复杂信息获取系统的能力&lt;/h3&gt;
+&lt;p&gt;传统搜索引擎和信息检索模型可以高效处理known unknowns，也就是说，当用户清楚地知道他们需要的信息时，这些系统可以通过生成直接的响应满足用户需求。&lt;/p&gt;
+&lt;p&gt;然而，当面临复杂信息获取场景时，如学术研究、市场分析、决策制定等，系统应该让用户可以发现unknown unknowns以促进知识发现。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;什么是unknown unknowns&lt;/p&gt;
+&lt;p&gt;最早源自于军事上的概念，指代意料之外的风险（比如从未设想过的被打击方式）。在信息收集的上下文里，意为侥幸得到的发现（surendipitous discovery）。&lt;/p&gt;
+&lt;p&gt;Kirzner做过一个概念对比：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;Surendipitous discovery&lt;/p&gt;
+&lt;p&gt;意识到忽略了在事实上可轻易得到的现成的某种东西.&lt;/p&gt;
+&lt;p&gt;&amp;ldquo;the realization that one had overlooked something in fact readily avilable.&amp;rdquo;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Successful search&lt;/p&gt;
+&lt;p&gt;一个人明确知道缺失的信息的（蓄意）产出&lt;/p&gt;
+&lt;p&gt;&amp;ldquo;the deliberate production of information which one know one had lacked&amp;rdquo;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;STORM的能力和局限性&lt;/p&gt;
+&lt;p&gt;亮点：将语言模型和搜索引擎结合，对任意主题自动生成高质量的维基百科风格文章。&lt;/p&gt;
+&lt;p&gt;然而，STORM不支持用户交互，只能产出静态的报告作为最终结果。这在复杂信息收集场景下不够用，因为不存在单一的完美的查询词，&lt;strong&gt;查询通常会围绕着目标动态地变化&lt;/strong&gt;。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&amp;hellip;&amp;hellip;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;co-storm的特点&#34;&gt;Co-STORM的特点&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;不同于一问一答的交互，用户可以通过观察和偶尔参与对话进行学习，仿效了一种常见的教育场景。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;为了促进启发式（thought-provoking）的对话和意外之喜，Co-STORM模拟了两种agent类型：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;专家agent：从不同的角度提问或回答。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;主持人agent：知道如何提出好问题和指引对话。&lt;/p&gt;
+&lt;p&gt;用户可以随时插话，引导对话或抛出问题或观点。&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;维护一个动态的、层次化的思维导图，确保用户容易理解和参与。&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;学习和信息获取的范例对比&#34;&gt;学习和信息获取的范例对比&lt;/h3&gt;
+&lt;p&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure  &gt;
+  &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img alt=&#34;&#34; srcset=&#34;
+               /publication/into-the-unknown-unknowns_engaged-human-learning-through-participation-in-language-model-agent-conversations/images/intro/fig1_hue40943271d2559b31160c96824ddab34_386279_d9efb359c263ca7ecd4a98d6ff68822a.webp 400w,
+               /publication/into-the-unknown-unknowns_engaged-human-learning-through-participation-in-language-model-agent-conversations/images/intro/fig1_hue40943271d2559b31160c96824ddab34_386279_10e27286c9431ab1870c87705f379706.webp 760w,
+               /publication/into-the-unknown-unknowns_engaged-human-learning-through-participation-in-language-model-agent-conversations/images/intro/fig1_hue40943271d2559b31160c96824ddab34_386279_1200x1200_fit_q75_h2_lanczos_3.webp 1200w&#34;
+               src=&#34;https://spacetimelab.cn/publication/into-the-unknown-unknowns_engaged-human-learning-through-participation-in-language-model-agent-conversations/images/intro/fig1_hue40943271d2559b31160c96824ddab34_386279_d9efb359c263ca7ecd4a98d6ff68822a.webp&#34;
+               width=&#34;544&#34;
+               height=&#34;760&#34;
+               loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+  &lt;/div&gt;&lt;/figure&gt;
+&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;使用搜索引擎&lt;/p&gt;
+&lt;p&gt;痛点：需要阅读的东西太多，无法获得意外之喜（Unknown Unknowns）&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;阅读现有报告&lt;/p&gt;
+&lt;p&gt;痛点：需要费较大功夫裁剪内容以满足特定需要。不支持交互。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;与聊天机器人交互&lt;/p&gt;
+&lt;p&gt;痛点：用户可能不知道该问什么。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;与&lt;a href=&#34;https://storm.genie.stanford.edu&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Co-STORM&lt;/a&gt;交互&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;0x02-复杂信息搜寻&#34;&gt;0x02 复杂信息搜寻&lt;/h2&gt;
+&lt;h3 id=&#34;问题形式化&#34;&gt;问题形式化&lt;/h3&gt;
+&lt;p&gt;复杂信息搜寻被Pirolli定义为拓宽认知过程的一部分，包括如下流程：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;collecting infomation from large collections&lt;/p&gt;
+&lt;p&gt;收集信息&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;sifting&lt;/p&gt;
+&lt;p&gt;筛选信息&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;understanding&lt;/p&gt;
+&lt;p&gt;理解信息&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;organizing information&lt;/p&gt;
+&lt;p&gt;组织信息&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;这种工作方法流行于：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;新闻调研&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;科学研究&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;市场分析&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;这类任务的属性：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;要求从多个数据源中搜寻信息，以构建一个主题下的立体化描述。（不是为了检索出与某个查询词最匹配的一篇文档）&lt;/p&gt;
+&lt;p&gt;如研究主题“聚类”，可以从无监督学习、应用场景、聚类公理化探索等方面进行调研和组织内容。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;涉及用户交互、而不是简单处理一个单一的查询。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;产出一个报告形式的结果，而非一个简短的答案。&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure  &gt;
+  &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img alt=&#34;&#34; srcset=&#34;
+               /publication/into-the-unknown-unknowns_engaged-human-learning-through-participation-in-language-model-agent-conversations/images/intro/table1_hubc6565417fd3fe5e949bacf4ee3b84fd_96429_ce7718bc27c57c88a034c97c5427f2ab.webp 400w,
+               /publication/into-the-unknown-unknowns_engaged-human-learning-through-participation-in-language-model-agent-conversations/images/intro/table1_hubc6565417fd3fe5e949bacf4ee3b84fd_96429_e86976dc5edb0ce132401f200192743f.webp 760w,
+               /publication/into-the-unknown-unknowns_engaged-human-learning-through-participation-in-language-model-agent-conversations/images/intro/table1_hubc6565417fd3fe5e949bacf4ee3b84fd_96429_1200x1200_fit_q75_h2_lanczos_3.webp 1200w&#34;
+               src=&#34;https://spacetimelab.cn/publication/into-the-unknown-unknowns_engaged-human-learning-through-participation-in-language-model-agent-conversations/images/intro/table1_hubc6565417fd3fe5e949bacf4ee3b84fd_96429_ce7718bc27c57c88a034c97c5427f2ab.webp&#34;
+               width=&#34;760&#34;
+               height=&#34;441&#34;
+               loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+  &lt;/div&gt;&lt;/figure&gt;
+&lt;/p&gt;
+&lt;p&gt;问题形式化：&lt;/p&gt;
+&lt;p&gt;给定初始兴趣主题$t$、初始目标$g$和信息库$R$，任务是与用户交互并写出一篇符合用户兴趣的长篇报告$S=s_1s_2&amp;hellip;s_n$,每一个句子都引用信息集合$R$中的一个子集$I$&lt;/p&gt;
+&lt;h2 id=&#34;0x03-方法&#34;&gt;0x03 方法&lt;/h2&gt;
+&lt;p&gt;本杰明·富兰克林：告诉我的事我会忘记，教我的事情我会记住，亲身参与的事情我会从中学习。&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;Tell me and I forget. Teach me and I remember. Involve me and I learn.
+&lt;/code&gt;&lt;/pre&gt;&lt;h3 id=&#34;协作式讨论协议collaborative-discourse-protocol&#34;&gt;协作式讨论协议（Collaborative Discourse Protocol）&lt;/h3&gt;
+&lt;p&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure  &gt;
+  &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img alt=&#34;&#34; srcset=&#34;
+               /publication/into-the-unknown-unknowns_engaged-human-learning-through-participation-in-language-model-agent-conversations/images/intro/fig2_hudbd3d2bd239c5f651044c36e22bd0bee_726348_de15d378c2d3988eaa90eee49feb0212.webp 400w,
+               /publication/into-the-unknown-unknowns_engaged-human-learning-through-participation-in-language-model-agent-conversations/images/intro/fig2_hudbd3d2bd239c5f651044c36e22bd0bee_726348_1913731c8fd315eb1c9e0db50e479770.webp 760w,
+               /publication/into-the-unknown-unknowns_engaged-human-learning-through-participation-in-language-model-agent-conversations/images/intro/fig2_hudbd3d2bd239c5f651044c36e22bd0bee_726348_1200x1200_fit_q75_h2_lanczos_3.webp 1200w&#34;
+               src=&#34;https://spacetimelab.cn/publication/into-the-unknown-unknowns_engaged-human-learning-through-participation-in-language-model-agent-conversations/images/intro/fig2_hudbd3d2bd239c5f651044c36e22bd0bee_726348_de15d378c2d3988eaa90eee49feb0212.webp&#34;
+               width=&#34;760&#34;
+               height=&#34;617&#34;
+               loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+  &lt;/div&gt;&lt;/figure&gt;
+&lt;/p&gt;
+&lt;p&gt;协作式讨论可表示为$D={u_1,u_2,&amp;hellip;,u_n}$。&lt;/p&gt;
+&lt;p&gt;其中$u_i$是由用户、专家和主持人三类角色其中之一发表的（回合制）文本言论&lt;/p&gt;
+&lt;p&gt;讨论由N个专家发起，每个专家（附带独特视角）对主题t发表一轮见解，为接下来的讨论作热身。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;言论意图（Utterance Intent）&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;ORIGINAL QUESTION：提出一个新问题&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;INFORMATION REQUEST：为先前的言论中寻找补充信息&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;POTENTIAL ANSWER：为之前抛出的问题提供一个可能的答案&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;FURTHER DETAILS：对先前的答案提供补充信息&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;将ORIGINAL QUESTION和INFORMATION REQUEST统一认定为question-asking，另外两类意图统一认为是question-answering。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;主动权管理（Initiative Management）&lt;/p&gt;
+&lt;p&gt;Co-STORM采用混合主动权方法，当用户积极参与，系统会基于用户的问题或论点继续讨论，产出更精准的讨论。否则系统会自动进行下一轮次。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;回合管理（Turn Management）&lt;/p&gt;
+&lt;p&gt;如果用户在时刻t没有主导谈话，Co-STORM需要决定哪个LM agent应该发表下一个言论：让不同的专家$p_1,&amp;hellip;,p_N$按顺序发表言论，为了避免所有专家仅仅围绕一个论点讨论，在观测到L个连续的POTENTIAL ANSWER或FURTHER DETAILS意图的回答后，系统会让主持人介入对话。&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;基于思维导图跟踪讨论过程tracking-the-discourse-with-a-mind-map&#34;&gt;基于思维导图跟踪讨论过程（Tracking the Discourse with a Mind Map）&lt;/h3&gt;
+&lt;p&gt;对于协作而言，有一个共享知识库或共享概念空间十分重要。&lt;/p&gt;
+&lt;h3 id=&#34;用户参与user-participation&#34;&gt;用户参与（User Participation）&lt;/h3&gt;
+&lt;p&gt;当用户发表言论$u$，Co-STORM基于$u$检索相关信息用于提示LM“邀请”一个专家团队$P^{&amp;rsquo;}$.随着专家团队更新， 系统转回自动引导模式，专家或主持人根据回合制管理协议轮流发表观点。&lt;/p&gt;
+&lt;p&gt;一旦用户对讨论满意，Co-STORM会生成最终的报告$S$。报告的生成会使用思维导图M作为提纲，还会根据每个概念$c$及检索到的相关信息$I^{c}$逐章节生成报告。&lt;/p&gt;
+&lt;h3 id=&#34;模拟圆桌会议参与者&#34;&gt;模拟圆桌会议参与者&lt;/h3&gt;
+&lt;h3 id=&#34;模拟主持人&#34;&gt;模拟主持人&lt;/h3&gt;
+&lt;h2 id=&#34;0x04-co-storm的实现&#34;&gt;0x04 Co-STORM的实现&lt;/h2&gt;
+&lt;h2 id=&#34;0x05-自动评估&#34;&gt;0x05 自动评估&lt;/h2&gt;
+&lt;h3 id=&#34;baselines&#34;&gt;Baselines：&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;RAG Chatbot&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;STORM+QA&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;指标&#34;&gt;指标&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;报告质量&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;Relevance&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Broad Coverage&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Depth&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Novelty&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;系统体验&#34;&gt;系统体验&lt;/h2&gt;
+&lt;h3 id=&#34;主题2024-年度最佳游戏&#34;&gt;主题：2024 年度最佳游戏&lt;/h3&gt;
+&lt;p&gt;介入对话：&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;How do you think of Black Myth Wukong. Does it deserve the Game of The Year award?
+&lt;/code&gt;&lt;/pre&gt;&lt;h2 id=&#34;其他阅读&#34;&gt;其他阅读&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://www.xinfinite.net/t/topic/6208&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;STORM 再进化，推出协作文本工具 Co-STORM：AI 协作学术研究新利器！ - AI资讯 - 冷月清谈&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
     
     <item>
       <title>基于LLM的自动化报告生成——舆情分析报告</title>
@@ -323,10 +639,10 @@
 &lt;figure  &gt;
   &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
     &lt;div class=&#34;w-100&#34; &gt;&lt;img alt=&#34;&#34; srcset=&#34;
-               /project/fixed-outline-report-generation/images/retrieve/strategy/no-filter-1_hua22ec239c6e5adeb0d0452644251315e_239670_8d6d61b90a43a90a6d4bb9b66be93b1e.webp 400w,
-               /project/fixed-outline-report-generation/images/retrieve/strategy/no-filter-1_hua22ec239c6e5adeb0d0452644251315e_239670_7bdf061377afc41ea3cd3c2854b45757.webp 760w,
+               /project/fixed-outline-report-generation/images/retrieve/strategy/no-filter-1_hua22ec239c6e5adeb0d0452644251315e_239670_7538d02315fb5b4243f9dc1012d976e9.webp 400w,
+               /project/fixed-outline-report-generation/images/retrieve/strategy/no-filter-1_hua22ec239c6e5adeb0d0452644251315e_239670_f41f9358ecb07b3684e6d371755a167d.webp 760w,
                /project/fixed-outline-report-generation/images/retrieve/strategy/no-filter-1_hua22ec239c6e5adeb0d0452644251315e_239670_1200x1200_fit_q75_h2_lanczos_3.webp 1200w&#34;
-               src=&#34;https://spacetimelab.cn/project/fixed-outline-report-generation/images/retrieve/strategy/no-filter-1_hua22ec239c6e5adeb0d0452644251315e_239670_8d6d61b90a43a90a6d4bb9b66be93b1e.webp&#34;
+               src=&#34;https://spacetimelab.cn/project/fixed-outline-report-generation/images/retrieve/strategy/no-filter-1_hua22ec239c6e5adeb0d0452644251315e_239670_7538d02315fb5b4243f9dc1012d976e9.webp&#34;
                width=&#34;760&#34;
                height=&#34;367&#34;
                loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
@@ -351,10 +667,10 @@
 &lt;figure  &gt;
   &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
     &lt;div class=&#34;w-100&#34; &gt;&lt;img alt=&#34;&#34; srcset=&#34;
-               /project/fixed-outline-report-generation/images/retrieve/strategy/title-only-filter_hu981b895078172d29b402e1a5c8507de0_272611_45eb720837323b29a71e09c009415516.webp 400w,
-               /project/fixed-outline-report-generation/images/retrieve/strategy/title-only-filter_hu981b895078172d29b402e1a5c8507de0_272611_f58e343cbe84806543556237eddeec00.webp 760w,
+               /project/fixed-outline-report-generation/images/retrieve/strategy/title-only-filter_hu981b895078172d29b402e1a5c8507de0_272611_2403ceb258d1532392adf59192f74f67.webp 400w,
+               /project/fixed-outline-report-generation/images/retrieve/strategy/title-only-filter_hu981b895078172d29b402e1a5c8507de0_272611_85e5c1a9cf0876f4e0af124508c49833.webp 760w,
                /project/fixed-outline-report-generation/images/retrieve/strategy/title-only-filter_hu981b895078172d29b402e1a5c8507de0_272611_1200x1200_fit_q75_h2_lanczos_3.webp 1200w&#34;
-               src=&#34;https://spacetimelab.cn/project/fixed-outline-report-generation/images/retrieve/strategy/title-only-filter_hu981b895078172d29b402e1a5c8507de0_272611_45eb720837323b29a71e09c009415516.webp&#34;
+               src=&#34;https://spacetimelab.cn/project/fixed-outline-report-generation/images/retrieve/strategy/title-only-filter_hu981b895078172d29b402e1a5c8507de0_272611_2403ceb258d1532392adf59192f74f67.webp&#34;
                width=&#34;760&#34;
                height=&#34;367&#34;
                loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
@@ -379,10 +695,10 @@
 &lt;figure  &gt;
   &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
     &lt;div class=&#34;w-100&#34; &gt;&lt;img alt=&#34;&#34; srcset=&#34;
-               /project/fixed-outline-report-generation/images/retrieve/strategy/global-filter-1_hu0430aa55ceb2e6bd3d8c5bc376ec541c_318208_e76b42a3145211029e472a3b313c4720.webp 400w,
-               /project/fixed-outline-report-generation/images/retrieve/strategy/global-filter-1_hu0430aa55ceb2e6bd3d8c5bc376ec541c_318208_9584ff54eff9322e138c547824f89442.webp 760w,
+               /project/fixed-outline-report-generation/images/retrieve/strategy/global-filter-1_hu0430aa55ceb2e6bd3d8c5bc376ec541c_318208_b39061781ba4374405f3e1f80bb7b98b.webp 400w,
+               /project/fixed-outline-report-generation/images/retrieve/strategy/global-filter-1_hu0430aa55ceb2e6bd3d8c5bc376ec541c_318208_e6b9f7e73ef9f0b12d894d91ed8033b3.webp 760w,
                /project/fixed-outline-report-generation/images/retrieve/strategy/global-filter-1_hu0430aa55ceb2e6bd3d8c5bc376ec541c_318208_1200x1200_fit_q75_h2_lanczos_3.webp 1200w&#34;
-               src=&#34;https://spacetimelab.cn/project/fixed-outline-report-generation/images/retrieve/strategy/global-filter-1_hu0430aa55ceb2e6bd3d8c5bc376ec541c_318208_e76b42a3145211029e472a3b313c4720.webp&#34;
+               src=&#34;https://spacetimelab.cn/project/fixed-outline-report-generation/images/retrieve/strategy/global-filter-1_hu0430aa55ceb2e6bd3d8c5bc376ec541c_318208_b39061781ba4374405f3e1f80bb7b98b.webp&#34;
                width=&#34;760&#34;
                height=&#34;361&#34;
                loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
