@@ -882,6 +882,36 @@
                loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
   &lt;/div&gt;&lt;/figure&gt;
 &lt;/p&gt;
+&lt;h4 id=&#34;a-若模型可处理上下文长度足够长可考虑输入正文或更长的摘要以提取更详细的信息&#34;&gt;A: 若模型可处理上下文长度足够长，可考虑输入正文或更长的摘要以提取更详细的信息&lt;/h4&gt;
+&lt;p&gt;基于新闻正文生成的报告：&lt;/p&gt;
+&lt;p&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure  &gt;
+  &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img alt=&#34;&#34; srcset=&#34;
+               /project/fixed-outline-report-generation/images/aigc/industry_report/game_market/demo/open-world-content_hu4faca790c1a02e3fa23bf48c0494ed05_252701_673c26724e5cd2c23c5b6173eff117d3.webp 400w,
+               /project/fixed-outline-report-generation/images/aigc/industry_report/game_market/demo/open-world-content_hu4faca790c1a02e3fa23bf48c0494ed05_252701_6fc0fdc50bf48ce615c1fee5e4e4a79f.webp 760w,
+               /project/fixed-outline-report-generation/images/aigc/industry_report/game_market/demo/open-world-content_hu4faca790c1a02e3fa23bf48c0494ed05_252701_1200x1200_fit_q75_h2_lanczos_3.webp 1200w&#34;
+               src=&#34;https://spacetimelab.cn/project/fixed-outline-report-generation/images/aigc/industry_report/game_market/demo/open-world-content_hu4faca790c1a02e3fa23bf48c0494ed05_252701_673c26724e5cd2c23c5b6173eff117d3.webp&#34;
+               width=&#34;709&#34;
+               height=&#34;548&#34;
+               loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+  &lt;/div&gt;&lt;/figure&gt;
+&lt;/p&gt;
 &lt;h2 id=&#34;0x04-外部资源&#34;&gt;0x04 外部资源&lt;/h2&gt;
 &lt;h3 id=&#34;特征抽取模型&#34;&gt;特征抽取模型&lt;/h3&gt;
 &lt;ul&gt;
